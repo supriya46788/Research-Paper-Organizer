@@ -325,14 +325,34 @@ function editPaper(id) {
 
 // Delete paper
 function deletePaper(id) {
-  if (confirm("Are you sure you want to delete this paper?")) {
-    papers = papers.filter((p) => p.id !== id);
-    if (selectedPaper && selectedPaper.id === id) {
-      closeDetails();
+  Swal.fire({
+    title: "Are you sure?",
+    text: "This paper will be permanently deleted.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#3085d6",
+    confirmButtonText: "Yes, delete it!",
+    cancelButtonText: "Cancel",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      papers = papers.filter((p) => p.id !== id);
+      if (selectedPaper && selectedPaper.id === id) {
+        closeDetails();
+      }
+      renderPapers();
+      filterPapers();
+
+      // Optional success message
+      Swal.fire({
+        title: "Deleted!",
+        text: "The paper has been deleted.",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+      });
     }
-    renderPapers();
-    filterPapers();
-  }
+  });
 }
 
 // Handle form submission
@@ -463,14 +483,13 @@ document
     icon.classList.toggle("fa-sun");
   });
 
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark-mode");
-}
-
+// if (localStorage.getItem("theme") === "dark") {
+//   document.body.classList.add("dark-mode");
+// }
 
 // Save dark mode preference to Local Storage
-function toggleDarkMode() {
-  document.body.classList.toggle("dark-mode");
-  const isDark = document.body.classList.contains("dark-mode");
-  localStorage.setItem("theme", isDark ? "dark" : "light");
-}
+// function toggleDarkMode() {
+//   document.body.classList.toggle("dark-mode");
+//   const isDark = document.body.classList.contains("dark-mode");
+//   localStorage.setItem("theme", isDark ? "dark" : "light");
+// }

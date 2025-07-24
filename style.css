@@ -691,3 +691,42 @@
  .dark-mode .modal {
      box-shadow: 0 20px 25px -5px rgba(255, 255, 255, 0.05);
  }
+
+
+ .header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Dark Mode Toggle Styling */
+.dark-toggle {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #1f2937;
+  transition: background 0.3s ease;
+}
+
+.dark-toggle:hover {
+  background: #e5e7eb;
+}
+
+/* Optional dark-mode override */
+.dark-mode .dark-toggle {
+  background: #374151;
+  color: #d1d5db;
+}
+
+.dark-mode .dark-toggle:hover {
+  background: #4b5563;
+}
+
+body.dark-mode .swal2-popup {
+  background-color: #1f2937 !important;
+  color: #f3f4f6 !important;
+}
+

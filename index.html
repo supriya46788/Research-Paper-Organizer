@@ -1,165 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Research Paper Organizer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
-  <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <div class="header-content">
-        <div>
-          <h1 class="header-title">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research Paper Organizer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header">
+        <div class="header-content">
+          <div>
+            <h1 class="header-title">
+              <i class="fas fa-book-open"></i>
+              Research Paper Organizer
+            </h1>
+            <p class="header-subtitle">
+              Organize, track, and cite your research papers efficiently
+            </p>
+          </div>
+
+          <!-- Right side buttons -->
+          <div class="header-buttons">
+            <button
+              class="dark-toggle"
+              id="darkModeToggle"
+              title="Toggle Dark Mode"
+              onclick="toggleDarkMode()"
+            >
+              <i class="fas fa-moon"></i>
+            </button>
+
+            <button class="add-btn" onclick="showAddForm()">
+              <i class="fas fa-plus"></i>
+              Add Paper
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search and Filter Bar -->
+      <div class="search-bar">
+        <div class="search-content">
+          <div class="search-input-container">
+            <i class="fas fa-search search-icon"></i>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="Search papers by title, author, or abstract..."
+              id="searchInput"
+              oninput="filterPapers()"
+            />
+          </div>
+          <div class="filter-container">
+            <i class="fas fa-filter" style="color: #6b7280"></i>
+            <select
+              class="filter-select"
+              id="topicFilter"
+              onchange="filterPapers()"
+            >
+              <option value="">All Topics</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-grid">
+        <!-- Papers List -->
+        <div class="papers-section">
+          <h2 class="papers-title">Papers (<span id="paperCount">0</span>)</h2>
+
+          <div id="emptyState" class="empty-state">
             <i class="fas fa-book-open"></i>
-            Research Paper Organizer
-          </h1>
-          <p class="header-subtitle">Organize, track, and cite your research papers efficiently</p>
-        </div>
-        <div class="header-buttons">
-          <button class="dark-toggle" id="darkModeToggle" title="Toggle Dark Mode">
-            <i class="fas fa-moon"></i>
-          </button>
-          <button class="add-btn" onclick="showAddForm()">
-            <i class="fas fa-plus"></i>
-            Add Paper
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Search and Filter Bar -->
-    <div class="search-bar">
-      <div class="search-content">
-        <div class="search-input-container">
-          <i class="fas fa-search search-icon"></i>
-          <input 
-            type="text" 
-            class="search-input"
-            placeholder="Search papers by title, author, or abstract..."
-            id="searchInput"
-            oninput="filterPapers()"
-          >
-        </div>
-        <div class="filter-container">
-          <i class="fas fa-filter" style="color: #6b7280;"></i>
-          <select class="filter-select" id="topicFilter" onchange="filterPapers()">
-            <option value="">All Topics</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="main-grid">
-      <!-- Papers List -->
-      <div class="papers-section">
-        <h2 class="papers-title">Papers (<span id="paperCount">0</span>)</h2>
-
-        <div id="emptyState" class="empty-state">
-          <i class="fas fa-book-open"></i>
-          <p>No papers found</p>
-          <p style="font-size: 0.875rem;">Add your first research paper to get started</p>
-        </div>
-
-        <div id="papersList" class="papers-list hidden"></div>
-      </div>
-
-      <!-- Paper Details -->
-      <div class="details-section">
-        <div id="noSelection" class="empty-state">
-          <i class="fas fa-book-open"></i>
-          <p>Select a paper to view details</p>
-        </div>
-
-        <div id="paperDetails" class="hidden">
-          <div class="details-header">
-            <h2 class="details-title">Paper Details</h2>
-            <button class="close-btn" onclick="closeDetails()">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-          <div class="details-content" id="detailsContent">
-            <!-- Paper details go here -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Add/Edit Paper Modal -->
-    <div id="modalOverlay" class="modal-overlay hidden">
-      <div class="modal">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="modalTitle">Add New Paper</h2>
-            <button class="modal-close" onclick="hideAddForm()">
-              <i class="fas fa-times"></i>
-            </button>
+            <p>No papers found</p>
+            <p style="font-size: 0.875rem">
+              Add your first research paper to get started
+            </p>
           </div>
 
-          <form id="paperForm">
-            <div class="form-group">
-              <label class="form-label">Title *</label>
-              <input type="text" class="form-input" id="title" required>
-            </div>
+          <div id="papersList" class="papers-list hidden"></div>
+        </div>
 
-            <div class="form-grid">
-              <div class="form-group">
-                <label class="form-label">Authors *</label>
-                <input type="text" class="form-input" id="authors" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Year</label>
-                <input type="number" class="form-input" id="year">
-              </div>
-            </div>
+        <!-- Paper Details -->
+        <div class="details-section">
+          <div id="noSelection" class="empty-state">
+            <i class="fas fa-book-open"></i>
+            <p>Select a paper to view details</p>
+          </div>
 
-            <div class="form-grid">
-              <div class="form-group">
-                <label class="form-label">Journal/Conference</label>
-                <input type="text" class="form-input" id="journal">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Topic</label>
-                <input type="text" class="form-input" id="topic">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">URL</label>
-              <input type="url" class="form-input" id="url">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Tags (comma-separated)</label>
-              <input type="text" class="form-input" id="tags" placeholder="machine learning, neural networks, AI">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Abstract</label>
-              <textarea class="form-textarea" id="abstract" rows="3"></textarea>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Notes</label>
-              <textarea class="form-textarea" id="notes" rows="4"></textarea>
-            </div>
-
-            <div class="form-actions">
-              <button type="button" class="btn-secondary" onclick="hideAddForm()">Cancel</button>
-              <button type="submit" class="btn-primary">
-                <i class="fas fa-save"></i>
-                <span id="submitText">Add Paper</span>
+          <div id="paperDetails" class="hidden">
+            <div class="details-header">
+              <h2 class="details-title">Paper Details</h2>
+              <button class="close-btn" onclick="closeDetails()">
+                <i class="fas fa-times"></i>
               </button>
             </div>
-          </form>
+            <div class="details-content" id="detailsContent">
+              <!-- Paper details go here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add/Edit Paper Modal -->
+      <div id="modalOverlay" class="modal-overlay hidden">
+        <div class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="modalTitle">Add New Paper</h2>
+              <button class="modal-close" onclick="hideAddForm()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <form id="paperForm">
+              <div class="form-group">
+                <label class="form-label">Title *</label>
+                <input type="text" class="form-input" id="title" required />
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Authors *</label>
+                  <input type="text" class="form-input" id="authors" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Year</label>
+                  <input type="number" class="form-input" id="year" />
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Journal/Conference</label>
+                  <input type="text" class="form-input" id="journal" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Topic</label>
+                  <input type="text" class="form-input" id="topic" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">URL</label>
+                <input type="url" class="form-input" id="url" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Tags (comma-separated)</label>
+                <input
+                  type="text"
+                  class="form-input"
+                  id="tags"
+                  placeholder="machine learning, neural networks, AI"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Abstract</label>
+                <textarea
+                  class="form-textarea"
+                  id="abstract"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Notes</label>
+                <textarea class="form-textarea" id="notes" rows="4"></textarea>
+              </div>
+
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn-secondary"
+                  onclick="hideAddForm()"
+                >
+                  Cancel
+                </button>
+                <button type="submit" class="btn-primary">
+                  <i class="fas fa-save"></i>
+                  <span id="submitText">Add Paper</span>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
