@@ -8,6 +8,8 @@ const PAPERS_KEY = "papers_db";
 const TOPICS_KEY = "topics_db";
 const THEME_KEY = "theme";
 
+let uploadedPdfData = null; // Holds currently uploaded PDF data in modal
+
 // Initialize with sample data (if first load)
 function initializeSampleData() {
   const samplePapers = [
@@ -25,6 +27,7 @@ function initializeSampleData() {
       abstract:
         "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms.",
       dateAdded: "2024-01-15",
+      pdfData: null,
     },
     {
       id: 2,
@@ -40,6 +43,7 @@ function initializeSampleData() {
       abstract:
         "We introduce BERT, which stands for Bidirectional Encoder Representations from Transformers. BERT is designed to pre-train deep bidirectional representations.",
       dateAdded: "2024-01-20",
+      pdfData: null,
     },
   ];
   papers = samplePapers;
@@ -48,7 +52,6 @@ function initializeSampleData() {
 }
 
 function loadFromStorage() {
-  // Papers
   const storedPapers = localStorage.getItem(PAPERS_KEY);
   if (storedPapers) {
     try {
@@ -60,7 +63,6 @@ function loadFromStorage() {
     papers = [];
   }
 
-  // Topics
   const storedTopics = localStorage.getItem(TOPICS_KEY);
   if (storedTopics) {
     try {
@@ -72,7 +74,6 @@ function loadFromStorage() {
     topics = [];
   }
 
-  // If empty (fresh load), initialize sample data
   if (!papers.length) initializeSampleData();
 }
 
@@ -102,7 +103,7 @@ function filterPapers() {
     const matchesSearch =
       paper.title.toLowerCase().includes(searchTerm) ||
       paper.authors.toLowerCase().includes(searchTerm) ||
-      (paper.abstract || '').toLowerCase().includes(searchTerm);
+      (paper.abstract || "").toLowerCase().includes(searchTerm);
     const matchesTopic = selectedTopic === "" || paper.topic === selectedTopic;
     return matchesSearch && matchesTopic;
   });
@@ -159,18 +160,14 @@ function renderPapers(filteredPapers = papers) {
             <p class="paper-authors">${paper.authors}</p>
             <div class="paper-meta">
                 ${
-                  paper.topic
-                    ? `<span class="topic-badge">${paper.topic}</span>`
-                    : ""
+                  paper.topic ? `<span class="topic-badge">${paper.topic}</span>` : ""
                 }
                 ${
                   paper.year
                     ? `<span class="year-badge"><i class="fas fa-calendar"></i> ${paper.year}</span>`
                     : ""
                 }
-                ${paper.tags
-                  .map((tag) => `<span class="tag-badge">#${tag}</span>`)
-                  .join("")}
+                ${paper.tags.map((tag) => `<span class="tag-badge">#${tag}</span>`).join("")}
             </div>
         </div>
         `
@@ -185,7 +182,7 @@ function selectPaper(id) {
   renderPapers(); // Re-render to update selection
 }
 
-// Show paper details
+// Show paper details including PDF preview if available
 function showPaperDetails() {
   if (!selectedPaper) return;
 
@@ -197,112 +194,120 @@ function showPaperDetails() {
   paperDetails.classList.remove("hidden");
 
   detailsContent.innerHTML = `
-                <div class="detail-section">
-                    <h3>${selectedPaper.title}</h3>
-                    <p>${selectedPaper.authors}</p>
-                </div>
+        <div class="detail-section">
+            <h3>${selectedPaper.title}</h3>
+            <p>${selectedPaper.authors}</p>
+        </div>
 
-                ${
-                  selectedPaper.url
-                    ? `
-                <div class="detail-section">
-                    <h4>Paper Link</h4>
-                    <a href="#" class="paper-link" onclick="openPaperLink('${selectedPaper.url}')">
-                        <i class="fas fa-external-link-alt"></i>
-                        Open Paper
-                    </a>
+        ${
+          selectedPaper.url
+            ? `
+        <div class="detail-section">
+            <h4>Paper Link</h4>
+            <a href="#" class="paper-link" onclick="openPaperLink('${selectedPaper.url}')">
+                <i class="fas fa-external-link-alt"></i>
+                Open Paper
+            </a>
+        </div>
+        `
+            : ""
+        }
+
+        ${
+          selectedPaper.abstract
+            ? `
+        <div class="detail-section">
+            <h4>Abstract</h4>
+            <p>${selectedPaper.abstract}</p>
+        </div>
+        `
+            : ""
+        }
+
+        ${
+          selectedPaper.notes
+            ? `
+        <div class="detail-section">
+            <h4>Notes</h4>
+            <p>${selectedPaper.notes}</p>
+        </div>
+        `
+            : ""
+        }
+
+        <div class="details-grid">
+            ${
+              selectedPaper.year
+                ? `
+            <div>
+                <span style="font-weight: 500; color: #374151;">Year:</span>
+                <p>${selectedPaper.year}</p>
+            </div>
+            `
+                : ""
+            }
+            ${
+              selectedPaper.journal
+                ? `
+            <div>
+                <span style="font-weight: 500; color: #374151;">Journal:</span>
+                <p>${selectedPaper.journal}</p>
+            </div>
+            `
+                : ""
+            }
+        </div>
+
+        ${
+          selectedPaper.tags.length > 0
+            ? `
+        <div class="detail-section">
+            <h4>Tags</h4>
+            <div class="tags-container">
+                ${selectedPaper.tags
+                  .map((tag) => `<span class="detail-tag">#${tag}</span>`)
+                  .join("")}
+            </div>
+        </div>
+        `
+            : ""
+        }
+
+        ${
+          selectedPaper.pdfData
+            ? `
+        <div class="detail-section">
+            <h4>PDF Preview</h4>
+            <iframe src="${selectedPaper.pdfData}" class="pdf-preview" frameborder="0"></iframe>
+        </div>
+        `
+            : ""
+        }
+
+        <div class="citation-section">
+            <h4>Generate Citation</h4>
+            <div>
+                ${["APA", "MLA", "Chicago"]
+                  .map(
+                    (style) => `
+                <div class="citation-item">
+                    <div class="citation-header">
+                        <span class="citation-style">${style}</span>
+                        <button class="copy-btn" onclick="copyToClipboard('${generateCitation(
+                          selectedPaper,
+                          style
+                        ).replace(/'/g, "\\'")}')">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                    <p class="citation-text">${generateCitation(selectedPaper, style)}</p>
                 </div>
                 `
-                    : ""
-                }
-
-                ${
-                  selectedPaper.abstract
-                    ? `
-                <div class="detail-section">
-                    <h4>Abstract</h4>
-                    <p>${selectedPaper.abstract}</p>
-                </div>
-                `
-                    : ""
-                }
-
-                ${
-                  selectedPaper.notes
-                    ? `
-                <div class="detail-section">
-                    <h4>Notes</h4>
-                    <p>${selectedPaper.notes}</p>
-                </div>
-                `
-                    : ""
-                }
-
-                <div class="details-grid">
-                    ${
-                      selectedPaper.year
-                        ? `
-                    <div>
-                        <span style="font-weight: 500; color: #374151;">Year:</span>
-                        <p>${selectedPaper.year}</p>
-                    </div>
-                    `
-                        : ""
-                    }
-                    ${
-                      selectedPaper.journal
-                        ? `
-                    <div>
-                        <span style="font-weight: 500; color: #374151;">Journal:</span>
-                        <p>${selectedPaper.journal}</p>
-                    </div>
-                    `
-                        : ""
-                    }
-                </div>
-
-                ${
-                  selectedPaper.tags.length > 0
-                    ? `
-                <div class="detail-section">
-                    <h4>Tags</h4>
-                    <div class="tags-container">
-                        ${selectedPaper.tags
-                          .map((tag) => `<span class="detail-tag">#${tag}</span>`)
-                          .join("")}
-                    </div>
-                </div>
-                `
-                    : ""
-                }
-
-                <div class="citation-section">
-                    <h4>Generate Citation</h4>
-                    <div>
-                        ${["APA", "MLA", "Chicago"]
-                          .map(
-                            (style) => `
-                        <div class="citation-item">
-                            <div class="citation-header">
-                                <span class="citation-style">${style}</span>
-                                <button class="copy-btn" onclick="copyToClipboard('${generateCitation(
-                                  selectedPaper,
-                                  style
-                                ).replace(/'/g, "\\'")}')">
-                                    <i class="fas fa-copy"></i>
-                                </button>
-                            </div>
-                            <p class="citation-text">${generateCitation(
-                              selectedPaper,
-                              style
-                            )}</p>
-                        </div>
-                        `
-                          )
-                          .join("")}
-                    </div>
-                </div>
-            `;
+                  )
+                  .join("")}
+            </div>
+        </div>
+    `;
 }
 
 // Close paper details
@@ -322,6 +327,8 @@ function showAddForm() {
   document.getElementById("modalTitle").textContent = "Add New Paper";
   document.getElementById("submitText").textContent = "Add Paper";
   resetForm();
+
+  clearPdfData();
 }
 
 // Hide add form modal
@@ -334,6 +341,7 @@ function hideAddForm() {
 function resetForm() {
   document.getElementById("paperForm").reset();
   editingPaper = null;
+  clearPdfData();
 }
 
 // Edit paper
@@ -355,6 +363,13 @@ function editPaper(id) {
   document.getElementById("tags").value = editingPaper.tags.join(", ");
   document.getElementById("abstract").value = editingPaper.abstract || "";
   document.getElementById("notes").value = editingPaper.notes || "";
+
+  if (editingPaper.pdfData) {
+    uploadedPdfData = editingPaper.pdfData;
+    showPdfPreview(uploadedPdfData);
+  } else {
+    clearPdfData();
+  }
 }
 
 // Delete paper
@@ -378,7 +393,6 @@ function deletePaper(id) {
       renderPapers();
       filterPapers();
 
-      // Optional success message
       Swal.fire({
         title: "Deleted!",
         text: "The paper has been deleted.",
@@ -418,9 +432,8 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
       .split(",")
       .map((tag) => tag.trim())
       .filter((tag) => tag),
-    dateAdded: editingPaper
-      ? editingPaper.dateAdded
-      : new Date().toISOString().split("T")[0],
+    dateAdded: editingPaper ? editingPaper.dateAdded : new Date().toISOString().split("T")[0],
+    pdfData: uploadedPdfData || null, // Save uploaded PDF base64 data or null
   };
 
   if (editingPaper) {
@@ -434,7 +447,6 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
     papers.push(newPaper);
   }
 
-  // Add new topic if it doesn't exist
   if (formData.topic && !topics.includes(formData.topic)) {
     topics.push(formData.topic);
     updateTopicsFilter();
@@ -465,12 +477,10 @@ function copyToClipboard(text) {
   navigator.clipboard
     .writeText(text)
     .then(() => {
-      // You could add a toast notification here
       console.log("Citation copied to clipboard");
     })
     .catch((err) => {
       console.error("Failed to copy: ", err);
-      // Fallback for older browsers
       const textArea = document.createElement("textarea");
       textArea.value = text;
       document.body.appendChild(textArea);
@@ -535,6 +545,48 @@ document
     localStorage.setItem(THEME_KEY, isNowDark ? "dark" : "light");
   });
 
+// PDF Upload & Preview handling
+
+const pdfUploadInput = document.getElementById("pdfUpload");
+const pdfPreviewContainer = document.getElementById("pdfPreviewContainer");
+const pdfPreviewIframe = document.getElementById("pdfPreview");
+const clearPdfBtn = document.getElementById("clearPdfBtn");
+
+pdfUploadInput.addEventListener("change", function () {
+  const file = this.files[0];
+  if (file && file.type === "application/pdf") {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      uploadedPdfData = e.target.result; // base64 string
+      showPdfPreview(uploadedPdfData);
+    };
+    reader.readAsDataURL(file);
+  } else {
+    alert("Please upload a valid PDF file.");
+    clearPdfData();
+  }
+});
+
+clearPdfBtn.addEventListener("click", function () {
+  clearPdfData();
+});
+
+function showPdfPreview(dataUrl) {
+  if (!dataUrl) {
+    pdfPreviewContainer.classList.add("hidden");
+    pdfPreviewIframe.src = "";
+    return;
+  }
+  pdfPreviewIframe.src = dataUrl;
+  pdfPreviewContainer.classList.remove("hidden");
+}
+
+function clearPdfData() {
+  uploadedPdfData = null;
+  pdfUploadInput.value = "";
+  showPdfPreview(null);
+}
+
 // Initialize the application
 document.addEventListener("DOMContentLoaded", function () {
   loadFromStorage();
@@ -546,4 +598,3 @@ document.addEventListener("DOMContentLoaded", function () {
 // Make filter controls responsive to changes
 document.getElementById("topicFilter").addEventListener("change", filterPapers);
 document.getElementById("searchInput").addEventListener("input", filterPapers);
-
