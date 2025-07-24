@@ -1,10 +1,14 @@
 // Global state
 let papers = [];
-let topics = ["Machine Learning", "Data Science", "Web Development"];
+let topics = [];
 let selectedPaper = null;
 let editingPaper = null;
 
-// Initialize with sample data
+const PAPERS_KEY = "papers_db";
+const TOPICS_KEY = "topics_db";
+const THEME_KEY = "theme";
+
+// Initialize with sample data (if first load)
 function initializeSampleData() {
   const samplePapers = [
     {
@@ -39,8 +43,42 @@ function initializeSampleData() {
     },
   ];
   papers = samplePapers;
-  updateTopicsFilter();
-  renderPapers();
+  topics = ["Machine Learning", "Data Science", "Web Development"];
+  saveToStorage();
+}
+
+function loadFromStorage() {
+  // Papers
+  const storedPapers = localStorage.getItem(PAPERS_KEY);
+  if (storedPapers) {
+    try {
+      papers = JSON.parse(storedPapers);
+    } catch {
+      papers = [];
+    }
+  } else {
+    papers = [];
+  }
+
+  // Topics
+  const storedTopics = localStorage.getItem(TOPICS_KEY);
+  if (storedTopics) {
+    try {
+      topics = JSON.parse(storedTopics);
+    } catch {
+      topics = [];
+    }
+  } else {
+    topics = [];
+  }
+
+  // If empty (fresh load), initialize sample data
+  if (!papers.length) initializeSampleData();
+}
+
+function saveToStorage() {
+  localStorage.setItem(PAPERS_KEY, JSON.stringify(papers));
+  localStorage.setItem(TOPICS_KEY, JSON.stringify(topics));
 }
 
 // Update topics filter dropdown
@@ -64,7 +102,7 @@ function filterPapers() {
     const matchesSearch =
       paper.title.toLowerCase().includes(searchTerm) ||
       paper.authors.toLowerCase().includes(searchTerm) ||
-      paper.abstract.toLowerCase().includes(searchTerm);
+      (paper.abstract || '').toLowerCase().includes(searchTerm);
     const matchesTopic = selectedTopic === "" || paper.topic === selectedTopic;
     return matchesSearch && matchesTopic;
   });
@@ -92,52 +130,50 @@ function renderPapers(filteredPapers = papers) {
   papersList.innerHTML = filteredPapers
     .map(
       (paper) => `
-                <div class="paper-card ${
-                  selectedPaper?.id === paper.id ? "selected" : ""
-                }" onclick="selectPaper(${paper.id})">
-                    <div class="paper-header">
-                        <h3 class="paper-title">${paper.title}</h3>
-                        <div class="paper-actions">
-                            ${
-                              paper.url
-                                ? `<button class="paper-action-btn" onclick="event.stopPropagation(); openPaperLink('${paper.url}')" title="Open paper link">
-                                <i class="fas fa-external-link-alt"></i>
-                            </button>`
-                                : ""
-                            }
-                            <button class="paper-action-btn" onclick="event.stopPropagation(); editPaper(${
-                              paper.id
-                            })" title="Edit paper">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="paper-action-btn delete" onclick="event.stopPropagation(); deletePaper(${
-                              paper.id
-                            })" title="Delete paper">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                    
-                    <p class="paper-authors">${paper.authors}</p>
-                    <div class="paper-meta">
-                        ${
-                          paper.topic
-                            ? `<span class="topic-badge">${paper.topic}</span>`
-                            : ""
-                        }
-                        ${
-                          paper.year
-                            ? `<span class="year-badge"><i class="fas fa-calendar"></i> ${paper.year}</span>`
-                            : ""
-                        }
-                        ${paper.tags
-                          .map(
-                            (tag) => `<span class="tag-badge">#${tag}</span>`
-                          )
-                          .join("")}
-                    </div>
+        <div class="paper-card ${
+          selectedPaper?.id === paper.id ? "selected" : ""
+        }" onclick="selectPaper(${paper.id})">
+            <div class="paper-header">
+                <h3 class="paper-title">${paper.title}</h3>
+                <div class="paper-actions">
+                    ${
+                      paper.url
+                        ? `<button class="paper-action-btn" onclick="event.stopPropagation(); openPaperLink('${paper.url}')" title="Open paper link">
+                        <i class="fas fa-external-link-alt"></i>
+                    </button>`
+                        : ""
+                    }
+                    <button class="paper-action-btn" onclick="event.stopPropagation(); editPaper(${
+                      paper.id
+                    })" title="Edit paper">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="paper-action-btn delete" onclick="event.stopPropagation(); deletePaper(${
+                      paper.id
+                    })" title="Delete paper">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </div>
-            `
+            </div>
+            
+            <p class="paper-authors">${paper.authors}</p>
+            <div class="paper-meta">
+                ${
+                  paper.topic
+                    ? `<span class="topic-badge">${paper.topic}</span>`
+                    : ""
+                }
+                ${
+                  paper.year
+                    ? `<span class="year-badge"><i class="fas fa-calendar"></i> ${paper.year}</span>`
+                    : ""
+                }
+                ${paper.tags
+                  .map((tag) => `<span class="tag-badge">#${tag}</span>`)
+                  .join("")}
+            </div>
+        </div>
+        `
     )
     .join("");
 }
@@ -232,9 +268,7 @@ function showPaperDetails() {
                     <h4>Tags</h4>
                     <div class="tags-container">
                         ${selectedPaper.tags
-                          .map(
-                            (tag) => `<span class="detail-tag">#${tag}</span>`
-                          )
+                          .map((tag) => `<span class="detail-tag">#${tag}</span>`)
                           .join("")}
                     </div>
                 </div>
@@ -340,6 +374,7 @@ function deletePaper(id) {
       if (selectedPaper && selectedPaper.id === id) {
         closeDetails();
       }
+      saveToStorage();
       renderPapers();
       filterPapers();
 
@@ -405,6 +440,8 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
     updateTopicsFilter();
   }
 
+  saveToStorage();
+
   hideAddForm();
   renderPapers();
   filterPapers();
@@ -466,30 +503,47 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
-// Initialize the application
-document.addEventListener("DOMContentLoaded", function () {
-  initializeSampleData();
-});
+// Dark Mode: Initialization & Toggle
+function applyThemeFromStorage() {
+  const theme = localStorage.getItem(THEME_KEY);
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
+    setDarkModeIcon(true);
+  } else {
+    document.body.classList.remove("dark-mode");
+    setDarkModeIcon(false);
+  }
+}
+function setDarkModeIcon(isDark) {
+  const icon = document.getElementById("darkModeToggle").querySelector("i");
+  if (!icon) return;
+  if (isDark) {
+    icon.classList.remove("fa-moon");
+    icon.classList.add("fa-sun");
+  } else {
+    icon.classList.remove("fa-sun");
+    icon.classList.add("fa-moon");
+  }
+}
 
-// Dark Mode Toggle
-
-// Dark mode toggle
 document
   .getElementById("darkModeToggle")
   .addEventListener("click", function () {
+    const isNowDark = !document.body.classList.contains("dark-mode");
     document.body.classList.toggle("dark-mode");
-    const icon = this.querySelector("i");
-    icon.classList.toggle("fa-moon");
-    icon.classList.toggle("fa-sun");
+    setDarkModeIcon(isNowDark);
+    localStorage.setItem(THEME_KEY, isNowDark ? "dark" : "light");
   });
 
-// if (localStorage.getItem("theme") === "dark") {
-//   document.body.classList.add("dark-mode");
-// }
+// Initialize the application
+document.addEventListener("DOMContentLoaded", function () {
+  loadFromStorage();
+  updateTopicsFilter();
+  renderPapers();
+  applyThemeFromStorage();
+});
 
-// Save dark mode preference to Local Storage
-// function toggleDarkMode() {
-//   document.body.classList.toggle("dark-mode");
-//   const isDark = document.body.classList.contains("dark-mode");
-//   localStorage.setItem("theme", isDark ? "dark" : "light");
-// }
+// Make filter controls responsive to changes
+document.getElementById("topicFilter").addEventListener("change", filterPapers);
+document.getElementById("searchInput").addEventListener("input", filterPapers);
+
