@@ -94,7 +94,7 @@ We welcome contributors of all skill levels! Here’s how to get started:
 
 ## 🖖 Good First Issues
 
-Want to get started? Look at our [Good First Issues](https://github.com/your-repo/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+Want to get started? Look at our [Good First Issues](https://github.com/Research-Paper-Organizer/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 
 ---
 
