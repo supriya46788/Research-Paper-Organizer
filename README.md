@@ -108,3 +108,7 @@ Want to get started? Look at our [Good First Issues](https://github.com/supriya4
 ## 🙌 Support & Star
 
 If you like this project, **give it a ⭐** to support more such beginner-friendly repositories!
+
+## 🔍 GitHub Keywords
+
+research paper, organize research, file manager, academic research, digital organizer, research tools, python project, streamlit, machine learning, AI
