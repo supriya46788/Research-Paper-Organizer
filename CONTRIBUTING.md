@@ -2,21 +2,15 @@
 
 Hey there! Thanks for checking out our project and considering contributing. This guide will help you get started quickly, whether you're fixing a bug, adding a feature, or improving documentation.
 
-## Quick Links
-- [Code of Conduct](#code-of-conduct)
-- [Getting Started](#getting-started)
-- [Development Workflow](#development-workflow)
-- [Pull Requests](#pull-requests)
-- [Coding Style](#coding-style)
-- [Reporting Issues](#reporting-issues)
 
 ## Code of Conduct
 
 We're building a friendly, inclusive community here. Be respectful, kind, and supportive of others - we're all learning and growing together!
 
+
 ## Getting Started
 
-### 🍴 Fork & Clone (2 minutes)
+### 🍴 Fork & Clone
 
 1. Hit the **Fork** button at the top of the repository page.
 
@@ -30,7 +24,7 @@ We're building a friendly, inclusive community here. Be respectful, kind, and su
 3. Connect to the main repo to stay updated:
 
    ```bash
-   git remote add upstream https://github.com/atif09/Research-Paper-Organizer.git
+   git remote add upstream https://github.com/supriya46788/Research-Paper-Organizer.git
    ```
 
 
@@ -79,7 +73,7 @@ We're building a friendly, inclusive community here. Be respectful, kind, and su
 
 ### Creating a PR
 
-1. Go to the [main repository](https://github.com/atif09/Research-Paper-Organizer).
+1. Go to the [main repository](https://github.com/supriya46788/Research-Paper-Organizer).
 
 2. Click "New Pull Request" and select "compare across forks".
 
