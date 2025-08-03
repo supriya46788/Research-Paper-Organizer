@@ -30,15 +30,8 @@ We're building a friendly, inclusive community here. Be respectful, kind, and su
 3. Connect to the main repo to stay updated:
 
    ```bash
-   git remote add upstream https://github.com/supriya4788/Research-Paper-Organizer.git
+   git remote add upstream https://github.com/atif09/Research-Paper-Organizer.git
    ```
-
-### 🚀 Setup (1 minute)
-
-
-- Open `index.html` in your browser to see it running.
-
-- Edit files in any text editor or IDE.
 
 
 ## Development Workflow
@@ -86,7 +79,7 @@ We're building a friendly, inclusive community here. Be respectful, kind, and su
 
 ### Creating a PR
 
-1. Go to the [main repository](https://github.com/supriya4788/Research-Paper-Organizer).
+1. Go to the [main repository](https://github.com/atif09/Research-Paper-Organizer).
 
 2. Click "New Pull Request" and select "compare across forks".
 
@@ -108,7 +101,8 @@ We're building a friendly, inclusive community here. Be respectful, kind, and su
 
 ## Coding Style
 
-We keep it simple:
+It's always good to follow these steps while writing your code: 
+
 - Use 2 spaces for indentation.
 
 - Write clean, readable code with descriptive names.
@@ -124,7 +118,7 @@ We keep it simple:
 
 Found a bug? Have a suggestion?
 
-1. Check if it's [already reported](https://github.com/supriya4788/Research-Paper-Organizer/issues)
+1. Check if it's [already reported](https://github.com/supriya46788/Research-Paper-Organizer/issues)
 
 2. If not, open a new issue with:
    - A clear title.
