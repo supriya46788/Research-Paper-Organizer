@@ -598,3 +598,21 @@ document.addEventListener("DOMContentLoaded", function () {
 // Make filter controls responsive to changes
 document.getElementById("topicFilter").addEventListener("change", filterPapers);
 document.getElementById("searchInput").addEventListener("input", filterPapers);
+document.getElementById("paperForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Show the loading spinner
+  document.getElementById("loadingSpinner").classList.remove("hidden");
+
+  // Simulate form processing (replace this with actual save logic)
+  setTimeout(() => {
+    document.getElementById("loadingSpinner").classList.add("hidden");
+
+    Swal.fire({
+      icon: "success",
+      title: "Paper added successfully!",
+    });
+
+    hideAddForm(); // Optional: close the modal after save
+  }, 1500);
+});
