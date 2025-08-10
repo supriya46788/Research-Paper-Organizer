@@ -98,14 +98,26 @@ function updateTopicsFilter() {
 function filterPapers() {
   const searchTerm = document.getElementById("searchInput").value.toLowerCase();
   const selectedTopic = document.getElementById("topicFilter").value;
+  const minYear = parseInt(document.getElementById("minYear").value) || null;
+  const maxYear = parseInt(document.getElementById("maxYear").value) || null;
+  const authorFilter = document
+    .getElementById("authorFilter")
+    .value.toLowerCase();
 
   const filteredPapers = papers.filter((paper) => {
+    const paperYear = parseInt(paper.year) || null;
     const matchesSearch =
       paper.title.toLowerCase().includes(searchTerm) ||
       paper.authors.toLowerCase().includes(searchTerm) ||
       (paper.abstract || "").toLowerCase().includes(searchTerm);
     const matchesTopic = selectedTopic === "" || paper.topic === selectedTopic;
-    return matchesSearch && matchesTopic;
+    const matchesYear =
+      (!minYear || paper.year >= minYear) &&
+      (!maxYear || paper.year <= maxYear);
+
+    const matchesAuthor =
+      authorFilter === "" || paper.authors.toLowerCase().includes(authorFilter);
+    return matchesSearch && matchesTopic && matchesYear && matchesAuthor;
   });
 
   renderPapers(filteredPapers);
@@ -160,14 +172,18 @@ function renderPapers(filteredPapers = papers) {
             <p class="paper-authors">${paper.authors}</p>
             <div class="paper-meta">
                 ${
-                  paper.topic ? `<span class="topic-badge">${paper.topic}</span>` : ""
+                  paper.topic
+                    ? `<span class="topic-badge">${paper.topic}</span>`
+                    : ""
                 }
                 ${
                   paper.year
                     ? `<span class="year-badge"><i class="fas fa-calendar"></i> ${paper.year}</span>`
                     : ""
                 }
-                ${paper.tags.map((tag) => `<span class="tag-badge">#${tag}</span>`).join("")}
+                ${paper.tags
+                  .map((tag) => `<span class="tag-badge">#${tag}</span>`)
+                  .join("")}
             </div>
         </div>
         `
@@ -300,7 +316,10 @@ function showPaperDetails() {
                             <i class="fas fa-copy"></i>
                         </button>
                     </div>
-                    <p class="citation-text">${generateCitation(selectedPaper, style)}</p>
+                    <p class="citation-text">${generateCitation(
+                      selectedPaper,
+                      style
+                    )}</p>
                 </div>
                 `
                   )
@@ -432,7 +451,9 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
       .split(",")
       .map((tag) => tag.trim())
       .filter((tag) => tag),
-    dateAdded: editingPaper ? editingPaper.dateAdded : new Date().toISOString().split("T")[0],
+    dateAdded: editingPaper
+      ? editingPaper.dateAdded
+      : new Date().toISOString().split("T")[0],
     pdfData: uploadedPdfData || null, // Save uploaded PDF base64 data or null
   };
 
