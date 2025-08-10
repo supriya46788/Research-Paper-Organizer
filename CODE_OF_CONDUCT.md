@@ -1,92 +1,98 @@
-# 📜 Code of Conduct
-
-## 🌟 Our Pledge
-We, as members, contributors, and leaders of the **Research Paper Organizer** project, pledge to make participation in our community a **harassment-free** 💬 experience for everyone, regardless of:
-- Age 🎂  
-- Body size 📏  
-- Visible or invisible disability 🦽  
-- Ethnicity 🌍  
-- Sex characteristics 🧬  
-- Gender identity and expression 🏳️‍🌈  
-- Level of experience 🧠  
-- Education 🎓  
-- Socio-economic status 💰  
-- Nationality 🗺️  
-- Personal appearance 👕  
-- Race 🤝  
-- Religion ⛪  
-- Sexual identity and orientation ❤️‍🔥  
-
-We commit to acting and interacting in ways that contribute to an **open, welcoming, diverse, inclusive, and healthy** 🪴 community.
+# 🌟 Code of Conduct — Research Paper Organizer
 
 ---
 
-## 💡 Our Standards
+## 💌 Our Commitment
 
-### ✅ Examples of behavior that contribute to a positive environment:
-- Being **respectful** and **empathetic** to others' perspectives 🤗  
-- Giving and gracefully accepting **constructive feedback** 💬  
-- Accepting responsibility 🫱🏽‍🫲🏼 and apologizing for mistakes 🙏  
-- Focusing on the **best interests** of the community 🚀  
-- Showing appreciation for others' contributions 🌟  
+We, the maintainers, contributors, and community members of **Research Paper Organizer**, pledge to make participation in our project and our community a **harassment-free experience** for everyone, regardless of:
 
-### ❌ Examples of unacceptable behavior include:
-- Using sexualized language or imagery 🔞  
-- Making insulting or derogatory comments 💢  
-- Personal or political attacks 🗯️  
-- Public or private harassment 🚫  
-- Publishing others' private information without permission 🔐  
-- Any conduct that is inappropriate in a professional setting 🛑  
+- Age    
+- Visible or invisible disability  
+- Ethnicity 
+- Gender identity and expression  
+- Level of experience   
+- Nationality   
+- Personal appearance   
+- Race  
+- Sexual identity and orientation 
 
----
-
-## 🛠️ Enforcement Responsibilities
-Community leaders (Project Admins & Maintainers) are responsible for:
-- Clarifying and enforcing standards 📏  
-- Taking **fair and consistent** corrective action ⚖️  
-- Communicating reasons for moderation decisions clearly 💬  
+We commit to creating an environment where **everyone feels safe, respected, and empowered to contribute**.
 
 ---
 
-## 📢 Scope
-This Code of Conduct applies **within all project spaces** 🖥️ and in **public spaces** when representing the project 🌐.  
-Representation includes using official project channels, GitHub issues, pull requests, and any related communication 📮.
+## 🤝 Our Standards
+
+To create a welcoming and positive environment, all participants are expected to follow these guidelines:
+
+### ✅ Positive Examples of Behavior
+- Demonstrating empathy and kindness toward other people.  
+- Being respectful of differing opinions, viewpoints, and experiences.  
+- Giving and gracefully accepting constructive feedback.  
+- Accepting responsibility and apologizing to those affected by mistakes, and learning from the experience.  
+- Focusing on what is best for the community and project.  
+- Acknowledging and crediting the work of others.  
+- Staying on-topic in discussions and avoiding unnecessary arguments.
+
+### 🚫 Unacceptable Behavior
+- The use of sexualized language or imagery, and unwelcome sexual attention or advances ❌.  
+- Trolling, insulting or derogatory comments, and personal or political attacks ⚠️.  
+- Public or private harassment 📛.  
+- Publishing others’ private information (such as a physical or email address) without their explicit permission 🔒.  
+- Other conduct which could reasonably be considered inappropriate in a professional setting 🛑.  
 
 ---
 
-## ⚖️ Enforcement
-Instances of abusive, harassing, or otherwise **unacceptable behavior** may be reported to the project team at:  
-📧 **supriyadpandey502@gmail.com**  
+## 📬 Reporting Guidelines
 
-All complaints will be reviewed and investigated promptly ⏱️ and fairly 🤝.
+If you witness or experience unacceptable behavior, please report it as soon as possible:
 
----
-
-## 📝 Enforcement Guidelines
-
-### 1️⃣ Correction  
-**Impact**: Inappropriate language or behavior that violates the Code.  
-**Consequence**: A private, written warning 📨.
-
-### 2️⃣ Warning  
-**Impact**: Continued inappropriate behavior after correction.  
-**Consequence**: A clear warning 🛑 with consequences for further violations.
-
-### 3️⃣ Temporary Ban  
-**Impact**: Repeated violations or major breach of standards.  
-**Consequence**: Temporary removal ⏳ from interactions and project spaces.
-
-### 4️⃣ Permanent Ban  
-**Impact**: Demonstrated pattern of violation or harassment.  
-**Consequence**: Permanent removal 🚷 from the community.
+1. **Contact**: Send an email to **supriyadpandey502@gmail.com**📧.  
+2. **Include details**:  
+   - Description of the incident 📄  
+   - Date, time, and location 🗓️  
+   - Names of individuals involved (if known) 🧾  
+   - Any supporting evidence (screenshots, logs, etc.) 📷  
+3. **Confidentiality**: All reports will be reviewed and investigated promptly and fairly. Your privacy will be respected, and details will be shared only with those who need to know.  
 
 ---
 
-## 📚 Attribution
-This Code of Conduct is adapted from the [Contributor Covenant v2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct.html),  
-available under [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).
+## ⚖️ Enforcement Policy
+
+Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior. They will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
+
+### Potential Consequences
+- **Warning** ⚠️ — A private, written warning about the violation.  
+- **Temporary Ban** ⏳ — Suspension from participation in community spaces for a specific period.  
+- **Permanent Ban** 🚫 — Removal from all community participation without the possibility of return.  
+- **Issue Reversal** 🔄 — If an action was taken in error, it will be reversed and an apology issued.  
 
 ---
 
-**💬 Let's build a respectful, welcoming, and innovative community together! 🚀**
+## 🌱 Our Core Values
 
+Like habit tracking itself, a healthy community thrives on consistent, positive actions:
+
+- **Consistency** — Regularly practicing respect and empathy.  
+- **Growth** — Being open to feedback and continuous learning.  
+- **Support** — Encouraging the success of others.  
+- **Balance** — Respecting time, boundaries, and well-being.  
+
+---
+
+
+## 📜 Contributor Pledge
+
+By contributing to this project, you agree to:
+- Uphold the values expressed in this Code of Conduct.  
+- Engage respectfully with all contributors and maintainers.  
+- Accept feedback with an open mind and respond constructively.  
+- Report any violations you witness or experience.  
+
+---
+
+## 💖 Final Note
+
+We believe **open source is more than just code** — it’s about people collaborating, sharing, and growing together.  
+Let’s make **Research Paper Organizer** a place where kindness is the default, respect is mutual, and contributions are celebrated 🎉.  
+
+Happy contributing! 🌸✨
