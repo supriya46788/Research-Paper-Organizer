@@ -241,7 +241,6 @@ body.dark-mode #footer-outer h3 {
      border: 1px solid #d1d5db;
      border-radius: 8px;
      font-size: 0.875rem;
-     cursor: pointer;
  }
 
  .filter-select:focus {
@@ -912,42 +911,26 @@ body.dark-mode #clearPdfBtn:hover {
 #footer-outer{
     margin-top: 15px;
  }
-.favorite-btn {
-    color: #d1d5db;
-    transition: color 0.2s ease;
+
+
+ .pagination-controls {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.favorite-btn:hover {
-    color: #fbbf24;
+.pagination-controls button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-.favorite-btn.active {
-    color: #fbbf24;
-}
-
-/* Favorites filter styles */
-.favorites-filter {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    cursor: pointer;
-}
-
-.favorites-filter input[type="checkbox"] {
-    margin: 0;
-}
-
-.favorites-filter i {
-    color: #eab308;
-}
-
-/* Star button styles */
-.paper-action-btn.favorite-btn {
-    color: #9ca3af;
-}
-
-.paper-action-btn.favorite-btn:hover,
-.paper-action-btn.favorite-btn.active {
-    color: #eab308;
+.pagination-controls button:disabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+  color: #888;
 }
