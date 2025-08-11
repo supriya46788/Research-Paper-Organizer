@@ -70,6 +70,33 @@
               <option value="">All Topics</option>
             </select>
           </div>
+          <div class="filter-container">
+            <!-- Year Range -->
+            <input
+              type="number"
+              id="minYear"
+              placeholder="From Year"
+              class="filter-select"
+              oninput="filterPapers()"
+            />
+            <input
+              type="number"
+              id="maxYear"
+              placeholder="To Year"
+              class="filter-select"
+              oninput="filterPapers()"
+            />
+          </div>
+          <div class="filter-container">
+            <!-- Author Name -->
+            <input
+              type="text"
+              id="authorFilter"
+              placeholder="Filter by Author"
+              class="filter-select"
+              oninput="filterPapers()"
+            />
+          </div>
         </div>
       </div>
 
@@ -189,7 +216,10 @@
                 />
               </div>
 
-              <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
+              <div
+                id="pdfPreviewContainer"
+                class="pdf-preview-container hidden"
+              >
                 <label class="form-label">PDF Preview</label>
                 <iframe
                   id="pdfPreview"
@@ -220,9 +250,8 @@
         </div>
       </div>
       <div id="loadingSpinner" class="loading-spinner hidden">
-  <i class="fas fa-spinner fa-spin"></i> Saving Paper...
-</div>
-
+        <i class="fas fa-spinner fa-spin"></i> Saving Paper...
+      </div>
     </div>
     <!-- Footer -->
      <footer>
