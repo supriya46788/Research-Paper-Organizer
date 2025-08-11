@@ -12,7 +12,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href="style.css" />
-
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
@@ -102,12 +101,7 @@
               class="filter-select"
               oninput="filterPapers()"
             />
-            <div class="filter-container">
-                <label class="favorites-filter">
-                    <input type="checkbox" id="favoritesFilter" onchange="filterPapers()">
-                    <i class="fas fa-star"></i> Favorites
-                </label>
-            </div>
+          </div>
         </div>
       </div>
 
@@ -125,6 +119,8 @@
           </div>
 
           <div id="papersList" class="papers-list hidden"></div>
+          <!-- Pagination Controls for navigating between pages (ADDED FOR PAGINATION FEATURE) -->
+          <div id="paginationControls" class="pagination-controls"></div>
         </div>
 
         <!-- Paper Details -->

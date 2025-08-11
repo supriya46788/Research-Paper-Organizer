@@ -8,49 +8,52 @@ const PAPERS_KEY = "papers_db";
 const TOPICS_KEY = "topics_db";
 const THEME_KEY = "theme";
 
+// ===== PAGINATION VARIABLES (ADDED) =====
+const PAPERS_PER_PAGE = 10; // Number of papers to display per page
+let currentPage = 1;
+let currentFilteredPapers = []; // Store current filtered list for pagination
+
 let uploadedPdfData = null; // Holds currently uploaded PDF data in modal
 
 // Initialize with sample data (if first load)
 function initializeSampleData() {
-    const samplePapers = [
-        {
-            id: 1,
-            title: "Attention Is All You Need",
-            authors: "Vaswani, A., Shazeer, N., Parmar, N., et al.",
-            year: "2017",
-            journal: "NIPS",
-            url: "https://arxiv.org/abs/1706.03762",
-            topic: "Machine Learning",
-            notes:
-                "Introduced the Transformer architecture that revolutionized NLP. Key insight: self-attention mechanism can replace recurrence and convolution.",
-            tags: ["transformers", "attention", "nlp"],
-            abstract:
-                "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms.",
-            dateAdded: "2024-01-15",
-            pdfData: null,
-            favorite: false
-        },
-        {
-            id: 2,
-            title: "BERT: Pre-training of Deep Bidirectional Transformers",
-            authors: "Devlin, J., Chang, M. W., Lee, K., Toutanova, K.",
-            year: "2018",
-            journal: "NAACL",
-            url: "https://arxiv.org/abs/1810.04805",
-            topic: "Machine Learning",
-            notes:
-                "BERT showed that bidirectional pre-training is crucial for language understanding tasks.",
-            tags: ["bert", "pre-training", "bidirectional"],
-            abstract:
-                "We introduce BERT, which stands for Bidirectional Encoder Representations from Transformers. BERT is designed to pre-train deep bidirectional representations.",
-            dateAdded: "2024-01-20",
-            pdfData: null,
-            favorite: false
-        },
-    ];
-    papers = samplePapers;
-    topics = ["Machine Learning", "Data Science", "Web Development"];
-    saveToStorage();
+  const samplePapers = [
+    {
+      id: 1,
+      title: "Attention Is All You Need",
+      authors: "Vaswani, A., Shazeer, N., Parmar, N., et al.",
+      year: "2017",
+      journal: "NIPS",
+      url: "https://arxiv.org/abs/1706.03762",
+      topic: "Machine Learning",
+      notes:
+        "Introduced the Transformer architecture that revolutionized NLP. Key insight: self-attention mechanism can replace recurrence and convolution.",
+      tags: ["transformers", "attention", "nlp"],
+      abstract:
+        "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms.",
+      dateAdded: "2024-01-15",
+      pdfData: null,
+    },
+    {
+      id: 2,
+      title: "BERT: Pre-training of Deep Bidirectional Transformers",
+      authors: "Devlin, J., Chang, M. W., Lee, K., Toutanova, K.",
+      year: "2018",
+      journal: "NAACL",
+      url: "https://arxiv.org/abs/1810.04805",
+      topic: "Machine Learning",
+      notes:
+        "BERT showed that bidirectional pre-training is crucial for language understanding tasks.",
+      tags: ["bert", "pre-training", "bidirectional"],
+      abstract:
+        "We introduce BERT, which stands for Bidirectional Encoder Representations from Transformers. BERT is designed to pre-train deep bidirectional representations.",
+      dateAdded: "2024-01-20",
+      pdfData: null,
+    },
+  ];
+  papers = samplePapers;
+  topics = ["Machine Learning", "Data Science", "Web Development"];
+  saveToStorage();
 }
 
 function loadFromStorage() {
@@ -96,16 +99,16 @@ function updateTopicsFilter() {
   });
 }
 
-// Filter papers based on search and topic
+// Modified filterPapers() to work with pagination
 function filterPapers() {
   const searchTerm = document.getElementById("searchInput").value.toLowerCase();
   const selectedTopic = document.getElementById("topicFilter").value;
   const minYear = parseInt(document.getElementById("minYear").value) || null;
   const maxYear = parseInt(document.getElementById("maxYear").value) || null;
   const authorFilter = document.getElementById("authorFilter").value.toLowerCase();
-  const showFavorites = document.getElementById("favoritesFilter").checked;
 
-  const filteredPapers = papers.filter((paper) => {
+  // Filter papers based on search, topic, year, and author
+  currentFilteredPapers = papers.filter((paper) => {
     const paperYear = parseInt(paper.year) || null;
     const matchesSearch =
       paper.title.toLowerCase().includes(searchTerm) ||
@@ -117,22 +120,72 @@ function filterPapers() {
       (!maxYear || paper.year <= maxYear);
     const matchesAuthor =
       authorFilter === "" || paper.authors.toLowerCase().includes(authorFilter);
-    const matchesFavorite = !showFavorites || paper.favorite;
 
-    return matchesSearch && matchesTopic && matchesYear && matchesAuthor && matchesFavorite;
+    return matchesSearch && matchesTopic && matchesYear && matchesAuthor;
   });
 
-  renderPapers(filteredPapers);
+  currentPage = 1; // Reset page number when filters change
+  renderPaginatedPapers();  // Call new paginated render
 }
 
-function toggleFavorite(id) {
-  const paper = papers.find(p => p.id === id);
-  if (paper) {
-    paper.favorite = !paper.favorite;
-    saveToStorage();
-    filterPapers(); // Re-filter to update the view based on current filters
-  }
+// New function: Renders only the papers for the current page
+function renderPaginatedPapers() {
+  const startIndex = (currentPage - 1) * PAPERS_PER_PAGE;
+  const endIndex = startIndex + PAPERS_PER_PAGE;
+  const papersToShow = currentFilteredPapers.slice(startIndex, endIndex);
+
+  renderPapers(papersToShow); // Existing render function now only shows subset
+  renderPaginationControls(); // Show pagination UI
 }
+
+
+// New function: Creates and updates pagination buttons
+function renderPaginationControls() {
+  const paginationContainer = document.getElementById("paginationControls");
+  paginationContainer.innerHTML = "";
+
+  const totalPages = Math.ceil(currentFilteredPapers.length / PAPERS_PER_PAGE);
+  if (totalPages <= 1) {
+    return; // No need to show pagination controls if only 1 page or empty
+  }
+
+  // Previous button
+  const prevBtn = document.createElement("button");
+  prevBtn.textContent = "Previous";
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.onclick = () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderPaginatedPapers();
+    }
+  };
+  paginationContainer.appendChild(prevBtn);
+
+  // Page number buttons
+  for (let i = 1; i <= totalPages; i++) {
+    const pageBtn = document.createElement("button");
+    pageBtn.textContent = i;
+    pageBtn.disabled = i === currentPage;
+    pageBtn.onclick = () => {
+      currentPage = i;
+      renderPaginatedPapers();
+    };
+    paginationContainer.appendChild(pageBtn);
+  }
+
+  // Next button
+  const nextBtn = document.createElement("button");
+  nextBtn.textContent = "Next";
+  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.onclick = () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderPaginatedPapers();
+    }
+  };
+  paginationContainer.appendChild(nextBtn);
+}
+
 
 // Render papers list
 function renderPapers(filteredPapers = papers) {
@@ -154,16 +207,14 @@ function renderPapers(filteredPapers = papers) {
   papersList.innerHTML = filteredPapers
     .map(
       (paper) => `
-        <div class="paper-card ${selectedPaper?.id === paper.id ? "selected" : ""}" onclick="selectPaper(${paper.id})">
+        <div class="paper-card ${
+          selectedPaper?.id === paper.id ? "selected" : ""
+        }" onclick="selectPaper(${paper.id})">
             <div class="paper-header">
                 <h3 class="paper-title">${paper.title}</h3>
                 <div class="paper-actions">
-                    <button class="paper-action-btn favorite-btn ${paper.favorite ? 'active' : ''}" 
-                        onclick="event.stopPropagation(); toggleFavorite(${paper.id})" 
-                        title="${paper.favorite ? 'Remove from favorites' : 'Add to favorites'}">
-                        <i class="fas fa-star"></i>
-                    </button>
-                    ${paper.url
+                    ${
+                      paper.url
                         ? `<button class="paper-action-btn" onclick="event.stopPropagation(); openPaperLink('${paper.url}')" title="Open paper link">
                         <i class="fas fa-external-link-alt"></i>
                     </button>`
@@ -437,7 +488,6 @@ function deletePaper(id) {
 }
 
 // Handle form submission
-// In the form submission handler
 document.getElementById("paperForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -462,14 +512,13 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
     id: editingPaper ? editingPaper.id : Date.now(),
     ...formData,
     tags: formData.tags
-        .split(",")
-        .map((tag) => tag.trim())
-        .filter((tag) => tag),
+      .split(",")
+      .map((tag) => tag.trim())
+      .filter((tag) => tag),
     dateAdded: editingPaper
-        ? editingPaper.dateAdded
-        : new Date().toISOString().split("T")[0],
-    pdfData: uploadedPdfData || null,
-    favorite: editingPaper ? editingPaper.favorite : false,
+      ? editingPaper.dateAdded
+      : new Date().toISOString().split("T")[0],
+    pdfData: uploadedPdfData || null, // Save uploaded PDF base64 data or null
   };
 
   if (editingPaper) {
@@ -623,13 +672,15 @@ function clearPdfData() {
   showPdfPreview(null);
 }
 
-// Initialize the application
+// Modified initial load to use pagination
 document.addEventListener("DOMContentLoaded", function () {
   loadFromStorage();
   updateTopicsFilter();
-  renderPapers();
+  currentFilteredPapers = papers;  // Initialize with full list
+  renderPaginatedPapers();         // Render first page
   applyThemeFromStorage();
 });
+
 
 // Make filter controls responsive to changes
 document.getElementById("topicFilter").addEventListener("change", filterPapers);
