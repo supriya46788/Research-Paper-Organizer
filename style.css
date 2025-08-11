@@ -911,3 +911,42 @@ body.dark-mode #clearPdfBtn:hover {
 #footer-outer{
     margin-top: 15px;
  }
+.favorite-btn {
+    color: #d1d5db;
+    transition: color 0.2s ease;
+}
+
+.favorite-btn:hover {
+    color: #fbbf24;
+}
+
+.favorite-btn.active {
+    color: #fbbf24;
+}
+
+/* Favorites filter styles */
+.favorites-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+
+.favorites-filter input[type="checkbox"] {
+    margin: 0;
+}
+
+.favorites-filter i {
+    color: #eab308;
+}
+
+/* Star button styles */
+.paper-action-btn.favorite-btn {
+    color: #9ca3af;
+}
+
+.paper-action-btn.favorite-btn:hover,
+.paper-action-btn.favorite-btn.active {
+    color: #eab308;
+}
