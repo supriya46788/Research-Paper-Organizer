@@ -12,43 +12,45 @@ let uploadedPdfData = null; // Holds currently uploaded PDF data in modal
 
 // Initialize with sample data (if first load)
 function initializeSampleData() {
-  const samplePapers = [
-    {
-      id: 1,
-      title: "Attention Is All You Need",
-      authors: "Vaswani, A., Shazeer, N., Parmar, N., et al.",
-      year: "2017",
-      journal: "NIPS",
-      url: "https://arxiv.org/abs/1706.03762",
-      topic: "Machine Learning",
-      notes:
-        "Introduced the Transformer architecture that revolutionized NLP. Key insight: self-attention mechanism can replace recurrence and convolution.",
-      tags: ["transformers", "attention", "nlp"],
-      abstract:
-        "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms.",
-      dateAdded: "2024-01-15",
-      pdfData: null,
-    },
-    {
-      id: 2,
-      title: "BERT: Pre-training of Deep Bidirectional Transformers",
-      authors: "Devlin, J., Chang, M. W., Lee, K., Toutanova, K.",
-      year: "2018",
-      journal: "NAACL",
-      url: "https://arxiv.org/abs/1810.04805",
-      topic: "Machine Learning",
-      notes:
-        "BERT showed that bidirectional pre-training is crucial for language understanding tasks.",
-      tags: ["bert", "pre-training", "bidirectional"],
-      abstract:
-        "We introduce BERT, which stands for Bidirectional Encoder Representations from Transformers. BERT is designed to pre-train deep bidirectional representations.",
-      dateAdded: "2024-01-20",
-      pdfData: null,
-    },
-  ];
-  papers = samplePapers;
-  topics = ["Machine Learning", "Data Science", "Web Development"];
-  saveToStorage();
+    const samplePapers = [
+        {
+            id: 1,
+            title: "Attention Is All You Need",
+            authors: "Vaswani, A., Shazeer, N., Parmar, N., et al.",
+            year: "2017",
+            journal: "NIPS",
+            url: "https://arxiv.org/abs/1706.03762",
+            topic: "Machine Learning",
+            notes:
+                "Introduced the Transformer architecture that revolutionized NLP. Key insight: self-attention mechanism can replace recurrence and convolution.",
+            tags: ["transformers", "attention", "nlp"],
+            abstract:
+                "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms.",
+            dateAdded: "2024-01-15",
+            pdfData: null,
+            favorite: false
+        },
+        {
+            id: 2,
+            title: "BERT: Pre-training of Deep Bidirectional Transformers",
+            authors: "Devlin, J., Chang, M. W., Lee, K., Toutanova, K.",
+            year: "2018",
+            journal: "NAACL",
+            url: "https://arxiv.org/abs/1810.04805",
+            topic: "Machine Learning",
+            notes:
+                "BERT showed that bidirectional pre-training is crucial for language understanding tasks.",
+            tags: ["bert", "pre-training", "bidirectional"],
+            abstract:
+                "We introduce BERT, which stands for Bidirectional Encoder Representations from Transformers. BERT is designed to pre-train deep bidirectional representations.",
+            dateAdded: "2024-01-20",
+            pdfData: null,
+            favorite: false
+        },
+    ];
+    papers = samplePapers;
+    topics = ["Machine Learning", "Data Science", "Web Development"];
+    saveToStorage();
 }
 
 function loadFromStorage() {
@@ -100,9 +102,8 @@ function filterPapers() {
   const selectedTopic = document.getElementById("topicFilter").value;
   const minYear = parseInt(document.getElementById("minYear").value) || null;
   const maxYear = parseInt(document.getElementById("maxYear").value) || null;
-  const authorFilter = document
-    .getElementById("authorFilter")
-    .value.toLowerCase();
+  const authorFilter = document.getElementById("authorFilter").value.toLowerCase();
+  const showFavorites = document.getElementById("favoritesFilter").checked;
 
   const filteredPapers = papers.filter((paper) => {
     const paperYear = parseInt(paper.year) || null;
@@ -114,13 +115,23 @@ function filterPapers() {
     const matchesYear =
       (!minYear || paper.year >= minYear) &&
       (!maxYear || paper.year <= maxYear);
-
     const matchesAuthor =
       authorFilter === "" || paper.authors.toLowerCase().includes(authorFilter);
-    return matchesSearch && matchesTopic && matchesYear && matchesAuthor;
+    const matchesFavorite = !showFavorites || paper.favorite;
+
+    return matchesSearch && matchesTopic && matchesYear && matchesAuthor && matchesFavorite;
   });
 
   renderPapers(filteredPapers);
+}
+
+function toggleFavorite(id) {
+  const paper = papers.find(p => p.id === id);
+  if (paper) {
+    paper.favorite = !paper.favorite;
+    saveToStorage();
+    filterPapers(); // Re-filter to update the view based on current filters
+  }
 }
 
 // Render papers list
@@ -143,14 +154,16 @@ function renderPapers(filteredPapers = papers) {
   papersList.innerHTML = filteredPapers
     .map(
       (paper) => `
-        <div class="paper-card ${
-          selectedPaper?.id === paper.id ? "selected" : ""
-        }" onclick="selectPaper(${paper.id})">
+        <div class="paper-card ${selectedPaper?.id === paper.id ? "selected" : ""}" onclick="selectPaper(${paper.id})">
             <div class="paper-header">
                 <h3 class="paper-title">${paper.title}</h3>
                 <div class="paper-actions">
-                    ${
-                      paper.url
+                    <button class="paper-action-btn favorite-btn ${paper.favorite ? 'active' : ''}" 
+                        onclick="event.stopPropagation(); toggleFavorite(${paper.id})" 
+                        title="${paper.favorite ? 'Remove from favorites' : 'Add to favorites'}">
+                        <i class="fas fa-star"></i>
+                    </button>
+                    ${paper.url
                         ? `<button class="paper-action-btn" onclick="event.stopPropagation(); openPaperLink('${paper.url}')" title="Open paper link">
                         <i class="fas fa-external-link-alt"></i>
                     </button>`
@@ -424,6 +437,7 @@ function deletePaper(id) {
 }
 
 // Handle form submission
+// In the form submission handler
 document.getElementById("paperForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -448,13 +462,14 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
     id: editingPaper ? editingPaper.id : Date.now(),
     ...formData,
     tags: formData.tags
-      .split(",")
-      .map((tag) => tag.trim())
-      .filter((tag) => tag),
+        .split(",")
+        .map((tag) => tag.trim())
+        .filter((tag) => tag),
     dateAdded: editingPaper
-      ? editingPaper.dateAdded
-      : new Date().toISOString().split("T")[0],
-    pdfData: uploadedPdfData || null, // Save uploaded PDF base64 data or null
+        ? editingPaper.dateAdded
+        : new Date().toISOString().split("T")[0],
+    pdfData: uploadedPdfData || null,
+    favorite: editingPaper ? editingPaper.favorite : false,
   };
 
   if (editingPaper) {

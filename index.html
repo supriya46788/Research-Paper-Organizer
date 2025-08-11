@@ -96,7 +96,12 @@
               class="filter-select"
               oninput="filterPapers()"
             />
-          </div>
+            <div class="filter-container">
+                <label class="favorites-filter">
+                    <input type="checkbox" id="favoritesFilter" onchange="filterPapers()">
+                    <i class="fas fa-star"></i> Favorites
+                </label>
+            </div>
         </div>
       </div>
 
