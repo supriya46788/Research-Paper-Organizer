@@ -241,6 +241,7 @@ body.dark-mode #footer-outer h3 {
      border: 1px solid #d1d5db;
      border-radius: 8px;
      font-size: 0.875rem;
+     cursor: pointer;
  }
 
  .filter-select:focus {
