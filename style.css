@@ -219,8 +219,9 @@ body.dark-mode #menu-items-container {
 
 /* Dark mode styles */
 body.dark-mode #footer-outer {
-  background-color: #1f2937;
-  box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
+    background: linear-gradient(90deg, #1f2937, #111827);
+    color: var(--text-light);
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode .footer-inner button {
