@@ -1161,3 +1161,113 @@ body.dark-mode #clearPdfBtn:hover {
 }
 
 
+/* User Menu Styles */
+.user-menu {
+  position: relative;
+  margin-right: 0.5rem;
+}
+
+.user-btn {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #1f2937;
+  transition: background-color 0.2s;
+}
+
+.user-btn:hover {
+  background: #e5e7eb;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+  z-index: 1000;
+  margin-top: 0.5rem;
+}
+
+.user-info {
+  padding: 1rem;
+  text-align: left;
+}
+
+.user-info strong {
+  display: block;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.user-info small {
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+.user-dropdown hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 0;
+}
+
+.logout-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #dc2626;
+  transition: background-color 0.2s;
+  text-align: left;
+}
+
+.logout-btn:hover {
+  background: #fef2f2;
+}
+
+/* Dark mode user menu */
+body.dark-mode .user-btn {
+  background: #374151;
+  color: #d1d5db;
+}
+
+body.dark-mode .user-btn:hover {
+  background: #4b5563;
+}
+
+body.dark-mode .user-dropdown {
+  background: #1f2937;
+  border-color: #4b5563;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .user-info strong {
+  color: #f3f4f6;
+}
+
+body.dark-mode .user-info small {
+  color: #9ca3af;
+}
+
+body.dark-mode .user-dropdown hr {
+  border-color: #4b5563;
+}
+
+body.dark-mode .logout-btn:hover {
+  background: #374151;
+}
+
