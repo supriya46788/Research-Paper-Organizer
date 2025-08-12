@@ -8,108 +8,12 @@ const PAPERS_KEY = "papers_db";
 const TOPICS_KEY = "topics_db";
 const THEME_KEY = "theme";
 
-
-
 // ===== PAGINATION VARIABLES (ADDED) =====
 const PAPERS_PER_PAGE = 10; // Number of papers to display per page
 let currentPage = 1;
 let currentFilteredPapers = []; // Store current filtered list for pagination
 
 let uploadedPdfData = null; // Holds currently uploaded PDF data in modal
-
-
-
-// Authentication check 
-function checkAuthentication() {
-  const currentUser = localStorage.getItem('current_user');
-  if (!currentUser) {
-    window.location.href = 'login.html';
-    return false;
-  }
-  return true;
-}
-
-// Add user info display and logout functionality
-function initUserInterface() {
-  const currentUser = JSON.parse(localStorage.getItem('current_user'));
-  if (currentUser) {
-    updateHeaderWithUserInfo(currentUser);
-  }
-}
-
-function updateHeaderWithUserInfo(user) {
-  const headerButtons = document.querySelector('.header-buttons');
-  
-  const userMenu = document.createElement('div');
-  userMenu.className = 'user-menu';
-  userMenu.innerHTML = `
-    <button class="user-btn" onclick="toggleUserDropdown()">
-      <i class="fas fa-user"></i>
-      ${user.name}
-      <i class="fas fa-chevron-down"></i>
-    </button>
-    <div class="user-dropdown hidden" id="userDropdown">
-      <div class="user-info">
-        <strong>${user.name}</strong>
-        <small>${user.email}</small>
-      </div>
-      <hr>
-      <button onclick="logout()" class="logout-btn">
-        <i class="fas fa-sign-out-alt"></i>
-        Logout
-      </button>
-    </div>
-  `;
-  headerButtons.insertBefore(userMenu, headerButtons.firstChild);
-}
-
-function toggleUserDropdown() {
-  const dropdown = document.getElementById('userDropdown');
-  dropdown.classList.toggle('hidden');
-}
-
-function logout() {
-  Swal.fire({
-    title: 'Logout',
-    text: 'Are you sure you want to logout?',
-    icon: 'question',
-    showCancelButton: true,
-    confirmButtonColor: '#dc2626',
-    cancelButtonColor: '#6b7280',
-    confirmButtonText: 'Yes, logout',
-    cancelButtonText: 'Cancel'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      localStorage.removeItem('current_user');
-      window.location.href = 'login.html';
-    }
-  });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  
-  if (!checkAuthentication()) {
-    return;
-  }
-  
-  initUserInterface();
-  
-  loadFromStorage();
-  updateTopicsFilter();
-  currentFilteredPapers = papers;
-  renderPaginatedPapers();
-  applyThemeFromStorage();
-});
-document.addEventListener('click', function(e) {
-  const userMenu = document.querySelector('.user-menu');
-  const dropdown = document.getElementById('userDropdown');
-  
-  if (userMenu && !userMenu.contains(e.target)) {
-    if (dropdown) dropdown.classList.add('hidden');
-  }
-});
-
-
 
 // Initialize with sample data (if first load)
 function initializeSampleData() {
