@@ -35,6 +35,19 @@ body {
   }
 }
 
+.nav-item {
+  text-decoration: none;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
 /* Header Styles */
 .header {
   background: white;
@@ -56,12 +69,14 @@ body {
 #menu-close-btn {
   display: none;
   position: fixed;
+  color: white;
   top: 1.5rem;
   right: 1.5rem;
   z-index: 99999;
 }
 
 #menu-items-container {
+  background: #3b82f6;
   display: none;
   position: fixed;
   top: 0;
@@ -71,11 +86,16 @@ body {
   width: 100%;
   z-index: 99999;
   min-height: 100vh;
-  background: white;
+
   flex-direction: column;
   gap: 1.5rem;
   justify-content: center;
   align-items: center;
+}
+.menu-item {
+  text-decoration: none;
+  color: white;
+  font-size: larger;
 }
 
 @media (min-width: 768px) {
