@@ -33,6 +33,8 @@ function initializeSampleData() {
         "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms.",
       dateAdded: "2024-01-15",
       pdfData: null,
+      favorite: false,
+      rating: 0,
     },
     {
       id: 2,
@@ -49,6 +51,8 @@ function initializeSampleData() {
         "We introduce BERT, which stands for Bidirectional Encoder Representations from Transformers. BERT is designed to pre-train deep bidirectional representations.",
       dateAdded: "2024-01-20",
       pdfData: null,
+      favorite: true,
+      rating: 5,
     },
   ];
   papers = samplePapers;
@@ -103,11 +107,12 @@ function updateTopicsFilter() {
 function filterPapers() {
   const searchTerm = document.getElementById("searchInput").value.toLowerCase();
   const selectedTopic = document.getElementById("topicFilter").value;
+  const bookmarkFilter = document.getElementById("bookmarkFilter").value;
   const minYear = parseInt(document.getElementById("minYear").value) || null;
   const maxYear = parseInt(document.getElementById("maxYear").value) || null;
   const authorFilter = document.getElementById("authorFilter").value.toLowerCase();
 
-  // Filter papers based on search, topic, year, and author
+  // Filter papers based on search, topic, bookmark status, year, and author
   currentFilteredPapers = papers.filter((paper) => {
     const paperYear = parseInt(paper.year) || null;
     const matchesSearch =
@@ -115,13 +120,17 @@ function filterPapers() {
       paper.authors.toLowerCase().includes(searchTerm) ||
       (paper.abstract || "").toLowerCase().includes(searchTerm);
     const matchesTopic = selectedTopic === "" || paper.topic === selectedTopic;
+    const matchesBookmark = 
+      bookmarkFilter === "" || 
+      (bookmarkFilter === "bookmarked" && paper.favorite) ||
+      (bookmarkFilter === "not-bookmarked" && !paper.favorite);
     const matchesYear =
       (!minYear || paper.year >= minYear) &&
       (!maxYear || paper.year <= maxYear);
     const matchesAuthor =
       authorFilter === "" || paper.authors.toLowerCase().includes(authorFilter);
 
-    return matchesSearch && matchesTopic && matchesYear && matchesAuthor;
+    return matchesSearch && matchesTopic && matchesBookmark && matchesYear && matchesAuthor;
   });
 
   currentPage = 1; // Reset page number when filters change
@@ -213,6 +222,9 @@ function renderPapers(filteredPapers = papers) {
             <div class="paper-header">
                 <h3 class="paper-title">${paper.title}</h3>
                 <div class="paper-actions">
+                    <span class="favorite-btn${paper.favorite ? ' active' : ''}" title="Bookmark Paper" onclick="event.stopPropagation(); toggleFavorite(${paper.id})">
+                      <i class="fa fa-bookmark"></i>
+                    </span>
                     ${
                       paper.url
                         ? `<button class="paper-action-btn" onclick="event.stopPropagation(); openPaperLink('${paper.url}')" title="Open paper link">
@@ -230,6 +242,11 @@ function renderPapers(filteredPapers = papers) {
                     })" title="Delete paper">
                         <i class="fas fa-trash"></i>
                     </button>
+                </div>
+                <div class="paper-rating">
+                    <span class="rating-stars" title="Rate Paper">
+                      ${[1,2,3,4,5].map(star => `<span class="rating-star${(paper.rating || 0) >= star ? '' : ' inactive'}" onclick="event.stopPropagation(); setRating(${paper.id},${star})"><i class="fa fa-star"></i></span>`).join('')}
+                    </span>
                 </div>
             </div>
             
@@ -519,6 +536,8 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
       ? editingPaper.dateAdded
       : new Date().toISOString().split("T")[0],
     pdfData: uploadedPdfData || null, // Save uploaded PDF base64 data or null
+    favorite: editingPaper ? editingPaper.favorite || false : false,
+    rating: editingPaper ? editingPaper.rating || 0 : 0,
   };
 
   if (editingPaper) {
@@ -573,6 +592,26 @@ function copyToClipboard(text) {
       document.execCommand("copy");
       document.body.removeChild(textArea);
     });
+}
+
+// Toggle favorite status for a paper
+function toggleFavorite(id) {
+  const paper = papers.find(p => p.id === id);
+  if (paper) {
+    paper.favorite = !paper.favorite;
+    saveToStorage();
+    renderPaginatedPapers(); // Re-render to update UI
+  }
+}
+
+// Set rating for a paper
+function setRating(id, rating) {
+  const paper = papers.find(p => p.id === id);
+  if (paper) {
+    paper.rating = rating;
+    saveToStorage();
+    renderPaginatedPapers(); // Re-render to update UI
+  }
 }
 
 // Open paper link

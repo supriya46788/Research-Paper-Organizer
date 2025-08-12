@@ -232,6 +232,7 @@ body.dark-mode #footer-outer h3 {
      border: 1px solid #d1d5db;
      border-radius: 8px;
      font-size: 0.875rem;
+     color: var(--text-dark);
  }
 
  .search-input:focus {
@@ -259,6 +260,7 @@ body.dark-mode #footer-outer h3 {
      border: 1px solid #d1d5db;
      border-radius: 8px;
      font-size: 0.875rem;
+     color: var(--gray);
  }
 
  .filter-select:focus {
@@ -323,6 +325,7 @@ body.dark-mode #footer-outer h3 {
     padding: 1.2rem;
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
  .paper-card:hover {
@@ -338,10 +341,11 @@ body.dark-mode #footer-outer h3 {
 
  .paper-header {
      display: flex;
-     justify-content: space-between;
+     justify-content: flex-start;
      align-items: flex-start;
      margin-bottom: 0.5rem;
      gap: 0.5rem;
+     margin-right: 120px;
  }
 
  .paper-title {
@@ -354,7 +358,43 @@ body.dark-mode #footer-outer h3 {
      display: flex;
      gap: 0.25rem;
      flex-shrink: 0;
+     align-items: center;
+     position: absolute;
+     top: 1rem;
+     right: 1rem;
  }
+
+.favorite-btn {
+    color: #d1d5db;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+.favorite-btn.active {
+    color: var(--accent);
+}
+
+.paper-rating {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rating-stars {
+    display: inline-flex;
+    gap: 2px;
+}
+.rating-star {
+    color: #facc15;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+.rating-star.inactive {
+    color: #d1d5db;
+}
 
  .paper-action-btn {
      background: none;
@@ -1198,8 +1238,6 @@ body.dark-mode #clearPdfBtn:hover {
   }
 }
  
-
-=======
 .favorite-btn.active {
     color: var(--accent);
 }

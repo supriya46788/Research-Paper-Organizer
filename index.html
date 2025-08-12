@@ -76,6 +76,18 @@
             </select>
           </div>
           <div class="filter-container">
+            <i class="fas fa-bookmark" style="color: #6b7280"></i>
+            <select
+              class="filter-select"
+              id="bookmarkFilter"
+              onchange="filterPapers()"
+            >
+              <option value="">All Papers</option>
+              <option value="bookmarked">Bookmarked Only</option>
+              <option value="not-bookmarked">Not Bookmarked</option>
+            </select>
+          </div>
+          <div class="filter-container">
             <!-- Year Range -->
             <input
               type="number"
@@ -119,6 +131,7 @@
           </div>
 
           <div id="papersList" class="papers-list hidden"></div>
+          
           <!-- Pagination Controls for navigating between pages (ADDED FOR PAGINATION FEATURE) -->
           <div id="paginationControls" class="pagination-controls"></div>
         </div>
