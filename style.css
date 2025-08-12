@@ -971,6 +971,235 @@ body.dark-mode #clearPdfBtn:hover {
   color: #888;
 }
 
+
+
+
+
+ @media (max-width: 992px) {
+  
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .header-buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  
+
+  .main-grid {
+    flex-direction: column;
+  }
+
+  .papers-section,
+  .details-section {
+    width: 100%;
+  }
+
+  .pdf-preview {
+    height: 400px;
+  }
+  .search-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.search-input-container,
+.filter-container {
+  min-width: 130px;
+  flex: 1 1 150px;
+}
+
+.search-input-container {
+  flex: 2 1 300px;
+}
+
+.filter-container select,
+.filter-container input {
+  width: 100%;
+  min-width: 0;
+}
+#minYear, #maxYear {
+  max-width: 90px;
+  margin-right: 4px;
+}
+
+} 
+
+
+
+
+ @media (max-width: 600px) {
+  body {
+    font-size: 14px;
+    padding: 0.5rem; 
+  }
+
+  .header-title {
+    font-size: 1.5rem;
+  }
+
+  .header-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .search-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+    padding: 0.5rem 0 !important;
+  }
+
+  .search-input-container,
+  .filter-container {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: none !important;
+  }
+
+  .filter-container:nth-child(3) {
+    display: flex !important;
+    gap: 0.5rem !important;
+  }
+
+  #minYear, #maxYear {
+    flex: 1 !important;
+    max-width: none !important;
+    margin-right: 0 !important;
+    width: 48% !important;
+  }
+
+  .search-input,
+  .filter-select,
+  input, select, textarea, button {
+    width: 100% !important;
+    font-size: 14px !important;
+    padding: 0.75rem !important; 
+    box-sizing: border-box !important;
+  }
+
+  .container {
+    padding: 0 0.75rem;
+  }
+
+  .header,
+  .search-bar,
+  .papers-section,
+  .details-section {
+    margin-bottom: 1rem;
+    padding: 1rem;
+  }
+
+  .main-grid {
+    gap: 1rem;
+  }
+
+  .form-grid {
+    flex-direction: column;
+  }
+
+  .pdf-preview {
+    height: 300px;
+  }
+
+  .modal {
+    margin: 0.5rem;
+    max-height: 95vh;
+  }
+
+  .modal-content {
+    padding: 1rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .footer-social {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .paper-card {
+    padding: 0.75rem;
+  }
+
+  .paper-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .paper-actions {
+    align-self: flex-end;
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .paper-title {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 400px) {
+  .header-title i {
+    display: none;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .pdf-preview {
+    height: 220px;
+  }
+
+  .filter-container:nth-child(3) {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  #minYear, #maxYear {
+    width: 100% !important;
+  }
+
+  
+  body {
+    padding: 0.25rem;
+  }
+
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .header,
+  .search-bar,
+  .papers-section,
+  .details-section {
+    padding: 0.75rem;
+  }
+}
+ 
+
+=======
 .favorite-btn.active {
     color: var(--accent);
 }
+
