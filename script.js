@@ -201,7 +201,9 @@ function filterPapers() {
   const selectedTopic = document.getElementById("topicFilter").value;
   const minYear = parseInt(document.getElementById("minYear").value) || null;
   const maxYear = parseInt(document.getElementById("maxYear").value) || null;
-  const authorFilter = document.getElementById("authorFilter").value.toLowerCase();
+  const authorFilter = document
+    .getElementById("authorFilter")
+    .value.toLowerCase();
 
   // Filter papers based on search, topic, year, and author
   currentFilteredPapers = papers.filter((paper) => {
@@ -221,7 +223,7 @@ function filterPapers() {
   });
 
   currentPage = 1; // Reset page number when filters change
-  renderPaginatedPapers();  // Call new paginated render
+  renderPaginatedPapers(); // Call new paginated render
 }
 
 // New function: Renders only the papers for the current page
@@ -233,7 +235,6 @@ function renderPaginatedPapers() {
   renderPapers(papersToShow); // Existing render function now only shows subset
   renderPaginationControls(); // Show pagination UI
 }
-
 
 // New function: Creates and updates pagination buttons
 function renderPaginationControls() {
@@ -281,7 +282,6 @@ function renderPaginationControls() {
   };
   paginationContainer.appendChild(nextBtn);
 }
-
 
 // Render papers list
 function renderPapers(filteredPapers = papers) {
@@ -694,6 +694,29 @@ document.addEventListener("keydown", function (e) {
   }
 });
 
+//Menu functionality
+
+const menuOpenButton = document.getElementById("menu-open-btn");
+const menuCloseButton = document.getElementById("menu-close-btn");
+const menuItemsContainer = document.getElementById("menu-items-container");
+const menuItems = document.querySelectorAll(".menu-item");
+
+const displayMenu = () => {
+  menuItemsContainer.style.display = "flex";
+  menuCloseButton.style.display = "block";
+};
+
+const hideMenu = () => {
+  menuItemsContainer.style.display = "none";
+  menuCloseButton.style.display = "none";
+};
+
+menuOpenButton.addEventListener("click", displayMenu);
+
+menuCloseButton.addEventListener("click", hideMenu);
+
+menuItems.forEach((menuItem) => menuItem.addEventListener("click", hideMenu));
+
 // Dark Mode: Initialization & Toggle
 function applyThemeFromStorage() {
   const theme = localStorage.getItem(THEME_KEY);
@@ -772,11 +795,10 @@ function clearPdfData() {
 document.addEventListener("DOMContentLoaded", function () {
   loadFromStorage();
   updateTopicsFilter();
-  currentFilteredPapers = papers;  // Initialize with full list
-  renderPaginatedPapers();         // Render first page
+  currentFilteredPapers = papers; // Initialize with full list
+  renderPaginatedPapers(); // Render first page
   applyThemeFromStorage();
 });
-
 
 // Make filter controls responsive to changes
 document.getElementById("topicFilter").addEventListener("change", filterPapers);
