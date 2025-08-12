@@ -1,178 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Research Paper Organizer</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <!-- SweetAlert2 CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="./favicon/favicon-48x48.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/site.webmanifest" />
-  </head>
-  <body>
-    <div class="container">
-      <nav class="navbar">
-        <a href="#" class="nav-item">Home</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Paper Organizer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <div class="navbar-right-links">
-          <a href="#" class="nav-item">About us</a>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+</head>
 
-          <a href="#" class="nav-item">FAQ</a>
-          <a href="#" class="nav-item">Contact Us</a>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a href="#" class="nav-item">Home</a>
+
+      <div class="navbar-right-links">
+        <a href="#" class="nav-item">About us</a>
+
+        <a href="#" class="nav-item">FAQ</a>
+        <a href="#" class="nav-item">Contact Us</a>
+      </div>
+    </nav>
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <div>
+          <h1 class="header-title">
+            <i class="fas fa-book-open"></i>
+            Research Paper Organizer
+          </h1>
+          <p class="header-subtitle">
+            Organize, track, and cite your research papers efficiently
+          </p>
         </div>
-      </nav>
-      <!-- Header -->
-      <div class="header">
-        <div class="header-content">
-          <div>
-            <h1 class="header-title">
-              <i class="fas fa-book-open"></i>
-              Research Paper Organizer
-            </h1>
-            <p class="header-subtitle">
-              Organize, track, and cite your research papers efficiently
-            </p>
-          </div>
 
-          <!-- Right side buttons -->
-          <div class="header-buttons">
-            <button
-              class="dark-toggle"
-              id="darkModeToggle"
-              title="Toggle Dark Mode"
-              onclick="toggleDarkMode()"
-            >
-              <i class="fas fa-moon"></i>
-            </button>
+        <!-- Right side buttons -->
+        <div class="header-buttons">
+          <button class="dark-toggle" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+            <i class="fas fa-moon"></i>
+          </button>
 
-            <button class="add-btn" onclick="showAddForm()">
-              <i class="fas fa-plus"></i>
-              Add Paper
-            </button>
-          </div>
-        </div>
-        <div class="menu">
-          <svg
-            id="menu-open-btn"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="menu-btn"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-
-          <div id="menu-items-container">
-            <a href="#" class="menu-item">Home</a>
-            <a href="#" class="menu-item">About us</a>
-            <a href="#" class="menu-item">FAQ</a>
-            <a href="#" class="menu-item">Contact Us</a>
-          </div>
-          <svg
-            id="menu-close-btn"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="menu-btn"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18 18 6M6 6l12 12"
-            />
-          </svg>
+          <button class="add-btn" onclick="showAddForm()">
+            <i class="fas fa-plus"></i>
+            Add Paper
+          </button>
         </div>
       </div>
+      <div class="menu">
+        <svg id="menu-open-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" class="menu-btn">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
 
-      <!-- Search and Filter Bar -->
-      <div class="search-bar">
-        <div class="search-content">
-          <div class="search-input-container">
-            <i class="fas fa-search search-icon"></i>
-            <input
-              type="text"
-              class="search-input"
-              placeholder="Search papers by title, author, or abstract..."
-              id="searchInput"
-              oninput="filterPapers()"
-            />
-          </div>
-          <div class="filter-container">
-            <i class="fas fa-filter" style="color: #6b7280"></i>
-            <select
-              class="filter-select"
-              id="topicFilter"
-              onchange="filterPapers()"
-            >
-              <option value="">All Topics</option>
-            </select>
-          </div>
-          <div class="filter-container">
-            <!-- Year Range -->
-            <input
-              type="number"
-              id="minYear"
-              placeholder="From Year"
-              class="filter-select"
-              oninput="filterPapers()"
-            />
-            <input
-              type="number"
-              id="maxYear"
-              placeholder="To Year"
-              class="filter-select"
-              oninput="filterPapers()"
-            />
-          </div>
+        <div id="menu-items-container">
+          <a href="#" class="menu-item">Home</a>
+          <a href="#" class="menu-item">About us</a>
+          <a href="#" class="menu-item">FAQ</a>
+          <a href="#" class="menu-item">Contact Us</a>
+        </div>
+        <svg id="menu-close-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" class="menu-btn">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Search and Filter Bar -->
+    <div class="search-bar">
+      <div class="search-content">
+        <div class="search-input-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="search-input" placeholder="Search papers by title, author, or abstract..."
+            id="searchInput" oninput="filterPapers()" />
+        </div>
+        <div class="filter-container">
+          <i class="fas fa-filter" style="color: #6b7280"></i>
+          <select class="filter-select" id="topicFilter" onchange="filterPapers()">
+            <option value="">All Topics</option>
+          </select>
+        </div>
+        <div class="filter-container">
+          <!-- Year Range -->
+          <select id="minYear" class="filter-select">
+            <option value="">From Year</option>
+          </select>
+
+          <select id="maxYear" class="filter-select">
+            <option value="">To Year</option>
+          </select>
+
           <div class="filter-container">
             <!-- Author Name -->
-            <input
-              type="text"
-              id="authorFilter"
-              placeholder="Filter by Author"
-              class="filter-select"
-              oninput="filterPapers()"
-            />
+            <input type="text" id="authorFilter" placeholder="Filter by Author" class="filter-select"
+              oninput="filterPapers()" />
           </div>
         </div>
       </div>
-
+  </div>
       <div class="main-grid">
         <!-- Papers List -->
         <div class="papers-section">
@@ -258,21 +190,12 @@
 
               <div class="form-group">
                 <label class="form-label">Tags (comma-separated)</label>
-                <input
-                  type="text"
-                  class="form-input"
-                  id="tags"
-                  placeholder="machine learning, neural networks, AI"
-                />
+                <input type="text" class="form-input" id="tags" placeholder="machine learning, neural networks, AI" />
               </div>
 
               <div class="form-group">
                 <label class="form-label">Abstract</label>
-                <textarea
-                  class="form-textarea"
-                  id="abstract"
-                  rows="3"
-                ></textarea>
+                <textarea class="form-textarea" id="abstract" rows="3"></textarea>
               </div>
 
               <div class="form-group">
@@ -283,36 +206,19 @@
               <!-- PDF Upload Section -->
               <div class="form-group">
                 <label class="form-label" for="pdfUpload">Upload PDF</label>
-                <input
-                  type="file"
-                  accept="application/pdf"
-                  id="pdfUpload"
-                  class="form-input"
-                />
+                <input type="file" accept="application/pdf" id="pdfUpload" class="form-input" />
               </div>
 
-              <div
-                id="pdfPreviewContainer"
-                class="pdf-preview-container hidden"
-              >
+              <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
                 <label class="form-label">PDF Preview</label>
-                <iframe
-                  id="pdfPreview"
-                  class="pdf-preview"
-                  src=""
-                  frameborder="0"
-                ></iframe>
+                <iframe id="pdfPreview" class="pdf-preview" src="" frameborder="0"></iframe>
                 <button type="button" class="btn-secondary" id="clearPdfBtn">
                   Remove PDF
                 </button>
               </div>
 
               <div class="form-actions">
-                <button
-                  type="button"
-                  class="btn-secondary"
-                  onclick="hideAddForm()"
-                >
+                <button type="button" class="btn-secondary" onclick="hideAddForm()">
                   Cancel
                 </button>
                 <button type="submit" class="btn-primary">
@@ -339,25 +245,14 @@
         </div> -->
         <div class="footer-social">
           <h3>Follow Us:</h3>
-          <a
-            href="https://instagram.com/YourProfile"
-            target="_blank"
-            style="margin: 0 10px; color: #e4405f"
-          >
+          <a href="https://instagram.com/YourProfile" target="_blank" style="margin: 0 10px; color: #e4405f">
             <i class="fab fa-instagram fa-lg"></i>
           </a>
-          <a
-            href="https://www.linkedin.com/in/supriyapandey595/"
-            target="_blank"
-            style="margin: 0 10px; color: #0077b5"
-          >
+          <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank"
+            style="margin: 0 10px; color: #0077b5">
             <i class="fab fa-linkedin fa-lg"></i>
           </a>
-          <a
-            href="https://twitter.com/YourProfile"
-            target="_blank"
-            style="margin: 0 10px; color: #1da1f2"
-          >
+          <a href="https://twitter.com/YourProfile" target="_blank" style="margin: 0 10px; color: #1da1f2">
             <i class="fab fa-twitter fa-lg"></i>
           </a>
         </div>
@@ -365,5 +260,6 @@
       </div>
     </footer>
     <script src="script.js"></script>
-  </body>
+</body>
+
 </html>
