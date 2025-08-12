@@ -92,6 +92,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+body.dark-mode #menu-items-container {
+  background: #1f2937;
+}
 .menu-item {
   text-decoration: none;
   color: white;
