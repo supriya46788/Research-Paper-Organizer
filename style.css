@@ -934,3 +934,66 @@ body.dark-mode #clearPdfBtn:hover {
   cursor: not-allowed;
   color: #888;
 }
+
+
+
+
+ @media (max-width: 992px) {
+  
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .header-buttons {
+    margin-top: 0.5rem;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  }
+
+  
+
+  .main-grid {
+    flex-direction: column;
+  }
+
+  .papers-section,
+  .details-section {
+    width: 100%;
+  }
+
+  .pdf-preview {
+    height: 400px;
+  }
+  .search-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+
+.search-input-container,
+.filter-container {
+  min-width: 130px;
+  flex: 1 1 150px;
+}
+
+.search-input-container {
+  flex: 2 1 300px;
+}
+
+.filter-container select,
+.filter-container input {
+  width: 100%;
+  min-width: 0;
+}
+#minYear, #maxYear {
+  max-width: 90px;
+  margin-right: 4px;
+}
+
+} 
