@@ -102,6 +102,51 @@
             <input type="text" id="authorFilter" placeholder="Filter by Author" class="filter-select"
               oninput="filterPapers()" />
           </div>
+          <div class="filter-container">
+            <!-- Favorites Filter -->
+            <select
+              class="filter-select"
+              id="favoriteFilter"
+              onchange="filterPapers()"
+            >
+              <option value="">All Papers</option>
+              <option value="favorites">Favorites Only</option>
+              <option value="non-favorites">Non-Favorites</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <!-- Rating Filter -->
+            <select
+              class="filter-select"
+              id="ratingFilter"
+              onchange="filterPapers()"
+            >
+              <option value="">All Ratings</option>
+              <option value="5">5 Stars</option>
+              <option value="4">4+ Stars</option>
+              <option value="3">3+ Stars</option>
+              <option value="2">2+ Stars</option>
+              <option value="1">1+ Stars</option>
+              <option value="0">Unrated</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <!-- Sort Options -->
+            <select
+              class="filter-select"
+              id="sortFilter"
+              onchange="filterPapers()"
+            >
+              <option value="">Default</option>
+              <option value="rating-desc">Highest Rated</option>
+              <option value="rating-asc">Lowest Rated</option>
+              <option value="favorites">Favorites First</option>
+              <option value="title-asc">Title A-Z</option>
+              <option value="title-desc">Title Z-A</option>
+              <option value="year-desc">Newest First</option>
+              <option value="year-asc">Oldest First</option>
+            </select>
+          </div>
         </div>
       </div>
   </div>
@@ -201,6 +246,35 @@
               <div class="form-group">
                 <label class="form-label">Notes</label>
                 <textarea class="form-textarea" id="notes" rows="4"></textarea>
+              </div>
+
+              <!-- Rating and Favorite Section -->
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Rating</label>
+                  <div class="rating-container">
+                    <div class="stars-rating" id="starsRating">
+                      <span class="star" data-rating="1">★</span>
+                      <span class="star" data-rating="2">★</span>
+                      <span class="star" data-rating="3">★</span>
+                      <span class="star" data-rating="4">★</span>
+                      <span class="star" data-rating="5">★</span>
+                    </div>
+                    <input type="hidden" id="rating" value="0" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Favorite</label>
+                  <div class="favorite-container">
+                    <label class="favorite-checkbox">
+                      <input type="checkbox" id="isFavorite" />
+                      <span class="favorite-icon">
+                        <i class="fas fa-heart"></i>
+                      </span>
+                      <span class="favorite-text">Mark as favorite</span>
+                    </label>
+                  </div>
+                </div>
               </div>
 
               <!-- PDF Upload Section -->
