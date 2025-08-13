@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ - Research Paper Organizer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-content">
+        <div>
+          <h1 class="header-title">
+            <i class="fas fa-book-open"></i>
+            Research Paper Organizer
+          </h1>
+          <p class="header-subtitle">Frequently Asked Questions</p>
+        </div>
+        <div class="header-buttons">
+          <button class="dark-toggle" id="darkModeToggle" title="Toggle Dark Mode">
+            <i class="fas fa-moon"></i>
+          </button>
+          <a href="index.html"><button class="add-btn">Home</button></a>
+          <a href="about.html"><button class="add-btn">About Us</button></a>
+          <a href="faq.html"><button class="add-btn">FAQ</button></a>
+          <a href="contact.html"><button class="add-btn">Contact Us</button></a>
+        </div>
+      </div>
+    </div>
+    <div class="main-grid">
+      <div class="papers-section">
+        <h2 class="papers-title">FAQ</h2>
+        <div class="faq-accordion" style="max-width:700px; margin:auto;">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq1" onclick="toggleFaqAdvanced(this)">
+              <span><i class="fas fa-question-circle"></i> Is my data safe?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer" id="faq1" role="region">All your data is stored locally in your browser. We do not collect or transmit your research papers.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq2" onclick="toggleFaqAdvanced(this)">
+              <span><i class="fas fa-database"></i> Can I export or import my papers?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer" id="faq2" role="region">Yes! Use the Export/Import feature in the main app to backup or restore your collection as a JSON file.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq3" onclick="toggleFaqAdvanced(this)">
+              <span><i class="fas fa-tags"></i> How do I add a new topic?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer" id="faq3" role="region">Simply type a new topic in the topic field when adding a paper. It will be added to the filter list automatically.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq4" onclick="toggleFaqAdvanced(this)">
+              <span><i class="fas fa-mobile-alt"></i> Can I use this on mobile?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer" id="faq4" role="region">Yes, the UI is responsive and works on most modern mobile browsers.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq5" onclick="toggleFaqAdvanced(this)">
+              <span><i class="fas fa-star"></i> How do I mark a paper as favorite?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer" id="faq5" role="region">Click the star icon on a paper card to add it to your favorites for quick access.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq6" onclick="toggleFaqAdvanced(this)">
+              <span><i class="fas fa-headset"></i> How do I contact support?</span>
+              <i class="fas fa-chevron-down faq-chevron"></i>
+            </button>
+            <div class="faq-answer" id="faq6" role="region">Use the <a href="contact.html" style="color:#2563eb;">Contact Us</a> page to send us your questions or feedback.</div>
+          </div>
+        </div>
+        <style>
+        .faq-question {
+          width: 100%;
+          background: none;
+          border: none;
+          text-align: left;
+          font-size: 1.1rem;
+          font-weight: 500;
+          padding: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
+          transition: background 0.2s;
+          border-radius: 8px;
+          color: inherit;
+        }
+        .faq-question:hover, .faq-question[aria-expanded="true"] {
+          background: #f3f4f6;
+        }
+        .dark-mode .faq-question {
+          color: #f3f4f6;
+        }
+        .dark-mode .faq-question:hover, .dark-mode .faq-question[aria-expanded="true"] {
+          background: #232b3a;
+          color: #f3f4f6;
+        }
+        .faq-answer {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.35s cubic-bezier(0.4,0,0.2,1), padding 0.2s, background 0.2s;
+          background: none;
+          padding: 0 1rem;
+          color: #374151;
+          border-radius: 0 0 8px 8px;
+        }
+        .faq-item.open .faq-answer {
+          max-height: 300px;
+          padding: 1rem;
+          background: #f9fafb;
+        }
+        .dark-mode .faq-answer {
+          color: #d1d5db;
+          background: none;
+        }
+        .dark-mode .faq-item.open .faq-answer {
+          background: #232b3a;
+          color: #d1d5db;
+        }
+        .faq-chevron {
+          transition: transform 0.3s;
+        }
+        .faq-item.open .faq-chevron {
+          transform: rotate(180deg);
+        }
+        .faq-item {
+          border-bottom: 1px solid #e5e7eb;
+        }
+        .dark-mode .faq-item {
+          border-bottom: 1px solid #374151;
+        }
+        .faq-item:last-child {
+          border-bottom: none;
+        }
+        </style>
+        <script>
+        function toggleFaqAdvanced(btn) {
+          var item = btn.closest('.faq-item');
+          var answer = btn.nextElementSibling;
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          document.querySelectorAll('.faq-item').forEach(function(el){
+            el.classList.remove('open');
+            el.querySelector('.faq-question').setAttribute('aria-expanded','false');
+          });
+          if (!expanded) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded','true');
+          }
+        }
+        // Theme persistence logic
+        const THEME_KEY = 'theme';
+        function applyThemeFromStorage() {
+          const theme = localStorage.getItem(THEME_KEY);
+          if (theme === 'dark') {
+            document.body.classList.add('dark-mode');
+            setDarkModeIcon(true);
+          } else {
+            document.body.classList.remove('dark-mode');
+            setDarkModeIcon(false);
+          }
+        }
+        function setDarkModeIcon(isDark) {
+          const icon = document.getElementById('darkModeToggle').querySelector('i');
+          if (!icon) return;
+          if (isDark) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+          } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+          }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+          applyThemeFromStorage();
+        });
+        document.getElementById('darkModeToggle').addEventListener('click', function () {
+          const isNowDark = !document.body.classList.contains('dark-mode');
+          document.body.classList.toggle('dark-mode');
+          setDarkModeIcon(isNowDark);
+          localStorage.setItem(THEME_KEY, isNowDark ? 'dark' : 'light');
+        });
+        </script>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div id="footer-outer">
+      <div class="footer-inner">
+        <a href="about.html"><button>About us</button></a>
+        <a href="index.html"><button>Home</button></a>
+        <a href="faq.html"><button>FAQ</button></a>
+        <a href="contact.html"><button>Contact Us</button></a>
+      </div>
+      <div class="footer-social">
+        <h3>Follow Us:</h3>
+        <a href="https://www.instagram.com/supriyapandey595/?__pwa=1" target="_blank" style="margin: 0 10px; color: #E4405F;">
+          <i class="fab fa-instagram fa-lg"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank" style="margin: 0 10px; color: #0077b5;">
+          <i class="fab fa-linkedin fa-lg"></i>
+        </a>
+        <a href="https://x.com/" target="_blank" style="margin: 0 10px; color: #1DA1F2;">
+          <i class="fab fa-twitter fa-lg"></i>
+        </a>
+      </div>
+      <h3>&copy; 2025 Research Paper Organizer . All rights reserved.</h3>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+</body>
+</html>
