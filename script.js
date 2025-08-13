@@ -108,6 +108,8 @@ function filterPapers() {
   const authorFilter = document
     .getElementById("authorFilter")
     .value.toLowerCase();
+  const includeCitations = document.getElementById("includeCitations").checked;
+  const includePatents = document.getElementById("includePatents").checked;
 
   // Filter papers based on search, topic, year, and author
   currentFilteredPapers = papers.filter((paper) => {
@@ -122,6 +124,9 @@ function filterPapers() {
       (!maxYear || paper.year <= maxYear);
     const matchesAuthor =
       authorFilter === "" || paper.authors.toLowerCase().includes(authorFilter);
+    //Checkboxes logic
+    if (includeCitations && !paper.isCitation) return false;
+    if (includePatents && !paper.isPatent) return false;
 
     return matchesSearch && matchesTopic && matchesYear && matchesAuthor;
   });
