@@ -8,12 +8,108 @@ const PAPERS_KEY = "papers_db";
 const TOPICS_KEY = "topics_db";
 const THEME_KEY = "theme";
 
+
+
 // ===== PAGINATION VARIABLES (ADDED) =====
 const PAPERS_PER_PAGE = 10; // Number of papers to display per page
 let currentPage = 1;
 let currentFilteredPapers = []; // Store current filtered list for pagination
 
 let uploadedPdfData = null; // Holds currently uploaded PDF data in modal
+
+
+
+// Authentication check 
+function checkAuthentication() {
+  const currentUser = localStorage.getItem('current_user');
+  if (!currentUser) {
+    window.location.href = 'login.html';
+    return false;
+  }
+  return true;
+}
+
+// Add user info display and logout functionality
+function initUserInterface() {
+  const currentUser = JSON.parse(localStorage.getItem('current_user'));
+  if (currentUser) {
+    updateHeaderWithUserInfo(currentUser);
+  }
+}
+
+function updateHeaderWithUserInfo(user) {
+  const headerButtons = document.querySelector('.header-buttons');
+  
+  const userMenu = document.createElement('div');
+  userMenu.className = 'user-menu';
+  userMenu.innerHTML = `
+    <button class="user-btn" onclick="toggleUserDropdown()">
+      <i class="fas fa-user"></i>
+      ${user.name}
+      <i class="fas fa-chevron-down"></i>
+    </button>
+    <div class="user-dropdown hidden" id="userDropdown">
+      <div class="user-info">
+        <strong>${user.name}</strong>
+        <small>${user.email}</small>
+      </div>
+      <hr>
+      <button onclick="logout()" class="logout-btn">
+        <i class="fas fa-sign-out-alt"></i>
+        Logout
+      </button>
+    </div>
+  `;
+  headerButtons.insertBefore(userMenu, headerButtons.firstChild);
+}
+
+function toggleUserDropdown() {
+  const dropdown = document.getElementById('userDropdown');
+  dropdown.classList.toggle('hidden');
+}
+
+function logout() {
+  Swal.fire({
+    title: 'Logout',
+    text: 'Are you sure you want to logout?',
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#dc2626',
+    cancelButtonColor: '#6b7280',
+    confirmButtonText: 'Yes, logout',
+    cancelButtonText: 'Cancel'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      localStorage.removeItem('current_user');
+      window.location.href = 'login.html';
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  
+  if (!checkAuthentication()) {
+    return;
+  }
+  
+  initUserInterface();
+  
+  loadFromStorage();
+  updateTopicsFilter();
+  currentFilteredPapers = papers;
+  renderPaginatedPapers();
+  applyThemeFromStorage();
+});
+document.addEventListener('click', function(e) {
+  const userMenu = document.querySelector('.user-menu');
+  const dropdown = document.getElementById('userDropdown');
+  
+  if (userMenu && !userMenu.contains(e.target)) {
+    if (dropdown) dropdown.classList.add('hidden');
+  }
+});
+
+
 
 // Initialize with sample data (if first load)
 function initializeSampleData() {
@@ -33,6 +129,8 @@ function initializeSampleData() {
         "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms.",
       dateAdded: "2024-01-15",
       pdfData: null,
+      rating: 5,
+      isFavorite: true,
     },
     {
       id: 2,
@@ -49,6 +147,8 @@ function initializeSampleData() {
         "We introduce BERT, which stands for Bidirectional Encoder Representations from Transformers. BERT is designed to pre-train deep bidirectional representations.",
       dateAdded: "2024-01-20",
       pdfData: null,
+      rating: 4,
+      isFavorite: false,
     },
   ];
   papers = samplePapers;
@@ -61,6 +161,12 @@ function loadFromStorage() {
   if (storedPapers) {
     try {
       papers = JSON.parse(storedPapers);
+      // Ensure backward compatibility for rating and favorite fields
+      papers = papers.map(paper => ({
+        ...paper,
+        rating: paper.rating || 0,
+        isFavorite: paper.isFavorite || false
+      }));
     } catch {
       papers = [];
     }
@@ -108,13 +214,15 @@ function filterPapers() {
   const authorFilter = document
     .getElementById("authorFilter")
     .value.toLowerCase();
+
   const includeCitations = document.getElementById("includeCitations")?.checked;
   const includePatents = document.getElementById("includePatents")?.checked;
   const favoriteFilter = document.getElementById("favoriteFilter")?.value;
   const ratingFilter = document.getElementById("ratingFilter")?.value;
   const sortFilter = document.getElementById("sortFilter")?.value;
+ 
 
-  // Filter papers based on search, topic, year, and author
+  // Filter papers based on search, topic, year, author, favorites, and rating
   currentFilteredPapers = papers.filter((paper) => {
     const paperYear = parseInt(paper.year) || null;
     const matchesSearch =
@@ -127,9 +235,11 @@ function filterPapers() {
       (!maxYear || paper.year <= maxYear);
     const matchesAuthor =
       authorFilter === "" || paper.authors.toLowerCase().includes(authorFilter);
+
     //Checkboxes logic
     if (includeCitations && !paper.isCitation) return false;
     if (includePatents && !paper.isPatent) return false;
+
 
     // Favorite filter
     const matchesFavorite = 
@@ -143,7 +253,34 @@ function filterPapers() {
       ratingFilter === "" ||
       (ratingFilter === "0" && paperRating === 0) ||
       (ratingFilter !== "0" && paperRating >= parseInt(ratingFilter));
+    
     return matchesSearch && matchesTopic && matchesYear && matchesAuthor && matchesFavorite && matchesRating;
+  });
+
+  // Sort papers based on selected criteria
+  currentFilteredPapers.sort((a, b) => {
+    switch (sortFilter) {
+      case "rating-desc":
+        return (b.rating || 0) - (a.rating || 0);
+      case "rating-asc":
+        return (a.rating || 0) - (b.rating || 0);
+      case "favorites":
+        return (b.isFavorite || false) - (a.isFavorite || false);
+      case "title-asc":
+        return a.title.localeCompare(b.title);
+      case "title-desc":
+        return b.title.localeCompare(a.title);
+      case "year-desc":
+        return (parseInt(b.year) || 0) - (parseInt(a.year) || 0);
+      case "year-asc":
+        return (parseInt(a.year) || 0) - (parseInt(b.year) || 0);
+      case "":
+      default:
+        // Default sort: by date added (newest first), then by title
+        const dateComparison = (b.dateAdded || "").localeCompare(a.dateAdded || "");
+        return dateComparison !== 0 ? dateComparison : a.title.localeCompare(b.title);
+    }
+
   });
 
   currentPage = 1; // Reset page number when filters change
@@ -240,6 +377,15 @@ function renderPapers(filteredPapers = papers) {
                     </button>`
                         : ""
                     }
+                    <button class="paper-action-btn" onclick="event.stopPropagation(); toggleFavorite(${
+                      paper.id
+                    })" title="${
+        paper.isFavorite ? "Remove from favorites" : "Add to favorites"
+      }">
+                        <i class="fas fa-heart ${
+                          paper.isFavorite ? "paper-favorite" : ""
+                        }"></i>
+                    </button>
                     <button class="paper-action-btn" onclick="event.stopPropagation(); editPaper(${
                       paper.id
                     })" title="Edit paper">
@@ -269,6 +415,42 @@ function renderPapers(filteredPapers = papers) {
                   .map((tag) => `<span class="tag-badge">#${tag}</span>`)
                   .join("")}
             </div>
+            
+            <!-- Quick Rating Stars -->
+            <div class="paper-quick-rating">
+                <span class="rating-label">Rate:</span>
+                <div class="quick-stars" data-paper-id="${paper.id}">
+                    ${[1, 2, 3, 4, 5]
+                      .map(
+                        (starNum) => `
+                        <span class="quick-star ${
+                          paper.rating >= starNum ? "active" : ""
+                        }" 
+                              data-rating="${starNum}" 
+                              onclick="event.stopPropagation(); setQuickRating(${
+                                paper.id
+                              }, ${starNum})"
+                              title="Rate ${starNum} star${starNum > 1 ? "s" : ""}">★</span>
+                    `
+                      )
+                      .join("")}
+                </div>
+                <span class="current-rating">${
+                  paper.rating > 0 ? `(${paper.rating}/5)` : "(unrated)"
+                }</span>
+            </div>
+            
+            <div class="paper-meta-extended">
+                <div class="rating-favorite-row">
+                    ${
+                      paper.isFavorite
+                        ? `<div class="paper-favorite">
+                        <i class="fas fa-heart"></i> Favorite
+                    </div>`
+                        : ""
+                    }
+                </div>
+            </div>
         </div>
         `
     )
@@ -297,6 +479,34 @@ function showPaperDetails() {
         <div class="detail-section">
             <h3>${selectedPaper.title}</h3>
             <p>${selectedPaper.authors}</p>
+        </div>
+
+        <div class="detail-section">
+            <div class="rating-favorite-details">
+                <div class="rating-display">
+                    <span style="font-weight: 500; color: #374151;">Rating:</span>
+                    ${
+                      selectedPaper.rating > 0
+                        ? `
+                    <div class="paper-rating">
+                        <span class="stars">${"★".repeat(
+                          selectedPaper.rating
+                        )}${"☆".repeat(5 - selectedPaper.rating)}</span>
+                        <span class="rating-text">(${selectedPaper.rating}/5)</span>
+                    </div>
+                    `
+                        : `<span class="rating-text">Unrated</span>`
+                    }
+                </div>
+                <div class="favorite-display">
+                    <span style="font-weight: 500; color: #374151;">Favorite:</span>
+                    ${
+                      selectedPaper.isFavorite
+                        ? `<span class="paper-favorite"><i class="fas fa-heart"></i> Yes</span>`
+                        : `<span class="rating-text">No</span>`
+                    }
+                </div>
+            </div>
         </div>
 
         ${
@@ -431,6 +641,11 @@ function showAddForm() {
   document.getElementById("submitText").textContent = "Add Paper";
   resetForm();
 
+  // Initialize rating stars after modal is shown
+  setTimeout(() => {
+    initializeRatingStars();
+  }, 100);
+
   clearPdfData();
 }
 
@@ -445,6 +660,13 @@ function resetForm() {
   document.getElementById("paperForm").reset();
   editingPaper = null;
   clearPdfData();
+  
+  // Reset rating
+  document.getElementById("rating").value = 0;
+  updateStarsDisplay(0);
+  
+  // Reset favorite
+  document.getElementById("isFavorite").checked = false;
 }
 
 // Edit paper
@@ -456,6 +678,11 @@ function editPaper(id) {
   document.getElementById("modalTitle").textContent = "Edit Paper";
   document.getElementById("submitText").textContent = "Update Paper";
 
+  // Initialize rating stars for edit modal
+  setTimeout(() => {
+    initializeRatingStars();
+  }, 100);
+
   // Populate form with paper data
   document.getElementById("title").value = editingPaper.title;
   document.getElementById("authors").value = editingPaper.authors;
@@ -466,6 +693,14 @@ function editPaper(id) {
   document.getElementById("tags").value = editingPaper.tags.join(", ");
   document.getElementById("abstract").value = editingPaper.abstract || "";
   document.getElementById("notes").value = editingPaper.notes || "";
+
+  // Set rating
+  const rating = editingPaper.rating || 0;
+  document.getElementById("rating").value = rating;
+  updateStarsDisplay(rating);
+
+  // Set favorite
+  document.getElementById("isFavorite").checked = editingPaper.isFavorite || false;
 
   if (editingPaper.pdfData) {
     uploadedPdfData = editingPaper.pdfData;
@@ -507,6 +742,85 @@ function deletePaper(id) {
   });
 }
 
+// Toggle favorite status
+function toggleFavorite(id) {
+  const paper = papers.find((p) => p.id === id);
+  if (paper) {
+    paper.isFavorite = !paper.isFavorite;
+    saveToStorage();
+    renderPapers();
+    if (selectedPaper && selectedPaper.id === id) {
+      selectedPaper = paper;
+      showPaperDetails();
+    }
+  }
+}
+
+// Quick rating function for paper cards
+function setQuickRating(paperId, rating) {
+  const paper = papers.find((p) => p.id === paperId);
+  if (paper) {
+    paper.rating = rating;
+    saveToStorage();
+    renderPapers();
+    if (selectedPaper && selectedPaper.id === paperId) {
+      selectedPaper = paper;
+      showPaperDetails();
+    }
+    
+    // Show feedback
+    const paperCard = document.querySelector(`[onclick*="selectPaper(${paperId})"]`);
+    if (paperCard) {
+      paperCard.style.transform = 'scale(1.02)';
+      setTimeout(() => {
+        paperCard.style.transform = 'scale(1)';
+      }, 200);
+    }
+  }
+}
+
+// Rating functionality
+function updateStarsDisplay(rating) {
+  const stars = document.querySelectorAll('.star');
+  stars.forEach((star, index) => {
+    star.classList.toggle('active', index < rating);
+  });
+}
+
+function setRating(rating) {
+  document.getElementById('rating').value = rating;
+  updateStarsDisplay(rating);
+}
+
+// Initialize rating star event listeners
+function initializeRatingStars() {
+  const stars = document.querySelectorAll('.star');
+  
+  // Remove existing event listeners to avoid duplicates
+  stars.forEach(star => {
+    star.replaceWith(star.cloneNode(true));
+  });
+  
+  // Re-query stars after cloning
+  const newStars = document.querySelectorAll('.star');
+  
+  newStars.forEach((star, index) => {
+    star.addEventListener('click', () => {
+      setRating(index + 1);
+    });
+    
+    star.addEventListener('mouseenter', () => {
+      newStars.forEach((s, i) => {
+        s.classList.toggle('hover', i <= index);
+      });
+    });
+    
+    star.addEventListener('mouseleave', () => {
+      newStars.forEach(s => s.classList.remove('hover'));
+    });
+  });
+}
+
 // Handle form submission
 document.getElementById("paperForm").addEventListener("submit", function (e) {
   e.preventDefault();
@@ -521,6 +835,8 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
     tags: document.getElementById("tags").value.trim(),
     abstract: document.getElementById("abstract").value.trim(),
     notes: document.getElementById("notes").value.trim(),
+    rating: parseInt(document.getElementById("rating").value) || 0,
+    isFavorite: document.getElementById("isFavorite").checked,
   };
 
   if (!formData.title || !formData.authors) {
@@ -744,4 +1060,40 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
 
     hideAddForm(); // Optional: close the modal after save
   }, 1500);
+});
+
+//Calendar Logic 
+function populateYearSelect(id, startYear, endYear) {
+        const select = document.getElementById(id);
+        for (let year = startYear; year >= endYear; year--) {
+            const option = document.createElement("option");
+            option.value = year;
+            option.textContent = year;
+            select.appendChild(option);
+        }
+    }
+
+
+    // Populate both dropdowns from 2050 → 1950
+    populateYearSelect("minYear", 2050, 1950);
+    populateYearSelect("maxYear", 2050, 1950);
+
+// Get the button
+const backToTopBtn = document.getElementById("backToTop");
+
+// Show button when scrolled down
+window.onscroll = function () {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    backToTopBtn.style.display = "block";
+  } else {
+    backToTopBtn.style.display = "none";
+  }
+};
+
+// Smooth scroll to top
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 });
