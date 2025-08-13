@@ -108,8 +108,11 @@ function filterPapers() {
   const authorFilter = document
     .getElementById("authorFilter")
     .value.toLowerCase();
-  const includeCitations = document.getElementById("includeCitations").checked;
-  const includePatents = document.getElementById("includePatents").checked;
+  const includeCitations = document.getElementById("includeCitations")?.checked;
+  const includePatents = document.getElementById("includePatents")?.checked;
+  const favoriteFilter = document.getElementById("favoriteFilter")?.value;
+  const ratingFilter = document.getElementById("ratingFilter")?.value;
+  const sortFilter = document.getElementById("sortFilter")?.value;
 
   // Filter papers based on search, topic, year, and author
   currentFilteredPapers = papers.filter((paper) => {
@@ -128,7 +131,19 @@ function filterPapers() {
     if (includeCitations && !paper.isCitation) return false;
     if (includePatents && !paper.isPatent) return false;
 
-    return matchesSearch && matchesTopic && matchesYear && matchesAuthor;
+    // Favorite filter
+    const matchesFavorite = 
+      favoriteFilter === "" || 
+      (favoriteFilter === "favorites" && paper.isFavorite) ||
+      (favoriteFilter === "non-favorites" && !paper.isFavorite);
+
+    // Rating filter
+    const paperRating = paper.rating || 0;
+    const matchesRating = 
+      ratingFilter === "" ||
+      (ratingFilter === "0" && paperRating === 0) ||
+      (ratingFilter !== "0" && paperRating >= parseInt(ratingFilter));
+    return matchesSearch && matchesTopic && matchesYear && matchesAuthor && matchesFavorite && matchesRating;
   });
 
   currentPage = 1; // Reset page number when filters change
