@@ -1399,6 +1399,41 @@ body.dark-mode .logout-btn:hover {
   color: var(--accent);
 }
 
+
+/*=====back to top button====*/
+/* Back to Top Button Styling */
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  background-color: #6cb3fa;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 12px 15px;
+  border-radius: 50%;
+  font-size: 18px;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover animation */
+#backToTop:hover {
+  background-color: #1e5a9e;
+  transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #backToTop {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 12px;
+    font-size: 16px;
+
 /* Rating and Favorite Form Styles */
 .rating-container {
   display: flex;
@@ -1630,5 +1665,6 @@ body.dark-mode .quick-star.active {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+
   }
 }

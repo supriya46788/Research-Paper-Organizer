@@ -1067,3 +1067,23 @@ function populateYearSelect(id, startYear, endYear) {
     // Populate both dropdowns from 2050 → 1950
     populateYearSelect("minYear", 2050, 1950);
     populateYearSelect("maxYear", 2050, 1950);
+
+// Get the button
+const backToTopBtn = document.getElementById("backToTop");
+
+// Show button when scrolled down
+window.onscroll = function () {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    backToTopBtn.style.display = "block";
+  } else {
+    backToTopBtn.style.display = "none";
+  }
+};
+
+// Smooth scroll to top
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
