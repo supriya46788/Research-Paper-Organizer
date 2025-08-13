@@ -1139,3 +1139,94 @@ backToTopBtn.addEventListener("click", () => {
     behavior: "smooth"
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const chatbotToggle = document.getElementById("chatbot-toggle");
+  const chatbotContainer = document.getElementById("chatbot-container");
+  const closeChatbot = document.getElementById("closeChatbot");
+  const sendBtn = document.getElementById("sendChatbot");
+  const chatbotInput = document.getElementById("chatbotInput");
+  const messagesBox = document.getElementById("chatbotMessages");
+
+  // Open/close
+  chatbotToggle?.addEventListener("click", () => {
+    chatbotContainer.classList.toggle("hidden");
+    if (!chatbotContainer.classList.contains("hidden")) {
+      chatbotInput.focus();
+    }
+  });
+  closeChatbot?.addEventListener("click", () => {
+    chatbotContainer.classList.add("hidden");
+  });
+
+  // Send handlers
+  sendBtn?.addEventListener("click", sendMessage);
+  chatbotInput?.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
+
+  function addMessage(text, sender, asHTML = false) {
+    const msg = document.createElement("div");
+    msg.classList.add("chatbot-message", sender);
+    if (asHTML) {
+      msg.innerHTML = text;
+    } else {
+      msg.textContent = text;
+    }
+    messagesBox.appendChild(msg);
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+    return msg;
+  }
+
+  function addTyping() {
+    const bubble = document.createElement("div");
+    bubble.classList.add("chatbot-message", "bot");
+    bubble.innerHTML = `
+      <span class="chatbot-typing"></span>
+      <span class="chatbot-typing"></span>
+      <span class="chatbot-typing"></span>
+    `;
+    messagesBox.appendChild(bubble);
+    messagesBox.scrollTop = messagesBox.scrollHeight;
+    return bubble;
+  }
+
+  async function sendMessage() {
+    const text = chatbotInput.value.trim();
+    if (!text) return;
+
+    // User bubble
+    addMessage(text, "user");
+    chatbotInput.value = "";
+
+    // Typing indicator
+    const typingBubble = addTyping();
+
+    try {
+      // Call your backend proxy for Gemini
+      const res = await fetch("/api/gemini-chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: text,
+          // optional: pass context about the app
+          system: "You are an assistant for a Research Paper Organizer web app. Be concise and helpful."
+        })
+      });
+
+      if (!res.ok) {
+        throw new Error(`Gemini error ${res.status}`);
+      }
+
+      const data = await res.json();
+      // data.reply expected as plain text/markdown
+      typingBubble.remove();
+      addMessage(data.reply || "Sorry, I couldn't generate a response.", "bot");
+    } catch (err) {
+      typingBubble.remove();
+      addMessage("There was an error contacting the AI service. Please try again.", "bot");
+      console.error(err);
+    }
+  }
+});
+
