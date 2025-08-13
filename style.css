@@ -287,6 +287,30 @@ body.dark-mode #footer-outer h3 {
   box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
 }
 
+.btn-secondary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--text-light);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: linear-gradient(135deg, 
+              color-mix(in srgb, var(--primary) 85%, black), 
+              color-mix(in srgb, var(--primary-dark) 85%, black));
+  transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
 /* Search and Filter Bar */
 .search-bar {
   background: white;
@@ -1433,6 +1457,8 @@ body.dark-mode .logout-btn:hover {
     right: 15px;
     padding: 10px 12px;
     font-size: 16px;
+  }
+}
 
 /* Rating and Favorite Form Styles */
 .rating-container {
