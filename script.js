@@ -725,3 +725,19 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
     hideAddForm(); // Optional: close the modal after save
   }, 1500);
 });
+
+//Calendar Logic 
+function populateYearSelect(id, startYear, endYear) {
+        const select = document.getElementById(id);
+        for (let year = startYear; year >= endYear; year--) {
+            const option = document.createElement("option");
+            option.value = year;
+            option.textContent = year;
+            select.appendChild(option);
+        }
+    }
+
+
+    // Populate both dropdowns from 2050 → 1950
+    populateYearSelect("minYear", 2050, 1950);
+    populateYearSelect("maxYear", 2050, 1950);
