@@ -1062,6 +1062,48 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
   }, 1500);
 });
 
+// Logic for exporting and importing the papers
+function exportPapers() {
+  const papers = JSON.parse(localStorage.getItem('papers') || '[]');
+  const blob = new Blob([JSON.stringify(papers, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'papers.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importPapers() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'application/json';
+
+  input.onchange = e => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function(event) {
+      try {
+        const imported = JSON.parse(event.target.result);
+        if (Array.isArray(imported)) {
+          localStorage.setItem('papers', JSON.stringify(imported));
+          location.reload();
+        } else {
+          alert('Invalid file format.');
+        }
+      } catch {
+        alert('Error reading file.');
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  input.click();
+}
+
 //Calendar Logic 
 function populateYearSelect(id, startYear, endYear) {
         const select = document.getElementById(id);
