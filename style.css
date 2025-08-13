@@ -259,7 +259,7 @@ body.dark-mode #footer-outer h3 {
 }
 
 .header-title i {
-  color: #2563eb;
+  color: #a5bef5;
 }
 
 .header-subtitle {
@@ -326,8 +326,8 @@ body.dark-mode #footer-outer h3 {
 
 .search-input:focus {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  border-color: #c4cde2;
+  box-shadow: 0 0 0 2px rgba(217, 218, 221, 0.2);
 }
 
 .search-icon {
@@ -423,8 +423,8 @@ body.dark-mode #footer-outer h3 {
 }
 
 .paper-card.selected {
-  border-color: #2563eb;
-  background: #eff6ff;
+  border-color: #0772eb;
+  background: #091737;
 }
 
 .paper-header {
@@ -437,7 +437,7 @@ body.dark-mode #footer-outer h3 {
 
 .paper-title {
   font-weight: 600;
-  color: #0c4596;
+  color: #dde6f1;
   flex: 1;
 }
 
