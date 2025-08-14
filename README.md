@@ -6,6 +6,20 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 
 ---
 
+## 📑 Table of Contents
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [How to Use](#-how-to-use)
+- [Screenshots](#-screenshots)
+- [Future Overview](#-future-overview)
+- [Roadmap](#-roadmap-planned-features)
+- [FAQ](#-faq)
+- [How to Contribute](#-how-to-contribute)
+- [Contribution Guidelines](#-contribution-guidelines)
+- [License](#-license)
+
+---
+
 ## ✨ Features
 
 * 🎯 Static single-page application (SPA) with smooth UI
@@ -21,26 +35,87 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 
 ```
 research-paper-organizer/
-├── index.html          # Main HTML structure
-├── style.css           # All custom styling
-├── script.js           # Static JS for DOM manipulation
-├── assets/             # Images, icons, or resources
-└── README.md           # Project documentation
+├── favicon/
+│ ├── android-chrome-192x192.png
+│ ├── android-chrome-512x512.png
+│ ├── apple-touch-icon.png
+│ ├── favicon-16x16.png
+│ ├── favicon-32x32.png
+│ ├── favicon-48x48.png
+│ ├── favicon.ico
+│ └── site.webmanifest
+│
+├── Screenshots/
+│ ├── Addpaper.png
+│ ├── contact_us.png
+│ ├── CreateAcc.png
+│ ├── Faq.png
+│ ├── HomePage.png
+│ ├── Login.png
+│ └── paperdetails.png
+│
+├── about.css
+├── about.html
+├── about.js
+├── auth.css
+├── auth.js
+├── CODE_OF_CONDUCT.md
+├── contact.css
+├── contact.html
+├── contact.js
+├── CONTRIBUTING.md
+├── faq.css
+├── faq.html
+├── faq.js
+├── index.html
+├── LICENSE.txt
 ```
 
 ---
 
+
 ## 💡 How to Use
-
+```
 1. Clone this repo:
-
-   ```bash
-   git clone https://github.com/supriya46788/Research-Paper-Organizer.git
-   ```
-
-2. Open `index.html` in your browser.
-
+   git clone https://github.com/supriya46788/Research-Paper-Organizer.git   
+2. Open `index.html` in your browser (right click and open with live server).
 3. Start adding your research papers directly.
+```
+---
+
+## 📷 Screenshots
+
+1. Login Page
+![Login](Screenshots/Login.png)  
+
+2. Create Account
+![Create Account](Screenshots/CreateAcc.png)  
+
+3.Home Page
+![Home Page](Screenshots/HomePage.png)  
+
+4. FAQ page
+![FAQ](Screenshots/Faq.png)  
+
+5.Paper Detail 
+![Paper Details](Screenshots/paperdetails.png)  
+
+6.Add Paper
+![Add Paper](Screenshots/Addpaper.png)  
+
+7.Contact us
+![Contact Us](Screenshots/contact_us.png)  
+
+---
+
+## 🔮 Future Overview
+
+This project aims to become a **fully functional research management system** with features like:
+- **Cloud Syncing** for research papers.
+- **AI-based categorization** for auto-tagging papers.
+- **PDF annotation** and in-browser reading.
+- **Collaborator mode** for group research.
+- **Integration with Google Scholar / Zotero**.
 
 ---
 
@@ -56,25 +131,36 @@ research-paper-organizer/
 
 ---
 
+## ❓ FAQ
+
+**Q1:** What is this service? 
+**A1:** This is a research paper organizer and citation tool. It helps you manage your academic papers, add new ones, and generate citations in various formats.
+
+**Q2:** How do I add a new paper?
+**A2:** Click the "Add" button at the top of the homepage. You can manually enter the paper details or upload a PDF, and the system will attempt to auto-fill the information for you.
+
+**Q3:** Can I export my citations?  
+**A3:** Yes, when you view a paper's details, there is a citation generator section. You can choose from different styles (e.g., APA, MLA) and copy the formatted citation to your clipboard.   
+
+**Q4:** Is this service free to use? 
+**A4:** The basic features are completely free. We also offer premium plans with advanced features like cloud storage and collaborative tools.
+
+---
+
 ## 🧑‍💻 How to Contribute
 
 We welcome contributors of all skill levels! Here’s how to get started:
 
-### 🏁 Step-by-Step
-
 1. **Fork** the repository.
 2. **Clone** your fork.
-
    ```bash
    git clone https://github.com/supriya46788/Research-Paper-Organizer.git
    ```
 3. Create a new branch:
-
    ```bash
    git checkout -b your-feature-name
    ```
 4. Make your changes and **commit**:
-
    ```bash
    git commit -m "Added feature XYZ"
    ```
@@ -92,15 +178,15 @@ We welcome contributors of all skill levels! Here’s how to get started:
 
 ---
 
-## 🖖 Good First Issues
+## 📜 License
 
-Want to get started? Look at our [Good First Issues](https://github.com/supriya46788/Research-Paper-Organizer/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+This project is licensed under the **MIT License** - see the [LICENSE.txt](LICENSE.txt) file for details.
 
 ---
 
 ## 🧑‍💻 Project Admin
 
-**Supriya Pandey.**
+**Supriya Pandey**  
 [GitHub](https://github.com/supriya46788) • [LinkedIn](https://www.linkedin.com/in/supriyapandey595/)
 
 ---
@@ -108,7 +194,3 @@ Want to get started? Look at our [Good First Issues](https://github.com/supriya4
 ## 🙌 Support & Star
 
 If you like this project, **give it a ⭐** to support more such beginner-friendly repositories!
-
-## 🔍 GitHub Keywords
-
-research paper, organize research, file manager, academic research, digital organizer, research tools, python project, streamlit, machine learning, AI

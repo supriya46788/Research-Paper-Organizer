@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Research Paper Organizer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="auth.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <i class="fas fa-book-open"></i>
+          <h1>Research Paper Organizer</h1>
+          <p>Create your account</p>
+        </div>
+        
+        <form id="signupForm" class="auth-form">
+          <div class="form-group">
+            <label for="signupName">Full Name</label>
+            <div class="input-container">
+              <i class="fas fa-user"></i>
+              <input type="text" id="signupName" required placeholder="Enter your full name" />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="signupEmail">Email Address</label>
+            <div class="input-container">
+              <i class="fas fa-envelope"></i>
+              <input type="email" id="signupEmail" required placeholder="Enter your email" />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="signupPassword">Password</label>
+            <div class="input-container">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="signupPassword" required placeholder="Create a password" />
+              <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <div class="password-strength" id="passwordStrength"></div>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <div class="input-container">
+              <i class="fas fa-lock"></i>
+              <input type="password" id="confirmPassword" required placeholder="Confirm your password" />
+              <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="form-options">
+            <label class="checkbox-container">
+              <input type="checkbox" id="agreeTerms" required />
+              <span class="checkmark"></span>
+              I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+            </label>
+          </div>
+          
+          <button type="submit" class="auth-btn">
+            <i class="fas fa-user-plus"></i>
+            Create Account
+          </button>
+          
+          <div class="auth-divider">
+            <span>Already have an account?</span>
+          </div>
+          
+          <a href="login.html" class="auth-link">Sign in instead</a>
+        </form>
+      </div>
+    </div>
+    
+    <script src="auth.js"></script>
+  </body>
+</html>
