@@ -10,6 +10,14 @@
     />
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Gemini API (Google AI) -->
+    <script src="https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent"></script>
+    <!-- AI Configuration -->
+    <script src="config.js"></script>
 
     <link rel="stylesheet" href="style.css" />
     <link
@@ -205,8 +213,115 @@
                 <i class="fas fa-times"></i>
               </button>
             </div>
-            <div class="details-content" id="detailsContent">
-              <!-- Paper details go here -->
+            
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+              <button class="tab-btn active" data-tab="details" onclick="switchTab('details')">
+                <i class="fas fa-info-circle"></i> Details
+              </button>
+              <button class="tab-btn" data-tab="summary" onclick="switchTab('summary')">
+                <i class="fas fa-file-alt"></i> Summary
+              </button>
+              <button class="tab-btn" data-tab="visuals" onclick="switchTab('visuals')">
+                <i class="fas fa-chart-bar"></i> Visuals
+              </button>
+              <button class="tab-btn" data-tab="ai-assistant" onclick="switchTab('ai-assistant')">
+                <i class="fas fa-robot"></i> AI Assistant
+              </button>
+            </div>
+            
+            <!-- Tab Content -->
+            <div class="tab-content">
+              <!-- Details Tab -->
+              <div id="details-tab" class="tab-pane active">
+                <div class="details-content" id="detailsContent">
+                  <!-- Paper details go here -->
+                </div>
+              </div>
+              
+              <!-- Summary Tab -->
+              <div id="summary-tab" class="tab-pane">
+                <div class="summary-content">
+                  <div class="summary-header">
+                    <h3><i class="fas fa-file-alt"></i> AI-Generated Summary</h3>
+                    <div class="summary-controls">
+                      <button class="btn-secondary" onclick="generateSummary()" id="generateSummaryBtn">
+                        <i class="fas fa-magic"></i> Generate Summary
+                      </button>
+                      <button class="btn-secondary" onclick="readSummary()" id="readSummaryBtn" disabled>
+                        <i class="fas fa-volume-up"></i> Read Aloud
+                      </button>
+                      <button class="btn-secondary" onclick="stopReading()" id="stopReadingBtn" disabled>
+                        <i class="fas fa-stop"></i> Stop
+                      </button>
+                    </div>
+                  </div>
+                  <div id="summaryLoading" class="summary-loading hidden">
+                    <i class="fas fa-spinner fa-spin"></i> Generating summary...
+                  </div>
+                  <div id="summaryContent" class="summary-text">
+                    <p class="summary-placeholder">Click "Generate Summary" to get an AI-powered summary of this research paper.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Visuals Tab -->
+              <div id="visuals-tab" class="tab-pane">
+                <div class="visuals-content">
+                  <div class="visuals-header">
+                    <h3><i class="fas fa-chart-bar"></i> Data Visualizations</h3>
+                    <div class="visuals-controls">
+                      <button class="btn-secondary" onclick="generateVisuals()" id="generateVisualsBtn">
+                        <i class="fas fa-chart-line"></i> Generate Charts
+                      </button>
+                    </div>
+                  </div>
+                  <div id="visualsLoading" class="visuals-loading hidden">
+                    <i class="fas fa-spinner fa-spin"></i> Generating visualizations...
+                  </div>
+                  <div id="visualsContent" class="visuals-charts">
+                    <p class="visuals-placeholder">Click "Generate Charts" to create data visualizations for this paper.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- AI Assistant Tab -->
+              <div id="ai-assistant-tab" class="tab-pane">
+                <div class="ai-assistant-content">
+                  <div class="ai-assistant-header">
+                    <h3><i class="fas fa-robot"></i> AI Research Assistant</h3>
+                  </div>
+                  <div class="ai-chat-container">
+                    <div id="aiChatMessages" class="ai-chat-messages">
+                      <div class="ai-message ai-welcome">
+                        <i class="fas fa-robot"></i>
+                        <div class="ai-message-content">
+                          <p>Hello! I'm your AI research assistant. I can help you:</p>
+                          <ul>
+                            <li>Analyze research papers and extract key insights</li>
+                            <li>Answer questions about the paper's methodology and findings</li>
+                            <li>Suggest related research topics and papers</li>
+                            <li>Help with citation and academic writing</li>
+                          </ul>
+                          <p>Ask me anything about this research paper!</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ai-chat-input-container">
+                      <input 
+                        type="text" 
+                        id="aiChatInput" 
+                        class="ai-chat-input" 
+                        placeholder="Ask me about this research paper..."
+                        onkeypress="handleAiChatKeyPress(event)"
+                      />
+                      <button class="ai-chat-send" onclick="sendAiMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

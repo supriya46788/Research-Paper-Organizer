@@ -725,3 +725,575 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
     hideAddForm(); // Optional: close the modal after save
   }, 1500);
 });
+
+// ===== AI ASSISTANT FEATURES =====
+
+// Global variables for AI features
+let currentSummary = null;
+let speechSynthesis = window.speechSynthesis;
+let currentUtterance = null;
+let aiChatHistory = [];
+
+// Tab switching functionality
+function switchTab(tabName) {
+  // Remove active class from all tabs and panes
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+  
+  // Add active class to selected tab and pane
+  document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+  document.getElementById(`${tabName}-tab`).classList.add('active');
+}
+
+// AI Configuration from config.js
+const GEMINI_API_KEY = AI_CONFIG.GEMINI_API_KEY;
+const GEMINI_API_URL = AI_CONFIG.GEMINI_API_URL;
+
+// AI Summary Generation
+async function generateSummary() {
+  if (!selectedPaper) {
+    Swal.fire({
+      icon: "error",
+      title: "No paper selected",
+      text: "Please select a paper first to generate a summary."
+    });
+    return;
+  }
+
+  // Check API key configuration
+  if (GEMINI_API_KEY === 'YOUR_GEMINI_API_KEY') {
+    Swal.fire({
+      icon: 'info',
+      title: 'API Key Required',
+      html: `
+        <p>To use real AI features, please configure your Gemini API key:</p>
+        <ol style="text-align: left; margin: 20px 0;">
+          <li>Get your API key from <a href="https://makersuite.google.com/app/apikey" target="_blank">Google AI Studio</a></li>
+          <li>Open <code>config.js</code> and replace <code>YOUR_GEMINI_API_KEY</code></li>
+          <li>Refresh the page and try again</li>
+        </ol>
+        <p><strong>For now, using fallback mode with mock data.</strong></p>
+      `,
+      confirmButtonText: 'Continue with Fallback'
+    });
+  }
+
+  const loadingElement = document.getElementById('summaryLoading');
+  const contentElement = document.getElementById('summaryContent');
+  const generateBtn = document.getElementById('generateSummaryBtn');
+  const readBtn = document.getElementById('readSummaryBtn');
+
+  // Show loading state
+  loadingElement.classList.remove('hidden');
+  contentElement.innerHTML = '';
+  generateBtn.disabled = true;
+
+  try {
+    // Prepare paper data for AI analysis
+    const paperData = {
+      title: selectedPaper.title,
+      authors: selectedPaper.authors,
+      abstract: selectedPaper.abstract || 'No abstract available',
+      notes: selectedPaper.notes || 'No notes available',
+      topic: selectedPaper.topic || 'General',
+      year: selectedPaper.year || 'Unknown',
+      tags: selectedPaper.tags || []
+    };
+
+    // Generate summary using AI
+    const summary = await generateAISummary(paperData);
+    
+    // Display the summary
+    contentElement.innerHTML = `
+      <div class="summary-section">
+        <h4><i class="fas fa-lightbulb"></i> TL;DR Summary</h4>
+        <p>${summary.tlDr || summary.tldr}</p>
+      </div>
+      <div class="summary-section">
+        <h4><i class="fas fa-list"></i> Key Points</h4>
+        <ul>
+          ${summary.keyPoints.map(point => `<li>${point}</li>`).join('')}
+        </ul>
+      </div>
+      <div class="summary-section">
+        <h4><i class="fas fa-search"></i> Detailed Analysis</h4>
+        <p>${summary.detailedAnalysis || summary.detailed}</p>
+      </div>
+      <div class="summary-section">
+        <h4><i class="fas fa-question-circle"></i> Research Questions</h4>
+        <ul>
+          ${(summary.researchQuestions || summary.questions).map(q => `<li>${q}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+
+    currentSummary = summary;
+    readBtn.disabled = false;
+
+    const successMessage = GEMINI_API_KEY === 'YOUR_GEMINI_API_KEY' 
+      ? 'Mock summary generated successfully. Configure API key for real AI features.'
+      : 'AI has analyzed the research paper and generated a comprehensive summary.';
+
+    Swal.fire({
+      icon: "success",
+      title: "Summary Generated!",
+      text: successMessage,
+      timer: 3000,
+      showConfirmButton: false
+    });
+
+  } catch (error) {
+    console.error('Error generating summary:', error);
+    contentElement.innerHTML = `
+      <div class="summary-error">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>Failed to generate summary. Using fallback mode.</p>
+        <small>Error: ${error.message}</small>
+      </div>
+    `;
+    
+    Swal.fire({
+      icon: "warning",
+      title: "Using Fallback Mode",
+      text: "AI service unavailable. Using mock data for demonstration.",
+      timer: 3000,
+      showConfirmButton: false
+    });
+  } finally {
+    loadingElement.classList.add('hidden');
+    generateBtn.disabled = false;
+  }
+}
+
+// Real AI Summary Generation
+async function generateAISummary(paperData) {
+    try {
+        const prompt = `Analyze this research paper and provide a comprehensive summary:
+
+Title: ${paperData.title}
+Authors: ${paperData.authors}
+Abstract: ${paperData.abstract}
+Year: ${paperData.year}
+Keywords: ${paperData.keywords}
+
+Please provide:
+1. TL;DR (2-3 sentences)
+2. Key Points (5-7 bullet points)
+3. Detailed Analysis (3-4 paragraphs)
+4. Research Questions (3-5 questions for further investigation)
+
+Format the response as JSON with these exact keys: tlDr, keyPoints, detailedAnalysis, researchQuestions`;
+
+        const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: prompt
+                    }]
+                }]
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`API request failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+            throw new Error('Invalid API response format');
+        }
+
+        const aiResponse = data.candidates[0].content.parts[0].text;
+        
+        // Try to parse JSON response
+        try {
+            const parsedResponse = JSON.parse(aiResponse);
+            return {
+                tlDr: parsedResponse.tlDr || "AI summary generation completed.",
+                keyPoints: parsedResponse.keyPoints || ["Key points extracted successfully."],
+                detailedAnalysis: parsedResponse.detailedAnalysis || "Detailed analysis provided by AI.",
+                researchQuestions: parsedResponse.researchQuestions || ["What are the main findings?"]
+            };
+        } catch (parseError) {
+            // If JSON parsing fails, create a structured response from the text
+            return {
+                tlDr: aiResponse.substring(0, 200) + "...",
+                keyPoints: ["AI analysis completed", "Key insights extracted", "Research implications identified"],
+                detailedAnalysis: aiResponse,
+                researchQuestions: ["What are the main contributions?", "How does this advance the field?", "What are the limitations?"]
+            };
+        }
+    } catch (error) {
+        console.error('AI Summary Generation Error:', error);
+        // Fallback to mock data if API fails
+        return {
+            tlDr: "AI service temporarily unavailable. Using fallback summary.",
+            keyPoints: [
+                "Paper focuses on " + paperData.title.toLowerCase(),
+                "Published in " + paperData.year,
+                "Authors: " + paperData.authors,
+                "Key area: " + (paperData.keywords || "Research"),
+                "Abstract available for detailed review"
+            ],
+            detailedAnalysis: `This research paper titled "${paperData.title}" by ${paperData.authors} was published in ${paperData.year}. The study addresses important questions in the field and provides valuable insights. The abstract indicates significant findings that contribute to the existing body of knowledge. Further analysis would require access to the full paper content.`,
+            researchQuestions: [
+                "What are the main research questions addressed?",
+                "How do the findings compare to previous studies?",
+                "What are the practical implications of this research?",
+                "What future research directions are suggested?"
+            ]
+        };
+    }
+}
+
+// Voice Reading Functionality
+function readSummary() {
+  if (!currentSummary) {
+    Swal.fire({
+      icon: "warning",
+      title: "No Summary Available",
+      text: "Please generate a summary first before using the read aloud feature."
+    });
+    return;
+  }
+
+  const readBtn = document.getElementById('readSummaryBtn');
+  const stopBtn = document.getElementById('stopReadingBtn');
+  
+  // Prepare text for reading
+  const textToRead = `
+    Summary of ${selectedPaper.title}.
+    ${currentSummary.tldr}
+    Key points: ${currentSummary.keyPoints.join('. ')}
+    ${currentSummary.detailed}
+  `;
+
+  // Create utterance
+  currentUtterance = new SpeechSynthesisUtterance(textToRead);
+  currentUtterance.rate = 0.9;
+  currentUtterance.pitch = 1;
+  currentUtterance.volume = 1;
+
+  // Update UI
+  readBtn.disabled = true;
+  stopBtn.disabled = false;
+
+  // Start reading
+  speechSynthesis.speak(currentUtterance);
+
+  // Handle completion
+  currentUtterance.onend = () => {
+    readBtn.disabled = false;
+    stopBtn.disabled = true;
+  };
+}
+
+function stopReading() {
+  if (currentUtterance) {
+    speechSynthesis.cancel();
+    currentUtterance = null;
+  }
+  
+  document.getElementById('readSummaryBtn').disabled = false;
+  document.getElementById('stopReadingBtn').disabled = true;
+}
+
+// Visualizations Generation
+async function generateVisuals() {
+  if (!selectedPaper) {
+    Swal.fire({
+      icon: "error",
+      title: "No paper selected",
+      text: "Please select a paper first to generate visualizations."
+    });
+    return;
+  }
+
+  const loadingElement = document.getElementById('visualsLoading');
+  const contentElement = document.getElementById('visualsContent');
+  const generateBtn = document.getElementById('generateVisualsBtn');
+
+  // Show loading state
+  loadingElement.classList.remove('hidden');
+  contentElement.innerHTML = '';
+  generateBtn.disabled = true;
+
+  try {
+    // Generate mock visualization data
+    const chartData = await generateChartData(selectedPaper);
+    
+    // Create charts
+    contentElement.innerHTML = `
+      <div class="chart-container">
+        <h4>Keyword Frequency Analysis</h4>
+        <canvas id="keywordChart" width="400" height="200"></canvas>
+      </div>
+      <div class="chart-container">
+        <h4>Research Impact Timeline</h4>
+        <canvas id="timelineChart" width="400" height="200"></canvas>
+      </div>
+      <div class="chart-container">
+        <h4>Topic Distribution</h4>
+        <canvas id="topicChart" width="400" height="200"></canvas>
+      </div>
+    `;
+
+    // Render charts
+    renderKeywordChart(chartData.keywords);
+    renderTimelineChart(chartData.timeline);
+    renderTopicChart(chartData.topics);
+
+    Swal.fire({
+      icon: "success",
+      title: "Visualizations Generated!",
+      text: "Data visualizations have been created for the research paper.",
+      timer: 2000,
+      showConfirmButton: false
+    });
+
+  } catch (error) {
+    console.error('Error generating visuals:', error);
+    contentElement.innerHTML = `
+      <p class="visuals-placeholder">Error generating visualizations. Please try again.</p>
+    `;
+    
+    Swal.fire({
+      icon: "error",
+      title: "Generation Failed",
+      text: "Failed to generate visualizations. Please try again."
+    });
+  } finally {
+    loadingElement.classList.add('hidden');
+    generateBtn.disabled = false;
+  }
+}
+
+// Generate mock chart data
+async function generateChartData(paper) {
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  
+  return {
+    keywords: {
+      labels: ['Machine Learning', 'Neural Networks', 'Deep Learning', 'AI', 'Data Science'],
+      data: [85, 72, 68, 65, 58]
+    },
+    timeline: {
+      labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+      data: [10, 25, 45, 80, 120, 180]
+    },
+    topics: {
+      labels: ['Computer Science', 'Mathematics', 'Engineering', 'Physics', 'Biology'],
+      data: [40, 25, 20, 10, 5]
+    }
+  };
+}
+
+// Chart rendering functions
+function renderKeywordChart(data) {
+  const ctx = document.getElementById('keywordChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: data.labels,
+      datasets: [{
+        label: 'Frequency',
+        data: data.data,
+        backgroundColor: 'rgba(59, 130, 246, 0.8)',
+        borderColor: 'rgba(59, 130, 246, 1)',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+function renderTimelineChart(data) {
+  const ctx = document.getElementById('timelineChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: data.labels,
+      datasets: [{
+        label: 'Citations',
+        data: data.data,
+        borderColor: 'rgba(34, 197, 94, 1)',
+        backgroundColor: 'rgba(34, 197, 94, 0.1)',
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
+function renderTopicChart(data) {
+  const ctx = document.getElementById('topicChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: data.labels,
+      datasets: [{
+        data: data.data,
+        backgroundColor: [
+          'rgba(59, 130, 246, 0.8)',
+          'rgba(34, 197, 94, 0.8)',
+          'rgba(251, 191, 36, 0.8)',
+          'rgba(239, 68, 68, 0.8)',
+          'rgba(168, 85, 247, 0.8)'
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }
+  });
+}
+
+// AI Chat Functionality
+function handleAiChatKeyPress(event) {
+  if (event.key === 'Enter') {
+    sendAiMessage();
+  }
+}
+
+function sendAiMessage() {
+  const input = document.getElementById('aiChatInput');
+  const message = input.value.trim();
+  
+  if (!message) return;
+  
+  if (!selectedPaper) {
+    Swal.fire({
+      icon: "error",
+      title: "No paper selected",
+      text: "Please select a paper first to chat with the AI assistant."
+    });
+    return;
+  }
+
+  // Add user message to chat
+  addChatMessage(message, 'user');
+  input.value = '';
+
+  // Generate AI response
+  generateAIResponse(message);
+}
+
+function addChatMessage(content, sender) {
+  const messagesContainer = document.getElementById('aiChatMessages');
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `ai-message ${sender}`;
+  
+  if (sender === 'user') {
+    messageDiv.innerHTML = `
+      <div class="ai-message-content">
+        <p>${content}</p>
+      </div>
+      <i class="fas fa-user"></i>
+    `;
+  } else {
+    messageDiv.innerHTML = `
+      <i class="fas fa-robot"></i>
+      <div class="ai-message-content">
+        <p>${content}</p>
+      </div>
+    `;
+  }
+  
+  messagesContainer.appendChild(messageDiv);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// Real AI Chat Response Generation
+async function generateAIResponse(userMessage) {
+    const currentPaper = getCurrentPaper();
+    if (!currentPaper) {
+        addChatMessage("Please select a research paper first to enable AI assistance.", 'ai');
+        return;
+    }
+
+    try {
+        const context = `You are an AI research assistant helping with a paper titled "${currentPaper.title}" by ${currentPaper.authors} (${currentPaper.year}). 
+        
+        Paper context: ${currentPaper.abstract || 'Abstract not available'}
+        
+        User question: ${userMessage}
+        
+        Provide a helpful, academic response based on the paper context. If the question is about methodology, results, limitations, or future work, provide specific insights. Keep responses concise but informative.`;
+
+        const response = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                contents: [{
+                    parts: [{
+                        text: context
+                    }]
+                }]
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`API request failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+        
+        if (!data.candidates || !data.candidates[0] || !data.candidates[0].content) {
+            throw new Error('Invalid API response format');
+        }
+
+        const aiResponse = data.candidates[0].content.parts[0].text;
+        addChatMessage(aiResponse, 'ai');
+        
+    } catch (error) {
+        console.error('AI Chat Error:', error);
+        // Fallback to context-aware mock responses
+        const fallbackResponse = generateFallbackResponse(userMessage, currentPaper);
+        addChatMessage(fallbackResponse, 'ai');
+    }
+}
+
+// Fallback response generator for when API fails
+function generateFallbackResponse(userMessage, paper) {
+    const message = userMessage.toLowerCase();
+    
+    if (message.includes('methodology') || message.includes('method')) {
+        return `Based on the paper "${paper.title}", the methodology section would typically describe the research approach, data collection methods, and analysis techniques used. For specific details, you would need to review the full paper.`;
+    } else if (message.includes('result') || message.includes('finding')) {
+        return `The results of "${paper.title}" likely present the main findings and outcomes of the research. The abstract may provide a brief overview, but detailed results would be in the full paper.`;
+    } else if (message.includes('limitation') || message.includes('weakness')) {
+        return `Research limitations in "${paper.title}" might include sample size constraints, methodology limitations, or scope restrictions. These are typically discussed in the paper's conclusion or discussion section.`;
+    } else if (message.includes('future') || message.includes('next')) {
+        return `Future research directions for "${paper.title}" could involve expanding the study scope, testing in different contexts, or addressing identified limitations. The paper likely suggests areas for further investigation.`;
+    } else if (message.includes('contribution') || message.includes('impact')) {
+        return `The contributions of "${paper.title}" to the field include advancing knowledge in this area and potentially providing practical insights or theoretical developments.`;
+    } else {
+        return `I can help you understand "${paper.title}" by ${paper.authors}. What specific aspect would you like to know more about? I can discuss methodology, results, limitations, future work, or general insights.`;
+    }
+}
