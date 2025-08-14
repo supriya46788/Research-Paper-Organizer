@@ -5,6 +5,7 @@ import authRoutes from "./routes/authRoutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import researchPaperRoutes from "./routes/researchPaperRoutes.js";
+import geminiRoutes from "./routes/geminiRoutes.js";
 
 const app = express();
 const port = 3000;
@@ -21,6 +22,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/papers", researchPaperRoutes);
+app.use("/api/gemini", geminiRoutes);
 
 const startServer = async () => {
   await connectDB();
