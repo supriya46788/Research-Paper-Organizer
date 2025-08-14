@@ -1668,3 +1668,19 @@ body.dark-mode .quick-star.active {
 
   }
 }
+}
+.forgot-link {
+  text-align: right;
+  margin-top: 8px;
+}
+
+.forgot-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.forgot-link a:hover {
+  text-decoration: underline;
+}
+}
