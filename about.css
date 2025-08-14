@@ -1,0 +1,127 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+}
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.header .tagline {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Sections */
+.section {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem;
+  background: white;
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.6s ease-out;
+}
+
+.section h2 {
+  margin-bottom: 1rem;
+  color: #357abd;
+}
+
+.section p, .section ul {
+  font-size: 1rem;
+}
+
+.section ul {
+  list-style: none;
+}
+.section ul li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+.section ul li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #4a90e2;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  background: #357abd;
+  color: white;
+}
+
+/* Fade-in Animation */
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+  .section {
+    padding: 1.5rem;
+  }
+}
+.section ul li {
+    padding-left: 1.2rem;
+}
+
+/* Hover animation for section cards */
+.section {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.section:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Hover effect for list items */
+.section ul li {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.section ul li:hover {
+  color: #4a90e2;
+  transform: translateX(5px);
+}
+
+/* Hover effect for links */
+.section a {
+  color: #357abd;
+  text-decoration: none;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+.section a:hover {
+  color: #1e5a9e;
+  border-bottom: 2px solid #1e5a9e;
+}
+ 
