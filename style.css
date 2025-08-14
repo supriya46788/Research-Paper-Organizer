@@ -430,27 +430,72 @@ body.dark-mode #footer-outer h3 {
   gap: 1rem;
   margin-top: 20px;
 }
-
 .paper-card {
   background-color: #7298e5;
   border: 1px solid #141414;
   border-radius: 12px;
   padding: 1.2rem;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Import modern font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.paper-card {
+  font-family: 'Poppins', sans-serif;
+  background-color: #7298e5;
+  border: 1px solid #141414;
+  border-radius: 12px;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient border effect with blue-violet tones */
+.paper-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #4f46e5, #3b82f6, #06b6d4, #8b5cf6);
+  background-size: 300% 300%;
+  border-radius: 14px;
+  z-index: -1;
+  animation: borderGlow 6s ease infinite;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Hover lift + glow */
 .paper-card:hover {
-  border-color: #d1d5db;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
 }
 
+.paper-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Selected state */
 .paper-card.selected {
-  border-color: #0772eb;
+  border-color: #3b82f6;
   background: #091737;
 }
 
+/* Paper header layout */
 .paper-header {
   display: flex;
   justify-content: space-between;
@@ -459,10 +504,18 @@ body.dark-mode #footer-outer h3 {
   gap: 0.5rem;
 }
 
+/* Title styling */
 .paper-title {
   font-weight: 600;
   color: #dde6f1;
   flex: 1;
+  transition: color 0.35s ease, text-shadow 0.35s ease;
+}
+
+/* Title glow on hover */
+.paper-card:hover .paper-title {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.7);
 }
 
 .paper-actions {
