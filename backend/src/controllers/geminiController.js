@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
-const GEMINI_API_KEY = "AIzaSyD5Rd0IiazMerfY-i24juKc0fee8CWPsio";
-const GEMINI_MODEL = "gemini-1.5-pro"; // or gemini-1.5-pro
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+const GEMINI_MODEL = "gemini-1.5-flash"; // or gemini-1.5-pro
 
 // Existing chat function
 export const geminiChat = async (req, res) => {
