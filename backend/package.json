@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/app.js --watch 'src/**/*' --ext 'js,json'"
+    "dev": "nodemon src/app.js --watch 'src/**/*' --ext 'js,json'",
+    "seed": "node src/utils/seed.js"
   },
   "keywords": [],
   "author": "",
