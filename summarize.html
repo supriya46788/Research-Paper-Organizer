@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summarize Research Paper</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="summarize.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    /* Paste the CSS above here */
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="page-header">
+      <h1 class="page-title">
+        <i class="fas fa-file-alt"></i>
+        Upload Your Research Paper
+      </h1>
+      <p class="page-subtitle">Upload a PDF to get a concise summary</p>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="upload-section">
+      <form id="summaryForm" class="upload-form">
+        <div class="file-upload-area" onclick="document.getElementById('pdfFile').click()">
+          <i class="fas fa-cloud-upload-alt upload-icon"></i>
+          <div class="upload-text">Choose PDF file or drag & drop</div>
+          <div class="upload-subtext">Supports PDF files up to 10MB</div>
+          <input type="file" id="pdfFile" accept="application/pdf" required />
+        </div>
+
+        <div id="fileInfo" class="file-info">
+          <i class="fas fa-file-pdf" style="color: #dc2626; font-size: 1.5rem;"></i>
+          <div class="file-details">
+            <div id="fileName" class="file-name"></div>
+            <div id="fileSize" class="file-size"></div>
+          </div>
+          <button type="button" id="removeFile" class="remove-file">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary" id="uploadBtn">
+            <i class="fas fa-magic"></i>
+            Upload & Summarize
+          </button>
+        </div>
+
+        <div id="errorMessage" class="error-message">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span id="errorText"></span>
+        </div>
+      </form>
+    </div>
+
+    <!-- PDF Preview -->
+    <div id="previewSection" class="preview-section hidden">
+      <div class="preview-header">
+        <i class="fas fa-eye"></i>
+        PDF Preview
+      </div>
+      <iframe id="pdfPreview" class="pdf-preview"></iframe>
+    </div>
+
+    <!-- Summary Results -->
+    <div id="summarySection" class="summary-section hidden">
+      <div class="summary-header">
+        <i class="fas fa-lightbulb"></i>
+        Summary
+      </div>
+      <div id="summaryContent" class="summary-content">
+        <!-- Summary will be inserted here -->
+      </div>
+    </div>
+
+    <!-- Back Navigation -->
+    <div class="back-nav">
+      <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i>
+        Back to Home
+      </a>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div id="loadingOverlay" class="loading-overlay hidden">
+    <div class="loading-content">
+      <div class="spinner">
+        <i class="fas fa-spinner fa-spin"></i>
+      </div>
+      <div class="loading-text">Processing your PDF...</div>
+    </div>
+  </div>
+
+  <script src="summarize.js"></script>
+</body>
+</html>
