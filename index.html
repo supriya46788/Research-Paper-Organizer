@@ -361,6 +361,28 @@
       </div>
     </footer>
     <script src="script.js"></script>
+    <!-- Chatbot Window -->
+<div id="chatbot-container" class="hidden" aria-live="polite">
+  <div class="chatbot-header">
+    <span><i class="fas fa-robot" style="margin-right:6px;"></i>Assistant</span>
+    <button id="closeChatbot" title="Close" aria-label="Close chatbot">&times;</button>
+  </div>
+
+  <div class="chatbot-messages" id="chatbotMessages"></div>
+
+  <div class="chatbot-input-container">
+    <input id="chatbotInput" type="text" placeholder="Type your message..." aria-label="Type your message" />
+    <button id="sendChatbot" title="Send" aria-label="Send message">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Floating Chat Toggle -->
+<button id="chatbot-toggle" title="Chat with Assistant" aria-label="Open chatbot">
+  <i class="fas fa-comment-alt"></i>
+</button>
+
 </body>
 
 </html>
