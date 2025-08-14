@@ -4,6 +4,8 @@ import { connectDB } from "./utils/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import researchPaperRoutes from "./routes/researchPaperRoutes.js";
+
 const app = express();
 const port = 3000;
 
@@ -16,7 +18,9 @@ app.get("/", (req, res) => {
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+
 app.use("/api/auth", authRoutes);
+app.use("/api/papers", researchPaperRoutes);
 
 const startServer = async () => {
   await connectDB();

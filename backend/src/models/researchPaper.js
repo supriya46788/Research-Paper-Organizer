@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const paperSchema = new mongoose.Schema(
+const researchPaperSchema = new mongoose.Schema(
   {
     title: { type: String, required: true, trim: true },
     authors: { type: String, required: true, trim: true },
@@ -24,6 +24,6 @@ const paperSchema = new mongoose.Schema(
   }
 );
 
-const Paper = mongoose.model("Paper", paperSchema);
+const ResearchPaper = mongoose.model("ResearchPaper", researchPaperSchema);
 
-export default Paper;
+export default ResearchPaper;
