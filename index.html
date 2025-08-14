@@ -104,15 +104,6 @@
             <option value="">From Year</option>
           </select>
 
-          <select id="maxYear" class="filter-select">
-            <option value="">To Year</option>
-          </select>
-
-          <div class="filter-container">
-            <!-- Author Name -->
-            <input type="text" id="authorFilter" placeholder="Filter by Author" class="filter-select"
-              oninput="filterPapers()" />
-          </div>
           <div class="filter-container">
             <!-- Favorites Filter -->
             <select
@@ -158,16 +149,6 @@
               <option value="year-asc">Oldest First</option>
             </select>
           </div>
-          <div class="filter-container">
-            <label style="font-size: 0.95em;">
-              <input type="checkbox" id="includeCitations" onchange="filterPapers()" />
-              Include Citations
-            </label>
-            <label style="font-size: 0.95em; margin-left:8px;">
-              <input type="checkbox" id="includePatents" onchange="filterPapers()" />
-              Include Patents
-            </label>
-            </div>
         </div>
       </div>
   </div>

@@ -118,7 +118,7 @@ function initializeSampleData() {
       id: 1,
       title: "Attention Is All You Need",
       authors: "Vaswani, A., Shazeer, N., Parmar, N., et al.",
-      year: "2017",
+      year: 2017,
       journal: "NIPS",
       url: "https://arxiv.org/abs/1706.03762",
       topic: "Machine Learning",
@@ -136,7 +136,7 @@ function initializeSampleData() {
       id: 2,
       title: "BERT: Pre-training of Deep Bidirectional Transformers",
       authors: "Devlin, J., Chang, M. W., Lee, K., Toutanova, K.",
-      year: "2018",
+      year: 2018,
       journal: "NAACL",
       url: "https://arxiv.org/abs/1810.04805",
       topic: "Machine Learning",
@@ -210,13 +210,6 @@ function filterPapers() {
   const searchTerm = document.getElementById("searchInput").value.toLowerCase();
   const selectedTopic = document.getElementById("topicFilter").value;
   const minYear = parseInt(document.getElementById("minYear").value) || null;
-  const maxYear = parseInt(document.getElementById("maxYear").value) || null;
-  const authorFilter = document
-    .getElementById("authorFilter")
-    .value.toLowerCase();
-
-  const includeCitations = document.getElementById("includeCitations")?.checked;
-  const includePatents = document.getElementById("includePatents")?.checked;
   const favoriteFilter = document.getElementById("favoriteFilter")?.value;
   const ratingFilter = document.getElementById("ratingFilter")?.value;
   const sortFilter = document.getElementById("sortFilter")?.value;
@@ -231,14 +224,9 @@ function filterPapers() {
       (paper.abstract || "").toLowerCase().includes(searchTerm);
     const matchesTopic = selectedTopic === "" || paper.topic === selectedTopic;
     const matchesYear =
-      (!minYear || paper.year >= minYear) &&
-      (!maxYear || paper.year <= maxYear);
-    const matchesAuthor =
-      authorFilter === "" || paper.authors.toLowerCase().includes(authorFilter);
+      (!minYear || paper.year >= minYear);
 
-    //Checkboxes logic
-    if (includeCitations && !paper.isCitation) return false;
-    if (includePatents && !paper.isPatent) return false;
+
 
 
     // Favorite filter
@@ -254,7 +242,7 @@ function filterPapers() {
       (ratingFilter === "0" && paperRating === 0) ||
       (ratingFilter !== "0" && paperRating >= parseInt(ratingFilter));
     
-    return matchesSearch && matchesTopic && matchesYear && matchesAuthor && matchesFavorite && matchesRating;
+    return matchesSearch && matchesTopic && matchesYear && matchesFavorite && matchesRating;
   });
 
   // Sort papers based on selected criteria
