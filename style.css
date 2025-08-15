@@ -60,6 +60,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
+
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   font-weight: 500;
 }
@@ -1766,8 +1767,8 @@ body.dark-mode .quick-star.active {
 
   }
 }
-feature/forgotpassword
-}
+
+
 .forgot-link {
   text-align: right;
   margin-top: 8px;
@@ -1782,8 +1783,8 @@ feature/forgotpassword
 .forgot-link a:hover {
   text-decoration: underline;
 }
-}
-=======
+
+
 
 /* Chatbot Toggle Button */
 #chatbot-toggle {
@@ -1957,4 +1958,3 @@ body.dark-mode .chatbot-input-container {
   }
 }
 
- main
