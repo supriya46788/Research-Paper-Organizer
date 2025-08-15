@@ -1,0 +1,132 @@
+body {
+font-family: Arial, sans-serif;
+background: #f9f9f9;
+margin: 0;
+color: #333;
+}
+header {
+background: #00274d;
+color: white;
+text-align: center;
+padding: 2rem 1rem;
+}
+.back-home {
+position: fixed;
+top: 15px;
+left: 15px;
+color: white;
+padding: 8px 14px;
+text-decoration: none;
+font-size: 16px;
+font-weight: bold;
+border-radius: 6px;
+box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+transition: background-color 0.3s ease, transform 0.2s ease;
+z-index: 1000;
+}
+
+/* Hover effect */
+.back-home:hover {
+color: #8ec2f5ff ;
+transform: translateX(-3px);
+}
+
+/* For mobile */
+@media (max-width: 600px) {
+.back-home {
+font-size: 14px;
+padding: 6px 10px;
+}
+}
+header h1 {
+margin: 0;
+font-size: 2.4rem;
+}
+header p {
+font-size: 1.1rem;
+margin-top: 0.5rem;
+}
+/* Filter Buttons */
+.filter-bar {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 0.8rem;
+padding: 1rem;
+background: white;
+box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.filter-btn {
+padding: 0.5rem 1rem;
+border: none;
+background: #00274d;
+color: white;
+border-radius: 6px;
+cursor: pointer;
+transition: background 0.3s ease, transform 0.3s ease;
+}
+.filter-btn:hover {
+background: #004080;
+transform: scale(1.05);
+}
+/* Cards Grid */
+.tools-container {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 1.5rem;
+padding: 2rem;
+}
+.tool-card {
+background: white;
+padding: 1.5rem;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+text-align: center;
+opacity: 0;
+transform: translateY(20px);
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+cursor: pointer;
+}
+.tool-card:hover{
+    transform: translateY(20px) scale(1.8);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.30);
+
+}
+.tool-card.show {
+opacity: 1;
+transform: translateY(0);
+}
+.tool-card img {
+max-width: 70px;
+margin-bottom: 1rem;
+transition: transform 0.3s ease;
+}
+.tool-card:hover img {
+transform: scale(1.1);
+}
+.tool-card h3 {
+color: #00274d;
+margin-bottom: 0.5rem;
+}
+.tool-card p {
+font-size: 0.9rem;
+color: #555;
+}
+.tool-card a {
+display: inline-block;
+margin-top: 0.8rem;
+padding: 0.5rem 1rem;
+background: #00274d;
+color: white;
+border-radius: 6px;
+text-decoration: none;
+transition: background 0.3s ease;
+}
+.tool-card a:hover {
+background: #004080;
+}
+@media (max-width: 600px) {
+header h1 {
+    font-size: 1.8rem;
+}
+}
