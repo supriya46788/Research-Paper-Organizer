@@ -35,6 +35,7 @@ body {
   padding: 1.5rem;
 }
 
+
 .navbar-right-links {
   display: flex;
   gap: 0.5rem;
@@ -60,6 +61,11 @@ body {
   transition: background-color 0.3s, transform 0.2s;
 }
 
+.nav-item:hover {
+  background-color: #115cff; /* Slightly darker blue */
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
 /* Header Styles */
 .header {
   background-color: #7298e5;
