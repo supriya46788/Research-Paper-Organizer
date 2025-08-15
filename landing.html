@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Paper Organizer - Organize Your Research Efficiently</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="landing.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="landing-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <span>Research Paper Organizer</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it Works</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                
+                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Organize Your Research Papers Like Never Before</h1>
+                <p>Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary btn-large" onclick="window.location.href='signup.html'">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Trial
+                    </button>
+                    <button class="btn-secondary btn-large" onclick="scrollToFeatures()">
+                        <i class="fas fa-play"></i>
+                        See How it Works
+                    </button>
+                </div>
+                <p class="hero-note">No credit card required • 30-day free trial</p>
+            </div>
+            <div class="hero-image">
+                <div class="hero-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-paper">
+                            <div class="paper-title">Attention Is All You Need</div>
+                            <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
+                            <div class="paper-tags">
+                                <span>Machine Learning</span>
+                                <span>Transformers</span>
+                            </div>
+                        </div>
+                        <div class="mockup-paper">
+                            <div class="paper-title">BERT: Pre-training of Deep...</div>
+                            <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
+                            <div class="paper-tags">
+                                <span>NLP</span>
+                                <span>Pre-training</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything You Need for Research Management</h2>
+                <p>Powerful features designed specifically for researchers, students, and academics</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Smart Search</h3>
+                    <p>Find papers instantly with intelligent search across titles, authors, abstracts, and tags.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Smart Organization</h3>
+                    <p>Categorize papers by topics, tags, and custom labels. Never lose track of important research.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Rating & Reviews</h3>
+                    <p>Rate papers and add personal notes to remember key insights and contributions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <h3>Auto Citation</h3>
+                    <p>Generate citations in APA, MLA, and Chicago formats with a single click.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>PDF Management</h3>
+                    <p>Upload and store PDFs directly in your library with built-in preview capabilities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Sync</h3>
+                    <p>Access your research library from anywhere with secure cloud storage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get Started in 3 Simple Steps</h2>
+                <p>Start organizing your research papers in minutes</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create Your Account</h3>
+                        <p>Sign up for free and get instant access to all features. No credit card required.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Add Your Papers</h3>
+                        <p>Upload PDFs, add paper details manually, or import from existing libraries.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Organize & Search</h3>
+                        <p>Use tags, topics, and ratings to organize your collection and find papers instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Researchers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500,000+</div>
+                    <div class="stat-label">Papers Organized</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Universities</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Research Workflow?</h2>
+                <p>Join thousands of researchers who have already streamlined their paper management process.</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary btn-large" onclick="window.location.href='signup.html'">
+                        Start Your Free Trial
+                    </button>
+                    <button class="btn-secondary btn-large" onclick="window.location.href='login.html'">
+                        Already have an account? Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-book-open"></i>
+                    <span>Research Paper Organizer</span>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How it Works</a>
+                        <a href="pricing.html">Pricing</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <a href="Faq.html">FAQ</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="open-source.html">Open Source</a>
+                        <a href="glossary.html">Glossary</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Research Paper Organizer. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="landing.js"></script>
+</body>
+</html>
