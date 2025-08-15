@@ -346,7 +346,23 @@
         <h3>&copy; 2025 Research Paper Organizer . All rights reserved.</h3>
       </div>
     </footer>
-    <script src="script.js"></script>
+  <script>
+    // Authentication check
+    function checkAuthentication() {
+      const currentUser = localStorage.getItem('current_user');
+      if (!currentUser) {
+        window.location.href = 'landing.html'; // Redirect to landing page if not authenticated
+        return false;
+      }
+      return true;
+    }
+
+    // Run auth check before loading script
+    if (!checkAuthentication()) {
+      throw new Error('User not authenticated');
+    }
+  </script>
+  <script src="script.js"></script>
     <!-- Chatbot Window -->
 <div id="chatbot-container" class="hidden" aria-live="polite">
   <div class="chatbot-header">
