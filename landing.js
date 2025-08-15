@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const currentUser = localStorage.getItem('current_user');
         if (currentUser) {
             // User is logged in, redirect to app
-            window.location.href = 'index.html';
+            window.location.href = 'home.html';
         }
     }
 
