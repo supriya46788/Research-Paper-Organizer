@@ -49,23 +49,45 @@ body {
 }
 
 .nav-item {
-  text-decoration: none;
-  background-color: #3b82f6;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
   border: none;
-  padding: 10px 18px;
+  padding: 0.6rem 1.2rem;
   margin: 5px;
   cursor: pointer;
-  font-size: 14px;
-  border-radius: 4px;
-  transition: background-color 0.3s, transform 0.2s;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-weight: 500;
 }
+
+.nav-item:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
+}
+
 
 .nav-item:hover {
   background-color: #115cff; /* Slightly darker blue */
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
+
+body.dark-mode .nav-item {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: var(--text-light);
+}
+body.dark-mode .nav-item:hover {
+  background: #2563eb;
+}
+
+
 /* Header Styles */
 .header {
   background-color: #7298e5;
@@ -453,27 +475,72 @@ body.dark-mode #footer-outer h3 {
   gap: 1rem;
   margin-top: 20px;
 }
-
 .paper-card {
   background-color: #7298e5;
   border: 1px solid #141414;
   border-radius: 12px;
   padding: 1.2rem;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Import modern font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.paper-card {
+  font-family: 'Poppins', sans-serif;
+  background-color: #7298e5;
+  border: 1px solid #141414;
+  border-radius: 12px;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated gradient border effect with blue-violet tones */
+.paper-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #4f46e5, #3b82f6, #06b6d4, #8b5cf6);
+  background-size: 300% 300%;
+  border-radius: 14px;
+  z-index: -1;
+  animation: borderGlow 6s ease infinite;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Hover lift + glow */
 .paper-card:hover {
-  border-color: #d1d5db;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
 }
 
+.paper-card:hover::before {
+  opacity: 1;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Selected state */
 .paper-card.selected {
-  border-color: #0772eb;
+  border-color: #3b82f6;
   background: #091737;
 }
 
+/* Paper header layout */
 .paper-header {
   display: flex;
   justify-content: space-between;
@@ -482,10 +549,18 @@ body.dark-mode #footer-outer h3 {
   gap: 0.5rem;
 }
 
+/* Title styling */
 .paper-title {
   font-weight: 600;
   color: #dde6f1;
   flex: 1;
+  transition: color 0.35s ease, text-shadow 0.35s ease;
+}
+
+/* Title glow on hover */
+.paper-card:hover .paper-title {
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(59, 130, 246, 0.7);
 }
 
 .paper-actions {
@@ -1717,6 +1792,24 @@ body.dark-mode .quick-star.active {
 
   }
 }
+
+
+.forgot-link {
+  text-align: right;
+  margin-top: 8px;
+}
+
+.forgot-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.forgot-link a:hover {
+  text-decoration: underline;
+}
+
+
 
 /* Chatbot Toggle Button */
 #chatbot-toggle {

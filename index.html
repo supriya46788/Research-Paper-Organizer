@@ -54,6 +54,10 @@
             <i class="fas fa-plus"></i>
             Add Paper
           </button>
+          <button class="add-btn" onclick="location.href='summarize.html'">
+          <i class="fas fa-align-left"></i>
+          Summarize Paper
+          </button>
 
           <button class="btn-secondary" onclick="importPapers()">
             <i class="fas fa-file-import"></i> Import
@@ -74,6 +78,7 @@
         <div id="menu-items-container">
           <a href="#" class="menu-item">Home</a>
           <a href="#" class="menu-item">About us</a>
+
           <a href="#" class="menu-item">FAQ</a>
           <a href="contact.html" class="menu-item">Contact Us</a>
         </div>
@@ -104,15 +109,6 @@
             <option value="">From Year</option>
           </select>
 
-          <select id="maxYear" class="filter-select">
-            <option value="">To Year</option>
-          </select>
-
-          <div class="filter-container">
-            <!-- Author Name -->
-            <input type="text" id="authorFilter" placeholder="Filter by Author" class="filter-select"
-              oninput="filterPapers()" />
-          </div>
           <div class="filter-container">
             <!-- Favorites Filter -->
             <select
@@ -158,16 +154,6 @@
               <option value="year-asc">Oldest First</option>
             </select>
           </div>
-          <div class="filter-container">
-            <label style="font-size: 0.95em;">
-              <input type="checkbox" id="includeCitations" onchange="filterPapers()" />
-              Include Citations
-            </label>
-            <label style="font-size: 0.95em; margin-left:8px;">
-              <input type="checkbox" id="includePatents" onchange="filterPapers()" />
-              Include Patents
-            </label>
-            </div>
         </div>
       </div>
   </div>
