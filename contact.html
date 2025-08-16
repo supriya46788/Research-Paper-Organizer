@@ -1,95 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Research Paper Organizer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | Research Paper Organizer</title>
+
+  <!-- Icons + Alerts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Used to style the footer-->
+  <link rel="stylesheet" href="css/blog.css"> 
+  <link rel="stylesheet" href="css/contact.css">
 </head>
-<body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="navbar">
-            <a href="index.html" class="nav-item">
-                <i class="fas fa-home"></i>
-                Home
-            </a>
+<body class="dark-mode">
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main">
+      <a href="index.html" class="nav-item">
+        <i class="fas fa-home" aria-hidden="true"></i>
+        Home
+      </a>
 
-            <div class="navbar-right-links">
-                <a href="about.html" class="nav-item">About us</a>
-                <a href="blog.html" class="nav-item">Blogs</a>
-                <a href="Faq.html" class="nav-item">FAQ</a>
-                <a href="contact.html" class="nav-item">Contact Us</a>
-                <a href="tools.html" class="nav-item">Tools</a>
-                <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-                    <i class="fas fa-moon"></i>
-                </button>
+      <div class="navbar-right-links">
+        <a href="about.html" class="nav-item">About us</a>
+        <a href="blog.html" class="nav-item">Blogs</a>
+        <a href="Faq.html" class="nav-item">FAQ</a>
+        <a href="contact.html" class="nav-item" aria-current="page">Contact Us</a>
+        <a href="tools.html" class="nav-item">Tools</a>
+        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" type="button">
+          <i class="fas fa-sun" aria-hidden="true"></i>
+          <span class="sr-only">Toggle dark mode</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Centered page area -->
+    <main class="page">
+      <section class="contact-container" aria-labelledby="contact-title">
+        <h1 id="contact-title" class="contact-title">Contact Us</h1>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <!-- Name -->
+          <div class="form-group">
+            <input type="text" id="name" name="name" class="form-input" placeholder=" " required minlength="2" autocomplete="name" />
+            <label for="name" class="form-label">Name</label>
+            <p class="field-hint">At least 2 characters</p>
+            <p class="field-error" id="name-error" aria-live="polite"></p>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <input type="email" id="email" name="email" class="form-input" placeholder=" " required inputmode="email" autocomplete="email" />
+            <label for="email" class="form-label">Email</label>
+            <p class="field-hint">We’ll only use this to reply</p>
+            <p class="field-error" id="email-error" aria-live="polite"></p>
+          </div>
+
+          <!-- Message -->
+          <div class="form-group">
+            <textarea id="message" name="message" class="form-textarea" rows="5" placeholder=" " required minlength="10" maxlength="1000"></textarea>
+            <label for="message" class="form-label">Message</label>
+            <div class="row-between">
+              <p class="field-hint">Min 10 characters</p>
+              <p class="char-counter" id="message-counter" aria-live="polite">0 / 1000</p>
             </div>
-        </nav>
+            <p class="field-error" id="message-error" aria-live="polite"></p>
+          </div>
 
-    <div class="contact-container">
-      
-        <div class="contact-form-box">
-            <h1 class="contact-title">Contact Us</h1>
-            <form id="contact-form" class="contact-form">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
-                    <label for="name" class="form-label">Name</label>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
-                    <label for="email" class="form-label">Email</label>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" class="form-textarea" rows="4" placeholder=" " required></textarea>
-                    <label for="message" class="form-label">Message</label>
-                </div>
-                <button type="submit" class="submit-btn">
-                    <span class="submit-text">Send</span>
-                    <span class="loading-spinner hidden"><i class="fas fa-spinner fa-spin"></i></span>
-                </button>
-            </form>
+          <!-- Submit -->
+          <button type="submit" class="submit-btn" id="submitBtn" aria-live="polite">
+            <span class="btn-icon" aria-hidden="true"><i class="fas fa-paper-plane"></i></span>
+            <span class="submit-text">Send</span>
+            <span class="loading-spinner hidden" aria-hidden="true"><i class="fas fa-spinner fa-spin"></i></span>
+          </button>
+        </form>
+      </section>
+    </main>
+     <!-- Footer  -->
+    <footer class="blog-footer" aria-label="Footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3><i class="fas fa-book-open" aria-hidden="true"></i> Research Paper Organizer</h3>
+          <p>Streamline your academic workflow with our intelligent research paper management system.</p>
         </div>
-    </div>
-    </div>
-    
-    <script src="js/contact.js"></script>
-    <script>
-        // Dark Mode Toggle Function
-        function toggleDarkMode() {
-            const body = document.body;
-            const darkToggle = document.getElementById('darkModeToggle');
-            const icon = darkToggle.querySelector('i');
-            
-            body.classList.toggle('dark-mode');
-            
-            // Update icon
-            if (body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                localStorage.setItem('darkMode', 'disabled');
-            }
-        }
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="Faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="open-source.html">Open Source</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="https://github.com/supriya46788/Research-Paper-Organizer" target="_blank" title="GitHub" rel="noopener">
+              <i class="fab fa-github" aria-hidden="true"></i>
+              <span class="sr-only">GitHub</span>
+            </a>
+            <a href="#" target="_blank" title="Twitter" rel="noopener">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+              <span class="sr-only">Twitter</span>
+            </a>
+            <a href="#" target="_blank" title="LinkedIn" rel="noopener">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Research Paper Organizer | Open Source Project</p>
+        <p class="footer-tagline">Made with <i class="fas fa-heart" style="color: #e74c3c;" aria-hidden="true"></i> for researchers worldwide</p>
+      </div>
+    </footer>
+  </div>
 
-        // Load dark mode preference on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const darkMode = localStorage.getItem('darkMode');
-            const darkToggle = document.getElementById('darkModeToggle');
-            const icon = darkToggle.querySelector('i');
-            
-            if (darkMode === 'enabled') {
-                document.body.classList.add('dark-mode');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        });
-    </script>
+  <!-- Scripts -->
+  <script src="js/contact.js"></script>
+  <script>
+    // Dark Mode Toggle 
+    const body = document.body;
+    const darkToggle = document.getElementById('darkModeToggle');
+    const icon = darkToggle.querySelector('i');
+
+    function applyDarkPref(pref) {
+      const enabled = pref === 'enabled';
+      body.classList.toggle('dark-mode', enabled);
+      icon.classList.toggle('fa-moon', !enabled);
+      icon.classList.toggle('fa-sun', enabled);
+    }
+
+    darkToggle.addEventListener('click', () => {
+      const newPref = body.classList.contains('dark-mode') ? 'disabled' : 'enabled';
+      localStorage.setItem('darkMode', newPref);
+      applyDarkPref(newPref);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyDarkPref(localStorage.getItem('darkMode') || 'enabled'); // default to dark
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const pref = localStorage.getItem('darkMode');
+      if (pref === 'enabled') {
+        document.body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        document.body.classList.remove('dark-mode');
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
+
+  </script>
 </body>
 </html>
