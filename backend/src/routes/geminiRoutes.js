@@ -21,7 +21,8 @@ const upload = multer({
 });
 
 // Existing chat route
-router.post("/chat", protectRoute, geminiChat);
+// router.post("/chat", protectRoute, geminiChat);
+router.post("/chat", geminiChat);
 
 // NEW: Summarize route (without auth protection for now)
 router.post("/summarize", upload.single('file'), summarizePaper);

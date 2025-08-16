@@ -1094,14 +1094,23 @@ function importPapers() {
 
 //Calendar Logic 
 function populateYearSelect(id, startYear, endYear) {
-        const select = document.getElementById(id);
-        for (let year = startYear; year >= endYear; year--) {
-            const option = document.createElement("option");
-            option.value = year;
-            option.textContent = year;
-            select.appendChild(option);
-        }
-    }
+  const select = document.getElementById(id);
+  if (!select) {
+    console.warn(`Element with id '${id}' not found`);
+    return;
+  }
+  
+  // Clear existing options first
+  select.innerHTML = '<option value="">From Year</option>';
+  
+  for (let year = startYear; year >= endYear; year--) {
+    const option = document.createElement("option");
+    option.value = year;
+    option.textContent = year;
+    select.appendChild(option);
+  }
+}
+
 
 
     // Populate both dropdowns from 2050 → 1950
@@ -1192,7 +1201,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       // Call your backend proxy for Gemini
-      const res = await fetch("/api/gemini-chat", {
+      const res = await fetch("http://localhost:3000/api/gemini/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -1216,5 +1225,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(err);
     }
   }
+ 
+
 });
 

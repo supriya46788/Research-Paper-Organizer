@@ -16,12 +16,20 @@ console.log("Controller - GEMINI_API_KEY loaded:", GEMINI_API_KEY ? "✅ YES" : 
 
 // Existing chat function
 export const geminiChat = async (req, res) => {
+  console.log("🚀 CHATBOT REQUEST RECEIVED!");
+  console.log("Request body:", req.body);
+  console.log("Request headers:", req.headers);
+  
   try {
     const { message, system } = req.body;
-
+    
+    console.log("✅ Sending to Gemini API...");
     if (!GEMINI_API_KEY) {
+      console.log("❌ GEMINI_API_KEY missing!");
       return res.status(500).json({ error: "Missing GEMINI_API_KEY" });
     }
+    
+    
     if (!message || typeof message !== "string") {
       return res.status(400).json({ error: "Missing message" });
     }

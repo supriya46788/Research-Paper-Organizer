@@ -30,6 +30,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Backend application for Research Paper Organizer" });
 });
 
+
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
