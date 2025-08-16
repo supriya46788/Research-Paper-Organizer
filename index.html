@@ -203,6 +203,119 @@
         </div>
     </section>
 
+<!-- ===== Testimonials Section ===== -->
+<section id="testimonials">
+  <h2>What Our Users Say</h2>
+  <div class="testimonials-container">
+    <div class="testimonial-card">
+      <img src="testimonialw.png" alt="User Photo">
+      <h3>Dr. Sarah Lee</h3>
+      <p class="designation">PhD Student, AI Researcher</p>
+      <p class="feedback">"The Research Paper Organizer has transformed how I manage my reading list. It’s intuitive and saves me hours every week!"</p>
+      <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
+    </div>
+
+    <div class="testimonial-card">
+      <img src="test1.jpg" alt="User Photo">
+      <h3>Michael Chen</h3>
+      <p class="designation">Data Scientist</p>
+      <p class="feedback">"I love the clean interface and the ability to tag and search papers instantly. A must-have for researchers!"</p>
+      <p class="tags">💡 Great UI • ⚡ Fast</p>
+    </div>
+
+    <div class="testimonial-card">
+      <img src="testimonialw.png" alt="User Photo">
+      <h3>Ananya Sharma</h3>
+      <p class="designation">Graduate Student</p>
+      <p class="feedback">"This tool has streamlined my literature review process and made collaboration so much easier."</p>
+      <p class="tags">🤝 Collaboration • 📚 Productivity</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CSS ===== -->
+<style>
+#testimonials {
+  padding: 50px 20px;
+  background: #f9fafb;
+  text-align: center;
+}
+#testimonials h2 {
+  
+  font-size: 2.5rem; /* Bigger text */
+  font-weight: bold; /* Makes it stand out */
+  text-align: center; /* Centered heading */
+  margin-bottom: 30px; /* More space below */
+
+}
+.testimonials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.testimonial-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, opacity 0.5s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.testimonial-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  margin-bottom: 15px;
+}
+.testimonial-card .designation {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+.testimonial-card .feedback {
+  font-size: 0.95rem;
+  margin: 15px 0;
+}
+.testimonial-card .tags {
+  font-size: 0.85rem;
+  color: #374151;
+}
+.testimonial-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 640px) {
+  .testimonials-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+  }
+  .testimonial-card {
+    min-width: 260px;
+    scroll-snap-align: center;
+  }
+}
+</style>
+
+<!-- ===== JS Fade-in Animation ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".testimonial-card");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => observer.observe(card));
+});
+</script>
+
+
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
