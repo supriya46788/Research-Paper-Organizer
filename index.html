@@ -14,25 +14,29 @@
 <body>
     <!-- Navigation -->
     <nav class="landing-nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-book-open"></i>
-                <span>Research Paper Organizer</span>
-            </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
-                <a href="about.html">About</a>
-                <a href="tools.html">Tools</a>
-                <a href="contact.html">Contact</a>
-                
-                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
-            </div>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+    <div class="nav-container">
+        <div class="nav-brand">
+            <i class="fas fa-book-open"></i>
+            <span>Research Paper Organizer</span>
         </div>
-    </nav>
+
+        <!-- Desktop & Mobile Links -->
+        <div class="nav-links" id="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it Works</a>
+            <a href="about.html">About</a>
+            <a href="tools.html">Tools</a>
+            <a href="contact.html">Contact</a>
+            <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="mobile-menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</nav>
+
 
     <!-- Hero Section -->
     <section class="hero">
@@ -376,5 +380,14 @@ document.addEventListener("DOMContentLoaded", () => {
     </footer>
 
     <script src="landing.js"></script>
+    <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+</script>
+
 </body>
 </html>
