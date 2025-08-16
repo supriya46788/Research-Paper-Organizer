@@ -2,18 +2,18 @@ import dotenv from "dotenv";
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
-// Get current file directory and go up one level to find .env
+// Get the current file's directory and go up one level
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Load .env from parent directory (backend folder)
+// Load .env from parent directory (backend root)
 dotenv.config({ path: join(__dirname, '../.env') });
 
-// Debug log to verify it's loaded
-console.log("=== Environment Variables ===");
+// Debug log to verify loading
+console.log("=== Environment Variables Debug ===");
 console.log("Loading .env from:", join(__dirname, '../.env'));
 console.log("GEMINI_API_KEY loaded:", process.env.GEMINI_API_KEY ? "✅ YES" : "❌ NO");
-console.log("MONGO_URI loaded:", process.env.MONGO_URI ? "✅ YES" : "❌ NO");
+console.log("=====================================");
 
 import express from "express";
 import { connectDB } from "./utils/db.js";
