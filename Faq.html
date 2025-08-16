@@ -3,19 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ</title>
+    <title>FAQ | Research Paper Organizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/faq.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="dark-mode">
-    <div class="faq-container">
-        <!-- Back Button -->
-        <div class="back-button">
-            <a href="index.html" class="back-link">
-                <i class="fas fa-arrow-left"></i> Back to Home
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                Home
             </a>
 
-        
+            <div class="navbar-right-links">
+                <a href="about.html" class="nav-item">About us</a>
+                <a href="blog.html" class="nav-item">Blogs</a>
+                <a href="Faq.html" class="nav-item">FAQ</a>
+                <a href="contact.html" class="nav-item">Contact Us</a>
+                <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div class="faq-container">
         <h1 class="faq-title">Frequently Asked Questions</h1>
         <div class="faq-list">
             <!-- Existing Questions -->
@@ -123,6 +136,40 @@
     </div>
 
     <script src="js/faq.js"></script>
+    <script>
+        // Dark Mode Toggle Function
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkToggle = document.getElementById('darkModeToggle');
+            const icon = darkToggle.querySelector('i');
+            
+            body.classList.toggle('dark-mode');
+            
+            // Update icon
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Load dark mode preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkMode = localStorage.getItem('darkMode');
+            const darkToggle = document.getElementById('darkModeToggle');
+            const icon = darkToggle.querySelector('i');
+            
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+    </script>
     <script>
         (function(){
             if(!window.chatbase || window.chatbase("getState") !== "initialized"){
