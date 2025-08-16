@@ -1050,7 +1050,7 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
   }, 1500);
 });
 
-feature/ai-paper-summarizer
+
 // ===== AI ASSISTANT FEATURES =====
 
 // Global variables for AI features
@@ -1058,6 +1058,11 @@ let currentSummary = null;
 let speechSynthesis = window.speechSynthesis;
 let currentUtterance = null;
 let aiChatHistory = [];
+
+// Get current selected paper
+function getCurrentPaper() {
+  return selectedPaper;
+}
 
 // Tab switching functionality
 function switchTab(tabName) {
@@ -1790,3 +1795,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
