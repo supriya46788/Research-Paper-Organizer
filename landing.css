@@ -127,6 +127,37 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
 }
+/* Existing styles remain */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Hide nav-links on mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: white;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        display: none; /* hidden by default */
+    }
+
+    .nav-links.active {
+        display: flex; /* show when toggled */
+    }
+
+    .mobile-menu-toggle {
+        display: block; /* hamburger visible */
+    }
+}
 
 /* Hero Section */
 .hero {
