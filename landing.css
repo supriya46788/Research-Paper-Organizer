@@ -135,7 +135,7 @@ body {
     gap: 2rem;
 }
 
-/* Hide nav-links on mobile */
+/* Mobile Menu Animation */
 @media (max-width: 768px) {
     .nav-links {
         position: absolute;
@@ -147,8 +147,98 @@ body {
         padding: 1.5rem;
         border-radius: 0.75rem;
         box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        display: none; /* hidden by default */
+        
+        /* animation setup */
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: all 0.3s ease;
     }
+
+    
+}
+.mockup-content {
+    display: flex;
+    flex-wrap: wrap;           /* allows wrapping */
+    gap: 1rem;
+    width: 100%;               /* never exceed page */
+    max-width: 100%;           
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow-x: hidden;        /* prevent horizontal scroll */
+}
+
+.mockup-paper {
+    flex: 1 1 calc(33.333% - 1rem); /* 3 per row on desktop */
+    max-width: calc(33.333% - 1rem);
+    background: #fff;
+    border: 1px solid var(--border-color, #ddd);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+}
+
+/* 📱 Mobile responsiveness */
+@media (max-width: 900px) {
+    .mockup-paper {
+        flex: 1 1 calc(50% - 1rem); /* 2 per row */
+        max-width: calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 600px) {
+    .mockup-paper {
+        flex: 1 1 100%;  /* full width on small screens */
+        max-width: 100%;
+    }
+}
+
+/* Responsive Hero */
+@media (max-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1fr; /* stack hero text + image */
+        text-align: center;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .hero-mockup {
+        transform: none;
+        margin-top: 2rem;
+    }
+    .hero-content h1 {
+        font-size: 2.25rem;
+    }
+}
+
+/* Responsive Features */
+@media (max-width: 768px) {
+    .features-grid {
+        grid-template-columns: 1fr; /* stack features */
+    }
+}
+
+/* Responsive Stats */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr 1fr; /* 2 per row on small screens */
+    }
+    .stat-number {
+        font-size: 2rem;
+    }
+}
+
+/* Responsive CTA */
+@media (max-width: 600px) {
+    .cta-buttons {
+        flex-direction: column;
+    }
+    .cta-buttons button {
+        width: 100%;
+    }
+}
 
     .nav-links.active {
         display: flex; /* show when toggled */
@@ -157,7 +247,7 @@ body {
     .mobile-menu-toggle {
         display: block; /* hamburger visible */
     }
-}
+
 
 /* Hero Section */
 .hero {
@@ -536,3 +626,48 @@ body {
         text-align: center; /* Center text for better readability */
     }
 }
+/* === NAV: Mobile fix & animation === */
+@media (max-width: 768px) {
+  /* show hamburger only on mobile */
+  .mobile-menu-toggle {
+    display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  /* turn link row into a dropdown panel */
+  .nav-links {
+    position: fixed;        /* stays attached to viewport */
+    top: 64px;              /* approx nav height */
+    left: 16px;
+    right: 16px;
+    background: #fff;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    z-index: 1100;
+
+    /* hidden by default */
+    display: none;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+  .nav-links.active {
+    display: flex;          /* reveal on toggle */
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* make the CTA button span full width in the dropdown */
+  .nav-links .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* prevent background scroll when menu is open (optional) */
+.no-scroll { overflow: hidden; }

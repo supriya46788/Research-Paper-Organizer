@@ -381,13 +381,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     <script src="landing.js"></script>
     <script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.getElementById("nav-links");
+  const toggleBtn = document.getElementById("menu-toggle");
+  const toggleIcon = toggleBtn.querySelector("i");
+  const navLinks = document.getElementById("nav-links");
 
-    menuToggle.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-    });
+  function closeMenu() {
+    navLinks.classList.remove("active");
+    toggleIcon.classList.add("fa-bars");
+    toggleIcon.classList.remove("fa-times");
+    document.body.classList.remove("no-scroll");
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    const opening = !navLinks.classList.contains("active");
+    navLinks.classList.toggle("active");
+    toggleIcon.classList.toggle("fa-bars", !opening);
+    toggleIcon.classList.toggle("fa-times", opening);
+    document.body.classList.toggle("no-scroll", opening);
+  });
+
+  // Close when clicking a link or outside
+  navLinks.querySelectorAll("a, button").forEach(el => el.addEventListener("click", closeMenu));
+  document.addEventListener("click", (e) => {
+    if (!navLinks.classList.contains("active")) return;
+    if (!navLinks.contains(e.target) && !toggleBtn.contains(e.target)) closeMenu();
+  });
 </script>
+
 
 </body>
 </html>
