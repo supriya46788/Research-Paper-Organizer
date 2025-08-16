@@ -22,7 +22,9 @@
         <a href="blog.html" class="nav-item">Blogs</a>
         <a href="Faq.html" class="nav-item">FAQ</a>
         <a href="contact.html" class="nav-item">Contact Us</a>
-        <a href="tools.html" class="nav-item">Tools</a>
+        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+          <i class="fas fa-moon"></i>
+        </button>
       </div>
     </nav>
 
@@ -129,9 +131,88 @@
 
   <!-- Footer -->
   <footer class="blog-footer">
-    <p>© 2025 Research Paper Organizer | Open Source Project</p>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        <p>Streamline your academic workflow with our intelligent research paper management system.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="Faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul class="footer-links">
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="open-source.html">Open Source</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <div class="social-links">
+          <a href="https://github.com/Channpreetk/Research-Paper-Organizer" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" target="_blank" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2025 Research Paper Organizer | Open Source Project</p>
+      <p class="footer-tagline">Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for researchers worldwide</p>
+    </div>
   </footer>
 
   </div>
+
+  <script>
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+      const body = document.body;
+      const darkToggle = document.getElementById('darkModeToggle');
+      const icon = darkToggle.querySelector('i');
+      
+      body.classList.toggle('dark-mode');
+      
+      // Update icon
+      if (body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    }
+
+    // Load dark mode preference on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const darkMode = localStorage.getItem('darkMode');
+      const darkToggle = document.getElementById('darkModeToggle');
+      const icon = darkToggle.querySelector('i');
+      
+      if (darkMode === 'enabled') {
+        document.body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      }
+    });
+  </script>
 </body>
 </html>

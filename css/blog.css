@@ -16,6 +16,8 @@ body {
   padding: 2rem;
   background: linear-gradient(135deg, #4a90e2, #357abd);
   color: white;
+  border-radius: 20px;
+  margin: 1rem 0;
 }
 .blog-header h1 {
   font-size: 2.5rem;
@@ -36,7 +38,7 @@ body {
 /* Blog Card */
 .blog-card {
   background: white;
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   display: flex;
@@ -108,10 +110,106 @@ body {
 
 /* Footer */
 .blog-footer {
-  text-align: center;
-  padding: 1rem;
-  background: #357abd;
+  background: linear-gradient(135deg, #357abd, #2c5aa0);
   color: white;
+  border-radius: 20px;
+  margin-top: 2rem;
+  padding: 0;
+  overflow: hidden;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.footer-section h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-section h4 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+.footer-section p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  transform: translateX(5px);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.footer-bottom {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  margin: 0.5rem 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* Responsive */
@@ -122,6 +220,14 @@ body {
   .blog-container {
     padding: 1rem;
     gap: 1rem;
+  }
+  .footer-content {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  .footer-bottom {
+    padding: 1rem;
   }
 }
 @media (max-width: 480px) {
@@ -138,5 +244,115 @@ body {
 /* Utility Classes */
 .utility-text-center {
   text-align: center;
+}
+
+/* Dark Mode Styles */
+.dark-toggle {
+  background: none !important;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+.dark-toggle:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Dark Mode Theme */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .blog-header {
+  background: linear-gradient(135deg, #2d3748, #1a202c);
+}
+
+body.dark-mode .blog-container {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .blog-card {
+  background: #2d3748;
+  color: #e0e0e0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+body.dark-mode .blog-card:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+body.dark-mode .blog-content h2 {
+  color: #63b3ed;
+}
+
+body.dark-mode .blog-card:hover .blog-content h2 {
+  color: #90cdf4;
+}
+
+body.dark-mode .blog-content p {
+  color: #cbd5e0;
+}
+
+body.dark-mode .read-more {
+  color: #63b3ed;
+}
+
+body.dark-mode .read-more:hover {
+  color: #90cdf4;
+}
+
+body.dark-mode .blog-footer {
+  background: linear-gradient(135deg, #1a202c, #2d3748);
+  border-radius: 20px;
+}
+
+body.dark-mode .footer-section h3,
+body.dark-mode .footer-section h4 {
+  color: #e0e0e0;
+}
+
+body.dark-mode .footer-section h4 {
+  border-bottom-color: rgba(224, 224, 224, 0.2);
+}
+
+body.dark-mode .footer-links a {
+  color: rgba(224, 224, 224, 0.8);
+}
+
+body.dark-mode .footer-links a:hover {
+  color: #90cdf4;
+}
+
+body.dark-mode .social-links a {
+  background: rgba(224, 224, 224, 0.1);
+  color: #e0e0e0;
+}
+
+body.dark-mode .social-links a:hover {
+  background: rgba(144, 205, 244, 0.2);
+  color: #90cdf4;
+}
+
+body.dark-mode .footer-bottom {
+  background: rgba(0, 0, 0, 0.3);
+  border-top-color: rgba(224, 224, 224, 0.1);
+}
+
+/* Dark mode navbar compatibility */
+body.dark-mode .navbar {
+  background: transparent;
+}
+
+body.dark-mode .nav-item {
+  background: linear-gradient(135deg, #4a5568, #2d3748);
+  color: #e0e0e0;
+}
+
+body.dark-mode .nav-item:hover {
+  background: linear-gradient(135deg, #63b3ed, #4299e1);
+  color: #1a202c;
 }
 
