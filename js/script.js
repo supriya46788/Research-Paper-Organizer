@@ -945,37 +945,35 @@ menuCloseButton.addEventListener("click", hideMenu);
 
 menuItems.forEach((menuItem) => menuItem.addEventListener("click", hideMenu));
 
-// Dark Mode: Initialization & Toggle
-function applyThemeFromStorage() {
-  const theme = localStorage.getItem(THEME_KEY);
-  if (theme === "dark") {
-    document.body.classList.add("dark-mode");
-    setDarkModeIcon(true);
-  } else {
+// Dark Mode: Initialization & Toggle function 
+function applyThemeFromStorage()
+{ 
+  const theme = localStorage.getItem(THEME_KEY); 
+  if (theme === "dark") { 
+    document.body.classList.add("dark-mode"); 
+    setDarkModeIcon(true); 
+  } else { 
     document.body.classList.remove("dark-mode");
-    setDarkModeIcon(false);
-  }
+    setDarkModeIcon(false); 
+  } 
+} 
+function setDarkModeIcon(isDark) { 
+  const icon = document.getElementById("darkModeToggle").querySelector("i"); 
+  if (!icon) return; 
+  if (isDark) { 
+    icon.classList.remove("fa-moon"); 
+    icon.classList.add("fa-sun"); 
+  } else { 
+    icon.classList.remove("fa-sun"); 
+    icon.classList.add("fa-moon"); 
+  } 
+} 
+function toggleDarkMode() { 
+  const isNowDark = !document.body.classList.contains("dark-mode"); 
+  document.body.classList.toggle("dark-mode"); 
+  setDarkModeIcon(isNowDark); 
+  localStorage.setItem(THEME_KEY, isNowDark ? "dark" : "light"); 
 }
-function setDarkModeIcon(isDark) {
-  const icon = document.getElementById("darkModeToggle").querySelector("i");
-  if (!icon) return;
-  if (isDark) {
-    icon.classList.remove("fa-moon");
-    icon.classList.add("fa-sun");
-  } else {
-    icon.classList.remove("fa-sun");
-    icon.classList.add("fa-moon");
-  }
-}
-
-document
-  .getElementById("darkModeToggle")
-  .addEventListener("click", function () {
-    const isNowDark = !document.body.classList.contains("dark-mode");
-    document.body.classList.toggle("dark-mode");
-    setDarkModeIcon(isNowDark);
-    localStorage.setItem(THEME_KEY, isNowDark ? "dark" : "light");
-  });
 
 // PDF Upload & Preview handling
 

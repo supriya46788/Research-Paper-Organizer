@@ -6,26 +6,22 @@
   <title>Blog | Research Paper Organizer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="css/blog.css" />
-  <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body onload="applyThemeFromStorage()">
   <div class="container">
     <!-- Navigation -->
     <nav class="navbar">
-      <a href="index.html" class="nav-item">
+      <a href="home.html" class="nav-item">
         <i class="fas fa-home"></i>
         Home
       </a>
 
       <div class="navbar-right-links">
-        <a href="about.html" class="nav-item">About us</a>
+        <a href="home.html" class="nav-item">About us</a>
         <a href="blog.html" class="nav-item">Blogs</a>
         <a href="Faq.html" class="nav-item">FAQ</a>
         <a href="contact.html" class="nav-item">Contact Us</a>
         <a href="tools.html" class="nav-item">Tools</a>
-        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-          <i class="fas fa-moon"></i>
-        </button>
       </div>
     </nav>
 
@@ -141,7 +137,7 @@
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="home.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="Faq.html">FAQ</a></li>
@@ -177,43 +173,8 @@
       <p>© 2025 Research Paper Organizer | Open Source Project</p>
       <p class="footer-tagline">Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for researchers worldwide</p>
     </div>
-  </footer>
-
+</footer>
   </div>
-
-  <script>
-    // Dark Mode Toggle Function
-    function toggleDarkMode() {
-      const body = document.body;
-      const darkToggle = document.getElementById('darkModeToggle');
-      const icon = darkToggle.querySelector('i');
-      
-      body.classList.toggle('dark-mode');
-      
-      // Update icon
-      if (body.classList.contains('dark-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        localStorage.setItem('darkMode', 'disabled');
-      }
-    }
-
-    // Load dark mode preference on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      const darkMode = localStorage.getItem('darkMode');
-      const darkToggle = document.getElementById('darkModeToggle');
-      const icon = darkToggle.querySelector('i');
-      
-      if (darkMode === 'enabled') {
-        document.body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      }
-    });
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>

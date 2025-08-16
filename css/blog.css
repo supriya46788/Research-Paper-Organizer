@@ -4,11 +4,72 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --primary: #2f2ca0;
+  --primary-dark: #4698e5;
+  --accent: #facc15;
+  --bg-light: #f9fafb;
+  --bg-dark: #111827;
+  --text-light: #f3f4f6;
+  --text-dark: #1f2937;
+  --gray: #6b7280;
+}
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
+  background: #f7fafc;
   color: #333;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+
+.navbar-right-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+  }
+}
+.nav-item {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-weight: 500;
+}
+
+.nav-item:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
+}
+
+
+.nav-item:hover {
+  background-color: #115cff; /* Slightly darker blue */
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
 
 /* Header */
 .blog-header {
@@ -246,23 +307,10 @@ body {
   text-align: center;
 }
 
-/* Dark Mode Styles */
-.dark-toggle {
-  background: none !important;
-  border: none;
-  cursor: pointer;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
-  transition: all 0.25s ease;
-}
-
-.dark-toggle:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-}
 
 /* Dark Mode Theme */
 body.dark-mode {
-  background-color: #1a1a1a;
+  background: linear-gradient(135deg, var(--bg-dark), #1f2937);
   color: #e0e0e0;
 }
 
@@ -271,7 +319,7 @@ body.dark-mode .blog-header {
 }
 
 body.dark-mode .blog-container {
-  background-color: #1a1a1a;
+  background: linear-gradient(135deg, var(--bg-dark), #1f2937);
 }
 
 body.dark-mode .blog-card {
@@ -347,12 +395,12 @@ body.dark-mode .navbar {
 }
 
 body.dark-mode .nav-item {
-  background: linear-gradient(135deg, #4a5568, #2d3748);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: #e0e0e0;
 }
 
 body.dark-mode .nav-item:hover {
   background: linear-gradient(135deg, #63b3ed, #4299e1);
-  color: #1a202c;
+  color: white;
 }
 
