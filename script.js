@@ -658,7 +658,7 @@ document
 const pdfUploadInput = document.getElementById("pdfUpload");
 const pdfPreviewContainer = document.getElementById("pdfPreviewContainer");
 const pdfPreviewIframe = document.getElementById("pdfPreview");
-const clearPdfBtn = document.getElementById("clearPdfBtn");
+//const clearPdfBtn = document.getElementById("clearPdfBtn");
 
 pdfUploadInput.addEventListener("change", function () {
   const file = this.files[0];
@@ -675,9 +675,9 @@ pdfUploadInput.addEventListener("change", function () {
   }
 });
 
-clearPdfBtn.addEventListener("click", function () {
-  clearPdfData();
-});
+// clearPdfBtn.addEventListener("click", function () {
+//   clearPdfData();
+// });
 
 function showPdfPreview(dataUrl) {
   if (!dataUrl) {
@@ -725,3 +725,111 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
     hideAddForm(); // Optional: close the modal after save
   }, 1500);
 });
+
+
+// Drag & Drop + Click Upload
+document.addEventListener("DOMContentLoaded", () => {
+    const dropZone = document.getElementById("drop-zone");
+    const fileInput = document.getElementById("pdfUpload");
+    const uploadedFile = document.getElementById("uploaded-file");
+
+    // Handle clicking on drop zone to open file picker
+    dropZone.addEventListener("click", () => {
+        fileInput.click();
+    });
+
+    // Highlight drop zone on drag enter / over
+    ["dragenter", "dragover"].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.classList.add("dragover");
+        });
+    });
+
+    // Remove highlight on drag leave / drop
+    ["dragleave", "drop"].forEach(eventName => {
+        dropZone.addEventListener(eventName, (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropZone.classList.remove("dragover");
+        });
+    });
+
+    // Handle file drop
+    dropZone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const files = e.dataTransfer.files;
+        if (files.length) {
+            handleFile(files[0]);
+        }
+    });
+
+    // Handle file selection from input
+    fileInput.addEventListener("change", () => {
+        if (fileInput.files.length) {
+            handleFile(fileInput.files[0]);
+        }
+    });
+
+    // Function to handle the selected PDF
+    function handleFile(file) {
+    if (file.type !== "application/pdf") {
+      alert("Please upload a valid PDF file.");
+      return;
+    }
+
+    console.log("File uploaded:", file.name, file.size, "bytes");
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      uploadedPdfData = e.target.result; // base64 string
+      uploadedFile.style.display = "flex";
+      uploadedFile.innerHTML = `
+      <div class="uploaded-file-row" style="display:flex; align-items:center; padding:5px; border-radius:5px; margin-top:5px;">
+        <!-- left side: icon + filename -->
+        <div style="display:flex; align-items:center; flex:1; min-width:0;">
+          <i class="fas fa-light fa-file-pdf" style="color:#e63946; margin-left:10px; margin-right:10px;"></i> 
+          <span style="flex:1; font-style:italic; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+            ${file.name}
+          </span>
+        </div>
+        <!-- right side: icons -->
+        <div style="display:flex; align-items:center; gap:8px; margin-left:10px; margin-right:10px; flex-shrink:0;">
+          <i class="fas fa-eye-slash" id="preview-pdf" style="cursor:pointer;"></i>
+          <i class="fa-solid fa-trash" id="delete-pdf" style="cursor:pointer;"></i>
+        </div>
+      </div>
+
+      `;
+
+      const eyeIcon = document.getElementById("preview-pdf");
+      let isVisible = true;
+
+      eyeIcon.addEventListener("click", () => {
+        if (!isVisible) {
+          showPdfPreview(uploadedPdfData); // show preview
+          eyeIcon.classList.remove("fa-eye");
+          eyeIcon.classList.add("fa-eye-slash");
+          isVisible = true;
+        } else {
+          showPdfPreview(null); // hide preview
+          eyeIcon.classList.remove("fa-eye-slash");
+          eyeIcon.classList.add("fa-eye");
+          isVisible = false;
+        }
+      });
+
+      const deleteIcon = document.getElementById("delete-pdf");
+      deleteIcon.addEventListener("click", () => {
+        clearPdfData(); // resets input + preview
+        uploadedFile.innerHTML = ""; // remove filename + icons
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+

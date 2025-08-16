@@ -866,11 +866,13 @@ body.dark-mode .tag-badge {
 }
 
 .dark-mode .add-btn,
+.dark-mode .browse-btn,
 .dark-mode .btn-primary {
   background: #3b82f6;
 }
 
 .dark-mode .add-btn:hover,
+.dark-mode .browse-btn:hover,
 .dark-mode .btn-primary:hover {
   background: #2563eb;
 }
@@ -1029,6 +1031,16 @@ body.dark-mode #clearPdfBtn:hover {
   align-items: center;
   font-size: 1.5rem;
   color: #333;
+}
+
+body.dark-mode .uploaded-file-row {
+  background: #111827;
+  color: #d1d5db;
+  border: 1px solid #374151;
+}
+
+body.dark-mode .uploaded-file-row i {
+  color: #9ca3af; /* icons softer in dark */
 }
 
 .hidden {
@@ -1282,4 +1294,76 @@ body.dark-mode #clearPdfBtn:hover {
 
 .favorite-btn.active {
   color: var(--accent);
+}
+
+
+/**css for drop **/
+#drop-zone {
+  border: 1px dashed #000000;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  background-color: #ffffff;
+  color: rgba(191, 188, 188, 0.92);
+  width: 600px;
+  margin: auto;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+#drop-zone.dragover {
+  background-color: rgba(206, 207, 208, 0.902);
+}
+
+.dark-mode #drop-zone {
+  background: #111827;
+}
+
+.dark-mode #drop-zone:hover {
+  background: #111827af;
+}
+#drop-zone .icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+#drop-zone h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+#drop-zone p {
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+#browse-btn {
+  padding: 8px 15px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+#browse-btn:hover {
+  background: #1d4ed8;
+}
+
+.uploaded-file {
+  margin-top: 10px;
+  font-style: italic;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.uploaded-file i {
+  color: #e63946; /* red for PDF icon */
 }
