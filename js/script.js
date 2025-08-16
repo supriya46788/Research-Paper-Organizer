@@ -37,6 +37,7 @@ function initUserInterface() {
   }
 }
 
+
 function updateHeaderWithUserInfo(user) {
   const headerButtons = document.querySelector('.header-buttons');
   
@@ -226,7 +227,25 @@ function filterPapers() {
     const matchesYear =
       (!minYear || paper.year >= minYear);
 
+      const searchInput = document.getElementById("searchInput");
+const clearBtn = document.getElementById("clearSearch");
 
+// Show/hide clear button while typing
+searchInput.addEventListener("input", () => {
+  if (searchInput.value.trim() !== "") {
+    clearBtn.style.display = "block";
+  } else {
+    clearBtn.style.display = "none";
+  }
+});
+
+// Clear search when clicking "x"
+clearBtn.addEventListener("click", () => {
+  searchInput.value = "";
+  clearBtn.style.display = "none";
+  filterPapers(); 
+  searchInput.focus(); 
+});
 
 
     // Favorite filter
