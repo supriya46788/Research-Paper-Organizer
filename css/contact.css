@@ -1,215 +1,162 @@
-/* General styling to match the dark blue, shaded theme */
+/* ===== Tokens (Light by default) ===== */
 :root {
-    --primary-blue: #3b82f6;
-    --dark-blue: #111827;
-    --dark-gray: #1f2937;
-    --text-color: #d1d5db;
-    --light-text-color: #9ca3af;
-    --border-color: #374151;
-    --hover-blue: #2563eb;
-    --focus-shadow: rgba(59, 130, 246, 0.3);
+  --primary-blue: #3b82f6;
+  --hover-blue: #2563eb;
+  --focus-shadow: rgba(59, 130, 246, 0.3);
+
+  /* Light theme defaults */
+  --bg-body: #f9fafb;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --border-color: #d1d5db;
+  --text-color: #111827;
+  --light-text-color: #6b7280;
+  --error: #dc2626;
+  --navbar-h: 64px;
+  --radius: 12px;
+  --elev: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Keyframe animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.02);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Dark theme overrides */
 body.dark-mode {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--dark-gray) 100%);
-    color: var(--text-color);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+  --bg-body: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  --bg-card: #1f2937;
+  --bg-input: #111827;
+  --border-color: #374151;
+  --text-color: #d1d5db;
+  --light-text-color: #9ca3af;
+  --elev: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* ===== Resets ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; }
+
+/* ===== Page Layout ===== */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif;
+  background: var(--bg-body);
+  color: var(--text-color);
+  min-height: 100dvh;
+}
+
+.page {
+  min-height: calc(100dvh - var(--navbar-h));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 32px);
+}
+
+/* ===== Card ===== */
 .contact-container {
-    position: relative; /* Added for back button positioning */
-    width: 100%;
-    max-width: 600px;
-    padding: 2rem;
-    border-radius: 12px;
-    background: var(--dark-gray);
-    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
-    animation: fadeIn 0.8s ease-in-out;
+  width: min(100%, 720px);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  box-shadow: var(--elev);
+  padding: clamp(20px, 4vw, 32px);
+  animation: fadeIn 0.6s ease both;
 }
 
-/* Back button styling */
-.back-btn {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    color: var(--light-text-color);
-    font-size: 1.5rem;
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.back-btn:hover {
-    color: var(--primary-blue);
-    transform: translateX(-5px);
-}
-
+/* Title */
 .contact-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #f3f4f6;
-    text-align: center;
-    margin-bottom: 2rem;
-    animation: fadeIn 1s ease-in-out 0.2s forwards;
-    opacity: 0;
+  text-align: center;
+  font-size: clamp(24px, 3.2vw, 32px);
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 20px;
 }
 
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
+/* ===== Form ===== */
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
 
-.form-group {
-    position: relative;
-    animation: fadeIn 1s ease-in-out 0.4s forwards;
-    opacity: 0;
-}
+.form-group { position: relative; animation: fadeIn 0.6s ease both; }
 
 .form-label {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    color: var(--light-text-color);
-    pointer-events: none;
-    transition: all 0.3s ease;
+  position: absolute;
+  top: 14px; left: 14px;
+  color: var(--light-text-color);
+  pointer-events: none;
+  transition: all .2s ease;
 }
 
-.form-input,
-.form-textarea {
-    width: 100%;
-    padding: 1rem;
-    background: var(--dark-blue);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    font-size: 1rem;
-    color: var(--text-color);
-    transition: all 0.3s ease;
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 16px 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 1rem;
+  color: var(--text-color);
+  transition: border-color .2s, box-shadow .2s, transform .1s, background .2s;
 }
 
-/* Floating label effect */
+.form-textarea { min-height: 140px; resize: vertical; }
+
+/* Floating labels */
 .form-input:focus + .form-label,
 .form-input:not(:placeholder-shown) + .form-label,
 .form-textarea:focus + .form-label,
 .form-textarea:not(:placeholder-shown) + .form-label {
-    top: -0.75rem;
-    left: 0.5rem;
-    font-size: 0.8rem;
-    color: var(--primary-blue);
-    background: var(--dark-gray);
-    padding: 0 0.5rem;
+  top: -8px; left: 10px;
+  font-size: .78rem;
+  color: var(--primary-blue);
+  background: var(--bg-card);
+  padding: 0 6px;
 }
 
-.form-input:focus,
-.form-textarea:focus {
-    outline: none;
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 3px var(--focus-shadow);
+/* Focus state */
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px var(--focus-shadow);
 }
 
-.form-textarea {
-    resize: vertical;
-    min-height: 120px;
+/* Hints & errors */
+.field-hint {
+  margin-top: 8px;
+  font-size: .85rem;
+  color: var(--light-text-color);
+}
+.field-error {
+  margin-top: 6px;
+  font-size: .85rem;
+  color: var(--error);
+  min-height: 1.1em;
 }
 
+/* Errors */
+.has-error .form-input,
+.has-error .form-textarea {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, .15);
+}
+
+/* Button */
 .submit-btn {
-    width: 100%;
-    padding: 1rem 1.5rem;
-    font-size: 1.125rem;
-    font-weight: 600;
-    background: var(--primary-blue);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.2s ease;
-    animation: fadeIn 1s ease-in-out 0.6s forwards;
-    opacity: 0;
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 1.075rem;
+  font-weight: 700;
+  background: var(--primary-blue);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform .08s ease, box-shadow .2s ease, background .15s ease;
 }
+.submit-btn:hover { background: var(--hover-blue); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(59,130,246,.25); }
+.submit-btn:active { transform: translateY(0); box-shadow: none; }
+.submit-btn[disabled] { opacity: .7; cursor: not-allowed; }
 
-.submit-btn:hover {
-    background: var(--hover-blue);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
-}
+/* Loading spinner */
+.hidden { display: none; }
+.loading-spinner { font-size: 1.1em; }
 
-.submit-btn:active {
-    transform: translateY(0);
-    box-shadow: none;
-}
-
-.hidden {
-    display: none;
-}
-
-.loading-spinner {
-    font-size: 1.2em;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    body.dark-mode {
-        padding: 1rem;
-    }
-    .contact-container {
-        padding: 1.5rem;
-    }
-    .back-btn {
-        top: 1rem;
-        left: 1rem;
-    }
-    .contact-title {
-        font-size: 1.5rem;
-    }
-    .form-input,
-    .form-textarea {
-        font-size: 0.9rem;
-    }
-    .form-label {
-        font-size: 0.9rem;
-    }
-    .form-input:focus + .form-label,
-    .form-input:not(:placeholder-shown) + .form-label,
-    .form-textarea:focus + .form-label,
-    .form-textarea:not(:placeholder-shown) + .form-label {
-        font-size: 0.7rem;
-    }
-}
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
