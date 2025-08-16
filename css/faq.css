@@ -8,6 +8,13 @@
     --border-color: #374151;
     --hover-blue: #2563eb;
     --focus-shadow: rgba(59, 130, 246, 0.3);
+    
+    /* Light mode colors */
+    --light-bg: #f9fafb;
+    --light-container-bg: #ffffff;
+    --light-text: #1f2937;
+    --light-text-secondary: #6b7280;
+    --light-border: #e5e7eb;
 }
 
 /* Keyframe animations */
@@ -28,42 +35,51 @@
     box-sizing: border-box;
 }
 
-body.dark-mode {
+/* Light mode (default) */
+body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+    color: var(--light-text);
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* Dark mode styles */
+body.dark-mode {
     background: linear-gradient(135deg, var(--dark-blue) 0%, var(--dark-gray) 100%);
     color: var(--text-color);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+}
+
+/* Dark mode toggle button styling */
+.dark-toggle {
+    background: none !important;
+    border: none;
+    cursor: pointer;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    transition: all 0.25s ease;
+}
+
+.dark-toggle:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
 }
 
 .faq-container {
     position: relative;
     width: 100%;
     max-width: 800px;
+    margin: 2rem auto;
     padding: 2rem;
-    border-radius: 12px;
-    background: var(--dark-gray);
-    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    background: var(--light-container-bg);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     animation: fadeIn 0.8s ease-in-out;
 }
 
-/* Back button styling */
-.back-btn {
-    position: absolute;
-    top: 2rem;
-    left: 2rem;
-    color: var(--light-text-color);
-    font-size: 1.5rem;
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.back-btn:hover {
-    color: var(--primary-blue);
-    transform: translateX(-5px);
+/* Dark mode container */
+body.dark-mode .faq-container {
+    background: var(--dark-gray);
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
 }
 
 .faq-title {
@@ -148,10 +164,6 @@ body.dark-mode {
     .faq-container {
         padding: 1.5rem;
     }
-    .back-btn {
-        top: 1rem;
-        left: 1rem;
-    }
     .faq-title {
         font-size: 1.5rem;
     }
@@ -164,4 +176,42 @@ body.dark-mode {
     .faq-answer p {
         font-size: 0.9rem;
     }
+}
+
+/* Light Mode Styles */
+body:not(.dark-mode) .faq-title {
+    color: var(--light-text);
+}
+
+body:not(.dark-mode) .faq-item {
+    border-color: var(--light-border);
+    background: var(--light-container-bg);
+}
+
+body:not(.dark-mode) .faq-item:hover {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+body:not(.dark-mode) .faq-question h3 {
+    color: var(--light-text);
+}
+
+body:not(.dark-mode) .faq-answer p {
+    color: var(--light-text-secondary);
+}
+
+/* Dark mode navbar compatibility */
+body.dark-mode .navbar {
+    background: transparent;
+}
+
+body.dark-mode .nav-item {
+    background: linear-gradient(135deg, #4a5568, #2d3748);
+    color: #e0e0e0;
+}
+
+body.dark-mode .nav-item:hover {
+    background: linear-gradient(135deg, #63b3ed, #4299e1);
+    color: #1a202c;
 }
