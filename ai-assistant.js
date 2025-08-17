@@ -14,17 +14,31 @@ class AIAssistant {
     this.showInterface();
   }
 
-  // Show the AI interface directly (no API key setup needed)
-  showInterface() {
+  // Show the AI interface (check if server is available)
+  async showInterface() {
     const modal = document.getElementById('aiSummarizerModal');
     const apiKeySetup = document.getElementById('apiKeySetup');
     const aiInterface = document.getElementById('aiInterface');
     
     modal.classList.remove('hidden');
     
-    // Always show the AI interface (server handles API key)
-    apiKeySetup.classList.add('hidden');
-    aiInterface.classList.remove('hidden');
+    // Check if server is running
+    const hasServer = await this.checkServerAvailability();
+    
+    if (hasServer) {
+      // Server is available - no API key needed
+      apiKeySetup.classList.add('hidden');
+      aiInterface.classList.remove('hidden');
+    } else {
+      // No server - check if user has API key for client-side mode
+      if (ApiKeyManager.hasApiKey()) {
+        apiKeySetup.classList.add('hidden');
+        aiInterface.classList.remove('hidden');
+      } else {
+        apiKeySetup.classList.remove('hidden');
+        aiInterface.classList.add('hidden');
+      }
+    }
   }
 
   // API Key Management
@@ -144,8 +158,34 @@ Tags: ${paper.tags.join(', ')}
     return prompts[type] || prompts.tldr;
   }
 
-  // Call Gemini API via server
+  // Check if server is available
+  async checkServerAvailability() {
+    try {
+      const response = await fetch('/api/health', {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' }
+      });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  // Call Gemini API (hybrid: server-side or client-side)
   async callGeminiAPI(prompt) {
+    const hasServer = await this.checkServerAvailability();
+    
+    if (hasServer) {
+      // Use server-side API
+      return this.callServerAPI(prompt);
+    } else {
+      // Use client-side API
+      return this.callClientAPI(prompt);
+    }
+  }
+
+  // Call server-side API
+  async callServerAPI(prompt) {
     const response = await fetch('/api/summarize', {
       method: 'POST',
       headers: {
@@ -155,8 +195,8 @@ Tags: ${paper.tags.join(', ')}
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error || `API request failed: ${response.status}`);
+      const error = await response.json().catch(() => ({ error: 'Server error' }));
+      throw new Error(error.error || `Server request failed: ${response.status}`);
     }
 
     const data = await response.json();
@@ -171,6 +211,38 @@ Tags: ${paper.tags.join(', ')}
         }
       }]
     };
+  }
+
+  // Call client-side API (direct to Gemini)
+  async callClientAPI(prompt) {
+    const apiKey = ApiKeyManager.getApiKey();
+    if (!apiKey) {
+      throw new Error('No API key available. Please set up your Gemini API key.');
+    }
+
+    const response = await fetch(`${CONFIG.gemini.apiUrl}?key=${apiKey}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: [{
+          parts: [{
+            text: prompt
+          }]
+        }],
+        generationConfig: {
+          temperature: CONFIG.ai.temperature,
+          maxOutputTokens: CONFIG.ai.maxTokens,
+        }
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`API request failed: ${response.status}`);
+    }
+
+    return await response.json();
   }
 
   // Format summary text (convert markdown-like formatting to HTML)
