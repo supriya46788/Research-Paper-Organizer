@@ -8,11 +8,22 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 
 ## ✨ Features
 
+### Core Features
 * 🎯 Static single-page application (SPA) with smooth UI
 * 📁 Add and organize research paper entries
 * 📇 Sort and filter by category (like AI, ML, Web, etc.)
 * 🔍 Search bar to quickly find a paper
 * 📌 Visual cards for each paper with title, author(s), and description
+* 📄 PDF upload and preview functionality
+* 🌙 Dark mode toggle
+* 📱 Responsive design for all devices
+* 📝 Citation generation (APA, MLA, Chicago)
+
+### 🤖 AI-Powered Features (NEW!)
+* 🧠 **AI Summarization**: Get TL;DR, detailed summaries, key points, and research questions using Google's Gemini API
+* 📊 **Interactive Visualizations**: Keyword frequency charts, research timeline, and topic distribution analysis
+* 🗣️ **Voice Assistant**: Text-to-speech functionality to read summaries aloud
+* 💬 **AI Chat Assistant**: Ask questions about your research papers and get contextual responses
 * 🎨 Built with pure HTML, CSS, and JavaScript – no frameworks
 
 ---
@@ -22,16 +33,20 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 ```
 research-paper-organizer/
 ├── index.html          # Main HTML structure
-├── style.css           # All custom styling
-├── script.js           # Static JS for DOM manipulation
-├── assets/             # Images, icons, or resources
-└── README.md           # Project documentation
+├── style.css           # All custom styling with AI interface styles
+├── script.js           # Core DOM manipulation and paper management
+├── config.js           # Configuration for AI features and API settings
+├── ai-assistant.js     # AI integration with Gemini API
+├── SETUP.md           # Detailed setup guide for AI features
+├── assets/            # Images, icons, or resources
+└── README.md          # Project documentation
 ```
 
 ---
 
 ## 💡 How to Use
 
+### Basic Setup
 1. Clone this repo:
 
    ```bash
@@ -41,6 +56,34 @@ research-paper-organizer/
 2. Open `index.html` in your browser.
 
 3. Start adding your research papers directly.
+
+### 🚀 Server Version (Recommended)
+
+4. **Run with Server** (No API key setup required for users):
+   ```bash
+   # Install dependencies
+   npm install
+   
+   # Set up your environment (one-time setup)
+   cp .env.example .env
+   # Add your Gemini API key to .env file
+   
+   # Start the server
+   npm start
+   ```
+   
+   - Visit `http://localhost:3000`
+   - AI features work immediately - no user setup required!
+   - **For detailed server setup, see [SERVER_SETUP.md](SERVER_SETUP.md)**
+
+### 📱 Static Version (Client-side)
+
+5. **Alternative: Client-side Setup**:
+   - Open `index.html` directly in browser
+   - Users need to provide their own Gemini API key
+   - Click "🧠 Summarize Paper" → Enter API key when prompted
+   
+📄 **For detailed setup instructions, see [SETUP.md](SETUP.md)**
 
 ---
 

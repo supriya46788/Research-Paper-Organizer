@@ -10,6 +10,12 @@
     />
     <!-- SweetAlert2 CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Configuration -->
+    <script src="config.js"></script>
 
     <link rel="stylesheet" href="style.css" />
     <link
@@ -76,6 +82,11 @@
             <button class="add-btn" onclick="showAddForm()">
               <i class="fas fa-plus"></i>
               Add Paper
+            </button>
+            
+            <button class="summarize-btn" onclick="openAiSummarizer()">
+              <i class="fas fa-brain"></i>
+              Summarize Paper
             </button>
           </div>
         </div>
@@ -327,6 +338,130 @@
       <div id="loadingSpinner" class="loading-spinner hidden">
         <i class="fas fa-spinner fa-spin"></i> Saving Paper...
       </div>
+      
+      <!-- AI Summarizer Modal -->
+      <div id="aiSummarizerModal" class="modal-overlay hidden">
+        <div class="modal ai-modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">AI-Powered Research Assistant</h2>
+              <button class="modal-close" onclick="closeAiSummarizer()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            
+            <!-- API Key Setup Section -->
+            <div id="apiKeySetup" class="api-key-setup">
+              <div class="setup-content">
+                <i class="fas fa-key setup-icon"></i>
+                <h3>Setup Required</h3>
+                <p>Please enter your Gemini API key to use AI features:</p>
+                <div class="api-key-input-group">
+                  <input type="password" id="apiKeyInput" placeholder="Enter your Gemini API key" class="form-input">
+                  <button onclick="saveApiKey()" class="btn-primary">Save Key</button>
+                </div>
+                <p class="setup-note">Your API key is stored locally and never sent to our servers.</p>
+                <a href="https://ai.google.dev/gemini-api/docs/api-key" target="_blank" class="setup-link">
+                  <i class="fas fa-external-link-alt"></i> Get your free Gemini API key
+                </a>
+              </div>
+            </div>
+            
+            <!-- AI Features Interface -->
+            <div id="aiInterface" class="ai-interface hidden">
+              <!-- Tabs Navigation -->
+              <div class="tabs-navigation">
+                <button class="tab-btn active" onclick="switchTab('summary')">Summary</button>
+                <button class="tab-btn" onclick="switchTab('visuals')">Visuals</button>
+                <button class="tab-btn" onclick="switchTab('assistant')">AI Assistant</button>
+              </div>
+              
+              <!-- Summary Tab -->
+              <div id="summaryTab" class="tab-content active">
+                <div class="summary-controls">
+                  <button onclick="generateSummary('tldr')" class="btn-secondary summary-btn">
+                    <i class="fas fa-compress-alt"></i> TL;DR Summary
+                  </button>
+                  <button onclick="generateSummary('detailed')" class="btn-secondary summary-btn">
+                    <i class="fas fa-align-left"></i> Detailed Summary
+                  </button>
+                  <button onclick="generateSummary('keypoints')" class="btn-secondary summary-btn">
+                    <i class="fas fa-list-ul"></i> Key Points
+                  </button>
+                  <button onclick="generateSummary('questions')" class="btn-secondary summary-btn">
+                    <i class="fas fa-question-circle"></i> Research Questions
+                  </button>
+                </div>
+                
+                <div id="summaryContent" class="summary-content">
+                  <div class="empty-state-small">
+                    <i class="fas fa-brain"></i>
+                    <p>Select a summary type above to get AI-powered insights</p>
+                  </div>
+                </div>
+                
+                <div id="voiceControls" class="voice-controls hidden">
+                  <button onclick="speakSummary()" class="btn-voice">
+                    <i class="fas fa-volume-up"></i> Read Aloud
+                  </button>
+                  <button onclick="stopSpeaking()" class="btn-voice">
+                    <i class="fas fa-stop"></i> Stop
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Visuals Tab -->
+              <div id="visualsTab" class="tab-content">
+                <div class="visuals-controls">
+                  <button onclick="generateChart('keywords')" class="btn-secondary chart-btn">
+                    <i class="fas fa-chart-bar"></i> Keyword Frequency
+                  </button>
+                  <button onclick="generateChart('timeline')" class="btn-secondary chart-btn">
+                    <i class="fas fa-chart-line"></i> Research Timeline
+                  </button>
+                  <button onclick="generateChart('topics')" class="btn-secondary chart-btn">
+                    <i class="fas fa-chart-pie"></i> Topic Distribution
+                  </button>
+                </div>
+                
+                <div id="chartsContainer" class="charts-container">
+                  <div class="empty-state-small">
+                    <i class="fas fa-chart-bar"></i>
+                    <p>Generate visualizations from your research data</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- AI Assistant Tab -->
+              <div id="assistantTab" class="tab-content">
+                <div class="chat-container">
+                  <div id="chatHistory" class="chat-history">
+                    <div class="chat-message assistant-message">
+                      <i class="fas fa-robot"></i>
+                      <div class="message-content">
+                        <p>Hi! I'm your research assistant. Ask me anything about this paper or research in general!</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="chat-input-container">
+                    <input type="text" id="chatInput" placeholder="Ask a question about this paper..." class="chat-input">
+                    <button onclick="sendChatMessage()" class="btn-chat">
+                      <i class="fas fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Loading States -->
+            <div id="aiLoading" class="ai-loading hidden">
+              <i class="fas fa-spinner fa-spin"></i>
+              <p>AI is thinking...</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- Footer -->
     <footer>
@@ -365,5 +500,6 @@
       </div>
     </footer>
     <script src="script.js"></script>
+    <script src="ai-assistant.js"></script>
   </body>
 </html>
