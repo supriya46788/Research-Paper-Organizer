@@ -3,12 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <link rel="stylesheet" href="contact.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Contact Us | Research Paper Organizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body class="dark-mode">
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+
+            <div class="navbar-right-links">
+                <a href="about.html" class="nav-item">About us</a>
+                <a href="blog.html" class="nav-item">Blogs</a>
+                <a href="Faq.html" class="nav-item">FAQ</a>
+                <a href="contact.html" class="nav-item">Contact Us</a>
+                <a href="tools.html" class="nav-item">Tools</a>
+                <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+
     <div class="contact-container">
       
         <div class="contact-form-box">
@@ -33,6 +54,81 @@
             </form>
         </div>
     </div>
-    <script src="contact.js"></script>
+    </div>
+        <!-- Footer -->
+        <footer class="landing-footer">
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-brand">
+                        <i class="fas fa-book-open"></i>
+                        <span>Research Paper Organizer</span>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-section">
+                            <h4>Product</h4>
+                            <a href="#features">Features</a>
+                            <a href="#how-it-works">How it Works</a>
+                            <a href="pricing.html">Pricing</a>
+                        </div>
+                        <div class="footer-section">
+                            <h4>Support</h4>
+                            <a href="Faq.html">FAQ</a>
+                            <a href="contact.html">Contact</a>
+                            <a href="blog.html">Blog</a>
+                        </div>
+                        <div class="footer-section">
+                            <h4>Company</h4>
+                            <a href="about.html">About Us</a>
+                            <a href="open-source.html">Open Source</a>
+                            <a href="glossary.html">Glossary</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Research Paper Organizer. All rights reserved.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+    <script src="js/contact.js"></script>
+    <script>
+        // Dark Mode Toggle Function
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkToggle = document.getElementById('darkModeToggle');
+            const icon = darkToggle.querySelector('i');
+            
+            body.classList.toggle('dark-mode');
+            
+            // Update icon
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Load dark mode preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkMode = localStorage.getItem('darkMode');
+            const darkToggle = document.getElementById('darkModeToggle');
+            const icon = darkToggle.querySelector('i');
+            
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+    </script>
 </body>
 </html>

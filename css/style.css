@@ -35,6 +35,7 @@ body {
   padding: 1.5rem;
 }
 
+
 .navbar-right-links {
   display: flex;
   gap: 0.5rem;
@@ -65,10 +66,12 @@ body {
   font-weight: 500;
 }
 
+
+
 .nav-item:hover {
-  background: #1d4ed8;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
+  background-color: #115cff; /* Slightly darker blue */
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 body.dark-mode .nav-item {
@@ -157,15 +160,25 @@ body.dark-mode #menu-items-container {
   color: var(--primary);
 }
 /* Footer container */
+
+
+/* nkli */
 #footer-outer {
-  background: linear-gradient(90deg, var(--primary-dark), var(--primary));
-  color: var(--text-light);
-  padding: 20px;
+    /* background-color: #3b82f6; */
+      background-color: #7298e5;
+
+
+
+  
+  padding: 7px;
   text-align: center;
   font-family: Arial, sans-serif;
   margin-top: 15px;
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  
+  /* Smooth transitions for hover effects */
+  transition: all 0.3s ease;
 }
 
 /* Footer inner container */
@@ -208,11 +221,18 @@ body.dark-mode #menu-items-container {
   font-size: 20px;
   transition: transform 0.3s, opacity 0.3s;
   margin: 0 10px;
+
+
+  
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .footer-social a:hover {
-  transform: scale(1.3);
-  opacity: 0.8;
+  transform: scale(1.5) rotate(5deg);
+  opacity: 0.9;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.6); 
 }
 
 /* Instagram icon */
@@ -234,7 +254,7 @@ body.dark-mode #menu-items-container {
 #footer-outer h3 {
   margin-top: 20px;
   font-size: 14px;
-  color: #555;
+  color: #fffbfb;
 }
 
 /* Dark mode styles */
@@ -1815,7 +1835,7 @@ body.dark-mode .quick-star.active {
   bottom: 160px; /* above toggle button */
   right: 20px;
   width: 320px;
-  max-height: 430px;
+  height: 430px; /* Fixed height instead of max-height */
   background: white;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
@@ -1823,6 +1843,7 @@ body.dark-mode .quick-star.active {
   flex-direction: column;
   overflow: hidden;
   z-index: 10000;
+  resize: none; /* Prevent resizing */
 }
 
 .chatbot-header {
@@ -1958,90 +1979,3 @@ body.dark-mode .chatbot-input-container {
   }
 }
 
-.hidden { display: none !important; }
-
-#chatbot-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-#chatbot-container {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 350px;
-  height: 500px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-  z-index: 1001;
-  display: flex;
-  flex-direction: column;
-}
-
-.chatbot-header {
-  background: #007bff;
-  color: white;
-  padding: 15px;
-  border-radius: 12px 12px 0 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.chatbot-messages {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-  background: #f8f9fa;
-}
-
-.chatbot-message {
-  margin-bottom: 10px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  max-width: 80%;
-}
-
-.chatbot-message.user {
-  background: #007bff;
-  color: white;
-  margin-left: auto;
-}
-
-.chatbot-message.bot {
-  background: white;
-  border: 1px solid #ddd;
-}
-
-.chatbot-input-container {
-  display: flex;
-  padding: 15px;
-  border-top: 1px solid #ddd;
-}
-
-#chatbotInput {
-  flex: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin-right: 8px;
-}
-
-#sendChatbot {
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 12px;
-  cursor: pointer;
-}
