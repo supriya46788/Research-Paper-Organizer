@@ -42,14 +42,20 @@
         }
 
         .nav-links a {
-            color: #6b7280;
+            color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
         }
 
         .nav-links a:hover {
-            color: #3b82f6;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:not(.btn) {
+            background: #3b82f6;
         }
 
         .btn {
@@ -180,12 +186,13 @@
 
         .papers-section h2 {
             font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 1.5rem;
             color: #1f2937;
         }
 
         .paper-card {
-            background: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
             color: white;
             padding: 1.5rem;
             border-radius: 12px;
@@ -196,31 +203,43 @@
 
         .paper-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
         }
 
         .paper-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
         }
 
         .paper-card .authors {
-            font-size: 0.9rem;
-            opacity: 0.8;
-            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
         }
 
         .paper-tags {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.75rem;
             flex-wrap: wrap;
         }
 
         .tag {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 0.4rem 1rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .tag:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: scale(1.05);
         }
 
         .details-section {
@@ -232,6 +251,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            min-height: 400px;
         }
 
         .empty-state {
@@ -239,9 +259,20 @@
         }
 
         .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
             color: #d1d5db;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .empty-state p {
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
         @media (max-width: 768px) {
@@ -266,7 +297,7 @@
     <nav>
         <div class="nav-container">
             <div class="nav-links">
-                <a href="#" class="btn btn-primary">Home</a>
+                <a href="#">Home</a>
                 <a href="about.html">About us</a>
                 <a href="Faq.html">FAQ</a>
                 <a href="contact.html">Contact Us</a>
@@ -307,7 +338,7 @@
                 <select>
                     <option>To Year</option>
                 </select>
-                <input type="text" placeholder="Filter by Author" style="flex: 0.5;">
+                <input type="text" class="search-input" placeholder="Filter by Author" style="flex: 0.8;">
             </div>
         </div>
 
