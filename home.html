@@ -8,6 +8,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- SweetAlert2 CDN -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <!-- Chart.js CDN for AI visualizations -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- AI Configuration -->
+  <script src="js/config.js"></script>
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
@@ -53,8 +59,8 @@
             <i class="fas fa-plus"></i>
             Add Paper
           </button>
-          <button class="add-btn" onclick="location.href='summarize.html'">
-          <i class="fas fa-align-left"></i>
+          <button class="add-btn" onclick="openAiSummarizer()">
+          <i class="fas fa-brain"></i>
           Summarize Paper
           </button>
 
@@ -313,6 +319,80 @@
       <div id="loadingSpinner" class="loading-spinner hidden">
         <i class="fas fa-spinner fa-spin"></i> Saving Paper...
       </div>
+      
+      <!-- AI Interface Modal Overlay -->
+      <div id="aiModal" class="modal-overlay hidden">
+        <div class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">AI Research Assistant</h2>
+              <button class="modal-close" onclick="closeAiModal()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            
+            <div class="ai-interface">
+              <!-- AI status and API key setup -->
+              <div id="aiStatus" class="ai-status hidden"></div>
+              <div id="apiKeySetup" class="api-key-setup hidden">
+                <p>To use client-side AI features, please enter your Gemini API key:</p>
+                <input type="password" id="apiKeyInput" placeholder="Enter your Gemini API key...">
+                <button onclick="saveApiKey()" class="btn-primary">Save Key</button>
+                <p class="api-key-note">Your API key is stored locally and never sent to our servers.</p>
+              </div>
+              
+              <!-- Summarization Interface -->
+              <div id="summarizationInterface">
+                <div class="form-group">
+                  <label class="form-label">Select Paper to Summarize:</label>
+                  <select id="paperSelect" class="form-input">
+                    <option value="">Choose a paper...</option>
+                  </select>
+                </div>
+                
+                <div class="form-group">
+                  <label class="form-label">Summary Type:</label>
+                  <select id="summaryType" class="form-input">
+                    <option value="brief">Brief Summary</option>
+                    <option value="detailed">Detailed Summary</option>
+                    <option value="methodology">Methodology Focus</option>
+                    <option value="findings">Key Findings</option>
+                    <option value="critique">Critical Analysis</option>
+                  </select>
+                </div>
+                
+                <div class="form-actions">
+                  <button id="generateSummary" class="btn-primary">
+                    <i class="fas fa-brain"></i> Generate Summary
+                  </button>
+                  <button id="voiceToggle" class="btn-secondary hidden">
+                    <i class="fas fa-volume-up"></i> Listen
+                  </button>
+                  <button id="copySummary" class="btn-secondary hidden">
+                    <i class="fas fa-copy"></i> Copy
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Summary Output -->
+              <div id="summaryOutput" class="summary-output hidden">
+                <h3>Summary Result:</h3>
+                <div id="summaryContent" class="summary-content"></div>
+              </div>
+              
+              <!-- AI Visualization -->
+              <div id="aiVisualization" class="ai-visualization hidden">
+                <canvas id="aiChart" width="400" height="200"></canvas>
+              </div>
+              
+              <!-- Loading indicator -->
+              <div id="aiLoading" class="ai-loading hidden">
+                <i class="fas fa-spinner fa-spin"></i> Generating AI summary...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
 
@@ -365,6 +445,9 @@
   <script src="script.js"></script>
 
     <script src="js/script.js"></script>
+    
+    <!-- AI Assistant Module -->
+    <script src="js/ai-assistant.js"></script>
 
     <!-- Chatbot Window -->
 <div id="chatbot-container" class="hidden" aria-live="polite">
