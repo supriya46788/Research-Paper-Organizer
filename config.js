@@ -5,7 +5,7 @@ const CONFIG = {
     // API URL endpoint for Gemini
     apiUrl: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent',
     // Users should set their own API key through environment or UI
-    apiKey: process.env.GEMINI_API_KEY || '', // Will be set by user
+    apiKey: (typeof process !== 'undefined' && process.env && process.env.GEMINI_API_KEY) || '', // Will be set by user
   },
   
   // Voice settings
