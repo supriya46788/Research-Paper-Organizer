@@ -1,7 +1,18 @@
+import dotenv from "dotenv";
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+// Configure dotenv with correct path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+dotenv.config({ path: join(__dirname, '../../.env') });
+
 import fetch from "node-fetch";
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_MODEL = "gemini-1.5-flash"; // or gemini-1.5-pro
+console.log("Controller - GEMINI_API_KEY loaded:", GEMINI_API_KEY ? "✅ YES" : "❌ NO");
+
 
 // Existing chat function
 export const geminiChat = async (req, res) => {
