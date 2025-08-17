@@ -481,7 +481,14 @@
                         summary = 'The Transformer architecture replaces recurrence and convolution with self-attention mechanisms, achieving state-of-the-art results in machine translation tasks while being more parallelizable and requiring less time to train.';
                         break;
                     case 'detailed':
-                        summary = `This groundbreaking paper introduces the Transformer architecture, a novel approach to sequence modeling that relies entirely on attention mechanisms. The model eliminates the need for recurrent and convolutional layers, instead using multi-head self-attention to capture dependencies between input and output sequences.\n\nKey innovations include:\n• Multi-head attention mechanism that allows the model to attend to different representation subspaces\n• Positional encoding to inject sequence order information\n• Layer normalization and residual connections for training stability\n\nThe Transformer achieves superior performance on machine translation benchmarks while being significantly more efficient to train due to its parallelizable architecture.`;
+                        summary = `This groundbreaking paper introduces the Transformer architecture, a novel approach to sequence modeling that relies entirely on attention mechanisms. The model eliminates the need for recurrent and convolutional layers, instead using multi-head self-attention to capture dependencies between input and output sequences.
+
+Key innovations include:
+• Multi-head attention mechanism that allows the model to attend to different representation subspaces
+• Positional encoding to inject sequence order information
+• Layer normalization and residual connections for training stability
+
+The Transformer achieves superior performance on machine translation benchmarks while being significantly more efficient to train due to its parallelizable architecture.`;
                         break;
                     case 'methodology':
                         summary = 'The methodology centers on the self-attention mechanism, specifically multi-head attention, which computes attention weights for all positions in a sequence simultaneously. The architecture uses encoder-decoder structure with 6 layers each, employing scaled dot-product attention and position-wise feed-forward networks.';
@@ -496,7 +503,15 @@
                         summary = 'BERT introduces bidirectional pre-training for language representations, achieving significant improvements on eleven natural language processing tasks by pre-training deep bidirectional representations from unlabeled text.';
                         break;
                     case 'detailed':
-                        summary = `BERT (Bidirectional Encoder Representations from Transformers) presents a new method for pre-training language representations that obtains state-of-the-art results on a wide array of Natural Language Processing (NLP) tasks.\n\nKey contributions:\n• Demonstrates the importance of bidirectional pre-training for language representations\n• Introduces masked language model (MLM) pre-training objective\n• Shows that pre-trained representations can eliminate the need for task-specific architectures\n• Achieves new state-of-the-art results on eleven NLP tasks including GLUE, SQuAD, and others\n\nThe bidirectional training allows BERT to learn deeper bidirectional representations by jointly conditioning on both left and right context in all layers.`;
+                        summary = `BERT (Bidirectional Encoder Representations from Transformers) presents a new method for pre-training language representations that obtains state-of-the-art results on a wide array of Natural Language Processing (NLP) tasks.
+
+Key contributions:
+• Demonstrates the importance of bidirectional pre-training for language representations
+• Introduces masked language model (MLM) pre-training objective
+• Shows that pre-trained representations can eliminate the need for task-specific architectures
+• Achieves new state-of-the-art results on eleven NLP tasks including GLUE, SQuAD, and others
+
+The bidirectional training allows BERT to learn deeper bidirectional representations by jointly conditioning on both left and right context in all layers.`;
                         break;
                     case 'methodology':
                         summary = 'BERT uses a masked language model (MLM) pre-training objective, randomly masking 15% of input tokens and predicting them. It also employs next sentence prediction (NSP) to understand relationships between sentences. The model is based on the Transformer encoder architecture.';
