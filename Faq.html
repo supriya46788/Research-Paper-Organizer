@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Research Paper Organizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/faq.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+
+            <div class="navbar-right-links">
+                <a href="about.html" class="nav-item">About us</a>
+                <a href="blog.html" class="nav-item">Blogs</a>
+                <a href="Faq.html" class="nav-item">FAQ</a>
+                <a href="contact.html" class="nav-item">Contact Us</a>
+                <a href="tools.html" class="nav-item">Tools</a>
+                <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <div class="faq-container">
+        <h1 class="faq-title">Frequently Asked Questions</h1>
+        <div class="faq-list">
+            <!-- Existing Questions -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is this service?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>This is a research paper organizer and citation tool. It helps you manage your academic papers, add new ones, and generate citations in various formats.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I add a new paper?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Click the "Add" button at the top of the homepage. You can manually enter the paper details or upload a PDF, and the system will attempt to auto-fill the information for you.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I export my citations?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, when you view a paper's details, there is a citation generator section. You can choose from different styles (e.g., APA, MLA) and copy the formatted citation to your clipboard.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is this service free to use?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The basic features are completely free. We also offer premium plans with advanced features like cloud storage and collaborative tools.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How can I contact support?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You can use the contact form on our "Contact Us" page, or send us an email directly at support@researchpaper.com.</p>
+                </div>
+            </div>
+
+            <!-- New Questions -->
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I organize papers by subject or category?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can create categories such as AI, Machine Learning, Medicine, etc., and tag your papers accordingly for easier searching.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Does the tool work offline?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, you can download the project and run it locally in your browser without an internet connection.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Can I share my library with others?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>In the free version, sharing is limited to exporting your papers list. Premium users can enable collaborative access with team members.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What file formats are supported for upload?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You can upload PDF files directly. Other formats like DOCX or TXT are not supported for auto-filling details, but you can still add them manually.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I back up my papers?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Go to Settings and click "Export Library". This will save a backup JSON file containing all your papers and their details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/faq.js"></script>
+    <script>
+        // Dark Mode Toggle Function
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkToggle = document.getElementById('darkModeToggle');
+            const icon = darkToggle.querySelector('i');
+            
+            body.classList.toggle('dark-mode');
+            
+            // Update icon
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Load dark mode preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkMode = localStorage.getItem('darkMode');
+            const darkToggle = document.getElementById('darkModeToggle');
+            const icon = darkToggle.querySelector('i');
+            
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+    </script>
+    <script>
+        (function(){
+            if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+                window.chatbase = (...arguments) => {
+                    if(!window.chatbase.q){ window.chatbase.q = [] }
+                    window.chatbase.q.push(arguments)
+                };
+                window.chatbase = new Proxy(window.chatbase, {
+                    get(target, prop) {
+                        if(prop === "q"){ return target.q }
+                        return (...args) => target(prop, ...args)
+                    }
+                });
+            }
+            const onLoad = function(){
+                const script = document.createElement("script");
+                script.src = "https://www.chatbase.co/embed.min.js";
+                script.id = "SZQX20er6m-s8iNiFcBtK";
+                script.domain = "www.chatbase.co";
+                document.body.appendChild(script)
+            };
+            if(document.readyState === "complete"){ onLoad() }
+            else { window.addEventListener("load", onLoad) }
+        })();
+    </script>
+</body>
+</html>

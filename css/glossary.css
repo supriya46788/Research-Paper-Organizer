@@ -1,0 +1,136 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Header */
+.glossary-header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+}
+.glossary-header h1 {
+  font-size: 2.5rem;
+}
+.glossary-header p {
+  margin: 0.5rem 0 1rem;
+}
+.glossary-header input {
+  padding: 10px;
+  width: 90%;
+  max-width: 400px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+.glossary-header input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+
+/* Alphabet Navigation */
+.alphabet-nav {
+  text-align: center;
+  padding: 1rem;
+  background: #eef3f9;
+}
+.alphabet-nav a {
+  margin: 0 0.3rem;
+  text-decoration: none;
+  color: #357abd;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+.alphabet-nav a:hover {
+  color: #1e5a9e;
+  text-decoration: underline;
+}
+
+
+/* Glossary Items */
+.glossary-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+.glossary-item {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.glossary-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.glossary-item h2 {
+  color: #357abd;
+  margin-bottom: 0.5rem;
+}
+.glossary-item p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+.glossary-item small {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+}
+.glossary-item a {
+  color: #4a90e2;
+  text-decoration: none;
+}
+.glossary-item a:hover {
+  text-decoration: underline;
+}
+/* Search Functionality */
+.glossary-header input[type="text"] {
+  width: 80%;
+  max-width: 500px;
+}
+
+
+/* Search Results */
+.glossary-item {
+  display: none;
+}
+.glossary-item.visible {
+  display: block;
+}
+
+/* Footer */
+.glossary-footer {
+  text-align: center;
+  padding: 1rem;
+  background: #357abd;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .glossary-header h1 {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 480px) {
+  .glossary-header input {
+    width: 100%;
+  }
+  .glossary-item {
+    padding: 1rem;
+  }
+  .glossary-item h2 {
+    font-size: 1.2rem;
+  }
+}
