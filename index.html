@@ -12,6 +12,13 @@
     <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loader">
+        <i class="fa-solid fa-spinner"></i>
+        <h2 id="loading-text">Organizing your thoughts<span class="dots"></span></h2>
+      </div>
+    </div>
     <!-- Navigation -->
     <nav class="landing-nav">
         <div class="nav-container">
@@ -262,5 +269,31 @@
     </footer>
 
     <script src="landing.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loadingScreen = document.getElementById("loading-screen");
+        const loadingText = document.getElementById("loading-text");
+
+        const texts = ["Organizing your thoughts...", "Drafting your ideas..."];
+
+        let index = 0;
+
+        // Change text every 4 seconds
+        const textInterval = setInterval(() => {
+          index = (index + 1) % texts.length;
+          loadingText.style.opacity = 0; // fade out
+          setTimeout(() => {
+            loadingText.innerHTML = texts[index] + '<span class="dots"></span>';
+            loadingText.style.opacity = 1; // fade in
+          }, 500);
+        }, 3000);
+
+        // Hide loading screen after 6 seconds
+        setTimeout(() => {
+          clearInterval(textInterval); // stop changing text
+          loadingScreen.classList.add("hidden");
+        }, 6000); // adjust as needed
+      });
+    </script>
 </body>
 </html>
