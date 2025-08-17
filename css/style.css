@@ -406,17 +406,7 @@ body.dark-mode #footer-outer h3 {
   transform: translateY(-50%);
   color: #9ca3af;
 }
-.clear-btn {
-  position: absolute;
-  margin-top: -5%;
-  right: 10px;
-  border: none;
-  background: transparent;
-  font-size: 18px;
-  cursor: pointer;
-  color: #666;
-  display: none; /* hidden until typing */
-}
+
 .filter-container {
   display: flex;
   align-items: center;
