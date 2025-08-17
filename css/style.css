@@ -1969,6 +1969,14 @@ body.dark-mode .chatbot-input-container {
   background: #1f2937;
   border-top-color: #374151;
 }
+body.dark-mode .chatbot-input-container input {
+  color: #fff !important;
+}
+
+body.dark-mode .chatbot-input-container input::placeholder {
+  color: #bbb !important;
+  opacity: 1; /* Ensures placeholder is visible */
+}
 
 @media (max-width: 480px) {
   #chatbot-container {
