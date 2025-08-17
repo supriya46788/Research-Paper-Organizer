@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="css/faq.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body onload="applyThemeFromStorage()">
+<body>
     <div class="container">
         <!-- Navigation -->
         <nav class="navbar">
-            <a href="home.html" class="nav-item">
+            <a href="index.html" class="nav-item">
                 <i class="fas fa-home"></i>
                 Home
             </a>
@@ -135,8 +135,42 @@
             </div>
         </div>
     </div>
-    <script src="js/script.js"></script>
+
     <script src="js/faq.js"></script>
+    <script>
+        // Dark Mode Toggle Function
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkToggle = document.getElementById('darkModeToggle');
+            const icon = darkToggle.querySelector('i');
+            
+            body.classList.toggle('dark-mode');
+            
+            // Update icon
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Load dark mode preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkMode = localStorage.getItem('darkMode');
+            const darkToggle = document.getElementById('darkModeToggle');
+            const icon = darkToggle.querySelector('i');
+            
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+    </script>
     <script>
         (function(){
             if(!window.chatbase || window.chatbase("getState") !== "initialized"){
