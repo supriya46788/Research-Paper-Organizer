@@ -727,7 +727,7 @@ document.getElementById("paperForm").addEventListener("submit", function (e) {
 });
 
 
-// Drag & Drop + Click Upload
+// Drag & Drop + Click Upload + Autofill
 document.addEventListener("DOMContentLoaded", () => {
     const dropZone = document.getElementById("drop-zone");
     const fileInput = document.getElementById("pdfUpload");
@@ -788,22 +788,65 @@ document.addEventListener("DOMContentLoaded", () => {
       uploadedPdfData = e.target.result; // base64 string
       uploadedFile.style.display = "flex";
       uploadedFile.innerHTML = `
-      <div class="uploaded-file-row" style="display:flex; align-items:center; padding:5px; border-radius:5px; margin-top:5px;">
-        <!-- left side: icon + filename -->
-        <div style="display:flex; align-items:center; flex:1; min-width:0;">
-          <i class="fas fa-light fa-file-pdf" style="color:#e63946; margin-left:10px; margin-right:10px;"></i> 
-          <span style="flex:1; font-style:italic; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
-            ${file.name}
-          </span>
+        <div class="uploaded-file-row" style="display:flex; align-items:center; padding:5px; border-radius:5px; margin-top:5px;">
+          <div style="display:flex; align-items:center; flex:1; min-width:0;">
+            <i class="fas fa-light fa-file-pdf" style="color:#e63946; margin-left:10px; margin-right:10px;"></i> 
+            <span style="flex:1; font-style:italic; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:450px; display:inline-block;">
+              ${file.name}
+            </span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; margin-left:10px; margin-right:10px; flex-shrink:0;">
+            <button id="autofill-btn" type="button">Autofill</button>
+            <i class="fas fa-eye-slash" id="preview-pdf" style="cursor:pointer;"></i>
+            <i class="fa-solid fa-trash" id="delete-pdf" style="cursor:pointer;"></i>
+          </div>
         </div>
-        <!-- right side: icons -->
-        <div style="display:flex; align-items:center; gap:8px; margin-left:10px; margin-right:10px; flex-shrink:0;">
-          <i class="fas fa-eye-slash" id="preview-pdf" style="cursor:pointer;"></i>
-          <i class="fa-solid fa-trash" id="delete-pdf" style="cursor:pointer;"></i>
-        </div>
-      </div>
-
       `;
+
+      //autofill working
+      const autofillBtn = document.getElementById("autofill-btn");
+      autofillBtn.addEventListener("click", async () => {
+          if (!file) {
+              alert("No PDF file found.");
+              return;
+          }
+
+          const formData = new FormData();
+          formData.append("file", file);
+
+          try {
+              const response = await fetch("http://127.0.0.1:5000/extract_metadata", {
+                  method: "POST",
+                  body: formData
+              });
+
+              const data = await response.json();
+
+              if (data.error) {
+                  alert("Unable to extract metadata. Please fill manually.");
+
+                  //Clear old values if nothing found
+                  document.getElementById("title").value = "";
+                  document.getElementById("authors").value = "";
+                  document.getElementById("year").value = "";
+                  document.getElementById("journal").value = "";
+                  document.getElementById("tags").value = "";
+                  return;
+              }
+
+              //Fill form fields if available
+              document.getElementById("title").value = data.title || "";
+              document.getElementById("authors").value = data.authors || "";
+              document.getElementById("year").value = data.year || "";
+              document.getElementById("journal").value = data.journal || "";
+              document.getElementById("tags").value = data.keywords || "";
+
+          } catch (err) {
+              console.error(err);
+              alert("Error extracting metadata. Please try manually.");
+          }
+      });
+
 
       const eyeIcon = document.getElementById("preview-pdf");
       let isVisible = true;
@@ -826,10 +869,14 @@ document.addEventListener("DOMContentLoaded", () => {
       deleteIcon.addEventListener("click", () => {
         clearPdfData(); // resets input + preview
         uploadedFile.innerHTML = ""; // remove filename + icons
+
+        document.getElementById("title").value = "";
+        document.getElementById("authors").value = "";
+        document.getElementById("year").value = "";
+        document.getElementById("journal").value = "";
+        document.getElementById("tags").value = "";
       });
     };
     reader.readAsDataURL(file);
   }
 });
-
-
