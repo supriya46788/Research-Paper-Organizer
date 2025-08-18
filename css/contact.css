@@ -45,12 +45,12 @@ body{
     background: #ffffff;
     color: var(--text-color);
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 2rem;
 }
-
+.contact-options{
+    display: flex;
+    justify-content: space-around;
+}
 .contact-container {
     position: relative; /* Added for back button positioning */
     width: 100%;
