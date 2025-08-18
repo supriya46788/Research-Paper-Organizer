@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
-<body>
+<body onload="applyThemeFromStorage()">
+   <script src="js/script.js"></script>
     <div class="container">
         <!-- Navigation -->
         <nav class="navbar">
-            <a href="index.html" class="nav-item">
+            <a href="home.html" class="nav-item">
                 <i class="fas fa-home"></i>
                 Home
             </a>
@@ -24,9 +25,6 @@
                 <a href="Faq.html" class="nav-item">FAQ</a>
                 <a href="contact.html" class="nav-item">Contact Us</a>
                 <a href="tools.html" class="nav-item">Tools</a>
-                <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-                    <i class="fas fa-moon"></i>
-                </button>
             </div>
         </nav>
 
@@ -54,7 +52,7 @@
             </form>
         </div>
     </div>
-    </div>
+  </div>
         <!-- Footer -->
         <footer class="landing-footer">
             <div class="container">
@@ -93,42 +91,7 @@
                     </div>
                 </div>
             </div>
-        </footer>
-    
+  </footer>
     <script src="js/contact.js"></script>
-    <script>
-        // Dark Mode Toggle Function
-        function toggleDarkMode() {
-            const body = document.body;
-            const darkToggle = document.getElementById('darkModeToggle');
-            const icon = darkToggle.querySelector('i');
-            
-            body.classList.toggle('dark-mode');
-            
-            // Update icon
-            if (body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                localStorage.setItem('darkMode', 'disabled');
-            }
-        }
-
-        // Load dark mode preference on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const darkMode = localStorage.getItem('darkMode');
-            const darkToggle = document.getElementById('darkModeToggle');
-            const icon = darkToggle.querySelector('i');
-            
-            if (darkMode === 'enabled') {
-                document.body.classList.add('dark-mode');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        });
-    </script>
 </body>
 </html>
