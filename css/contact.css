@@ -210,10 +210,11 @@ body.dark-mode {
     background: linear-gradient(135deg, var(--dark-blue) 0%, var(--dark-gray) 100%);
     color: var(--text-color);
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 2rem;
+}
+.contact-options{
+    display: flex;
+    justify-content: space-around;
 }
 
 body.dark-mode .contact-container {
