@@ -1,0 +1,674 @@
+/* PDF Viewer Styles */
+:root {
+    --pdf-primary: #4a90e2;
+    --pdf-secondary: #357abd;
+    --pdf-background: #f8fafc;
+    --pdf-sidebar: #ffffff;
+    --pdf-border: #e2e8f0;
+    --pdf-text: #2d3748;
+    --pdf-text-light: #718096;
+    --pdf-highlight: #fef08a;
+    --pdf-underline: #60a5fa;
+    --pdf-strikethrough: #f87171;
+    --pdf-pen: #8b5cf6;
+    --pdf-note: #fbbf24;
+}
+
+/* Dark mode variables */
+body.dark-mode {
+    --pdf-background: #1a202c;
+    --pdf-sidebar: #2d3748;
+    --pdf-border: #4a5568;
+    --pdf-text: #e2e8f0;
+    --pdf-text-light: #a0aec0;
+}
+
+/* PDF Header */
+.pdf-header {
+    background: var(--pdf-sidebar);
+    border: 1px solid var(--pdf-border);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.file-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.upload-btn, .control-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--pdf-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.upload-btn:hover, .control-btn:hover {
+    background: var(--pdf-secondary);
+    transform: translateY(-1px);
+}
+
+/* Annotation Toolbar */
+.annotation-toolbar {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    background: var(--pdf-background);
+    border-radius: 8px;
+    border: 1px solid var(--pdf-border);
+}
+
+.tool-btn, .action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid var(--pdf-border);
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--pdf-text);
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.tool-btn:hover, .action-btn:hover {
+    background: var(--pdf-primary);
+    color: white;
+}
+
+.tool-btn.active {
+    background: var(--pdf-primary);
+    color: white;
+    border-color: var(--pdf-primary);
+}
+
+.action-btn.danger {
+    border-color: #f87171;
+    color: #f87171;
+}
+
+.action-btn.danger:hover {
+    background: #f87171;
+    color: white;
+}
+
+.color-picker input[type="color"] {
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--pdf-border);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Page Controls */
+.page-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.nav-btn, .zoom-btn {
+    padding: 0.5rem;
+    background: var(--pdf-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover, .zoom-btn:hover {
+    background: var(--pdf-secondary);
+}
+
+.page-info {
+    padding: 0.5rem;
+    font-weight: 500;
+    color: var(--pdf-text);
+}
+
+.zoom-controls {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+#zoom-level {
+    min-width: 45px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--pdf-text);
+}
+
+/* PDF Viewer Container */
+.pdf-viewer-container {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 1rem;
+    height: calc(100vh - 300px);
+    min-height: 600px;
+}
+
+/* Sidebar */
+.pdf-sidebar {
+    background: var(--pdf-sidebar);
+    border: 1px solid var(--pdf-border);
+    border-radius: 12px;
+    padding: 1rem;
+    overflow-y: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-sidebar h3 {
+    margin: 0 0 1rem 0;
+    color: var(--pdf-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.annotations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.no-annotations {
+    color: var(--pdf-text-light);
+    font-style: italic;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.annotation-item {
+    background: var(--pdf-background);
+    border: 1px solid var(--pdf-border);
+    border-radius: 8px;
+    padding: 0;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.annotation-item:hover {
+    border-color: var(--pdf-primary);
+    transform: translateY(-1px);
+}
+
+.annotation-main {
+    flex: 1;
+    padding: 0.75rem;
+    cursor: pointer;
+}
+
+.annotation-actions {
+    padding: 0.5rem;
+    border-left: 1px solid var(--pdf-border);
+    background: rgba(var(--pdf-primary-rgb, 74, 144, 226), 0.05);
+    display: flex;
+    gap: 0.25rem;
+}
+
+.annotation-edit-btn, .annotation-delete-btn {
+    border: none;
+    border-radius: 4px;
+    padding: 0.4rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+}
+
+.annotation-edit-btn {
+    background: #3b82f6;
+    color: white;
+}
+
+.annotation-edit-btn:hover {
+    background: #2563eb;
+    transform: scale(1.1);
+}
+
+.annotation-delete-btn {
+    background: #ef4444;
+    color: white;
+}
+
+.annotation-delete-btn:hover {
+    background: #dc2626;
+    transform: scale(1.1);
+}
+
+.annotation-edit-btn:active, .annotation-delete-btn:active {
+    transform: scale(0.95);
+}
+
+.annotation-type {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--pdf-primary);
+    margin-bottom: 0.3rem;
+}
+
+.annotation-content {
+    font-size: 0.9rem;
+    color: var(--pdf-text);
+    margin-bottom: 0.3rem;
+}
+
+.annotation-page {
+    font-size: 0.8rem;
+    color: var(--pdf-text-light);
+}
+
+/* PDF Main Area */
+.pdf-main {
+    background: var(--pdf-sidebar);
+    border: 1px solid var(--pdf-border);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-canvas-container {
+    position: relative;
+    overflow: auto;
+    height: 600px; /* Set a fixed height */
+    background: #f0f0f0;
+    display: none; /* Hidden by default until PDF is loaded */
+    padding: 1rem;
+}
+
+.pdf-canvas-container.show {
+    display: block;
+}
+
+.canvas-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#pdf-canvas {
+    display: block;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: white;
+    border: 1px solid #ddd;
+    max-width: 100%;
+    height: auto;
+}
+
+#annotation-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: auto; /* Enable pointer events for annotations */
+    z-index: 10;
+    background: transparent;
+}
+
+#notes-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+    pointer-events: auto; /* Enable pointer events for notes */
+    z-index: 20;
+}
+
+.sticky-note {
+    position: absolute;
+    background: var(--pdf-note);
+    border: 1px solid #d97706;
+    border-radius: 4px;
+    padding: 0.5rem;
+    min-width: 150px;
+    max-width: 250px;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    pointer-events: all;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.sticky-note::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid var(--pdf-note);
+}
+
+.note-content {
+    margin-bottom: 0.3rem;
+    color: #92400e;
+}
+
+.note-actions {
+    display: flex;
+    gap: 0.3rem;
+    margin-top: 0.3rem;
+}
+
+.note-btn {
+    padding: 0.2rem 0.4rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    background: rgba(0, 0, 0, 0.1);
+    color: #92400e;
+}
+
+.note-btn:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* PDF Placeholder */
+.pdf-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: var(--pdf-background);
+}
+
+.placeholder-content {
+    text-align: center;
+    color: var(--pdf-text-light);
+}
+
+.placeholder-content i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--pdf-primary);
+}
+
+.placeholder-content h3 {
+    margin-bottom: 0.5rem;
+    color: var(--pdf-text);
+}
+
+.upload-main-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--pdf-primary);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.upload-main-btn:hover {
+    background: var(--pdf-secondary);
+    transform: translateY(-1px);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--pdf-sidebar);
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--pdf-border);
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--pdf-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.close-modal {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--pdf-text-light);
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.close-modal:hover {
+    background: var(--pdf-background);
+    color: var(--pdf-text);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-body textarea {
+    width: 100%;
+    border: 1px solid var(--pdf-border);
+    border-radius: 8px;
+    padding: 0.75rem;
+    font-family: inherit;
+    resize: vertical;
+    background: var(--pdf-background);
+    color: var(--pdf-text);
+}
+
+.modal-footer {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--pdf-border);
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--pdf-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--pdf-secondary);
+}
+
+.btn-secondary {
+    background: var(--pdf-background);
+    color: var(--pdf-text);
+    border: 1px solid var(--pdf-border);
+}
+
+.btn-secondary:hover {
+    background: var(--pdf-border);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .pdf-viewer-container {
+        grid-template-columns: 250px 1fr;
+    }
+    
+    .pdf-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    .annotation-toolbar {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .pdf-viewer-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr;
+    }
+    
+    .pdf-sidebar {
+        max-height: 200px;
+    }
+    
+    .pdf-controls {
+        gap: 0.5rem;
+    }
+    
+    .annotation-toolbar {
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+    
+    .tool-btn, .action-btn {
+        padding: 0.4rem;
+        font-size: 0.8rem;
+    }
+    
+    .page-controls {
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .pdf-header {
+        padding: 0.75rem;
+    }
+    
+    .pdf-controls {
+        gap: 0.25rem;
+    }
+    
+    .annotation-toolbar {
+        padding: 0.25rem;
+    }
+    
+    .tool-btn span {
+        display: none;
+    }
+    
+    .upload-btn, .control-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+    
+    .modal-content {
+        margin: 1rem;
+        width: calc(100% - 2rem);
+    }
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Highlight colors */
+.highlight-yellow { background-color: #fef08a; }
+.highlight-green { background-color: #bbf7d0; }
+.highlight-blue { background-color: #bfdbfe; }
+.highlight-pink { background-color: #fce7f3; }
+.highlight-orange { background-color: #fed7aa; }
+
+/* Dark mode specific adjustments */
+body.dark-mode .pdf-canvas-container {
+    background: #2d3748;
+}
+
+body.dark-mode #pdf-canvas {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .sticky-note {
+    background: #d69e2e;
+    border-color: #b7791f;
+}
+
+body.dark-mode .note-content {
+    color: #2d3748;
+}
+
+body.dark-mode .placeholder-content {
+    color: #a0aec0;
+}
