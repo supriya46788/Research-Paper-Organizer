@@ -1,9 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import PyPDF2
 import re
+import os
+import webbrowser
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder=".", static_url_path="")
 CORS(app)
 
 @app.route('/extract_metadata', methods=['POST'])
@@ -16,12 +18,12 @@ def extract_metadata():
         info = reader.metadata or {}
 
         # Extract fields safely
-        title = info.get("/Title", "") if info.get("/Title") else ""
-        authors = info.get("/Author", "") if info.get("/Author") else ""
-        journal = info.get("/Creator", "") if info.get("/Creator") else ""
-        keywords = info.get("/Keywords", "") if info.get("/Keywords") else ""
+        title = info.get("/Title", "") or ""
+        authors = info.get("/Author", "") or ""
+        journal = info.get("/Creator", "") or ""
+        keywords = info.get("/Keywords", "") or ""
 
-        # Extract year (try from DOI or ModDate)
+        # Extract year
         year = ""
         if "/doi" in info:
             match = re.search(r"(19|20)\d{2}", info["/doi"])
@@ -32,7 +34,6 @@ def extract_metadata():
             if match:
                 year = match.group(0)
 
-        # Prepare response
         metadata = {
             "title": title,
             "authors": authors,
@@ -41,7 +42,6 @@ def extract_metadata():
             "keywords": keywords
         }
 
-        # Check if everything is blank
         if not any(metadata.values()):
             return jsonify({"error": "Unable to fetch metadata, please fill manually"}), 200
 
@@ -51,5 +51,14 @@ def extract_metadata():
         return jsonify({"error": str(e)}), 500
 
 
+# Serve index.html directly
+@app.route("/")
+def index():
+    return send_from_directory(os.getcwd(), "index.html")
+
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = 5000
+    url = f"http://localhost:{port}/"
+    webbrowser.open(url)  # auto-open browser
+    app.run(host="0.0.0.0", port=port, debug=True)

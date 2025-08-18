@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Paper Organizer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+</head>
+
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a href="#" class="nav-item">Home</a>
+
+      <div class="navbar-right-links">
+        <a href="about.html" class="nav-item">About us</a>
+        <a href="blog.html" class="nav-item">Blogs</a>
+        <a href="Faq.html" class="nav-item">FAQ</a>
+        <a href="contact.html" class="nav-item">Contact Us</a>
+        <a href="tools.html" class="nav-item">Tools</a>
+      </div>
+    </nav>
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <div>
+          <h1 class="header-title">
+            <i class="fas fa-book-open"></i>
+            Research Paper Organizer
+          </h1>
+          <p class="header-subtitle">
+            Organize, track, and cite your research papers efficiently
+          </p>
+        </div>
+
+        <!-- Right side buttons -->
+        <div class="header-buttons">
+          <button class="dark-toggle" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+            <i class="fas fa-moon"></i>
+          </button>
+
+          <button class="add-btn" onclick="showAddForm()">
+            <i class="fas fa-plus"></i>
+            Add Paper
+          </button>
+          <button class="add-btn" onclick="location.href='summarize.html'">
+          <i class="fas fa-align-left"></i>
+          Summarize Paper
+          </button>
+
+          <button class="btn-secondary" onclick="importPapers()">
+            <i class="fas fa-file-import"></i> Import
+          </button>
+
+          <button class="btn-secondary" onclick="exportPapers()">
+            <i class="fas fa-file-export"></i> Export
+          </button>
+
+        </div>
+      </div>
+      <div class="menu">
+        <svg id="menu-open-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" class="menu-btn">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+
+        <div id="menu-items-container">
+          <a href="#" class="menu-item">Home</a>
+          <a href="#" class="menu-item">About us</a>
+
+          <a href="#" class="menu-item">FAQ</a>
+          <a href="contact.html" class="menu-item">Contact Us</a>
+        </div>
+        <svg id="menu-close-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" class="menu-btn">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Search and Filter Bar -->
+    <div class="search-bar">
+      <div class="search-content">
+        <div class="search-input-container">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="search-input" placeholder="Search papers by title, author, or abstract..."
+            id="searchInput" oninput="filterPapers()" />
+        </div>
+        <div class="filter-container">
+          <i class="fas fa-filter" style="color: #6b7280"></i>
+          <select class="filter-select" id="topicFilter" onchange="filterPapers()">
+            <option value="">All Topics</option>
+          </select>
+        </div>
+        <div class="filter-container">
+          <!-- Year Range -->
+          <select id="minYear" class="filter-select">
+            <option value="">From Year</option>
+          </select>
+
+          <div class="filter-container">
+            <!-- Favorites Filter -->
+            <select
+              class="filter-select"
+              id="favoriteFilter"
+              onchange="filterPapers()"
+            >
+              <option value="">All Papers</option>
+              <option value="favorites">Favorites Only</option>
+              <option value="non-favorites">Non-Favorites</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <!-- Rating Filter -->
+            <select
+              class="filter-select"
+              id="ratingFilter"
+              onchange="filterPapers()"
+            >
+              <option value="">All Ratings</option>
+              <option value="5">5 Stars</option>
+              <option value="4">4+ Stars</option>
+              <option value="3">3+ Stars</option>
+              <option value="2">2+ Stars</option>
+              <option value="1">1+ Stars</option>
+              <option value="0">Unrated</option>
+            </select>
+          </div>
+          <div class="filter-container">
+            <!-- Sort Options -->
+            <select
+              class="filter-select"
+              id="sortFilter"
+              onchange="filterPapers()"
+            >
+              <option value="">Default</option>
+              <option value="rating-desc">Highest Rated</option>
+              <option value="rating-asc">Lowest Rated</option>
+              <option value="favorites">Favorites First</option>
+              <option value="title-asc">Title A-Z</option>
+              <option value="title-desc">Title Z-A</option>
+              <option value="year-desc">Newest First</option>
+              <option value="year-asc">Oldest First</option>
+            </select>
+          </div>
+        </div>
+      </div>
+  </div>
+      <div class="main-grid">
+        <!-- Papers List -->
+        <div class="papers-section">
+          <h2 class="papers-title">Papers (<span id="paperCount">0</span>)</h2>
+
+          <div id="emptyState" class="empty-state">
+            <i class="fas fa-book-open"></i>
+            <p>No papers found</p>
+            <p style="font-size: 0.875rem">
+              Add your first research paper to get started
+            </p>
+          </div>
+
+          <div id="papersList" class="papers-list hidden"></div>
+          <!-- Pagination Controls for navigating between pages (ADDED FOR PAGINATION FEATURE) -->
+          <div id="paginationControls" class="pagination-controls"></div>
+        </div>
+
+        <!-- Paper Details -->
+        <div class="details-section">
+          <div id="noSelection" class="empty-state">
+            <i class="fas fa-book-open"></i>
+            <p>Select a paper to view details</p>
+          </div>
+
+          <div id="paperDetails" class="hidden">
+            <div class="details-header">
+              <h2 class="details-title">Paper Details</h2>
+              <button class="close-btn" onclick="closeDetails()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="details-content" id="detailsContent">
+              <!-- Paper details go here -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add/Edit Paper Modal -->
+      <div id="modalOverlay" class="modal-overlay hidden">
+        <div class="modal">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="modalTitle">Add New Paper</h2>
+              <button class="modal-close" onclick="hideAddForm()">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <form id="paperForm">
+              <div id="drop-zone">
+                <div class="icon">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>Drag & Drop to Upload File</h3>
+                <p>OR</p>
+                <button id="browse-btn" type="button">Browse File</button>
+                <input type="file" id="pdfUpload" accept="application/pdf" required hidden />
+              </div>
+              <!-- Placeholder for showing uploaded file -->
+              <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>
+              
+              <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
+                <label class="form-label">PDF Preview</label>
+                <iframe
+                  id="pdfPreview"
+                  class="pdf-preview"
+                  src=""
+                  frameborder="0"
+                ></iframe>
+                
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Title *</label>
+                <input type="text" class="form-input" id="title" required />
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Authors *</label>
+                  <input type="text" class="form-input" id="authors" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Year</label>
+                  <input type="number" class="form-input" id="year" />
+                </div>
+              </div>
+
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Journal/Conference</label>
+                  <input type="text" class="form-input" id="journal" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Topic</label>
+                  <input type="text" class="form-input" id="topic" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">URL</label>
+                <input type="url" class="form-input" id="url" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Tags (comma-separated)</label>
+                <input type="text" class="form-input" id="tags" placeholder="machine learning, neural networks, AI" />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Abstract</label>
+                <textarea class="form-textarea" id="abstract" rows="3"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Notes</label>
+                <textarea class="form-textarea" id="notes" rows="4"></textarea>
+              </div>
+
+              <!-- Rating and Favorite Section -->
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Rating</label>
+                  <div class="rating-container">
+                    <div class="stars-rating" id="starsRating">
+                      <span class="star" data-rating="1">★</span>
+                      <span class="star" data-rating="2">★</span>
+                      <span class="star" data-rating="3">★</span>
+                      <span class="star" data-rating="4">★</span>
+                      <span class="star" data-rating="5">★</span>
+                    </div>
+                    <input type="hidden" id="rating" value="0" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Favorite</label>
+                  <div class="favorite-container">
+                    <label class="favorite-checkbox">
+                      <input type="checkbox" id="isFavorite" />
+                      <span class="favorite-icon">
+                        <i class="fas fa-heart"></i>
+                      </span>
+                      <span class="favorite-text">Mark as favorite</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn-secondary" onclick="hideAddForm()">
+                  Cancel
+                </button>
+                <button type="submit" class="btn-primary">
+                  <i class="fas fa-save"></i>
+                  <span id="submitText">Add Paper</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="loadingSpinner" class="loading-spinner hidden">
+        <i class="fas fa-spinner fa-spin"></i> Saving Paper...
+      </div>
+    </div>
+
+
+    <!-- Back to Top Button -->
+<button id="backToTop" title="Go to top">↑</button>
+
+
+    <!-- Footer -->
+    <footer>
+      <div id="footer-outer">
+        <!-- <div class="footer-inner">
+          <a href="#"><button>About us</button></a>
+          <a href="#"><button>Home</button></a>
+          <a href="#"><button>FAQ</button></a>
+          <a href="#"><button>Contact Us</button></a>
+        </div> -->
+        <div class="footer-social">
+          <h3>Follow Us:</h3>
+          <a href="https://instagram.com/YourProfile" target="_blank" style="margin: 0 10px; color: #e4405f">
+            <i class="fab fa-instagram fa-lg"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank"
+            style="margin: 0 10px; color: #0077b5">
+            <i class="fab fa-linkedin fa-lg"></i>
+          </a>
+          <a href="https://twitter.com/YourProfile" target="_blank" style="margin: 0 10px; color: #1da1f2">
+            <i class="fab fa-twitter fa-lg"></i>
+          </a>
+        </div>
+        <h3>&copy; 2025 Research Paper Organizer . All rights reserved.</h3>
+      </div>
+    </footer>
+
+  <script>
+    // Authentication check
+    function checkAuthentication() {
+      const currentUser = localStorage.getItem('current_user');
+      if (!currentUser) {
+        window.location.href = 'landing.html'; // Redirect to landing page if not authenticated
+        return false;
+      }
+      return true;
+    }
+
+    // Run auth check before loading script
+    if (!checkAuthentication()) {
+      throw new Error('User not authenticated');
+    }
+  </script>
+  <script src="script.js"></script>
+
+    <script src="js/script.js"></script>
+
+    <!-- Chatbot Window -->
+<div id="chatbot-container" class="hidden" aria-live="polite">
+  <div class="chatbot-header">
+    <span><i class="fas fa-robot" style="margin-right:6px;"></i>Assistant</span>
+    <button id="closeChatbot" title="Close" aria-label="Close chatbot">&times;</button>
+  </div>
+
+  <div class="chatbot-messages" id="chatbotMessages"></div>
+
+  <div class="chatbot-input-container">
+    <input id="chatbotInput" type="text" placeholder="Type your message..." aria-label="Type your message" />
+    <button id="sendChatbot" title="Send" aria-label="Send message">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Floating Chat Toggle -->
+<button id="chatbot-toggle" title="Chat with Assistant" aria-label="Open chatbot">
+  <i class="fas fa-comment-alt"></i>
+</button>
+
+</body>
+
+</html>

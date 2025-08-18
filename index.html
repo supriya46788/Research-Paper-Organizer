@@ -1,366 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Research Paper Organizer</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <!-- SweetAlert2 CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Paper Organizer - Organize Your Research Efficiently</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="./favicon/favicon-48x48.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./favicon/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./favicon/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/site.webmanifest" />
-  </head>
-  <body>
-    <div class="container">
-      <nav class="navbar">
-        <a href="#" class="nav-item">Home</a>
-
-        <div class="navbar-right-links">
-          <a href="#" class="nav-item">About us</a>
-
-          <a href="#" class="nav-item">FAQ</a>
-          <a href="#" class="nav-item">Contact Us</a>
-        </div>
-      </nav>
-      <!-- Header -->
-      <div class="header">
-        <div class="header-content">
-          <div>
-            <h1 class="header-title">
-              <i class="fas fa-book-open"></i>
-              Research Paper Organizer
-            </h1>
-            <p class="header-subtitle">
-              Organize, track, and cite your research papers efficiently
-            </p>
-          </div>
-
-          <!-- Right side buttons -->
-          <div class="header-buttons">
-            <button
-              class="dark-toggle"
-              id="darkModeToggle"
-              title="Toggle Dark Mode"
-              onclick="toggleDarkMode()"
-            >
-              <i class="fas fa-moon"></i>
-            </button>
-
-            <button class="add-btn" onclick="showAddForm()">
-              <i class="fas fa-plus"></i>
-              Add Paper
-            </button>
-          </div>
-        </div>
-        <div class="menu">
-          <svg
-            id="menu-open-btn"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="menu-btn"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-            />
-          </svg>
-
-          <div id="menu-items-container">
-            <a href="#" class="menu-item">Home</a>
-            <a href="#" class="menu-item">About us</a>
-            <a href="#" class="menu-item">FAQ</a>
-            <a href="#" class="menu-item">Contact Us</a>
-          </div>
-          <svg
-            id="menu-close-btn"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="menu-btn"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18 18 6M6 6l12 12"
-            />
-          </svg>
-        </div>
-      </div>
-
-      <!-- Search and Filter Bar -->
-      <div class="search-bar">
-        <div class="search-content">
-          <div class="search-input-container">
-            <i class="fas fa-search search-icon"></i>
-            <input
-              type="text"
-              class="search-input"
-              placeholder="Search papers by title, author, or abstract..."
-              id="searchInput"
-              oninput="filterPapers()"
-            />
-          </div>
-          <div class="filter-container">
-            <i class="fas fa-filter" style="color: #6b7280"></i>
-            <select
-              class="filter-select"
-              id="topicFilter"
-              onchange="filterPapers()"
-            >
-              <option value="">All Topics</option>
-            </select>
-          </div>
-          <div class="filter-container">
-            <!-- Year Range -->
-            <input
-              type="number"
-              id="minYear"
-              placeholder="From Year"
-              class="filter-select"
-              oninput="filterPapers()"
-            />
-            <input
-              type="number"
-              id="maxYear"
-              placeholder="To Year"
-              class="filter-select"
-              oninput="filterPapers()"
-            />
-          </div>
-          <div class="filter-container">
-            <!-- Author Name -->
-            <input
-              type="text"
-              id="authorFilter"
-              placeholder="Filter by Author"
-              class="filter-select"
-              oninput="filterPapers()"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div class="main-grid">
-        <!-- Papers List -->
-        <div class="papers-section">
-          <h2 class="papers-title">Papers (<span id="paperCount">0</span>)</h2>
-
-          <div id="emptyState" class="empty-state">
-            <i class="fas fa-book-open"></i>
-            <p>No papers found</p>
-            <p style="font-size: 0.875rem">
-              Add your first research paper to get started
-            </p>
-          </div>
-
-          <div id="papersList" class="papers-list hidden"></div>
-          <!-- Pagination Controls for navigating between pages (ADDED FOR PAGINATION FEATURE) -->
-          <div id="paginationControls" class="pagination-controls"></div>
-        </div>
-
-        <!-- Paper Details -->
-        <div class="details-section">
-          <div id="noSelection" class="empty-state">
-            <i class="fas fa-book-open"></i>
-            <p>Select a paper to view details</p>
-          </div>
-
-          <div id="paperDetails" class="hidden">
-            <div class="details-header">
-              <h2 class="details-title">Paper Details</h2>
-              <button class="close-btn" onclick="closeDetails()">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-            <div class="details-content" id="detailsContent">
-              <!-- Paper details go here -->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Add/Edit Paper Modal -->
-      <div id="modalOverlay" class="modal-overlay hidden">
-        <div class="modal">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="modalTitle">Add New Paper</h2>
-              <button class="modal-close" onclick="hideAddForm()">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-
-            <form id="paperForm">
-              <label class="form-label">Add Paper *</label>
-              <div id="drop-zone">
-                <div class="icon">
-                  <i class="fas fa-cloud-upload-alt"></i>
-                </div>
-                <h3>Drag & Drop to Upload File</h3>
-                <p>OR</p>
-                <button id="browse-btn" type="button">Browse File</button>
-                <input type="file" id="pdfUpload" accept="application/pdf" required hidden />
-              </div>
-              <!-- Placeholder for showing uploaded file -->
-              <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>
-              
-              <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
-                <label class="form-label">PDF Preview</label>
-                <iframe
-                  id="pdfPreview"
-                  class="pdf-preview"
-                  src=""
-                  frameborder="0"
-                ></iframe>
-                
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Title *</label>
-                <input type="text" class="form-input" id="title" required />
-              </div>
-
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label">Authors *</label>
-                  <input type="text" class="form-input" id="authors" required />
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Year</label>
-                  <input type="number" class="form-input" id="year" />
-                </div>
-              </div>
-
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label">Journal/Conference</label>
-                  <input type="text" class="form-input" id="journal" />
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Topic</label>
-                  <input type="text" class="form-input" id="topic" />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">URL</label>
-                <input type="url" class="form-input" id="url" />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Tags (comma-separated)</label>
-                <input
-                  type="text"
-                  class="form-input"
-                  id="tags"
-                  placeholder="machine learning, neural networks, AI"
-                />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Abstract</label>
-                <textarea
-                  class="form-textarea"
-                  id="abstract"
-                  rows="3"
-                ></textarea>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Notes</label>
-                <textarea class="form-textarea" id="notes" rows="4"></textarea>
-              </div>
-
-              <div class="form-actions">
-                <button
-                  type="button"
-                  class="btn-secondary"
-                  onclick="hideAddForm()"
-                >
-                  Cancel
-                </button>
-                <button type="submit" class="btn-primary">
-                  <i class="fas fa-save"></i>
-                  <span id="submitText">Add Paper</span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div id="loadingSpinner" class="loading-spinner hidden">
-        <i class="fas fa-spinner fa-spin"></i> Saving Paper...
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="landing.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loader">
+        <i class="fa-solid fa-spinner"></i>
+        <h2 id="loading-text">Organizing your thoughts<span class="dots"></span></h2>
       </div>
     </div>
-    <!-- Footer -->
-    <footer>
-      <div id="footer-outer">
-        <!-- <div class="footer-inner">
-          <a href="#"><button>About us</button></a>
-          <a href="#"><button>Home</button></a>
-          <a href="#"><button>FAQ</button></a>
-          <a href="#"><button>Contact Us</button></a>
-        </div> -->
-        <div class="footer-social">
-          <h3>Follow Us:</h3>
-          <a
-            href="https://instagram.com/YourProfile"
-            target="_blank"
-            style="margin: 0 10px; color: #e4405f"
-          >
-            <i class="fab fa-instagram fa-lg"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/supriyapandey595/"
-            target="_blank"
-            style="margin: 0 10px; color: #0077b5"
-          >
-            <i class="fab fa-linkedin fa-lg"></i>
-          </a>
-          <a
-            href="https://twitter.com/YourProfile"
-            target="_blank"
-            style="margin: 0 10px; color: #1da1f2"
-          >
-            <i class="fab fa-twitter fa-lg"></i>
-          </a>
+    <!-- Navigation -->
+    <nav class="landing-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <span>Research Paper Organizer</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it Works</a>
+                <a href="about.html">About</a>
+                <a href="tools.html">Tools</a>
+                <a href="contact.html">Contact</a>
+                
+                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-        <h3>&copy; 2025 Research Paper Organizer . All rights reserved.</h3>
-      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Organize Your Research Papers Like Never Before</h1>
+                <p>Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary btn-large" onclick="window.location.href='signup.html'">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Trial
+                    </button>
+                    <button class="btn-secondary btn-large" onclick="scrollToFeatures()">
+                        <i class="fas fa-play"></i>
+                        See How it Works
+                    </button>
+                </div>
+                <p class="hero-note">No credit card required • 30-day free trial</p>
+            </div>
+            <div class="hero-image">
+                <div class="hero-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="mockup-paper">
+                            <div class="paper-title">Attention Is All You Need</div>
+                            <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
+                            <div class="paper-tags">
+                                <span>Machine Learning</span>
+                                <span>Transformers</span>
+                            </div>
+                        </div>
+                        <div class="mockup-paper">
+                            <div class="paper-title">BERT: Pre-training of Deep...</div>
+                            <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
+                            <div class="paper-tags">
+                                <span>NLP</span>
+                                <span>Pre-training</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Everything You Need for Research Management</h2>
+                <p>Powerful features designed specifically for researchers, students, and academics</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Smart Search</h3>
+                    <p>Find papers instantly with intelligent search across titles, authors, abstracts, and tags.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Smart Organization</h3>
+                    <p>Categorize papers by topics, tags, and custom labels. Never lose track of important research.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Rating & Reviews</h3>
+                    <p>Rate papers and add personal notes to remember key insights and contributions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-quote-right"></i>
+                    </div>
+                    <h3>Auto Citation</h3>
+                    <p>Generate citations in APA, MLA, and Chicago formats with a single click.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>PDF Management</h3>
+                    <p>Upload and store PDFs directly in your library with built-in preview capabilities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Sync</h3>
+                    <p>Access your research library from anywhere with secure cloud storage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get Started in 3 Simple Steps</h2>
+                <p>Start organizing your research papers in minutes</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create Your Account</h3>
+                        <p>Sign up for free and get instant access to all features. No credit card required.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Add Your Papers</h3>
+                        <p>Upload PDFs, add paper details manually, or import from existing libraries.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Organize & Search</h3>
+                        <p>Use tags, topics, and ratings to organize your collection and find papers instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Researchers</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500,000+</div>
+                    <div class="stat-label">Papers Organized</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Universities</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ===== Testimonials Section ===== -->
+<section id="testimonials">
+  <h2>What Our Users Say</h2>
+  <div class="testimonials-container">
+    <div class="testimonial-card">
+      <img src="testimonialw.png" alt="User Photo">
+      <h3>Dr. Sarah Lee</h3>
+      <p class="designation">PhD Student, AI Researcher</p>
+      <p class="feedback">"The Research Paper Organizer has transformed how I manage my reading list. It’s intuitive and saves me hours every week!"</p>
+      <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
+    </div>
+
+    <div class="testimonial-card">
+      <img src="test1.jpg" alt="User Photo">
+      <h3>Michael Chen</h3>
+      <p class="designation">Data Scientist</p>
+      <p class="feedback">"I love the clean interface and the ability to tag and search papers instantly. A must-have for researchers!"</p>
+      <p class="tags">💡 Great UI • ⚡ Fast</p>
+    </div>
+
+    <div class="testimonial-card">
+      <img src="testimonialw.png" alt="User Photo">
+      <h3>Ananya Sharma</h3>
+      <p class="designation">Graduate Student</p>
+      <p class="feedback">"This tool has streamlined my literature review process and made collaboration so much easier."</p>
+      <p class="tags">🤝 Collaboration • 📚 Productivity</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CSS ===== -->
+<style>
+#testimonials {
+  padding: 50px 20px;
+  background: #f9fafb;
+  text-align: center;
+}
+#testimonials h2 {
+  
+  font-size: 2.5rem; /* Bigger text */
+  font-weight: bold; /* Makes it stand out */
+  text-align: center; /* Centered heading */
+  margin-bottom: 30px; /* More space below */
+
+}
+.testimonials-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.testimonial-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, opacity 0.5s ease;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.testimonial-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  margin-bottom: 15px;
+}
+.testimonial-card .designation {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+.testimonial-card .feedback {
+  font-size: 0.95rem;
+  margin: 15px 0;
+}
+.testimonial-card .tags {
+  font-size: 0.85rem;
+  color: #374151;
+}
+.testimonial-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 640px) {
+  .testimonials-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+  }
+  .testimonial-card {
+    min-width: 260px;
+    scroll-snap-align: center;
+  }
+}
+</style>
+
+<!-- ===== JS Fade-in Animation ===== -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".testimonial-card");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(card => observer.observe(card));
+});
+</script>
+
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Research Workflow?</h2>
+                <p>Join thousands of researchers who have already streamlined their paper management process.</p>
+                <div class="cta-buttons">
+                    <button class="btn-primary btn-large" onclick="window.location.href='signup.html'">
+                        Start Your Free Trial
+                    </button>
+                    <button class="btn-secondary btn-large" onclick="window.location.href='login.html'">
+                        Already have an account? Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-book-open"></i>
+                    <span>Research Paper Organizer</span>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How it Works</a>
+                        <a href="pricing.html">Pricing</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Support</h4>
+                        <a href="Faq.html">FAQ</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                    <div class="footer-section">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="open-source.html">Open Source</a>
+                        <a href="glossary.html">Glossary</a>
+                        <a href="Masthead.html">Masthead</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Research Paper Organizer. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
     </footer>
-    <script src="script.js"></script>
-  </body>
+
+    <script src="landing.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loadingScreen = document.getElementById("loading-screen");
+        const loadingText = document.getElementById("loading-text");
+
+        const texts = ["Organizing your thoughts...", "Drafting your ideas..."];
+
+        let index = 0;
+
+        // Change text every 4 seconds
+        const textInterval = setInterval(() => {
+          index = (index + 1) % texts.length;
+          loadingText.style.opacity = 0; // fade out
+          setTimeout(() => {
+            loadingText.innerHTML = texts[index] + '<span class="dots"></span>';
+            loadingText.style.opacity = 1; // fade in
+          }, 500);
+        }, 3000);
+
+        // Hide loading screen after 6 seconds
+        setTimeout(() => {
+          clearInterval(textInterval); // stop changing text
+          loadingScreen.classList.add("hidden");
+        }, 6000); // adjust as needed
+      });
+    </script>
+</body>
 </html>
