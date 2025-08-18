@@ -169,19 +169,14 @@ body.dark-mode #menu-items-container {
 
 /* nkli */
 #footer-outer {
-    /* background-color: #3b82f6; */
-      background-color: #7298e5;
-
-
-
-  
+  background-color: #7298e5;
   padding: 7px;
   text-align: center;
   font-family: Arial, sans-serif;
   margin-top: 15px;
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  
+  align-items: center;
   /* Smooth transitions for hover effects */
   transition: all 0.3s ease;
 }
@@ -372,6 +367,8 @@ body.dark-mode #footer-outer h3 {
 }
 #footer-outer {
   margin-top: 15px;
+  display: flex;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
@@ -1159,6 +1156,12 @@ body.dark-mode #clearPdfBtn:hover {
 }
 #footer-outer {
   margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+}
+h3{
+  text-align: center;
+  font-weight: 500;
 }
 
 .pagination-controls {
@@ -1983,3 +1986,212 @@ body.dark-mode .chatbot-input-container {
   }
 }
 
+
+/*Contact Us Styling in dark mode*/
+body.dark-mode .submit-btn {
+    padding: 0.6rem 1.2rem;
+    margin: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    animation: fadeIn 1s ease-in-out 0.6s forwards;
+}
+
+body.dark-mode .submit-btn:hover {
+    background: var(--hover-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    transform: translateY(-5px) scale(1.02);
+}
+
+body.dark-mode .submit-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+body.dark-mode .contact-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 12px;
+    background: var(--dark-gray);
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+body.dark-mode .contact-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f3f4f6;
+    margin-bottom: 2rem;
+}
+body.dark-mode .contact-form {
+    display: flex;
+    flex-direction: column;
+}
+body.dark-mode .form-group {
+    position: relative;
+    animation: fadeIn 1s ease-in-out 0.4s forwards;
+}
+
+body.dark-mode .form-label {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    color: #9ca3af;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .form-input,
+body.dark-mode .form-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    background: #111827;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #d1d5db;
+    transition: all 0.3s ease;
+}
+
+/* Floating label effect */
+body.dark-mode .form-input:focus + .form-label,
+body.dark-mode .form-input:not(:placeholder-shown) + .form-label,
+body.dark-mode .form-textarea:focus + .form-label,
+body.dark-mode .form-textarea:not(:placeholder-shown) + .form-label {
+    top: -0.75rem;
+    left: 0.5rem;
+    font-size: 0.8rem;
+    color: #3b82f6;
+    background: #1f2937;
+    padding: 0 0.5rem;
+}
+
+body.dark-mode .form-input:focus,
+body.dark-mode .form-textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+body.dark-mode .form-textarea {
+    resize: vertical;
+    min-height: 50px;
+}
+
+/*Contact us Styling in Light Mode*/
+.submit-btn {
+    padding: 0.6rem 1.2rem;
+    margin: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    animation: fadeIn 1s ease-in-out 0.6s forwards;
+}
+
+.submit-btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    transform: translateY(-5px) scale(1.02);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+ .contact-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 500px;
+    padding: 2rem;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.contact-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 2rem;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+ .form-group {
+    position: relative;
+    animation: fadeIn 1s ease-in-out 0.4s forwards;
+}
+
+.form-label {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    color: white;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.form-input,
+ .form-textarea {
+    width: 100%;
+    padding: 0.5rem;
+    background: #a5bef5;
+    border: 1px solid #a5bef5;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+ .form-input:focus + .form-label,
+ .form-input:not(:placeholder-shown) + .form-label,
+ .form-textarea:focus + .form-label,
+ .form-textarea:not(:placeholder-shown) + .form-label {
+    top: -0.75rem;
+    left: 0.5rem;
+    font-size: 0.8rem;
+    color: #ffffff;
+    background: #a5bef5;
+    padding: 0 0.5rem;
+}
+
+ .form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #a5bef5;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+
+ .form-textarea {
+    resize: vertical;
+    min-height: 50px;
+}

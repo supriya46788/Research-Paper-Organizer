@@ -1,130 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Meta -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog | Research Paper Organizer</title>
+  <meta name="description" content="Updates, tips, tools, and insights from the research community. Filter by category and explore our latest posts." />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="css/blog.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body onload="applyThemeFromStorage()">
   <div class="container">
     <!-- Navigation -->
     <nav class="navbar">
-      <a href="home.html" class="nav-item">
+      <a href="index.html" class="nav-item">
         <i class="fas fa-home"></i>
         Home
       </a>
 
       <div class="navbar-right-links">
-        <a href="home.html" class="nav-item">About us</a>
+        <a href="about.html" class="nav-item">About us</a>
         <a href="blog.html" class="nav-item">Blogs</a>
         <a href="Faq.html" class="nav-item">FAQ</a>
         <a href="contact.html" class="nav-item">Contact Us</a>
         <a href="tools.html" class="nav-item">Tools</a>
+        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+          <i class="fas fa-moon"></i>
+        </button>
       </div>
     </nav>
 
-  <!-- Header -->
-  <header class="blog-header">
-    <h1>📖 Our Blog</h1>
-    <p>Updates, Tips & Insights from the Research Community</p>
-  </header>
+    <!-- Header -->
+    <header class="blog-header">
+      <h1>📖 Our Blog</h1>
+      <p>Updates, Tips &amp; Insights from the Research Community</p>
 
-  <!-- Blog List -->
-  <main class="blog-container">
+      <!-- Category Filters (accessible + color-coded) -->
+      <div class="category-filters utility-text-center"
+           role="group"
+           aria-label="Filter posts by category">
+        <button type="button" class="filter-btn active" data-category="all" aria-pressed="true">All</button>
+        <button type="button" class="filter-btn" data-category="tips" aria-pressed="false">Tips</button>
+        <button type="button" class="filter-btn" data-category="ai" aria-pressed="false">AI</button>
+        <button type="button" class="filter-btn" data-category="updates" aria-pressed="false">Updates</button>
+        <button type="button" class="filter-btn" data-category="citations" aria-pressed="false">Citations</button>
+        <button type="button" class="filter-btn" data-category="productivity" aria-pressed="false">Productivity</button>
+        <button type="button" class="filter-btn" data-category="tools" aria-pressed="false">Tools</button>
+      </div>
+    </header>
 
-  <!-- Blog Card 1 -->
-  <article class="blog-card">
-    <img src="/images/11tips.jpg" alt="Research Tips">
-    <div class="blog-content">
-      <h2>11 Research Tips for Students</h2>
-      <p>Boost your research efficiency with these practical strategies for organizing, citing, and finding sources.</p>
-      <a href="https://www.immerse.education/student-life/academic-life/tips-to-improve-research-skills/#:~:text=1.,Skills%20for%20Successful%20Research%20Reports" class="read-more">Read More →</a>
-    </div>
-  </article>
+    <!-- Blog List -->
+    <main class="blog-container" id="blogList">
+      <!-- Card 1 -->
+      <article class="blog-card" data-category="tips">
+        <figure class="blog-media">
+          <img src="images/11tips.jpg" alt="11 research tips" loading="lazy" width="800" height="500" />
+        </figure>
+        <div class="blog-content">
+          <h2>11 Research Tips for Students</h2>
+          <p>Boost your research efficiency with practical strategies for organizing, citing, and finding sources.</p>
+          <div class="meta">
+            <time datetime="2025-05-28" aria-label="Published on May 28, 2025">May 28, 2025</time>
+            <span class="dot" aria-hidden="true">•</span>
+            <span class="read-time">5 min read</span>
+          </div>
+          <div class="tags">
+            <span class="badge badge-tips">Tips</span>
+          </div>
+          <a href="https://www.immerse.education/student-life/academic-life/tips-to-improve-research-skills/#:~:text=1.,Skills%20for%20Successful%20Research%20Reports" class="read-more" aria-label="Read more: 11 Research Tips for Students">Read More →</a>
+        </div>
+      </article>
 
-  <!-- Blog Card 2 -->
-  <article class="blog-card">
-    <img src="/images/aitools.jpg" alt="AI in Research">
-    <div class="blog-content">
-      <h2>AI Tools for Academic Research</h2>
-      <p>Explore the latest AI tools that can help you summarize, cite, and organize your research papers.</p>
-      <a href="#" class="read-more">Read More →</a>
-    </div>
-  </article>
+      <!-- Card 2 -->
+      <article class="blog-card" data-category="ai">
+        <figure class="blog-media">
+          <img src="images/aitools.jpg" alt="AI tools illustration" loading="lazy" width="800" height="500" />
+        </figure>
+        <div class="blog-content">
+          <h2>AI Tools for Academic Research</h2>
+          <p>Explore AI tools that help you summarize, cite, and organize your research papers efficiently.</p>
+          <div class="meta">
+            <time datetime="2025-06-10">Jun 10, 2025</time>
+            <span class="dot">•</span>
+            <span class="read-time">6 min read</span>
+          </div>
+          <div class="tags">
+            <span class="badge badge-ai">AI</span>
+          </div>
+          <a href="#" class="read-more" aria-label="Read more: AI Tools for Academic Research">Read More →</a>
+        </div>
+      </article>
 
-  <!-- Blog Card 3 -->
-  <article class="blog-card">
-    <img src="/images/new-features.jpg" alt="Project Update">
-    <div class="blog-content">
-      <h2>New Features in Research Paper Organizer</h2>
-      <p>We’ve just added tagging, filtering, and paper previews! Here’s what’s new and how to use them.</p>
-      <a href="#" class="read-more">Read More →</a>
-    </div>
-  </article>
+      <!-- Card 3 -->
+      <article class="blog-card" data-category="updates">
+        <figure class="blog-media">
+          <img src="images/new-features.jpg" alt="New features preview" loading="lazy" width="800" height="500" />
+        </figure>
+        <div class="blog-content">
+          <h2>New Features in Research Paper Organizer</h2>
+          <p>We’ve added tagging, filtering, and paper previews! Here’s what’s new and how to use them.</p>
+          <div class="meta">
+            <time datetime="2025-07-18">Jul 18, 2025</time>
+            <span class="dot">•</span>
+            <span class="read-time">4 min read</span>
+          </div>
+          <div class="tags">
+            <span class="badge badge-updates">Updates</span>
+          </div>
+          <a href="#" class="read-more" aria-label="Read more: New Features in Research Paper Organizer">Read More →</a>
+        </div>
+      </article>
 
-  <!-- Blog Card 4 -->
-  <article class="blog-card">
-    <img src="/images/mastering-citation.jpg" alt="Citation Tips">
-    <div class="blog-content">
-      <h2>Mastering Citations</h2>
-      <p>APA, MLA, or Chicago? Learn the differences and how to format your references correctly.</p>
-      <a href="#" class="read-more">Read More →</a>
-    </div>
-  </article>
+      <!-- Card 4 -->
+      <article class="blog-card" data-category="citations">
+        <figure class="blog-media">
+          <img src="images/mastering-citation.jpg" alt="Citation styles" loading="lazy" width="800" height="500" />
+        </figure>
+        <div class="blog-content">
+          <h2>Mastering Citations</h2>
+          <p>APA, MLA, or Chicago? Learn the differences and how to format your references correctly.</p>
+          <div class="meta">
+            <time datetime="2025-06-02">Jun 2, 2025</time>
+            <span class="dot">•</span>
+            <span class="read-time">7 min read</span>
+          </div>
+          <div class="tags">
+            <span class="badge badge-citations">Citations</span>
+          </div>
+          <a href="#" class="read-more" aria-label="Read more: Mastering Citations">Read More →</a>
+        </div>
+      </article>
 
-  <!-- Blog Card 5 -->
-  <article class="blog-card">
-    <img src="/images/time-management.jpg" alt="Time Management">
-    <div class="blog-content">
-      <h2>Time Management for Researchers</h2>
-      <p>Discover tools and strategies to manage your research deadlines without stress.</p>
-      <a href="#" class="read-more">Read More →</a>
-    </div>
-  </article>
+      <!-- Card 5 -->
+      <article class="blog-card" data-category="productivity">
+        <figure class="blog-media">
+          <img src="images/time-management.jpg" alt="Time management illustration" loading="lazy" width="800" height="500" />
+        </figure>
+        <div class="blog-content">
+          <h2>Time Management for Researchers</h2>
+          <p>Discover tools and strategies to manage your research deadlines without stress.</p>
+          <div class="meta">
+            <time datetime="2025-05-10">May 10, 2025</time>
+            <span class="dot">•</span>
+            <span class="read-time">5 min read</span>
+          </div>
+          <div class="tags">
+            <span class="badge badge-productivity">Productivity</span>
+          </div>
+          <a href="#" class="read-more" aria-label="Read more: Time Management for Researchers">Read More →</a>
+        </div>
+      </article>
 
-  <!-- Blog Card 6 -->
-  <article class="blog-card">
-    <img src="/images/best-free-tools.jpg" alt="Research Tools">
-    <div class="blog-content">
-      <h2>Best Free Tools for Research</h2>
-      <p>From reference managers to PDF annotators — here are the best free tools every researcher should know.</p>
-      <a href="#" class="read-more">Read More →</a>
-    </div>
-  </article>
+      <!-- Card 6 -->
+      <article class="blog-card" data-category="tools">
+        <figure class="blog-media">
+          <img src="images/best-free-tools.jpg" alt="Research tools" loading="lazy" width="800" height="500" />
+        </figure>
+        <div class="blog-content">
+          <h2>Best Free Tools for Research</h2>
+          <p>From reference managers to PDF annotators — here are the best free tools every researcher should know.</p>
+          <div class="meta">
+            <time datetime="2025-04-22">Apr 22, 2025</time>
+            <span class="dot">•</span>
+            <span class="read-time">6 min read</span>
+          </div>
+          <div class="tags">
+            <span class="badge badge-tools">Tools</span>
+          </div>
+          <a href="#" class="read-more" aria-label="Read more: Best Free Tools for Research">Read More →</a>
+        </div>
+      </article>
 
-  <!-- Blog Card 7 -->
-  <article class="blog-card">
-    <img src="/images/collaborating.jpg" alt="Collaboration">
-    <div class="blog-content">
-      <h2>Collaborating on Research Projects</h2>
-      <p>Tips for working effectively with co-authors, supervisors, and research groups.</p>
-      <a href="#" class="read-more">Read More →</a>
-    </div>
-  </article>
+      <!-- Card 7 -->
+      <article class="blog-card" data-category="productivity">
+        <figure class="blog-media">
+          <img src="images/collaborating.jpg" alt="People collaborating on research" loading="lazy" width="800" height="500" />
+        </figure>
+        <div class="blog-content">
+          <h2>Collaborating on Research Projects</h2>
+          <p>Tips for working effectively with co-authors, supervisors, and research groups.</p>
+          <div class="meta">
+            <time datetime="2025-03-30">Mar 30, 2025</time>
+            <span class="dot">•</span>
+            <span class="read-time">5 min read</span>
+          </div>
+          <div class="tags">
+            <span class="badge badge-productivity">Productivity</span>
+          </div>
+          <a href="#" class="read-more" aria-label="Read more: Collaborating on Research Projects">Read More →</a>
+        </div>
+      </article>
 
-  <!-- Blog Card 8 -->
-  <article class="blog-card">
-    <img src="/images/note-taking.jpg" alt="Note Taking">
-    <div class="blog-content">
-      <h2>Effective Note-Taking for Research</h2>
-      <p>Organize your thoughts and sources with these proven note-taking techniques.</p>
-      <a href="#" class="read-more">Read More →</a>
-    </div>
-  </article>
+      <!-- Card 8 -->
+      <article class="blog-card" data-category="tips">
+        <figure class="blog-media">
+          <img src="images/note-taking.jpg" alt="Note taking illustration" loading="lazy" width="800" height="500" />
+        </figure>
+        <div class="blog-content">
+          <h2>Effective Note-Taking for Research</h2>
+          <p>Organize your thoughts and sources with these proven note-taking techniques.</p>
+          <div class="meta">
+            <time datetime="2025-05-05">May 5, 2025</time>
+            <span class="dot">•</span>
+            <span class="read-time">4 min read</span>
+          </div>
+          <div class="tags">
+            <span class="badge badge-tips">Tips</span>
+          </div>
+          <a href="#" class="read-more" aria-label="Read more: Effective Note-Taking for Research">Read More →</a>
+        </div>
+      </article>
 
-  <!-- Blog Card 9 -->
-  <article class="blog-card">
-    <img src="/images/data-analysis.jpg" alt="Data Analysis">
-    <div class="blog-content">
-      <h2>Getting Started with Data Analysis</h2>
-      <p>Learn how to clean, analyze, and visualize your research data like a pro.</p>
-      <a href="#" class="read-more">Read More →</a>
-    </div>
-  </article>
-
-</main>
+      <!-- Card 9 -->
+      <article class="blog-card" data-category="tools">
+        <figure class="blog-media">
+          <img src="images/data-analysis.jpg" alt="Data analysis dashboards" loading="lazy" width="800" height="500" />
+        </figure>
+        <div class="blog-content">
+          <h2>Getting Started with Data Analysis</h2>
+          <p>Learn how to clean, analyze, and visualize your research data like a pro.</p>
+          <div class="meta">
+            <time datetime="2025-02-14">Feb 14, 2025</time>
+            <span class="dot">•</span>
+            <span class="read-time">7 min read</span>
+          </div>
+          <div class="tags">
+            <span class="badge badge-tools">Tools</span>
+          </div>
+          <a href="#" class="read-more" aria-label="Read more: Getting Started with Data Analysis">Read More →</a>
+        </div>
+      </article>
+    </main>
 
   <!-- Footer -->
   <footer class="blog-footer">
@@ -137,7 +245,7 @@
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul class="footer-links">
-          <li><a href="home.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="Faq.html">FAQ</a></li>
@@ -173,8 +281,43 @@
       <p>© 2025 Research Paper Organizer | Open Source Project</p>
       <p class="footer-tagline">Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> for researchers worldwide</p>
     </div>
-</footer>
+  </footer>
+
   </div>
-  <script src="js/script.js"></script>
+
+  <script>
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+      const body = document.body;
+      const darkToggle = document.getElementById('darkModeToggle');
+      const icon = darkToggle.querySelector('i');
+      
+      body.classList.toggle('dark-mode');
+      
+      // Update icon
+      if (body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    }
+
+    // Load dark mode preference on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const darkMode = localStorage.getItem('darkMode');
+      const darkToggle = document.getElementById('darkModeToggle');
+      const icon = darkToggle.querySelector('i');
+      
+      if (darkMode === 'enabled') {
+        document.body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      }
+    });
+  </script>
 </body>
 </html>

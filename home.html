@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- SweetAlert2 CDN -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
   <link rel="stylesheet" href="css/style.css" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
@@ -342,6 +341,31 @@
             <i class="fab fa-twitter fa-lg"></i>
           </a>
         </div>
+        <div class="contact-container">
+      
+        <div class="contact-form-box">
+            <h1 class="contact-title">Contact Us</h1>
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
+                    <label for="name" class="form-label">Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
+                    <label for="email" class="form-label">Email</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="message" name="message" class="form-textarea" rows="4" placeholder=" " required></textarea>
+                    <label for="message" class="form-label">Message</label>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span class="submit-text">Send</span>
+                    <span class="loading-spinner hidden"><i class="fas fa-spinner fa-spin"></i></span>
+                </button>
+            </form>
+        </div>
+    </div>
+    </div>
         <h3>&copy; 2025 Research Paper Organizer . All rights reserved.</h3>
       </div>
     </footer>
