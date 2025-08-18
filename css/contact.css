@@ -45,10 +45,6 @@ body.dark-mode {
     background: linear-gradient(135deg, var(--dark-blue) 0%, var(--dark-gray) 100%);
     color: var(--text-color);
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
 }
 
 .contact-container {
@@ -61,10 +57,17 @@ body.dark-mode {
     box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
     animation: fadeIn 0.8s ease-in-out;
     transition: all 0.3s ease-in-out;
+    margin: 2rem auto;
 }
 .contact-container:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
     transform: translateY(-5px) scale(1.02);
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
 }
 
 /* Back button styling */
@@ -231,6 +234,7 @@ body.dark-mode {
 
 /* ================= Footer Styling ================= */
 .landing-footer {
+    width: 100%;
     background: #0d1117; /* Dark background */
     color: #eaeaea;
     padding: 3rem 1.5rem 1rem;
