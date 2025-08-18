@@ -315,6 +315,43 @@
       </div>
     </div>
 
+    <style>
+      /* Back to Top Button Styles */
+#backToTop {
+  height: 50px;
+  width: 50px;
+position: fixed;
+bottom: 30px;
+right: 30px;
+z-index: 1000;
+background: linear-gradient(135deg,#0077b5 ,#4facfe );
+color: white;
+border: none;
+border-radius: 50%;
+padding: 15px;
+font-size: 18px;
+cursor: pointer;
+display: none;
+box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#backToTop:hover {
+transform: scale(1.1);
+opacity: 0.9;
+box-shadow: rgba(0,0,0,0.8);
+}
+
+@media (max-width: 600px) {
+#backToTop {
+  padding: 12px;
+  font-size: 16px;
+  bottom: 20px;
+  right: 20px;
+}
+}
+  </style>
+
 
     <!-- Back to Top Button -->
 <button id="backToTop" title="Go to top">↑</button>
@@ -361,6 +398,24 @@
     if (!checkAuthentication()) {
       throw new Error('User not authenticated');
     }
+
+    
+      //back to top button 
+// Show button when scrolled down
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    backToTop.style.display = "block";
+  } else {
+    backToTop.style.display = "none";
+  }
+});
+
+// Smooth scroll to top
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
   </script>
   <script src="script.js"></script>
 
