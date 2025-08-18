@@ -17,15 +17,12 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f7fafc;
-<<<<<<< HEAD
-=======
-=======
+}
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
   background-color: #f9f9f9;
->>>>>>> 22b9801f9aa5fe49b410de633de36a2c55ad5fbd
   color: #333;
 }
 
