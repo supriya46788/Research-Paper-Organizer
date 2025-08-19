@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer & Annotator | Research Paper Organizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/pdf-viewer.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+
+            <div class="navbar-right-links">
+                <a href="about.html" class="nav-item">About us</a>
+                <a href="blog.html" class="nav-item">Blogs</a>
+                <a href="Faq.html" class="nav-item">FAQ</a>
+                <a href="contact.html" class="nav-item">Contact Us</a>
+                <a href="tools.html" class="nav-item">Tools</a>
+                <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- PDF Viewer Header -->
+        <div class="pdf-header">
+            <div class="pdf-controls">
+                <div class="file-controls">
+                    <label for="pdf-upload" class="upload-btn">
+                        <i class="fas fa-upload"></i>
+                        Upload PDF
+                    </label>
+                    <input type="file" id="pdf-upload" accept=".pdf" style="display: none;">
+                    
+                    <button id="save-annotations" class="control-btn">
+                        <i class="fas fa-save"></i>
+                        Save Notes
+                    </button>
+                    
+                    <button id="export-annotations" class="control-btn">
+                        <i class="fas fa-file-pdf"></i>
+                        Export PDF
+                    </button>
+                </div>
+
+                <div class="annotation-toolbar">
+                    <button id="highlight-tool" class="tool-btn active" data-tool="highlight">
+                        <i class="fas fa-highlighter"></i>
+                        Highlight
+                    </button>
+                    
+                    <button id="underline-tool" class="tool-btn" data-tool="underline">
+                        <i class="fas fa-underline"></i>
+                        Underline
+                    </button>
+                    
+                    <button id="strikethrough-tool" class="tool-btn" data-tool="strikethrough">
+                        <i class="fas fa-strikethrough"></i>
+                        Strike
+                    </button>
+                    
+                    <button id="pen-tool" class="tool-btn" data-tool="pen">
+                        <i class="fas fa-pen"></i>
+                        Pen
+                    </button>
+                    
+                    <button id="note-tool" class="tool-btn" data-tool="note">
+                        <i class="fas fa-sticky-note"></i>
+                        Note
+                    </button>
+                    
+                    <div class="color-picker">
+                        <input type="color" id="annotation-color" value="#ffff00" title="Annotation Color">
+                    </div>
+                    
+                    <button id="undo-btn" class="action-btn">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                    
+                    <button id="redo-btn" class="action-btn">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    
+                    <button id="clear-all" class="action-btn danger">
+                        <i class="fas fa-trash"></i>
+                        Clear All
+                    </button>
+                </div>
+
+                <div class="page-controls">
+                    <button id="prev-page" class="nav-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <span class="page-info">
+                        <span id="current-page">1</span> / <span id="total-pages">1</span>
+                    </span>
+                    
+                    <button id="next-page" class="nav-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    
+                    <div class="zoom-controls">
+                        <button id="zoom-out" class="zoom-btn">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        
+                        <span id="zoom-level">100%</span>
+                        
+                        <button id="zoom-in" class="zoom-btn">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PDF Viewer Container -->
+        <div class="pdf-viewer-container">
+            <div class="pdf-sidebar" id="annotations-sidebar">
+                <h3><i class="fas fa-list"></i> Annotations</h3>
+                <div class="annotations-list" id="annotations-list">
+                    <p class="no-annotations">No annotations yet. Start highlighting or adding notes!</p>
+                </div>
+            </div>
+
+            <div class="pdf-main">
+                <div class="pdf-canvas-container" id="pdf-canvas-container">
+                    <div class="canvas-wrapper" id="canvas-wrapper">
+                        <canvas id="pdf-canvas"></canvas>
+                        <canvas id="annotation-canvas"></canvas>
+                        <div id="notes-container"></div>
+                    </div>
+                </div>
+                
+                <div class="pdf-placeholder" id="pdf-placeholder">
+                    <div class="placeholder-content">
+                        <i class="fas fa-file-pdf"></i>
+                        <h3>No PDF Loaded</h3>
+                        <p>Upload a PDF file to start annotating</p>
+                        <label for="pdf-upload-main" class="upload-main-btn">
+                            <i class="fas fa-upload"></i>
+                            Choose PDF File
+                        </label>
+                        <input type="file" id="pdf-upload-main" accept=".pdf" style="display: none;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Modal -->
+        <div id="note-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3><i class="fas fa-sticky-note"></i> Add Note</h3>
+                    <button class="close-modal" id="close-note-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <textarea id="note-text" placeholder="Enter your note here..." rows="4"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button id="cancel-note" class="btn-secondary">Cancel</button>
+                    <button id="save-note" class="btn-primary">Save Note</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/pdf-viewer.js"></script>
+    <script>
+        // Dark Mode Toggle Function
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkToggle = document.getElementById('darkModeToggle');
+            const icon = darkToggle.querySelector('i');
+            
+            body.classList.toggle('dark-mode');
+            
+            // Update icon
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Load dark mode preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const darkMode = localStorage.getItem('darkMode');
+            const darkToggle = document.getElementById('darkModeToggle');
+            const icon = darkToggle.querySelector('i');
+            
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+    </script>
+</body>
+</html>
