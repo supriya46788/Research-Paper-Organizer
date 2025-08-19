@@ -207,6 +207,29 @@
             </div>
 
             <form id="paperForm">
+              <div id="drop-zone">
+                <div class="icon">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>Drag & Drop to Upload File</h3>
+                <p>OR</p>
+                <button id="browse-btn" type="button">Browse File</button>
+                <input type="file" id="pdfUpload" accept="application/pdf" required hidden />
+              </div>
+              <!-- Placeholder for showing uploaded file -->
+              <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>
+              
+              <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
+                <label class="form-label">PDF Preview</label>
+                <iframe
+                  id="pdfPreview"
+                  class="pdf-preview"
+                  src=""
+                  frameborder="0"
+                ></iframe>
+                
+              </div>
+
               <div class="form-group">
                 <label class="form-label">Title *</label>
                 <input type="text" class="form-input" id="title" required />
@@ -281,20 +304,6 @@
                     </label>
                   </div>
                 </div>
-              </div>
-
-              <!-- PDF Upload Section -->
-              <div class="form-group">
-                <label class="form-label" for="pdfUpload">Upload PDF</label>
-                <input type="file" accept="application/pdf" id="pdfUpload" class="form-input" />
-              </div>
-
-              <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
-                <label class="form-label">PDF Preview</label>
-                <iframe id="pdfPreview" class="pdf-preview" src="" frameborder="0"></iframe>
-                <button type="button" class="btn-secondary" id="clearPdfBtn">
-                  Remove PDF
-                </button>
               </div>
 
               <div class="form-actions">

@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -1521,6 +1522,77 @@ body.dark-mode .logout-btn:hover {
   color: var(--accent);
 }
 
+/**Drop-down feature **/
+#drop-zone {
+  border: 1px dashed #000000;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  background-color: #ffffff;
+  color: rgba(191, 188, 188, 0.92);
+  width: 600px;
+  margin: auto;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+#drop-zone.dragover {
+  background-color: rgba(206, 207, 208, 0.902);
+}
+
+.dark-mode #drop-zone {
+  background: #111827;
+}
+
+.dark-mode #drop-zone:hover {
+  background: #111827af;
+}
+#drop-zone .icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+#drop-zone h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+#drop-zone p {
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+#browse-btn {
+  padding: 8px 15px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+#browse-btn:hover {
+  background: #1d4ed8;
+}
+
+.uploaded-file {
+  margin-top: 10px;
+  font-style: italic;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.uploaded-file i {
+  color: #e63946; /* red for PDF icon */
+}
+
 
 /*=====back to top button====*/
 /* Back to Top Button Styling */
@@ -1982,4 +2054,3 @@ body.dark-mode .chatbot-input-container {
     max-height: 60vh;
   }
 }
-
