@@ -30,70 +30,147 @@
             </div>
         </nav>
 
-    <div class="contact-container">
-      
-        <div class="contact-form-box">
-            <h1 class="contact-title">Contact Us</h1>
-            <form id="contact-form" class="contact-form">
-                <div class="form-group">
-                    <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
-                    <label for="name" class="form-label">Name</label>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
-                    <label for="email" class="form-label">Email</label>
-                </div>
-                <div class="form-group">
-                    <textarea id="message" name="message" class="form-textarea" rows="4" placeholder=" " required></textarea>
-                    <label for="message" class="form-label">Message</label>
-                </div>
-                <button type="submit" class="submit-btn">
-                    <span class="submit-text">Send</span>
-                    <span class="loading-spinner hidden"><i class="fas fa-spinner fa-spin"></i></span>
-                </button>
-            </form>
+        <!-- Hero Section -->
+        <div class="contact-hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Get in Touch</h1>
+                <p class="hero-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
+            <div class="hero-decoration">
+                <i class="fas fa-envelope"></i>
+            </div>
         </div>
-    </div>
-    </div>
-        <!-- Footer -->
-        <footer class="landing-footer">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-brand">
-                        <i class="fas fa-book-open"></i>
-                        <span>Research Paper Organizer</span>
-                    </div>
-                    <div class="footer-links">
-                        <div class="footer-section">
-                            <h4>Product</h4>
-                            <a href="#features">Features</a>
-                            <a href="#how-it-works">How it Works</a>
-                            <a href="pricing.html">Pricing</a>
+
+        <!-- Contact Section -->
+        <div class="contact-container">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="footer-section">
-                            <h4>Support</h4>
-                            <a href="Faq.html">FAQ</a>
-                            <a href="contact.html">Contact</a>
-                            <a href="blog.html">Blog</a>
-                        </div>
-                        <div class="footer-section">
-                            <h4>Company</h4>
-                            <a href="about.html">About Us</a>
-                            <a href="open-source.html">Open Source</a>
-                            <a href="glossary.html">Glossary</a>
+                        <div class="card-content">
+                            <h3>Email</h3>
+                            <p>research@organizer.com</p>
                         </div>
                     </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2025 Research Paper Organizer. All rights reserved.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Response Time</h3>
+                            <p>Within 24 hours</p>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Support</h3>
+                            <p>24/7 Online Support</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
+
+            <!-- Contact Form -->
+            <div class="contact-form-box">
+                <h2 class="contact-title">Send us a Message</h2>
+                <p class="contact-subtitle">Fill out the form below and we'll get back to you promptly</p>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
+                            <label for="name" class="form-label">
+                                <i class="fas fa-user"></i>
+                                Name
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
+                            <label for="email" class="form-label">
+                                <i class="fas fa-envelope"></i>
+                                Email
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" class="form-input" placeholder=" " required>
+                        <label for="subject" class="form-label">
+                            <i class="fas fa-tag"></i>
+                            Subject
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" class="form-textarea" rows="5" placeholder=" " required></textarea>
+                        <label for="message" class="form-label">
+                            <i class="fas fa-comment"></i>
+                            Message
+                        </label>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span class="submit-text">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </span>
+                        <span class="loading-spinner hidden"><i class="fas fa-spinner fa-spin"></i></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="blog-footer" aria-label="Footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3><i class="fas fa-book-open" aria-hidden="true"></i> Research Paper Organizer</h3>
+          <p>Streamline your academic workflow with our intelligent research paper management system.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="Faq.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="glossary.html">Glossary</a></li>
+            <li><a href="open-source.html">Open Source</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="https://github.com/supriya46788/Research-Paper-Organizer" target="_blank" title="GitHub" rel="noopener">
+              <i class="fab fa-github" aria-hidden="true"></i>
+              <span class="sr-only">GitHub</span>
+            </a>
+            <a href="#" target="_blank" title="Twitter" rel="noopener">
+              <i class="fab fa-twitter" aria-hidden="true"></i>
+              <span class="sr-only">Twitter</span>
+            </a>
+            <a href="#" target="_blank" title="LinkedIn" rel="noopener">
+              <i class="fab fa-linkedin" aria-hidden="true"></i>
+              <span class="sr-only">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Research Paper Organizer | Open Source Project</p>
+        <p class="footer-tagline">Made with <i class="fas fa-heart" style="color: #e74c3c;" aria-hidden="true"></i> for researchers worldwide</p>
+      </div>
+    </footer>
     
     <script src="js/contact.js"></script>
     <script>
