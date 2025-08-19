@@ -345,22 +345,22 @@ body {
 
 /* Stats Section */
 .stats {
-    padding: 60px 0;
+    padding: 60px 20px;
     background: var(--gradient);
     color: white;
 }
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     text-align: center;
 }
 
 .stat-item {
     background: rgba(255, 255, 255, 0.1); /* Slightly transparent background for contrast */
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
     transition: transform 0.3s ease;
 }
 
@@ -377,6 +377,18 @@ body {
 .stat-label {
     font-size: 1.125rem;
     opacity: 0.9;
+}
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Very small phones → 1 per row */
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* CTA Section */
