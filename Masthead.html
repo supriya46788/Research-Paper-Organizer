@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masthead - Research Paper Organizer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ===== Base Styles ===== */
+    /* Landing Page Styles */
+:root {
+    --primary-color: #3b82f6;
+    --primary-dark: #2563eb;
+    --secondary-color: #64748b;
+    --text-color: #1e293b;
+    --text-light: #64748b;
+    --background: #ffffff;
+    --background-light: #f8fafc;
+    --border-color: #e2e8f0;
+    --success-color: #10b981;
+    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: var(--background);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation */
+.landing-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav-brand i {
+    margin-right: 0.5rem;
+    font-size: 1.75rem;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.btn-primary, .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3 { font-weight: 700; }
+    a { color: #4f46e5; text-decoration: none; }
+
+    /* ===== Hero / Mission Section ===== */
+    .masthead-hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #4f46e5, #4338ca);
+      color: #fff;
+    }
+    .masthead-hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+    }
+    .masthead-hero p {
+      font-size: 1.2rem;
+      max-width: 720px;
+      margin: auto;
+    }
+
+    /* ===== Section Headers ===== */
+    .section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      text-align: center;
+      position: relative;
+    }
+    .section h2::after {
+      content: "";
+      width: 60px;
+      height: 3px;
+      background: #4f46e5;
+      display: block;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ===== Team Grid ===== */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+    .team-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .team-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 100%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .team-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    .team-card p.role {
+      font-size: 0.9rem;
+      color: #6b7280;
+      margin-bottom: 12px;
+    }
+    .team-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+    }
+    .team-card.show { opacity: 1; transform: translateY(0); }
+
+    /* ===== Contact & Version ===== */
+    .contact {
+      text-align: center;
+      padding: 40px 20px;
+      background: #f3f4f6;
+      border-radius: 12px;
+    }
+    .contact a {
+      margin: 0 8px;
+      font-size: 1.2rem;
+    }
+    .version {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 640px) {
+      .masthead-hero h1 { font-size: 2rem; }
+      .masthead-hero p { font-size: 1rem; }
+    }
+
+    /* ================= Footer Styling ================= */
+.landing-footer {
+  background: #0d1117; /* Dark background */
+  color: #eaeaea;
+  padding: 3rem 1.5rem 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.landing-footer .container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+/* Brand */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  gap: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.footer-brand i {
+  color: #eaeaea; /* Highlight color */
+  font-size: 1.8rem;
+}
+
+.footer-brand:hover {
+  transform: scale(1.05);
+}
+
+/* Links Section */
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-section h4 {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  color: #eaeaea;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-section a {
+  display: block;
+  color: #bbb;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #fff;
+  padding-left: 5px;
+}
+
+/* Bottom Section */
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #999;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: #bbb;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #4f46e5;
+  transform: translateY(-3px);
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .footer-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .footer-section {
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-section h4 {
+    font-size: 0.9rem;
+  }
+  .footer-section a {
+    font-size: 0.85rem;
+  }
+}
+
+    /* Back to Top Button Styles */
+        #backToTop {
+            height: 50px;
+            width: 50px;
+          position: fixed;
+          bottom: 80px;
+          right: 20px;
+          z-index: 1000;
+          background: linear-gradient(135deg,#0077b5 ,#4facfe );
+          color: white;
+          border: none;
+          border-radius: 50%;
+          padding: 15px;
+          font-size: 18px;
+          cursor: pointer;
+          display: none;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          }
+          
+          #backToTop:hover {
+          transform: scale(1.1);
+          opacity: 0.9;
+          box-shadow: rgba(0,0,0,0.8);
+          }
+          
+          @media (max-width: 600px) {
+          #backToTop {
+            padding: 12px;
+            font-size: 16px;
+            bottom: 20px;
+            right: 20px;
+          }
+          }
+
+    
+  </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="landing-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-book-open"></i>
+                <span>Research Paper Organizer</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How it Works</a>
+                <a href="about.html">About</a>
+                <a href="tools.html">Tools</a>
+                <a href="contact.html">Contact</a>
+                
+                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Hero / Mission -->
+  <section class="masthead-hero">
+    <h1>Meet the Minds Behind Research Paper Organizer</h1>
+    <p>Our mission is to empower researchers and students with a streamlined, intelligent platform to organize, manage, and cite research papers effortlessly.</p>
+  </section>
+
+  <!-- Core Team -->
+  <section class="section">
+    <h2>Core Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="team1.jpg" alt="Team Member">
+        <h3>Dr. Sarah Lee</h3>
+        <p class="role">Lead Researcher</p>
+        <p>Specialist in AI & NLP with 10+ years of academic and industry experience.</p>
+      </div>
+      <div class="team-card">
+        <img src="team2.jpg" alt="Team Member">
+        <h3>Michael Chen</h3>
+        <p class="role">Full-Stack Developer</p>
+        <p>Developer passionate about building scalable, user-friendly research tools.</p>
+      </div>
+      <div class="team-card">
+        <img src="team3.jpg" alt="Team Member">
+        <h3>Ananya Sharma</h3>
+        <p class="role">Product Designer</p>
+        <p>Focused on creating intuitive, beautiful, and accessible academic tools.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advisors (Optional) -->
+  <section class="section">
+    <h2>Advisors & Sponsors</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <img src="advisor1.jpg" alt="Advisor">
+        <h3>Prof. James Brown</h3>
+        <p class="role">Advisor</p>
+        <p>Renowned academic with expertise in digital libraries and open-source research.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="section">
+    <h2>Contact & Project Info</h2>
+    <div class="contact">
+      <p>We’d love to hear from you. Reach out anytime!</p>
+      <div>
+        <a href="mailto:team@researchorganizer.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/your-repo" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <p class="version">Version 1.0 • Launched Jan 2025</p>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop">↑</button>
+
+   <!-- Footer -->
+   <footer class="landing-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <i class="fas fa-book-open"></i>
+                <span>Research Paper Organizer</span>
+            </div>
+            <div class="footer-links">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How it Works</a>
+                    <a href="pricing.html">Pricing</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <a href="Faq.html">FAQ</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="blog.html">Blog</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <a href="about.html">About Us</a>
+                    <a href="open-source.html">Open Source</a>
+                    <a href="glossary.html">Glossary</a>
+                    <a href="Masthead.html">Masthead</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Research Paper Organizer. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+  <!-- ===== Scroll Animation JS ===== -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll(".team-card");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+      }, { threshold: 0.1 });
+
+      cards.forEach(card => observer.observe(card));
+    });
+          //back to top button 
+// Show button when scrolled down
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    backToTop.style.display = "block";
+  } else {
+    backToTop.style.display = "none";
+  }
+});
+
+// Smooth scroll to top
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+  </script>
+</body>
+</html>
