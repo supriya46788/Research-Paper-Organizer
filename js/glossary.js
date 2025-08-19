@@ -70,3 +70,20 @@ window.addEventListener("scroll", function() {
         }
     });
 });
+
+ //back to top button 
+// Show button when scrolled down
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    backToTop.style.display = "block";
+  } else {
+    backToTop.style.display = "none";
+  }
+});
+
+// Smooth scroll to top
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});

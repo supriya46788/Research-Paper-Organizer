@@ -238,6 +238,9 @@
     <!-- Empty state -->
     <p id="emptyState" class="empty-state" hidden>No posts found for this category.</p>
 
+        <!-- Back to Top Button -->
+<button id="backToTop">↑</button>
+
     <!-- Footer  -->
     <footer class="blog-footer" aria-label="Footer">
       <div class="footer-content">
@@ -403,6 +406,23 @@
         document.documentElement.classList.remove('using-keyboard');
       });
     })();
+
+         //back to top button 
+// Show button when scrolled down
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    backToTop.style.display = "block";
+  } else {
+    backToTop.style.display = "none";
+  }
+});
+
+// Smooth scroll to top
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
 
   </script>
 </body>

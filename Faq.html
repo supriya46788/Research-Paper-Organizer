@@ -136,6 +136,43 @@
         </div>
     </div>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop">↑</button>
+    <style>/* Back to Top Button Styles */
+        #backToTop {
+            height: 50px;
+            width: 50px;
+          position: fixed;
+          bottom: 80px;
+          right: 20px;
+          z-index: 1000;
+          background: linear-gradient(135deg,#0077b5 ,#4facfe );
+          color: white;
+          border: none;
+          border-radius: 50%;
+          padding: 15px;
+          font-size: 18px;
+          cursor: pointer;
+          display: none;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          }
+          
+          #backToTop:hover {
+          transform: scale(1.1);
+          opacity: 0.9;
+          box-shadow: rgba(0,0,0,0.8);
+          }
+          
+          @media (max-width: 600px) {
+          #backToTop {
+            padding: 12px;
+            font-size: 16px;
+            bottom: 20px;
+            right: 20px;
+          }
+          }</style>
+
     <script src="js/faq.js"></script>
     <script>
         // Dark Mode Toggle Function
@@ -195,6 +232,23 @@
             if(document.readyState === "complete"){ onLoad() }
             else { window.addEventListener("load", onLoad) }
         })();
+
+//back to top button 
+// Show button when scrolled down
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 50) {
+    backToTop.style.display = "block";
+  } else {
+    backToTop.style.display = "none";
+  }
+});
+
+// Smooth scroll to top
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
     </script>
 </body>
 </html>
