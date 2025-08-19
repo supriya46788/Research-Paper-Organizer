@@ -633,6 +633,68 @@ body.dark-mode #footer-outer h3 {
   top: 1rem;
 }
 
+/* === Dark Mode Toggle Styles === */
+
+.dark-mode-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+}
+
+.switch {
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: relative;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  display: block;
+  height: 100%;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 3.5px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #2196F3;
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* === Dark Mode Theme Styles === */
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode a {
+  color: #90caf9;
+}
+
+body.dark-mode .card {
+  background-color: #1e1e1e;
+  border: 1px solid #444;
+}
+
 .details-header {
   display: flex;
   justify-content: space-between;
