@@ -13,6 +13,181 @@
   <!-- Updated blog styles below -->
   <link rel="stylesheet" href="css/blog.css" />
 </head>
+<style>
+      /* Footer CSS*/
+    .modern-footer {
+      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
+      color: #fff;
+      padding: 60px 20px 20px;
+      border-radius: 25px 25px 0 0;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .footer-brand h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-brand h2 i {
+      margin-right: 10px;
+      font-size: 1.6rem;
+      vertical-align: middle;
+    }
+
+    .footer-brand p {
+      font-size: 1rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .footer-links-section h4 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 5px;
+    }
+
+    .footer-links-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links-section ul li a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+    }
+
+    .footer-links-section ul li a:hover {
+      color: #fff;
+      transform: translateX(5px);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #fff;
+      color: #2c5aa0;
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 15px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    .footer-card {
+      flex: 1 1 200px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      min-width: 200px;
+    }
+ .footer-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-card ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-card ul li a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      
+      padding: 5px;
+      padding-left: 20px;
+    }
+
+    .footer-card ul li a:hover {
+      color: #fff;
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 768px) {
+      .footer-top {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .footer-brand h2 {
+        font-size: 1.5rem;
+      }
+
+      .footer-links-section h4 {
+        font-size: 1rem;
+      }
+
+      .footer-links-section ul li a {
+        font-size: 0.95rem;
+      }
+
+      .social-icons a {
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+
+      .footer-links-section ul li a {
+        justify-content: center;
+      }
+    }
+    .footer-bottom .heart {
+  color: inherit;  
+}
+
+
+</style>
 <body>
   <div class="container">
     <!-- Navigation (unchanged visual; accessible semantics) -->
@@ -242,53 +417,52 @@
         <!-- Back to Top Button -->
 <button id="backToTop">↑</button>
 
-    <!-- Footer  -->
-    <footer class="blog-footer" aria-label="Footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3><i class="fas fa-book-open" aria-hidden="true"></i> Research Paper Organizer</h3>
-          <p>Streamline your academic workflow with our intelligent research paper management system.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="Faq.html">FAQ</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Resources</h4>
-          <ul class="footer-links">
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="glossary.html">Glossary</a></li>
-            <li><a href="open-source.html">Open Source</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Connect</h4>
-          <div class="social-links">
-            <a href="https://github.com/supriya46788/Research-Paper-Organizer" target="_blank" title="GitHub" rel="noopener">
-              <i class="fab fa-github" aria-hidden="true"></i>
-              <span class="sr-only">GitHub</span>
-            </a>
-            <a href="#" target="_blank" title="Twitter" rel="noopener">
-              <i class="fab fa-twitter" aria-hidden="true"></i>
-              <span class="sr-only">Twitter</span>
-            </a>
-            <a href="#" target="_blank" title="LinkedIn" rel="noopener">
-              <i class="fab fa-linkedin" aria-hidden="true"></i>
-              <span class="sr-only">LinkedIn</span>
-            </a>
-          </div>
+   
+  <!-- Modern Footer -->
+  <footer class="modern-footer" aria-label="Footer">
+    <div class="footer-top">
+      <div class="footer-brand footer-card">
+        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
+      </div>
+
+      <div class="footer-links-section footer-card" >
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+          <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-section footer-card">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
+          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-section footer-card">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
+  <i class="fab fa-linkedin" style="color: white;"></i>
+</a>
+          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2025 Research Paper Organizer | Open Source Project</p>
-        <p class="footer-tagline">Made with <i class="fas fa-heart" style="color: #e74c3c;" aria-hidden="true"></i> for researchers worldwide</p>
-      </div>
-    </footer>
+    </div>
+
+    <div class="footer-bottom">
+  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
+</div>
+
+  </footer>
+
   </div>
 
   <!-- JS (inline for easy drop-in; feel free to extract) -->

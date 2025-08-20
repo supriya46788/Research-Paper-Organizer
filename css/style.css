@@ -833,11 +833,17 @@ body.dark-mode #footer-outer h3 {
 }
 
 .form-input {
+  display: flex;
+  align-items: center;   /* vertical centering */
+  padding: 0.80rem;      /* equal padding top/bottom */
+  text-align: left;
   width: 100%;
-  padding: 0.5rem 0.75rem;
+ 
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 0.875rem;
+
+
 }
 
 .form-input:focus {
@@ -847,8 +853,12 @@ body.dark-mode #footer-outer h3 {
 }
 
 .form-textarea {
+  display: flex;
+  align-items: center;   /* vertical centering */
+  padding: 0.80rem;      /* equal padding top/bottom */
+  text-align: left;
   width: 100%;
-  padding: 0.5rem 0.75rem;
+  /* padding: 0.80rem 0.80rem; */
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 0.875rem;
