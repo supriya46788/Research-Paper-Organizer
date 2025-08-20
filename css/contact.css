@@ -336,7 +336,7 @@ body.dark-mode {
 .form-input,
 .form-textarea {
     width: 100%;
-    padding: 1rem 1rem 1rem 3rem;
+    padding: 1rem rem 2rem 5rem;
     background: rgba(255, 255, 255, 0.8);
     border: 2px solid rgba(59, 130, 246, 0.2);
     border-radius: 10px;
