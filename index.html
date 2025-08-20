@@ -1,387 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Paper Organizer - Organize Your Research Efficiently</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="landing.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
-
-</head>
-<body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-      <div class="loader">
-        <i class="fa-solid fa-spinner"></i>
-        <h2 id="loading-text">Organizing your thoughts<span class="dots"></span></h2>
-      </div>
-    </div>
-    <!-- Navigation -->
-    <nav class="landing-nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-book-open"></i>
-                <span>Research Paper Organizer</span>
-            </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
-                <a href="about.html">About</a>
-                <a href="tools.html">Tools</a>
-                <a href="contact.html">Contact</a>
-                
-                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
-            </div>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Organize Your Research Papers Like Never Before</h1>
-                <p>Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform.</p>
-                <div class="hero-buttons">
-                    <button class="btn-primary btn-large" onclick="window.location.href='signup.html'">
-                        <i class="fas fa-rocket"></i>
-                        Start Free Trial
-                    </button>
-                    <button class="btn-secondary btn-large" onclick="scrollToFeatures()">
-                        <i class="fas fa-play"></i>
-                        See How it Works
-                    </button>
-                </div>
-                <p class="hero-note">No credit card required • 30-day free trial</p>
-            </div>
-            <div class="hero-image">
-                <div class="hero-mockup">
-                    <div class="mockup-header">
-                        <div class="mockup-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                    <div class="mockup-content">
-                        <div class="mockup-paper">
-                            <div class="paper-title">Attention Is All You Need</div>
-                            <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
-                            <div class="paper-tags">
-                                <span>Machine Learning</span>
-                                <span>Transformers</span>
-                            </div>
-                        </div>
-                        <div class="mockup-paper">
-                            <div class="paper-title">BERT: Pre-training of Deep...</div>
-                            <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
-                            <div class="paper-tags">
-                                <span>NLP</span>
-                                <span>Pre-training</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2>Everything You Need for Research Management</h2>
-                <p>Powerful features designed specifically for researchers, students, and academics</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>Smart Search</h3>
-                    <p>Find papers instantly with intelligent search across titles, authors, abstracts, and tags.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tags"></i>
-                    </div>
-                    <h3>Smart Organization</h3>
-                    <p>Categorize papers by topics, tags, and custom labels. Never lose track of important research.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h3>Rating & Reviews</h3>
-                    <p>Rate papers and add personal notes to remember key insights and contributions.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-quote-right"></i>
-                    </div>
-                    <h3>Auto Citation</h3>
-                    <p>Generate citations in APA, MLA, and Chicago formats with a single click.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <h3>PDF Management</h3>
-                    <p>Upload and store PDFs directly in your library with built-in preview capabilities.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-cloud"></i>
-                    </div>
-                    <h3>Cloud Sync</h3>
-                    <p>Access your research library from anywhere with secure cloud storage.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How it Works Section -->
-    <section id="how-it-works" class="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2>Get Started in 3 Simple Steps</h2>
-                <p>Start organizing your research papers in minutes</p>
-            </div>
-            
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Create Your Account</h3>
-                        <p>Sign up for free and get instant access to all features. No credit card required.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Add Your Papers</h3>
-                        <p>Upload PDFs, add paper details manually, or import from existing libraries.</p>
-                    </div>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Organize & Search</h3>
-                        <p>Use tags, topics, and ratings to organize your collection and find papers instantly.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">10,000+</div>
-                    <div class="stat-label">Researchers</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">500,000+</div>
-                    <div class="stat-label">Papers Organized</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Universities</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">99.9%</div>
-                    <div class="stat-label">Uptime</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-<!-- ===== Testimonials Section ===== -->
-<section id="testimonials">
-  <h2>What Our Users Say</h2>
-  <div class="testimonials-container">
-    <div class="testimonial-card">
-      <img src="testimonialw.png" alt="User Photo">
-      <h3>Dr. Sarah Lee</h3>
-      <p class="designation">PhD Student, AI Researcher</p>
-      <p class="feedback">"The Research Paper Organizer has transformed how I manage my reading list. It’s intuitive and saves me hours every week!"</p>
-      <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
-    </div>
-
-    <div class="testimonial-card">
-      <img src="test1.jpg" alt="User Photo">
-      <h3>Michael Chen</h3>
-      <p class="designation">Data Scientist</p>
-      <p class="feedback">"I love the clean interface and the ability to tag and search papers instantly. A must-have for researchers!"</p>
-      <p class="tags">💡 Great UI • ⚡ Fast</p>
-    </div>
-
-    <div class="testimonial-card">
-      <img src="testimonialw.png" alt="User Photo">
-      <h3>Ananya Sharma</h3>
-      <p class="designation">Graduate Student</p>
-      <p class="feedback">"This tool has streamlined my literature review process and made collaboration so much easier."</p>
-      <p class="tags">🤝 Collaboration • 📚 Productivity</p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== CSS ===== -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Source Community</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-#testimonials {
-  padding: 50px 20px;
-  background: #f9fafb;
-  text-align: center;
-}
-#testimonials h2 {
-  
-  font-size: 2.5rem; /* Bigger text */
-  font-weight: bold; /* Makes it stand out */
-  text-align: center; /* Centered heading */
-  margin-bottom: 30px; /* More space below */
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Segoe UI',sans-serif; background:#f5f8ff; color:#222; scroll-behavior:smooth;}
+a {text-decoration:none;}
+h1,h2,h3,h4 {text-align:center; margin:20px 0; color:#0077b5;}
+h4 {margin-top:40px; color:#222;}
 
-}
-.testimonials-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-.testimonial-card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, opacity 0.5s ease;
-  opacity: 0;
-  transform: translateY(20px);
-}
-.testimonial-card img {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  margin-bottom: 15px;
-}
-.testimonial-card .designation {
-  font-size: 0.9rem;
-  color: #6b7280;
-}
-.testimonial-card .feedback {
-  font-size: 0.95rem;
-  margin: 15px 0;
-}
-.testimonial-card .tags {
-  font-size: 0.85rem;
-  color: #374151;
-}
-.testimonial-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (max-width: 640px) {
-  .testimonials-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 16px;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 10px;
-  }
-  .testimonial-card {
-    min-width: 260px;
-    scroll-snap-align: center;
-  }
-}
+/* Back Button */
+.back-home {position:absolute; top:20px; left:20px; background:linear-gradient(135deg,#0077b5,#4facfe); color:#fff; padding:8px 12px; border-radius:8px; font-weight:bold; transition:0.3s;}
+.back-home:hover {transform:scale(1.05);}
 
-</style>
+/* Controls */
+.controls {text-align:center; margin:20px;}
+.controls input {padding:8px 12px; border-radius:8px; border:1px solid #ccc; margin-right:10px; width:200px;}
+.controls button {padding:8px 14px; border-radius:20px; border:none; background:linear-gradient(135deg,#0077b5,#4facfe); color:#fff; margin:5px; cursor:pointer; transition:0.3s;}
+.controls button:hover {transform:scale(1.05); opacity:0.9;}
 
-<!-- ===== JS Fade-in Animation ===== -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".testimonial-card");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-      }
-    });
-  }, { threshold: 0.1 });
+/* Repo Grid */
+.repo-container {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:20px;}
+.repo {background:#e6f0ff; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:0.3s; animation: fadeIn 0.6s ease;}
+.repo:hover {transform:translateY(-5px) scale(1.02);}
+.repo h3 {margin-bottom:10px; color:#0077b5;}
+.repo p {font-size:14px; color:#333; line-height:1.4;}
+.repo a {display:inline-block; margin-top:10px; background:linear-gradient(135deg,#0077b5,#4facfe); color:#fff; padding:5px 12px; border-radius:8px; font-weight:bold; transition:0.3s;}
+.repo a:hover {opacity:0.9;}
+.repo .tags {margin-top:8px;}
+.repo .tags span {background:#cce0ff; color:#0077b5; padding:3px 8px; border-radius:12px; font-size:12px; margin-right:5px;}
 
-  cards.forEach(card => observer.observe(card));
-});
-</script>
+/* Contribute Section */
+.contribute {padding:50px 20px; background:#f0f4ff; color:#222; text-align:center;}
+.contribute-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; margin-top:30px;}
+.contribute-card {background:#e6f0ff; padding:25px; border-radius:15px; box-shadow:0 3px 8px rgba(0,0,0,0.1); transition:0.3s; min-height:180px; display:flex; flex-direction:column; justify-content:center;}
+.contribute-card:hover {transform:scale(1.05);}
+.contribute-card h3 {margin-bottom:10px; color:#0077b5;}
+.contribute-card p {font-size:14px; line-height:1.5;}
 
+/* Acknowledgements */
+.acknowledge {padding:50px 20px; background:#fefeff; text-align:center;}
+.acknowledge h2 {color:#86c6e8; margin-bottom:40px;}
+.ack-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; justify-items:center;}
+.ack-card {background:linear-gradient(135deg,#9bceea,#4facfe); color:#fff; padding:25px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition:transform 0.3s, box-shadow 0.3s; text-align:center; max-width:280px;}
+.ack-card:hover {transform:translateY(-8px); box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+.ack-card img {max-width:100px; margin-bottom:15px; filter:brightness(0) invert(1); transition:transform 0.3s;}
+.ack-card img:hover {transform:scale(1.1);}
+.ack-card h3 {margin-bottom:10px;}
+.ack-card p {font-size:14px; line-height:1.5;}
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Research Workflow?</h2>
-                <p>Join thousands of researchers who have already streamlined their paper management process.</p>
-                <div class="cta-buttons">
-                    <button class="btn-primary btn-large" onclick="window.location.href='signup.html'">
-                        Start Your Free Trial
-                    </button>
-                    <button class="btn-secondary btn-large" onclick="window.location.href='login.html'">
-                        Already have an account? Login
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <style>
-        /* Back to Top Button Styles */
-#backToTop {
-  height: 50px;
-  width: 50px;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  background: linear-gradient(135deg,#0077b5, #4facfe);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 15px;
-  font-size: 18px;
-  cursor: pointer;
-  display: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-#backToTop:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
-  box-shadow: rgba(0,0,0,0.8);
-}
-
-@media (max-width: 600px) {
-  #backToTop {
-    padding: 12px;
-    font-size: 16px;
-    bottom: 20px;
-    right: 20px;
-  }
-}
-
-    /* Footer CSS*/
+/* Footer */
+/* Footer CSS*/
     .modern-footer {
       background: linear-gradient(135deg, #1f3c88, #2c5aa0);
       color: #fff;
@@ -553,13 +225,61 @@ document.addEventListener("DOMContentLoaded", () => {
   color: inherit;  
 }
 
-    </style>
+</style>
+</head>
+<body>
 
-    <!-- Back to Top Button -->
-<button id="backToTop">↑</button>
+<a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back</a>
 
-   
-  <!-- Modern Footer -->
+<h1>🚀 Open Source Community</h1>
+<h2>Explore Projects & Contribute</h2>
+
+<div class="controls">
+  <input type="text" id="searchInput" placeholder="Search repos by name or language...">
+  <button onclick="searchRepos()">Search</button>
+  <br>
+  <button onclick="filterRepos('all')">All</button>
+  <button onclick="filterRepos('ai')">AI</button>
+  <button onclick="filterRepos('ml')">ML</button>
+  <button onclick="filterRepos('js')">JS</button>
+  <button onclick="filterRepos('html')">HTML</button>
+  <button onclick="filterRepos('css')">CSS</button>
+</div>
+
+<div class="repo-container" id="repo-container"></div>
+
+<section class="contribute">
+  <h2>🤝 How to Contribute</h2>
+  <div class="contribute-grid">
+    <div class="contribute-card">
+      <h3>Fork & Clone</h3>
+      <p>Fork the repo and clone it locally using <code>git clone</code>.</p>
+    </div>
+    <div class="contribute-card">
+      <h3>Create a Branch</h3>
+      <p>Create a feature branch: <code>git checkout -b feature-name</code>.</p>
+    </div>
+    <div class="contribute-card">
+      <h3>Make Changes</h3>
+      <p>Add your features or fix bugs with clean commits.</p>
+    </div>
+    <div class="contribute-card">
+      <h3>Submit PR</h3>
+      <p>Push to GitHub and open a Pull Request for review.</p>
+    </div>
+  </div>
+</section>
+
+<section class="acknowledge">
+  <h2>🏆 Acknowledgements</h2>
+  <div class="ack-grid">
+    <div class="ack-card">
+      <h3>GSSoC</h3>
+      <p>GirlScript Summer of Code empowers students to contribute to open source projects with mentorship.</p>
+    </div>
+</section>
+
+<!-- Modern Footer -->
   <footer class="modern-footer" aria-label="Footer">
     <div class="footer-top">
       <div class="footer-brand footer-card">
@@ -604,51 +324,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
   </footer>
 
-    <script src="landing.js"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const loadingScreen = document.getElementById("loading-screen");
-        const loadingText = document.getElementById("loading-text");
 
-        const texts = ["Organizing your thoughts...", "Drafting your ideas..."];
+<script>
+const githubUser = "supriya46788";
+let allRepos = [];
 
-        let index = 0;
+async function fetchRepos() {
+  const res = await fetch(`https://api.github.com/users/${githubUser}/repos?per_page=10&sort=updated`);
+  const data = await res.json();
+  allRepos = data.map(repo => ({
+    name: repo.name,
+    desc: repo.description || "No description",
+    url: repo.html_url,
+    language: repo.language ? repo.language.toLowerCase() : "other",
+    tags: repo.language ? [repo.language.toLowerCase()] : ["other"]
+  }));
+  displayRepos(allRepos);
+}
 
-        // Change text every 4 seconds
-        const textInterval = setInterval(() => {
-          index = (index + 1) % texts.length;
-          loadingText.style.opacity = 0; // fade out
-          setTimeout(() => {
-            loadingText.innerHTML = texts[index] + '<span class="dots"></span>';
-            loadingText.style.opacity = 1; // fade in
-          }, 500);
-        }, 3000);
+function displayRepos(list) {
+  const container = document.getElementById("repo-container");
+  container.innerHTML = "";
+  list.forEach(repo => {
+    container.innerHTML += `
+      <div class="repo">
+        <h3>${repo.name}</h3>
+        <p>${repo.desc}</p>
+        <div class="tags">${repo.tags.map(t => `<span>${t.toUpperCase()}</span>`).join('')}</div>
+        <a href="${repo.url}" target="_blank">🔗 View Repo</a>
+      </div>`;
+  });
+}
 
-        // Hide loading screen after 6 seconds
-        setTimeout(() => {
-          clearInterval(textInterval); // stop changing text
-          loadingScreen.classList.add("hidden");
-        }, 6000); // adjust as needed
-      });
+function searchRepos() {
+  const term = document.getElementById("searchInput").value.toLowerCase();
+  displayRepos(allRepos.filter(r => r.name.toLowerCase().includes(term) || r.language.includes(term)));
+}
 
+function filterRepos(tag) {
+  if(tag === "all") displayRepos(allRepos);
+  else displayRepos(allRepos.filter(r => r.tags.includes(tag)));
+}
 
-      //back to top button 
-// Show button when scrolled down
-const backToTop = document.getElementById("backToTop");
+fetchRepos();
+</script>
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    backToTop.style.display = "block";
-  } else {
-    backToTop.style.display = "none";
-  }
-});
-
-// Smooth scroll to top
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-    </script>
-     
 </body>
 </html>
+
+  
