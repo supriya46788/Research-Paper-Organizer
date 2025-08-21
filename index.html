@@ -268,16 +268,25 @@
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, opacity 0.5s ease;
+  transition: transform 0.3s ease, opacity 0.5s ease, box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(20px);
 }
+
+/* On hover effect */
+.testimonial-card:hover {
+  transform: translateY(-10px); /* lift up */
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15); /* stronger shadow for 3D effect */
+}
+
+/* Image styling */
 .testimonial-card img {
   width: 150px;
   height: 150px;
   border-radius: 100%;
   margin-bottom: 15px;
 }
+
 .testimonial-card .designation {
   font-size: 0.9rem;
   color: #6b7280;
