@@ -192,10 +192,7 @@
   <div class="container">
     <!-- Navigation (unchanged visual; accessible semantics) -->
     <nav class="navbar" aria-label="Primary">
-      <a href="home.html" class="nav-item">
-        <i class="fas fa-home" aria-hidden="true"></i>
-        <span>Home</span>
-      </a>
+         <button class="nav-item" onclick="goBack()">Back</button>
 
       <div class="navbar-right-links" role="menubar" aria-label="Site">
         <a href="about.html" class="nav-item" role="menuitem">About us</a>
@@ -598,6 +595,16 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+    // Back button function
+        function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+
 
   </script>
 </body>

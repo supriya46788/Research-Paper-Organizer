@@ -12,10 +12,7 @@
     <div class="container">
         <!-- Navigation -->
         <nav class="navbar">
-            <a href="index.html" class="nav-item">
-                <i class="fas fa-home"></i>
-                Home
-            </a>
+            <button class="nav-item" onclick="goBack()">Back</button>
 
             <div class="navbar-right-links">
                 <a href="about.html" class="nav-item">About us</a>
@@ -249,6 +246,15 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+    // Back button function
+        function goBack() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          window.location.href = "index.html";
+        }
+      }
+
     </script>
 </body>
 </html>
