@@ -1,5 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE h  <link rel="stylesheet" href="css/style.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <style>
+    /* Ensure dark mode styles work */
+    body.dark-mode {
+      background: #111827 !important;
+      color: #d1d5db !important;
+    }
+    
+    body.dark-mode .header {
+      background: #1f2937 !important;
+      color: #d1d5db !important;
+    }
+    
+    body.dark-mode .search-bar {
+      background: #1f2937 !important;
+      color: #d1d5db !important;
+    }
+    
+    body.dark-mode .papers-section {
+      background: #1f2937 !important;
+      color: #d1d5db !important;
+    }
+    
+    body.dark-mode .paper-card {
+      background: #374151 !important;
+      color: #d1d5db !important;
+      border-color: #4b5563 !important;
+    }
+    
+    body.dark-mode .modal {
+      background: #1f2937 !important;
+      color: #d1d5db !important;
+    }
+    
+    body.dark-mode input, 
+    body.dark-mode textarea, 
+    body.dark-mode select {
+      background: #374151 !important;
+      color: #d1d5db !important;
+      border-color: #4b5563 !important;
+    }
+  </style>
+</head>
 
 <head>
   <meta charset="UTF-8" />
@@ -45,7 +91,7 @@
 
         <!-- Right side buttons -->
         <div class="header-buttons">
-          <button class="dark-toggle" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+          <button class="dark-toggle" id="darkModeToggle" title="Toggle Dark Mode">
             <i class="fas fa-moon"></i>
           </button>
 
@@ -425,8 +471,8 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
   </script>
-  <script src="script.js"></script>
 
     <script src="js/script.js"></script>
 
