@@ -21,12 +21,38 @@
         <h2 id="loading-text">Organizing your thoughts<span class="dots"></span></h2>
       </div>
     </div>
+    <style>
+      .nav-link {
+  text-decoration: none;
+  color: #4285f4;   
+  font-size: 20px;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  margin: 10px 0;
+}
+
+.nav-link i {
+  margin-right: 8px;
+}
+
+.nav-link:hover {
+  color: #6a0dad;   /* PURPLE only on hover */
+  border-bottom: 2px solid #6a0dad;
+}
+
+    </style>
     <!-- Navigation -->
     <nav class="landing-nav">
         <div class="nav-container">
             <div class="nav-brand">
-                <i class="fas fa-book-open"></i>
-                <span>Research Paper Organizer</span>
+<a href="index.html" class="nav-link">
+  <i class="fas fa-book-open"></i>
+  Research Paper Organizer
+</a>
+
+
             </div>
             <div class="nav-links">
                 <a href="#features">Features</a>
