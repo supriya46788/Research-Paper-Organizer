@@ -96,11 +96,7 @@ class AuthSystem {
     const signupForm = document.getElementById('signupForm');
     if (signupForm) {
       signupForm.addEventListener('submit', (e) => this.handleSignup(e));
-      
-      const passwordInput = document.getElementById('signupPassword');
-      if (passwordInput) {
-        passwordInput.addEventListener('input', (e) => this.checkPasswordStrength(e.target.value));
-      }
+
     }
   }
 
@@ -141,32 +137,16 @@ class AuthSystem {
     const name = document.getElementById('signupName').value.trim();
     const email = document.getElementById('signupEmail').value.trim();
     const password = document.getElementById('signupPassword').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    const agreeTerms = document.getElementById('agreeTerms').checked;
-
-    if (!name || !email || !password || !confirmPassword) {
-      this.showError('Please fill in all fields');
-      return;
-    }
-
-    if (!agreeTerms) {
-      this.showError('Please accept the terms and conditions');
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      this.showError('Passwords do not match');
-      return;
-    }
-
-    if (password.length < 6) {
-      this.showError('Password must be at least 6 characters long');
-      return;
-    }
+    const submitButton = e.target.querySelector('button[type="submit"]');
 
     if (this.users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
       this.showError('User with this email already exists');
       return;
+    }
+    
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
     }
 
     const newUser = {
@@ -180,44 +160,15 @@ class AuthSystem {
     this.users.push(newUser);
     this.saveUsers();
 
-    this.showSuccess('Account created successfully!', () => {
-      window.location.href = 'login.html';
-    });
+    setTimeout(() => {
+        this.showSuccess('Account created successfully!', () => {
+            window.location.href = 'login.html';
+        });
+    }, 1500);
   }
 
-  checkPasswordStrength(password) {
-    const strengthIndicator = document.getElementById('passwordStrength');
-    if (!strengthIndicator) return;
 
-    let strength = 0;
-    let feedback = '';
 
-    if (password.length >= 8) strength++;
-    if (/[a-z]/.test(password)) strength++;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/[0-9]/.test(password)) strength++;
-    if (/[^A-Za-z0-9]/.test(password)) strength++;
-
-    switch (strength) {
-      case 0:
-      case 1:
-        strengthIndicator.className = 'password-strength weak';
-        feedback = 'Weak password';
-        break;
-      case 2:
-      case 3:
-        strengthIndicator.className = 'password-strength medium';
-        feedback = 'Medium strength';
-        break;
-      case 4:
-      case 5:
-        strengthIndicator.className = 'password-strength strong';
-        feedback = 'Strong password';
-        break;
-    }
-
-    strengthIndicator.textContent = feedback;
-  }
 
   showError(message) {
     Swal.fire({
@@ -266,5 +217,3 @@ function togglePassword(inputId) {
 document.addEventListener('DOMContentLoaded', () => {
   new AuthSystem();
 });
-
-

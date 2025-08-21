@@ -1,79 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up - Research Paper Organizer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <link rel="stylesheet" href="css/auth.css" />
-</head>
-<body>
-  <div class="auth-container">
-    <div class="auth-card">
-      <div class="auth-header">
-        <i class="fas fa-book-open"></i>
-        <h1>Research Paper Organizer</h1>
-        <p>Create your account</p>
-      </div>
-      <form id="signupForm" class="auth-form">
-        <div class="form-group">
-          <label for="signupName">Full Name</label>
-          <div class="input-container">
-            <i class="fas fa-user"></i>
-            <input type="text" id="signupName" required placeholder="Enter your full name" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up - Research Paper Organizer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/auth.css" />
+  </head>
+  <body>
+    <div class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <i class="fas fa-book-open"></i>
+          <h1>Research Paper Organizer</h1>
+          <p>Create your account</p>
+        </div>
+        
+        <form id="signupForm" class="auth-form" novalidate>
+          <div class="form-group">
+            <label for="signupName">Full Name <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input 
+                  type="text" 
+                  id="signupName" 
+                  name="name"
+                  autocomplete="name"
+                  required 
+                  placeholder="Enter your full name" 
+                  aria-required="true"
+                  aria-describedby="nameError"
+                />
+              </div>
+              <div id="nameError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="signupEmail">Email Address</label>
-          <div class="input-container">
-            <i class="fas fa-envelope"></i>
-            <input type="email" id="signupEmail" required placeholder="Enter your email" />
+          
+          <div class="form-group">
+            <label for="signupEmail">Email Address <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <div class="input-container">
+                <i class="fas fa-envelope"></i>
+                <input 
+                  type="email" 
+                  id="signupEmail" 
+                  name="email"
+                  autocomplete="email"
+                  required 
+                  placeholder="Enter your email" 
+                  aria-required="true"
+                  aria-describedby="emailError"
+                />
+              </div>
+              <div id="emailError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="signupPassword">Password</label>
-          <div class="input-container">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="signupPassword" required placeholder="Create a password" />
-            <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
-              <i class="fas fa-eye"></i>
-            </button>
+          
+          <div class="form-group">
+            <label for="signupPassword">Password <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input 
+                  type="password" 
+                  id="signupPassword" 
+                  name="password"
+                  autocomplete="new-password"
+                  required 
+                  minlength="8"
+                  placeholder="Create a password" 
+                  aria-required="true"
+                  aria-describedby="passwordError passwordRequirements"
+                />
+                <button 
+                  type="button" 
+                  class="password-toggle" 
+                  aria-label="Toggle password visibility"
+                  data-target="signupPassword"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div id="passwordRequirements" class="password-requirements">
+                <p>Password must contain:</p>
+                <ul>
+                  <li data-requirement="length">At least 8 characters</li>
+                  <li data-requirement="uppercase">One uppercase letter</li>
+                  <li data-requirement="number">One number</li>
+                  <li data-requirement="special">One special character</li>
+                </ul>
+              </div>
+
+              <div id="passwordError" class="error-message" role="alert" aria-live="polite"></div>
+              <div class="password-strength" id="passwordStrength">
+                <div class="strength-bar"></div>
+              </div>
+            </div>
           </div>
-          <div class="password-strength" id="passwordStrength"></div>
-        </div>
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
-          <div class="input-container">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="confirmPassword" required placeholder="Confirm your password" />
-            <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
-              <i class="fas fa-eye"></i>
-            </button>
+          
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input 
+                  type="password" 
+                  id="confirmPassword" 
+                  name="confirmPassword"
+                  autocomplete="new-password"
+                  required 
+                  placeholder="Confirm your password" 
+                  aria-required="true"
+                  aria-describedby="confirmPasswordError"
+                />
+                <button 
+                  type="button" 
+                  class="password-toggle" 
+                  aria-label="Toggle password visibility"
+                  data-target="confirmPassword"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div id="confirmPasswordError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
           </div>
-        </div>
-        <div class="form-options">
-          <label class="checkbox-container">
-            <input type="checkbox" id="agreeTerms" required />
-            <span class="checkmark"></span>
-            I agree to the 
-            <a href="#" class="terms-link" id="showTos">Terms of Service</a> and 
-            <a href="#" class="terms-link" id="showPrivacy">Privacy Policy</a>
-          </label>
-        </div>
-        <button type="submit" class="auth-btn">
-          <i class="fas fa-user-plus"></i>
-          Create Account
-        </button>
-        <div class="auth-divider">
-          <span>Already have an account?</span>
+          
+          <div class="form-group">
+            <div class="input-wrapper">
+              <div class="checkbox-container">
+                <input 
+                  type="checkbox" 
+                  id="agreeTerms" 
+                  name="agreeTerms"
+                  required
+                  aria-required="true"
+                  aria-describedby="termsError"
+                />
+                <label for="agreeTerms" class="checkbox-label">
+                  I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a> <span class="required">*</span>
+                </label>
+              </div>
+              <div id="termsError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
+          </div>
+
+          
+          <button type="submit" class="auth-btn" disabled>
+            <i class="fas fa-user-plus"></i>
+            Create Account
+          </button>
+
+          
+          <div class="auth-divider">
+            <span>Already have an account?</span>
+            
+
         </div>
         <a href="login.html" class="auth-link">Sign in instead</a>
       </form>
     </div>
-  </div>
-  
-  <script>
+    </div>
+
+    <script>
     // TERMS AND PRIVACY CONTENT
     const tosContent = `
       <h2>Terms of Service</h2>
@@ -130,6 +224,13 @@
       });
     });
   </script>
-  <script src="js/auth.js"></script>
+    
+    <script src="js/auth.js"></script>
+  <script src="js/form-validation.js"></script>
+
+
+
+  
+
 </body>
 </html>
