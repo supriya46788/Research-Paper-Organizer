@@ -58,6 +58,9 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    border-bottom: none;
+    text-decoration: none;  /* underline hatane ke liye */
+
 }
 
 .nav-brand i {
