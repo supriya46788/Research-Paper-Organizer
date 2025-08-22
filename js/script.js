@@ -7,7 +7,6 @@ let editingPaper = null;
 
 const PAPERS_KEY = "papers_db";
 const TOPICS_KEY = "topics_db";
-const THEME_KEY = "theme";
 
 
 
@@ -945,8 +944,8 @@ menuItems.forEach((menuItem) => menuItem.addEventListener("click", hideMenu));
 
 // Dark Mode: Initialization & Toggle
 function applyThemeFromStorage() {
-  const theme = localStorage.getItem(THEME_KEY);
-  if (theme === "dark") {
+  const theme = localStorage.getItem('darkMode');
+  if (theme === 'enabled') {
     document.body.classList.add("dark-mode");
     setDarkModeIcon(true);
   } else {
@@ -972,7 +971,7 @@ document
     const isNowDark = !document.body.classList.contains("dark-mode");
     document.body.classList.toggle("dark-mode");
     setDarkModeIcon(isNowDark);
-    localStorage.setItem(THEME_KEY, isNowDark ? "dark" : "light");
+    localStorage.setItem('darkMode', isNowDark ? "enabled" : "disabled");
   });
 
 // PDF Upload & Preview handling

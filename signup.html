@@ -20,68 +20,217 @@
           <p>Create your account</p>
         </div>
         
-        <form id="signupForm" class="auth-form">
+        <form id="signupForm" class="auth-form" novalidate>
           <div class="form-group">
-            <label for="signupName">Full Name</label>
-            <div class="input-container">
-              <i class="fas fa-user"></i>
-              <input type="text" id="signupName" required placeholder="Enter your full name" />
+            <label for="signupName">Full Name <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input 
+                  type="text" 
+                  id="signupName" 
+                  name="name"
+                  autocomplete="name"
+                  required 
+                  placeholder="Enter your full name" 
+                  aria-required="true"
+                  aria-describedby="nameError"
+                />
+              </div>
+              <div id="nameError" class="error-message" role="alert" aria-live="polite"></div>
             </div>
           </div>
           
           <div class="form-group">
-            <label for="signupEmail">Email Address</label>
-            <div class="input-container">
-              <i class="fas fa-envelope"></i>
-              <input type="email" id="signupEmail" required placeholder="Enter your email" />
+            <label for="signupEmail">Email Address <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <div class="input-container">
+                <i class="fas fa-envelope"></i>
+                <input 
+                  type="email" 
+                  id="signupEmail" 
+                  name="email"
+                  autocomplete="email"
+                  required 
+                  placeholder="Enter your email" 
+                  aria-required="true"
+                  aria-describedby="emailError"
+                />
+              </div>
+              <div id="emailError" class="error-message" role="alert" aria-live="polite"></div>
             </div>
           </div>
           
           <div class="form-group">
-            <label for="signupPassword">Password</label>
-            <div class="input-container">
-              <i class="fas fa-lock"></i>
-              <input type="password" id="signupPassword" required placeholder="Create a password" />
-              <button type="button" class="password-toggle" onclick="togglePassword('signupPassword')">
-                <i class="fas fa-eye"></i>
-              </button>
+            <label for="signupPassword">Password <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input 
+                  type="password" 
+                  id="signupPassword" 
+                  name="password"
+                  autocomplete="new-password"
+                  required 
+                  minlength="8"
+                  placeholder="Create a password" 
+                  aria-required="true"
+                  aria-describedby="passwordError passwordRequirements"
+                />
+                <button 
+                  type="button" 
+                  class="password-toggle" 
+                  aria-label="Toggle password visibility"
+                  data-target="signupPassword"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div id="passwordRequirements" class="password-requirements">
+                <p>Password must contain:</p>
+                <ul>
+                  <li data-requirement="length">At least 8 characters</li>
+                  <li data-requirement="uppercase">One uppercase letter</li>
+                  <li data-requirement="number">One number</li>
+                  <li data-requirement="special">One special character</li>
+                </ul>
+              </div>
+
+              <div id="passwordError" class="error-message" role="alert" aria-live="polite"></div>
+              <div class="password-strength" id="passwordStrength">
+                <div class="strength-bar"></div>
+              </div>
             </div>
-            <div class="password-strength" id="passwordStrength"></div>
           </div>
           
           <div class="form-group">
-            <label for="confirmPassword">Confirm Password</label>
-            <div class="input-container">
-              <i class="fas fa-lock"></i>
-              <input type="password" id="confirmPassword" required placeholder="Confirm your password" />
-              <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
-                <i class="fas fa-eye"></i>
-              </button>
+            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+            <div class="input-wrapper">
+              <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input 
+                  type="password" 
+                  id="confirmPassword" 
+                  name="confirmPassword"
+                  autocomplete="new-password"
+                  required 
+                  placeholder="Confirm your password" 
+                  aria-required="true"
+                  aria-describedby="confirmPasswordError"
+                />
+                <button 
+                  type="button" 
+                  class="password-toggle" 
+                  aria-label="Toggle password visibility"
+                  data-target="confirmPassword"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+              <div id="confirmPasswordError" class="error-message" role="alert" aria-live="polite"></div>
             </div>
           </div>
           
-          <div class="form-options">
-            <label class="checkbox-container">
-              <input type="checkbox" id="agreeTerms" required />
-              <span class="checkmark"></span>
-              I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
-            </label>
+          <div class="form-group">
+            <div class="input-wrapper">
+              <div class="checkbox-container">
+                <input 
+                  type="checkbox" 
+                  id="agreeTerms" 
+                  name="agreeTerms"
+                  required
+                  aria-required="true"
+                  aria-describedby="termsError"
+                />
+                <label for="agreeTerms" class="checkbox-label">
+                  I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a> <span class="required">*</span>
+                </label>
+              </div>
+              <div id="termsError" class="error-message" role="alert" aria-live="polite"></div>
+            </div>
           </div>
+
           
-          <button type="submit" class="auth-btn">
+          <button type="submit" class="auth-btn" disabled>
             <i class="fas fa-user-plus"></i>
             Create Account
           </button>
+
           
           <div class="auth-divider">
             <span>Already have an account?</span>
-          </div>
-          
-          <a href="login.html" class="auth-link">Sign in instead</a>
-        </form>
-      </div>
+            
+
+        </div>
+        <a href="login.html" class="auth-link">Sign in instead</a>
+      </form>
     </div>
+    </div>
+
+    <script>
+    // TERMS AND PRIVACY CONTENT
+    const tosContent = `
+      <h2>Terms of Service</h2>
+      <p>
+        By using the Research Paper Organizer ("the Service"), you agree to the following terms:
+      </p>
+      <ul style="text-align:left;">
+        <li><strong>Account Responsibility:</strong> You are responsible for all activity on your account.</li>
+        <li><strong>Content:</strong> You retain ownership of your uploaded papers, notes, and metadata. You grant us a license solely for the purposes of storing, organizing, and displaying your research within your account.</li>
+        <li><strong>Usage:</strong> The Service is provided for academic and organizational purposes only. You may not use it for unlawful activities.</li>
+        <li><strong>Data Security:</strong> Reasonable measures are taken to protect your data, but no system is perfectly secure. You are encouraged to keep backups of important research.</li>
+        <li><strong>Termination:</strong> We reserve the right to suspend or terminate accounts engaged in misuse or violation of these terms.</li>
+        <li><strong>Changes:</strong> These Terms may be updated. Continued use after notice of changes implies acceptance of the new terms.</li>
+      </ul>
+    `;
+
+    const privacyContent = `
+      <h2>Privacy Policy</h2>
+      <p>
+        Your privacy is important to us. This policy outlines how your information is handled:
+      </p>
+      <ul style="text-align:left;">
+        <li><strong>Data Collected:</strong> We collect your name, email, and any research files or notes you upload.</li>
+        <li><strong>Purpose of Use:</strong> Data is used exclusively to provide, improve, and secure your experience on the Service.</li>
+        <li><strong>Sharing:</strong> We do not sell or share your information with third parties except as required by law, or to provide core service features (such as secure cloud hosting).</li>
+        <li><strong>Security:</strong> Data is stored using industry-standard methods. Transmission is encrypted where possible.</li>
+        <li><strong>Cookies:</strong> Basic cookies may be used for security and login persistence.</li>
+        <li><strong>Deletion:</strong> You can delete your account and personal data at any time via your account settings.</li>
+        <li><strong>Policy Updates:</strong> Changes will be communicated, and continued use of the Service indicates acceptance of updates.</li>
+      </ul>
+    `;
+
+    // HANDLE MODAL POPUPS
+    document.addEventListener('DOMContentLoaded', function () {
+      // Terms of Service
+      document.getElementById('showTos').addEventListener('click', function (e) {
+        e.preventDefault();
+        Swal.fire({
+          html: tosContent,
+          width: 600,
+          confirmButtonText: "Close",
+          customClass: {popup: 'tos-privacy-popup'}
+        });
+      });
+      // Privacy Policy
+      document.getElementById('showPrivacy').addEventListener('click', function (e) {
+        e.preventDefault();
+        Swal.fire({
+          html: privacyContent,
+          width: 600,
+          confirmButtonText: "Close",
+          customClass: {popup: 'tos-privacy-popup'}
+        });
+      });
+    });
+  </script>
     
     <script src="js/auth.js"></script>
-  </body>
+  <script src="js/form-validation.js"></script>
+
+
+
+  
+
+</body>
 </html>

@@ -1,5 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE h  <link rel="stylesheet" href="css/style.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <style>
+    /* Ensure dark mode styles work */
+    body.dark-mode {
+      background: #111827 !important;
+      color: #d1d5db !important;
+    }
+    
+    body.dark-mode .header {
+      background: #1f2937 !important;
+      color: #d1d5db !important;
+    }
+    
+    body.dark-mode .search-bar {
+      background: #1f2937 !important;
+      color: #d1d5db !important;
+    }
+    
+    body.dark-mode .papers-section {
+      background: #1f2937 !important;
+      color: #d1d5db !important;
+    }
+    
+    body.dark-mode .paper-card {
+      background: #374151 !important;
+      color: #d1d5db !important;
+      border-color: #4b5563 !important;
+    }
+    
+    body.dark-mode .modal {
+      background: #1f2937 !important;
+      color: #d1d5db !important;
+    }
+    
+    body.dark-mode input, 
+    body.dark-mode textarea, 
+    body.dark-mode select {
+      background: #374151 !important;
+      color: #d1d5db !important;
+      border-color: #4b5563 !important;
+    }
+  </style>
+</head>
 
 <head>
   <meta charset="UTF-8" />
@@ -45,7 +91,7 @@
 
         <!-- Right side buttons -->
         <div class="header-buttons">
-          <button class="dark-toggle" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+          <button class="dark-toggle" id="darkModeToggle" title="Toggle Dark Mode">
             <i class="fas fa-moon"></i>
           </button>
 
@@ -367,30 +413,54 @@ box-shadow: rgba(0,0,0,0.8);
 
 
     <!-- Footer -->
-    <footer>
-      <div id="footer-outer">
-        <!-- <div class="footer-inner">
-          <a href="#"><button>About us</button></a>
-          <a href="#"><button>Home</button></a>
-          <a href="#"><button>FAQ</button></a>
-          <a href="#"><button>Contact Us</button></a>
-        </div> -->
-        <div class="footer-social">
-          <h3>Follow Us:</h3>
-          <a href="https://instagram.com/YourProfile" target="_blank" style="margin: 0 10px; color: #e4405f">
-            <i class="fab fa-instagram fa-lg"></i>
+   <!--Footer-->
+  <footer class="blog-footer" aria-label="Footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3><i class="fas fa-book-open" aria-hidden="true"></i> Research Paper Organizer</h3>
+        <p>Streamline your academic workflow with our intelligent research paper management system.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="Faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Resources</h4>
+        <ul class="footer-links">
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+          <li><a href="open-source.html">Open Source</a></li>
+          <li><a href="Masthead.html">Masthead</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <div class="social-links">
+          <a href="https://github.com/supriya46788/Research-Paper-Organizer" target="_blank" title="GitHub" rel="noopener">
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span>
           </a>
-          <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank"
-            style="margin: 0 10px; color: #0077b5">
-            <i class="fab fa-linkedin fa-lg"></i>
+          <a href="#" target="_blank" title="Twitter" rel="noopener">
+            <i class="fab fa-twitter" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span>
           </a>
-          <a href="https://twitter.com/YourProfile" target="_blank" style="margin: 0 10px; color: #1da1f2">
-            <i class="fab fa-twitter fa-lg"></i>
+          <a href="#" target="_blank" title="LinkedIn" rel="noopener">
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+            <span class="sr-only">LinkedIn</span>
           </a>
         </div>
-        <h3>&copy; 2025 Research Paper Organizer . All rights reserved.</h3>
       </div>
-    </footer>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Research Paper Organizer | Open Source Project</p>
+      <p class="footer-tagline">Made with <i class="fas fa-heart" style="color: #e74c3c;" aria-hidden="true"></i> for researchers worldwide</p>
+    </div>
+  </footer>
 
   <script>
     // Authentication check
@@ -425,8 +495,8 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
   </script>
-  <script src="script.js"></script>
 
     <script src="js/script.js"></script>
 

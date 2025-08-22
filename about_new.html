@@ -9,6 +9,20 @@
   <link rel="stylesheet" href="css/about.css">
   <style>
     /* About page specific styles */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      display: block !important;
+      visibility: visible !important;
+    }
+
+    main {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
     .sr-only {
       position: absolute;
       width: 1px;
@@ -48,14 +62,14 @@
     .section h2 {
       font-size: clamp(1.8rem, 3vw, 2.2rem);
       margin-bottom: 1.5rem;
-      color: #1f2937;
+      color: #1f2937 !important;
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
 
     .section h2 i {
-      color: #2f2ca0;
+      color: #2f2ca0 !important;
     }
 
     .card {
@@ -74,7 +88,7 @@
 
     .card p {
       font-size: 1.1rem;
-      color: #6b7280;
+      color: #6b7280 !important;
       line-height: 1.7;
       margin-bottom: 1rem;
     }
@@ -97,7 +111,7 @@
       box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
       transition: all 0.3s ease;
       max-width: 400px;
-      border: 2px solid #2f2ca0;
+      border: 2px solid #2f2ca0 !important;
       position: relative;
       overflow: hidden;
     }
@@ -109,7 +123,7 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(135deg, #2f2ca0, #4698e5);
+      background: linear-gradient(135deg, #2f2ca0, #1e1b6b) !important;
     }
 
     .admin-card:hover {
@@ -122,7 +136,7 @@
       height: 100px;
       border-radius: 50%;
       margin-bottom: 1.5rem;
-      border: 3px solid #2f2ca0;
+      border: 3px solid #2f2ca0 !important;
       object-fit: cover;
       transition: all 0.3s ease;
     }
@@ -134,11 +148,11 @@
     .admin-card h3 {
       font-size: 1.4rem;
       margin-bottom: 0.5rem;
-      color: #1f2937;
+      color: #1f2937 !important;
     }
 
     .team-role {
-      color: #6b7280;
+      color: #6b7280 !important;
       margin-bottom: 1.5rem;
       font-size: 1rem;
     }
@@ -150,7 +164,7 @@
     }
 
     .social-links a {
-      color: #6b7280;
+      color: #6b7280 !important;
       text-decoration: none;
       padding: 0.5rem 1rem;
       border-radius: 20px;
@@ -163,108 +177,67 @@
     }
 
     .social-links a:hover {
-      background: #2f2ca0;
+      background: #2f2ca0 !important;
       color: white;
       transform: translateY(-2px);
     }
 
     .contributors-grid {
-      display: grid !important;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
       margin-top: 2rem;
-      visibility: visible !important;
-    }
-
-    .contributors-section {
-      display: block !important;
-      visibility: visible !important;
-      margin-top: 3rem;
-    }
-
-    .contributors-title {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .contributors-title h3 {
-      color: #1f2937;
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
-    .contributors-title p {
-      color: #6b7280;
-      font-size: 0.95rem;
-    }
-
-    #contributorsContainer {
-      display: block !important;
-      visibility: visible !important;
-      min-height: 200px;
     }
 
     .contributor-card {
-      background: white !important;
-      border-radius: 12px;
-      padding: 1.25rem;
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
       text-align: center;
       transition: all 0.3s ease;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.1);
       cursor: pointer;
-      display: block !important;
-      visibility: visible !important;
-      position: relative;
     }
 
     .contributor-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15);
-      border-color: #2f2ca0;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+      border-color: #2f2ca0 !important;
     }
 
     .contributor-avatar {
-      width: 60px;
-      height: 60px;
+      width: 70px;
+      height: 70px;
       border-radius: 50%;
-      margin-bottom: 0.75rem;
-      border: 2px solid #e5e7eb;
+      margin-bottom: 1rem;
+      border: 2px solid rgba(99, 102, 241, 0.1);
       transition: all 0.3s ease;
-      display: block !important;
-      margin-left: auto;
-      margin-right: auto;
-      object-fit: cover;
     }
 
     .contributor-avatar:hover {
-      border-color: #2f2ca0;
+      border-color: #2f2ca0 !important;
     }
 
     .contributor-name {
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 0.25rem;
-      color: #1f2937;
-      line-height: 1.3;
+      margin-bottom: 0.5rem;
+      color: #1f2937 !important;
     }
 
     .contributor-username {
-      color: #6b7280;
-      font-size: 0.8rem;
-      margin-bottom: 0.75rem;
+      color: #6b7280 !important;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
     }
 
     .contributor-stats {
       display: flex;
-      justify-content: center;
-      margin-top: 0.75rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid #f3f4f6;
+      justify-content: space-around;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(99, 102, 241, 0.1);
     }
 
     .stat {
@@ -273,15 +246,13 @@
 
     .stat-number {
       font-weight: 700;
-      color: #2f2ca0;
-      font-size: 0.9rem;
+      color: #2f2ca0 !important;
+      font-size: 1rem;
     }
 
     .stat-label {
-      font-size: 0.7rem;
-      color: #6b7280;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      font-size: 0.8rem;
+      color: #6b7280 !important;
     }
 
     .tech-stack {
@@ -304,22 +275,22 @@
     .tech-item:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
-      border-color: #2f2ca0;
+      border-color: #2f2ca0 !important;
     }
 
     .tech-icon {
       font-size: 2.5rem;
       margin-bottom: 1rem;
-      color: #2f2ca0;
+      color: #2f2ca0 !important;
     }
 
     .tech-item h3 {
       margin-bottom: 0.5rem;
-      color: #1f2937;
+      color: #1f2937 !important;
     }
 
     .tech-item p {
-      color: #6b7280;
+      color: #6b7280 !important;
       font-size: 0.9rem;
     }
 
@@ -340,7 +311,7 @@
     .contribution-list i {
       margin-right: 0.75rem;
       width: 20px;
-      color: #2f2ca0;
+      color: #2f2ca0 !important;
     }
 
     .loading {
@@ -352,7 +323,7 @@
       width: 40px;
       height: 40px;
       border: 3px solid #e0e7ff;
-      border-top: 3px solid #2f2ca0;
+      border-top: 3px solid #2f2ca0 !important;
       border-radius: 50%;
       animation: spin 1s linear infinite;
       margin: 0 auto 1.5rem;
@@ -370,7 +341,7 @@
       bottom: 30px;
       right: 30px;
       z-index: 1000;
-      background: linear-gradient(135deg, #2f2ca0, #4698e5);
+      background: linear-gradient(135deg, #2f2ca0, #1e1b6b) !important;
       color: white;
       border: none;
       border-radius: 50%;
@@ -508,274 +479,6 @@
         gap: 0.5rem;
       }
     }
-
-    /* Ensure main content is visible */
-    main {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-
-    .card {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-
-    /* Ensure main content is visible and properly styled */
-
-    main {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .section {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      margin-bottom: 3rem;
-      width: 100%;
-    }
-
-    .card {
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      background: white;
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(99, 102, 241, 0.1);
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
-    }
-
-    /* Dark Mode Styles */
-    body.dark-mode {
-      background: #1a1a1a !important;
-      color: #e0e0e0 !important;
-    }
-
-    /* Container Dark Mode */
-    body.dark-mode .container {
-      background: #1a1a1a !important;
-    }
-
-    /* Main Content Dark Mode */
-    body.dark-mode main {
-      background: transparent !important;
-    }
-
-    /* Section Containers Dark Mode */
-    body.dark-mode .section {
-      background: #2d3748 !important;
-      color: #e0e0e0 !important;
-      border: 1px solid rgba(99, 179, 237, 0.2) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-    }
-
-    /* About Header Dark Mode */
-    body.dark-mode .about-header {
-      background: linear-gradient(135deg, #2d3748, #1a202c) !important;
-      color: #e0e0e0 !important;
-    }
-
-    /* Cards Dark Mode */
-    body.dark-mode .card {
-      background: #2d3748 !important;
-      color: #e0e0e0 !important;
-      border: 1px solid rgba(99, 102, 241, 0.3) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-    }
-
-    body.dark-mode .card:hover {
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
-    }
-
-    body.dark-mode .card p {
-      color: #cbd5e0 !important;
-    }
-
-    /* Section Headings Dark Mode */
-    body.dark-mode .section h2 {
-      color: #e0e0e0 !important;
-    }
-
-    body.dark-mode .section h2 i {
-      color: #63b3ed !important;
-    }
-
-    /* Admin Card Dark Mode */
-    body.dark-mode .admin-card {
-      background: #2d3748 !important;
-      color: #e0e0e0 !important;
-      border: 2px solid #63b3ed !important;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-    }
-
-    body.dark-mode .admin-card h3 {
-      color: #e0e0e0 !important;
-    }
-
-    body.dark-mode .team-role {
-      color: #cbd5e0 !important;
-    }
-
-    body.dark-mode .team-photo {
-      border: 3px solid #63b3ed !important;
-    }
-
-    /* Social Links Dark Mode */
-    body.dark-mode .social-links a {
-      background: rgba(224, 224, 224, 0.1) !important;
-      color: #e0e0e0 !important;
-    }
-
-    body.dark-mode .social-links a:hover {
-      background: rgba(144, 205, 244, 0.2) !important;
-      color: #90cdf4 !important;
-    }
-
-    /* Contributor Cards Dark Mode */
-    body.dark-mode .contributor-card {
-      background: #2d3748 !important;
-      color: #e0e0e0 !important;
-      border: 1px solid rgba(99, 179, 237, 0.3) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-    }
-
-    body.dark-mode .contributor-card:hover {
-      border-color: #63b3ed !important;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
-    }
-
-    /* Contributors Section Title Dark Mode */
-    body.dark-mode .contributors-title h3 {
-      color: #ffffff !important;
-    }
-
-    body.dark-mode .contributors-title p {
-      color: #ffffff !important;
-    }
-
-    body.dark-mode .contributor-name {
-      color: #e0e0e0 !important;
-    }
-
-    body.dark-mode .contributor-username {
-      color: #cbd5e0 !important;
-    }
-
-    body.dark-mode .stat-number {
-      color: #63b3ed !important;
-    }
-
-    body.dark-mode .stat-label {
-      color: #cbd5e0 !important;
-    }
-
-    /* Tech Stack Dark Mode */
-    body.dark-mode .tech-item {
-      background: #2d3748 !important;
-      color: #e0e0e0 !important;
-      border: 1px solid rgba(99, 179, 237, 0.3) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-    }
-
-    body.dark-mode .tech-item:hover {
-      border-color: #63b3ed !important;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
-    }
-
-    body.dark-mode .tech-item h3 {
-      color: #e0e0e0 !important;
-    }
-
-    body.dark-mode .tech-item p {
-      color: #cbd5e0 !important;
-    }
-
-    body.dark-mode .tech-icon {
-      color: #63b3ed !important;
-    }
-
-    /* Contribution List Dark Mode */
-    body.dark-mode .contribution-list p {
-      background: rgba(224, 224, 224, 0.1) !important;
-      color: #e0e0e0 !important;
-      border-left: 4px solid #63b3ed !important;
-    }
-
-    body.dark-mode .contribution-list p:hover {
-      background: rgba(144, 205, 244, 0.1) !important;
-    }
-
-    body.dark-mode .contribution-list i {
-      color: #63b3ed !important;
-    }
-
-    /* Footer Dark Mode */
-    body.dark-mode .blog-footer {
-      background: linear-gradient(135deg, #1a202c, #2d3748) !important;
-    }
-
-    body.dark-mode .footer-section h4 {
-      border-bottom-color: rgba(224, 224, 224, 0.2) !important;
-    }
-
-    body.dark-mode .footer-links a {
-      color: rgba(224, 224, 224, 0.85) !important;
-    }
-
-    body.dark-mode .footer-links a:hover {
-      color: #90cdf4 !important;
-    }
-
-    /* Spinner Dark Mode */
-    body.dark-mode .spinner {
-      border: 3px solid #4a5568 !important;
-      border-top: 3px solid #63b3ed !important;
-    }
-
-    /* Back to Top Button Dark Mode */
-    body.dark-mode #backToTop {
-      background: linear-gradient(135deg, #2d3748, #1a202c) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
-    }
-
-    /* Navbar Dark Mode Compatibility */
-    body.dark-mode .navbar {
-      background: transparent !important;
-    }
-
-    body.dark-mode .nav-item {
-      background: linear-gradient(135deg, #4a5568, #2d3748) !important;
-      color: #e0e0e0 !important;
-    }
-
-    body.dark-mode .nav-item:hover {
-      background: linear-gradient(135deg, #63b3ed, #4299e1) !important;
-      color: #1a202c !important;
-    }
   </style>
 </head>
 <body>
@@ -792,7 +495,6 @@
         <a href="blog.html" class="nav-item" role="menuitem">Blogs</a>
         <a href="Faq.html" class="nav-item" role="menuitem">FAQ</a>
         <a href="contact.html" class="nav-item" role="menuitem">Contact Us</a>
-        <a href="tools.html" class="nav-item">Tools</a>
         <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" aria-pressed="false">
           <i class="fas fa-moon" aria-hidden="true"></i><span class="sr-only">Toggle dark mode</span>
         </button>
@@ -861,14 +563,14 @@
         
         <div class="team-admin">
           <div class="admin-card">
-            <img src="https://avatars.githubusercontent.com/u/155548316?v=4" alt="supriya" class="team-photo">
-            <h3>supriya46788</h3>
+            <img src="https://avatars.githubusercontent.com/u/62991059?v=4" alt="Channpreet Kaur" class="team-photo">
+            <h3>Channpreet Kaur</h3>
             <p class="team-role">Project Founder & Lead Developer</p>
             <div class="social-links">
-              <a href="https://github.com/supriya46788" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/Channpreetk" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-github"></i> GitHub
               </a>
-              <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com/in/channpreet-kaur" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-linkedin"></i> LinkedIn
               </a>
             </div>
@@ -878,8 +580,8 @@
         <!-- Contributors Section -->
         <div class="contributors-section">
           <div class="contributors-title">
-            <h3><i class="fas fa-users"></i> Our Amazing Contributors</h3>
-            <p>This project is made possible by our incredible open-source community.</p>
+            <h3><i class="fas fa-heart"></i> Open Source Contributors</h3>
+            <p>This project thrives thanks to our amazing community of contributors!</p>
           </div>
 
           <div id="contributorsContainer">
@@ -919,6 +621,11 @@
             <div class="tech-icon">🔒</div>
             <h3>Local Storage</h3>
             <p>Client-side data persistence</p>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">🎯</div>
+            <h3>Accessibility</h3>
+            <p>WCAG compliant and screen reader friendly</p>
           </div>
         </div>
       </section>
@@ -1013,7 +720,7 @@
       const body = document.body;
       
       // Check for saved dark mode preference or default to light mode
-      const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
+      const isDarkMode = localStorage.getItem('darkMode') === 'true';
       
       if (isDarkMode) {
         body.classList.add('dark-mode');
@@ -1030,12 +737,13 @@
         if (isNowDark) {
           icon.classList.replace('fa-moon', 'fa-sun');
           this.setAttribute('aria-pressed', 'true');
-          localStorage.setItem('darkMode', 'enabled');
         } else {
           icon.classList.replace('fa-sun', 'fa-moon');
           this.setAttribute('aria-pressed', 'false');
-          localStorage.setItem('darkMode', 'disabled');
         }
+        
+        // Save preference
+        localStorage.setItem('darkMode', isNowDark);
       });
     })();
 
@@ -1059,30 +767,19 @@
       const container = document.getElementById('contributorsContainer');
       
       try {
-        // Show loading indicator
-        container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading contributors...</p></div>';
-        
-        // Get contributors from GitHub API (simplified approach)
-        const response = await fetch(`https://api.github.com/repos/Channpreetk/Research-Paper-Organizer/contributors?per_page=100`);
-        
-        if (!response.ok) {
-          throw new Error(`API Error: ${response.status}`);
-        }
-        
+        const response = await fetch('https://api.github.com/repos/Channpreetk/Research-Paper-Organizer/contributors');
         const contributors = await response.json();
-        console.log('Contributors loaded:', contributors);
         
         if (Array.isArray(contributors) && contributors.length > 0) {
           const grid = document.createElement('div');
           grid.className = 'contributors-grid';
           
-          // Show contributors excluding admin team members
           contributors.forEach(contributor => {
-            if (contributor.login !== 'supriya46788') {
+            if (contributor.login !== 'Channpreetk') { // Exclude the main author as they're shown separately
               const card = document.createElement('div');
               card.className = 'contributor-card';
               card.innerHTML = `
-                <img src="${contributor.avatar_url}" alt="${contributor.login}" class="contributor-avatar" loading="lazy">
+                <img src="${contributor.avatar_url}" alt="${contributor.login}" class="contributor-avatar">
                 <div class="contributor-name">${contributor.login}</div>
                 <div class="contributor-username">@${contributor.login}</div>
                 <div class="contributor-stats">
@@ -1103,85 +800,13 @@
           
           container.innerHTML = '';
           container.appendChild(grid);
-          console.log('Contributors loaded successfully');
         } else {
-          showFallbackContributors(container);
+          container.innerHTML = '<p>No contributors found at the moment.</p>';
         }
       } catch (error) {
         console.error('Error loading contributors:', error);
-        showFallbackContributors(container);
+        container.innerHTML = '<p>Unable to load contributors at the moment.</p>';
       }
-    }
-
-    // Fallback contributors to show if API fails
-    function showFallbackContributors(container) {
-      const grid = document.createElement('div');
-      grid.className = 'contributors-grid';
-      
-      // Sample contributors based on common GitHub usernames for this type of project
-      const fallbackContributors = [
-        {
-          name: 'Channpreet Kaur',
-          username: 'Channpreetk',
-          avatar: 'https://avatars.githubusercontent.com/u/62991059?v=4',
-          contributions: '156'
-        },
-        {
-          name: 'anikethta21',
-          username: 'anikethta21',
-          avatar: 'https://via.placeholder.com/60x60/e91e63/ffffff?text=AT',
-          contributions: '24'
-        },
-        {
-          name: 'dev-xyz',
-          username: 'dev-xyz',
-          avatar: 'https://via.placeholder.com/60x60/2196f3/ffffff?text=DX',
-          contributions: '18'
-        },
-        {
-          name: 'codeWithAkash',
-          username: 'codeWithAkash',
-          avatar: 'https://via.placeholder.com/60x60/4caf50/ffffff?text=CA',
-          contributions: '12'
-        },
-        {
-          name: 'WebDevPro',
-          username: 'WebDevPro',
-          avatar: 'https://via.placeholder.com/60x60/ff9800/ffffff?text=WD',
-          contributions: '8'
-        },
-        {
-          name: 'ReactMaster',
-          username: 'ReactMaster',
-          avatar: 'https://via.placeholder.com/60x60/9c27b0/ffffff?text=RM',
-          contributions: '5'
-        }
-      ];
-      
-      fallbackContributors.forEach(contributor => {
-        const card = document.createElement('div');
-        card.className = 'contributor-card';
-        card.innerHTML = `
-          <img src="${contributor.avatar}" alt="${contributor.name}" class="contributor-avatar" loading="lazy">
-          <div class="contributor-name">${contributor.name}</div>
-          <div class="contributor-username">@${contributor.username}</div>
-          <div class="contributor-stats">
-            <div class="stat">
-              <div class="stat-number">${contributor.contributions}</div>
-              <div class="stat-label">Commits</div>
-            </div>
-          </div>
-        `;
-        
-        card.addEventListener('click', () => {
-          window.open(`https://github.com/${contributor.username}`, '_blank');
-        });
-        
-        grid.appendChild(card);
-      });
-      
-      container.innerHTML = '';
-      container.appendChild(grid);
     }
 
     // Load contributors when page loads
