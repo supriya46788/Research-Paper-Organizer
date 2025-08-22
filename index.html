@@ -102,6 +102,7 @@
             </div>
             
             <div class="features-grid">
+
                 <div class="feature-card slide-left">
                     <div class="feature-icon">
                         <i class="fas fa-search"></i>
@@ -150,6 +151,56 @@
                     <p>Access your research library from anywhere with secure cloud storage.</p>
                 </div>
             </div>
+
+    <div class="feature-card">
+        <div class="feature-icon bg-gradient">
+            <i class="fas fa-magnifying-glass"></i>
+        </div>
+        <h3>Smart Search</h3>
+        <p>Find papers instantly with intelligent search across titles, authors, abstracts, and tags.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon bg-gradient">
+            <i class="fas fa-folder-tree"></i>
+        </div>
+        <h3>Smart Organization</h3>
+        <p>Categorize papers by topics, tags, and custom labels. Never lose track of important research.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon bg-gradient">
+            <i class="fas fa-ranking-star"></i>
+        </div>
+        <h3>Rating & Notes</h3>
+        <p>Rate papers and add personal notes to remember key insights and contributions.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon bg-gradient">
+            <i class="fas fa-quote-left"></i>
+        </div>
+        <h3>Auto Citation</h3>
+        <p>Generate citations in APA, MLA, and Chicago formats with a single click.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon bg-gradient">
+            <i class="fas fa-file-circle-check"></i>
+        </div>
+        <h3>PDF Management</h3>
+        <p>Upload and store PDFs directly in your library with built-in preview capabilities.</p>
+    </div>
+
+    <div class="feature-card">
+        <div class="feature-icon bg-gradient">
+            <i class="fas fa-cloud-arrow-up"></i>
+        </div>
+        <h3>Cloud Sync</h3>
+        <p>Access your research library from anywhere with secure cloud storage.</p>
+    </div>
+</div>
+
         </div>
     </section>
 
@@ -551,6 +602,65 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     .footer-bottom .heart {
   color: inherit;  
+
+}
+
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;  /* 👈 ye center karega */
+  margin: 3rem 0;
+}
+
+.feature-card {
+  flex: 1 1 250px;
+  max-width: 300px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #fff;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(8deg);
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #333;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
 }
 
     </style>
