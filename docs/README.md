@@ -6,20 +6,6 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 
 ---
 
-## 📑 Table of Contents
-- [Features](#-features)
-- [Project Structure](#-project-structure)
-- [How to Use](#-how-to-use)
-- [Screenshots](#-screenshots)
-- [Future Overview](#-future-overview)
-- [Roadmap](#-roadmap-planned-features)
-- [FAQ](#-faq)
-- [How to Contribute](#-how-to-contribute)
-- [Contribution Guidelines](#-contribution-guidelines)
-- [License](#-license)
-
----
-
 ## ✨ Features
 
 * 🎯 Static single-page application (SPA) with smooth UI
@@ -28,48 +14,6 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 * 🔍 Search bar to quickly find a paper
 * 📌 Visual cards for each paper with title, author(s), and description
 * 🎨 Built with pure HTML, CSS, and JavaScript – no frameworks
-
----
-
-## 📁 Project Structure
-
-```
-research-paper-organizer/
-├── favicon/
-│ ├── android-chrome-192x192.png
-│ ├── android-chrome-512x512.png
-│ ├── apple-touch-icon.png
-│ ├── favicon-16x16.png
-│ ├── favicon-32x32.png
-│ ├── favicon-48x48.png
-│ ├── favicon.ico
-│ └── site.webmanifest
-│
-├── Screenshots/
-│ ├── Addpaper.png
-│ ├── contact_us.png
-│ ├── CreateAcc.png
-│ ├── Faq.png
-│ ├── HomePage.png
-│ ├── Login.png
-│ └── paperdetails.png
-│
-├── about.css
-├── about.html
-├── about.js
-├── auth.css
-├── auth.js
-├── CODE_OF_CONDUCT.md
-├── contact.css
-├── contact.html
-├── contact.js
-├── CONTRIBUTING.md
-├── faq.css
-├── faq.html
-├── faq.js
-├── index.html
-├── LICENSE.txt
-```
 
 ---
 
@@ -84,27 +28,17 @@ research-paper-organizer/
 ---
 
 ## 📷 Screenshots
+<img width="1920" height="1080" alt="1" src="https://github.com/user-attachments/assets/cb20a6c7-cd75-4f38-ae6c-83fd2e2c3609" />
 
-1. Login Page
-![Login](Screenshots/Login.png)  
 
-2. Create Account
-![Create Account](Screenshots/CreateAcc.png)  
 
-3.Home Page
-![Home Page](Screenshots/HomePage.png)  
+<img width="1920" height="1080" alt="2" src="https://github.com/user-attachments/assets/f27f34ae-54d0-40c4-b74e-d88f2ecf56e4" />
 
-4. FAQ page
-![FAQ](Screenshots/Faq.png)  
 
-5.Paper Detail 
-![Paper Details](Screenshots/paperdetails.png)  
 
-6.Add Paper
-![Add Paper](Screenshots/Addpaper.png)  
+<img width="1920" height="1080" alt="3" src="https://github.com/user-attachments/assets/d53cc424-5ebf-499c-829c-4d96156efa62" />
 
-7.Contact us
-![Contact Us](Screenshots/contact_us.png)  
+
 
 ---
 
