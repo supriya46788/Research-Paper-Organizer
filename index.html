@@ -689,8 +689,16 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           clearInterval(textInterval); // stop changing text
           loadingScreen.classList.add("hidden");
+          //after that added sideLeft and slide right animation
+          document.querySelector(".hero-content").classList.add("animate");
+          document.querySelector(".hero-image").classList.add("animate");
         }, 6000); // adjust as needed
-      });
+      }); 
+
+      //after executing slideright remove it so that other animation can start
+      setTimeout(() =>{
+         document.querySelector(".hero-image").classList.remove("animate");
+      },7000)
 
 
       //back to top button 
