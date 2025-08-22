@@ -562,7 +562,7 @@ document.addEventListener("DOMContentLoaded", () => {
   justify-content: center;  /* 👈 ye center karega */
   /* margin: 3rem 0; */ 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  grid-template-columns: 1fr; /* default: 1 card per row */
   gap: 20px;
 }
 
@@ -614,13 +614,26 @@ document.addEventListener("DOMContentLoaded", () => {
   color: #666;
   line-height: 1.6;
 }
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .features-grid {
     grid-template-columns: 1fr; /* 👈 force single column */
-  }
+  /* }
 
   .feature-card {
     max-width: 100%;   /* let it stretch full width */
+  /* }
+}  */
+/* Medium screens: 2 cards per row */
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Laptop and larger: 3 cards per row */
+@media (min-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
