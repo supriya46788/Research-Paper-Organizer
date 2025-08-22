@@ -1,50 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Research Paper Organizer - Organize Your Research Efficiently</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="landing.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
-
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="landing.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="./favicon/favicon-48x48.png"
+    />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
     <!-- Loading Screen -->
     <div id="loading-screen">
       <div class="loader">
         <i class="fa-solid fa-spinner"></i>
-        <h2 id="loading-text">Organizing your thoughts<span class="dots"></span></h2>
+        <h2 id="loading-text">
+          Organizing your thoughts<span class="dots"></span>
+        </h2>
       </div>
     </div>
     <!-- Navigation -->
     <nav class="landing-nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-book-open"></i>
-                <span>Research Paper Organizer</span>
-            </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
-                <a href="about.html">About</a>
-                <a href="tools.html">Tools</a>
-                <a href="contact.html">Contact</a>
-                
-                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
-            </div>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+      <div class="nav-container">
+        <div class="nav-brand">
+          <i class="fas fa-book-open"></i>
+          <span>Research Paper Organizer</span>
         </div>
+        <button class="mobile-menu-toggle" aria-label="Open menu">
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it Works</a>
+          <a href="about.html">About</a>
+          <a href="tools.html">Tools</a>
+          <a href="contact.html">Contact</a>
+
+          <button
+            class="btn-primary"
+            onclick="window.location.href='signup.html'"
+          >
+            Get Started
+          </button>
+        </div>
+        <!-- <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div> -->
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Organize Your Research Papers Like Never Before</h1>
+          <p>
+            Streamline your academic workflow with our intelligent research
+            paper management system. Track, organize, and cite your papers
+            efficiently in one centralized platform.
+          </p>
+          <div class="hero-buttons">
+            <button
+              class="btn-primary btn-large"
+              onclick="window.location.href='signup.html'"
+            >
+              <i class="fas fa-rocket"></i>
+              Start Free Trial
+            </button>
+            <button
+              class="btn-secondary btn-large"
+              onclick="scrollToFeatures()"
+            >
+              <i class="fas fa-play"></i>
+              See How it Works
+            </button>
+          </div>
+          <p class="hero-note">No credit card required • 30-day free trial</p>
+        </div>
+        <div class="hero-image">
+          <div class="hero-mockup">
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="mockup-content">
+              <div class="mockup-paper">
+                <div class="paper-title">Attention Is All You Need</div>
+                <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
+                <div class="paper-tags">
+                  <span>Machine Learning</span>
+                  <span>Transformers</span>
+
         <div class="hero-container">
             <div class="hero-content fade-in">
                 <h1 class="typing-text">Organize Your Research Papers Like Never Before</h1>
@@ -88,13 +157,72 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
+              </div>
+              <div class="mockup-paper">
+                <div class="paper-title">BERT: Pre-training of Deep...</div>
+                <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
+                <div class="paper-tags">
+                  <span>NLP</span>
+                  <span>Pre-training</span>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Features Section -->
     <section id="features" class="features">
+      <div class="container">
+        <div class="section-header">
+          <h2>Everything You Need for Research Management</h2>
+          <p>
+            Powerful features designed specifically for researchers, students,
+            and academics
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <h3>Smart Search</h3>
+            <p>
+              Find papers instantly with intelligent search across titles,
+              authors, abstracts, and tags.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-tags"></i>
+            </div>
+            <h3>Smart Organization</h3>
+            <p>
+              Categorize papers by topics, tags, and custom labels. Never lose
+              track of important research.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <h3>Rating & Reviews</h3>
+            <p>
+              Rate papers and add personal notes to remember key insights and
+              contributions.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-quote-right"></i>
+
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Everything You Need for Research Management</h2>
@@ -150,12 +278,70 @@
                     <h3>Cloud Sync</h3>
                     <p>Access your research library from anywhere with secure cloud storage.</p>
                 </div>
+
             </div>
+            <h3>Auto Citation</h3>
+            <p>
+              Generate citations in APA, MLA, and Chicago formats with a single
+              click.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <h3>PDF Management</h3>
+            <p>
+              Upload and store PDFs directly in your library with built-in
+              preview capabilities.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <h3>Cloud Sync</h3>
+            <p>
+              Access your research library from anywhere with secure cloud
+              storage.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- How it Works Section -->
     <section id="how-it-works" class="how-it-works">
+
+      <div class="container">
+        <div class="section-header">
+          <h2>Get Started in 3 Simple Steps</h2>
+          <p>Start organizing your research papers in minutes</p>
+        </div>
+
+        <div class="steps-container">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Create Your Account</h3>
+              <p>
+                Sign up for free and get instant access to all features. No
+                credit card required.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Add Your Papers</h3>
+              <p>
+                Upload PDFs, add paper details manually, or import from existing
+                libraries.
+              </p>
+
         <div class="container">
             <div class="section-header fade-in">
                 <h2>Get Started in 3 Simple Steps</h2>
@@ -186,11 +372,46 @@
                         <p>Use tags, topics, and ratings to organize your collection and find papers instantly.</p>
                     </div>
                 </div>
+
             </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Organize & Search</h3>
+              <p>
+                Use tags, topics, and ratings to organize your collection and
+                find papers instantly.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Stats Section -->
+
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">10,000+</div>
+            <div class="stat-label">Researchers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">500,000+</div>
+            <div class="stat-label">Papers Organized</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Universities</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">99.9%</div>
+            <div class="stat-label">Uptime</div>
+          </div>
+
     <section class="stats fade-in">
         <div class="container">
             <div class="stats-grid">
@@ -211,125 +432,157 @@
                     <div class="stat-label">Uptime</div>
                 </div>
             </div>
+
         </div>
+      </div>
     </section>
 
-<!-- ===== Testimonials Section ===== -->
-<section id="testimonials">
-  <h2>What Our Users Say</h2>
-  <div class="testimonials-container">
-    <div class="testimonial-card">
-      <img src="testimonialw.png" alt="User Photo">
-      <h3>Dr. Sarah Lee</h3>
-      <p class="designation">PhD Student, AI Researcher</p>
-      <p class="feedback">"The Research Paper Organizer has transformed how I manage my reading list. It’s intuitive and saves me hours every week!"</p>
-      <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
-    </div>
+    <!-- ===== Testimonials Section ===== -->
+    <section id="testimonials">
+      <h2>What Our Users Say</h2>
+      <div class="testimonials-container">
+        <div class="testimonial-card">
+          <img src="testimonialw.png" alt="User Photo" />
+          <h3>Dr. Sarah Lee</h3>
+          <p class="designation">PhD Student, AI Researcher</p>
+          <p class="feedback">
+            "The Research Paper Organizer has transformed how I manage my
+            reading list. It’s intuitive and saves me hours every week!"
+          </p>
+          <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
+        </div>
 
-    <div class="testimonial-card">
-      <img src="test1.jpg" alt="User Photo">
-      <h3>Michael Chen</h3>
-      <p class="designation">Data Scientist</p>
-      <p class="feedback">"I love the clean interface and the ability to tag and search papers instantly. A must-have for researchers!"</p>
-      <p class="tags">💡 Great UI • ⚡ Fast</p>
-    </div>
+        <div class="testimonial-card">
+          <img src="test1.jpg" alt="User Photo" />
+          <h3>Michael Chen</h3>
+          <p class="designation">Data Scientist</p>
+          <p class="feedback">
+            "I love the clean interface and the ability to tag and search papers
+            instantly. A must-have for researchers!"
+          </p>
+          <p class="tags">💡 Great UI • ⚡ Fast</p>
+        </div>
 
-    <div class="testimonial-card">
-      <img src="testimonialw.png" alt="User Photo">
-      <h3>Ananya Sharma</h3>
-      <p class="designation">Graduate Student</p>
-      <p class="feedback">"This tool has streamlined my literature review process and made collaboration so much easier."</p>
-      <p class="tags">🤝 Collaboration • 📚 Productivity</p>
-    </div>
-  </div>
-</section>
+        <div class="testimonial-card">
+          <img src="testimonialw.png" alt="User Photo" />
+          <h3>Ananya Sharma</h3>
+          <p class="designation">Graduate Student</p>
+          <p class="feedback">
+            "This tool has streamlined my literature review process and made
+            collaboration so much easier."
+          </p>
+          <p class="tags">🤝 Collaboration • 📚 Productivity</p>
+        </div>
+      </div>
+    </section>
 
-<!-- ===== CSS ===== -->
-<style>
-#testimonials {
-  padding: 50px 20px;
-  background: #f9fafb;
-  text-align: center;
-}
-#testimonials h2 {
-  
-  font-size: 2.5rem; /* Bigger text */
-  font-weight: bold; /* Makes it stand out */
-  text-align: center; /* Centered heading */
-  margin-bottom: 30px; /* More space below */
-
-}
-.testimonials-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-.testimonial-card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, opacity 0.5s ease;
-  opacity: 0;
-  transform: translateY(20px);
-}
-.testimonial-card img {
-  width: 150px;
-  height: 150px;
-  border-radius: 100%;
-  margin-bottom: 15px;
-}
-.testimonial-card .designation {
-  font-size: 0.9rem;
-  color: #6b7280;
-}
-.testimonial-card .feedback {
-  font-size: 0.95rem;
-  margin: 15px 0;
-}
-.testimonial-card .tags {
-  font-size: 0.85rem;
-  color: #374151;
-}
-.testimonial-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (max-width: 640px) {
-  .testimonials-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 16px;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 10px;
-  }
-  .testimonial-card {
-    min-width: 260px;
-    scroll-snap-align: center;
-  }
-}
-
-</style>
-
-<!-- ===== JS Fade-in Animation ===== -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const cards = document.querySelectorAll(".testimonial-card");
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
+    <!-- ===== CSS ===== -->
+    <style>
+      #testimonials {
+        padding: 50px 20px;
+        background: #f9fafb;
+        text-align: center;
       }
-    });
-  }, { threshold: 0.1 });
+      #testimonials h2 {
+        font-size: 2.5rem; /* Bigger text */
+        font-weight: bold; /* Makes it stand out */
+        text-align: center; /* Centered heading */
+        margin-bottom: 30px; /* More space below */
+      }
+      .testimonials-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+      }
+      .testimonial-card {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, opacity 0.5s ease;
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .testimonial-card img {
+        width: 150px;
+        height: 150px;
+        border-radius: 100%;
+        margin-bottom: 15px;
+      }
+      .testimonial-card .designation {
+        font-size: 0.9rem;
+        color: #6b7280;
+      }
+      .testimonial-card .feedback {
+        font-size: 0.95rem;
+        margin: 15px 0;
+      }
+      .testimonial-card .tags {
+        font-size: 0.85rem;
+        color: #374151;
+      }
+      .testimonial-card.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      @media (max-width: 640px) {
+        .testimonials-container {
+          display: flex;
+          overflow-x: auto;
+          gap: 16px;
+          scroll-snap-type: x mandatory;
+          padding-bottom: 10px;
+        }
+        .testimonial-card {
+          min-width: 260px;
+          scroll-snap-align: center;
+        }
+      }
+    </style>
 
-  cards.forEach(card => observer.observe(card));
-});
-</script>
+    <!-- ===== JS Fade-in Animation ===== -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".testimonial-card");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+              }
+            });
+          },
+          { threshold: 0.1 }
+        );
 
+        cards.forEach((card) => observer.observe(card));
+      });
+    </script>
 
     <!-- CTA Section -->
     <section class="cta">
+      <div class="container">
+        <div class="cta-content">
+          <h2>Ready to Transform Your Research Workflow?</h2>
+          <p>
+            Join thousands of researchers who have already streamlined their
+            paper management process.
+          </p>
+          <div class="cta-buttons">
+            <button
+              class="btn-primary btn-large"
+              onclick="window.location.href='signup.html'"
+            >
+              Start Your Free Trial
+            </button>
+            <button
+              class="btn-secondary btn-large"
+              onclick="window.location.href='login.html'"
+            >
+              Already have an account? Login
+            </button>
+          </div>
+
         <div class="container">
             <div class="cta-content fade-in">
                 <h2>Ready to Transform Your Research Workflow?</h2>
@@ -343,212 +596,201 @@ document.addEventListener("DOMContentLoaded", () => {
                     </button>
                 </div>
             </div>
+
         </div>
+      </div>
     </section>
 
     <style>
-        /* Back to Top Button Styles */
-#backToTop {
-  height: 50px;
-  width: 50px;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 1000;
-  background: linear-gradient(135deg,#0077b5, #4facfe);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 15px;
-  font-size: 18px;
-  cursor: pointer;
-  display: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
+      /* Back to Top Button Styles */
+      #backToTop {
+        height: 50px;
+        width: 50px;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+        background: linear-gradient(135deg, #0077b5, #4facfe);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 15px;
+        font-size: 18px;
+        cursor: pointer;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
 
-#backToTop:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
-  box-shadow: rgba(0,0,0,0.8);
-}
+      #backToTop:hover {
+        transform: scale(1.1);
+        opacity: 0.9;
+        box-shadow: rgba(0, 0, 0, 0.8);
+      }
 
-@media (max-width: 600px) {
-  #backToTop {
-    padding: 12px;
-    font-size: 16px;
-    bottom: 20px;
-    right: 20px;
-  }
-}
+      @media (max-width: 600px) {
+        #backToTop {
+          padding: 12px;
+          font-size: 16px;
+          bottom: 20px;
+          right: 20px;
+        }
+      }
 
-    /* Footer CSS*/
-    .modern-footer {
-      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-      color: #fff;
-      padding: 60px 20px 20px;
-      border-radius: 25px 25px 0 0;
-    }
+      /* Footer CSS*/
+      .modern-footer {
+        background: linear-gradient(135deg, #1f3c88, #2c5aa0);
+        color: #fff;
+        padding: 60px 20px 20px;
+        border-radius: 25px 25px 0 0;
+      }
 
-    .footer-top {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-bottom: 30px;
-    }
-
-    .footer-brand h2 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-
-    .footer-brand h2 i {
-      margin-right: 10px;
-      font-size: 1.6rem;
-      vertical-align: middle;
-    }
-
-    .footer-brand p {
-      font-size: 1rem;
-      line-height: 1.5;
-      opacity: 0.9;
-    }
-
-    .footer-links-section h4 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: 5px;
-    }
-
-    .footer-links-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links-section ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-links-section ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
-
-    .footer-links-section ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      margin-top: 5px;
-    }
-
-    .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: #fff;
-      transition: 0.3s;
-    }
-
-    .social-icons a:hover {
-      background: #fff;
-      color: #2c5aa0;
-      transform: scale(1.1);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      padding-top: 15px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-    .footer-card {
-      flex: 1 1 200px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 20px;
-      min-width: 200px;
-    }
- .footer-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-card ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-card ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-      
-      padding: 5px;
-      padding-left: 20px;
-    }
-
-    .footer-card ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    @media (max-width: 768px) {
       .footer-top {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 30px;
       }
 
       .footer-brand h2 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-brand h2 i {
+        margin-right: 10px;
+        font-size: 1.6rem;
+        vertical-align: middle;
+      }
+
+      .footer-brand p {
+        font-size: 1rem;
+        line-height: 1.5;
+        opacity: 0.9;
       }
 
       .footer-links-section h4 {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 5px;
+      }
+
+      .footer-links-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links-section ul li {
+        margin-bottom: 8px;
       }
 
       .footer-links-section ul li a {
-        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: 0.3s;
       }
 
-      .social-icons a {
-        width: 35px;
-        height: 35px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-        text-align: center;
+      .footer-links-section ul li a:hover {
+        color: #fff;
+        transform: translateX(5px);
       }
 
       .social-icons {
-        justify-content: center;
+        display: flex;
+        gap: 10px;
+        margin-top: 5px;
       }
 
-      .footer-links-section ul li a {
+      .social-icons a {
+        display: flex;
+        align-items: center;
         justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: #fff;
+        transition: 0.3s;
       }
+
+      .social-icons a:hover {
+        background: #fff;
+        color: #2c5aa0;
+        transform: scale(1.1);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        padding-top: 15px;
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+      .footer-card {
+        flex: 1 1 200px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 20px;
+        min-width: 200px;
+      }
+      .footer-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-card ul li {
+        margin-bottom: 8px;
+      }
+
+      .footer-card ul li a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: 0.3s;
+
+        padding: 5px;
+        padding-left: 20px;
+      }
+
+      .footer-card ul li a:hover {
+        color: #fff;
+        transform: translateX(5px);
+      }
+
+      @media (max-width: 768px) {
+        .footer-top {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 1.5rem;
+        }
+
+        .footer-brand h2 {
+          font-size: 1.5rem;
+        }
+
+        .footer-links-section h4 {
+          font-size: 1rem;
+        }
+
+        .footer-links-section ul li a {
+          font-size: 0.95rem;
+        }
+
+        .social-icons a {
+          width: 35px;
+          height: 35px;
+        }
+      }
+
     }
     .footer-bottom .heart {
   color: inherit;  
@@ -613,56 +855,110 @@ document.addEventListener("DOMContentLoaded", () => {
   line-height: 1.6;
 }
 
+
+      @media (max-width: 480px) {
+        .footer-top {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .social-icons {
+          justify-content: center;
+        }
+
+        .footer-links-section ul li a {
+          justify-content: center;
+        }
+      }
+      .footer-bottom .heart {
+        color: inherit;
+      }
     </style>
 
     <!-- Back to Top Button -->
-<button id="backToTop">↑</button>
+    <button id="backToTop">↑</button>
 
-   
-  <!-- Modern Footer -->
-  <footer class="modern-footer" aria-label="Footer">
-    <div class="footer-top">
-      <div class="footer-brand footer-card">
-        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-      </div>
+    <!-- Modern Footer -->
+    <footer class="modern-footer" aria-label="Footer">
+      <div class="footer-top">
+        <div class="footer-brand footer-card">
+          <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        </div>
 
-      <div class="footer-links-section footer-card" >
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-        </ul>
-      </div>
+        <div class="footer-links-section footer-card">
+          <h4>Quick Links</h4>
+          <ul>
+            <li>
+              <a href="index.html"><i class="fas fa-home"></i>Home</a>
+            </li>
+            <li>
+              <a href="about.html"><i class="fas fa-users"></i>About Us</a>
+            </li>
+            <li>
+              <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
+            </li>
+            <li>
+              <a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
+            </li>
+          </ul>
+        </div>
 
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-        </ul>
-      </div>
+        <div class="footer-links-section footer-card">
+          <h4>Resources</h4>
+          <ul>
+            <li>
+              <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
+            </li>
+            <li>
+              <a href="glossary.html"><i class="fas fa-book"></i>Glossary</a>
+            </li>
+            <li>
+              <a href="open-source.html"
+                ><i class="fas fa-code-branch"></i>Open Source</a
+              >
+            </li>
+          </ul>
+        </div>
 
-      <div class="footer-links-section footer-card">
-        <h4>Connect</h4>
-        <div class="social-icons">
-          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <div class="footer-links-section footer-card">
+          <h4>Connect</h4>
+          <div class="social-icons">
+            <a
+              href="https://github.com/supriya46788"
+              target="_blank"
+              title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/supriyapandey595"
+              target="_blank"
+              title="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="mailto:supriyadpandey502@gmail.com" title="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+          </div>
         </div>
       </div>
-    </div>
 
-   <div class="footer-bottom" style="text-align: center; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 15px 0;">
-  <p style="margin: 0;">
-    © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-  </p>
-</div>
-
-
-  </footer>
+      <div
+        class="footer-bottom"
+        style="
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          padding: 15px 0;
+        "
+      >
+        <p style="margin: 0">
+          © 2025 Research Paper Organizer | Made with
+          <span class="heart">&hearts;</span> for researchers worldwide
+        </p>
+      </div>
+    </footer>
 
     <script src="landing.js"></script>
     <script>
@@ -691,24 +987,35 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 6000); // adjust as needed
       });
 
+      //back to top button
+      // Show button when scrolled down
+      const backToTop = document.getElementById("backToTop");
 
-      //back to top button 
-// Show button when scrolled down
-const backToTop = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+          backToTop.style.display = "block";
+        } else {
+          backToTop.style.display = "none";
+        }
+      });
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    backToTop.style.display = "block";
-  } else {
-    backToTop.style.display = "none";
-  }
-});
-
-// Smooth scroll to top
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+      // Smooth scroll to top
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuBtn = document.querySelector(".mobile-menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+        menuBtn.addEventListener("click", function () {
+          navLinks.classList.toggle("show");
+        });
+      });
+    </script>
+
+  </body>
 
 
  <script>
@@ -731,4 +1038,5 @@ backToTop.addEventListener("click", () => {
 
      
 </body>
+
 </html>
