@@ -1013,7 +1013,7 @@
       const body = document.body;
       
       // Check for saved dark mode preference or default to light mode
-      const isDarkMode = localStorage.getItem('darkMode') === 'true';
+      const isDarkMode = localStorage.getItem('darkMode') === 'enabled';
       
       if (isDarkMode) {
         body.classList.add('dark-mode');
@@ -1030,13 +1030,12 @@
         if (isNowDark) {
           icon.classList.replace('fa-moon', 'fa-sun');
           this.setAttribute('aria-pressed', 'true');
+          localStorage.setItem('darkMode', 'enabled');
         } else {
           icon.classList.replace('fa-sun', 'fa-moon');
           this.setAttribute('aria-pressed', 'false');
+          localStorage.setItem('darkMode', 'disabled');
         }
-        
-        // Save preference
-        localStorage.setItem('darkMode', isNowDark);
       });
     })();
 
