@@ -6,226 +6,54 @@
 <title>Open Source Community</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  * {margin:0; padding:0; box-sizing:border-box;}
-  body {font-family:'Segoe UI',sans-serif; background:#f5f5ff; color:#222; scroll-behavior:smooth;}
-  a {text-decoration:none;}
-  h1,h2,h3,h4 {text-align:center; margin:20px 0; color:#4e54c8;}
-  h4 {margin-top:40px; color:#333;}
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Segoe UI',sans-serif; background:#f5f8ff; color:#222; scroll-behavior:smooth;}
+a {text-decoration:none;}
+h1,h2,h3,h4 {text-align:center; margin:20px 0; color:#0077b5;}
+h4 {margin-top:40px; color:#222;}
 
-  /* Back Button */
-  .back-home {position:absolute; top:20px; left:20px; background:#a3bffa; color:#222; padding:8px 12px; border-radius:8px; font-weight:bold; transition:0.3s;}
-  .back-home:hover {background:#7a8efc; color:#fff;}
+/* Back Button */
+.back-home {position:absolute; top:20px; left:20px; background:linear-gradient(135deg,#0077b5,#4facfe); color:#fff; padding:8px 12px; border-radius:8px; font-weight:bold; transition:0.3s;}
+.back-home:hover {transform:scale(1.05);}
 
-  /* Controls */
-  .controls {text-align:center; margin:20px;}
-  .controls input {padding:8px 12px; border-radius:8px; border:1px solid #ccc; margin-right:10px; width:200px;}
-  .controls button {padding:8px 14px; border-radius:20px; border:none; background:#b8c6ff; color:#222; margin:5px; cursor:pointer; transition:0.3s;}
-  .controls button:hover {background:#7a8efc; color:#fff; transform:scale(1.05);}
+/* Controls */
+.controls {text-align:center; margin:20px;}
+.controls input {padding:8px 12px; border-radius:8px; border:1px solid #ccc; margin-right:10px; width:200px;}
+.controls button {padding:8px 14px; border-radius:20px; border:none; background:linear-gradient(135deg,#0077b5,#4facfe); color:#fff; margin:5px; cursor:pointer; transition:0.3s;}
+.controls button:hover {transform:scale(1.05); opacity:0.9;}
 
-  /* Repo Grid */
-  .repo-container {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:20px;}
-  .repo {background:#fff; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:0.3s; animation: fadeIn 0.6s ease;}
-  .repo:hover {transform:translateY(-5px) scale(1.02);}
-  .repo h3 {margin-bottom:10px; color:#4e54c8;}
-  .repo p {font-size:14px; color:#555; line-height:1.4;}
-  .repo a {display:inline-block; margin-top:10px; color:#6a11cb; font-weight:bold;}
-  .repo .tags {margin-top:8px;}
-  .repo .tags span {background:#d9d9ff; color:#4e54c8; padding:3px 8px; border-radius:12px; font-size:12px; margin-right:5px;}
+/* Repo Grid */
+.repo-container {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:20px;}
+.repo {background:#e6f0ff; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:0.3s; animation: fadeIn 0.6s ease;}
+.repo:hover {transform:translateY(-5px) scale(1.02);}
+.repo h3 {margin-bottom:10px; color:#0077b5;}
+.repo p {font-size:14px; color:#333; line-height:1.4;}
+.repo a {display:inline-block; margin-top:10px; background:linear-gradient(135deg,#0077b5,#4facfe); color:#fff; padding:5px 12px; border-radius:8px; font-weight:bold; transition:0.3s;}
+.repo a:hover {opacity:0.9;}
+.repo .tags {margin-top:8px;}
+.repo .tags span {background:#cce0ff; color:#0077b5; padding:3px 8px; border-radius:12px; font-size:12px; margin-right:5px;}
 
-  /* Contribute Section */
-  .contribute {padding:50px 20px; background:#e6e6ff; color:#222; text-align:center;}
-  .contribute-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; margin-top:30px;}
-  .contribute-card {background:#f5f5ff; padding:25px; border-radius:15px; box-shadow:0 3px 8px rgba(0,0,0,0.1); transition:0.3s; min-height:180px; display:flex; flex-direction:column; justify-content:center;}
-  .contribute-card:hover {transform:scale(1.05);}
-  .contribute-card h3 {margin-bottom:10px; color:#4e54c8;}
-  .contribute-card p {font-size:14px; line-height:1.5;}
+/* Contribute Section */
+.contribute {padding:50px 20px; background:#f0f4ff; color:#222; text-align:center;}
+.contribute-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; margin-top:30px;}
+.contribute-card {background:#e6f0ff; padding:25px; border-radius:15px; box-shadow:0 3px 8px rgba(0,0,0,0.1); transition:0.3s; min-height:180px; display:flex; flex-direction:column; justify-content:center;}
+.contribute-card:hover {transform:scale(1.05);}
+.contribute-card h3 {margin-bottom:10px; color:#0077b5;}
+.contribute-card p {font-size:14px; line-height:1.5;}
 
-  /* Acknowledgements */
-  .acknowledge {padding:50px 20px; background:#fefefe; text-align:center;}
-  .acknowledge h2 {color:#4e54c8; margin-bottom:40px;}
-  .ack-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; justify-items:center;}
-  .ack-card {background:linear-gradient(135deg, #d9d9ff, #f0f0ff); padding:25px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition:transform 0.3s, box-shadow 0.3s; text-align:center; max-width:280px;}
-  .ack-card:hover {transform:translateY(-8px); box-shadow:0 8px 20px rgba(0,0,0,0.15);}
-  .ack-card img {max-width:100px; margin-bottom:15px; transition:transform 0.3s;}
-  .ack-card img:hover {transform:scale(1.1);}
-  .ack-card h3 {margin-bottom:10px; color:#4e54c8;}
-  .ack-card p {font-size:14px; color:#333; line-height:1.5;}
+/* Acknowledgements */
+.acknowledge {padding:50px 20px; background:#fefeff; text-align:center;}
+.acknowledge h2 {color:#86c6e8; margin-bottom:40px;}
+.ack-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; justify-items:center;}
+.ack-card {background:linear-gradient(135deg,#9bceea,#4facfe); color:#fff; padding:25px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition:transform 0.3s, box-shadow 0.3s; text-align:center; max-width:280px;}
+.ack-card:hover {transform:translateY(-8px); box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+.ack-card img {max-width:100px; margin-bottom:15px; filter:brightness(0) invert(1); transition:transform 0.3s;}
+.ack-card img:hover {transform:scale(1.1);}
+.ack-card h3 {margin-bottom:10px;}
+.ack-card p {font-size:14px; line-height:1.5;}
 
-  /* Footer */
-
-    /* Footer CSS*/
-    .modern-footer {
-      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-      color: #fff;
-      padding: 60px 20px 20px;
-      border-radius: 25px 25px 0 0;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-bottom: 30px;
-    }
-
-    .footer-brand h2 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-
-    .footer-brand h2 i {
-      margin-right: 10px;
-      font-size: 1.6rem;
-      vertical-align: middle;
-    }
-
-    .footer-brand p {
-      font-size: 1rem;
-      line-height: 1.5;
-      opacity: 0.9;
-    }
-
-    .footer-links-section h4 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: 5px;
-    }
-
-    .footer-links-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links-section ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-links-section ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
-
-    .footer-links-section ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      margin-top: 5px;
-    }
-
-    .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: #fff;
-      transition: 0.3s;
-    }
-
-    .social-icons a:hover {
-      background: #fff;
-      color: #2c5aa0;
-      transform: scale(1.1);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      padding-top: 15px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-    .footer-card {
-      flex: 1 1 200px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 20px;
-      min-width: 200px;
-    }
- .footer-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-card ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-card ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-      
-      padding: 5px;
-      padding-left: 20px;
-    }
-
-    .footer-card ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    @media (max-width: 768px) {
-      .footer-top {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .footer-brand h2 {
-        font-size: 1.5rem;
-      }
-
-      .footer-links-section h4 {
-        font-size: 1rem;
-      }
-
-      .footer-links-section ul li a {
-        font-size: 0.95rem;
-      }
-
-      .social-icons a {
-        width: 35px;
-        height: 35px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .social-icons {
-        justify-content: center;
-      }
-
-      .footer-links-section ul li a {
-        justify-content: center;
-      }
-    }
-    .footer-bottom .heart {
-  color: inherit;  
-}
-
-    /* Footer CSS*/
+/* Footer */
+/* Footer CSS*/
     .modern-footer {
       background: linear-gradient(135deg, #1f3c88, #2c5aa0);
       color: #fff;
@@ -446,14 +274,13 @@
   <h2>🏆 Acknowledgements</h2>
   <div class="ack-grid">
     <div class="ack-card">
-      <img src="/images/gssoc-logo.png" alt="GSSoC Logo">
       <h3>GSSoC</h3>
       <p>GirlScript Summer of Code empowers students to contribute to open source projects with mentorship.</p>
     </div>
-  </div>
 </section>
 
-<footer class="modern-footer" aria-label="Footer">
+<!-- Modern Footer -->
+  <footer class="modern-footer" aria-label="Footer">
     <div class="footer-top">
       <div class="footer-brand footer-card">
         <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
@@ -497,11 +324,11 @@
 
   </footer>
 
+
 <script>
 const githubUser = "supriya46788";
 let allRepos = [];
 
-// Fetch first 10 repos from GitHub
 async function fetchRepos() {
   const res = await fetch(`https://api.github.com/users/${githubUser}/repos?per_page=10&sort=updated`);
   const data = await res.json();
@@ -515,7 +342,6 @@ async function fetchRepos() {
   displayRepos(allRepos);
 }
 
-// Display repos
 function displayRepos(list) {
   const container = document.getElementById("repo-container");
   container.innerHTML = "";
@@ -530,21 +356,21 @@ function displayRepos(list) {
   });
 }
 
-// Search functionality
 function searchRepos() {
   const term = document.getElementById("searchInput").value.toLowerCase();
   displayRepos(allRepos.filter(r => r.name.toLowerCase().includes(term) || r.language.includes(term)));
 }
 
-// Filter functionality
 function filterRepos(tag) {
   if(tag === "all") displayRepos(allRepos);
   else displayRepos(allRepos.filter(r => r.tags.includes(tag)));
 }
 
-// Init
 fetchRepos();
 </script>
 
 </body>
-</html
+</html>
+
+  
+

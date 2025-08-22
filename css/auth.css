@@ -48,6 +48,7 @@ body {
 .auth-header p {
   color: #6b7280;
   font-size: 0.95rem;
+  margin-bottom: 0.5rem;
 }
 
 .auth-form {
@@ -56,10 +57,10 @@ body {
   gap: 1.25rem;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+/* Required field indicator */
+.required {
+  color: #ef4444;
+  margin-left: 0.25rem;
 }
 
 .form-group label {
@@ -72,6 +73,7 @@ body {
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .input-container i {
@@ -79,6 +81,21 @@ body {
   left: 0.75rem;
   color: #9ca3af;
   z-index: 1;
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+/* Adjust icon color for different states */
+.input-container input:focus + i {
+  color: #2563eb;
+}
+
+.input-container input.error + i {
+  color: #ef4444;
+}
+
+.input-container input.success + i {
+  color: #10b981;
 }
 
 .input-container input {
@@ -88,12 +105,104 @@ body {
   border-radius: 8px;
   font-size: 0.875rem;
   transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: transparent;
+  position: relative;
+  z-index: 2;
 }
 
 .input-container input:focus {
   outline: none;
   border-color: #2563eb;
   box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Input wrapper */
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* Error and success states */
+.input-container input.error {
+  border-color: #ef4444;
+  padding-right: 2.5rem;
+  margin-bottom: 0;
+}
+
+.input-container input.success {
+  border-color: #10b981;
+  padding-right: 2.5rem;
+  margin-bottom: 0;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin: 0.25rem 0 0;
+  display: none;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.2s ease;
+}
+.error-message.show {
+    display: flex;
+}
+.error-message i {
+  font-size: 0.875rem;
+  margin-right: 0.25rem;
+}
+.password-requirements {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+  background-color: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 0.75rem;
+}
+.password-requirements p {
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+  color: #374151;
+}
+.password-requirements ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+.password-requirements li {
+  margin-bottom: 0.5rem;
+  color: #ef4444;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-left: 1.5rem;
+}
+.password-requirements li::before {
+  content: '\f00d'; /* Font Awesome cross icon */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: #ef4444;
+  transition: color 0.3s ease, content 0.3s ease;
+}
+.password-requirements li.valid {
+  color: #10b981;
+}
+.password-requirements li.valid::before {
+  content: '\f00c'; /* Font Awesome check icon */
+  color: #10b981;
+}
+
+/* Checkbox error state */
+.checkbox-container.error .checkmark {
+  border-color: #ef4444;
+}
+
+.checkbox-container.error {
+  color: #ef4444;
 }
 
 .password-toggle {
@@ -128,19 +237,25 @@ body {
 .password-strength {
   margin-top: 0.5rem;
   font-size: 0.75rem;
-  height: 1rem;
+  height: 4px;
+  background-color: #e5e7eb;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.strength-bar {
+    height: 100%;
+    width: 0;
+    transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-.password-strength.weak {
-  color: #dc2626;
+.strength-bar.weak {
+    background-color: #ef4444;
 }
-
-.password-strength.medium {
-  color: #f59e0b;
+.strength-bar.medium {
+    background-color: #f59e0b;
 }
-
-.password-strength.strong {
-  color: #059669;
+.strength-bar.strong {
+    background-color: #10b981;
 }
 
 .form-options {
@@ -206,7 +321,11 @@ body {
 .auth-btn:active {
   transform: translateY(0);
 }
-
+.auth-btn:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+}
 .auth-divider {
   text-align: center;
   margin: 1rem 0;
@@ -405,7 +524,9 @@ body.dark-mode .auth-link:hover {
 body.dark-mode .auth-btn {
   background: #3b82f6;
 }
-
+body.dark-mode .auth-btn:disabled {
+    background-color: #4b5563;
+}
 body.dark-mode .auth-btn:hover {
   background: #2563eb;
 }
