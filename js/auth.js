@@ -143,6 +143,22 @@ class AuthSystem {
       this.showError('User with this email already exists');
       return;
     }
+    const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com"];
+
+    // Extract domain
+    const emailDomain = email.split("@")[1];
+
+    //  Reject wrong / fake domains like gml.com, yahhoo.com
+    if (!emailDomain || !validDomains.includes(emailDomain.toLowerCase())) {
+      this.showError(`Invalid email domain. Please use: ${validDomains.join(", ")}`);
+      return;
+    }
+
+  // Check duplicate user
+    if (this.users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+      this.showError('User with this email already exists');
+      return;
+    }
     
     if (submitButton) {
       submitButton.disabled = true;
