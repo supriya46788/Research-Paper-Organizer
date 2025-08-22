@@ -33,11 +33,13 @@
         </div>
     </nav>
   <header class="glossary-header">
+    <a href="index.html" class="back-home">&larr; Back to Home</a>
     <h1>📖 Research Glossary</h1>
     <p>Understand research terms with clear definitions and examples</p>
     <input type="text" id="searchBar" placeholder="Search for a term...">
   </header>
   <style>
+
     /* General Reset */
 * {
   margin: 0;
@@ -187,6 +189,27 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+
+
+
+
+  /* Back to Home link styling */
+.back-home {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.back-home:hover {
+  color: #ffcccb;
+  transform: scale(1.1);
 }
 
 
