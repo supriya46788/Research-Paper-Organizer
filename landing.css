@@ -2,6 +2,7 @@
 :root {
     --primary-color: #3b82f6;
     --primary-dark: #2563eb;
+    --primary-light:rgb(50, 181, 233);
     --secondary-color: #64748b;
     --text-color: #1e293b;
     --text-light: #64748b;
@@ -50,6 +51,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
 .nav-brand {
@@ -58,8 +60,14 @@ body {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--primary-color);
+    gap: .5rem;
 }
-
+#logo{
+    width: 65px;
+    height: 65px;
+    position: relative;
+    top: .5rem;
+}
 .nav-brand i {
     margin-right: 0.5rem;
     font-size: 1.75rem;
@@ -73,13 +81,23 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-color);
+    color:  white;
     font-weight: 500;
-    transition: color 0.3s ease;
+    text-align: center;
+    white-space: nowrap;
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color)); 
+    border: none;
+    padding: 0.5rem 1.2rem; 
+    cursor: pointer;
+    font-size: 0.9rem;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
-.nav-links a:hover {
-    color: var(--primary-color);
+.nav-links a:hover{
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));  
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
 }
 
 .btn-primary, .btn-secondary {
