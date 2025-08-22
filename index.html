@@ -556,16 +556,18 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 .features-grid {
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;  /* 👈 ye center karega */
-  margin: 3rem 0;
+  /* margin: 3rem 0; */ 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 20px;
 }
 
 .feature-card {
-  flex: 1 1 250px;
-  max-width: 300px;
+  width: 100%;
   background: #fff;
   border-radius: 20px;
   padding: 2rem;
@@ -612,6 +614,16 @@ document.addEventListener("DOMContentLoaded", () => {
   color: #666;
   line-height: 1.6;
 }
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr; /* 👈 force single column */
+  }
+
+  .feature-card {
+    max-width: 100%;   /* let it stretch full width */
+  }
+}
+
 
     </style>
 
