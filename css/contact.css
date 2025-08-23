@@ -196,80 +196,150 @@ body.dark-mode {
     animation: float 3s ease-in-out infinite;
 }
 
-/* Contact Container */
-.contact-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
+
+.contact-containerr{
+
+position: relative;
+width: 100%;
+min-height: 100vh;
+padding: 2rem;
+overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
 }
 
-/* Contact Information */
-.contact-info {
-    animation: slideInLeft 0.8s ease-out 0.2s both;
+.form{
+  margin-top: 7vh;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 1px rgba(0,0, 0 ,0.4);
+  z-index: 2;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
 }
 
-.contact-info h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--primary-blue);
+.contact-info{
+    padding: 3rem;
+    background: linear-gradient(45deg, #255cb0, rgba(50, 116, 152, 0.4), rgb(37, 102, 182));
+
+}
+
+.information i{
+  width: 25px;
+  color: black;
+}
+
+.information{
+    color: rgb(255, 253, 253);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  line-height: 1.8rem;
+}
+
+
+.contact-info .title{
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-top: 2vh;
+  text-align: center;
+}
+
+.contact-info .text{
+    color: #454343;
     font-weight: 600;
+    font-style: italic;
+    padding: 1.25rem;
+    background-color:rgba(255, 255, 255,0.4);
+    border-radius: 25px;
 }
 
-.info-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+.social-media{
+  padding: 1.5rem 0 0 0;
 }
 
-.info-card {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+.social-media p{
+  color: white;
+  font-size: 1.25rem;
+
+}
+
+.social-icon{
+display: flex;
+margin-top: 0.5rem;
+
+}
+
+.contact-info a{
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #161616, #656b70);
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 0.5rem;
+  transition: 0.5s ease-in-out;
+
+}
+
+.contact-info a:hover{
+  background: black;
+    transform: scale(1.1);
+
+}
+
+@media (max-width: 768px) {
+  .form {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .contact-info {
     padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 12px;
-    box-shadow: var(--card-shadow);
-    transition: all 0.3s ease;
-    border-left: 4px solid var(--primary-blue);
-}
+  }
 
-.dark-mode .info-card {
-    background: var(--dark-gray);
-    border-left-color: var(--primary-blue);
-}
+  .contact-form {
+    padding: 1.5rem;
+  }
 
-.info-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-}
+  .title {
+    font-size: 1.3rem;
+  }
 
-.card-icon {
-    width: 50px;
-    height: 50px;
-    background: var(--primary-blue);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
+  .social-icon {
     justify-content: center;
-    color: white;
-    font-size: 1.25rem;
-    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .social-icon a {
+    margin: 0.3rem;
+  }
+
+  .information {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
 }
 
-.card-content h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    color: var(--primary-blue);
+.contact-form-box{
+  position: relative;
+
 }
 
-.card-content p {
-    opacity: 0.8;
-    font-size: 0.95rem;
+.contact-form-box:before{
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: rgb(52, 105, 171);
+  transform: rotate(45deg);
+  top: 50px;
+  left: -13px;
 }
 
 /* Contact Form */
@@ -447,10 +517,6 @@ body.dark-mode {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .contact-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
     
     .hero-title {
         font-size: 2.5rem;
@@ -481,24 +547,12 @@ body.dark-mode {
         display: none;
     }
     
-    .contact-container {
-        padding: 1rem;
-    }
-    
     .contact-form-box {
         padding: 1.5rem;
     }
     
     .form-row {
         grid-template-columns: 1fr;
-    }
-    
-    .info-cards {
-        gap: 1rem;
-    }
-    
-    .info-card {
-        padding: 1rem;
     }
 }
 
@@ -634,4 +688,7 @@ body.dark-mode .footer-links a {
 body.dark-mode .footer-links a:hover {
     color: #90cdf4;
 }
+
+
+
   
