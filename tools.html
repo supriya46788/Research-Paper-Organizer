@@ -7,6 +7,78 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="css/tool.css" />
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  flex-wrap: wrap;
+}
+.hamburger-container {
+  display: none;
+  flex-direction: column;
+  /* justify-content: center; */
+  cursor: pointer;
+  gap: 5px;
+  padding: 10px;
+}
+
+.hamburger-container .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: 0.3s;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hamburger-container {
+    display: flex;
+  }
+
+ 
+  .navbar {
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .navbar-right-links {
+    display: none;
+    position: absolute;
+    top: 70px;              /* adjust depending on navbar height */
+    right: 10px;  
+    margin:15px;          /* aligns the box to the right */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1000;
+    width: max-content;     /* only as wide as content */
+    min-width: 150px;  
+  }
+
+  .navbar-right-links.show {
+    display: flex;
+  }
+
+  .nav-item {
+    display: inline-flex;           /* Ensures icon and text are in a row */
+  align-items: center;           /* Vertical centering */
+  justify-content: center;
+    padding: 1rem;
+    width:10rem;
+    font-size: 1rem;
+    
+  }
+}
+</style>
 </head>
 <body>
 <div class="container">
@@ -16,7 +88,12 @@
             <i class="fas fa-home"></i>
             Home
         </a>
-
+       <!-- Hamburger div (shows only on mobile) -->
+  <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
         <div class="navbar-right-links">
             <a href="about.html" class="nav-item">About us</a>
             <a href="blog.html" class="nav-item">Blogs</a>
@@ -170,6 +247,7 @@ color: #e0e0e0;
 
 /* Dark mode toggle button styling */
 .dark-toggle {
+  color:#1a1a1a;
 background: none !important;
 border: none;
 cursor: pointer;
@@ -473,6 +551,7 @@ background: linear-gradient(135deg, #4a5568, #2d3748);
 color: #e0e0e0;
 }
 
+
 body.dark-mode .nav-item:hover {
 background: linear-gradient(135deg, #63b3ed, #4299e1);
 color: #1a202c;
@@ -692,6 +771,10 @@ border-top-color: rgba(224, 224, 224, 0.1);
 
 <script src="js/tools.js"></script>
 <script>
+  function toggleMenu() {
+    const nav = document.querySelector(".navbar-right-links");
+    nav.classList.toggle("show");
+  }
  //back to top button 
 // Show button when scrolled down
 const backToTop = document.getElementById("backToTop");
