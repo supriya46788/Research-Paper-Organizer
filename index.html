@@ -25,7 +25,8 @@
     <nav class="landing-nav">
         <div class="nav-container">
             <div class="nav-brand">
-                <i class="fas fa-book-open"></i>
+                <!-- <i class="fas fa-book-open"></i> -->
+                 <img id="logo" src="images/search-book.gif" alt="">
                 <span>Research Paper Organizer</span>
             </div>
             <div class="nav-links">
@@ -688,8 +689,16 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           clearInterval(textInterval); // stop changing text
           loadingScreen.classList.add("hidden");
+          //after that added sideLeft and slide right animation
+          document.querySelector(".hero-content").classList.add("animate");
+          document.querySelector(".hero-image").classList.add("animate");
         }, 6000); // adjust as needed
-      });
+      }); 
+
+      //after executing slideright remove it so that other animation can start
+      setTimeout(() =>{
+         document.querySelector(".hero-image").classList.remove("animate");
+      },7000)
 
 
       //back to top button 
