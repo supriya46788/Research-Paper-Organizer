@@ -1,212 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
-
-<title>Open Source - Job Junction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Source Community</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    color: #333;
-  }
-  header {
-    background: #181a1b;
-    color: white;
-    padding: 2rem 1rem;
-    text-align: center;
-    animation: fadeIn 1.2s ease-in-out;
-    position: relative;
-  }
-  /* Back to Home link styling */
-.back-home {
-  position: absolute;
-  top: 15px;
-  left: 20px;
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: color 0.3s ease;
-}
+* {margin:0; padding:0; box-sizing:border-box;}
+body {font-family:'Segoe UI',sans-serif; background:#f5f8ff; color:#222; scroll-behavior:smooth;}
+a {text-decoration:none;}
+h1,h2,h3,h4 {text-align:center; margin:20px 0; color:#0077b5;}
+h4 {margin-top:40px; color:#222;}
 
-.back-home:hover {
-  color: #ffcccb;
-}
-  header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-  }
-  header p {
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
-  }
-  /* Buttons */
-  .cta-buttons {
-    margin-top: 1.2rem;
-  }
-  .cta-buttons a {
-    display: inline-block;
-    margin: 0.4rem;
-    padding: 0.7rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    background: #2f2ca0;
-    transition: transform 0.3s ease, background 0.3s ease;
-  }
-  .cta-buttons a:hover {
-    transform: scale(1.05);
-    background: #1f2937;
-  }
+/* Back Button */
+.back-home {position:absolute; top:20px; left:20px; background:linear-gradient(135deg,#0077b5,#4facfe); color:#fff; padding:8px 12px; border-radius:8px; font-weight:bold; transition:0.3s;}
+.back-home:hover {transform:scale(1.05);}
 
+/* Controls */
+.controls {text-align:center; margin:20px;}
+.controls input {padding:8px 12px; border-radius:8px; border:1px solid #ccc; margin-right:10px; width:200px;}
+.controls button {padding:8px 14px; border-radius:20px; border:none; background:linear-gradient(135deg,#0077b5,#4facfe); color:#fff; margin:5px; cursor:pointer; transition:0.3s;}
+.controls button:hover {transform:scale(1.05); opacity:0.9;}
 
-  /* Powered By */
-  .powered-by {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: white;
-    margin: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
-  }
-  .powered-by.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .powered-by img {
-    max-width: 280px;
-    margin: 1rem;
-    transition: transform 0.3s ease;
-  }
-  .powered-by img:hover {
-    transform: scale(1.08);
-  }
-  /* Contact */
-  .contact {
-    padding: 2rem 1rem;
-    text-align: center;
-    background: #fff;
-    margin: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
-  }
-  .contact.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  form {
-    max-width: 500px;
-    margin: auto;
-    text-align: left;
-  }
-  form input, form textarea {
-    width: 100%;
-    padding: 0.7rem;
-    margin: 0.6rem 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  form button {
-    background: #2f2ca0;
-    color: white;
-    padding: 0.7rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  form button:hover {
-    background: #111827;
-  }
-  /*Animations */
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(-20px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
+/* Repo Grid */
+.repo-container {display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; padding:20px;}
+.repo {background:#e6f0ff; padding:20px; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.08); transition:0.3s; animation: fadeIn 0.6s ease;}
+.repo:hover {transform:translateY(-5px) scale(1.02);}
+.repo h3 {margin-bottom:10px; color:#0077b5;}
+.repo p {font-size:14px; color:#333; line-height:1.4;}
+.repo a {display:inline-block; margin-top:10px; background:linear-gradient(135deg,#0077b5,#4facfe); color:#fff; padding:5px 12px; border-radius:8px; font-weight:bold; transition:0.3s;}
+.repo a:hover {opacity:0.9;}
+.repo .tags {margin-top:8px;}
+.repo .tags span {background:#cce0ff; color:#0077b5; padding:3px 8px; border-radius:12px; font-size:12px; margin-right:5px;}
 
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2rem;
-    }
-    header p {
-      font-size: 1rem;
-    }
-    .cta-buttons a {
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-    }
-    .powered-by img {
-      max-width: 120px;
-    }
-    .contact form {
-      max-width: 90%;
-    }
-  }
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 1.5rem;
-    }
-    header p {
-      font-size: 0.9rem;
-    }
-    .cta-buttons a {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.8rem;
-    }
-    .powered-by img {
-      max-width: 100px;
-    }
-    .contact form {
-      max-width: 100%;
-    }
-  }
-      /* Back to Top Button Styles */
-      #backToTop {
-            height: 50px;
-            width: 50px;
-          position: fixed;
-          bottom: 80px;
-          right: 20px;
-          z-index: 1000;
-          background: linear-gradient(135deg,#0077b5 ,#4facfe );
-          color: white;
-          border: none;
-          border-radius: 50%;
-          padding: 15px;
-          font-size: 18px;
-          cursor: pointer;
-          display: none;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          transition: transform 0.3s ease, opacity 0.3s ease;
-          }
-          
-          #backToTop:hover {
-          transform: scale(1.1);
-          opacity: 0.9;
-          box-shadow: rgba(0,0,0,0.8);
-          }
-          
-          @media (max-width: 600px) {
-          #backToTop {
-            padding: 12px;
-            font-size: 16px;
-            bottom: 20px;
-            right: 20px;
-          }
-          }
+/* Contribute Section */
+.contribute {padding:50px 20px; background:#f0f4ff; color:#222; text-align:center;}
+.contribute-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; margin-top:30px;}
+.contribute-card {background:#e6f0ff; padding:25px; border-radius:15px; box-shadow:0 3px 8px rgba(0,0,0,0.1); transition:0.3s; min-height:180px; display:flex; flex-direction:column; justify-content:center;}
+.contribute-card:hover {transform:scale(1.05);}
+.contribute-card h3 {margin-bottom:10px; color:#0077b5;}
+.contribute-card p {font-size:14px; line-height:1.5;}
 
-    /* Footer CSS*/
+/* Acknowledgements */
+.acknowledge {padding:50px 20px; background:#fefeff; text-align:center;}
+.acknowledge h2 {color:#86c6e8; margin-bottom:40px;}
+.ack-grid {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; justify-items:center;}
+.ack-card {background:linear-gradient(135deg,#9bceea,#4facfe); color:#fff; padding:25px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.08); transition:transform 0.3s, box-shadow 0.3s; text-align:center; max-width:280px;}
+.ack-card:hover {transform:translateY(-8px); box-shadow:0 8px 20px rgba(0,0,0,0.15);}
+.ack-card img {max-width:100px; margin-bottom:15px; filter:brightness(0) invert(1); transition:transform 0.3s;}
+.ack-card img:hover {transform:scale(1.1);}
+.ack-card h3 {margin-bottom:10px;}
+.ack-card p {font-size:14px; line-height:1.5;}
+
+/* Footer */
+/* Footer CSS*/
     .modern-footer {
       background: linear-gradient(135deg, #1f3c88, #2c5aa0);
       color: #fff;
@@ -304,8 +151,8 @@
     }
     .footer-card {
       flex: 1 1 200px;
-      /*background: rgba(255,255,255,0.1);
-      border-radius: 12px;*/
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
       padding: 20px;
       min-width: 200px;
     }
@@ -382,47 +229,61 @@
 </head>
 <body>
 
-<!-- Intro Section -->
-<header>
-  <a href="index.html" class="back-home">&larr; Back to Home</a>
-  <h1>Namaste Contributors 🙏</h1>
-  <p>We are proud to be part of the open-source community. Join us in building something amazing together!</p>
-  <div class="cta-buttons">
-    <a href="https://gssoc.girlscript.tech/" target="_blank">Know More about GSSoC</a>
-    <a href="https://github.com/supriya46788/Research-Paper-Organizer" target="_blank">Join Us on GitHub</a>
+<a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back</a>
+
+<h1>🚀 Open Source Community</h1>
+<h2>Explore Projects & Contribute</h2>
+
+<div class="controls">
+  <input type="text" id="searchInput" placeholder="Search repos by name or language...">
+  <button onclick="searchRepos()">Search</button>
+  <br>
+  <button onclick="filterRepos('all')">All</button>
+  <button onclick="filterRepos('ai')">AI</button>
+  <button onclick="filterRepos('ml')">ML</button>
+  <button onclick="filterRepos('js')">JS</button>
+  <button onclick="filterRepos('html')">HTML</button>
+  <button onclick="filterRepos('css')">CSS</button>
+</div>
+
+<div class="repo-container" id="repo-container"></div>
+
+<section class="contribute">
+  <h2>🤝 How to Contribute</h2>
+  <div class="contribute-grid">
+    <div class="contribute-card">
+      <h3>Fork & Clone</h3>
+      <p>Fork the repo and clone it locally using <code>git clone</code>.</p>
+    </div>
+    <div class="contribute-card">
+      <h3>Create a Branch</h3>
+      <p>Create a feature branch: <code>git checkout -b feature-name</code>.</p>
+    </div>
+    <div class="contribute-card">
+      <h3>Make Changes</h3>
+      <p>Add your features or fix bugs with clean commits.</p>
+    </div>
+    <div class="contribute-card">
+      <h3>Submit PR</h3>
+      <p>Push to GitHub and open a Pull Request for review.</p>
+    </div>
   </div>
-</header>
+</section>
 
-<!-- Powered By -->
-<div class="powered-by">
-  <h2>Open Source Proudly Powered By:</h2>
-  <img src="/images/gssoc-logo.png" alt="GSSoC Logo">
-  
-</div>
+<section class="acknowledge">
+  <h2>🏆 Acknowledgements</h2>
+  <div class="ack-grid">
+    <div class="ack-card">
+      <h3>GSSoC</h3>
+      <p>GirlScript Summer of Code empowers students to contribute to open source projects with mentorship.</p>
+    </div>
+</section>
 
-<!-- Contact Section -->
-<div class="contact">
-  <h2>Connect With Us</h2>
-  <p>We’d love to hear from you! Whether you have ideas, feedback, or want to collaborate, reach out.</p>
-  <p><strong>📍 Location:</strong> Remote</p>
-  <p><strong>📧 Email:</strong> contact@researchpaperorg.com</p>
-  <form>
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Your Message" rows="4" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</div>
-
-  <!-- Back to Top Button -->
-  <button id="backToTop">↑</button>
-
-  <!-- Modern Footer -->
+<!-- Modern Footer -->
   <footer class="modern-footer" aria-label="Footer">
     <div class="footer-top">
       <div class="footer-brand footer-card">
         <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
       </div>
 
       <div class="footer-links-section footer-card" >
@@ -441,7 +302,6 @@
           <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
           <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
           <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-          <li><a href="Masthead.html"><i class="fas fa-users"></i>Masthead</a></li>
         </ul>
       </div>
 
@@ -455,42 +315,62 @@
       </div>
     </div>
 
-    <div class="footer-bottom">
-  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
+   <div class="footer-bottom" style="text-align: center; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 15px 0;">
+  <p style="margin: 0;">
+    © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
+  </p>
 </div>
+
 
   </footer>
 
 
 <script>
-  // Scroll Animation for Sections
-  const sections = document.querySelectorAll('.powered-by, .contact');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.2 });
+const githubUser = "supriya46788";
+let allRepos = [];
 
-  sections.forEach(sec => observer.observe(sec));
-        //back to top button 
-// Show button when scrolled down
-const backToTop = document.getElementById("backToTop");
+async function fetchRepos() {
+  const res = await fetch(`https://api.github.com/users/${githubUser}/repos?per_page=10&sort=updated`);
+  const data = await res.json();
+  allRepos = data.map(repo => ({
+    name: repo.name,
+    desc: repo.description || "No description",
+    url: repo.html_url,
+    language: repo.language ? repo.language.toLowerCase() : "other",
+    tags: repo.language ? [repo.language.toLowerCase()] : ["other"]
+  }));
+  displayRepos(allRepos);
+}
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    backToTop.style.display = "block";
-  } else {
-    backToTop.style.display = "none";
-  }
-});
+function displayRepos(list) {
+  const container = document.getElementById("repo-container");
+  container.innerHTML = "";
+  list.forEach(repo => {
+    container.innerHTML += `
+      <div class="repo">
+        <h3>${repo.name}</h3>
+        <p>${repo.desc}</p>
+        <div class="tags">${repo.tags.map(t => `<span>${t.toUpperCase()}</span>`).join('')}</div>
+        <a href="${repo.url}" target="_blank">🔗 View Repo</a>
+      </div>`;
+  });
+}
 
-// Smooth scroll to top
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+function searchRepos() {
+  const term = document.getElementById("searchInput").value.toLowerCase();
+  displayRepos(allRepos.filter(r => r.name.toLowerCase().includes(term) || r.language.includes(term)));
+}
+
+function filterRepos(tag) {
+  if(tag === "all") displayRepos(allRepos);
+  else displayRepos(allRepos.filter(r => r.tags.includes(tag)));
+}
+
+fetchRepos();
 </script>
 
 </body>
 </html>
+
+  
+
