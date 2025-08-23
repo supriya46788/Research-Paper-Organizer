@@ -4,7 +4,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/* .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+} */
 body {
   font-family: 'Segoe UI', Tahoma, sans-serif;
   background: #f9f9f9;
@@ -31,7 +35,7 @@ body {
 
 /* Sections */
 .section {
-  max-width: 900px;
+  max-width: 1240px;
   margin: auto;
   padding: 2rem;
   background: white;

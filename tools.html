@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Research Resources & Tools | Research Paper Organizer</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="/css/tool.css" />
+<link rel="stylesheet" href="css/tool.css" />
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -44,6 +44,13 @@
 
 <!-- Tools Grid -->
 <div class="tools-container" id="toolsList">
+  <div class="tool-card" data-category="analysis">
+    <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF Annotator">
+    <h3>PDF Annotator</h3>
+    <p>Highlight, annotate, and add notes to PDF research papers directly in your browser.</p>
+    <a href="pdf-viewer.html">Open Tool</a>
+  </div>
+  
   <div class="tool-card" data-category="citation">
     <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Citation Generator">
     <h3>Citation Machine</h3>
@@ -86,16 +93,12 @@
     <a href="https://www.duplichecker.com/" target="_blank">Visit</a>
   </div>
 
-  <div class="tool-card" data-category="analysis">
-    <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="PDF Annotator">
-    <h3>PDF Annotator</h3>
-    <p>Highlight, annotate, and add notes to PDF research papers directly in your browser.</p>
-    <a href="pdf-viewer.html">Open Tool</a>
-  </div>
 </div>
 
     <!-- Back to Top Button -->
-    <button id="backToTop">↑</button>
+    <button id="backToTop">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
 <!-- Footer -->
 <footer class="tools-footer">
@@ -640,52 +643,65 @@ border-top-color: rgba(224, 224, 224, 0.1);
 }
     /* Back to Top Button Styles */
     #backToTop {
+       /* Center the icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #0077b5, #4facfe);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;          /* size of the arrow icon */
+ 
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;          /* start hidden */
+  pointer-events: none;
+
+ 
+}
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#backToTop:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+          #backToTop {
             height: 50px;
             width: 50px;
-          position: fixed;
-          bottom: 80px;
-          right: 20px;
-          z-index: 1000;
-          background: linear-gradient(135deg,#0077b5 ,#4facfe );
-          color: white;
-          border: none;
-          border-radius: 50%;
-          padding: 15px;
-          font-size: 18px;
-          cursor: pointer;
-          display: none;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          transition: transform 0.3s ease, opacity 0.3s ease;
-          }
-          
-          #backToTop:hover {
-          transform: scale(1.1);
-          opacity: 0.9;
-          box-shadow: rgba(0,0,0,0.8);
-          }
-          
-          @media (max-width: 600px) {
-          #backToTop {
-            padding: 12px;
-            font-size: 16px;
+            font-size: 14px;
             bottom: 20px;
             right: 20px;
+           
           }
           }
 
 </style>
 
-<script src="/js/tools.js"></script>
+<script src="js/tools.js"></script>
 <script>
  //back to top button 
 // Show button when scrolled down
 const backToTop = document.getElementById("backToTop");
 
+// Show/hide button with fade
 window.addEventListener("scroll", () => {
   if (window.scrollY > 100) {
-    backToTop.style.display = "block";
+    backToTop.classList.add("show");
   } else {
-    backToTop.style.display = "none";
+    backToTop.classList.remove("show");
   }
 });
 

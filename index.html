@@ -10,6 +10,8 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png">
     <link rel="manifest" href="/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
+
 </head>
 <body>
     <!-- Loading Screen -->
@@ -23,7 +25,8 @@
     <nav class="landing-nav">
         <div class="nav-container">
             <div class="nav-brand">
-                <i class="fas fa-book-open"></i>
+                <!-- <i class="fas fa-book-open"></i> -->
+                 <img id="logo" src="images/search-book.gif" alt="">
                 <span>Research Paper Organizer</span>
             </div>
             <div class="nav-links">
@@ -44,8 +47,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
-            <div class="hero-content">
-                <h1>Organize Your Research Papers Like Never Before</h1>
+            <div class="hero-content fade-in">
+                <h1 class="typing-text">Organize Your Research Papers Like Never Before</h1>
                 <p>Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform.</p>
                 <div class="hero-buttons">
                     <button class="btn-primary btn-large" onclick="window.location.href='signup.html'">
@@ -59,7 +62,7 @@
                 </div>
                 <p class="hero-note">No credit card required • 30-day free trial</p>
             </div>
-            <div class="hero-image">
+            <div class="hero-image slide-right">
                 <div class="hero-mockup">
                     <div class="mockup-header">
                         <div class="mockup-dots">
@@ -94,13 +97,14 @@
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in">
                 <h2>Everything You Need for Research Management</h2>
                 <p>Powerful features designed specifically for researchers, students, and academics</p>
             </div>
             
             <div class="features-grid">
-                <div class="feature-card">
+
+                <div class="feature-card slide-left">
                     <div class="feature-icon">
                         <i class="fas fa-search"></i>
                     </div>
@@ -108,7 +112,7 @@
                     <p>Find papers instantly with intelligent search across titles, authors, abstracts, and tags.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card slide-right">
                     <div class="feature-icon">
                         <i class="fas fa-tags"></i>
                     </div>
@@ -116,7 +120,7 @@
                     <p>Categorize papers by topics, tags, and custom labels. Never lose track of important research.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card slide-left">
                     <div class="feature-icon">
                         <i class="fas fa-star"></i>
                     </div>
@@ -124,7 +128,7 @@
                     <p>Rate papers and add personal notes to remember key insights and contributions.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card slide-right">
                     <div class="feature-icon">
                         <i class="fas fa-quote-right"></i>
                     </div>
@@ -132,7 +136,7 @@
                     <p>Generate citations in APA, MLA, and Chicago formats with a single click.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card slide-left">
                     <div class="feature-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
@@ -140,7 +144,7 @@
                     <p>Upload and store PDFs directly in your library with built-in preview capabilities.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card slide-right">
                     <div class="feature-icon">
                         <i class="fas fa-cloud"></i>
                     </div>
@@ -154,13 +158,13 @@
     <!-- How it Works Section -->
     <section id="how-it-works" class="how-it-works">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in">
                 <h2>Get Started in 3 Simple Steps</h2>
                 <p>Start organizing your research papers in minutes</p>
             </div>
             
             <div class="steps-container">
-                <div class="step">
+                <div class="step fade-in">
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Create Your Account</h3>
@@ -168,7 +172,7 @@
                     </div>
                 </div>
                 
-                <div class="step">
+                <div class="step fade-in">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Add Your Papers</h3>
@@ -176,7 +180,7 @@
                     </div>
                 </div>
                 
-                <div class="step">
+                <div class="step fade-in">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Organize & Search</h3>
@@ -188,22 +192,22 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats">
+    <section class="stats fade-in">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item">
+                <div class="stat-item fade-in ">
                     <div class="stat-number">10,000+</div>
                     <div class="stat-label">Researchers</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item fade-in">
                     <div class="stat-number">500,000+</div>
                     <div class="stat-label">Papers Organized</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item fade-in">
                     <div class="stat-number">50+</div>
                     <div class="stat-label">Universities</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item fade-in">
                     <div class="stat-number">99.9%</div>
                     <div class="stat-label">Uptime</div>
                 </div>
@@ -269,12 +273,21 @@
   transition: transform 0.3s ease, opacity 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
+  cursor: pointer;
+}
+.testimonial-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  background: #f9f9ff;
 }
 .testimonial-card img {
   width: 150px;
   height: 150px;
   border-radius: 100%;
   margin-bottom: 15px;
+}
+.testimonial-card:hover img {
+  transform: scale(1.1) rotate(2deg);
 }
 .testimonial-card .designation {
   font-size: 0.9rem;
@@ -305,6 +318,7 @@
     scroll-snap-align: center;
   }
 }
+
 </style>
 
 <!-- ===== JS Fade-in Animation ===== -->
@@ -327,7 +341,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
-            <div class="cta-content">
+            <div class="cta-content fade-in">
                 <h2>Ready to Transform Your Research Workflow?</h2>
                 <p>Join thousands of researchers who have already streamlined their paper management process.</p>
                 <div class="cta-buttons">
@@ -345,8 +359,8 @@ document.addEventListener("DOMContentLoaded", () => {
     <style>
         /* Back to Top Button Styles */
 #backToTop {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -377,51 +391,290 @@ document.addEventListener("DOMContentLoaded", () => {
     right: 20px;
   }
 }
+
+    /* Footer CSS*/
+    .modern-footer {
+      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
+      color: #fff;
+      padding: 60px 20px 20px;
+      border-radius: 25px 25px 0 0;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 30px;
+    }
+
+    .footer-brand h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-brand h2 i {
+      margin-right: 10px;
+      font-size: 1.6rem;
+      vertical-align: middle;
+    }
+
+    .footer-brand p {
+      font-size: 1rem;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .footer-links-section h4 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 5px;
+    }
+
+    .footer-links-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links-section ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-links-section ul li a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+    }
+
+    .footer-links-section ul li a:hover {
+      color: #fff;
+      transform: translateX(5px);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #fff;
+      color: #2c5aa0;
+      transform: scale(1.1);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 15px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    .footer-card {
+      flex: 1 1 200px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      min-width: 200px;
+    }
+ .footer-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-card ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-card ul li a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+      
+      padding: 5px;
+      padding-left: 20px;
+    }
+
+    .footer-card ul li a:hover {
+      color: #fff;
+      transform: translateX(5px);
+    }
+
+    @media (max-width: 768px) {
+      .footer-top {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .footer-brand h2 {
+        font-size: 1.5rem;
+      }
+
+      .footer-links-section h4 {
+        font-size: 1rem;
+      }
+
+      .footer-links-section ul li a {
+        font-size: 0.95rem;
+      }
+
+      .social-icons a {
+        width: 35px;
+        height: 35px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+
+      .footer-links-section ul li a {
+        justify-content: center;
+      }
+    }
+    .footer-bottom .heart {
+  color: inherit;  
+
+}
+
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;  /* 👈 ye center karega */
+  margin: 3rem 0;
+}
+
+.feature-card {
+  flex: 1 1 250px;
+  max-width: 300px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #fff;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(8deg);
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #333;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
     </style>
 
     <!-- Back to Top Button -->
-<button id="backToTop">↑</button>
+<button id="backToTop">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
 
-    <!-- Footer -->
-    <footer class="landing-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <i class="fas fa-book-open"></i>
-                    <span>Research Paper Organizer</span>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-section">
-                        <h4>Product</h4>
-                        <a href="#features">Features</a>
-                        <a href="#how-it-works">How it Works</a>
-                        <a href="pricing.html">Pricing</a>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Support</h4>
-                        <a href="Faq.html">FAQ</a>
-                        <a href="contact.html">Contact</a>
-                        <a href="blog.html">Blog</a>
-                    </div>
-                    <div class="footer-section">
-                        <h4>Company</h4>
-                        <a href="about.html">About Us</a>
-                        <a href="open-source.html">Open Source</a>
-                        <a href="glossary.html">Glossary</a>
-                        <a href="Masthead.html">Masthead</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Research Paper Organizer. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
+   
+  <!-- Modern Footer -->
+  <footer class="modern-footer" aria-label="Footer">
+    <div class="footer-top">
+      <div class="footer-brand footer-card">
+        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+      </div>
+
+      <div class="footer-links-section footer-card" >
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+          <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-section footer-card">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
+          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-section footer-card">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
-    </footer>
+      </div>
+    </div>
+
+   <div class="footer-bottom" style="text-align: center; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 15px 0;">
+  <p style="margin: 0;">
+    © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
+  </p>
+</div>
+
+
+  </footer>
 
     <script src="landing.js"></script>
     <script>
@@ -447,8 +700,16 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           clearInterval(textInterval); // stop changing text
           loadingScreen.classList.add("hidden");
+          //after that added sideLeft and slide right animation
+          document.querySelector(".hero-content").classList.add("animate");
+          document.querySelector(".hero-image").classList.add("animate");
         }, 6000); // adjust as needed
-      });
+      }); 
+
+      //after executing slideright remove it so that other animation can start
+      setTimeout(() =>{
+         document.querySelector(".hero-image").classList.remove("animate");
+      },7000)
 
 
       //back to top button 
@@ -468,6 +729,27 @@ backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
     </script>
+
+
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll(".fade-in, .slide-left, .slide-right");
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      }, { threshold: 0.2 });
+
+      elements.forEach(el => observer.observe(el));
+    });
+    </script>
+
+
+
      
 </body>
 </html>
+  
