@@ -502,6 +502,54 @@ body.dark-mode {
     }
 }
 
+    /* Back to Top Button Styles */
+    #backToTop {
+        /* Center the icon */
+   display: none;
+   align-items: center;
+   justify-content: center;
+   height: 60px;
+   width: 60px;
+   position: fixed;
+   bottom: 80px;
+   right: 20px;
+   z-index: 1000;
+   background: linear-gradient(135deg, #368dbc, #4facfe);
+   color: rgb(98, 107, 187);
+   border: none;
+   border-radius: 50%;
+   font-size: 20px;          /* size of the arrow icon */
+  
+   cursor: pointer;
+   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+   transition: transform 0.3s ease, opacity 0.3s ease;
+   opacity: 0;          /* start hidden */
+   pointer-events: none;
+ 
+  
+ }
+ #backToTop.show {
+    display:flex;
+   opacity: 1;
+   pointer-events: auto;
+ }
+ 
+ #backToTop:hover {
+   transform: scale(1.1);
+   opacity: 0.9;
+ }
+ 
+ @media (max-width: 600px) {
+           #backToTop {
+             height: 50px;
+             width: 50px;
+             font-size: 14px;
+             bottom: 20px;
+             right: 20px;
+            
+           }
+           }
+ 
 /* ================= Footer Styling (Blog Style) ================= */
 .blog-footer {
     background: linear-gradient(135deg, #357abd, #2c5aa0);

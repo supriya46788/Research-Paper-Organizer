@@ -127,7 +127,10 @@
             </div>
         </div>
     </div>
-    
+      <!-- Back to Top Button -->
+    <button id="backToTop">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
     <!-- Footer -->
     <footer class="blog-footer" aria-label="Footer">
       <div class="footer-content">
@@ -175,6 +178,7 @@
         <p class="footer-tagline">Made with <i class="fas fa-heart" style="color: #e74c3c;" aria-hidden="true"></i> for researchers worldwide</p>
       </div>
     </footer>
+  
   
     </div>
     </div>
@@ -224,6 +228,25 @@
 
 
     <script src="js/contact.js"></script>
+    <script>
+      //back to top button 
+     // Show button when scrolled down
+     const backToTop = document.getElementById("backToTop");
+     
+     // Show/hide button with fade
+     window.addEventListener("scroll", () => {
+       if (window.scrollY > 100) {
+         backToTop.classList.add("show");
+       } else {
+         backToTop.classList.remove("show");
+       }
+     });
+     
+     // Smooth scroll to top
+     backToTop.addEventListener("click", () => {
+       window.scrollTo({ top: 0, behavior: "smooth" });
+     });
+     </script>
     <script>
         // Dark Mode Toggle Function
         function toggleDarkMode() {

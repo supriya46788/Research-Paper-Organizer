@@ -96,7 +96,9 @@
 </div>
 
     <!-- Back to Top Button -->
-    <button id="backToTop">↑</button>
+    <button id="backToTop">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
 <!-- Footer -->
 <footer class="tools-footer">
@@ -641,36 +643,48 @@ border-top-color: rgba(224, 224, 224, 0.1);
 }
     /* Back to Top Button Styles */
     #backToTop {
+       /* Center the icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #0077b5, #4facfe);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;          /* size of the arrow icon */
+ 
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;          /* start hidden */
+  pointer-events: none;
+
+ 
+}
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#backToTop:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+          #backToTop {
             height: 50px;
             width: 50px;
-          position: fixed;
-          bottom: 80px;
-          right: 20px;
-          z-index: 1000;
-          background: linear-gradient(135deg,#0077b5 ,#4facfe );
-          color: white;
-          border: none;
-          border-radius: 50%;
-          padding: 15px;
-          font-size: 18px;
-          cursor: pointer;
-          display: none;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          transition: transform 0.3s ease, opacity 0.3s ease;
-          }
-          
-          #backToTop:hover {
-          transform: scale(1.1);
-          opacity: 0.9;
-          box-shadow: rgba(0,0,0,0.8);
-          }
-          
-          @media (max-width: 600px) {
-          #backToTop {
-            padding: 12px;
-            font-size: 16px;
+            font-size: 14px;
             bottom: 20px;
             right: 20px;
+           
           }
           }
 
@@ -682,11 +696,12 @@ border-top-color: rgba(224, 224, 224, 0.1);
 // Show button when scrolled down
 const backToTop = document.getElementById("backToTop");
 
+// Show/hide button with fade
 window.addEventListener("scroll", () => {
   if (window.scrollY > 100) {
-    backToTop.style.display = "block";
+    backToTop.classList.add("show");
   } else {
-    backToTop.style.display = "none";
+    backToTop.classList.remove("show");
   }
 });
 
