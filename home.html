@@ -260,7 +260,15 @@
                 <h3>Drag & Drop to Upload File</h3>
                 <p>OR</p>
                 <button id="browse-btn" type="button">Browse File</button>
-                <input type="file" id="pdfUpload" accept="application/pdf" required hidden />
+                <input type="file" id="pdfUpload" accept="application/pdf" hidden />
+              </div>
+              <!-- New section for DOI/arXiv input -->
+              <div class="form-group">
+                <label class="form-label">DOI or arXiv ID (Optional)</label>
+                <input type="text" class="form-input" id="doiArxivInput" placeholder="e.g., 10.1000/xyz123 or arXiv:YYMM.NNNNN" />
+                <button type="button" class="btn-secondary mt-2" id="autoFillMetadataBtn">
+                  <i class="fas fa-magic"></i> Auto-fill Metadata
+                </button>
               </div>
               <!-- Placeholder for showing uploaded file -->
               <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>

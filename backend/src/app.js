@@ -22,6 +22,10 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import researchPaperRoutes from "./routes/researchPaperRoutes.js";
 import geminiRoutes from "./routes/geminiRoutes.js";
+import metadataRoutes from "./routes/metadataRoutes.js";
+import multer from "multer";
+
+const upload = multer(); // For handling file uploads
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -33,10 +37,12 @@ app.get("/", (req, res) => {
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+app.use(upload.single('pdf')); // Use multer for file uploads, specifically for 'pdf' field
 
 app.use("/api/auth", authRoutes);
 app.use("/api/papers", researchPaperRoutes);
 app.use("/api/gemini", geminiRoutes);
+app.use("/api/metadata", metadataRoutes);
 
 const startServer = async () => {
   await connectDB();
