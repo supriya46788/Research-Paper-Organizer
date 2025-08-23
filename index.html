@@ -273,12 +273,21 @@
   transition: transform 0.3s ease, opacity 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
+  cursor: pointer;
+}
+.testimonial-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  background: #f9f9ff;
 }
 .testimonial-card img {
   width: 150px;
   height: 150px;
   border-radius: 100%;
   margin-bottom: 15px;
+}
+.testimonial-card:hover img {
+  transform: scale(1.1) rotate(2deg);
 }
 .testimonial-card .designation {
   font-size: 0.9rem;
