@@ -52,7 +52,8 @@ body.dark-mode {
 
 /* Dark mode toggle button styling */
 .dark-toggle {
-    background: none !important;
+   
+    background: #fff !important;
     border: none;
     cursor: pointer;
     padding: 0.6rem 1.2rem;
@@ -63,7 +64,18 @@ body.dark-mode {
 .dark-toggle:hover {
     background: rgba(255, 255, 255, 0.1) !important;
 }
-
+/* For dark mode button background */
+body.dark-mode #darkModeToggle {
+    background-color: #f6f2f2;  /* Or any other dark color you prefer */
+    color: #110505;             /* Optional: white text/icon */
+    border: none;               /* Optional: remove border */
+  }
+  @media (max-width: 768px){
+    body.dark-mode #darkModeToggle{
+      color:#170d0d;
+      /* background-color: white; */
+    }
+  }
 .faq-container {
     position: relative;
     width: 100%;

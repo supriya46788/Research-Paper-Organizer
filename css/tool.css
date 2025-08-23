@@ -19,9 +19,25 @@ background: linear-gradient(135deg, #1a1a1a 0%, #2d3748 100%);
 color: #e0e0e0;
 }
 
+/* For dark mode button background */
+body.dark-mode #darkModeToggle {
+  background-color: #2c2c2c;  /* Or any other dark color you prefer */
+  color: #ffffff;             /* Optional: white text/icon */
+  border: none;               /* Optional: remove border */
+}
+@media (max-width: 768px){
+  body.dark-mode #darkModeToggle{
+    color:#170d0d;
+    /* background-color: white; */
+  }
+}
+  
+
+
 /* Dark mode toggle button styling */
 .dark-toggle {
-background: none !important;
+  color:#1a1a1a;
+background: #fff !important;
 border: none;
 cursor: pointer;
 padding: 0.6rem 1.2rem;
