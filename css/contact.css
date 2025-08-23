@@ -459,7 +459,7 @@ body.dark-mode {
 
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
+        /* flex-direction: column; */
         gap: 1rem;
         padding: 1rem;
     }
