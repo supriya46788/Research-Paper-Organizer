@@ -169,9 +169,9 @@ body.dark-mode #menu-items-container {
 
 
 /* nkli */
-#footer-outer {
+/* #footer-outer {
     /* background-color: #3b82f6; */
-      background-color: #7298e5;
+      /* background-color: #7298e5;
 
 
 
@@ -181,11 +181,11 @@ body.dark-mode #menu-items-container {
   font-family: Arial, sans-serif;
   margin-top: 15px;
   border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); */ */
   
   /* Smooth transitions for hover effects */
-  transition: all 0.3s ease;
-}
+  /* transition: all 0.3s ease;
+} */
 
 /* Footer inner container */
 .footer-inner {
