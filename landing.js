@@ -1,46 +1,53 @@
 // Landing Page JavaScript
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
-    const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
-    mobileMenuToggle.addEventListener("click", function () {
-      navLinks.classList.toggle("active");
-    }); 
-    links.forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
-      });
-    });
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links a'); // added
 
-   // Smooth scroll for anchor links
-   function scrollToFeatures() {
-    document.getElementById("features").scrollIntoView({
-      behavior: "smooth",
-    });
-  }
-
-   // Add scroll effect to navigation
-   window.addEventListener("scroll", function () {
-    const nav = document.querySelector(".landing-nav");
-    if (window.scrollY > 100) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('mobile-active');
+        });
     }
-  });
 
-     // Animate elements on scroll
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
+    // Close mobile menu when a link is clicked
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("mobile-active");
+        });
     });
-  }, observerOptions);
+
+    // Smooth scroll for anchor links
+    function scrollToFeatures() {
+        document.getElementById('features').scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+
+    // Add scroll effect to navigation
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('.landing-nav');
+        if (window.scrollY > 100) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // Animate elements on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
 
     // Observe all elements with fade-in class
     document.querySelectorAll('.fade-in').forEach(el => {
