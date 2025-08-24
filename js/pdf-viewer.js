@@ -1349,3 +1349,45 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 });
+// js/pdf-viewer.js me, end me ya annotation logic ke paas paste karein
+
+// Example: annotations array
+let annotations = []; // Use your actual annotation data structure
+
+// Export Annotations
+document.getElementById('export-annotations').onclick = function() {
+    const data = JSON.stringify(annotations, null, 2);
+    const blob = new Blob([data], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'annotations.json';
+    a.click();
+    URL.revokeObjectURL(url);
+};
+
+// Import Annotations
+document.getElementById('import-annotations').onclick = function() {
+    document.getElementById('import-annotations-file').click();
+};
+
+document.getElementById('import-annotations-file').onchange = function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        try {
+            const data = JSON.parse(event.target.result);
+            if (Array.isArray(data)) {
+                annotations = data;
+                // TODO: Render annotations on PDF
+                alert('Annotations imported!');
+            } else {
+                alert('Invalid file format!');
+            }
+        } catch (err) {
+            alert('Invalid file!');
+        }
+    };
+    reader.readAsText(file);
+};
