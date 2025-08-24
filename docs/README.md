@@ -51,17 +51,16 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 
 **✨ Features**
 
-- *🎯 Static single-page application (SPA) with smooth UI*
-- * 📁 Add and organize research paper entries*
-- * 📇 Sort and filter by category (like AI, ML, Web, etc.)*
-- * 🔍 Search bar to quickly find a paper*
-- * 📌 Visual cards for each paper with title, author(s), and description*
-- * 🎨 Built with pure HTML, CSS, and JavaScript – no frameworks*
+- 🎯 Static single-page application (SPA) with smooth UI
+- 📁 Add and organize research paper entries
+- 📇 Sort and filter by category (like AI, ML, Web, etc.)
+- 🔍 Search bar to quickly find a paper
+- 📌 Visual cards for each paper with title, author(s), and description
+- 🎨 Built with pure HTML, CSS, and JavaScript – no frameworks
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 **💡 How to Use**
-
 
 1. Clone this repo:
 
@@ -107,6 +106,7 @@ git clone https://github.com/supriya46788/Research-Paper-Organizer.git
 🎉 **I can’t wait to welcome new contributors** from GSSoC 2025 to this Research-Paper-Organizer project family! Let's build, learn, and grow together — one commit at a time. 🔥👨‍💻👩‍💻
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="150%">
+
 **🔮 Future Overview**
 
 This project aims to become a **fully functional research management system** with features like:
@@ -164,7 +164,7 @@ Follow these steps to contribute your changes to **Research-Paper-Organizer**:
     Navigate to the project directory and create a new branch for your changes:
 
     ```bash
-    cd BakeGenuis-AI
+    cd Research-Paper-Organizer
     git checkout -b my-feature-branch
     ```
 
@@ -199,11 +199,11 @@ Follow these steps to contribute your changes to **Research-Paper-Organizer**:
 
 **🔖 Contribution Guidelines**
 
-- * Stick to clean and readable code*
-- * Make small, well-documented pull requests*
-- * For design changes, try to follow a minimal UI*
-- * Always link issues you're solving*
-- * Ask questions or open discussions freely in the Issues tab*
+- Stick to clean and readable code
+- Make small, well-documented pull requests
+- For design changes, try to follow a minimal UI
+- Always link issues you're solving
+- Ask questions or open discussions freely in the Issues tab
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
