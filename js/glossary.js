@@ -17,64 +17,66 @@ const glossaryContainer = document.querySelector(".glossary-container");
 // Render glossary terms
 glossaryTerms.forEach(item => {
   const card = document.createElement("div");
-  card.classList.add("glossary-card");
+  card.classList.add("glossary-item"); // ✅ use glossary-item everywhere
+  card.setAttribute("id", item.term.charAt(0).toUpperCase()); // so alphabet nav works
   card.innerHTML = `
-    <h3>${item.term}</h3>
+    <h2>${item.term}</h2>
     <p>${item.definition}</p>
     <small><strong>Example:</strong> ${item.example}</small>
   `;
   glossaryContainer.appendChild(card);
 });
+
+// 🔎 Search functionality
 // Search functionality
 const searchInput = document.querySelector(".glossary-header input");
 searchInput.addEventListener("input", function() {
     const searchTerm = searchInput.value.toLowerCase();
-    const glossaryItems = document.querySelectorAll(".glossary-item");
+    const glossaryItems = document.querySelectorAll(".glossary-item"); // FIXED
     glossaryItems.forEach(item => {
-        const term = item.querySelector("h2").textContent.toLowerCase();
+        const term = item.querySelector("h2").textContent.toLowerCase(); // you used <h3>, not <h2>
         if (term.includes(searchTerm)) {
-            item.classList.add("visible");
+            item.style.display = "block";
         } else {
-            item.classList.remove("visible");
+            item.style.display = "none";
         }
     });
 });
-// Alphabet navigation
+
+
+// 🔤 Alphabet navigation
 const alphabetLinks = document.querySelectorAll(".alphabet-nav a");
 alphabetLinks.forEach(link => {
-    link.addEventListener("click", function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute("href").substring(1);
-        const targetItem = document.getElementById(targetId);
-        if (targetItem) {
-            targetItem.scrollIntoView({ behavior: "smooth" });
-        }
-    });
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute("href").substring(1);
+    const targetItem = document.getElementById(targetId);
+    if (targetItem) {
+      targetItem.scrollIntoView({ behavior: "smooth" });
+    }
+  });
 });
 
-// Highlight current section in alphabet navigation
-
+// 🔠 Highlight current section in alphabet navigation
 window.addEventListener("scroll", function() {
-    const scrollPosition = window.scrollY;
-    alphabetLinks.forEach(link => {
-        const targetId = link.getAttribute("href").substring(1);
-        const targetItem = document.getElementById(targetId);
-        if (targetItem) {
-            const itemPosition = targetItem.offsetTop;
-            const itemHeight = targetItem.offsetHeight;
-            if (scrollPosition >= itemPosition && scrollPosition < itemPosition + itemHeight) {
-                link.classList.add("active");
-            } else {
-                link.classList.remove("active");
-            }
-        }
-    });
+  const scrollPosition = window.scrollY;
+  alphabetLinks.forEach(link => {
+    const targetId = link.getAttribute("href").substring(1);
+    const targetItem = document.getElementById(targetId);
+    if (targetItem) {
+      const itemPosition = targetItem.offsetTop;
+      const itemHeight = targetItem.offsetHeight;
+      if (scrollPosition >= itemPosition && scrollPosition < itemPosition + itemHeight) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    }
+  });
 });
 
- //back to top button 
-// Show button when scrolled down
+// 🔝 Back to top button
 const backToTop = document.getElementById("backToTop");
-
 window.addEventListener("scroll", () => {
   if (window.scrollY > 100) {
     backToTop.style.display = "block";
@@ -82,8 +84,13 @@ window.addEventListener("scroll", () => {
     backToTop.style.display = "none";
   }
 });
-
-// Smooth scroll to top
 backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
+
+// Mobile menu toggle
+document.querySelector(".mobile-menu-toggle").addEventListener("click", () => {
+  document.querySelector(".nav-links").classList.toggle("active");
+});
+
+
