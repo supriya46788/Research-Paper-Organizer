@@ -13,48 +13,73 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  
-  <style>
-    /* Ensure dark mode styles work */
+ <style>
+    /* Dark mode styles */
     body.dark-mode {
       background: #111827 !important;
       color: #d1d5db !important;
     }
-    
     body.dark-mode .header {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
     body.dark-mode .search-bar {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
     body.dark-mode .papers-section {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
     body.dark-mode .paper-card {
       background: #374151 !important;
       color: #d1d5db !important;
       border-color: #4b5563 !important;
     }
-    
     body.dark-mode .modal {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
     body.dark-mode input, 
     body.dark-mode textarea, 
     body.dark-mode select {
       background: #374151 !important;
       color: #d1d5db !important;
       border-color: #4b5563 !important;
+    }
+
+    /* Drop-zone styles */
+    #drop-zone {
+      border: 2px dashed #4a90e2;
+      border-radius: 16px;
+      padding: 35px;
+      text-align: center;
+      background: #f8fbff;
+      color: #4a90e2;
+      transition: all 0.3s;
+    }
+    #drop-zone:hover {
+      background: #eef4ff;
+      border-color: #357ABD;
+      transform: scale(1.02);
+    }
+    .label-1 {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #0056b3, #00BFFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+    .label-1:hover {
+      background: linear-gradient(90deg, #185ba3, #add3e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 17px;
     }
   </style>
 </head>
@@ -320,7 +345,7 @@
               <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>
               
               <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
-                <label class="form-label">PDF Preview</label>
+                <label class="form-label label-1">PDF Preview</label>
                 <iframe
                   id="pdfPreview"
                   class="pdf-preview"
@@ -331,56 +356,56 @@
               </div>
 
               <div class="form-group">
-                <label class="form-label">Title *</label>
+                <label class="form-label label-1">Title *</label>
                 <input type="text" class="form-input" id="title" required />
               </div>
 
               <div class="form-grid">
                 <div class="form-group">
-                  <label class="form-label">Authors *</label>
+                  <label class="form-label label-1">Authors *</label>
                   <input type="text" class="form-input" id="authors" required />
                 </div>
                 <div class="form-group">
-                  <label class="form-label">Year</label>
+                  <label class="form-label label-1">Year</label>
                   <input type="number" class="form-input" id="year" />
                 </div>
               </div>
 
               <div class="form-grid">
                 <div class="form-group">
-                  <label class="form-label">Journal/Conference</label>
+                  <label class="form-label label-1">Journal/Conference</label>
                   <input type="text" class="form-input" id="journal" />
                 </div>
                 <div class="form-group">
-                  <label class="form-label">Topic</label>
+                  <label class="form-label label-1">Topic</label>
                   <input type="text" class="form-input" id="topic" />
                 </div>
               </div>
 
               <div class="form-group">
-                <label class="form-label">URL</label>
+                <label class="form-label label-1">URL</label>
                 <input type="url" class="form-input" id="url" />
               </div>
 
               <div class="form-group">
-                <label class="form-label">Tags (comma-separated)</label>
+                <label class="form-label label-1">Tags (comma-separated)</label>
                 <input type="text" class="form-input" id="tags" placeholder="machine learning, neural networks, AI" />
               </div>
 
               <div class="form-group">
-                <label class="form-label">Abstract</label>
+                <label class="form-label label-1">Abstract</label>
                 <textarea class="form-textarea" id="abstract" rows="3"></textarea>
               </div>
 
               <div class="form-group">
-                <label class="form-label">Notes</label>
+                <label class="form-label label-1">Notes</label>
                 <textarea class="form-textarea" id="notes" rows="4"></textarea>
               </div>
 
               <!-- Rating and Favorite Section -->
               <div class="form-grid">
                 <div class="form-group">
-                  <label class="form-label">Rating</label>
+                  <label class="form-label label-1">Rating</label>
                   <div class="rating-container">
                     <div class="stars-rating" id="starsRating">
                       <span class="star" data-rating="1">★</span>
@@ -393,14 +418,14 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="form-label">Favorite</label>
+                  <label class="form-label label-1">Favorite</label>
                   <div class="favorite-container">
                     <label class="favorite-checkbox">
                       <input type="checkbox" id="isFavorite" />
-                      <span class="favorite-icon">
-                        <i class="fas fa-heart"></i>
+                      <span class="favorite-icon" style="margin-top: 10px;">
+                        <i class="fas fa-heart " ></i>
                       </span>
-                      <span class="favorite-text">Mark as favorite</span>
+                      <span class="favorite-text"><p class="label-1">Mark as favorite</p></span>
                     </label>
                   </div>
                 </div>
