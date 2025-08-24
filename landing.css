@@ -133,6 +133,10 @@ html,body{
      background: #3773f4fe;
      display: flex;
      flex-direction: column;
+     position: static;
+     width: auto;
+     flex-direction: row;
+     right: 0;
      padding: 2rem 1.5rem;
      gap: 1.5rem;
      transition: right 0.3s ease-in-out;

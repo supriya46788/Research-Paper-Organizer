@@ -1,55 +1,48 @@
-<!DOCTYPE h  <link rel="stylesheet" href="css/style.css" />
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research Paper Organizer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- SweetAlert2 CDN -->
-   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/navigation.css" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <style>
-    /* Ensure dark mode styles work */
+ <style>
+    /* Dark mode styles */
     body.dark-mode {
       background: #111827 !important;
       color: #d1d5db !important;
     }
-    
     body.dark-mode .header {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
     body.dark-mode .search-bar {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
     body.dark-mode .papers-section {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
     body.dark-mode .paper-card {
       background: #374151 !important;
       color: #d1d5db !important;
       border-color: #4b5563 !important;
     }
-    
     body.dark-mode .modal {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
     body.dark-mode input, 
     body.dark-mode textarea, 
     body.dark-mode select {
@@ -58,57 +51,127 @@
       border-color: #4b5563 !important;
     }
 
-   
+    /* Drop-zone styles */
     #drop-zone {
-  border: 2px dashed #4a90e2;
-  border-radius: 16px;
-  padding: 35px;
-  text-align: center;
-  background: #f8fbff;
-  color: #4a90e2;
-  transition: all 0.3s;
-}
-#drop-zone:hover {
-  background: #eef4ff;
-  border-color: #357ABD;
-  transform: scale(1.02);
-}
-.label-1 {
-  margin-top: 10px;
-  background: linear-gradient(90deg, #0056b3, #00BFFF); /* darker to lighter blue */
-  -webkit-background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-  font-weight: 700; /* bolder */
-  font-size: 15px;  /* increased size */
-  letter-spacing: 0.5px; /* adds spacing for a cleaner look */
-}
-.label-1:hover {
-  margin-top: 10px;
-  background: linear-gradient(90deg, #185ba3, #add3e0); /* darker to lighter blue */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 17px;  /* increased size */
-}
-
-
+      border: 2px dashed #4a90e2;
+      border-radius: 16px;
+      padding: 35px;
+      text-align: center;
+      background: #f8fbff;
+      color: #4a90e2;
+      transition: all 0.3s;
+    }
+    #drop-zone:hover {
+      background: #eef4ff;
+      border-color: #357ABD;
+      transform: scale(1.02);
+    }
+    .label-1 {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #0056b3, #00BFFF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+    }
+    .label-1:hover {
+      background: linear-gradient(90deg, #185ba3, #add3e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 17px;
+    }
   </style>
-  
 </head>
 
 <body>
   <div class="container">
     <nav class="navbar">
-      <a href="#" class="nav-item">Home</a>
+      <a href="home.html" class="navbar-brand">
+        <i class="fas fa-book-open"></i>
+        Research Paper Organizer
+      </a>
 
       <div class="navbar-right-links">
-        <a href="about.html" class="nav-item">About us</a>
-        <a href="blog.html" class="nav-item">Blogs</a>
-        <a href="Faq.html" class="nav-item">FAQ</a>
-        <a href="contact.html" class="nav-item">Contact Us</a>
-        <a href="tools.html" class="nav-item">Tools</a>
+        <a href="home.html" class="nav-item">
+          <i class="fas fa-home"></i>
+          Home
+        </a>
+        <a href="about.html" class="nav-item">
+          <i class="fas fa-info-circle"></i>
+          About Us
+        </a>
+        <a href="blog.html" class="nav-item">
+          <i class="fas fa-blog"></i>
+          Blog
+        </a>
+        <a href="Faq.html" class="nav-item">
+          <i class="fas fa-question-circle"></i>
+          FAQ
+        </a>
+        <a href="contact.html" class="nav-item">
+          <i class="fas fa-envelope"></i>
+          Contact Us
+        </a>
+        <a href="tools.html" class="nav-item">
+          <i class="fas fa-tools"></i>
+          Tools
+        </a>
+      </div>
+
+      <!-- Hamburger Menu for Mobile -->
+      <div class="hamburger-menu" aria-label="Toggle navigation menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
       </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+      <div class="mobile-menu-container">
+        <div class="mobile-menu-header">
+          <h3><i class="fas fa-book-open"></i> Menu</h3>
+          <button class="mobile-menu-close" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="mobile-menu-links">
+          <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+          <a href="about.html" class="nav-item">
+            <i class="fas fa-info-circle"></i>
+            About Us
+          </a>
+          <a href="blog.html" class="nav-item">
+            <i class="fas fa-blog"></i>
+            Blog
+          </a>
+          <a href="Faq.html" class="nav-item">
+            <i class="fas fa-question-circle"></i>
+            FAQ
+          </a>
+          <a href="contact.html" class="nav-item">
+            <i class="fas fa-envelope"></i>
+            Contact Us
+          </a>
+          <a href="tools.html" class="nav-item">
+            <i class="fas fa-tools"></i>
+            Tools
+          </a>
+          <a href="glossary.html" class="nav-item">
+            <i class="fas fa-book"></i>
+            Glossary
+          </a>
+          <a href="open-source.html" class="nav-item">
+            <i class="fab fa-github"></i>
+            Open Source
+          </a>
+        </div>
+      </div>
+    </div>
     <!-- Header -->
     <div class="header">
       <div class="header-content">
@@ -147,24 +210,7 @@
 
         </div>
       </div>
-      <div class="menu">
-        <svg id="menu-open-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-          stroke="currentColor" class="menu-btn">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
 
-        <div id="menu-items-container">
-          <a href="#" class="menu-item">Home</a>
-          <a href="#" class="menu-item">About us</a>
-
-          <a href="#" class="menu-item">FAQ</a>
-          <a href="contact.html" class="menu-item">Contact Us</a>
-        </div>
-        <svg id="menu-close-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-          stroke="currentColor" class="menu-btn">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-        </svg>
-      </div>
     </div>
 
     <!-- Search and Filter Bar -->
@@ -531,6 +577,7 @@ backToTop.addEventListener("click", () => {
 
   </script>
 
+    <script src="js/navigation.js"></script>
     <script src="js/script.js"></script>
 
     <!-- Chatbot Window -->

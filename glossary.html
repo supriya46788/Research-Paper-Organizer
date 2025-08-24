@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Glossary | Research Paper Organizer</title>
   <link rel="stylesheet" href="css/glossary.css" />
+  <link rel="stylesheet" href="css/navigation.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
 
 </head>
@@ -12,26 +13,84 @@
 
   <!-- Header -->
       <!-- Navigation -->
-    <nav class="landing-nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-book-open" style="color: linear-gradient(135deg, #4a90e2, #357abd);"></i>
-                <span style="color: linear-gradient(135deg, #4a90e2, #357abd);">Research Paper Organizer</span>
-            </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
-                <a href="about.html">About</a>
-                <a href="tools.html">Tools</a>
-                <a href="contact.html">Contact</a>
-                
-                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
-            </div>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
+    <nav class="navbar">
+      <a href="index.html" class="navbar-brand">
+        <i class="fas fa-book-open"></i>
+        Research Paper Organizer
+      </a>
+
+      <div class="navbar-right-links">
+        <a href="index.html#features" class="nav-item">
+          <i class="fas fa-star"></i>
+          Features
+        </a>
+        <a href="index.html#how-it-works" class="nav-item">
+          <i class="fas fa-cogs"></i>
+          How it Works
+        </a>
+        <a href="about.html" class="nav-item">
+          <i class="fas fa-info-circle"></i>
+          About
+        </a>
+        <a href="tools.html" class="nav-item">
+          <i class="fas fa-tools"></i>
+          Tools
+        </a>
+        <a href="contact.html" class="nav-item">
+          <i class="fas fa-envelope"></i>
+          Contact
+        </a>
+        <a href="signup.html" class="nav-item" style="background: linear-gradient(135deg, #10b981, #059669);">
+          <i class="fas fa-rocket"></i>
+          Get Started
+        </a>
+      </div>
+
+      <!-- Hamburger Menu for Mobile -->
+      <div class="hamburger-menu" aria-label="Toggle navigation menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+      <div class="mobile-menu-container">
+        <div class="mobile-menu-header">
+          <h3><i class="fas fa-book-open"></i> Menu</h3>
+          <button class="mobile-menu-close" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="mobile-menu-links">
+          <a href="index.html#features" class="nav-item">
+            <i class="fas fa-star"></i>
+            Features
+          </a>
+          <a href="index.html#how-it-works" class="nav-item">
+            <i class="fas fa-cogs"></i>
+            How it Works
+          </a>
+          <a href="about.html" class="nav-item">
+            <i class="fas fa-info-circle"></i>
+            About
+          </a>
+          <a href="tools.html" class="nav-item">
+            <i class="fas fa-tools"></i>
+            Tools
+          </a>
+          <a href="contact.html" class="nav-item">
+            <i class="fas fa-envelope"></i>
+            Contact
+          </a>
+          <a href="signup.html" class="nav-item" style="background: linear-gradient(135deg, #10b981, #059669);">
+            <i class="fas fa-rocket"></i>
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
   <header class="glossary-header">
     <a href="index.html" class="back-home">&larr; Back to Home</a>
     <h1>📖 Research Glossary</h1>
@@ -145,6 +204,7 @@
   </footer>
 
 
+  <script src="js/navigation.js"></script>
   <script src="js/glossary.js">
 
   </script>

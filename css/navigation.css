@@ -1,0 +1,258 @@
+/* Unified Responsive Navigation Styles */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.navbar-brand i {
+  font-size: 1.5rem;
+}
+
+.navbar-right-links {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure navbar items are visible with proper contrast */
+.nav-item {
+  background: #1d4ed8; /* Using the hover state background color as default */
+  color: white !important; /* Force white text */
+  border: none;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* Add text shadow for better readability */
+  box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3); /* Add default shadow from hover state */
+}
+
+/* Keep hover effect for subtle feedback */
+.nav-item:hover {
+  transform: translateY(-2px); /* Keep only the transform effect for hover feedback */
+}
+
+/* Mobile Menu Links - apply same styling approach */
+.mobile-menu-links .nav-item {
+  display: flex;
+  width: 100%;
+  margin: 0.5rem 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #1d4ed8; /* Using the hover state background color as default */
+  color: white !important; /* Force white text */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* Add text shadow for better readability */
+}
+
+/* Keep hover effect for subtle feedback */
+.mobile-menu-links .nav-item:hover {
+  transform: translateX(5px); /* Keep only the transform effect for hover feedback */
+}
+
+.nav-item:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  background-color: #1d4ed8; /* Blue background to match nav items */
+  order: 2; /* Position it after other elements (on the right) */
+  margin-left: auto; /* Push to the right */
+}
+
+.hamburger-menu:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Fix hamburger menu visibility */
+.hamburger-menu .bar {
+  width: 20px; /* Smaller width */
+  height: 5px; /* Thinner bars */
+  background-color: white; /* Change to white for contrast against blue background */
+  margin: 2px 0; /* Smaller margin between bars */
+  transition: 0.3s;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.mobile-menu-overlay.active {
+  display: block;
+}
+
+.mobile-menu-container {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 10000;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+
+.mobile-menu-container.active {
+  right: 0;
+}
+
+.mobile-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-menu-header h3 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.25rem;
+}
+
+.mobile-menu-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-menu-close:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.mobile-menu-links {
+  padding: 1rem 0;
+}
+
+/* Mobile Menu Links */
+.mobile-menu-links .nav-item {
+  display: flex;
+  width: 100%;
+  margin: 0.5rem 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #1d4ed8; /* Changed to solid blue to match navbar elements */
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(29, 78, 216, 0.2); /* Add shadow for depth */
+}
+
+/* Ensure text is visible with proper contrast */
+.mobile-menu-links .nav-item {
+  color: white !important; /* Force white text */
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* Add text shadow for better readability */
+}
+
+.mobile-menu-links .nav-item:hover {
+  background: #1e40af; /* Slightly darker blue on hover */
+  transform: translateX(5px);
+  box-shadow: 0 6px 10px rgba(29, 78, 216, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar-right-links {
+    display: none;
+  }
+  
+  .hamburger-menu {
+    display: flex;
+  }
+}
+
+/* Dark Mode Support */
+body.dark-mode .navbar {
+  background: #1f2937;
+  color: var(--text-light);
+}
+
+body.dark-mode .navbar-brand {
+  color: var(--text-light);
+}
+
+body.dark-mode .mobile-menu-container {
+  background: #1f2937;
+  color: var(--text-light);
+}
+
+body.dark-mode .mobile-menu-header {
+  border-bottom-color: #374151;
+}
+
+body.dark-mode .mobile-menu-close {
+  color: #9ca3af;
+}
+
+body.dark-mode .hamburger-menu .bar {
+  background-color: var(--text-light);
+}
+
+/* Animation for hamburger menu */
+.hamburger-menu.active .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
