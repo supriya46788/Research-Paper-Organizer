@@ -499,20 +499,69 @@ html,body{
 }
 
 .stat-item {
-  background: rgba(
-    255,
-    255,
-    255,
-    0.1
-  ); /* Slightly transparent background for contrast */
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 1rem;
   padding: 2rem;
-  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), 
+              background-color 0.35s ease, 
+              box-shadow 0.35s ease, 
+              border 0.35s ease;
+  cursor: pointer;
+  color: #fff;
+  user-select: none;
+  border: 1px solid transparent;
+  /* Add a subtle shine gradient overlay */
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-item::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, rgba(255,255,255,0.15), rgba(255,255,255,0));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  transform: rotate(25deg);
+  z-index: 0;
 }
 
 .stat-item:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.08);
+  background-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
+
+.stat-item:hover::before {
+  opacity: 1;
+  animation: shine 2s infinite;
+  z-index: 1;
+}
+
+/* Optional: subtle shine animation */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(25deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(100%) rotate(25deg);
+    opacity: 0;
+  }
+}
+
+
 
 .stat-number {
   font-size: 2.5rem;
@@ -575,16 +624,7 @@ html,body{
   margin-bottom: 2rem;
 }
 
-.footer-brand {
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
 
-.footer-brand i {
-  margin-right: 0.5rem;
-}
 
 .footer-links {
   display: grid;
@@ -607,16 +647,6 @@ html,body{
 
 .footer-section a:hover {
   color: var(--primary-color);
-}
-
-.footer-bottom {
-  border-top: 1px solid #475569;
-  padding-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
 }
 
 .social-links {

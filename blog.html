@@ -87,11 +87,16 @@
 }
       /* Footer CSS*/
     .modern-footer {
-      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-      color: #fff;
-      padding: 60px 20px 20px;
-      border-radius: 25px 25px 0 0;
-    }
+  width: 100vw; /* Full viewport width */
+  margin-left: calc(-50vw + 50%); /* Center it if inside a constrained container */
+  background: linear-gradient(135deg, #1f3c88, #2c5aa0);
+  color: #fff;
+  padding: 60px 20px 20px;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+}
+
 
     .footer-top {
       display: grid;
@@ -218,7 +223,7 @@
     @media (max-width: 768px) {
       .footer-top {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
+        gap: 3rem;
       }
 
       .footer-brand h2 {
@@ -239,6 +244,13 @@
       }
     }
 
+     @media (max-width: 756px) and (min-width: 730px),
+       (max-width: 601px) and (min-width: 540px) {
+  .footer-card {
+    gap: 4rem;
+  }
+}
+
     @media (max-width: 480px) {
       .footer-top {
         grid-template-columns: 1fr;
@@ -255,6 +267,43 @@
     }
     .footer-bottom .heart {
   color: inherit;  
+}
+
+/* Dark Mode Footer Styles */
+body.dark-mode .modern-footer {
+background: linear-gradient(135deg, #1a202c, #2d3748);
+}
+
+body.dark-mode .footer-section h3,
+body.dark-mode .footer-section h4 {
+color: #e0e0e0;
+}
+
+body.dark-mode .footer-section h4 {
+border-bottom-color: rgba(224, 224, 224, 0.2);
+}
+
+body.dark-mode .footer-links a {
+color: rgba(224, 224, 224, 0.8);
+}
+
+body.dark-mode .footer-links a:hover {
+color: #90cdf4;
+}
+
+body.dark-mode .social-links a {
+background: rgba(224, 224, 224, 0.1);
+color: #e0e0e0;
+}
+
+body.dark-mode .social-links a:hover {
+background: rgba(144, 205, 244, 0.2);
+color: #90cdf4;
+}
+
+body.dark-mode .footer-bottom {
+background: rgba(0, 0, 0, 0.3);
+border-top-color: rgba(224, 224, 224, 0.1);
 }
 
 
