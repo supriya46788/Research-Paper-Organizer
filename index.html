@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="landing.css">
+    <link rel="stylesheet" href="css/navigation.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png">
     <link rel="manifest" href="/site.webmanifest">
@@ -22,28 +23,84 @@
       </div>
     </div>
     <!-- Navigation -->
-    <nav class="landing-nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <!-- <i class="fas fa-book-open"></i> -->
-                 <img id="logo" src="images/search-book.gif" alt="">
-                <span>Research Paper Organizer</span>
+    <nav class="navbar">
+      <a href="index.html" class="navbar-brand">
+        <img id="logo" src="images/search-book.gif" alt="Logo" style="width: 30px; height: 30px; margin-right: 10px;">
+        Research Paper Organizer
+      </a>
+
+      <div class="navbar-right-links">
+        <a href="#features" class="nav-item">
+          <i class="fas fa-star"></i>
+          Features
+        </a>
+        <a href="#how-it-works" class="nav-item">
+          <i class="fas fa-cogs"></i>
+          How it Works
+        </a>
+        <a href="about.html" class="nav-item">
+          <i class="fas fa-info-circle"></i>
+          About
+        </a>
+        <a href="tools.html" class="nav-item">
+          <i class="fas fa-tools"></i>
+          Tools
+        </a>
+        <a href="contact.html" class="nav-item">
+          <i class="fas fa-envelope"></i>
+          Contact
+        </a>
+        <a href="signup.html" class="nav-item" style="background: linear-gradient(135deg, #10b981, #059669);">
+          <i class="fas fa-rocket"></i>
+          Get Started
+        </a>
             </div>
           
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
-                <a href="about.html">About</a>
-                <a href="tools.html">Tools</a>
-                <a href="contact.html">Contact</a>
-                
-                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
-            </div>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+      <!-- Hamburger Menu for Mobile -->
+      <div class="hamburger-menu" aria-label="Toggle navigation menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+      <div class="mobile-menu-container">
+        <div class="mobile-menu-header">
+          <h3><i class="fas fa-book-open"></i> Menu</h3>
+          <button class="mobile-menu-close" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="mobile-menu-links">
+          <a href="#features" class="nav-item">
+            <i class="fas fa-star"></i>
+            Features
+          </a>
+          <a href="#how-it-works" class="nav-item">
+            <i class="fas fa-cogs"></i>
+            How it Works
+          </a>
+          <a href="about.html" class="nav-item">
+            <i class="fas fa-info-circle"></i>
+            About
+          </a>
+          <a href="tools.html" class="nav-item">
+            <i class="fas fa-tools"></i>
+            Tools
+          </a>
+          <a href="contact.html" class="nav-item">
+            <i class="fas fa-envelope"></i>
+            Contact
+          </a>
+          <a href="signup.html" class="nav-item" style="background: linear-gradient(135deg, #10b981, #059669);">
+            <i class="fas fa-rocket"></i>
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -730,6 +787,7 @@ border-top-color: rgba(224, 224, 224, 0.1);
 
 
 
+    <script src="js/navigation.js"></script>
     <script src="landing.js"></script>
 
 

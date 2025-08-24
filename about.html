@@ -6,79 +6,10 @@
   <title>About Us | Research Paper Organizer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navigation.css">
   <link rel="stylesheet" href="css/about.css">
   <style>
-    /* Hamburger div style */
-    .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  flex-wrap: wrap;
-}
-.hamburger-container {
-  display: none;
-  flex-direction: column;
-  /* justify-content: center; */
-  cursor: pointer;
-  gap: 5px;
-  padding: 10px;
-}
 
-.hamburger-container .bar {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  transition: 0.3s;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .hamburger-container {
-    display: flex;
-  }
-
- 
-  .navbar {
-    display: flex;
-   justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    position: relative;
-  }
-
-  .navbar-right-links {
-    display: none;
-    position: absolute;
-    top: 70px;              /* adjust depending on navbar height */
-    right: 10px;  
-    margin:15px;          /* aligns the box to the right */
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    flex-direction: column;
-    gap: 0.75rem;
-    z-index: 1000;
-    width: max-content;     /* only as wide as content */
-    min-width: 150px;  
-  }
-
-  .navbar-right-links.show {
-    display: flex;
-  }
-
-  .nav-item {
-    display: inline-flex;           /* Ensures icon and text are in a row */
-  align-items: center;           /* Vertical centering */
-  justify-content: center;
-    padding: 1rem;
-    width:10rem;
-    font-size: 1rem;
-    
-  }
-}
 
     /* About page specific styles */
     .sr-only {
@@ -944,28 +875,94 @@ border-top-color: rgba(224, 224, 224, 0.1);
   <div class="container">
     <!-- Navigation -->
     <nav class="navbar" aria-label="Primary">
-      <a href="index.html" class="nav-item">
-        <i class="fas fa-home" aria-hidden="true"></i>
-        <span>Home</span>
+      <a href="home.html" class="navbar-brand">
+        <i class="fas fa-book-open"></i>
+        Research Paper Organizer
       </a>
-    <!-- Hamburger div (shows only on mobile) -->
-  <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-  </div>
 
       <div class="navbar-right-links" role="menubar" aria-label="Site">
-        <a href="about.html" class="nav-item" role="menuitem" aria-current="page">About us</a>
-        <a href="blog.html" class="nav-item" role="menuitem">Blogs</a>
-        <a href="Faq.html" class="nav-item" role="menuitem">FAQ</a>
-        <a href="contact.html" class="nav-item" role="menuitem">Contact Us</a>
-        <a href="tools.html" class="nav-item">Tools</a>
+        <a href="home.html" class="nav-item" role="menuitem">
+          <i class="fas fa-home"></i>
+          Home
+        </a>
+        <a href="about.html" class="nav-item" role="menuitem" aria-current="page">
+          <i class="fas fa-info-circle"></i>
+          About Us
+        </a>
+        <a href="blog.html" class="nav-item" role="menuitem">
+          <i class="fas fa-blog"></i>
+          Blog
+        </a>
+        <a href="Faq.html" class="nav-item" role="menuitem">
+          <i class="fas fa-question-circle"></i>
+          FAQ
+        </a>
+        <a href="contact.html" class="nav-item" role="menuitem">
+          <i class="fas fa-envelope"></i>
+          Contact Us
+        </a>
+        <a href="tools.html" class="nav-item">
+          <i class="fas fa-tools"></i>
+          Tools
+        </a>
         <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" aria-pressed="false">
           <i class="fas fa-moon" aria-hidden="true"></i><span class="sr-only">Toggle dark mode</span>
         </button>
       </div>
+
+      <!-- Hamburger Menu for Mobile -->
+      <div class="hamburger-menu" aria-label="Toggle navigation menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+      <div class="mobile-menu-container">
+        <div class="mobile-menu-header">
+          <h3><i class="fas fa-book-open"></i> Menu</h3>
+          <button class="mobile-menu-close" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="mobile-menu-links">
+          <a href="home.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+          <a href="about.html" class="nav-item">
+            <i class="fas fa-info-circle"></i>
+            About Us
+          </a>
+          <a href="blog.html" class="nav-item">
+            <i class="fas fa-blog"></i>
+            Blog
+          </a>
+          <a href="Faq.html" class="nav-item">
+            <i class="fas fa-question-circle"></i>
+            FAQ
+          </a>
+          <a href="contact.html" class="nav-item">
+            <i class="fas fa-envelope"></i>
+            Contact Us
+          </a>
+          <a href="tools.html" class="nav-item">
+            <i class="fas fa-tools"></i>
+            Tools
+          </a>
+          <a href="glossary.html" class="nav-item">
+            <i class="fas fa-book"></i>
+            Glossary
+          </a>
+          <a href="open-source.html" class="nav-item">
+            <i class="fab fa-github"></i>
+            Open Source
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- Header -->
     <header class="about-header">
@@ -1362,5 +1359,7 @@ border-top-color: rgba(224, 224, 224, 0.1);
       });
     });
   </script>
+  
+  <script src="js/navigation.js"></script>
 </body>
 </html>
