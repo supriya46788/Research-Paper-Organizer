@@ -393,13 +393,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 
-    /* Footer CSS*/
-    .modern-footer {
-      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-      color: #fff;
-      padding: 60px 20px 20px;
-      border-radius: 25px 25px 0 0;
-    }
+     .modern-footer {
+  width: 100vw; /* Full viewport width */
+  margin-left: calc(-50vw + 50%); /* Center it if inside a constrained container */
+  background: linear-gradient(135deg, #1f3c88, #2c5aa0);
+  color: #fff;
+  padding: 60px 20px 20px;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+}
+
 
     .footer-top {
       display: grid;
@@ -409,20 +413,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     .footer-brand h2 {
-      font-size: 1.8rem;
+      font-size: 10px;
       margin-bottom: 10px;
       display: flex;
       align-items: center;
+      flex-direction: column;
     }
 
     .footer-brand h2 i {
       margin-right: 10px;
-      font-size: 1.6rem;
+      font-size: 1rem;
       vertical-align: middle;
     }
 
     .footer-brand p {
-      font-size: 1rem;
+      font-size: 0.95;
+      font-weight: 300;
       line-height: 1.5;
       opacity: 0.9;
     }
@@ -526,7 +532,7 @@ document.addEventListener("DOMContentLoaded", () => {
     @media (max-width: 768px) {
       .footer-top {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
+        gap: 3rem;
       }
 
       .footer-brand h2 {
@@ -547,6 +553,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+     @media (max-width: 756px) and (min-width: 730px),
+       (max-width: 601px) and (min-width: 540px) {
+  .footer-card {
+    gap: 4rem;
+  }
+}
+
     @media (max-width: 480px) {
       .footer-top {
         grid-template-columns: 1fr;
@@ -563,8 +576,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     .footer-bottom .heart {
   color: inherit;  
-
 }
+
 
 .features-grid {
   display: flex;
@@ -624,6 +637,43 @@ document.addEventListener("DOMContentLoaded", () => {
   line-height: 1.6;
 }
 
+/* Dark Mode Footer Styles */
+body.dark-mode .modern-footer {
+background: linear-gradient(135deg, #1a202c, #2d3748);
+}
+
+body.dark-mode .footer-section h3,
+body.dark-mode .footer-section h4 {
+color: #e0e0e0;
+}
+
+body.dark-mode .footer-section h4 {
+border-bottom-color: rgba(224, 224, 224, 0.2);
+}
+
+body.dark-mode .footer-links a {
+color: rgba(224, 224, 224, 0.8);
+}
+
+body.dark-mode .footer-links a:hover {
+color: #90cdf4;
+}
+
+body.dark-mode .social-links a {
+background: rgba(224, 224, 224, 0.1);
+color: #e0e0e0;
+}
+
+body.dark-mode .social-links a:hover {
+background: rgba(144, 205, 244, 0.2);
+color: #90cdf4;
+}
+
+body.dark-mode .footer-bottom {
+background: rgba(0, 0, 0, 0.3);
+border-top-color: rgba(224, 224, 224, 0.1);
+}
+
     </style>
 
     <!-- Back to Top Button -->
@@ -632,11 +682,12 @@ document.addEventListener("DOMContentLoaded", () => {
 </button>
 
    
-  <!-- Modern Footer -->
+<!-- Modern Footer -->
   <footer class="modern-footer" aria-label="Footer">
     <div class="footer-top">
-      <div class="footer-brand footer-card">
+      <div class="footer-brand footer-card" id="top-card">
         <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
       </div>
 
       <div class="footer-links-section footer-card" >
@@ -662,20 +713,25 @@ document.addEventListener("DOMContentLoaded", () => {
         <h4>Connect</h4>
         <div class="social-icons">
           <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
+  <i class="fab fa-linkedin" style="color: white;"></i>
+</a>
           <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
     </div>
 
-   <div class="footer-bottom" style="text-align: center; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 15px 0;">
-  <p style="margin: 0;">
-    © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-  </p>
+    <div class="footer-bottom">
+  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
 </div>
 
-
   </footer>
+
+
+
+
+    <script src="landing.js"></script>
+
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {

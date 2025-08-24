@@ -624,16 +624,7 @@ html,body{
   margin-bottom: 2rem;
 }
 
-.footer-brand {
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-}
 
-.footer-brand i {
-  margin-right: 0.5rem;
-}
 
 .footer-links {
   display: grid;
@@ -656,16 +647,6 @@ html,body{
 
 .footer-section a:hover {
   color: var(--primary-color);
-}
-
-.footer-bottom {
-  border-top: 1px solid #475569;
-  padding-top: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
 }
 
 .social-links {
