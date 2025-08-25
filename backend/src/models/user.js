@@ -10,8 +10,9 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-    password: { type: String, required: true },
-    isVerified: { type: Boolean, default: false },
+    password: { type: String }, // Made password optional
+    googleId: { type: String }, // Added googleId
+    isVerified: { type: Boolean, default: true }, // Auto-verify Google users
   },
   {
     timestamps: true,

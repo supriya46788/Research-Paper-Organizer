@@ -14,13 +14,89 @@
   <link rel="stylesheet" href="css/blog.css" />
 </head>
 <style>
+
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  flex-wrap: wrap;
+}
+.hamburger-container {
+  display: none;
+  flex-direction: column;
+  /* justify-content: center; */
+  cursor: pointer;
+  gap: 5px;
+  padding: 10px;
+}
+
+.hamburger-container .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: 0.3s;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hamburger-container {
+    display: flex;
+  }
+
+ 
+  .navbar {
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .navbar-right-links {
+    display: none;
+    position: absolute;
+    top: 70px;              /* adjust depending on navbar height */
+    right: 10px;  
+    margin:15px;          /* aligns the box to the right */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1000;
+    width: max-content;     /* only as wide as content */
+    min-width: 150px;  
+  }
+
+  .navbar-right-links.show {
+    display: flex;
+  }
+
+  .nav-item {
+    display: inline-flex;           /* Ensures icon and text are in a row */
+  align-items: center;           /* Vertical centering */
+  justify-content: center;
+    padding: 1rem;
+    width:10rem;
+    font-size: 1rem;
+    
+  }
+}
       /* Footer CSS*/
     .modern-footer {
-      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-      color: #fff;
-      padding: 60px 20px 20px;
-      border-radius: 25px 25px 0 0;
-    }
+  width: 100vw; /* Full viewport width */
+  margin-left: calc(-50vw + 50%); /* Center it if inside a constrained container */
+  background: linear-gradient(135deg, #1f3c88, #2c5aa0);
+  color: #fff;
+  padding: 60px 20px 20px;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+}
+
 
     .footer-top {
       display: grid;
@@ -147,7 +223,7 @@
     @media (max-width: 768px) {
       .footer-top {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
+        gap: 3rem;
       }
 
       .footer-brand h2 {
@@ -168,6 +244,13 @@
       }
     }
 
+     @media (max-width: 756px) and (min-width: 730px),
+       (max-width: 601px) and (min-width: 540px) {
+  .footer-card {
+    gap: 4rem;
+  }
+}
+
     @media (max-width: 480px) {
       .footer-top {
         grid-template-columns: 1fr;
@@ -186,6 +269,43 @@
   color: inherit;  
 }
 
+/* Dark Mode Footer Styles */
+body.dark-mode .modern-footer {
+background: linear-gradient(135deg, #1a202c, #2d3748);
+}
+
+body.dark-mode .footer-section h3,
+body.dark-mode .footer-section h4 {
+color: #e0e0e0;
+}
+
+body.dark-mode .footer-section h4 {
+border-bottom-color: rgba(224, 224, 224, 0.2);
+}
+
+body.dark-mode .footer-links a {
+color: rgba(224, 224, 224, 0.8);
+}
+
+body.dark-mode .footer-links a:hover {
+color: #90cdf4;
+}
+
+body.dark-mode .social-links a {
+background: rgba(224, 224, 224, 0.1);
+color: #e0e0e0;
+}
+
+body.dark-mode .social-links a:hover {
+background: rgba(144, 205, 244, 0.2);
+color: #90cdf4;
+}
+
+body.dark-mode .footer-bottom {
+background: rgba(0, 0, 0, 0.3);
+border-top-color: rgba(224, 224, 224, 0.1);
+}
+
 
 </style>
 <body>
@@ -196,7 +316,12 @@
         <i class="fas fa-home" aria-hidden="true"></i>
         <span>Home</span>
       </a>
-
+       <!-- Hamburger div (shows only on mobile) -->
+  <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
       <div class="navbar-right-links" role="menubar" aria-label="Site">
         <a href="about.html" class="nav-item" role="menuitem">About us</a>
         <a href="blog.html" class="nav-item" role="menuitem" aria-current="page">Blogs</a>
@@ -469,6 +594,11 @@
 
   <!-- JS (inline for easy drop-in; feel free to extract) -->
   <script>
+   
+  function toggleMenu() {
+    const nav = document.querySelector(".navbar-right-links");
+    nav.classList.toggle("show");
+  }
     // ------- Dark Mode Toggle (unchanged behavior, aria + persistence)
     (function() {
       const btn = document.getElementById('darkModeToggle');
