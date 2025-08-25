@@ -1244,9 +1244,9 @@ function importPapers() {
   input.click();
 }
 
-//Calendar Logic 
 function populateYearSelect(id, startYear, endYear) {
-        const select = document.getElementById(id);
+    const select = document.getElementById(id);
+    if (select) { // Add this check
         for (let year = startYear; year >= endYear; year--) {
             const option = document.createElement("option");
             option.value = year;
@@ -1254,6 +1254,7 @@ function populateYearSelect(id, startYear, endYear) {
             select.appendChild(option);
         }
     }
+}
 
 
     // Populate both dropdowns from 2050 → 1950
