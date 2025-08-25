@@ -104,12 +104,6 @@ body.dark-mode .faq-container {
     animation: fadeIn 1s ease-in-out 0.2s forwards;
     opacity: 0;
 }
-.gradient-text {
-  background: linear-gradient(to right, #3d9fea, #508d51);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
 
 
 
@@ -153,7 +147,7 @@ body.dark-mode .faq-container {
 
 .faq-question h3 {
     font-size: 1.1rem;
-    color: var(--text-color);
+    color: #357abd !important;
     margin: 0;
 }
 
