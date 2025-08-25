@@ -99,17 +99,201 @@ document.addEventListener("DOMContentLoaded", function () {
   currentFilteredPapers = papers;
   renderPaginatedPapers();
   applyThemeFromStorage();
-});
-document.addEventListener('click', function(e) {
-  const userMenu = document.querySelector('.user-menu');
-  const dropdown = document.getElementById('userDropdown');
-  
-  if (userMenu && !userMenu.contains(e.target)) {
-    if (dropdown) dropdown.classList.add('hidden');
+
+  document.addEventListener('click', function(e) {
+    const userMenu = document.querySelector('.user-menu');
+    const dropdown = document.getElementById('userDropdown');
+    
+    if (userMenu && !userMenu.contains(e.target)) {
+      if (dropdown) dropdown.classList.add('hidden');
+    }
+  });
+
+  // Event listener for the new auto-fill button (DOI/arXiv)
+  const doiArxivInput = document.getElementById("doiArxivInput");
+  const autoFillMetadataBtn = document.getElementById("autoFillMetadataBtn");
+  autoFillMetadataBtn?.addEventListener("click", async () => {
+    const identifier = doiArxivInput.value.trim();
+    let type = "";
+
+    if (identifier.startsWith("10.")) {
+      type = "doi";
+    } else if (identifier.toLowerCase().startsWith("arxiv:")) {
+      type = "arxiv";
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Invalid Identifier",
+        text: "Please enter a valid DOI (e.g., 10.xxxx/yyyy) or arXiv ID (e.g., arXiv:YYMM.NNNNN).",
+      });
+      return;
+    }
+
+    await fetchAndPopulateMetadata(identifier, type);
+  });
+
+  // Drag & Drop + Click Upload
+  const dropZone = document.getElementById("drop-zone");
+  const fileInput = document.getElementById("pdfUpload");
+  const uploadedFile = document.getElementById("uploaded-file");
+
+  // Handle clicking on drop zone to open file picker
+  dropZone.addEventListener("click", () => {
+      fileInput.click();
+  });
+
+  // Highlight drop zone on drag enter / over
+  ["dragenter", "dragover"].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.add("dragover");
+      });
+  });
+
+  // Remove highlight on drag leave / drop
+  ["dragleave", "drop"].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.remove("dragover");
+      });
+  });
+
+  // Handle file drop
+  dropZone.addEventListener("drop", (e) => {
+      const files = e.dataTransfer.files;
+      if (files.length) {
+          handleFile(files[0]);
+      }
+  });
+
+  // Handle file selection from input
+  fileInput.addEventListener("change", () => {
+      if (fileInput.files.length) {
+          handleFile(fileInput.files[0]);
+      }
+  });
+
+  // Make filter controls responsive to changes
+  document.getElementById("topicFilter").addEventListener("change", filterPapers);
+  document.getElementById("searchInput").addEventListener("input", filterPapers);
+  document.getElementById("paperForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Show the loading spinner
+    document.getElementById("loadingSpinner").classList.remove("hidden");
+
+    // Simulate form processing (replace this with actual save logic)
+    setTimeout(() => {
+      document.getElementById("loadingSpinner").classList.add("hidden");
+
+      Swal.fire({
+        icon: "success",
+        title: "Paper added successfully!",
+      });
+
+      hideAddForm(); // Optional: close the modal after save
+    }, 1500);
+  });
+
+  // Chatbot toggle logic (existing)
+  const chatbotToggle = document.getElementById("chatbot-toggle");
+  const chatbotContainer = document.getElementById("chatbot-container");
+  const closeChatbot = document.getElementById("closeChatbot");
+  const sendBtn = document.getElementById("sendChatbot");
+  const chatbotInput = document.getElementById("chatbotInput");
+  const messagesBox = document.getElementById("chatbotMessages");
+
+  // Open/close chatbot
+  chatbotToggle?.addEventListener("click", () => {
+    chatbotContainer.classList.toggle("hidden");
+    if (!chatbotContainer.classList.contains("hidden")) {
+      chatbotInput.focus();
+    }
+  });
+  closeChatbot?.addEventListener("click", () => {
+    chatbotContainer.classList.add("hidden");
+  });
+
+  // Send handlers
+  sendBtn?.addEventListener("click", sendMessage);
+  chatbotInput?.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
+}); // End of DOMContentLoaded
+
+
+// Function to handle the selected PDF (moved outside DOMContentLoaded to prevent re-declaration)
+function handleFile(file) {
+  if (file.type !== "application/pdf") {
+    Swal.fire({
+      icon: "warning",
+      title: "Invalid File Type",
+      text: "Please upload a valid PDF file.",
+    });
+    return;
   }
-});
 
+  console.log("File uploaded:", file.name, file.size, "bytes");
 
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    uploadedPdfData = e.target.result; // base64 string
+    uploadedFile.style.display = "flex";
+    uploadedFile.innerHTML = `
+      <div class="uploaded-file-row" style="display:flex; align-items:center; padding:5px; border-radius:5px; margin-top:5px;">
+        <div style="display:flex; align-items:center; flex:1; min-width:0;">
+          <i class="fas fa-light fa-file-pdf" style="color:#e63946; margin-left:10px; margin-right:10px;"></i> 
+          <span style="flex:1; font-style:italic; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:450px; display:inline-block;">
+            ${file.name}
+          </span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; margin-left:10px; margin-right:10px; flex-shrink:0;">
+          <button id="autofill-pdf-btn" type="button" style="cursor:pointer; background: #2563eb; color: white; border: none; padding: 8px 15px; border-radius: 8px; font-size: 0.875rem;">Autofill from PDF</button>
+          <i class="fas fa-eye-slash" id="preview-pdf" style="cursor:pointer;"></i>
+          <i class="fa-solid fa-trash" id="delete-pdf" style="cursor:pointer;"></i>
+        </div>
+      </div>
+    `;
+
+    // Autofill from PDF button
+    const autofillPdfBtn = document.getElementById("autofill-pdf-btn");
+    autofillPdfBtn?.addEventListener("click", async () => {
+      await fetchAndPopulateMetadata(file, "pdf");
+    });
+
+    const eyeIcon = document.getElementById("preview-pdf");
+    let isVisible = true;
+
+    eyeIcon.addEventListener("click", () => {
+      if (!isVisible) {
+        showPdfPreview(uploadedPdfData); // show preview
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+        isVisible = true;
+      } else {
+        showPdfPreview(null); // hide preview
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+        isVisible = false;
+      }
+    });
+
+    const deleteIcon = document.getElementById("delete-pdf");
+    deleteIcon.addEventListener("click", () => {
+      clearPdfData(); // resets input + preview
+      uploadedFile.innerHTML = ""; // remove filename + icons
+
+      document.getElementById("title").value = "";
+      document.getElementById("authors").value = "";
+      document.getElementById("year").value = "";
+      document.getElementById("journal").value = "";
+      document.getElementById("tags").value = "";
+    });
+  };
+  reader.readAsDataURL(file);
+}
 
 // Initialize with sample data (if first load)
 function initializeSampleData() {
@@ -1016,192 +1200,6 @@ function clearPdfData() {
   showPdfPreview(null);
 }
 
-// Modified initial load to use pagination
-document.addEventListener("DOMContentLoaded", function () {
-  loadFromStorage();
-  updateTopicsFilter();
-  currentFilteredPapers = papers; // Initialize with full list
-  renderPaginatedPapers(); // Render first page
-  applyThemeFromStorage();
-});
-
-// Make filter controls responsive to changes
-document.getElementById("topicFilter").addEventListener("change", filterPapers);
-document.getElementById("searchInput").addEventListener("input", filterPapers);
-document.getElementById("paperForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  // Show the loading spinner
-  document.getElementById("loadingSpinner").classList.remove("hidden");
-
-  // Simulate form processing (replace this with actual save logic)
-  setTimeout(() => {
-    document.getElementById("loadingSpinner").classList.add("hidden");
-
-    Swal.fire({
-      icon: "success",
-      title: "Paper added successfully!",
-    });
-
-    hideAddForm(); // Optional: close the modal after save
-  }, 1500);
-});
-
-// Drag & Drop + Click Upload + Autofill
-document.addEventListener("DOMContentLoaded", () => {
-    const dropZone = document.getElementById("drop-zone");
-    const fileInput = document.getElementById("pdfUpload");
-    const uploadedFile = document.getElementById("uploaded-file");
-
-    // Handle clicking on drop zone to open file picker
-    dropZone.addEventListener("click", () => {
-        fileInput.click();
-    });
-
-    // Highlight drop zone on drag enter / over
-    ["dragenter", "dragover"].forEach(eventName => {
-        dropZone.addEventListener(eventName, (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            dropZone.classList.add("dragover");
-        });
-    });
-
-    // Remove highlight on drag leave / drop
-    ["dragleave", "drop"].forEach(eventName => {
-        dropZone.addEventListener(eventName, (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            dropZone.classList.remove("dragover");
-        });
-    });
-
-    // Handle file drop
-    dropZone.addEventListener("drop", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const files = e.dataTransfer.files;
-        if (files.length) {
-            handleFile(files[0]);
-        }
-    });
-
-    // Handle file selection from input
-    fileInput.addEventListener("change", () => {
-        if (fileInput.files.length) {
-            handleFile(fileInput.files[0]);
-        }
-    });
-
-    // Function to handle the selected PDF
-    function handleFile(file) {
-    if (file.type !== "application/pdf") {
-      alert("Please upload a valid PDF file.");
-      return;
-    }
-
-    console.log("File uploaded:", file.name, file.size, "bytes");
-
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      uploadedPdfData = e.target.result; // base64 string
-      uploadedFile.style.display = "flex";
-      uploadedFile.innerHTML = `
-        <div class="uploaded-file-row" style="display:flex; align-items:center; padding:5px; border-radius:5px; margin-top:5px;">
-          <div style="display:flex; align-items:center; flex:1; min-width:0;">
-            <i class="fas fa-light fa-file-pdf" style="color:#e63946; margin-left:10px; margin-right:10px;"></i> 
-            <span style="flex:1; font-style:italic; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:450px; display:inline-block;">
-              ${file.name}
-            </span>
-          </div>
-          <div style="display:flex; align-items:center; gap:8px; margin-left:10px; margin-right:10px; flex-shrink:0;">
-            <button id="autofill-btn" type="button" style="cursor:pointer; background: #2563eb; color: white; border: none; padding: 8px 15px; border-radius: 8px; font-size: 0.875rem;">Autofill</button>
-            <i class="fas fa-eye-slash" id="preview-pdf" style="cursor:pointer;"></i>
-            <i class="fa-solid fa-trash" id="delete-pdf" style="cursor:pointer;"></i>
-          </div>
-        </div>
-      `;
-
-      //autofill working
-      const autofillBtn = document.getElementById("autofill-btn");
-      autofillBtn.addEventListener("click", async () => {
-          if (!file) {
-              alert("No PDF file found.");
-              return;
-          }
-
-          const formData = new FormData();
-          formData.append("file", file);
-
-          try {
-              const response = await fetch("http://127.0.0.1:5000/extract_metadata", {
-                  method: "POST",
-                  body: formData
-              });
-
-              const data = await response.json();
-
-              if (data.error) {
-                  alert("Unable to extract metadata. Please fill manually.");
-
-                  //Clear old values if nothing found
-                  document.getElementById("title").value = "";
-                  document.getElementById("authors").value = "";
-                  document.getElementById("year").value = "";
-                  document.getElementById("journal").value = "";
-                  document.getElementById("tags").value = "";
-                  return;
-              }
-
-              //Fill form fields if available
-              document.getElementById("title").value = data.title || "";
-              document.getElementById("authors").value = data.authors || "";
-              document.getElementById("year").value = data.year || "";
-              document.getElementById("journal").value = data.journal || "";
-              document.getElementById("tags").value = data.keywords || "";
-
-          } catch (err) {
-              console.error(err);
-              alert("Error extracting metadata. Please try manually.");
-          }
-      });
-
-
-      const eyeIcon = document.getElementById("preview-pdf");
-      let isVisible = true;
-
-      eyeIcon.addEventListener("click", () => {
-        if (!isVisible) {
-          showPdfPreview(uploadedPdfData); // show preview
-          eyeIcon.classList.remove("fa-eye");
-          eyeIcon.classList.add("fa-eye-slash");
-          isVisible = true;
-        } else {
-          showPdfPreview(null); // hide preview
-          eyeIcon.classList.remove("fa-eye-slash");
-          eyeIcon.classList.add("fa-eye");
-          isVisible = false;
-        }
-      });
-
-      const deleteIcon = document.getElementById("delete-pdf");
-      deleteIcon.addEventListener("click", () => {
-        clearPdfData(); // resets input + preview
-        uploadedFile.innerHTML = ""; // remove filename + icons
-
-        document.getElementById("title").value = "";
-        document.getElementById("authors").value = "";
-        document.getElementById("year").value = "";
-        document.getElementById("journal").value = "";
-        document.getElementById("tags").value = "";
-      });
-    };
-    reader.readAsDataURL(file);
-  }
-});
-
-
 // Logic for exporting and importing the papers
 function exportPapers() {
   const papers = JSON.parse(localStorage.getItem('papers') || '[]');
@@ -1369,4 +1367,67 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+
+// New function to fetch and populate metadata (moved outside DOMContentLoaded)
+async function fetchAndPopulateMetadata(identifier, type) {
+  document.getElementById("loadingSpinner").classList.remove("hidden");
+  try {
+    let response;
+    let data;
+
+    if (type === "pdf") {
+      const formData = new FormData();
+      formData.append("pdf", identifier); // 'identifier' is the File object here
+      response = await fetch("/api/metadata/fetch", {
+        method: "POST",
+        body: formData,
+      });
+    } else {
+      response = await fetch("/api/metadata/fetch", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ identifier, type }),
+      });
+    }
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    data = await response.json();
+
+    if (data) {
+      document.getElementById("title").value = data.title || "";
+      document.getElementById("authors").value = data.authors || "";
+      document.getElementById("year").value = data.publishedDate ? new Date(data.publishedDate).getFullYear() : "";
+      document.getElementById("journal").value = data.journal || "";
+      document.getElementById("abstract").value = data.abstract || "";
+      document.getElementById("url").value = data.doi || data.arxivId || ""; // Populate URL if DOI/arXiv found
+      // Tags might need more sophisticated parsing, for now, leave as is or add basic parsing
+      // document.getElementById("tags").value = data.tags ? data.tags.join(", ") : "";
+
+      Swal.fire({
+        icon: "success",
+        title: "Metadata auto-filled successfully!",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    } else {
+      Swal.fire({
+        icon: "info",
+        title: "No metadata found.",
+        text: "Please enter details manually or try a different identifier/PDF.",
+      });
+    }
+  } catch (error) {
+    console.error("Error auto-filling metadata:", error);
+    Swal.fire({
+      icon: "error",
+      title: "Auto-fill failed",
+      text: "Could not fetch metadata. Please check the identifier/PDF or fill manually.",
+    });
+  } finally {
+    document.getElementById("loadingSpinner").classList.add("hidden");
+  }
+}
 

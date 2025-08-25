@@ -26,6 +26,10 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import researchPaperRoutes from "./routes/researchPaperRoutes.js";
 import geminiRoutes from "./routes/geminiRoutes.js";
+import metadataRoutes from "./routes/metadataRoutes.js";
+import multer from "multer";
+
+const upload = multer(); // For handling file uploads
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -38,11 +42,18 @@ app.get("/", (req, res) => {
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
-app.use(passport.initialize());
+    // ... existing code before the conflict ...
+
+    app.use(express.json()); // This line should be just above the conflict section
+    app.use(passport.initialize()); // Keep this line from your 'main' branch
+    app.use(upload.single('pdf')); // Keep this line for the PDF file upload feature
+
+    // ... existing code after the conflict ...
 
 app.use("/api/auth", authRoutes);
 app.use("/api/papers", researchPaperRoutes);
 app.use("/api/gemini", geminiRoutes);
+app.use("/api/metadata", metadataRoutes);
 
 const startServer = async () => {
   await connectDB();
