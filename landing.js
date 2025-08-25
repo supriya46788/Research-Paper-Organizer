@@ -3,12 +3,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
+    const links = document.querySelectorAll('.nav-links a'); // added
+
     if (mobileMenuToggle) {
         mobileMenuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('mobile-active');
         });
     }
+
+    // Close mobile menu when a link is clicked
+    links.forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("mobile-active");
+        });
+    });
 
     // Smooth scroll for anchor links
     function scrollToFeatures() {
@@ -81,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Utility functions
 function scrollToSection(sectionId) {
     document.getElementById(sectionId).scrollIntoView({
-        behavior: 'smooth'
+        behavior: 'smooth',
     });
 }
 

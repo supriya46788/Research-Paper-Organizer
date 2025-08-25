@@ -7,6 +7,78 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="css/tool.css" />
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  flex-wrap: wrap;
+}
+.hamburger-container {
+  display: none;
+  flex-direction: column;
+  /* justify-content: center; */
+  cursor: pointer;
+  gap: 5px;
+  padding: 10px;
+}
+
+.hamburger-container .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: 0.3s;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hamburger-container {
+    display: flex;
+  }
+
+ 
+  .navbar {
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .navbar-right-links {
+    display: none;
+    position: absolute;
+    top: 70px;              /* adjust depending on navbar height */
+    right: 10px;  
+    margin:15px;          /* aligns the box to the right */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1000;
+    width: max-content;     /* only as wide as content */
+    min-width: 150px;  
+  }
+
+  .navbar-right-links.show {
+    display: flex;
+  }
+
+  .nav-item {
+    display: inline-flex;           /* Ensures icon and text are in a row */
+  align-items: center;           /* Vertical centering */
+  justify-content: center;
+    padding: 1rem;
+    width:10rem;
+    font-size: 1rem;
+    
+  }
+}
+</style>
 </head>
 <body>
 <div class="container">
@@ -16,7 +88,12 @@
             <i class="fas fa-home"></i>
             Home
         </a>
-
+       <!-- Hamburger div (shows only on mobile) -->
+  <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
         <div class="navbar-right-links">
             <a href="about.html" class="nav-item">About us</a>
             <a href="blog.html" class="nav-item">Blogs</a>
@@ -96,59 +173,54 @@
 </div>
 
     <!-- Back to Top Button -->
-    <button id="backToTop">↑</button>
+    <button id="backToTop">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
-<!-- Footer -->
-<footer class="tools-footer">
-  <div class="footer-content">
-    <div class="footer-section">
-      <h3><i class="fas fa-tools"></i> Research Tools Hub</h3>
-      <p>Discover and access the best tools for your research workflow. From writing to analysis, we've got you covered.</p>
-    </div>
-    
-    <div class="footer-section">
-      <h4>Quick Links</h4>
-      <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="Faq.html">FAQ</a></li>
-      </ul>
-    </div>
-    
-    <div class="footer-section">
-      <h4>Resources</h4>
-      <ul class="footer-links">
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="glossary.html">Glossary</a></li>
-        <li><a href="open-source.html">Open Source</a></li>
-        <li><a href="tools.html">Tools</a></li>
-      </ul>
-    </div>
-    
-    <div class="footer-section">
-      <h4>Connect</h4>
-      <div class="social-links">
-        <a href="https://github.com/Channpreetk/Research-Paper-Organizer" target="_blank" title="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="#" target="_blank" title="Twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#" target="_blank" title="LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
+  <!-- Modern Footer -->
+  <footer class="modern-footer" aria-label="Footer">
+    <div class="footer-top">
+      <div class="footer-brand footer-card">
+        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
+      </div>
+
+      <div class="footer-links-section footer-card" >
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+          <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-section footer-card">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
+          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-section footer-card">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
+  <i class="fab fa-linkedin" style="color: white;"></i>
+</a>
+          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="footer-bottom">
-    <p>© 2025 Research Paper Organizer | Open Source Project</p>
-    <p class="footer-tagline">Empowering researchers with <i class="fas fa-tools" style="color: #4a90e2;"></i> powerful tools</p>
-  </div>
-</footer>
 
+    <div class="footer-bottom">
+  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
 </div>
+
+  </footer>
 
 <style>
   body {
@@ -168,6 +240,7 @@ color: #e0e0e0;
 
 /* Dark mode toggle button styling */
 .dark-toggle {
+  color:#1a1a1a;
 background: none !important;
 border: none;
 cursor: pointer;
@@ -471,6 +544,7 @@ background: linear-gradient(135deg, #4a5568, #2d3748);
 color: #e0e0e0;
 }
 
+
 body.dark-mode .nav-item:hover {
 background: linear-gradient(135deg, #63b3ed, #4299e1);
 color: #1a202c;
@@ -641,36 +715,48 @@ border-top-color: rgba(224, 224, 224, 0.1);
 }
     /* Back to Top Button Styles */
     #backToTop {
+       /* Center the icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 1000;
+  background: linear-gradient(135deg, #0077b5, #4facfe);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;          /* size of the arrow icon */
+ 
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;          /* start hidden */
+  pointer-events: none;
+
+ 
+}
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#backToTop:hover {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+          #backToTop {
             height: 50px;
             width: 50px;
-          position: fixed;
-          bottom: 80px;
-          right: 20px;
-          z-index: 1000;
-          background: linear-gradient(135deg,#0077b5 ,#4facfe );
-          color: white;
-          border: none;
-          border-radius: 50%;
-          padding: 15px;
-          font-size: 18px;
-          cursor: pointer;
-          display: none;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          transition: transform 0.3s ease, opacity 0.3s ease;
-          }
-          
-          #backToTop:hover {
-          transform: scale(1.1);
-          opacity: 0.9;
-          box-shadow: rgba(0,0,0,0.8);
-          }
-          
-          @media (max-width: 600px) {
-          #backToTop {
-            padding: 12px;
-            font-size: 16px;
+            font-size: 14px;
             bottom: 20px;
             right: 20px;
+           
           }
           }
 
@@ -678,15 +764,20 @@ border-top-color: rgba(224, 224, 224, 0.1);
 
 <script src="js/tools.js"></script>
 <script>
+  function toggleMenu() {
+    const nav = document.querySelector(".navbar-right-links");
+    nav.classList.toggle("show");
+  }
  //back to top button 
 // Show button when scrolled down
 const backToTop = document.getElementById("backToTop");
 
+// Show/hide button with fade
 window.addEventListener("scroll", () => {
   if (window.scrollY > 100) {
-    backToTop.style.display = "block";
+    backToTop.classList.add("show");
   } else {
-    backToTop.style.display = "none";
+    backToTop.classList.remove("show");
   }
 });
 

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authenticating...</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f0f2f5; text-align: center; padding-top: 50px; }
+    </style>
+</head>
+<body>
+    <h1>Authenticating, please wait...</h1>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const token = params.get('token');
+            const name = params.get('name');
+            const email = params.get('email');
+
+            if (token && name && email) {
+                // Save user info and token to localStorage, similar to your login logic
+                localStorage.setItem('current_user', JSON.stringify({ name, email }));
+                localStorage.setItem('auth_token', token); // Assuming you store the token separately
+                
+                // Redirect to the main application page
+                window.location.href = '/home.html';
+            } else {
+                // Handle error
+                alert('Authentication failed. Please try again.');
+                window.location.href = '/login.html';
+            }
+        });
+    </script>
+</body>
+</html>

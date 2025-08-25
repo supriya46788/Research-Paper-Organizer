@@ -7,15 +7,19 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Load .env from parent directory (backend root)
+// This MUST be at the very top
 dotenv.config({ path: join(__dirname, '../.env') });
 
 // Debug log to verify loading
 console.log("=== Environment Variables Debug ===");
 console.log("Loading .env from:", join(__dirname, '../.env'));
 console.log("GEMINI_API_KEY loaded:", process.env.GEMINI_API_KEY ? "✅ YES" : "❌ NO");
+console.log("GOOGLE_CLIENT_ID loaded:", process.env.GOOGLE_CLIENT_ID ? "✅ YES" : "❌ NO");
 console.log("=====================================");
 
 import express from "express";
+import passport from "passport";
+import "./config/passport-setup.js"; // This can stay here
 import { connectDB } from "./utils/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import cors from "cors";
@@ -26,6 +30,7 @@ import geminiRoutes from "./routes/geminiRoutes.js";
 const app = express();
 const port = process.env.PORT || 3000;
 
+// ... (rest of the file remains the same)
 app.get("/", (req, res) => {
   res.json({ message: "Backend application for Research Paper Organizer" });
 });
@@ -33,6 +38,7 @@ app.get("/", (req, res) => {
 app.use(cookieParser());
 app.use(cors());
 app.use(express.json());
+app.use(passport.initialize());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/papers", researchPaperRoutes);
