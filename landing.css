@@ -72,6 +72,9 @@ html,body{
   font-weight: 700;
   color: var(--primary-color);
   gap: 0.5rem;
+  border-bottom: none;
+    text-decoration: none; 
+
 }
 #logo {
   width: 65px;
