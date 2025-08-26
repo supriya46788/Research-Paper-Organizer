@@ -3,18 +3,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    const links = document.querySelectorAll('.nav-links a'); // added
+    const links = document.querySelectorAll('.nav-links a');
 
-    if (mobileMenuToggle) {
+     if (mobileMenuToggle && navLinks) {
         mobileMenuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('mobile-active');
+            // Toggle active class to show/hide menu
+            navLinks.classList.toggle('active');
         });
     }
 
-    // Close mobile menu when a link is clicked
-    links.forEach(link => {
-        link.addEventListener("click", () => {
-            navLinks.classList.remove("mobile-active");
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
         });
     });
 
@@ -54,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Add fade-in class to elements
+    // Add fade-in class to feature cards, steps, and stats
     document.querySelectorAll('.feature-card, .step, .stat-item').forEach(el => {
         el.classList.add('fade-in');
     });
