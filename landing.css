@@ -37,7 +37,7 @@ html,body{
 
 /* Navigation */
 .landing-nav {
-  position: relative;
+  position: fixed;
   top: 0;
   width: 100%;
   max-width:100%;
@@ -53,6 +53,9 @@ html,body{
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+
+
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
