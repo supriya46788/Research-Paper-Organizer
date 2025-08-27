@@ -9,13 +9,56 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f4f7fb;
       margin: 0;
-      padding: 30px;
+      padding: 0;
     }
+/* Navbar */
+nav {
+  background: #2c3e50;
+  padding: 12px 40px;
+  display: flex;
+  justify-content: space-between; /* spread left and right */
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 70px;
+}
+
+nav ul.left {
+  justify-content: flex-start;
+}
+
+nav ul.right {
+  justify-content: flex-end;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ecf0f1;
+  font-size: 20px;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+nav ul li a:hover {
+  color: #3498db;
+  transform: scale(1.1);
+}
+
 
     h1 {
       text-align: center;
       color: #2c3e50;
-      margin-bottom: 25px;
+      margin: 25px 0;
       font-size: 2.2em;
       letter-spacing: 1px;
     }
@@ -50,6 +93,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr); /* 4 per row */
       gap: 25px;
+      padding: 0 30px 40px;
     }
 
     /* Paper Card */
@@ -119,10 +163,28 @@
       .papers {
         grid-template-columns: 1fr;
       }
+      nav {
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
+  
+  <!-- Navbar -->
+  <nav>
+    <ul class="left">
+    <li><a href="index.html">Home</a></li>
+  </ul>
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="Faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="tools.html">Tools</a></li>
+    </ul>
+  </nav>
+
   <h1>📚 Research Paper Organiser</h1>
 
   <div class="tags">
