@@ -37,7 +37,7 @@ html,body{
 
 /* Navigation */
 .landing-nav {
-  position: relative;
+  position: fixed;
   top: 0;
   width: 100%;
   max-width:100%;
@@ -53,6 +53,9 @@ html,body{
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+
+
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -142,9 +145,9 @@ html,body{
      z-index: 9999;
      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
  }
- .nav-links.active {
+ /* .nav-links.active {
      right: 0;
-   }
+   } */
  .nav-links a{
     /* Force override any inherited color */
     display: block;
@@ -269,6 +272,12 @@ html,body{
   line-height: 1.1;
   margin-bottom: 1.5rem;
   color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    margin-top: 4.5rem;
+  }
 }
 
 .hero-content p {
@@ -846,4 +855,67 @@ html,body{
 .feature-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Mobile Menu */
+@media (max-width: 1150px) {
+  .mobile-menu-toggle {
+    display: block;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 2000;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: fixed;
+    top: 70px;           /* below navbar */
+    right: -250px;        /* hide offscreen by default */
+    width: 220px;
+    padding: 2rem 1rem;
+    background: #3773f4fe;
+    border-radius: 8px 0 0 8px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.3s ease-in-out;
+    z-index: 1500;
+  }
+
+  .nav-links.active {
+    right: 0;  /* slide in */
+  }
+
+  .nav-links a {
+    color: white;
+    background: none;
+    text-align: left;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+  }
+
+  .nav-links a:hover {
+    color: var(--primary-light);
+  }
+  .mobile-menu-toggle.open {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+}
+
+/* Desktop - hide hamburger */
+@media (min-width: 1151px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    gap: 20px;
+    background: none;
+    box-shadow: none;
+  }
 }
