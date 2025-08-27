@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Research Paper Organizer - Organize Your Research Efficiently</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" href="landing.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png">
@@ -22,32 +22,37 @@
       </div>
     </div>
     <!-- Navigation -->
-    <nav class="landing-nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-book-open"></i>
-                <span>Research Paper Organizer</span>
-            </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
-                <a href="about.html">About</a>
-                <a href="tools.html">Tools</a>
-                <a href="contact.html">Contact</a>
-                
-                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
-            </div>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
+
+   <nav class="landing-nav">
+  <div class="nav-container">
+    <a href="#top" class="nav-brand">
+      <i class="fas fa-book-open"></i>
+      <span>Research Paper Organizer</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it Works</a>
+      <a href="about.html">About</a>
+      <a href="tools.html">Tools</a>
+      <a href="contact.html">Contact</a>
+      <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
+    </div>
+
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+</nav>
+
+
+
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
-            <div class="hero-content">
-                <h1>Organize Your Research Papers Like Never Before</h1>
+            <div class="hero-content fade-in">
+                <h1 class="typing-text">Organize Your Research Papers Like Never Before</h1>
                 <p>Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform.</p>
                 <div class="hero-buttons">
                     <button class="btn-primary btn-large" onclick="window.location.href='signup.html'">
@@ -61,7 +66,7 @@
                 </div>
                 <p class="hero-note">No credit card required • 30-day free trial</p>
             </div>
-            <div class="hero-image">
+            <div class="hero-image slide-right">
                 <div class="hero-mockup">
                     <div class="mockup-header">
                         <div class="mockup-dots">
@@ -96,13 +101,14 @@
     <!-- Features Section -->
     <section id="features" class="features">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in">
                 <h2>Everything You Need for Research Management</h2>
                 <p>Powerful features designed specifically for researchers, students, and academics</p>
             </div>
             
             <div class="features-grid">
-                <div class="feature-card">
+
+                <div class="feature-card slide-left">
                     <div class="feature-icon">
                         <i class="fas fa-search"></i>
                     </div>
@@ -110,7 +116,7 @@
                     <p>Find papers instantly with intelligent search across titles, authors, abstracts, and tags.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card slide-right">
                     <div class="feature-icon">
                         <i class="fas fa-tags"></i>
                     </div>
@@ -118,7 +124,7 @@
                     <p>Categorize papers by topics, tags, and custom labels. Never lose track of important research.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card slide-left">
                     <div class="feature-icon">
                         <i class="fas fa-star"></i>
                     </div>
@@ -126,7 +132,7 @@
                     <p>Rate papers and add personal notes to remember key insights and contributions.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card slide-right">
                     <div class="feature-icon">
                         <i class="fas fa-quote-right"></i>
                     </div>
@@ -134,7 +140,7 @@
                     <p>Generate citations in APA, MLA, and Chicago formats with a single click.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card slide-left">
                     <div class="feature-icon">
                         <i class="fas fa-file-pdf"></i>
                     </div>
@@ -142,7 +148,7 @@
                     <p>Upload and store PDFs directly in your library with built-in preview capabilities.</p>
                 </div>
                 
-                <div class="feature-card">
+                <div class="feature-card slide-right">
                     <div class="feature-icon">
                         <i class="fas fa-cloud"></i>
                     </div>
@@ -156,13 +162,13 @@
     <!-- How it Works Section -->
     <section id="how-it-works" class="how-it-works">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header fade-in">
                 <h2>Get Started in 3 Simple Steps</h2>
                 <p>Start organizing your research papers in minutes</p>
             </div>
             
             <div class="steps-container">
-                <div class="step">
+                <div class="step fade-in">
                     <div class="step-number">1</div>
                     <div class="step-content">
                         <h3>Create Your Account</h3>
@@ -170,7 +176,7 @@
                     </div>
                 </div>
                 
-                <div class="step">
+                <div class="step fade-in">
                     <div class="step-number">2</div>
                     <div class="step-content">
                         <h3>Add Your Papers</h3>
@@ -178,7 +184,7 @@
                     </div>
                 </div>
                 
-                <div class="step">
+                <div class="step fade-in">
                     <div class="step-number">3</div>
                     <div class="step-content">
                         <h3>Organize & Search</h3>
@@ -190,22 +196,22 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats">
+    <section class="stats fade-in">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item">
+                <div class="stat-item fade-in ">
                     <div class="stat-number">10,000+</div>
                     <div class="stat-label">Researchers</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item fade-in">
                     <div class="stat-number">500,000+</div>
                     <div class="stat-label">Papers Organized</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item fade-in">
                     <div class="stat-number">50+</div>
                     <div class="stat-label">Universities</div>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item fade-in">
                     <div class="stat-number">99.9%</div>
                     <div class="stat-label">Uptime</div>
                 </div>
@@ -271,12 +277,21 @@
   transition: transform 0.3s ease, opacity 0.5s ease;
   opacity: 0;
   transform: translateY(20px);
+  cursor: pointer;
+}
+.testimonial-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+  background: #f9f9ff;
 }
 .testimonial-card img {
   width: 150px;
   height: 150px;
   border-radius: 100%;
   margin-bottom: 15px;
+}
+.testimonial-card:hover img {
+  transform: scale(1.1) rotate(2deg);
 }
 .testimonial-card .designation {
   font-size: 0.9rem;
@@ -330,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
-            <div class="cta-content">
+            <div class="cta-content fade-in">
                 <h2>Ready to Transform Your Research Workflow?</h2>
                 <p>Join thousands of researchers who have already streamlined their paper management process.</p>
                 <div class="cta-buttons">
@@ -348,8 +363,8 @@ document.addEventListener("DOMContentLoaded", () => {
     <style>
         /* Back to Top Button Styles */
 #backToTop {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -381,13 +396,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 }
 
-    /* Footer CSS*/
-    .modern-footer {
-      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-      color: #fff;
-      padding: 60px 20px 20px;
-      border-radius: 25px 25px 0 0;
-    }
+     .modern-footer {
+  width: 100vw; /* Full viewport width */
+  margin-left: calc(-50vw + 50%); /* Center it if inside a constrained container */
+  background: linear-gradient(135deg, #1f3c88, #2c5aa0);
+  color: #fff;
+  padding: 60px 20px 20px;
+  border-radius: 25px 25px 0 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+}
+
 
     .footer-top {
       display: grid;
@@ -397,20 +416,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     .footer-brand h2 {
-      font-size: 1.8rem;
+      font-size: 10px;
       margin-bottom: 10px;
       display: flex;
       align-items: center;
+      flex-direction: column;
     }
 
     .footer-brand h2 i {
       margin-right: 10px;
-      font-size: 1.6rem;
+      font-size: 1rem;
       vertical-align: middle;
     }
 
     .footer-brand p {
-      font-size: 1rem;
+      font-size: 0.95;
+      font-weight: 300;
       line-height: 1.5;
       opacity: 0.9;
     }
@@ -514,7 +535,7 @@ document.addEventListener("DOMContentLoaded", () => {
     @media (max-width: 768px) {
       .footer-top {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
+        gap: 3rem;
       }
 
       .footer-brand h2 {
@@ -535,6 +556,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
+     @media (max-width: 756px) and (min-width: 730px),
+       (max-width: 601px) and (min-width: 540px) {
+  .footer-card {
+    gap: 4rem;
+  }
+}
+
     @media (max-width: 480px) {
       .footer-top {
         grid-template-columns: 1fr;
@@ -553,17 +581,116 @@ document.addEventListener("DOMContentLoaded", () => {
   color: inherit;  
 }
 
+
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;  /* 👈 ye center karega */
+  margin: 3rem 0;
+}
+
+.feature-card {
+  flex: 1 1 250px;
+  max-width: 300px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.feature-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1rem auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #fff;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+  transform: scale(1.1) rotate(8deg);
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #333;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Dark Mode Footer Styles */
+body.dark-mode .modern-footer {
+background: linear-gradient(135deg, #1a202c, #2d3748);
+}
+
+body.dark-mode .footer-section h3,
+body.dark-mode .footer-section h4 {
+color: #e0e0e0;
+}
+
+body.dark-mode .footer-section h4 {
+border-bottom-color: rgba(224, 224, 224, 0.2);
+}
+
+body.dark-mode .footer-links a {
+color: rgba(224, 224, 224, 0.8);
+}
+
+body.dark-mode .footer-links a:hover {
+color: #90cdf4;
+}
+
+body.dark-mode .social-links a {
+background: rgba(224, 224, 224, 0.1);
+color: #e0e0e0;
+}
+
+body.dark-mode .social-links a:hover {
+background: rgba(144, 205, 244, 0.2);
+color: #90cdf4;
+}
+
+body.dark-mode .footer-bottom {
+background: rgba(0, 0, 0, 0.3);
+border-top-color: rgba(224, 224, 224, 0.1);
+}
+
     </style>
 
     <!-- Back to Top Button -->
-<button id="backToTop">↑</button>
+<button id="backToTop">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
 
    
-  <!-- Modern Footer -->
+<!-- Modern Footer -->
   <footer class="modern-footer" aria-label="Footer">
     <div class="footer-top">
-      <div class="footer-brand footer-card">
+      <div class="footer-brand footer-card" id="top-card">
         <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
       </div>
 
       <div class="footer-links-section footer-card" >
@@ -589,22 +716,26 @@ document.addEventListener("DOMContentLoaded", () => {
         <h4>Connect</h4>
         <div class="social-icons">
           <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
+  <i class="fab fa-linkedin" style="color: white;"></i>
+</a>
           <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
     </div>
 
-   <div class="footer-bottom" style="text-align: center; display: flex; justify-content: center; align-items: center; flex-direction: column; padding: 15px 0;">
-  <p style="margin: 0;">
-    © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-  </p>
+    <div class="footer-bottom">
+  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
 </div>
-
 
   </footer>
 
+
+
+
     <script src="landing.js"></script>
+
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const loadingScreen = document.getElementById("loading-screen");
@@ -628,8 +759,16 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(() => {
           clearInterval(textInterval); // stop changing text
           loadingScreen.classList.add("hidden");
+          //after that added sideLeft and slide right animation
+          document.querySelector(".hero-content").classList.add("animate");
+          document.querySelector(".hero-image").classList.add("animate");
         }, 6000); // adjust as needed
-      });
+      }); 
+
+      //after executing slideright remove it so that other animation can start
+      setTimeout(() =>{
+         document.querySelector(".hero-image").classList.remove("animate");
+      },7000)
 
 
       //back to top button 
@@ -649,6 +788,28 @@ backToTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
     </script>
+
+
+ <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll(".fade-in, .slide-left, .slide-right");
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      }, { threshold: 0.2 });
+
+      elements.forEach(el => observer.observe(el));
+    });
+    </script>
+
+<script src="landing.js"></script>
+
+
      
 </body>
 </html>
+  
