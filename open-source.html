@@ -1,495 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
-
-<title>Open Source - Job Junction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Source Community</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f9f9f9;
-    color: #333;
-  }
-  header {
-    background: #4698e5;
-    color: white;
-    padding: 2rem 1rem;
-    text-align: center;
-    animation: fadeIn 1.2s ease-in-out;
-    position: relative;
-  }
-  /* Back to Home link styling */
+/* Reset + Base */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',sans-serif;background:#f8fafc;color:#1e293b;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+h1,h2,h3,h4{font-weight:600;}
+
+/* Floating Back Button */
 .back-home {
-  position: absolute;
-  top: 15px;
-  left: 20px;
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  position:fixed;top:20px;left:20px;
+  background:#fff;padding:10px 16px;border-radius:30px;font-weight:bold;
+  border:1px solid #cbd5e1;color:#1e293b;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+  transition:0.3s;z-index:1000;
+}
+.back-home:hover{transform:scale(1.05);background:#e2e8f0;}
+
+/* Header */
+header {
+  text-align:center;padding:100px 20px 60px;
+  background:linear-gradient(145deg,#3b82f6,#06b6d4,#60a5fa);
+  color:#fff;border-radius:0 0 60px 60px;position:relative;
+}
+header::after {
+  content:"";position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);
+  width:80%;height:60px;background:#f8fafc;border-radius:50%;z-index:-1;
+}
+header h1{font-size:3rem;margin-bottom:15px;letter-spacing:1px;}
+header h2{font-size:1.2rem;font-weight:400;opacity:0.9;color:#e0f2fe;}
+
+/* Controls */
+.controls {
+  text-align:center;margin:40px 0;
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+}
+.controls input {
+  padding:10px 16px;border-radius:30px;border:1px solid #cbd5e1;
+  background:#fff;color:#1e293b;width:240px;
+}
+.controls button {
+  padding:10px 18px;border:none;border-radius:30px;
+  background:#3b82f6;color:#fff;font-weight:500;
+  cursor:pointer;transition:0.3s;border:1px solid #3b82f6;
+}
+.controls button:hover {background:#2563eb;border-color:#2563eb;}
+
+/* Repo Cards */
+.repo-container {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;padding:20px;max-width:1200px;margin:auto;
+}
+.repo {
+  background:#fff;
+  border:1px solid #e2e8f0;
+  padding:25px;border-radius:20px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  transition:0.3s;position:relative;overflow:hidden;
+  animation:fadeUp 0.6s ease both;
+}
+.repo:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 10px 30px rgba(0,0,0,0.15);}
+.repo h3{margin-bottom:12px;color:#2563eb;font-size:1.2rem;}
+.repo p{font-size:14px;color:#1e293b;margin-bottom:12px;}
+.repo a {
+  display:inline-block;background:#3b82f6;
+  color:#fff;padding:7px 16px;border-radius:20px;
+  font-size:14px;font-weight:500;transition:0.3s;
+}
+.repo a:hover{background:#2563eb;}
+.repo .tags{margin-top:10px;}
+.repo .tags span {
+  background:#60a5fa;color:whitesmoke;
+  padding:5px 12px;border-radius:20px;font-size:12px;margin:3px;display:inline-block;
 }
 
-.back-home:hover {
-  color: #ffcccb;
+/* Contribute Section */
+.contribute {
+  padding:70px 20px;background:#e0f2fe;
+  text-align:center;border-radius:50px;margin:60px auto;max-width:1100px;
 }
-  header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-  }
-  header p {
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
-  }
-  /* Buttons */
-  .cta-buttons {
-    margin-top: 1.2rem;
-  }
-  .cta-buttons a {
-    display: inline-block;
-    margin: 0.4rem;
-    padding: 0.7rem 1.5rem;
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    background: #2f2ca0;
-    transition: transform 0.3s ease, background 0.3s ease;
-  }
-  .cta-buttons a:hover {
-    transform: scale(1.05);
-    background: #1f2937;
-  }
+.contribute h2{color:#2563eb;margin-bottom:40px;font-size:2rem;}
+.contribute-grid {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;max-width:1000px;margin:auto;
+}
+.contribute-card {
+  background:#fff;padding:25px;border-radius:16px;
+  box-shadow:0 6px 16px rgba(0,0,0,0.1);transition:0.3s;
+}
+.contribute-card:hover{transform:translateY(-5px) scale(1.03);}
+.contribute-card h3{margin-bottom:12px;color:#2563eb;}
+.contribute-card p{font-size:14px;color:#1e293b;}
 
+/* Acknowledgements */
+.acknowledge {padding:70px 20px;background:#f0f9ff;text-align:center;}
+.acknowledge h2{color:#2563eb;margin-bottom:40px;font-size:2rem;}
+.ack-grid {
+  display:flex;flex-wrap:wrap;justify-content:center;gap:25px;
+}
+.ack-card {
+  background:linear-gradient(135deg,#60a5fa,#3b82f6);
+  color:#fff;padding:30px;border-radius:20px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.15);
+  transition:0.3s;max-width:280px;
+}
+.ack-card:hover{transform:translateY(-8px) rotate(-1deg);}
+.ack-card h3{margin-bottom:12px;}
+.ack-card p{font-size:14px;opacity:0.9;}
 
-  /* Powered By */
-  .powered-by {
-    text-align: center;
-    padding: 2rem 1rem;
-    background: white;
-    margin: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
-  }
-  .powered-by.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .powered-by img {
-    max-width: 280px;
-    margin: 1rem;
-    transition: transform 0.3s ease;
-  }
-  .powered-by img:hover {
-    transform: scale(1.08);
-  }
-  /* Contact */
-  .contact {
-    padding: 2rem 1rem;
-    text-align: center;
-    background: #fff;
-    margin: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
-  }
-  .contact.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  form {
-    max-width: 500px;
-    margin: auto;
-    text-align: left;
-  }
-  form input, form textarea {
-    width: 100%;
-    padding: 0.7rem;
-    margin: 0.6rem 0;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  form button {
-    background: #2f2ca0;
-    color: white;
-    padding: 0.7rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  form button:hover {
-    background: #111827;
-  }
-  /*Animations */
-  @keyframes fadeIn {
-    from {opacity: 0; transform: translateY(-20px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
+/* Footer */
+footer.modern-footer {
+  background:linear-gradient(135deg,#3b82f6,#60a5fa);
+  color:#fff;padding:70px 20px 20px;border-radius:40px 40px 0 0;
+}
+.footer-top {
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:2rem;margin-bottom:40px;
+}
+.footer-card {background:#fff;border-radius:16px;padding:20px;color:#1e293b;}
+.footer-links-section h4 {
+  font-size:1.1rem;margin-bottom:12px;border-bottom:2px solid #cbd5e1;padding-bottom:6px;
+}
+.footer-links-section ul{list-style:none;padding:0;}
+.footer-links-section ul li{margin-bottom:8px;}
+.footer-links-section ul li a {
+  color:#1e293b;transition:0.3s;display:flex;align-items:center;gap:8px;
+}
+.footer-links-section ul li a:hover{color:#2563eb;transform:translateX(5px);}
+.social-icons{display:flex;gap:12px;}
+.social-icons a {
+  display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;
+  background:#e2e8f0;color:#1e293b;transition:0.3s;
+}
+.social-icons a:hover{background:#2563eb;color:#fff;}
+.footer-bottom{text-align:center;border-top:1px solid #cbd5e1;padding-top:15px;font-size:0.9rem;opacity:0.8;}
 
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2rem;
-    }
-    header p {
-      font-size: 1rem;
-    }
-    .cta-buttons a {
-      padding: 0.5rem 1rem;
-      font-size: 0.9rem;
-    }
-    .powered-by img {
-      max-width: 120px;
-    }
-    .contact form {
-      max-width: 90%;
-    }
-  }
-  @media (max-width: 480px) {
-    header h1 {
-      font-size: 1.5rem;
-    }
-    header p {
-      font-size: 0.9rem;
-    }
-    .cta-buttons a {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.8rem;
-    }
-    .powered-by img {
-      max-width: 100px;
-    }
-    .contact form {
-      max-width: 100%;
-    }
-  }
-      /* Back to Top Button Styles */
-      #backToTop {
-            height: 50px;
-            width: 50px;
-          position: fixed;
-          bottom: 80px;
-          right: 20px;
-          z-index: 1000;
-          background: linear-gradient(135deg,#0077b5 ,#4facfe );
-          color: white;
-          border: none;
-          border-radius: 50%;
-          padding: 15px;
-          font-size: 18px;
-          cursor: pointer;
-          display: none;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          transition: transform 0.3s ease, opacity 0.3s ease;
-          }
-          
-          #backToTop:hover {
-          transform: scale(1.1);
-          opacity: 0.9;
-          box-shadow: rgba(0,0,0,0.8);
-          }
-          
-          @media (max-width: 600px) {
-          #backToTop {
-            padding: 12px;
-            font-size: 16px;
-            bottom: 20px;
-            right: 20px;
-          }
-          }
+/* Animations */
+@keyframes fadeUp {from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-    /* Footer CSS*/
-    .modern-footer {
-      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-      color: #fff;
-      padding: 60px 20px 20px;
-      border-radius: 25px 25px 0 0;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-bottom: 30px;
-    }
-
-    .footer-brand h2 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-
-    .footer-brand h2 i {
-      margin-right: 10px;
-      font-size: 1.6rem;
-      vertical-align: middle;
-    }
-
-    .footer-brand p {
-      font-size: 1rem;
-      line-height: 1.5;
-      opacity: 0.9;
-    }
-
-    .footer-links-section h4 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: 5px;
-    }
-
-    .footer-links-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links-section ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-links-section ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
-
-    .footer-links-section ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      margin-top: 5px;
-    }
-
-    .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: #fff;
-      transition: 0.3s;
-    }
-
-    .social-icons a:hover {
-      background: #fff;
-      color: #2c5aa0;
-      transform: scale(1.1);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      padding-top: 15px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-    .footer-card {
-      flex: 1 1 200px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 20px;
-      min-width: 200px;
-    }
- .footer-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-card ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-card ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-      
-      padding: 5px;
-      padding-left: 20px;
-    }
-
-    .footer-card ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    @media (max-width: 768px) {
-      .footer-top {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .footer-brand h2 {
-        font-size: 1.5rem;
-      }
-
-      .footer-links-section h4 {
-        font-size: 1rem;
-      }
-
-      .footer-links-section ul li a {
-        font-size: 0.95rem;
-      }
-
-      .social-icons a {
-        width: 35px;
-        height: 35px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .social-icons {
-        justify-content: center;
-      }
-
-      .footer-links-section ul li a {
-        justify-content: center;
-      }
-    }
-    .footer-bottom .heart {
-  color: inherit;  
+/* Responsive */
+@media(max-width:768px){
+  header h1{font-size:2.2rem;}
+  .controls input{width:100%;}
 }
 
 </style>
 </head>
 <body>
 
-<!-- Intro Section -->
+<a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back</a>
+
 <header>
-  <a href="index.html" class="back-home">&larr; Back to Home</a>
-  <h1>Namaste Contributors 🙏</h1>
-  <p>We are proud to be part of the open-source community. Join us in building something amazing together!</p>
-  <div class="cta-buttons">
-    <a href="https://gssoc.girlscript.tech/" target="_blank">Know More about GSSoC</a>
-    <a href="https://github.com/supriya46788/Research-Paper-Organizer" target="_blank">Join Us on GitHub</a>
-  </div>
+  <h1>🌐 Open Source Community</h1>
+  <h2>Discover Projects • Contribute • Grow</h2>
 </header>
 
-<!-- Powered By -->
-<div class="powered-by">
-  <h2>Open Source Proudly Powered By:</h2>
-  <img src="/images/gssoc-logo.png" alt="GSSoC Logo">
-  
+<div class="controls">
+  <input type="text" id="searchInput" placeholder="Search repos by name or language...">
+  <button onclick="searchRepos()">Search</button>
+  <button onclick="filterRepos('all')">All</button>
+  <button onclick="filterRepos('ai')">AI</button>
+  <button onclick="filterRepos('ml')">ML</button>
+  <button onclick="filterRepos('js')">JS</button>
+  <button onclick="filterRepos('html')">HTML</button>
+  <button onclick="filterRepos('css')">CSS</button>
 </div>
 
-<!-- Contact Section -->
-<div class="contact">
-  <h2>Connect With Us</h2>
-  <p>We’d love to hear from you! Whether you have ideas, feedback, or want to collaborate, reach out.</p>
-  <p><strong>📍 Location:</strong> Remote</p>
-  <p><strong>📧 Email:</strong> contact@researchpaperorg.com</p>
-  <form>
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Your Email" required>
-    <textarea placeholder="Your Message" rows="4" required></textarea>
-    <button type="submit">Send Message</button>
-  </form>
-</div>
+<div class="repo-container" id="repo-container"></div>
 
-  <!-- Back to Top Button -->
-  <button id="backToTop">↑</button>
+<section class="contribute">
+  <h2>🤝 How to Contribute</h2>
+  <div class="contribute-grid">
+    <div class="contribute-card"><h3>Fork & Clone</h3><p>Fork the repo and clone it locally using <code>git clone</code>.</p></div>
+    <div class="contribute-card"><h3>Create a Branch</h3><p>Create a feature branch with <code>git checkout -b feature-name</code>.</p></div>
+    <div class="contribute-card"><h3>Make Changes</h3><p>Add your features or fix bugs with clean commits.</p></div>
+    <div class="contribute-card"><h3>Submit PR</h3><p>Push and open a Pull Request for review.</p></div>
+  </div>
+</section>
 
-  <!-- Modern Footer -->
-  <footer class="modern-footer" aria-label="Footer">
-    <div class="footer-top">
-      <div class="footer-brand footer-card">
-        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
-      </div>
+<section class="acknowledge">
+  <h2>🏆 Acknowledgements</h2>
+  <div class="ack-grid">
+    <div class="ack-card">
+      <h3>GSSoC</h3>
+      <p>GirlScript Summer of Code empowers students to contribute to open source projects with mentorship.</p>
+    </div>
+    
+  </div>
+</section>
 
-      <div class="footer-links-section footer-card" >
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Connect</h4>
-        <div class="social-icons">
-          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-        </div>
+<footer class="modern-footer" aria-label="Footer">
+  <div class="footer-top">
+    <div class="footer-card"><h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3></div>
+    <div class="footer-links-section footer-card">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+        <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+        <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-section footer-card">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+        <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
+        <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-section footer-card">
+      <h4>Connect</h4>
+      <div class="social-icons">
+        <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:supriyadpandey502@gmail.com"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
-
-    <div class="footer-bottom">
-  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-</div>
-
-  </footer>
-
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Research Paper Organizer | Built with <span class="heart">&hearts;</span> for researchers worldwide</p>
+  </div>
+</footer>
 
 <script>
-  // Scroll Animation for Sections
-  const sections = document.querySelectorAll('.powered-by, .contact');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.classList.add('show');
-      }
-    });
-  }, { threshold: 0.2 });
+const githubUser = "supriya46788";
+let allRepos = [];
 
-  sections.forEach(sec => observer.observe(sec));
-        //back to top button 
-// Show button when scrolled down
-const backToTop = document.getElementById("backToTop");
+async function fetchRepos() {
+  const res = await fetch(`https://api.github.com/users/${githubUser}/repos?per_page=12&sort=updated`);
+  const data = await res.json();
+  allRepos = data.map(repo => ({
+    name: repo.name,
+    desc: repo.description || "No description",
+    url: repo.html_url,
+    language: repo.language ? repo.language.toLowerCase() : "other",
+    tags: repo.language ? [repo.language.toLowerCase()] : ["other"]
+  }));
+  displayRepos(allRepos);
+}
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    backToTop.style.display = "block";
-  } else {
-    backToTop.style.display = "none";
-  }
-});
+function displayRepos(list) {
+  const container = document.getElementById("repo-container");
+  container.innerHTML = "";
+  list.forEach(repo => {
+    container.innerHTML += `
+      <div class="repo">
+        <h3>${repo.name}</h3>
+        <p>${repo.desc}</p>
+        <div class="tags">${repo.tags.map(t => `<span>${t.toUpperCase()}</span>`).join('')}</div>
+        <a href="${repo.url}" target="_blank">🔗 View Repo</a>
+      </div>`;
+  });
+}
 
-// Smooth scroll to top
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+function searchRepos() {
+  const term = document.getElementById("searchInput").value.toLowerCase();
+  displayRepos(allRepos.filter(r => r.name.toLowerCase().includes(term) || r.language.includes(term)));
+}
+
+function filterRepos(tag) {
+  if(tag === "all") displayRepos(allRepos);
+  else displayRepos(allRepos.filter(r => r.tags.includes(tag)));
+}
+
+fetchRepos();
 </script>
-
 </body>
 </html>

@@ -3,570 +3,368 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Masthead - Research Paper Organizer</title>
+  <title>Masthead | Research Paper Organizer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <style>
-    /* ===== Base Styles ===== */
-    /* Landing Page Styles */
-:root {
-    --primary-color: #3b82f6;
-    --primary-dark: #2563eb;
-    --secondary-color: #64748b;
-    --text-color: #1e293b;
-    --text-light: #64748b;
-    --background: #ffffff;
-    --background-light: #f8fafc;
-    --border-color: #e2e8f0;
-    --success-color: #10b981;
-    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
+    /* ===== Root Variables ===== */
+    :root {
+      --primary: #357abd;
+      --secondary: #4a90e2;
+      --gradient: linear-gradient(135deg, #4a90e2, #357abd);
+      --dark: #111827;
+      --light: #f9fafb;
+      --text-light: #6b7280;
+      --white: #ffffff;
+      --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-    color: var(--text-color);
-    background: var(--background);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Navigation */
-.landing-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
-    z-index: 1000;
-    transition: all 0.3s ease;
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-brand {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-.nav-brand i {
-    margin-right: 0.5rem;
-    font-size: 1.75rem;
-}
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-    color: var(--primary-color);
-}
-
-.btn-primary, .btn-secondary {
-    padding: 0.75rem 1.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.btn-primary {
-    background: var(--primary-color);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--text-color);
-    border: 2px solid var(--border-color);
-}
-
-.btn-secondary:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-}
-
-.btn-large {
-    padding: 1rem 2rem;
-    font-size: 1.125rem;
-}
-
-.mobile-menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: "Inter", sans-serif;
-      background: #f9fafb;
-      color: #111827;
+      background: var(--light);
+      color: var(--dark);
       line-height: 1.6;
-      scroll-behavior: smooth;
     }
-    h1, h2, h3 { font-weight: 700; }
-    a { color: #4f46e5; text-decoration: none; }
 
-    /* ===== Hero / Mission Section ===== */
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+    /* ===== Navbar ===== */
+    .landing-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      color: var(--primary);
+    }
+    .nav-brand i { margin-right: 8px; }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-weight: 500;
+      color: var(--dark);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    /* ===== Hero ===== */
     .masthead-hero {
+      padding: 120px 20px 80px;
       text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(135deg, #4f46e5, #4338ca);
-      color: #fff;
+      background: var(--gradient);
+      color: white;
+      border-radius: 0 0 50px 50px;
     }
     .masthead-hero h1 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
+      font-weight: 800;
       margin-bottom: 15px;
     }
     .masthead-hero p {
-      font-size: 1.2rem;
-      max-width: 720px;
+      max-width: 700px;
       margin: auto;
+      font-size: 1.2rem;
+      opacity: 0.9;
     }
 
-    /* ===== Section Headers ===== */
+    /* ===== Sections ===== */
     .section {
-      padding: 60px 20px;
       max-width: 1100px;
-      margin: auto;
+      margin: 80px auto;
+      padding: 0 20px;
     }
     .section h2 {
-      font-size: 2rem;
-      margin-bottom: 25px;
       text-align: center;
-      position: relative;
+      font-size: 2rem;
+      margin-bottom: 40px;
     }
     .section h2::after {
       content: "";
-      width: 60px;
-      height: 3px;
-      background: #4f46e5;
+      width: 60px; height: 4px;
+      background: var(--primary);
       display: block;
-      margin: 10px auto 0;
-      border-radius: 2px;
+      margin: 10px auto;
+      border-radius: 4px;
     }
 
     /* ===== Team Grid ===== */
     .team-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
+      gap: 30px;
     }
     .team-card {
-      background: #fff;
-      padding: 20px;
+      background: var(--white);
       border-radius: 16px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      padding: 20px;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: var(--shadow);
+      transition: all 0.3s;
       opacity: 0;
       transform: translateY(20px);
     }
-    .team-card img {
-      width: 120px;
-      height: 120px;
-      border-radius: 100%;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-    .team-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-    }
-    .team-card p.role {
-      font-size: 0.9rem;
-      color: #6b7280;
-      margin-bottom: 12px;
-    }
-    .team-card:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 12px 26px rgba(0,0,0,0.12);
-    }
     .team-card.show { opacity: 1; transform: translateY(0); }
+    .team-card img {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+      border: 4px solid #e0e7ff;
+    }
+    .team-card h3 { font-size: 1.2rem; margin-bottom: 5px; }
+    .team-card p.role { font-size: 0.9rem; color: var(--text-light); margin-bottom: 8px; }
 
-    /* ===== Contact & Version ===== */
+    /* ===== Contact ===== */
     .contact {
       text-align: center;
-      padding: 40px 20px;
-      background: #f3f4f6;
-      border-radius: 12px;
+      padding: 30px;
+      background: #eef6ff;
+      border-radius: 16px;
     }
     .contact a {
       margin: 0 8px;
-      font-size: 1.2rem;
-    }
-    .version {
-      margin-top: 20px;
-      font-size: 0.9rem;
-      color: #6b7280;
+      font-size: 1.5rem;
+      color: var(--primary);
     }
 
-    /* ===== Responsive ===== */
-    @media (max-width: 640px) {
-      .masthead-hero h1 { font-size: 2rem; }
-      .masthead-hero p { font-size: 1rem; }
-    }
-
-    /* ================= Footer Styling ================= */
-.landing-footer {
-  background: #0d1117; /* Dark background */
-  color: #eaeaea;
-  padding: 3rem 1.5rem 1rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* ===== Footer ===== */
+   .modern-footer {
+  background: linear-gradient(135deg, #1f3c88, #2c5aa0);
+  color: #fff;
+  padding: 60px 20px 20px;
+  border-radius: 25px 25px 0 0;
 }
-
-.landing-footer .container {
-  max-width: 1200px;
-  margin: auto;
-}
-
-.footer-content {
+.footer-top {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 2rem;
-  align-items: flex-start;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
 }
-
-/* Brand */
-.footer-brand {
+.footer-card h3, .footer-card h4 {
+  margin-bottom: 15px;
+}
+.footer-links-section ul {
+  list-style: none;
+}
+.footer-links-section ul li {
+  margin: 10px 0;
+}
+.footer-links-section ul li a {
+  text-decoration: none;
+  color: #ddd;
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
-  gap: 0.5rem;
-  transition: transform 0.3s ease;
-}
-
-.footer-brand i {
-  color: #eaeaea; /* Highlight color */
-  font-size: 1.8rem;
-}
-
-.footer-brand:hover {
-  transform: scale(1.05);
-}
-
-/* Links Section */
-.footer-links {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-}
-
-.footer-section h4 {
-  font-size: 1rem;
-  margin-bottom: 0.8rem;
-  color: #eaeaea;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.footer-section a {
-  display: block;
-  color: #bbb;
-  text-decoration: none;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+  gap: 8px;
   transition: all 0.3s ease;
 }
-
-.footer-section a:hover {
+.footer-links-section ul li a:hover {
   color: #fff;
-  padding-left: 5px;
+  transform: translateX(5px);
 }
-
-/* Bottom Section */
+.social-icons a {
+  font-size: 1.4rem;
+  margin-right: 15px;
+  color: #ddd;
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+.social-icons a:hover {
+  color: #2c5aa0;
+  background: white;
+  transform: scale(1.2);
+}
 .footer-bottom {
-  border-top: 1px solid #333;
-  padding-top: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
   text-align: center;
-}
-
-.footer-bottom p {
-  margin: 0;
   font-size: 0.9rem;
-  color: #999;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 15px;
 }
-
-/* Social Links */
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+.heart {
+  color: red;
 }
+    /* Back to Top */
+    #backToTop {
+      position: fixed; bottom: 30px; right: 20px;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--gradient);
+      color: #fff; border: none;
+      font-size: 20px;
+      display: none;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
 
-.social-links a {
-  color: #bbb;
-  font-size: 1.3rem;
-  transition: all 0.3s ease;
-}
-
-.social-links a:hover {
-  color: #4f46e5;
-  transform: translateY(-3px);
-}
-
-/* ================= Responsive ================= */
-@media (max-width: 900px) {
-  .footer-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .footer-links {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .footer-section {
-    margin: 1rem;
-  }
-}
-
-@media (max-width: 500px) {
-  .footer-section h4 {
-    font-size: 0.9rem;
-  }
-  .footer-section a {
-    font-size: 0.85rem;
-  }
-}
-
-    /* Back to Top Button Styles */
-        #backToTop {
-            height: 50px;
-            width: 50px;
-          position: fixed;
-          bottom: 80px;
-          right: 20px;
-          z-index: 1000;
-          background: linear-gradient(135deg,#0077b5 ,#4facfe );
-          color: white;
-          border: none;
-          border-radius: 50%;
-          padding: 15px;
-          font-size: 18px;
-          cursor: pointer;
-          display: none;
-          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-          transition: transform 0.3s ease, opacity 0.3s ease;
-          }
-          
-          #backToTop:hover {
-          transform: scale(1.1);
-          opacity: 0.9;
-          box-shadow: rgba(0,0,0,0.8);
-          }
-          
-          @media (max-width: 600px) {
-          #backToTop {
-            padding: 12px;
-            font-size: 16px;
-            bottom: 20px;
-            right: 20px;
-          }
-          }
-
-    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-toggle { display: block; font-size: 1.5rem; cursor: pointer; }
+    }
   </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="landing-nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-book-open"></i>
-                <span>Research Paper Organizer</span>
-            </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
-                <a href="about.html">About</a>
-                <a href="tools.html">Tools</a>
-                <a href="contact.html">Contact</a>
-                
-                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
-            </div>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </nav>
 
-  <!-- Hero / Mission -->
+  <!-- Navbar -->
+  <nav class="landing-nav">
+    <div class="nav-container">
+      <div class="nav-brand"><i class="fas fa-book-open"></i> Research Paper Organizer</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="tools.html">Tools</a>
+        <a href="contact.html">Contact</a>
+        <button class="btn-primary" onclick="location.href='signup.html'">Get Started</button>
+      </div>
+      <div class="mobile-menu-toggle"><i class="fas fa-bars"></i></div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
   <section class="masthead-hero">
     <h1>Meet the Minds Behind Research Paper Organizer</h1>
-    <p>Our mission is to empower researchers and students with a streamlined, intelligent platform to organize, manage, and cite research papers effortlessly.</p>
+    <p>Our team of researchers, developers, and advisors is dedicated to building smarter academic tools.</p>
   </section>
 
   <!-- Core Team -->
   <section class="section">
     <h2>Core Team</h2>
     <div class="team-grid">
-      <div class="team-card">
-        <img src="team1.jpg" alt="Team Member">
-        <h3>Dr. Sarah Lee</h3>
-        <p class="role">Lead Researcher</p>
-        <p>Specialist in AI & NLP with 10+ years of academic and industry experience.</p>
-      </div>
-      <div class="team-card">
-        <img src="team2.jpg" alt="Team Member">
-        <h3>Michael Chen</h3>
-        <p class="role">Full-Stack Developer</p>
-        <p>Developer passionate about building scalable, user-friendly research tools.</p>
-      </div>
-      <div class="team-card">
-        <img src="team3.jpg" alt="Team Member">
-        <h3>Ananya Sharma</h3>
-        <p class="role">Product Designer</p>
-        <p>Focused on creating intuitive, beautiful, and accessible academic tools.</p>
-      </div>
+      <div class="team-card"><img src="https://randomuser.me/api/portraits/women/44.jpg
+"><h3>Dr. Sarah Lee</h3><p class="role">Lead Researcher</p><p>AI & NLP specialist with 10+ years of experience.</p></div>
+      <div class="team-card"><img src="https://randomuser.me/api/portraits/men/32.jpg
+"><h3>Michael Chen</h3><p class="role">Full-Stack Developer</p><p>Passionate about scalable, user-friendly tools.</p></div>
+      <div class="team-card"><img src="https://randomuser.me/api/portraits/women/12.jpg
+
+"><h3>Ananya Sharma</h3><p class="role">Product Designer</p><p>Creates intuitive, accessible academic tools.</p></div>
     </div>
   </section>
 
-  <!-- Advisors (Optional) -->
+  <!-- Advisors -->
   <section class="section">
-    <h2>Advisors & Sponsors</h2>
+    <h2>Advisors</h2>
     <div class="team-grid">
-      <div class="team-card">
-        <img src="advisor1.jpg" alt="Advisor">
-        <h3>Prof. James Brown</h3>
-        <p class="role">Advisor</p>
-        <p>Renowned academic with expertise in digital libraries and open-source research.</p>
-      </div>
+      <div class="team-card"><img src="https://randomuser.me/api/portraits/men/82.jpg
+"><h3>Prof. James Brown</h3><p class="role">Advisor</p><p>Expert in digital libraries & open-source research.</p></div>
     </div>
   </section>
 
-  <!-- Contact Info -->
+  <!-- Contact -->
   <section class="section">
-    <h2>Contact & Project Info</h2>
+    <h2>Contact & Info</h2>
     <div class="contact">
       <p>We’d love to hear from you. Reach out anytime!</p>
-      <div>
-        <a href="mailto:team@researchorganizer.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/your-repo" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <p class="version">Version 1.0 • Launched Jan 2025</p>
+      <a href="mailto:team@researchorganizer.com"><i class="fas fa-envelope"></i></a>
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <p style="margin-top: 10px; color: var(--text-light);">Version 1.0 • Jan 2025</p>
     </div>
   </section>
 
-  <!-- Back to Top Button -->
+  <!-- Back to Top -->
   <button id="backToTop">↑</button>
 
-   <!-- Footer -->
-   <footer class="landing-footer">
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-brand">
-                <i class="fas fa-book-open"></i>
-                <span>Research Paper Organizer</span>
-            </div>
-            <div class="footer-links">
-                <div class="footer-section">
-                    <h4>Product</h4>
-                    <a href="#features">Features</a>
-                    <a href="#how-it-works">How it Works</a>
-                    <a href="pricing.html">Pricing</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <a href="Faq.html">FAQ</a>
-                    <a href="contact.html">Contact</a>
-                    <a href="blog.html">Blog</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <a href="about.html">About Us</a>
-                    <a href="open-source.html">Open Source</a>
-                    <a href="glossary.html">Glossary</a>
-                    <a href="Masthead.html">Masthead</a>
-                </div>
-            </div>
+  <!-- Footer -->
+  <!-- Modern Footer -->
+  <footer class="modern-footer" aria-label="Footer">
+    <div class="footer-top">
+      <div class="footer-brand footer-card">
+        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
+      </div>
+
+      <div class="footer-links-section footer-card" >
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+          <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-section footer-card">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
+          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+           
+        </ul>
+      </div>
+
+      <div class="footer-links-section footer-card">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Research Paper Organizer. All rights reserved.</p>
-            <div class="social-links">
-                <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
+      </div>
     </div>
-</footer>
+
+    <div class="footer-bottom">
+  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
+</div>
+
+  </footer>
 
 
-  <!-- ===== Scroll Animation JS ===== -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const cards = document.querySelectorAll(".team-card");
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add("show");
-        });
-      }, { threshold: 0.1 });
+    // Reveal animation
+    const cards = document.querySelectorAll(".team-card");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add("show"); });
+    }, { threshold: 0.2 });
+    cards.forEach(c => observer.observe(c));
 
-      cards.forEach(card => observer.observe(card));
+    // Back to Top
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => { 
+      backToTop.style.display = window.scrollY > 150 ? "block" : "none"; 
     });
-          //back to top button 
-// Show button when scrolled down
-const backToTop = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    backToTop.style.display = "block";
-  } else {
-    backToTop.style.display = "none";
-  }
-});
-
-// Smooth scroll to top
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+    backToTop.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
   </script>
 </body>
 </html>

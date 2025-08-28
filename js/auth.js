@@ -29,16 +29,16 @@ class AuthSystem {
       darkModeToggle.className = 'auth-dark-toggle';
       darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
       darkModeToggle.onclick = () => this.toggleDarkMode();
-      
+
       // Position it in the top-right corner
       darkModeToggle.style.position = 'absolute';
       darkModeToggle.style.top = '1rem';
       darkModeToggle.style.right = '1rem';
-      
+
       // Make the auth-card relative positioned
       document.querySelector('.auth-card').style.position = 'relative';
       document.querySelector('.auth-card').appendChild(darkModeToggle);
-      
+
       // Update icon based on current theme
       this.updateDarkModeIcon();
     }
@@ -53,7 +53,7 @@ class AuthSystem {
   updateDarkModeIcon() {
     const toggle = document.querySelector('.auth-dark-toggle i');
     const isDark = document.body.classList.contains('dark-mode');
-    
+
     if (toggle) {
       if (isDark) {
         toggle.classList.remove('fa-moon');
@@ -102,7 +102,7 @@ class AuthSystem {
 
   async handleLogin(e) {
     e.preventDefault();
-    
+
     const email = document.getElementById('loginEmail').value.trim();
     const password = document.getElementById('loginPassword').value;
     const rememberMe = document.getElementById('rememberMe').checked;
@@ -113,7 +113,7 @@ class AuthSystem {
     }
 
     const user = this.users.find(u => u.email.toLowerCase() === email.toLowerCase());
-    
+
     if (!user || user.password !== password) {
       this.showError('Invalid email or password');
       return;
@@ -133,7 +133,7 @@ class AuthSystem {
 
   async handleSignup(e) {
     e.preventDefault();
-    
+
     const name = document.getElementById('signupName').value.trim();
     const email = document.getElementById('signupEmail').value.trim();
     const password = document.getElementById('signupPassword').value;
@@ -143,7 +143,23 @@ class AuthSystem {
       this.showError('User with this email already exists');
       return;
     }
-    
+    const validDomains = ["gmail.com", "yahoo.com", "outlook.com", "hotmail.com"];
+
+    // Extract domain
+    const emailDomain = email.split("@")[1];
+
+    //  Reject wrong / fake domains like gml.com, yahhoo.com
+    if (!emailDomain || !validDomains.includes(emailDomain.toLowerCase())) {
+      this.showError(`Invalid email domain. Please use: ${validDomains.join(", ")}`);
+      return;
+    }
+
+    // Check duplicate user
+    if (this.users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+      this.showError('User with this email already exists');
+      return;
+    }
+
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
@@ -161,14 +177,11 @@ class AuthSystem {
     this.saveUsers();
 
     setTimeout(() => {
-        this.showSuccess('Account created successfully!', () => {
-            window.location.href = 'login.html';
-        });
+      this.showSuccess('Account created successfully!', () => {
+        window.location.href = 'login.html';
+      });
     }, 1500);
   }
-
-
-
 
   showError(message) {
     Swal.fire({
@@ -201,7 +214,7 @@ class AuthSystem {
 function togglePassword(inputId) {
   const input = document.getElementById(inputId);
   const icon = input.parentElement.querySelector('.password-toggle i');
-  
+
   if (input.type === 'password') {
     input.type = 'text';
     icon.classList.remove('fa-eye');
@@ -214,6 +227,16 @@ function togglePassword(inputId) {
 }
 
 // Initialize auth system
+// In js/auth.js, find the DOMContentLoaded listener and update it
+
 document.addEventListener('DOMContentLoaded', () => {
   new AuthSystem();
+
+  const googleButtons = document.querySelectorAll('.google-btn');
+  googleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Redirect to the backend Google auth route
+      window.location.href = 'http://localhost:3000/api/auth/google';
+    });
+  });
 });

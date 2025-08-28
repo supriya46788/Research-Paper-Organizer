@@ -3,12 +3,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
-    
-    if (mobileMenuToggle) {
+    const links = document.querySelectorAll('.nav-links a');
+
+     if (mobileMenuToggle && navLinks) {
         mobileMenuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('mobile-active');
+            // Toggle active class to show/hide menu
+            navLinks.classList.toggle('active');
         });
     }
+
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
 
     // Smooth scroll for anchor links
     function scrollToFeatures() {
@@ -46,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Add fade-in class to elements
+    // Add fade-in class to feature cards, steps, and stats
     document.querySelectorAll('.feature-card, .step, .stat-item').forEach(el => {
         el.classList.add('fade-in');
     });
@@ -81,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Utility functions
 function scrollToSection(sectionId) {
     document.getElementById(sectionId).scrollIntoView({
-        behavior: 'smooth'
+        behavior: 'smooth',
     });
 }
 

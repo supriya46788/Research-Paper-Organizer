@@ -5,8 +5,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ | Research Paper Organizer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/faq.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/faq.css">
+    <style>
+         .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  flex-wrap: wrap;
+}
+.hamburger-container {
+  display: none;
+  flex-direction: column;
+  /* justify-content: center; */
+  cursor: pointer;
+  gap: 5px;
+  padding: 10px;
+}
+
+.hamburger-container .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: 0.3s;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hamburger-container {
+    display: flex;
+  }
+
+ 
+  .navbar {
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .navbar-right-links {
+    display: none;
+    position: absolute;
+    top: 70px;              /* adjust depending on navbar height */
+    right: 10px;  
+    margin:15px;          /* aligns the box to the right */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1000;
+    width: max-content;     /* only as wide as content */
+    min-width: 150px;  
+  }
+
+  .navbar-right-links.show {
+    display: flex;
+  }
+
+  .nav-item {
+    display: inline-flex;           /* Ensures icon and text are in a row */
+  align-items: center;           /* Vertical centering */
+  justify-content: center;
+    padding: 1rem;
+    width:10rem;
+    font-size: 1rem;
+    
+  }
+}
+
+
+    </style>
 </head>
 <body>
     <div class="container">
@@ -16,6 +91,12 @@
                 <i class="fas fa-home"></i>
                 Home
             </a>
+             <!-- Hamburger div (shows only on mobile) -->
+  <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
 
             <div class="navbar-right-links">
                 <a href="about.html" class="nav-item">About us</a>
@@ -28,9 +109,17 @@
                 </button>
             </div>
         </nav>
+            <h1 class="faq-title"> Frequently Asked Questions </h1>
+
+            <div class="question-paragraph">
+            <i class="fa-solid fa-circle-question"></i>
+            <span class="para"><p>Do you have question in mind ?</p>
+            <p>Know everything about Research Paper Organizer</p></span>
+            </div>
+           
 
         <div class="faq-container">
-        <h1 class="faq-title">Frequently Asked Questions</h1>
+    
         <div class="faq-list">
             <!-- Existing Questions -->
             <div class="faq-item">
@@ -136,6 +225,52 @@
         </div>
     </div>
 
+      <!-- Modern Footer -->
+  <footer class="modern-footer" aria-label="Footer">
+    <div class="footer-top">
+      <div class="footer-brand footer-card">
+        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
+      </div>
+
+      <div class="footer-links-section footer-card" >
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+          <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-section footer-card">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
+          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-section footer-card">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
+  <i class="fab fa-linkedin" style="color: white;"></i>
+</a>
+          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
+</div>
+
+  </footer>
+
+
     <!-- Back to Top Button -->
     <button id="backToTop">↑</button>
     <style>/* Back to Top Button Styles */
@@ -175,6 +310,10 @@
 
     <script src="js/faq.js"></script>
     <script>
+        function toggleMenu() {
+    const nav = document.querySelector(".navbar-right-links");
+    nav.classList.toggle("show");
+  }
         // Dark Mode Toggle Function
         function toggleDarkMode() {
             const body = document.body;
