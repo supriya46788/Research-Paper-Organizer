@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Paper Organiser - Tag Filtering</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fb;
+      margin: 0;
+      padding: 0;
+      transition: background 0.3s, color 0.3s;
+    }
+
+/* ===== Navbar ===== */
+/* ===== Navbar ===== */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background: #e9f1fd;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-left, .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* 🔑 Remove underline + force white text */
+nav a,
+nav a:link,
+nav a:visited,
+nav a:hover,
+nav a:active {
+  text-decoration: none !important;
+  color: white !important;   /* Always white */
+}
+
+.nav-left .btn,
+.nav-right .btn {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white !important;   /* Force text white */
+  border: none;
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-left .btn:hover,
+.nav-right .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+}
+
+    /* Dark Mode Toggle */
+    .toggle {
+      background: white;
+      border-radius: 6px;
+      border: none;
+      padding: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Dark mode styles */
+    body.dark {
+      background: #1e293b;
+      color: #f8fafc;
+    }
+
+    body.dark nav {
+      background: #334155;
+    }
+
+    body.dark .paper {
+      background: #334155;
+      color: #f8fafc;
+    }
+
+    /* Responsive Navbar */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    /* ===== Existing styles kept below ===== */
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin: 25px 0;
+      font-size: 2.2em;
+      letter-spacing: 1px;
+    }
+
+    .tags {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #ecf0f1;
+      color: #2c3e50;
+      padding: 8px 16px;
+      border-radius: 25px;
+      margin: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.25s ease-in-out;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .tag:hover {
+      background: #3498db;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .papers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      padding: 0 30px 40px;
+    }
+
+    .paper {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0px 6px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border-top: 4px solid #3498db;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .paper:hover {
+      transform: translateY(-8px);
+      box-shadow: 0px 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .paper h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: #2c3e50;
+    }
+
+    .paper .authors {
+      font-size: 14px;
+      color: #7f8c8d;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .paper .abstract {
+      font-size: 14px;
+      color: #34495e;
+      line-height: 1.5;
+      flex-grow: 1;
+      margin-bottom: 15px;
+    }
+
+    .paper .paper-tags {
+      font-size: 13px;
+      font-weight: bold;
+      color: #2980b9;
+      background: #ecf5ff;
+      padding: 5px 10px;
+      border-radius: 8px;
+      display: inline-block;
+      align-self: flex-start;
+    }
+
+    @media (max-width: 1200px) {
+      .papers {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .papers {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .papers {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ===== Navbar ===== -->
+  <nav>
+    <div class="nav-left">
+      <a href="index.html"><button class="btn">🏠 Home</button></a>
+    
+
+    </div>
+    <div class="nav-right">
+      <a href="about.html"><button class="btn">About Us</button></a>
+      <a href="blog.html"><button class="btn">Blogs</button></a>
+      <a href="Faq.html"><button class="btn">FAQ</button></a>
+      <a href="contact.html"><button class="btn">Contact Us</button></a>
+      <a href="tools.html"><button class="btn">Tools</button></a>
+      <button class="toggle" onclick="toggleDark()">🌙</button></a>
+    </div>
+  </nav>
+
+  <!-- ===== Heading ===== -->
+  <h1>📚 Research Paper Organiser</h1>
+
+  <!-- ===== Tag Filter ===== -->
+  <div class="tags">
+    <span class="tag" onclick="filterPapers('all')">All</span>
+    <span class="tag" onclick="filterPapers('AI')">AI</span>
+    <span class="tag" onclick="filterPapers('ML')">ML</span>
+    <span class="tag" onclick="filterPapers('NLP')">NLP</span>
+    <span class="tag" onclick="filterPapers('CV')">Computer Vision</span>
+    <span class="tag" onclick="filterPapers('Robotics')">Robotics</span>
+    <span class="tag" onclick="filterPapers('Healthcare')">Healthcare</span>
+    <span class="tag" onclick="filterPapers('DataScience')">Data Science</span>
+  </div>
+
+  <!-- ===== Papers Grid ===== -->
+  <div class="papers" id="papers">
+    <div class="paper" data-tags="AI ML">
+      <h3>Neural Networks</h3>
+      <p class="authors">John Doe, MIT</p>
+      <p class="abstract">Explores the fundamentals of neural networks and their applications in pattern recognition and classification.</p>
+      <p class="paper-tags">AI, ML</p>
+    </div>
+
+    <div class="paper" data-tags="NLP AI">
+      <h3>Transformer Models</h3>
+      <p class="authors">Jane Smith, Stanford</p>
+      <p class="abstract">Introduction to transformer architectures for NLP tasks like translation, summarization, and Q&A systems.</p>
+      <p class="paper-tags">NLP, AI</p>
+    </div>
+
+    <div class="paper" data-tags="CV ML">
+      <h3>Image Recognition</h3>
+      <p class="authors">Alan Turing, Oxford</p>
+      <p class="abstract">A study on convolutional neural networks and their impact on modern computer vision applications.</p>
+      <p class="paper-tags">CV, ML</p>
+    </div>
+
+    <div class="paper" data-tags="AI">
+      <h3>Explainable AI</h3>
+      <p class="authors">Rachel Green, Google AI</p>
+      <p class="abstract">Techniques to make AI models interpretable, ensuring transparency and trustworthiness in AI systems.</p>
+      <p class="paper-tags">AI</p>
+    </div>
+
+    <div class="paper" data-tags="Robotics AI">
+      <h3>AI in Robotics</h3>
+      <p class="authors">Mike Johnson, CMU</p>
+      <p class="abstract">Integration of AI algorithms in robotics for navigation, control, and real-time decision-making.</p>
+      <p class="paper-tags">Robotics, AI</p>
+    </div>
+
+    <div class="paper" data-tags="Healthcare AI ML">
+      <h3>AI for Healthcare</h3>
+      <p class="authors">Dr. Priya Mehta, Harvard</p>
+      <p class="abstract">AI-powered diagnostic systems for early disease detection and personalized treatment recommendations.</p>
+      <p class="paper-tags">Healthcare, AI, ML</p>
+    </div>
+
+    <div class="paper" data-tags="DataScience ML">
+      <h3>Big Data Analytics</h3>
+      <p class="authors">Wei Zhang, Tsinghua</p>
+      <p class="abstract">Efficient frameworks and ML pipelines for processing and analyzing large-scale datasets.</p>
+      <p class="paper-tags">DataScience, ML</p>
+    </div>
+
+    <div class="paper" data-tags="NLP">
+      <h3>Sentiment Analysis</h3>
+      <p class="authors">Maria Lopez, Toronto</p>
+      <p class="abstract">Using NLP and deep learning techniques to determine sentiment polarity in text data.</p>
+      <p class="paper-tags">NLP</p>
+    </div>
+
+    <div class="paper" data-tags="CV AI">
+      <h3>Object Detection</h3>
+      <p class="authors">Kevin White, Meta AI</p>
+      <p class="abstract">YOLO and Faster R-CNN models for real-time object detection in images and videos.</p>
+      <p class="paper-tags">CV, AI</p>
+    </div>
+
+    <div class="paper" data-tags="Robotics ML">
+      <h3>Reinforcement Learning for Robots</h3>
+      <p class="authors">Hiro Tanaka, Tokyo Univ</p>
+      <p class="abstract">Applying RL algorithms to train robots for complex real-world tasks in dynamic environments.</p>
+      <p class="paper-tags">Robotics, ML</p>
+    </div>
+  </div>
+
+  <script>
+    function filterPapers(tag) {
+      const papers = document.querySelectorAll('.paper');
+      papers.forEach(paper => {
+        const tags = paper.getAttribute('data-tags').split(' ');
+        if (tag === 'all' || tags.includes(tag)) {
+          paper.style.display = 'flex';
+        } else {
+          paper.style.display = 'none';
+        }
+      });
+    }
+
+    // Dark mode toggle
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
