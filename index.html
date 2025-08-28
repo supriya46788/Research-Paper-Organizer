@@ -16,14 +16,25 @@
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen">
+      <div class="loading-background-animation"></div>
       <div class="loader">
         <div class="spinner-container">
           <i class="fa-solid fa-spinner"></i>
           <div class="spinner-ring"></div>
+          <div class="particle-system">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+          </div>
         </div>
         <h2 id="loading-text">Organizing your thoughts<span class="dots"></span></h2>
       </div>
-      <div class="loading-progress"></div>
+      <div class="loading-progress">
+        <div class="progress-percentage">0%</div>
+      </div>
     </div>
     <!-- Navigation -->
 
@@ -744,6 +755,7 @@ border-top-color: rgba(224, 224, 224, 0.1);
       document.addEventListener("DOMContentLoaded", function () {
         const loadingScreen = document.getElementById("loading-screen");
         const loadingText = document.getElementById("loading-text");
+        const progressPercentage = document.querySelector(".progress-percentage");
 
         const texts = [
           "Organizing your thoughts...", 
@@ -753,50 +765,64 @@ border-top-color: rgba(224, 224, 224, 0.1);
         ];
 
         let index = 0;
+        let progress = 0;
 
         // Enhanced text transition function
         function updateLoadingText() {
           index = (index + 1) % texts.length;
           
-          // Add smooth slide out effect
-          loadingText.style.transform = "translateY(-20px)";
+          // Add smooth slide out effect with bounce
+          loadingText.style.transform = "translateY(-25px) scale(0.95)";
           loadingText.style.opacity = "0";
           
           setTimeout(() => {
             loadingText.innerHTML = texts[index] + '<span class="dots"></span>';
-            loadingText.style.transform = "translateY(20px)";
+            loadingText.style.transform = "translateY(25px) scale(0.95)";
             
             // Trigger reflow to ensure transform is applied
             loadingText.offsetHeight;
             
-            // Slide in with smooth transition
-            loadingText.style.transform = "translateY(0)";
+            // Slide in with smooth transition and bounce
+            loadingText.style.transform = "translateY(0) scale(1)";
             loadingText.style.opacity = "1";
           }, 300);
         }
 
+        // Update progress percentage
+        function updateProgress() {
+          progress = Math.min(progress + Math.random() * 15 + 10, 100);
+          if (progressPercentage) {
+            progressPercentage.textContent = Math.round(progress) + "%";
+          }
+          
+          if (progress < 100) {
+            setTimeout(updateProgress, 1200 + Math.random() * 800);
+          }
+        }
+
+        // Enhanced entrance animation
+        setTimeout(() => {
+          loadingScreen.classList.add("show");
+          updateProgress();
+        }, 100);
+
         // Change text every 2.5 seconds for better rhythm
         const textInterval = setInterval(updateLoadingText, 2500);
-
-        // Add entrance animation
-        setTimeout(() => {
-          loadingScreen.style.transform = "scale(1)";
-          loadingScreen.style.opacity = "1";
-        }, 100);
 
         // Hide loading screen after 6 seconds with enhanced exit animation
         setTimeout(() => {
           clearInterval(textInterval); // stop changing text
           
-          // Add exit preparation
-          loadingScreen.style.transform = "scale(1.05)";
+          // Add exit preparation with scale and rotation
+          loadingScreen.style.transform = "scale(1.08) rotate(1deg)";
+          loadingScreen.style.filter = "blur(1px)";
           
           setTimeout(() => {
             loadingScreen.classList.add("hidden");
             //after that added sideLeft and slide right animation
             document.querySelector(".hero-content").classList.add("animate");
             document.querySelector(".hero-image").classList.add("animate");
-          }, 200);
+          }, 300);
         }, 6000); // adjust as needed
       }); 
 
