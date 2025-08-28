@@ -469,7 +469,8 @@ function showPaperDetails() {
         <div class="detail-section">
             <div class="rating-favorite-details">
                 <div class="rating-display">
-                    <span style="font-weight: 500; color: #374151;">Rating:</span>
+                   <span class="detail-label">Rating:</span>
+
                     ${
                       selectedPaper.rating > 0
                         ? `
@@ -484,7 +485,8 @@ function showPaperDetails() {
                     }
                 </div>
                 <div class="favorite-display">
-                    <span style="font-weight: 500; color: #374151;">Favorite:</span>
+                   <span class="detail-label">Favorite:</span>
+
                     ${
                       selectedPaper.isFavorite
                         ? `<span class="paper-favorite"><i class="fas fa-heart"></i> Yes</span>`
@@ -535,7 +537,7 @@ function showPaperDetails() {
               selectedPaper.year
                 ? `
             <div>
-                <span style="font-weight: 500; color: #374151;">Year:</span>
+               <span class="detail-label">Year:</span>
                 <p>${selectedPaper.year}</p>
             </div>
             `
@@ -545,7 +547,7 @@ function showPaperDetails() {
               selectedPaper.journal
                 ? `
             <div>
-                <span style="font-weight: 500; color: #374151;">Journal:</span>
+               <span class="detail-label">Journal:</span>
                 <p>${selectedPaper.journal}</p>
             </div>
             `
@@ -607,7 +609,19 @@ function showPaperDetails() {
         </div>
     `;
 }
+// ✅ Apply dark mode if active
+if (document.body.classList.contains("dark-mode")) {
+    detailsContent.classList.add("dark-mode");
 
+    // 👇 Make labels readable in dark mode
+    detailsContent.querySelectorAll('.rating-display span, .favorite-display span, .details-grid span').forEach(el => el.style.color = "#dcdce6");
+
+} else {
+    detailsContent.classList.remove("dark-mode");
+
+    // 👇 Reset labels back for light mode
+    detailsContent.querySelectorAll('.rating-display span, .favorite-display span, .details-grid span').forEach(el => el.style.color = "#374151");
+}
 // Close paper details
 function closeDetails() {
   selectedPaper = null;
