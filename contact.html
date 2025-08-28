@@ -1,213 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Research Paper Organizer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Research Paper Organizer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    crossorigin="anonymous" />
+  <script>
+    (function () {
+      emailjs.init("YOUR_PUBLIC_KEY_HERE"); // Replace with your EmailJS public API key
+    })();
+  </script>
   <style>
-  .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  flex-wrap: wrap;
-}
-.hamburger-container {
-  display: none;
-  flex-direction: column;
-  /* justify-content: center; */
-  cursor: pointer;
-  gap: 5px;
-  padding: 10px;
-}
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      flex-wrap: wrap;
+    }
 
-.hamburger-container .bar {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  transition: 0.3s;
-}
+    .hamburger-container {
+      display: none;
+      flex-direction: column;
+      /* justify-content: center; */
+      cursor: pointer;
+      gap: 5px;
+      padding: 10px;
+    }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  .hamburger-container {
-    display: flex;
-  }
+    .hamburger-container .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      transition: 0.3s;
+    }
 
- 
-  .navbar {
-    display: flex;
-   justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    position: relative;
-  }
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .hamburger-container {
+        display: flex;
+      }
 
-  .navbar-right-links {
-    display: none;
-    position: absolute;
-    top: 70px;              /* adjust depending on navbar height */
-    right: 10px;  
-    margin:15px;          /* aligns the box to the right */
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    flex-direction: column;
-    gap: 0.75rem;
-    z-index: 1000;
-    width: max-content;     /* only as wide as content */
-    min-width: 150px;  
-  }
 
-  .navbar-right-links.show {
-    display: flex;
-  }
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        position: relative;
+      }
 
-  .nav-item {
-    display: inline-flex;           /* Ensures icon and text are in a row */
-  align-items: center;           /* Vertical centering */
-  justify-content: center;
-    padding: 1rem;
-    width:10rem;
-    font-size: 1rem;
-    
-  }
-}
+      .navbar-right-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        /* adjust depending on navbar height */
+        right: 10px;
+        margin: 15px;
+        /* aligns the box to the right */
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
+        z-index: 1000;
+        width: max-content;
+        /* only as wide as content */
+        min-width: 150px;
+      }
 
+      .navbar-right-links.show {
+        display: flex;
+      }
+
+      .nav-item {
+        display: inline-flex;
+        /* Ensures icon and text are in a row */
+        align-items: center;
+        /* Vertical centering */
+        justify-content: center;
+        padding: 1rem;
+        width: 10rem;
+        font-size: 1rem;
+
+      }
+    }
   </style>
 </head>
 
 <body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="navbar">
-            <a href="index.html" class="nav-item">
-                <i class="fas fa-home"></i>
-                Home
-            </a>
-            <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
-              <div class="bar"></div>
-              <div class="bar"></div>
-              <div class="bar"></div>
-            </div>
-            <div class="navbar-right-links">
-                <a href="about.html" class="nav-item">About us</a>
-                <a href="blog.html" class="nav-item">Blogs</a>
-                <a href="Faq.html" class="nav-item">FAQ</a>
-                <a href="contact.html" class="nav-item">Contact Us</a>
-                <a href="tools.html" class="nav-item">Tools</a>
-                <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
-        </nav>
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <a href="index.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        Home
+      </a>
+      <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <div class="navbar-right-links">
+        <a href="about.html" class="nav-item">About us</a>
+        <a href="blog.html" class="nav-item">Blogs</a>
+        <a href="Faq.html" class="nav-item">FAQ</a>
+        <a href="contact.html" class="nav-item">Contact Us</a>
+        <a href="tools.html" class="nav-item">Tools</a>
+        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </nav>
 
-        <!-- Hero Section -->
-        <div class="contact-hero">
-            <div class="hero-content">
-                <h1 class="hero-title">Get in Touch</h1>
-                <p class="hero-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-            </div>
-            <div class="hero-decoration">
-                <i class="fas fa-envelope"></i>
-            </div>
-        </div>
-
-
-        <!-- Contact Section -->
-        <div class="contact-container">
-            <!-- Contact Information -->
-            <div class="contact-info">
-                <h2>Contact Information</h2>
-                <div class="info-cards">
-                    <div class="info-card">
-                        <div class="card-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Email</h3>
-                            <p>research@organizer.com</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="card-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Response Time</h3>
-                            <p>Within 24 hours</p>
-                        </div>
-                    </div>
-                    <div class="info-card">
-                        <div class="card-icon">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Support</h3>
-                            <p>24/7 Online Support</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Contact Form -->
-            <div class="contact-form-box">
-                <h2 class="contact-title">Send us a Message</h2>
-                <p class="contact-subtitle">Fill out the form below and we'll get back to you promptly</p>
-                <form id="contact-form" class="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
-                            <label for="name" class="form-label">
-                                <i class="fas fa-user"></i>
-                                Name
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
-                            <label for="email" class="form-label">
-                                <i class="fas fa-envelope"></i>
-                                Email
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" class="form-input" placeholder=" " required>
-                        <label for="subject" class="form-label">
-                            <i class="fas fa-tag"></i>
-                            Subject
-                        </label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" class="form-textarea" rows="5" placeholder=" " required></textarea>
-                        <label for="message" class="form-label">
-                            <i class="fas fa-comment"></i>
-                            Message
-                        </label>
-                    </div>
-                    <button type="submit" class="submit-btn">
-                        <span class="submit-text">
-                            <i class="fas fa-paper-plane"></i>
-                            Send Message
-                        </span>
-                        <span class="loading-spinner hidden"><i class="fas fa-spinner fa-spin"></i></span>
-                    </button>
-                </form>
-            </div>
-        </div>
+    <!-- Hero Section -->
+    <div class="contact-hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Get in Touch</h1>
+        <p class="hero-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+        </p>
+      </div>
+      <div class="hero-decoration">
+        <i class="fas fa-envelope"></i>
+      </div>
     </div>
-      <!-- Back to Top Button -->
-    <button id="backToTop">
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
-    <!-- Footer -->
+
+
+    <!-- Contact Section -->
+    <div class="contact-container">
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="card-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="card-content">
+              <h3>Email</h3>
+              <p>research@organizer.com</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="card-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="card-content">
+              <h3>Response Time</h3>
+              <p>Within 24 hours</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <div class="card-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <div class="card-content">
+              <h3>Support</h3>
+              <p>24/7 Online Support</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-box">
+        <h2 class="contact-title">Send us a Message</h2>
+        <p class="contact-subtitle">Fill out the form below and we'll get back to you promptly</p>
+        <form id="contact-form" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
+              <label for="name" class="form-label">
+                <i class="fas fa-user"></i>
+                Name
+              </label>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
+              <label for="email" class="form-label">
+                <i class="fas fa-envelope"></i>
+                Email
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" id="subject" name="subject" class="form-input" placeholder=" " required>
+            <label for="subject" class="form-label">
+              <i class="fas fa-tag"></i>
+              Subject
+            </label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" class="form-textarea" rows="5" placeholder=" " required></textarea>
+            <label for="message" class="form-label">
+              <i class="fas fa-comment"></i>
+              Message
+            </label>
+          </div>
+          <button type="submit" class="submit-btn">
+            <span class="submit-text">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </span>
+            <span class="loading-spinner hidden"><i class="fas fa-spinner fa-spin"></i></span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Back to Top Button -->
+  <button id="backToTop">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+  <!-- Footer -->
   <footer class="modern-footer" aria-label="Footer">
     <div class="footer-top">
       <div class="footer-brand footer-card">
@@ -215,7 +229,7 @@
         <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
       </div>
 
-      <div class="footer-links-section footer-card" >
+      <div class="footer-links-section footer-card">
         <h4>Quick Links</h4>
         <ul>
           <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
@@ -238,83 +252,84 @@
         <h4>Connect</h4>
         <div class="social-icons">
           <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-  <i class="fab fa-linkedin" style="color: white;"></i>
-</a>
+          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
+            <i class="fab fa-linkedin" style="color: white;"></i>
+          </a>
           <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
     </div>
 
     <div class="footer-bottom">
-  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-</div>
+      © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
+    </div>
 
   </footer>
 
-  
-  
-    </div>
-    </div>
 
 
-    <script src="js/contact.js"></script>
-    <script>
-       function toggleMenu() {
-    const nav = document.querySelector(".navbar-right-links");
-    nav.classList.toggle("show");
-  }
-      //back to top button 
-     // Show button when scrolled down
-     const backToTop = document.getElementById("backToTop");
-     
-     // Show/hide button with fade
-     window.addEventListener("scroll", () => {
-       if (window.scrollY > 100) {
-         backToTop.classList.add("show");
-       } else {
-         backToTop.classList.remove("show");
-       }
-     });
-     
-     // Smooth scroll to top
-     backToTop.addEventListener("click", () => {
-       window.scrollTo({ top: 0, behavior: "smooth" });
-     });
-     </script>
-    <script>
-        // Dark Mode Toggle Function
-        function toggleDarkMode() {
-            const body = document.body;
-            const darkToggle = document.getElementById('darkModeToggle');
-            const icon = darkToggle.querySelector('i');
-            
-            body.classList.toggle('dark-mode');
-            
-            // Update icon
-            if (body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                localStorage.setItem('darkMode', 'disabled');
-            }
-        }
+  </div>
+  </div>
 
-        // Load dark mode preference on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const darkMode = localStorage.getItem('darkMode');
-            const darkToggle = document.getElementById('darkModeToggle');
-            const icon = darkToggle.querySelector('i');
-            
-            if (darkMode === 'enabled') {
-                document.body.classList.add('dark-mode');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        });
-    </script>
+
+  <script src="js/contact.js"></script>
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".navbar-right-links");
+      nav.classList.toggle("show");
+    }
+    //back to top button 
+    // Show button when scrolled down
+    const backToTop = document.getElementById("backToTop");
+
+    // Show/hide button with fade
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
+    });
+
+    // Smooth scroll to top
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+  <script>
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+      const body = document.body;
+      const darkToggle = document.getElementById('darkModeToggle');
+      const icon = darkToggle.querySelector('i');
+
+      body.classList.toggle('dark-mode');
+
+      // Update icon
+      if (body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    }
+
+    // Load dark mode preference on page load
+    document.addEventListener('DOMContentLoaded', function () {
+      const darkMode = localStorage.getItem('darkMode');
+      const darkToggle = document.getElementById('darkModeToggle');
+      const icon = darkToggle.querySelector('i');
+
+      if (darkMode === 'enabled') {
+        document.body.classList.add('dark-mode');
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      }
+    });
+  </script>
 </body>
+
 </html>
