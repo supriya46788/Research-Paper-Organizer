@@ -695,8 +695,55 @@ html,body{
   align-items: center;
   z-index: 9999;
   transition: all var(--animation-extra-slow) var(--easing-standard);
+  transform: scale(0.9);
+  opacity: 0;
+  overflow: hidden;
+}
+
+#loading-screen.show {
   transform: scale(1);
   opacity: 1;
+  animation: loadingEntrance 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes loadingEntrance {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Enhanced background animation */
+.loading-background-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+  animation: backgroundPulse 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes backgroundPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
 }
 
 #loading-text {
@@ -713,6 +760,7 @@ html,body{
 .loader {
   text-align: center;
   position: relative;
+  z-index: 10;
 }
 
 .loader .spinner-container {
@@ -723,12 +771,117 @@ html,body{
 
 .loader i {
   font-size: 4.5rem;
-  animation: spin 1.5s linear infinite;
+  animation: enhancedSpin 2s ease-in-out infinite;
   position: relative;
   z-index: 2;
-  filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.2));
+  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
+  color: rgba(59, 130, 246, 0.9);
 }
 
+@keyframes enhancedSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
+  }
+  25% {
+    transform: rotate(90deg) scale(1.1);
+    filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.6));
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+    filter: drop-shadow(0 0 25px rgba(139, 92, 246, 0.5));
+  }
+  75% {
+    transform: rotate(270deg) scale(1.1);
+    filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.6));
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.4));
+  }
+}
+
+/* Particle System */
+.particle-system {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.8) 0%, rgba(59, 130, 246, 0.3) 70%, transparent 100%);
+  border-radius: 50%;
+  animation: floatParticle 3s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+  top: 20%;
+  left: 30%;
+  animation-delay: -0.5s;
+  animation-duration: 2.5s;
+}
+
+.particle:nth-child(2) {
+  top: 70%;
+  left: 80%;
+  animation-delay: -1s;
+  animation-duration: 3.2s;
+}
+
+.particle:nth-child(3) {
+  top: 10%;
+  left: 70%;
+  animation-delay: -1.5s;
+  animation-duration: 2.8s;
+}
+
+.particle:nth-child(4) {
+  top: 80%;
+  left: 20%;
+  animation-delay: -2s;
+  animation-duration: 3.5s;
+}
+
+.particle:nth-child(5) {
+  top: 40%;
+  left: 10%;
+  animation-delay: -0.8s;
+  animation-duration: 2.2s;
+}
+
+.particle:nth-child(6) {
+  top: 60%;
+  left: 90%;
+  animation-delay: -2.5s;
+  animation-duration: 3s;
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0px) scale(0.8);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-15px) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-5px) scale(1.1);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-20px) scale(0.9);
+    opacity: 1;
+  }
+}
 .loader .spinner-ring {
   position: absolute;
   top: 50%;
@@ -739,8 +892,31 @@ html,body{
   border: 3px solid rgba(59, 130, 246, 0.1);
   border-top: 3px solid rgba(59, 130, 246, 0.6);
   border-radius: 50%;
-  animation: spinRing 2s linear infinite;
+  animation: enhancedSpinRing 3s ease-in-out infinite;
   z-index: 1;
+}
+
+@keyframes enhancedSpinRing {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    border-top-color: rgba(59, 130, 246, 0.6);
+  }
+  25% {
+    transform: translate(-50%, -50%) rotate(90deg) scale(1.05);
+    border-top-color: rgba(139, 92, 246, 0.8);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1);
+    border-top-color: rgba(59, 130, 246, 0.9);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(270deg) scale(1.05);
+    border-top-color: rgba(139, 92, 246, 0.8);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+    border-top-color: rgba(59, 130, 246, 0.6);
+  }
 }
 
 .loader .spinner-ring::before {
@@ -753,7 +929,21 @@ html,body{
   border: 2px solid rgba(59, 130, 246, 0.05);
   border-top: 2px solid rgba(59, 130, 246, 0.3);
   border-radius: 50%;
-  animation: spinRing 3s linear infinite reverse;
+  animation: enhancedSpinRingReverse 4s linear infinite reverse;
+}
+
+@keyframes enhancedSpinRingReverse {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.3;
+  }
 }
 
 .loader h2 {
@@ -761,7 +951,32 @@ html,body{
   font-size: 2.1rem;
   font-weight: 600;
   position: relative;
-  animation: textPulse 3s ease-in-out infinite;
+  animation: enhancedTextPulse 4s ease-in-out infinite;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes enhancedTextPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  }
+  25% {
+    opacity: 0.9;
+    transform: translateY(-2px) scale(1.02);
+    text-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    text-shadow: 0 0 12px rgba(59, 130, 246, 0.35);
+  }
+  75% {
+    opacity: 0.95;
+    transform: translateY(-1px) scale(1.01);
+    text-shadow: 0 0 18px rgba(139, 92, 246, 0.5);
+  }
 }
 
 .dots::after {
@@ -826,17 +1041,41 @@ html,body{
   }
 }
 
-/* Loading Progress Bar */
+/* Enhanced Loading Progress Bar */
 .loading-progress {
   position: absolute;
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
   width: 300px;
-  height: 4px;
-  background: rgba(59, 130, 246, 0.1);
-  border-radius: 2px;
+  height: 6px;
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 2px 10px rgba(59, 130, 246, 0.1);
+  z-index: 10;
+}
+
+.progress-percentage {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(59, 130, 246, 0.8);
+  animation: percentagePulse 2s ease-in-out infinite;
+}
+
+@keyframes percentagePulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.05);
+  }
 }
 
 .loading-progress::before {
@@ -846,8 +1085,55 @@ html,body{
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.8), transparent);
-  animation: loadingProgress 2s ease-in-out infinite;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(59, 130, 246, 0.6) 25%,
+    rgba(139, 92, 246, 0.8) 50%,
+    rgba(59, 130, 246, 0.6) 75%,
+    transparent 100%);
+  animation: enhancedLoadingProgress 2.5s ease-in-out infinite;
+  border-radius: 10px;
+}
+
+.loading-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    rgba(59, 130, 246, 0.4) 0%,
+    rgba(139, 92, 246, 0.6) 50%,
+    rgba(59, 130, 246, 0.8) 100%);
+  border-radius: 10px;
+  animation: progressFill 6s ease-out forwards;
+}
+
+@keyframes enhancedLoadingProgress {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes progressFill {
+  0% { width: 0%; }
+  20% { width: 15%; }
+  40% { width: 35%; }
+  60% { width: 60%; }
+  80% { width: 85%; }
+  100% { width: 100%; }
 }
 
 @keyframes loadingProgress {
@@ -878,6 +1164,16 @@ html,body{
   .loading-progress {
     width: 250px;
   }
+  
+  .particle-system {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .particle {
+    width: 4px;
+    height: 4px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -897,6 +1193,16 @@ html,body{
   
   .loading-progress {
     width: 200px;
+  }
+  
+  .particle-system {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .particle {
+    width: 3px;
+    height: 3px;
   }
 }
 
