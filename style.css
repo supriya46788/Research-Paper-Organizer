@@ -1,0 +1,33 @@
+/* Placeholder CSS file */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h1, h2, h3, h4 {
+    color: #333;
+}
+
+.nav-container {
+    background-color: #0077b5;
+    color: white;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
