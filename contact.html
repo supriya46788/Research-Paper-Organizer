@@ -42,12 +42,62 @@
       transition: 0.3s;
     }
 
+    /* Toast notification styles */
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .toast {
+      background-color: #120697;
+      color: white;
+      padding: 16px 24px;
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: opacity 0.3s, transform 0.3s;
+      max-width: 350px;
+    }
+
+    .toast.error {
+      background-color: #f44336;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .toast-icon {
+      font-size: 20px;
+    }
+
+    .toast-message {
+      flex: 1;
+    }
+
+    .toast-close {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
     /* Responsive styles */
     @media (max-width: 768px) {
       .hamburger-container {
         display: flex;
       }
-
 
       .navbar {
         display: flex;
@@ -91,13 +141,24 @@
         padding: 1rem;
         width: 10rem;
         font-size: 1rem;
-
+      }
+      
+      .toast-container {
+        left: 20px;
+        right: 20px;
+      }
+      
+      .toast {
+        max-width: 100%;
       }
     }
   </style>
 </head>
 
 <body>
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
   <div class="container">
     <!-- Navigation -->
     <nav class="navbar">
@@ -235,7 +296,7 @@
           <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
           <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
           <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
+          <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
         </ul>
       </div>
 
@@ -266,45 +327,117 @@
 
   </footer>
 
-
-
-  </div>
-  </div>
-
-
-  <script src="js/contact.js"></script>
   <script>
+    // Toast notification functions
+    function showToast(message, isError = false) {
+      const toastContainer = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = isError ? 'toast error' : 'toast';
+      
+      toast.innerHTML = `
+        <div class="toast-icon">${isError ? '⚠️' : '✓'}</div>
+        <div class="toast-message">${message}</div>
+        <button class="toast-close">&times;</button>
+      `;
+      
+      toastContainer.appendChild(toast);
+      
+      // Show toast with a slight delay to allow DOM update
+      setTimeout(() => {
+        toast.classList.add('show');
+      }, 10);
+      
+      // Set timeout to remove toast
+      setTimeout(() => {
+        hideToast(toast);
+      }, 5000);
+      
+      // Add click event to close button
+      toast.querySelector('.toast-close').addEventListener('click', () => {
+        hideToast(toast);
+      });
+    }
+    
+    function hideToast(toast) {
+      toast.classList.remove('show');
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 300);
+    }
+    
+    // Form submission handling
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactForm = document.getElementById('contact-form');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Show loading state
+          const submitBtn = contactForm.querySelector('.submit-btn');
+          const submitText = submitBtn.querySelector('.submit-text');
+          const loadingSpinner = submitBtn.querySelector('.loading-spinner');
+          
+          submitText.classList.add('hidden');
+          loadingSpinner.classList.remove('hidden');
+          
+          // Simulate form submission (replace with your actual EmailJS code)
+          setTimeout(() => {
+            // This is where you would normally call EmailJS
+            // For demonstration, we'll assume success
+            const isSuccess = Math.random() > 0.2; // 80% success rate for demo
+            
+            if (isSuccess) {
+              showToast('Message sent successfully! We will get back to you soon.', false);
+              contactForm.reset();
+            } else {
+              showToast('Failed to send message. Please try again later.', true);
+            }
+            
+            // Reset button state
+            submitText.classList.remove('hidden');
+            loadingSpinner.classList.add('hidden');
+          }, 1500);
+        });
+      }
+    });
+    
     function toggleMenu() {
       const nav = document.querySelector(".navbar-right-links");
       nav.classList.toggle("show");
     }
-    //back to top button 
-    // Show button when scrolled down
-    const backToTop = document.getElementById("backToTop");
-
-    // Show/hide button with fade
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
-        backToTop.classList.add("show");
-      } else {
-        backToTop.classList.remove("show");
+    
+    // Back to top button 
+    document.addEventListener('DOMContentLoaded', function() {
+      const backToTop = document.getElementById("backToTop");
+      
+      if (backToTop) {
+        // Show/hide button with fade
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 100) {
+            backToTop.classList.add("show");
+          } else {
+            backToTop.classList.remove("show");
+          }
+        });
+        
+        // Smooth scroll to top
+        backToTop.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
       }
     });
-
-    // Smooth scroll to top
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  </script>
-  <script>
+    
     // Dark Mode Toggle Function
     function toggleDarkMode() {
       const body = document.body;
       const darkToggle = document.getElementById('darkModeToggle');
       const icon = darkToggle.querySelector('i');
-
+      
       body.classList.toggle('dark-mode');
-
+      
       // Update icon
       if (body.classList.contains('dark-mode')) {
         icon.classList.remove('fa-moon');
@@ -316,17 +449,20 @@
         localStorage.setItem('darkMode', 'disabled');
       }
     }
-
+    
     // Load dark mode preference on page load
     document.addEventListener('DOMContentLoaded', function () {
       const darkMode = localStorage.getItem('darkMode');
       const darkToggle = document.getElementById('darkModeToggle');
-      const icon = darkToggle.querySelector('i');
-
-      if (darkMode === 'enabled') {
-        document.body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
+      
+      if (darkToggle) {
+        const icon = darkToggle.querySelector('i');
+        
+        if (darkMode === 'enabled') {
+          document.body.classList.add('dark-mode');
+          icon.classList.remove('fa-moon');
+          icon.classList.add('fa-sun');
+        }
       }
     });
   </script>
