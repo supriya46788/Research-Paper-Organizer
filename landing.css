@@ -230,7 +230,7 @@ html,body{
 /* Hero Section */
 .hero {
   padding: 120px 0 80px;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: #f9fbff; /* flat background like screenshot */
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -240,14 +240,15 @@ html,body{
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-  /* display: grid; */
+  display: grid; /* restore grid */
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
 }
-/* left side animation */
-.hero-content.animate{
-  animation: slideLeft var(--animation-extra-slow) var(--easing-decelerate) forwards; 
+
+/* Animations */
+.hero-content.animate {
+  animation: slideLeft 1s ease forwards;
 }
 @keyframes slideLeft {
   from {
@@ -259,10 +260,9 @@ html,body{
     opacity: 1;
   }
 }
-/* Right Slide Animation */
-.hero-image.animate{
-  animation: slideUp var(--animation-extra-slow) var(--easing-decelerate) forwards; 
-  animation-delay: 0.1s; /* slight delay for stagger effect */
+.hero-image.animate {
+  animation: slideUp 1s ease forwards;
+  animation-delay: 0.1s;
 }
 @keyframes slideUp {
   from {
@@ -274,24 +274,19 @@ html,body{
     opacity: 1;
   }
 }
-.hero-content h1 {
-  margin-top:1.5rem;
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
-  color: var(--text-color);
-}
 
-@media (max-width: 768px) {
-  .hero-content h1 {
-    margin-top: 4.5rem;
-  }
+/* Text */
+.hero-content h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #111827; /* dark gray */
 }
 
 .hero-content p {
   font-size: 1.25rem;
-  color: var(--text-light);
+  color: #4b5563;
   margin-bottom: 2rem;
   line-height: 1.7;
 }
@@ -305,40 +300,48 @@ html,body{
 
 .hero-note {
   font-size: 0.875rem;
-  color: var(--text-light);
-}
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;       /* stack vertically */
-    text-align: center;           /* optional, center text */
-    padding: 40px 20px;           /* adjust padding */
-  }
-
-  .hero-container {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .features-grid,
-  .stats-grid {
-    grid-template-columns: 1fr;   /* single column */
-  }
+  color: #4b5563;
 }
 
-/* Hero Mockup */
+/* Buttons */
+.btn-primary {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background: #1e40af;
+}
+
+.btn-secondary {
+  background: white;
+  border: 1px solid #d1d5db;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background: #f3f4f6;
+}
+
+/* Mockup */
 .hero-mockup {
   background: white;
   border-radius: 1rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transform: perspective(1000px) rotateY(-5deg);
-  display:flex;
-  flex-direction: column;
 }
 
 .mockup-header {
   background: #f1f5f9;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
 }
@@ -347,13 +350,14 @@ html,body{
   display: flex;
   gap: 0.5rem;
 }
-
 .mockup-dots span {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #cbd5e1;
 }
+.mockup-dots span:nth-child(1) { background: #ef4444; } /* red */
+.mockup-dots span:nth-child(2) { background: #f59e0b; } /* yellow */
+.mockup-dots span:nth-child(3) { background: #10b981; } /* green */
 
 .mockup-content {
   padding: 2rem;
@@ -364,18 +368,18 @@ html,body{
   border-radius: 0.5rem;
   padding: 1.5rem;
   margin-bottom: 1rem;
-  border-left: 4px solid var(--primary-color);
+  border-left: 4px solid #2563eb;
 }
 
 .paper-title {
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: var(--text-color);
+  color: #111827;
 }
 
 .paper-meta {
   font-size: 0.875rem;
-  color: var(--text-light);
+  color: #4b5563;
   margin-bottom: 0.5rem;
 }
 
@@ -383,13 +387,28 @@ html,body{
   display: flex;
   gap: 0.5rem;
 }
-
 .paper-tags span {
-  background: var(--primary-color);
+  background: #2563eb;
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
   font-size: 0.75rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .hero-container {
+    grid-template-columns: 1fr;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
 }
 
 /* Features Section */
