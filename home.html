@@ -719,27 +719,32 @@ backToTop.addEventListener("click", () => {
 
     <script src="js/script.js"></script>
 
-    <!-- Chatbot Window -->
-<div id="chatbot-container" class="hidden" aria-live="polite">
-  <div class="chatbot-header">
-    <span><i class="fas fa-robot" style="margin-right:6px;"></i>Assistant</span>
-    <button id="closeChatbot" title="Close" aria-label="Close chatbot">&times;</button>
-  </div>
-
-  <div class="chatbot-messages" id="chatbotMessages"></div>
-
-  <div class="chatbot-input-container">
-    <input id="chatbotInput" type="text" placeholder="Type your message..." aria-label="Type your message" />
-    <button id="sendChatbot" title="Send" aria-label="Send message">
-      <i class="fas fa-paper-plane"></i>
-    </button>
-  </div>
-</div>
-
-<!-- Floating Chat Toggle -->
-<button id="chatbot-toggle" title="Chat with Assistant" aria-label="Open chatbot">
-  <i class="fas fa-comment-alt"></i>
-</button>
+    <!-- Chatbase Integration -->
+    <script>
+        (function(){
+            if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+                window.chatbase = (...arguments) => {
+                    if(!window.chatbase.q){ window.chatbase.q = [] }
+                    window.chatbase.q.push(arguments)
+                };
+                window.chatbase = new Proxy(window.chatbase, {
+                    get(target, prop) {
+                        if(prop === "q"){ return target.q }
+                        return (...args) => target(prop, ...args)
+                    }
+                });
+            }
+            const onLoad = function(){
+                const script = document.createElement("script");
+                script.src = "https://www.chatbase.co/embed.min.js";
+                script.id = "SZQX20er6m-s8iNiFcBtK";
+                script.domain = "www.chatbase.co";
+                document.body.appendChild(script)
+            };
+            if(document.readyState === "complete"){ onLoad() }
+            else { window.addEventListener("load", onLoad) }
+        })();
+    </script>
 
 </body>
 
