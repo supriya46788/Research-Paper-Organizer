@@ -631,6 +631,50 @@ box-shadow: rgba(0,0,0,0.8);
         </div>
       </div>
     </div>
+    <style>
+/* Footer Social Links */
+.footer-section .social-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.footer-section .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white; /* default bg */
+  color: #1a1a1a; /* default icon color */
+  font-size: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover effect for all social icons */
+.footer-section .social-links a:hover {
+  transform: translateY(-4px) scale(1.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  color: white; /* icon color changes to white */
+}
+
+/* GitHub hover */
+.footer-section .social-links a[href*="github"]:hover {
+  background: #333; /* dark grey */
+}
+
+/* Twitter hover */
+.footer-section .social-links a[href*="twitter"]:hover {
+  background: #1DA1F2; /* dark Twitter blue */
+}
+
+/* LinkedIn hover */
+.footer-section .social-links a[href*="linkedin"]:hover {
+  background: #0A66C2; /* dark LinkedIn blue */
+}
+</style>
     <div class="footer-bottom">
       <p>© 2025 Research Paper Organizer | Open Source Project</p>
       <p class="footer-tagline">Made with <i class="fas fa-heart" style="color: #e74c3c;" aria-hidden="true"></i> for researchers worldwide</p>
