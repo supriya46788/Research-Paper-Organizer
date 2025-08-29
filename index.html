@@ -8,8 +8,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="landing.css" />
+    <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png">
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -21,13 +22,23 @@
       sizes="48x48"
       href="./favicon/favicon-48x48.png"
     />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="manifest" href="./site.webmanifest">
+    <meta name="theme-color" content="#2563eb">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       crossorigin="anonymous"
     />
 </head>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js")
+        .then(reg => console.log("Service Worker registered:", reg.scope))
+        .catch(err => console.error("SW registration failed:", err));
+    });
+  }
+</script>
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen">
