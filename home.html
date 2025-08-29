@@ -169,56 +169,54 @@
   border: 1px solid #444;
 }
 
-/* Citation Section */
-.citation-section {
-  margin-top: 15px;
-}
-.citation-item {
-  background-color: #f0f0f0e7;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-.details-section.dark-mode .citation-item {
-  background-color: #2a2a3c;
-}
-.citation-text {
-  font-size: 0.9rem;
-  margin-top: 4px;
-  color: inherit;
-}
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #3498db;
-  margin-left: 8px;
-}
-.details-section.dark-mode .copy-btn {
-  color: #6ab0ff;
-}
-.details-section.dark-mode .details-title {
-  border-bottom: 1px solid #555;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
-}
-/* Light mode */
-.detail-label {
-  font-weight: 500;
-  color: #374151; /* dark gray for readability */
+/* Paper Details Section */
+.details-section {
+  background-color: #c4ebf6;
+  color: #111827;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 /* Dark mode */
-body.dark-mode .detail-label {
-  color: #dcdce6; /* light gray for dark theme */
+body.dark-mode .details-section {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.detail-label {
-  transition: color 0.3s ease;
+
+/* Header inside Paper Details */
+/* ===== General Paper Details Section ===== */
+.details-section {
+  background-color: #f9f9f9; /* light default */
+  color: #111827; 
+  padding: 20px;
+  border-radius: 12px;
+  margin: 15px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
 }
+
+body.dark-mode .details-section {
+  background-color: #1f2937;
+  color: #e0e0e0;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+}
+
+/* ===== Header & Titles ===== */
 .details-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
   position: relative;
   display: inline-block;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
 }
 
 .details-title::after {
@@ -226,13 +224,196 @@ body.dark-mode .detail-label {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #374151; /* light mode */
+  width: 150px;
+  height: 3px;
+  background-color: #3b82f6; /* light blue underline */
+  border-radius: 2px;
 }
 
 body.dark-mode .details-title::after {
-  background-color: #dcdce6; /* dark mode */
+  background-color: #60a5fa; /* accent blue */
+}
+
+/* ===== Close Button ===== */
+.details-header .close-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: #e74c3c; /* red */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.details-header .close-btn:hover {
+  transform: scale(1.1);
+  color: #ff5252; /* hover red */
+}
+
+/* ===== Content Sections ===== */
+.details-content p {
+  line-height: 1.6;
+  margin: 6px 0 14px 0;
+  color: inherit;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #374151;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .detail-label {
+  color: #dcdce6;
+}
+
+/* ===== Tags ===== */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.detail-tag {
+  background-color: #e0e7ff;
+  color: #1d4ed8;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.detail-tag:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+body.dark-mode .detail-tag {
+  background-color: #374151;
+  color: #60a5fa;
+}
+
+body.dark-mode .detail-tag:hover {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+/* ===== Rating & Favorite ===== */
+.rating-favorite-details {
+  display: flex;
+  justify-content: space-between;
+  margin: 12px 0;
+}
+
+.paper-rating .stars {
+  color: #ffc107;
+  font-size: 1.1rem;
+}
+
+body.dark-mode .paper-rating .stars {
+  color: #ffcc00;
+}
+
+.paper-favorite i {
+  color: #e74c3c;
+}
+
+body.dark-mode .paper-favorite i {
+  color: #ff6b6b;
+}
+
+/* ===== PDF Preview ===== */
+.pdf-preview {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.pdf-preview:hover {
+  transform: scale(1.01);
+  border-color: #3b82f6;
+}
+
+body.dark-mode .pdf-preview {
+  border: 1px solid #444;
+}
+
+/* ===== Citation Section ===== */
+.citation-section {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Light mode citation */
+.citation-item {
+  background-color: #eef2ff; /* light blue card */
+  color: #111827; /* dark text */
+  padding: 12px 14px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.citation-item:hover {
+  background-color: #2563eb; /* hover blue */
+  color: #111827; /* keep text readable */
+}
+
+.citation-item .citation-text {
+  font-size: 0.9rem;
+  color: inherit;
+}
+
+/* Dark mode citation */
+body.dark-mode .citation-item {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
+body.dark-mode .citation-item:hover {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+/* Copy button */
+.copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #3498db;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+  color: #f5f5f5;
+}
+
+body.dark-mode .copy-btn {
+  color: #60a5fa;
+}
+
+body.dark-mode .copy-btn:hover {
+  color: #93c5fd;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .details-section {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .pdf-preview {
+    max-height: 220px;
+  }
 }
   </style>
   
