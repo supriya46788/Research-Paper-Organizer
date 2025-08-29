@@ -72,66 +72,68 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-container">
-        <div class="hero-content fade-in">
-          <h1 class="typing-text">
-            Organize Your Research Papers Like Never Before
-          </h1>
-          <p>
-            Streamline your academic workflow with our intelligent research
-            paper management system. Track, organize, and cite your papers
-            efficiently in one centralized platform.
-          </p>
-          <div class="hero-buttons">
-            <button
-              class="btn-primary btn-large"
-              onclick="window.location.href='signup.html'"
-            >
-              <i class="fas fa-rocket"></i>
-              Start Free Trial
-            </button>
-            <button
-              class="btn-secondary btn-large"
-              onclick="scrollToFeatures()"
-            >
-              <i class="fas fa-play"></i>
-              See How it Works
-            </button>
+<section class="hero">
+  <div class="hero-container">
+    <!-- Left side -->
+    <div class="hero-content animate">
+      <h1>
+        Organize Your Research Papers Like Never Before
+      </h1>
+      <p>
+        Streamline your academic workflow with our intelligent research
+        paper management system. Track, organize, and cite your papers
+        efficiently in one centralized platform.
+      </p>
+      <div class="hero-buttons">
+        <button
+          class="btn-primary"
+          onclick="window.location.href='signup.html'"
+        >
+          Start Free Trial
+        </button>
+        <button
+          class="btn-secondary"
+          onclick="scrollToFeatures()"
+        >
+          See How it Works
+        </button>
+      </div>
+      <p class="hero-note">No credit card required • 30-day free trial</p>
+    </div>
+
+    <!-- Right side -->
+    <div class="hero-image animate">
+      <div class="hero-mockup">
+        <div class="mockup-header">
+          <div class="mockup-dots">
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
-          <p class="hero-note">No credit card required • 30-day free trial</p>
         </div>
-        <div class="hero-image slide-right">
-          <div class="hero-mockup">
-            <div class="mockup-header">
-              <div class="mockup-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+        <div class="mockup-content">
+          <div class="mockup-paper">
+            <div class="paper-title">Attention Is All You Need</div>
+            <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
+            <div class="paper-tags">
+              <span>Machine Learning</span>
+              <span>Transformers</span>
             </div>
-            <div class="mockup-content">
-              <div class="mockup-paper">
-                <div class="paper-title">Attention Is All You Need</div>
-                <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
-                <div class="paper-tags">
-                  <span>Machine Learning</span>
-                  <span>Transformers</span>
-                </div>
-              </div>
-              <div class="mockup-paper">
-                <div class="paper-title">BERT: Pre-training of Deep...</div>
-                <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
-                <div class="paper-tags">
-                  <span>NLP</span>
-                  <span>Pre-training</span>
-                </div>
-              </div>
+          </div>
+          <div class="mockup-paper">
+            <div class="paper-title">BERT: Pre-training of Deep...</div>
+            <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
+            <div class="paper-tags">
+              <span>NLP</span>
+              <span>Pre-training</span>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
 
     <!-- Features Section -->
     <section id="features" class="features">
@@ -317,6 +319,8 @@
             "This tool has streamlined my literature review process and made
             collaboration so much easier."
           </p>
+          <br />
+          
           <p class="tags">🤝 Collaboration • 📚 Productivity</p>
         </div>
       </div>
@@ -726,16 +730,6 @@
         background: linear-gradient(135deg, #1a202c, #2d3748);
       }
 
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-          <li><a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a></li>
-        </ul>
-      </div>
-
       body.dark-mode .footer-section h3,
       body.dark-mode .footer-section h4 {
         color: #e0e0e0;
@@ -818,6 +812,16 @@
             </li>
           </ul>
         </div>
+
+        <div class= "footer-links-section footer-card">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
+          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+          <li><a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a></li>
+        </ul>
+      </div>
 
         <div class="footer-links-section footer-card">
           <h4>Connect</h4>
