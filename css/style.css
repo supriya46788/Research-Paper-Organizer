@@ -1932,10 +1932,14 @@ body.dark-mode .quick-star.active {
 
 
 
+/* Custom chatbot styles disabled - now using Chatbase integration
+ * The following styles were for the previous custom Gemini chatbot implementation
+ *
 /* Chatbot Toggle Button */
+/*
 #chatbot-toggle {
   position: fixed;
-  bottom: 90px; /* sits above Back-to-Top which is bottom:20px */
+  bottom: 90px; 
   right: 20px;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
@@ -1956,9 +1960,10 @@ body.dark-mode .quick-star.active {
 }
 
 /* Chatbot Window */
+/*
 #chatbot-container {
   position: fixed;
-  bottom: 160px; /* above toggle button */
+  bottom: 160px;
   right: 20px;
   width: 320px;
   max-height: 430px;
@@ -2045,6 +2050,7 @@ body.dark-mode .quick-star.active {
 }
 
 /* Typing Indicator */
+/*
 .chatbot-typing {
   display: inline-block;
   width: 6px;
@@ -2065,6 +2071,7 @@ body.dark-mode .quick-star.active {
 }
 
 /* Dark mode */
+/*
 body.dark-mode #chatbot-container {
   background: var(--bg-dark);
   color: var(--text-light);
@@ -2094,7 +2101,9 @@ body.dark-mode .chatbot-input-container {
   background: #1f2937;
   border-top-color: #374151;
 }
+*/
 
+/* Responsive styles for custom chatbot - also disabled
 @media (max-width: 480px) {
   #chatbot-container {
     width: calc(100% - 24px);
@@ -2103,6 +2112,7 @@ body.dark-mode .chatbot-input-container {
     max-height: 60vh;
   }
 }
+*/
 
 
 
