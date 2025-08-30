@@ -1,22 +1,18 @@
-<!DOCTYPE h  <link rel="stylesheet" href="css/style.css" />
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Research Paper Organizer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- SweetAlert2 CDN -->
-   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="stylesheet" href="css/style.css" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
   <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
     /* Ensure dark mode styles work */
     body.dark-mode {
@@ -58,561 +54,249 @@
       border-color: #4b5563 !important;
     }
 
-   
     #drop-zone {
-  border: 2px dashed #4a90e2;
-  border-radius: 16px;
-  padding: 35px;
-  text-align: center;
-  background: #f8fbff;
-  color: #4a90e2;
-  transition: all 0.3s;
-}
-#drop-zone:hover {
-  background: #eef4ff;
-  border-color: #357ABD;
-  transform: scale(1.02);
-}
-.label-1 {
-  margin-top: 10px;
-  background: linear-gradient(90deg, #0056b3, #00BFFF); /* darker to lighter blue */
-  -webkit-background-clip: text;
+      border: 2px dashed #4a90e2;
+      border-radius: 16px;
+      padding: 35px;
+      text-align: center;
+      background: #f8fbff;
+      color: #4a90e2;
+      transition: all 0.3s;
+    }
+    #drop-zone:hover {
+      background: #eef4ff;
+      border-color: #357ABD;
+      transform: scale(1.02);
+    }
+    .label-1 {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #0056b3, #00BFFF); /* darker to lighter blue */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700; /* bolder */
+      font-size: 15px;  /* increased size */
+      letter-spacing: 0.5px; /* adds spacing for a cleaner look */
+    }
+    .label-1:hover {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #185ba3, #add3e0); /* darker to lighter blue */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 17px;  /* increased size */
+    }
 
-  -webkit-text-fill-color: transparent;
-  font-weight: 700; /* bolder */
-  font-size: 15px;  /* increased size */
-  letter-spacing: 0.5px; /* adds spacing for a cleaner look */
-}
-.label-1:hover {
-  margin-top: 10px;
-  background: linear-gradient(90deg, #185ba3, #add3e0); /* darker to lighter blue */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 17px;  /* increased size */
-}
+    /* General Paper Details Section */
+    .details-section {
+      background-color: #f9f9f9; /* light default */
+      color: #111; 
+      padding: 20px;
+      border-radius: 10px;
+      margin: 10px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-/* General Paper Details Section */
-.details-section {
-  background-color: #f9f9f9; /* light default */
-  color: #111; 
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-}
+    /* Dark Mode */
+    .details-section.dark-mode {
+      background-color: #1f1f2e;
+      color: #e0e0e0;
+      box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+    }
 
-/* Dark Mode */
-.details-section.dark-mode {
-  background-color: #1f1f2e;
-  color: #e0e0e0;
-  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
-}
+    /* Detail Titles */
+    .details-title, .detail-section h3, .detail-section h4 {
+      margin-bottom: 8px;
+      color: inherit;
+    }
 
-/* Detail Titles */
-.details-title, .detail-section h3, .detail-section h4 {
-  margin-bottom: 8px;
-  color: inherit;
-}
+    /* Content Paragraphs */
+    .detail-section p {
+      margin: 5px 0 12px 0;
+      line-height: 1.5;
+      color: inherit;
+    }
 
-/* Content Paragraphs */
-.detail-section p {
-  margin: 5px 0 12px 0;
-  line-height: 1.5;
-  color: inherit;
-}
+    /* Tags */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .detail-tag {
+      background-color: #e0e0e0;
+      color: #111;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .details-section.dark-mode .detail-tag {
+      background-color: #33334d;
+      color: #f0f0f0;
+    }
 
-/* Tags */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.detail-tag {
-  background-color: #e0e0e0;
-  color: #111;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-.details-section.dark-mode .detail-tag {
-  background-color: #33334d;
-  color: #f0f0f0;
-}
+    /* Rating & Favorite */
+    .rating-favorite-details {
+      display: flex;
+      justify-content: space-between;
+      margin: 12px 0;
+    }
+    .paper-rating .stars {
+      color: #ffc107; /* gold stars */
+      font-size: 1.1rem;
+    }
+    .details-section.dark-mode .paper-rating .stars {
+      color: #ffcc00;
+    }
+    .paper-favorite i {
+      color: #e74c3c; /* red heart */
+    }
 
-/* Rating & Favorite */
-.rating-favorite-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-}
-.paper-rating .stars {
-  color: #ffc107; /* gold stars */
-  font-size: 1.1rem;
-}
-.details-section.dark-mode .paper-rating .stars {
-  color: #ffcc00;
-}
-.paper-favorite i {
-  color: #e74c3c; /* red heart */
-}
+    /* PDF Preview */
+    .pdf-preview {
+      width: 100%;
+      height: 300px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    .details-section.dark-mode .pdf-preview {
+      border: 1px solid #444;
+    }
 
-/* PDF Preview */
-.pdf-preview {
-  width: 100%;
-  height: 300px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-.details-section.dark-mode .pdf-preview {
-  border: 1px solid #444;
-}
+    /* Citation Section */
+    .citation-section {
+      margin-top: 15px;
+    }
+    .citation-item {
+      background-color: #f0f0f0e7;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+    .details-section.dark-mode .citation-item {
+      background-color: #2a2a3c;
+    }
+    .citation-text {
+      font-size: 0.9rem;
+      margin-top: 4px;
+      color: inherit;
+    }
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #3498db;
+      margin-left: 8px;
+    }
+    .details-section.dark-mode .copy-btn {
+      color: #6ab0ff;
+    }
+    .details-section.dark-mode .details-title {
+      border-bottom: 1px solid #555;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+    /* Light mode */
+    .detail-label {
+      font-weight: 500;
+      color: #374151; /* dark gray for readability */
+    }
 
-/* Citation Section */
-.citation-section {
-  margin-top: 15px;
-}
-.citation-item {
-  background-color: #f0f0f0e7;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-.details-section.dark-mode .citation-item {
-  background-color: #2a2a3c;
-}
-.citation-text {
-  font-size: 0.9rem;
-  margin-top: 4px;
-  color: inherit;
-}
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #3498db;
-  margin-left: 8px;
-}
-.details-section.dark-mode .copy-btn {
-  color: #6ab0ff;
-}
-.details-section.dark-mode .details-title {
-  border-bottom: 1px solid #555;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
-}
-/* Light mode */
-.detail-label {
-  font-weight: 500;
-  color: #374151; /* dark gray for readability */
-}
+    /* Dark mode */
+    body.dark-mode .detail-label {
+      color: #dcdce6; /* light gray for dark theme */
+    }
+    .detail-label {
+      transition: color 0.3s ease;
+    }
+    .details-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
 
-/* Dark mode */
-body.dark-mode .detail-label {
-  color: #dcdce6; /* light gray for dark theme */
-}
-.detail-label {
-  transition: color 0.3s ease;
-}
-.details-title {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 5px;
-}
+    .details-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #374151; /* light mode */
+    }
 
-.details-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #374151; /* light mode */
-}
+    body.dark-mode .details-title::after {
+      background-color: #dcdce6; /* dark mode */
+    }
 
-body.dark-mode .details-title::after {
-  background-color: #dcdce6; /* dark mode */
-}
-/* General Paper Details Section */
-.details-section {
-  background-color: #f9f9f9; /* light default */
-  color: #111; 
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-}
+    /* Adil did this: constrain wide layouts and improve small-screen spacing */
+    @media (max-width: 640px) {
+      /* Header layout helpers */
+      .header,
+      .header-container,
+      .header-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
 
-/* Dark Mode */
-.details-section.dark-mode {
-  background-color: #1f1f2e;
-  color: #e0e0e0;
-  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
-}
+      .header-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        width: 100%;
+        justify-content: flex-start;
+      }
 
-/* Detail Titles */
-.details-title, .detail-section h3, .detail-section h4 {
-  margin-bottom: 8px;
-  color: inherit;
-}
+      /* Search and filters stack vertically */
+      .search-bar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
 
-/* Content Paragraphs */
-.detail-section p {
-  margin: 5px 0 12px 0;
-  line-height: 1.5;
-  color: inherit;
-}
+      /* Tables/cards become full width */
+      .table,
+      table,
+      .cards,
+      .card,
+      .papers-list,
+      .paper-item {
+        width: 100%;
+        overflow-x: auto;
+      }
 
-/* Tags */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.detail-tag {
-  background-color: #e0e0e0;
-  color: #111;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-.details-section.dark-mode .detail-tag {
-  background-color: #33334d;
-  color: #f0f0f0;
-}
+      /* Make generic buttons easier to tap */
+      button,
+      .btn,
+      .btn-primary,
+      .btn-secondary,
+      .add-btn,
+      .dark-toggle {
+        min-height: 40px;
+        min-width: 40px;
+        font-size: 0.95rem;
+        padding: 0.5rem 0.75rem;
+        cursor: pointer;
+      }
 
-/* Rating & Favorite */
-.rating-favorite-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-}
-.paper-rating .stars {
-  color: #ffc107; /* gold stars */
-  font-size: 1.1rem;
-}
-.details-section.dark-mode .paper-rating .stars {
-  color: #ffcc00;
-}
-.paper-favorite i {
-  color: #e74c3c; /* red heart */
-}
+      /* Mobile menu defaults to hidden, opens with .is-open */
+      #menu-items-container {
+        display: none;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      #menu-items-container.is-open {
+        display: flex;
+      }
 
-/* PDF Preview */
-.pdf-preview {
-  width: 100%;
-  height: 300px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-.details-section.dark-mode .pdf-preview {
-  border: 1px solid #444;
-}
-
-/* Citation Section */
-.citation-section {
-  margin-top: 15px;
-}
-.citation-item {
-  background-color: #f0f0f0e7;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-.details-section.dark-mode .citation-item {
-  background-color: #2a2a3c;
-}
-.citation-text {
-  font-size: 0.9rem;
-  margin-top: 4px;
-  color: inherit;
-}
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #3498db;
-  margin-left: 8px;
-}
-.details-section.dark-mode .copy-btn {
-  color: #6ab0ff;
-}
-.details-section.dark-mode .details-title {
-  border-bottom: 1px solid #555;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
-}
-/* Light mode */
-.detail-label {
-  font-weight: 500;
-  color: #374151; /* dark gray for readability */
-}
-
-/* Dark mode */
-body.dark-mode .detail-label {
-  color: #dcdce6; /* light gray for dark theme */
-}
-.detail-label {
-  transition: color 0.3s ease;
-}
-.details-title {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 5px;
-}
-
-.details-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #374151; /* light mode */
-}
-
-body.dark-mode .details-title::after {
-  background-color: #dcdce6; /* dark mode */
-}
-/* Paper Details Section */
-.details-section {
-  background-color: #f9f9f9;
-  color: #111827;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Dark mode */
-body.dark-mode .details-section {
-  background-color: #1f2937;
-  color: #f3f4f6;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-/* Header inside Paper Details */
-/* ===== General Paper Details Section ===== */
-.details-section {
-  background-color: #f9f9f9; /* light default */
-  color: #111827; 
-  padding: 20px;
-  border-radius: 12px;
-  margin: 15px 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-}
-
-body.dark-mode .details-section {
-  background-color: #1f2937;
-  color: #e0e0e0;
-  box-shadow: 0 4px 12px rgba(255,255,255,0.05);
-}
-
-/* ===== Header & Titles ===== */
-.details-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 6px;
-}
-
-.details-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 150px;
-  height: 3px;
-  background-color: #3b82f6; /* light blue underline */
-  border-radius: 2px;
-}
-
-body.dark-mode .details-title::after {
-  background-color: #60a5fa; /* accent blue */
-}
-
-/* ===== Close Button ===== */
-.details-header .close-btn {
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  font-weight: bold;
-  color: #e74c3c; /* red */
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.details-header .close-btn:hover {
-  transform: scale(1.1);
-  color: #ff5252; /* hover red */
-}
-
-/* ===== Content Sections ===== */
-.details-content p {
-  line-height: 1.6;
-  margin: 6px 0 14px 0;
-  color: inherit;
-}
-
-.detail-label {
-  font-weight: 500;
-  color: #374151;
-  transition: color 0.3s ease;
-}
-
-body.dark-mode .detail-label {
-  color: #dcdce6;
-}
-
-/* ===== Tags ===== */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 8px 0;
-}
-
-.detail-tag {
-  background-color: #e0e7ff;
-  color: #1d4ed8;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.detail-tag:hover {
-  background-color: #2563eb;
-  color: #ffffff;
-}
-
-body.dark-mode .detail-tag {
-  background-color: #374151;
-  color: #60a5fa;
-}
-
-body.dark-mode .detail-tag:hover {
-  background-color: #3b82f6;
-  color: #ffffff;
-}
-
-/* ===== Rating & Favorite ===== */
-.rating-favorite-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-}
-
-.paper-rating .stars {
-  color: #ffc107;
-  font-size: 1.1rem;
-}
-
-body.dark-mode .paper-rating .stars {
-  color: #ffcc00;
-}
-
-.paper-favorite i {
-  color: #e74c3c;
-}
-
-body.dark-mode .paper-favorite i {
-  color: #ff6b6b;
-}
-
-/* ===== PDF Preview ===== */
-.pdf-preview {
-  width: 100%;
-  height: 300px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  transition: all 0.3s ease;
-}
-
-.pdf-preview:hover {
-  transform: scale(1.01);
-  border-color: #3b82f6;
-}
-
-body.dark-mode .pdf-preview {
-  border: 1px solid #444;
-}
-
-/* ===== Citation Section ===== */
-.citation-section {
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Light mode citation */
-.citation-item {
-  background-color: #eef2ff; /* light blue card */
-  color: #111827; /* dark text */
-  padding: 12px 14px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.2s ease;
-}
-
-.citation-item:hover {
-  background-color: #2563eb; /* hover blue */
-  color: #111827; /* keep text readable */
-}
-
-.citation-item .citation-text {
-  font-size: 0.9rem;
-  color: inherit;
-}
-
-/* Dark mode citation */
-body.dark-mode .citation-item {
-  background-color: #1f2937;
-  color: #f3f4f6;
-}
-
-body.dark-mode .citation-item:hover {
-  background-color: #3b82f6;
-  color: #ffffff;
-}
-
-/* Copy button */
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #3498db;
-  transition: all 0.2s ease;
-}
-
-.copy-btn:hover {
-  color: #1d4ed8;
-}
-
-body.dark-mode .copy-btn {
-  color: #60a5fa;
-}
-
-body.dark-mode .copy-btn:hover {
-  color: #93c5fd;
-}
+      /* Show open icon by default on mobile, hide close until opened */
+      #menu-open-btn { display: inline-block; }
+      #menu-close-btn { display: none; }
+      #menu-close-btn.is-visible { display: inline-block; }
+      #menu-open-btn.is-hidden { display: none; }
+    }
   </style>
-  
 </head>
 
 <body>
@@ -652,8 +336,8 @@ body.dark-mode .copy-btn:hover {
             Add Paper
           </button>
           <button class="add-btn" onclick="location.href='summarize.html'">
-          <i class="fas fa-align-left"></i>
-          Summarize Paper
+            <i class="fas fa-align-left"></i>
+            Summarize Paper
           </button>
 
           <button class="btn-secondary" onclick="importPapers()">
@@ -753,219 +437,179 @@ body.dark-mode .copy-btn:hover {
           </div>
         </div>
       </div>
-  </div>
-      <div class="main-grid">
-        <!-- Papers List -->
-        <div class="papers-section">
-          <h2 class="papers-title">Papers (<span id="paperCount">0</span>)</h2>
+    </div>
+    <div class="main-grid">
+      <!-- Papers List -->
+      <div class="papers-section">
+        <h2 class="papers-title">Papers (<span id="paperCount">0</span>)</h2>
 
-          <div id="emptyState" class="empty-state">
-            <i class="fas fa-book-open"></i>
-            <p>No papers found</p>
-            <p style="font-size: 0.875rem">
-              Add your first research paper to get started
-            </p>
-          </div>
-
-          <div id="papersList" class="papers-list hidden"></div>
-          <!-- Pagination Controls for navigating between pages (ADDED FOR PAGINATION FEATURE) -->
-          <div id="paginationControls" class="pagination-controls"></div>
+        <div id="emptyState" class="empty-state">
+          <i class="fas fa-book-open"></i>
+          <p>No papers found</p>
+          <p style="font-size: 0.875rem">
+            Add your first research paper to get started
+          </p>
         </div>
 
-        <!-- Paper Details -->
-        <div class="details-section">
-          <div id="noSelection" class="empty-state">
-            <i class="fas fa-book-open"></i>
-            <p>Select a paper to view details</p>
-          </div>
-
-          <div id="paperDetails" class="hidden">
-            <div class="details-header">
-              <h2 class="details-title">Paper Details</h2>
-              <button class="close-btn" onclick="closeDetails()">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-            <div class="details-content" id="detailsContent">
-              <!-- Paper details go here -->
-            </div>
-          </div>
-        </div>
+        <div id="papersList" class="papers-list hidden"></div>
+        <!-- Pagination Controls for navigating between pages (ADDED FOR PAGINATION FEATURE) -->
+        <div id="paginationControls" class="pagination-controls"></div>
       </div>
 
-      <!-- Add/Edit Paper Modal -->
-      <div id="modalOverlay" class="modal-overlay hidden">
-        <div class="modal">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="modalTitle">Add New Paper</h2>
-              <button class="modal-close" onclick="hideAddForm()">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
+      <!-- Paper Details -->
+      <div class="details-section">
+        <div id="noSelection" class="empty-state">
+          <i class="fas fa-book-open"></i>
+          <p>Select a paper to view details</p>
+        </div>
 
-            <form id="paperForm">
-              <div id="drop-zone">
-                <div class="icon">
-                  <i class="fas fa-cloud-upload-alt"></i>
-                </div>
-                <h3>Drag & Drop to Upload File</h3>
-                <p>OR</p>
-                <button id="browse-btn" type="button">Browse File</button>
-                <input type="file" id="pdfUpload" accept="application/pdf" required hidden />
-              </div>
-              <!-- Placeholder for showing uploaded file -->
-              <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>
-              
-              <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
-                <label class="form-label label-1">PDF Preview</label>
-                <iframe
-                  id="pdfPreview"
-                  class="pdf-preview"
-                  src=""
-                  frameborder="0"
-                ></iframe>
-                
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Title *</label>
-                <input type="text" class="form-input" id="title" required />
-              </div>
-
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label label-1">Authors *</label>
-                  <input type="text" class="form-input" id="authors" required />
-                </div>
-                <div class="form-group">
-                  <label class="form-label label-1">Year</label>
-                  <input type="number" class="form-input" id="year" />
-                </div>
-              </div>
-
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label label-1">Journal/Conference</label>
-                  <input type="text" class="form-input" id="journal" />
-                </div>
-                <div class="form-group">
-                  <label class="form-label label-1">Topic</label>
-                  <input type="text" class="form-input" id="topic" />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">URL</label>
-                <input type="url" class="form-input" id="url" />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Tags (comma-separated)</label>
-                <input type="text" class="form-input" id="tags" placeholder="machine learning, neural networks, AI" />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Abstract</label>
-                <textarea class="form-textarea" id="abstract" rows="3"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Notes</label>
-                <textarea class="form-textarea" id="notes" rows="4"></textarea>
-              </div>
-
-              <!-- Rating and Favorite Section -->
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label label-1">Rating</label>
-                  <div class="rating-container">
-                    <div class="stars-rating" id="starsRating">
-                      <span class="star" data-rating="1">★</span>
-                      <span class="star" data-rating="2">★</span>
-                      <span class="star" data-rating="3">★</span>
-                      <span class="star" data-rating="4">★</span>
-                      <span class="star" data-rating="5">★</span>
-                    </div>
-                    <input type="hidden" id="rating" value="0" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="form-label label-1">Favorite</label>
-                  <div class="favorite-container">
-                    <label class="favorite-checkbox">
-                      <input type="checkbox" id="isFavorite" />
-                      <span class="favorite-icon" style="margin-top: 10px;">
-                        <i class="fas fa-heart " ></i>
-                      </span>
-                      <span class="favorite-text"><p class="label-1">Mark as favorite</p></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-actions">
-                <button type="button" class="btn-secondary" onclick="hideAddForm()">
-                  Cancel
-                </button>
-                <button type="submit" class="btn-primary">
-                  <i class="fas fa-save"></i>
-                  <span id="submitText">Add Paper</span>
-                </button>
-              </div>
-            </form>
+        <div id="paperDetails" class="hidden">
+          <div class="details-header">
+            <h2 class="details-title">Paper Details</h2>
+            <button class="close-btn" onclick="closeDetails()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="details-content" id="detailsContent">
+            <!-- Paper details go here -->
           </div>
         </div>
-      </div>
-      <div id="loadingSpinner" class="loading-spinner hidden">
-        <i class="fas fa-spinner fa-spin"></i> Saving Paper...
       </div>
     </div>
 
-    <style>
-      /* Back to Top Button Styles */
-#backToTop {
-  height: 50px;
-  width: 50px;
-position: fixed;
-bottom: 80px;
-right: 25px;
-z-index: 998;
-background: linear-gradient(135deg,#0077b5 ,#4facfe );
-color: white;
-border: none;
-border-radius: 50%;
-padding: 15px;
-font-size: 18px;
-cursor: pointer;
-display: none;
-box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-transition: transform 0.3s ease, opacity 0.3s ease;
-}
+    <!-- Add/Edit Paper Modal -->
+    <div id="modalOverlay" class="modal-overlay hidden">
+      <div class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="modalTitle">Add New Paper</h2>
+            <button class="modal-close" onclick="hideAddForm()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
 
-#backToTop:hover {
-transform: scale(1.1);
-opacity: 0.9;
-box-shadow: rgba(0,0,0,0.8);
-}
+          <form id="paperForm">
+            <div id="drop-zone">
+              <div class="icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <h3>Drag & Drop to Upload File</h3>
+              <p>OR</p>
+              <button id="browse-btn" type="button">Browse File</button>
+              <input type="file" id="pdfUpload" accept="application/pdf" required hidden />
+            </div>
+            <!-- Placeholder for showing uploaded file -->
+            <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>
+            
+            <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
+              <label class="form-label label-1">PDF Preview</label>
+              <iframe
+                id="pdfPreview"
+                class="pdf-preview"
+                src=""
+                frameborder="0"
+              ></iframe>
+              
+            </div>
 
-@media (max-width: 600px) {
-#backToTop {
-  padding: 12px;
-  font-size: 16px;
-  bottom: 20px;
-  right: 20px;
-}
-}
-  </style>
+            <div class="form-group">
+              <label class="form-label label-1">Title *</label>
+              <input type="text" class="form-input" id="title" required />
+            </div>
 
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label label-1">Authors *</label>
+                <input type="text" class="form-input" id="authors" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label label-1">Year</label>
+                <input type="number" class="form-input" id="year" />
+              </div>
+            </div>
 
-    <!-- Back to Top Button -->
-<button id="backToTop" title="Go to top">↑</button>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label label-1">Journal/Conference</label>
+                <input type="text" class="form-input" id="journal" />
+              </div>
+              <div class="form-group">
+                <label class="form-label label-1">Topic</label>
+                <input type="text" class="form-input" id="topic" />
+              </div>
+            </div>
 
+            <div class="form-group">
+              <label class="form-label label-1">URL</label>
+              <input type="url" class="form-input" id="url" />
+            </div>
 
-    <!-- Footer -->
-   <!--Footer-->
+            <div class="form-group">
+              <label class="form-label label-1">Tags (comma-separated)</label>
+              <input type="text" class="form-input" id="tags" placeholder="machine learning, neural networks, AI" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label label-1">Abstract</label>
+              <textarea class="form-textarea" id="abstract" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label label-1">Notes</label>
+              <textarea class="form-textarea" id="notes" rows="4"></textarea>
+            </div>
+
+            <!-- Rating and Favorite Section -->
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label label-1">Rating</label>
+                <div class="rating-container">
+                  <div class="stars-rating" id="starsRating">
+                    <span class="star" data-rating="1">★</span>
+                    <span class="star" data-rating="2">★</span>
+                    <span class="star" data-rating="3">★</span>
+                    <span class="star" data-rating="4">★</span>
+                    <span class="star" data-rating="5">★</span>
+                  </div>
+                  <input type="hidden" id="rating" value="0" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label label-1">Favorite</label>
+                <div class="favorite-container">
+                  <label class="favorite-checkbox">
+                    <input type="checkbox" id="isFavorite" />
+                    <span class="favorite-icon" style="margin-top: 10px;">
+                      <i class="fas fa-heart"></i>
+                    </span>
+                    <span class="favorite-text"><p class="label-1">Mark as favorite</p></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-secondary" onclick="hideAddForm()">
+                Cancel
+              </button>
+              <button type="submit" class="btn-primary">
+                <i class="fas fa-save"></i>
+                <span id="submitText">Add Paper</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="loadingSpinner" class="loading-spinner hidden">
+      <i class="fas fa-spinner fa-spin"></i> Saving Paper...
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Go to top">↑</button>
+
+  <!-- Footer -->
   <footer class="blog-footer" aria-label="Footer">
     <div class="footer-content">
       <div class="footer-section">
@@ -1008,50 +652,6 @@ box-shadow: rgba(0,0,0,0.8);
         </div>
       </div>
     </div>
-    <style>
-/* Footer Social Links */
-.footer-section .social-links {
-  display: flex;
-  gap: 16px;
-  margin-top: 10px;
-}
-
-.footer-section .social-links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: white; /* default bg */
-  color: #1a1a1a; /* default icon color */
-  font-size: 20px;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-}
-
-/* Hover effect for all social icons */
-.footer-section .social-links a:hover {
-  transform: translateY(-4px) scale(1.15);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-  color: white; /* icon color changes to white */
-}
-
-/* GitHub hover */
-.footer-section .social-links a[href*="github"]:hover {
-  background: #333; /* dark grey */
-}
-
-/* Twitter hover */
-.footer-section .social-links a[href*="twitter"]:hover {
-  background: #1DA1F2; /* dark Twitter blue */
-}
-
-/* LinkedIn hover */
-.footer-section .social-links a[href*="linkedin"]:hover {
-  background: #0A66C2; /* dark LinkedIn blue */
-}
-</style>
     <div class="footer-bottom">
       <p>© 2025 Research Paper Organizer | Open Source Project</p>
       <p class="footer-tagline">Made with <i class="fas fa-heart" style="color: #e74c3c;" aria-hidden="true"></i> for researchers worldwide</p>
@@ -1074,164 +674,140 @@ box-shadow: rgba(0,0,0,0.8);
       throw new Error('User not authenticated');
     }
 
-    
-      //back to top button 
-// Show button when scrolled down
-const backToTop = document.getElementById("backToTop");
+    //back to top button 
+    // Show button when scrolled down
+    const backToTop = document.getElementById("backToTop");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    backToTop.style.display = "block";
-  } else {
-    backToTop.style.display = "none";
-  }
-});
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        backToTop.style.display = "block";
+      } else {
+        backToTop.style.display = "none";
+      }
+    });
 
-// Smooth scroll to top
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+    // Smooth scroll to top
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
 
+    // Adil did this: Wrap in DOMContentLoaded to ensure elements exist
+    document.addEventListener('DOMContentLoaded', function () {
+      // Adil did this: Find possible menu toggles (SVG buttons and any .fa-bars)
+      const openBtn = document.getElementById('menu-open-btn');
+      const closeBtn = document.getElementById('menu-close-btn');
+      const faBars = document.querySelector('.fa-bars'); // in case a font-awesome icon is used
+      const menu = document.getElementById('menu-items-container');
+
+      // Adil did this: Safe-guard if menu container missing
+      if (!menu) return;
+
+      // Adil did this: Helper functions for open/close with ARIA
+      function openMenu() {
+        menu.classList.add('is-open');
+        menu.setAttribute('aria-hidden', 'false');
+        menu.setAttribute('role', 'menu');
+        if (openBtn) openBtn.classList.add('is-hidden');
+        if (closeBtn) closeBtn.classList.add('is-visible');
+        if (openBtn) openBtn.setAttribute('aria-expanded', 'true');
+        if (closeBtn) closeBtn.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeMenu() {
+        menu.classList.remove('is-open');
+        menu.setAttribute('aria-hidden', 'true');
+        if (openBtn) openBtn.classList.remove('is-hidden');
+        if (closeBtn) closeBtn.classList.remove('is-visible');
+        if (openBtn) openBtn.setAttribute('aria-expanded', 'false');
+        if (closeBtn) closeBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      // Adil did this: Initialize ARIA state for better accessibility
+      menu.setAttribute('aria-hidden', 'true');
+      if (openBtn) {
+        openBtn.setAttribute('aria-controls', 'menu-items-container');
+        openBtn.setAttribute('aria-expanded', 'false');
+        openBtn.style.cursor = 'pointer';
+      }
+      if (closeBtn) {
+        closeBtn.setAttribute('aria-controls', 'menu-items-container');
+        closeBtn.setAttribute('aria-expanded', 'false');
+        closeBtn.style.cursor = 'pointer';
+      }
+      if (faBars) {
+        faBars.setAttribute('role', 'button');
+        faBars.setAttribute('aria-controls', 'menu-items-container');
+        faBars.setAttribute('aria-expanded', 'false');
+        faBars.style.cursor = 'pointer';
+      }
+
+      // Adil did this: Attach event listeners to any available toggles
+      if (openBtn) openBtn.addEventListener('click', openMenu);
+      if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+      if (faBars) faBars.addEventListener('click', function () {
+        const isOpen = menu.classList.contains('is-open');
+        if (isOpen) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      // Adil did this: Close menu when clicking a menu item (improves UX on mobile)
+      menu.addEventListener('click', function (e) {
+        const target = e.target;
+        if (target && (target.matches('a') || target.closest('a'))) {
+          closeMenu();
+        }
+      });
+
+      // Adil did this: Handle viewport changes to reset menu for desktop widths
+      const mql = window.matchMedia('(min-width: 641px)');
+      function handleResize(e) {
+        if (e.matches) {
+          // Desktop: ensure menu is visible using existing site CSS (no forced hide)
+          menu.classList.remove('is-open');
+          if (openBtn) openBtn.classList.remove('is-hidden');
+          if (closeBtn) closeBtn.classList.remove('is-visible');
+          menu.setAttribute('aria-hidden', 'false');
+        } else {
+          // Mobile: keep menu closed by default
+          closeMenu();
+        }
+      }
+      handleResize(mql);
+      mql.addEventListener('change', handleResize);
+    });
   </script>
 
-    <script src="js/script.js"></script>
-<style>
-/* Bubble button mobile sizing */
-@media (max-width: 768px) {
-  button#chatbase-bubble-button {
-    position: fixed !important;
-    /* bottom: 300px !important;
-    left:300px !important; */
-    width: 55px !important;
-    height: 55px !important;
-    border-radius: 50% !important;
-    z-index: 2147483647 !important; 
-  }
+  <script src="js/script.js"></script>
 
-  button#chatbase-bubble-button svg {
-    width: 28px !important;
-    height: 28px !important;
-  }
-}
-@media (max-width: 768px) {
-  #chatbase-bubble-button {
-    position: fixed !important;
-    z-index: 2147483647 !important; 
-  }
-
-  /* Jab window open ho */
-  #chatbase-bubble-window[style*="display: flex"] + #chatbase-bubble-button {
-    bottom: 15px !important; 
-  }
-}
-button#chatbase-bubble-button div {
-  width: 100% !important;
-  height: 100% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-/* Window responsive – act like card */
-@media (max-width: 768px) {
-  #chatbase-bubble-window {
-    position: absolute;
-    width: 90% !important;
-    height: 75% !important;
-    bottom: 80px !important;
-    right: 15px !important;
-    left: auto !important;
-    top: auto !important;
-    border-radius: 16px !important;
-    background: transparent !important; /* remove white bg */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
-  }
-
-  #chatbase-bubble-window iframe {
-    border-radius: 16px !important;
-    background: black !important; /* chatbot stays black */
-  }
-}
-</style>
-    <!-- Chatbase Integration -->
-     <script>
-        (function(){
-            if(!window.chatbase || window.chatbase("getState") !== "initialized"){
-                window.chatbase = (...arguments) => {
-                    if(!window.chatbase.q){ window.chatbase.q = [] }
-                    window.chatbase.q.push(arguments)
-                };
-                window.chatbase = new Proxy(window.chatbase, {
-                    get(target, prop) {
-                        if(prop === "q"){ return target.q }
-                        return (...args) => target(prop, ...args)
-                    }
-                });
-            }
-            const onLoad = function(){
-                const script = document.createElement("script");
-                script.src = "https://www.chatbase.co/embed.min.js";
-                script.id = "SZQX20er6m-s8iNiFcBtK";
-                script.domain = "www.chatbase.co";
-                document.body.appendChild(script)
-            };
-            if(document.readyState === "complete"){ onLoad() }
-            else { window.addEventListener("load", onLoad) }
-        })();
-    </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const bubbleWindow = document.getElementById("chatbase-bubble-window");
-  const bubbleButton = document.getElementById("chatbase-bubble-button");
-
-  if (!bubbleWindow || !bubbleButton) return;
-
-  function setImportant(el, prop, value) {
-    el.style.setProperty(prop, value, "important");
-  }
-
-  function updateButtonPosition() {
-    const rect = bubbleWindow.getBoundingClientRect();
-
-    if (bubbleWindow.style.display === "flex") {
-      // Button below chat window (no changes here)
-      const topPos = window.scrollY + rect.bottom + 10;
-      const leftPos = rect.left;
-
-      setImportant(bubbleButton, "position", "fixed");
-      setImportant(bubbleButton, "top", topPos + "px");
-      setImportant(bubbleButton, "left", leftPos + "px");
-      setImportant(bubbleButton, "bottom", "auto");
-      setImportant(bubbleButton, "right", "auto");
-    } else {
-      // Closed position with left:300px; bottom:300px
-      setImportant(bubbleButton, "position", "fixed");
-      setImportant(bubbleButton, "bottom", "300px");
-      setImportant(bubbleButton, "left", "300px");
-      setImportant(bubbleButton, "top", "auto");
-      setImportant(bubbleButton, "right", "auto");
-    }
-  }
-
-  updateButtonPosition();
-  window.addEventListener("scroll", updateButtonPosition);
-  window.addEventListener("resize", updateButtonPosition);
-
-  // Toggle chat window
-  bubbleButton.addEventListener("click", () => {
-    bubbleWindow.style.display = bubbleWindow.style.display === "flex" ? "none" : "flex";
-    updateButtonPosition();
-  });
-
-  // Handle iframe close button
-  window.addEventListener("message", (event) => {
-    if (event.data?.type === "chatbase-close") {
-      bubbleWindow.style.display = "none";
-      updateButtonPosition();
-    }
-  });
-});
-</script>
+  <!-- Chatbase Integration -->
+  <script>
+    (function(){
+      if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+        window.chatbase = (...arguments) => {
+          if(!window.chatbase.q){ window.chatbase.q = [] }
+          window.chatbase.q.push(arguments)
+        };
+        window.chatbase = new Proxy(window.chatbase, {
+          get(target, prop) {
+            if(prop === "q"){ return target.q }
+            return (...args) => target(prop, ...args)
+          }
+        });
+      }
+      const onLoad = function(){
+        const script = document.createElement("script");
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.id = "SZQX20er6m-s8iNiFcBtK";
+        script.domain = "www.chatbase.co";
+        document.body.appendChild(script)
+      };
+      if(document.readyState === "complete"){ onLoad() }
+      else { window.addEventListener("load", onLoad) }
+    })();
+  </script>
 </body>
 
 </html>
