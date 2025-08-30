@@ -437,10 +437,13 @@ body {
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.5rem;
+  /* add glow animaation  */
+  animation:  glow 2s ease-in-out infinite alternate;
 }
 
-.feature-icon i {
-  font-size: 2;
+.feature-icon i { 
+  /* add float  */
+  animation: float 3s ease-in-out infinite;
 }
 /* How it Works Section */
 .how-it-works {
@@ -485,7 +488,34 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
+  box-shadow: 0 0 10px rgba(55, 115, 244, 0.6);
+  /* addd float + glow */
+  animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
 }
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+
+/* Flowing Glow Effect */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(55, 115, 244, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(55, 115, 244, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(55, 115, 244, 0.6);
+  }
+} 
 
 .step-content h3 {
   font-size: 1.5rem;
