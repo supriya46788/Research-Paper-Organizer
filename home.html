@@ -1095,9 +1095,66 @@ backToTop.addEventListener("click", () => {
   </script>
 
     <script src="js/script.js"></script>
+<style>
+/* Bubble button mobile sizing */
+@media (max-width: 768px) {
+  button#chatbase-bubble-button {
+    position: fixed !important;
+    /* bottom: 300px !important;
+    left:300px !important; */
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50% !important;
+    z-index: 2147483647 !important; 
+  }
 
+  button#chatbase-bubble-button svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
+@media (max-width: 768px) {
+  #chatbase-bubble-button {
+    position: fixed !important;
+    z-index: 2147483647 !important; 
+  }
+
+  /* Jab window open ho */
+  #chatbase-bubble-window[style*="display: flex"] + #chatbase-bubble-button {
+    bottom: 15px !important; 
+  }
+}
+button#chatbase-bubble-button div {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Window responsive – act like card */
+@media (max-width: 768px) {
+  #chatbase-bubble-window {
+    position: absolute;
+    width: 90% !important;
+    height: 75% !important;
+    bottom: 80px !important;
+    right: 15px !important;
+    left: auto !important;
+    top: auto !important;
+    border-radius: 16px !important;
+    background: transparent !important; /* remove white bg */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+  }
+
+  #chatbase-bubble-window iframe {
+    border-radius: 16px !important;
+    background: black !important; /* chatbot stays black */
+  }
+}
+</style>
     <!-- Chatbase Integration -->
-    <script>
+     <script>
         (function(){
             if(!window.chatbase || window.chatbase("getState") !== "initialized"){
                 window.chatbase = (...arguments) => {
@@ -1122,7 +1179,59 @@ backToTop.addEventListener("click", () => {
             else { window.addEventListener("load", onLoad) }
         })();
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const bubbleWindow = document.getElementById("chatbase-bubble-window");
+  const bubbleButton = document.getElementById("chatbase-bubble-button");
 
+  if (!bubbleWindow || !bubbleButton) return;
+
+  function setImportant(el, prop, value) {
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function updateButtonPosition() {
+    const rect = bubbleWindow.getBoundingClientRect();
+
+    if (bubbleWindow.style.display === "flex") {
+      // Button below chat window (no changes here)
+      const topPos = window.scrollY + rect.bottom + 10;
+      const leftPos = rect.left;
+
+      setImportant(bubbleButton, "position", "fixed");
+      setImportant(bubbleButton, "top", topPos + "px");
+      setImportant(bubbleButton, "left", leftPos + "px");
+      setImportant(bubbleButton, "bottom", "auto");
+      setImportant(bubbleButton, "right", "auto");
+    } else {
+      // Closed position with left:300px; bottom:300px
+      setImportant(bubbleButton, "position", "fixed");
+      setImportant(bubbleButton, "bottom", "300px");
+      setImportant(bubbleButton, "left", "300px");
+      setImportant(bubbleButton, "top", "auto");
+      setImportant(bubbleButton, "right", "auto");
+    }
+  }
+
+  updateButtonPosition();
+  window.addEventListener("scroll", updateButtonPosition);
+  window.addEventListener("resize", updateButtonPosition);
+
+  // Toggle chat window
+  bubbleButton.addEventListener("click", () => {
+    bubbleWindow.style.display = bubbleWindow.style.display === "flex" ? "none" : "flex";
+    updateButtonPosition();
+  });
+
+  // Handle iframe close button
+  window.addEventListener("message", (event) => {
+    if (event.data?.type === "chatbase-close") {
+      bubbleWindow.style.display = "none";
+      updateButtonPosition();
+    }
+  });
+});
+</script>
 </body>
 
 </html>
