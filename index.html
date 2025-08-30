@@ -8,8 +8,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="landing.css" />
+
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -21,14 +22,14 @@
       sizes="48x48"
       href="./favicon/favicon-48x48.png"
     />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       crossorigin="anonymous"
     />
-</head>
-<body>
+  </head>
+  <body>
     <!-- Loading Screen -->
     <div id="loading-screen">
       <div class="loading-background-animation"></div>
@@ -72,68 +73,62 @@
     </nav>
 
     <!-- Hero Section -->
-<section class="hero">
-  <div class="hero-container">
-    <!-- Left side -->
-    <div class="hero-content animate">
-      <h1>
-        Organize Your Research Papers Like Never Before
-      </h1>
-      <p>
-        Streamline your academic workflow with our intelligent research
-        paper management system. Track, organize, and cite your papers
-        efficiently in one centralized platform.
-      </p>
-      <div class="hero-buttons">
-        <button
-          class="btn-primary"
-          onclick="window.location.href='signup.html'"
-        >
-          Start Free Trial
-        </button>
-        <button
-          class="btn-secondary"
-          onclick="scrollToFeatures()"
-        >
-          See How it Works
-        </button>
-      </div>
-      <p class="hero-note">No credit card required • 30-day free trial</p>
-    </div>
-
-    <!-- Right side -->
-    <div class="hero-image animate">
-      <div class="hero-mockup">
-        <div class="mockup-header">
-          <div class="mockup-dots">
-            <span></span>
-            <span></span>
-            <span></span>
+    <section class="hero">
+      <div class="hero-container">
+        <!-- Left side -->
+        <div class="hero-content animate">
+          <h1>Organize Your Research Papers Like Never Before</h1>
+          <p>
+            Streamline your academic workflow with our intelligent research
+            paper management system. Track, organize, and cite your papers
+            efficiently in one centralized platform.
+          </p>
+          <div class="hero-buttons">
+            <button
+              class="btn-primary"
+              onclick="window.location.href='signup.html'"
+            >
+              Start Free Trial
+            </button>
+            <button class="btn-secondary" onclick="scrollToFeatures()">
+              See How it Works
+            </button>
           </div>
+          <p class="hero-note">No credit card required • 30-day free trial</p>
         </div>
-        <div class="mockup-content">
-          <div class="mockup-paper">
-            <div class="paper-title">Attention Is All You Need</div>
-            <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
-            <div class="paper-tags">
-              <span>Machine Learning</span>
-              <span>Transformers</span>
+
+        <!-- Right side -->
+        <div class="hero-image animate">
+          <div class="hero-mockup">
+            <div class="mockup-header">
+              <div class="mockup-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </div>
-          </div>
-          <div class="mockup-paper">
-            <div class="paper-title">BERT: Pre-training of Deep...</div>
-            <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
-            <div class="paper-tags">
-              <span>NLP</span>
-              <span>Pre-training</span>
+            <div class="mockup-content">
+              <div class="mockup-paper">
+                <div class="paper-title">Attention Is All You Need</div>
+                <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
+                <div class="paper-tags">
+                  <span>Machine Learning</span>
+                  <span>Transformers</span>
+                </div>
+              </div>
+              <div class="mockup-paper">
+                <div class="paper-title">BERT: Pre-training of Deep...</div>
+                <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
+                <div class="paper-tags">
+                  <span>NLP</span>
+                  <span>Pre-training</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
+    </section>
 
     <!-- Features Section -->
     <section id="features" class="features">
@@ -320,7 +315,7 @@
             collaboration so much easier."
           </p>
           <br />
-          
+
           <p class="tags">🤝 Collaboration • 📚 Productivity</p>
         </div>
       </div>
@@ -813,15 +808,27 @@
           </ul>
         </div>
 
-        <div class= "footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-          <li><a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a></li>
-        </ul>
-      </div>
+        <div class="footer-links-section footer-card">
+          <h4>Resources</h4>
+          <ul>
+            <li>
+              <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
+            </li>
+            <li>
+              <a href="glossary.html"><i class="fas fa-book"></i>Glossary</a>
+            </li>
+            <li>
+              <a href="open-source.html"
+                ><i class="fas fa-code-branch"></i>Open Source</a
+              >
+            </li>
+            <li>
+              <a href="Tag-Based-filtering.html"
+                ><i class="fas fa-book"></i>Tag Based Filtering</a
+              >
+            </li>
+          </ul>
+        </div>
 
         <div class="footer-links-section footer-card">
           <h4>Connect</h4>
@@ -860,13 +867,15 @@
         const loadingScreen = document.getElementById("loading-screen");
         const loadingText = document.getElementById("loading-text");
 
-        const target = document.querySelector(".typing-text"); 
-        const progressPercentage = document.querySelector(".progress-percentage");
+        const target = document.querySelector(".typing-text");
+        const progressPercentage = document.querySelector(
+          ".progress-percentage"
+        );
         const texts = [
-          "Organizing your thoughts...", 
-          "Drafting your ideas...", 
+          "Organizing your thoughts...",
+          "Drafting your ideas...",
           "Structuring your research...",
-          "Building your knowledge..."
+          "Building your knowledge...",
         ];
 
         let index = 0;
@@ -875,18 +884,18 @@
         // Enhanced text transition function
         function updateLoadingText() {
           index = (index + 1) % texts.length;
-          
+
           // Add smooth slide out effect with bounce
           loadingText.style.transform = "translateY(-25px) scale(0.95)";
           loadingText.style.opacity = "0";
-          
+
           setTimeout(() => {
             loadingText.innerHTML = texts[index] + '<span class="dots"></span>';
             loadingText.style.transform = "translateY(25px) scale(0.95)";
-            
+
             // Trigger reflow to ensure transform is applied
             loadingText.offsetHeight;
-            
+
             // Slide in with smooth transition and bounce
             loadingText.style.transform = "translateY(0) scale(1)";
             loadingText.style.opacity = "1";
@@ -899,7 +908,7 @@
           if (progressPercentage) {
             progressPercentage.textContent = Math.round(progress) + "%";
           }
-          
+
           if (progress < 100) {
             setTimeout(updateProgress, 1200 + Math.random() * 800);
           }
@@ -936,11 +945,11 @@
           //after that added sideLeft and slide right animation
           document.querySelector(".hero-content").classList.add("animate");
           document.querySelector(".hero-image").classList.add("animate");
-          
+
           // Add exit preparation with scale and rotation
           loadingScreen.style.transform = "scale(1.08) rotate(1deg)";
           loadingScreen.style.filter = "blur(1px)";
-          
+
           setTimeout(() => {
             loadingScreen.classList.add("hidden");
             //after that added sideLeft and slide right animation
@@ -995,5 +1004,20 @@
     </script>
 
     <script src="landing.js"></script>
+    <script>
+      const toggle = document.querySelector(".mobile-menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      toggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        toggle.classList.toggle("open"); // for rotating icon if you want
+      });
+      // Close menu when a link is clicked
+      navLinks.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+        });
+      });
+    </script>
   </body>
 </html>
