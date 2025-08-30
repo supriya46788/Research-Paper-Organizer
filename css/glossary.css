@@ -1,6 +1,68 @@
 /* ===========================
    RESET
 =========================== */
+
+/* Example text inside glossary cards */
+body.dark-mode .glossary-item small {
+  color: #d1d5db;
+  background: #111827; /* soft gray so it's readable */
+}
+
+body.dark-mode .glossary-item strong {
+  color: #f9fafb;
+  background: #111827; /* brighter for "Example:" label */
+}
+
+
+/* Dark Mode Global */
+body.dark-mode {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+/* Navbar */
+body.dark-mode .landing-nav {
+  background: rgba(31, 41, 55, 0.95);
+  border-bottom: 1px solid #374151;
+}
+body.dark-mode .nav-brand span,
+body.dark-mode .nav-links a {
+  color: #f3f4f6;
+}
+
+/* Header */
+body.dark-mode .glossary-header {
+  background: linear-gradient(135deg, #1e40af, #1e3a8a);
+  color: white;
+}
+body.dark-mode .glossary-header input {
+  background: #1f2937;
+  color: #f3f4f6;
+  border: 1px solid #374151;
+}
+
+/* Alphabet Nav */
+body.dark-mode .alphabet-nav a {
+  color: #f3f4f6;
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+body.dark-mode .alphabet-nav a:hover {
+  background: #374151;
+}
+
+/* Glossary Items */
+body.dark-mode .glossary-item {
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: #f3f4f6;
+}
+
+/* Footer */
+body.dark-mode .modern-footer {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
 * {
   margin: 0;
   padding: 0;

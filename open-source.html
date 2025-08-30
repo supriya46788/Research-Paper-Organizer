@@ -12,6 +12,27 @@ body{font-family:'Segoe UI',sans-serif;background:#f8fafc;color:#1e293b;line-hei
 a{text-decoration:none;color:inherit;}
 h1,h2,h3,h4{font-weight:600;}
 
+.dark-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 30px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #2563eb;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: 0.3s;
+  z-index: 1000;
+}
+.dark-toggle:hover {
+  transform: scale(1.05);
+  background: #e2e8f0;
+}
+
+
 /* Floating Back Button */
 .back-home {
   position:fixed;top:20px;left:20px;
@@ -150,13 +171,117 @@ footer.modern-footer {
   .controls input{width:100%;}
 }
 
+/* 🌙 Dark Mode Overrides */
+body.dark-mode {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+/* Back button + toggle */
+body.dark-mode .back-home {
+  background: #1f2937;
+  color: #f3f4f6;
+  border-color: #374151;
+}
+
+/* Header */
+body.dark-mode header {
+  background: linear-gradient(145deg, #1e3a8a, #1e40af, #2563eb);
+  color: #f3f4f6;
+}
+body.dark-mode header h2 { color: #dbeafe; }
+body.dark-mode header::after { background: #111827; }
+
+/* Controls */
+body.dark-mode .controls input {
+  background: #1f2937;
+  color: #f3f4f6;
+  border: 1px solid #374151;
+}
+body.dark-mode .controls button {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+body.dark-mode .controls button:hover {
+  background: #1d4ed8;
+}
+
+/* Repo Cards */
+body.dark-mode .repo {
+  background: #1f2937;
+  border: 1px solid #374151;
+  color: #f3f4f6;
+}
+body.dark-mode .repo h3 { color: #60a5fa; }
+body.dark-mode .repo p { color: #d1d5db; }
+body.dark-mode .repo a {
+  background: #2563eb;
+  color: #fff;
+}
+body.dark-mode .repo .tags span {
+  background: #3b82f6;
+  color: #f9fafb;
+}
+
+/* Contribute Section */
+body.dark-mode .contribute {
+  background: #1e293b;
+}
+body.dark-mode .contribute h2 { color: #60a5fa; }
+body.dark-mode .contribute-card {
+  background: #1f2937;
+  color: #f3f4f6;
+  border: 1px solid #374151;
+}
+body.dark-mode .contribute-card h3 { color: #60a5fa; }
+
+body.dark-mode .contribute-card p { color: #fff; }
+
+/* Acknowledge Section */
+body.dark-mode .acknowledge {
+  background: #111827;
+}
+body.dark-mode .ack-card {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+}
+
+/* Footer */
+body.dark-mode footer.modern-footer {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #f3f4f6;
+}
+body.dark-mode .footer-card {
+  background: #1f2937;
+  color: #f3f4f6;
+}
+body.dark-mode .footer-links-section ul li a {
+  color: #f3f4f6;
+}
+body.dark-mode .footer-links-section ul li a:hover {
+  color: #60a5fa;
+}
+body.dark-mode .social-icons a {
+  background: #1f2937;
+  color: #f3f4f6;
+}
+body.dark-mode .social-icons a:hover {
+  background: #2563eb;
+  color: #fff;
+}
+
+
 </style>
+
+
 </head>
 <body>
 
 <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back</a>
-
+<div id="darkModeToggle" class="dark-toggle">
+          <i class="fas fa-moon"></i>
+        </div>
 <header>
+ 
   <h1>🌐 Open Source Community</h1>
   <h2>Discover Projects • Contribute • Grow</h2>
 </header>
@@ -269,6 +394,30 @@ function filterRepos(tag) {
   if(tag === "all") displayRepos(allRepos);
   else displayRepos(allRepos.filter(r => r.tags.includes(tag)));
 }
+
+// 🌙 Dark Mode Toggle
+const darkToggle = document.getElementById("darkModeToggle");
+const body = document.body;
+
+// Load preference
+if (localStorage.getItem("darkMode") === "enabled") {
+  body.classList.add("dark-mode");
+  darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+}
+
+// Toggle event
+darkToggle.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("darkMode", "enabled");
+    darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  } else {
+    localStorage.setItem("darkMode", "disabled");
+    darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  }
+});
+
 
 fetchRepos();
 </script>
