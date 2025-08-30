@@ -300,40 +300,119 @@
     <!-- ===== Testimonials Section ===== -->
     <section id="testimonials">
       <h2>What Our Users Say</h2>
-      <div class="testimonials-container">
-        <div class="testimonial-card">
-          <img src="testimonialw.png" alt="User Photo" />
-          <h3>Dr. Sarah Lee</h3>
-          <p class="designation">PhD Student, AI Researcher</p>
-          <p class="feedback">
-            "The Research Paper Organizer has transformed how I manage my
-            reading list. It’s intuitive and saves me hours every week!"
-          </p>
-          <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
-        </div>
+      <div class="testimonials-marquee">
+        <div class="testimonials-track">
+          <!-- First set of testimonials -->
+          <div class="testimonial-card">
+            <img src="testimonialw.png" alt="User Photo" />
+            <h3>Dr. Sarah Lee</h3>
+            <p class="designation">PhD Student, AI Researcher</p>
+            <p class="feedback">
+              "The Research Paper Organizer has transformed how I manage my
+              reading list. It's intuitive and saves me hours every week!"
+            </p>
+            <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
+          </div>
 
-        <div class="testimonial-card">
-          <img src="test1.jpg" alt="User Photo" />
-          <h3>Michael Chen</h3>
-          <p class="designation">Data Scientist</p>
-          <p class="feedback">
-            "I love the clean interface and the ability to tag and search papers
-            instantly. A must-have for researchers!"
-          </p>
-          <p class="tags">💡 Great UI • ⚡ Fast</p>
-        </div>
+          <div class="testimonial-card">
+            <img src="test1.jpg" alt="User Photo" />
+            <h3>Michael Chen</h3>
+            <p class="designation">Data Scientist</p>
+            <p class="feedback">
+              "I love the clean interface and the ability to tag and search papers
+              instantly. A must-have for researchers!"
+            </p>
+            <p class="tags">💡 Great UI • ⚡ Fast</p>
+          </div>
 
-        <div class="testimonial-card">
-          <img src="testimonialw.png" alt="User Photo" />
-          <h3>Ananya Sharma</h3>
-          <p class="designation">Graduate Student</p>
-          <p class="feedback">
-            "This tool has streamlined my literature review process and made
-            collaboration so much easier."
-          </p>
-          <br />
+          <div class="testimonial-card">
+            <img src="testimonialw.png" alt="User Photo" />
+            <h3>Ananya Sharma</h3>
+            <p class="designation">Graduate Student</p>
+            <p class="feedback">
+              "This tool has streamlined my literature review process and made
+              collaboration so much easier."
+            </p>
+            <p class="tags">🤝 Collaboration • 📚 Productivity</p>
+          </div>
 
-          <p class="tags">🤝 Collaboration • 📚 Productivity</p>
+          <div class="testimonial-card">
+            <img src="test1.jpg" alt="User Photo" />
+            <h3>Dr. James Wilson</h3>
+            <p class="designation">Research Professor</p>
+            <p class="feedback">
+              "Fantastic tool for academic research! The organization features
+              help me stay on top of the latest papers in my field."
+            </p>
+            <p class="tags">🎓 Academic • 📖 Organization</p>
+          </div>
+
+          <div class="testimonial-card">
+            <img src="testimonialw.png" alt="User Photo" />
+            <h3>Elena Rodriguez</h3>
+            <p class="designation">PhD Candidate</p>
+            <p class="feedback">
+              "The citation feature alone saves me countless hours. Perfect for
+              literature reviews and thesis writing!"
+            </p>
+            <p class="tags">📝 Citations • ⚡ Efficient</p>
+          </div>
+
+          <!-- Duplicate set for seamless loop -->
+          <div class="testimonial-card">
+            <img src="testimonialw.png" alt="User Photo" />
+            <h3>Dr. Sarah Lee</h3>
+            <p class="designation">PhD Student, AI Researcher</p>
+            <p class="feedback">
+              "The Research Paper Organizer has transformed how I manage my
+              reading list. It's intuitive and saves me hours every week!"
+            </p>
+            <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
+          </div>
+
+          <div class="testimonial-card">
+            <img src="test1.jpg" alt="User Photo" />
+            <h3>Michael Chen</h3>
+            <p class="designation">Data Scientist</p>
+            <p class="feedback">
+              "I love the clean interface and the ability to tag and search papers
+              instantly. A must-have for researchers!"
+            </p>
+            <p class="tags">💡 Great UI • ⚡ Fast</p>
+          </div>
+
+          <div class="testimonial-card">
+            <img src="testimonialw.png" alt="User Photo" />
+            <h3>Ananya Sharma</h3>
+            <p class="designation">Graduate Student</p>
+            <p class="feedback">
+              "This tool has streamlined my literature review process and made
+              collaboration so much easier."
+            </p>
+            <p class="tags">🤝 Collaboration • 📚 Productivity</p>
+          </div>
+
+          <div class="testimonial-card">
+            <img src="test1.jpg" alt="User Photo" />
+            <h3>Dr. James Wilson</h3>
+            <p class="designation">Research Professor</p>
+            <p class="feedback">
+              "Fantastic tool for academic research! The organization features
+              help me stay on top of the latest papers in my field."
+            </p>
+            <p class="tags">🎓 Academic • 📖 Organization</p>
+          </div>
+
+          <div class="testimonial-card">
+            <img src="testimonialw.png" alt="User Photo" />
+            <h3>Elena Rodriguez</h3>
+            <p class="designation">PhD Candidate</p>
+            <p class="feedback">
+              "The citation feature alone saves me countless hours. Perfect for
+              literature reviews and thesis writing!"
+            </p>
+            <p class="tags">📝 Citations • ⚡ Efficient</p>
+          </div>
         </div>
       </div>
     </section>
@@ -344,89 +423,190 @@
         padding: 50px 20px;
         background: #f9fafb;
         text-align: center;
+        overflow: hidden;
       }
       #testimonials h2 {
-        font-size: 2.5rem; /* Bigger text */
-        font-weight: bold; /* Makes it stand out */
-        text-align: center; /* Centered heading */
-        margin-bottom: 30px; /* More space below */
+        font-size: 2.5rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 30px;
       }
-      .testimonials-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 20px;
+      
+      /* Marquee Container */
+      .testimonials-marquee {
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+        -webkit-mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
       }
+      
+      /* Marquee Track */
+      .testimonials-track {
+        display: flex;
+        gap: 30px;
+        animation: marquee 10s linear infinite;
+        width: fit-content;
+      }
+      
+      /* Pause animation on hover */
+      .testimonials-marquee:hover .testimonials-track {
+        animation-play-state: paused;
+      }
+      
+      /* Marquee Animation */
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      
       .testimonial-card {
         background: white;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease, opacity 0.5s ease;
-        opacity: 0;
-        transform: translateY(20px);
+        padding: 25px;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
         cursor: pointer;
-      }
-      .testimonial-card:hover {
-        transform: translateY(-10px) scale(1.03);
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-        background: #f9f9ff;
-      }
-      .testimonial-card img {
-        width: 150px;
-        height: 150px;
-        border-radius: 100%;
-        margin-bottom: 15px;
-      }
-      .testimonial-card:hover img {
-        transform: scale(1.1) rotate(2deg);
-      }
-      .testimonial-card .designation {
-        font-size: 0.9rem;
-        color: #6b7280;
-      }
-      .testimonial-card .feedback {
-        font-size: 0.95rem;
-        margin: 15px 0;
-      }
-      .testimonial-card .tags {
-        font-size: 0.85rem;
-        color: #374151;
-      }
-      .testimonial-card.show {
+        min-width: 320px;
+        max-width: 320px;
+        flex-shrink: 0;
+        position: relative;
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
       }
-      @media (max-width: 640px) {
-        .testimonials-container {
-          display: flex;
-          overflow-x: auto;
-          gap: 16px;
-          scroll-snap-type: x mandatory;
-          padding-bottom: 10px;
+      
+      .testimonial-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      }
+      
+      .testimonial-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 16px;
+        padding: 2px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .testimonial-card:hover::before {
+        opacity: 1;
+      }
+      
+      .testimonial-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 15px;
+        border: 3px solid #e5e7eb;
+        transition: all 0.3s ease;
+      }
+      
+      .testimonial-card:hover img {
+        transform: scale(1.1);
+        border-color: #667eea;
+      }
+      
+      .testimonial-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #1f2937;
+      }
+      
+      .testimonial-card .designation {
+        font-size: 0.85rem;
+        color: #6b7280;
+        margin-bottom: 15px;
+        font-weight: 500;
+      }
+      
+      .testimonial-card .feedback {
+        font-size: 0.9rem;
+        margin: 15px 0;
+        color: #374151;
+        line-height: 1.6;
+        font-style: italic;
+      }
+      
+      .testimonial-card .tags {
+        font-size: 0.8rem;
+        color: #667eea;
+        font-weight: 500;
+        margin-top: 15px;
+      }
+      
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .testimonials-track {
+          animation-duration: 7.5s;
+          gap: 20px;
         }
+        
         .testimonial-card {
-          min-width: 260px;
-          scroll-snap-align: center;
+          min-width: 280px;
+          max-width: 280px;
+          padding: 20px;
+        }
+        
+        .testimonial-card img {
+          width: 70px;
+          height: 70px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .testimonials-track {
+          animation-duration: 6s;
+          gap: 15px;
+        }
+        
+        .testimonial-card {
+          min-width: 250px;
+          max-width: 250px;
+          padding: 18px;
+        }
+        
+        #testimonials h2 {
+          font-size: 2rem;
         }
       }
     </style>
 
-    <!-- ===== JS Fade-in Animation ===== -->
+    <!-- ===== JS Marquee Enhancement ===== -->
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        // Add smooth marquee functionality
+        const marqueeTrack = document.querySelector('.testimonials-track');
+        
+        // Optional: Add click functionality to testimonial cards
         const cards = document.querySelectorAll(".testimonial-card");
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-              }
-            });
-          },
-          { threshold: 0.1 }
-        );
-
-        cards.forEach((card) => observer.observe(card));
+        cards.forEach((card) => {
+          card.addEventListener('click', () => {
+            // Add a subtle pulse effect when clicked
+            card.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+              card.style.transform = '';
+            }, 150);
+          });
+        });
+        
+        // Reduce motion for users who prefer it
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          marqueeTrack.style.animationDuration = '30s';
+        }
       });
     </script>
 
