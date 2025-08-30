@@ -93,4 +93,26 @@ document.querySelector(".mobile-menu-toggle").addEventListener("click", () => {
   document.querySelector(".nav-links").classList.toggle("active");
 });
 
+const darkToggle = document.getElementById("darkModeToggle");
+const body = document.body;
+
+// Load preference
+if (localStorage.getItem("darkMode") === "enabled") {
+  body.classList.add("dark-mode");
+}
+
+// Toggle button
+darkToggle.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("darkMode", "enabled");
+    darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  } else {
+    localStorage.setItem("darkMode", "disabled");
+    darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  }
+});
+
+
 
