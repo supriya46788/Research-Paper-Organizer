@@ -422,6 +422,9 @@ body {
   text-align: center;
   transition: all 0.3s ease;
 }
+#features .feature-card h3 {
+  color: #2563eb;
+}
 
 .feature-card:hover {
   transform: translateY(-5px);
