@@ -1425,3 +1425,78 @@ body {
     box-shadow: none;
   }
 }
+/* ==== Dark Mode Overrides for Landing Page ==== */
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
+/* Navigation */
+body.dark-mode .landing-nav {
+  background: rgba(17, 24, 39, 0.95); /* dark backdrop */
+  border-bottom-color: #374151;
+}
+body.dark-mode .nav-links a {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #f3f4f6;
+}
+
+/* Hero */
+body.dark-mode .hero {
+  background: #0f172a;
+}
+body.dark-mode .hero-content h1,
+body.dark-mode .hero-content p,
+body.dark-mode .hero-note {
+  color: #e5e7eb;
+}
+body.dark-mode .hero-mockup {
+  background: #1f2937;
+}
+body.dark-mode .mockup-paper {
+  background: #111827;
+  border-left-color: #3b82f6;
+}
+body.dark-mode .paper-title,
+body.dark-mode .paper-meta {
+  color: #d1d5db;
+}
+
+/* Features */
+body.dark-mode .features {
+  background: #111827;
+}
+body.dark-mode .feature-card {
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
+/* How it Works */
+body.dark-mode .how-it-works {
+  background: #0f172a;
+}
+body.dark-mode .step {
+  background: #1f2937;
+  color: #e5e7eb;
+}
+
+/* CTA */
+body.dark-mode .cta {
+  background: #111827;
+}
+body.dark-mode .cta-content h2,
+body.dark-mode .cta-content p {
+  color: #e5e7eb;
+}
+
+/* Footer */
+body.dark-mode .landing-footer {
+  background: #0b1120;
+  color: #e5e7eb;
+}
+body.dark-mode .footer-section a {
+  color: #9ca3af;
+}
+body.dark-mode .footer-section a:hover {
+  color: #3b82f6;
+}
