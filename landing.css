@@ -34,6 +34,9 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background: var(--background);
+  width:100%;
+  margin: 0;
+  padding: 0;
 }
 html,
 body {
@@ -401,6 +404,14 @@ body {
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--text-color);
+}
+
+.dark-mode .section-header h2 {
+  color:whitesmoke
+}
+
+.dark-mode .section-header p {
+  color:whitesmoke
 }
 
 .section-header p {
@@ -1430,7 +1441,7 @@ body {
 }
 /* ==== Dark Mode Overrides for Landing Page ==== */
 body.dark-mode {
-  background: var(--bg-dark);
+ 
   color: var(--text-light);
 }
 
