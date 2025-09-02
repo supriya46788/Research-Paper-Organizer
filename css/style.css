@@ -190,6 +190,41 @@ body.dark-mode #menu-items-container {
   font-size: larger;
 }
 
+.profile-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(99,102,241,0.08);
+  padding: 2rem 2.5rem;
+  text-align: left;
+}
+body.dark-mode .profile-container {
+  background: #1f2937;
+  color: #f3f4f6;
+}
+.profile-info p {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+}
+.settings-section {
+  margin: 1.5rem 0;
+}
+.logout-btn {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: background 0.2s;
+}
+.logout-btn:hover {
+  background: #b91c1c;
+}
+
 @media (min-width: 768px) {
   .menu {
     display: none;
@@ -2220,4 +2255,3 @@ body.dark-mode .chatbot-input-container {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
 }
-

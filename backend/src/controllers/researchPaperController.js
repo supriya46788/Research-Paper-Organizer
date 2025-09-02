@@ -55,4 +55,34 @@ const deletePaper = async (req, res) => {
   }
 };
 
-export { createPaper, getPaper, getPapers, updatePaper, deletePaper };
+const saveAnnotations = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { annotations } = req.body;
+    const researchPaper = await ResearchPaper.findByIdAndUpdate(
+      id,
+      { annotations },
+      { new: true }
+    );
+    if (!researchPaper)
+      return res.status(404).json({ message: "ResearchPaper not found" });
+    res.json(researchPaper);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+const suggestTags = async (req, res) => {
+  try {
+    const { title, abstract } = req.body;
+    // Placeholder: Replace with actual NLP or external API integration
+    const keywords = [];
+    if (title) keywords.push(...title.split(" ").slice(0, 3));
+    if (abstract) keywords.push(...abstract.split(" ").slice(0, 3));
+    const tags = Array.from(new Set(keywords.map(k => k.toLowerCase())));
+    res.json({ suggestedTags: tags });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+export { createPaper, getPaper, getPapers, updatePaper, deletePaper, saveAnnotations, suggestTags };

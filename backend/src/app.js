@@ -24,8 +24,10 @@ import { connectDB } from "./utils/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+
 import researchPaperRoutes from "./routes/researchPaperRoutes.js";
 import geminiRoutes from "./routes/geminiRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -40,9 +42,11 @@ app.use(cors());
 app.use(express.json());
 app.use(passport.initialize());
 
+
 app.use("/api/auth", authRoutes);
 app.use("/api/papers", researchPaperRoutes);
 app.use("/api/gemini", geminiRoutes);
+app.use("/api/user", userRoutes);
 
 const startServer = async () => {
   await connectDB();
