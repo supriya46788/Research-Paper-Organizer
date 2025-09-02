@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile & Settings</title>
+    <link rel="stylesheet" href="css/profile-settings.css">
+</head>
+<body>
+    <div class="profile-settings-container">
+        <h1>User Profile & Settings</h1>
+        <form id="profileForm">
+            <section>
+                <h2>Account Information</h2>
+                <label>Email: <input type="email" id="email" name="email" disabled></label><br>
+                <label>Username: <input type="text" id="username" name="username"></label><br>
+                <button type="button" id="updateAccountBtn">Update Account</button>
+            </section>
+            <section>
+                <h2>Preferences</h2>
+                <label>Theme:
+                    <select id="theme" name="theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </label><br>
+                <button type="button" id="updatePreferencesBtn">Save Preferences</button>
+            </section>
+            <section>
+                <h2>Notification Settings</h2>
+                <label><input type="checkbox" id="emailNotifications"> Email Notifications</label><br>
+                <label><input type="checkbox" id="pushNotifications"> Push Notifications</label><br>
+                <button type="button" id="updateNotificationsBtn">Save Notifications</button>
+            </section>
+        </form>
+        <div id="profileMessage"></div>
+    </div>
+    <script src="js/profile-settings.js"></script>
+</body>
+</html>

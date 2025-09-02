@@ -373,7 +373,7 @@
 .feature-card {
   max-width: 600px;
   margin: 30px auto;
-  padding: 20px;
+  padding: 30px 30px;
   border-radius: 10px;
   background: #f9fafb;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
@@ -473,8 +473,8 @@ body.dark .feature-card button {
     <span class="tag" onclick="filterPapers('DataScience')">Data Science</span>
   </div>
 
+  <!-- ===== AI Tag Suggestion UI ===== -->
   
-<!-- ===== AI Tag Suggestions ===== -->
 <div class="feature-card">
   <h2>AI Tag Suggestions</h2>
   <label>Paper Title:
@@ -486,7 +486,6 @@ body.dark .feature-card button {
   <button onclick="showTagSuggestions()">Get Suggestions</button>
   <p id="tagSuggestions"></p>
 </div>
-
 
 
   <!-- ===== Papers Grid ===== -->
@@ -555,62 +554,63 @@ body.dark .feature-card button {
     </div>
   </div>
 
-  <!-- ===== Cloud Sync UI ===== -->
-  <div class="feature-card">
-    <h2>Cloud Sync</h2>
-    <label>Upload Paper (PDF):
-      <input type="file" id="cloudPaperFile" accept="application/pdf">
-    </label>
-    <button onclick="uploadPaperToCloud()">Upload to Cloud</button>
-    <div id="cloudUploadResult"></div>
-    <hr>
-    <label>Download by File Name:
-      <input type="text" id="cloudFileName" placeholder="Enter file name from cloud">
-    </label>
-    <button onclick="downloadPaperFromCloud()">Download from Cloud</button>
-  </div>
-
-  <!-- ===== Footer ===== -->
-  <footer class="modern-footer" aria-label="Footer">
-    <div class="footer-top">
-      <div class="footer-card">
-        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-        <p>A platform to organize, filter, and explore research papers easily.</p>
-      </div>
-      <div class="footer-links-section footer-card">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="about.html"><i class="fas fa-users"></i> About Us</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-          <li><a href="Faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
-        </ul>
-      </div>
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i> Open Source</a></li>
-        </ul>
-      </div>
-      <div class="footer-links-section footer-card">
-        <h4>Connect</h4>
-        <div class="social-icons">
-          <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:supriyadpandey502@gmail.com"><i class="fas fa-envelope"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 Research Paper Organizer | Built with <span class="heart">♥</span> for researchers worldwide</p>
-    </div>
-  </footer>
-
-  <!-- ===== Scripts ===== -->
   <script src="js/tag-suggest.js"></script>
   <script src="js/cloud-sync.js"></script>
+  <!-- ===== Cloud Sync ===== -->
+<div class="feature-card">
+  <h2>Cloud Sync</h2>
+  <label>
+    Upload Paper (PDF):
+    <input type="file" id="cloudPaperFile" accept="application/pdf">
+  </label>
+  <button onclick="uploadPaperToCloud()">Upload to Cloud</button>
+  <div id="cloudUploadResult"></div>
+  <hr>
+  <label>
+    Download by File Name:
+    <input type="text" id="cloudFileName" placeholder="Enter file name from cloud">
+  </label>
+  <button onclick="downloadPaperFromCloud()">Download from Cloud</button>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer class="modern-footer" aria-label="Footer">
+  <div class="footer-top">
+    <div class="footer-card">
+      <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+      <p>A platform to organize, filter, and explore research papers easily.</p>
+    </div>
+    <div class="footer-links-section footer-card">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-users"></i> About Us</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="Faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-section footer-card">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+        <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
+        <li><a href="open-source.html"><i class="fas fa-code-branch"></i> Open Source</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-section footer-card">
+      <h4>Connect</h4>
+      <div class="social-icons">
+        <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:supriyadpandey502@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Research Paper Organizer | Built with <span class="heart">♥</span> for researchers worldwide</p>
+  </div>
+</footer>
+
   <script>
     function filterPapers(tag) {
       const papers = document.querySelectorAll('.paper');

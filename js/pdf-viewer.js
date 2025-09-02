@@ -1391,3 +1391,18 @@ document.getElementById('import-annotations-file').onchange = function(e) {
     };
     reader.readAsText(file);
 };
+
+
+async function saveAnnotationsToServer(paperId, annotations) {
+  try {
+    const response = await fetch(`/api/research-papers/${paperId}/annotations`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ annotations })
+    });
+    if (!response.ok) throw new Error("Failed to save annotations");
+    return await response.json();
+  } catch (err) {
+    alert("Error saving annotations: " + err.message);
+  }
+}
