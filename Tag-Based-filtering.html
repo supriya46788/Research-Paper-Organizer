@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
   <title>Research Paper Organiser - Tag Filtering</title>
   <style>
     body {
@@ -13,57 +15,55 @@
       transition: background 0.3s, color 0.3s;
     }
 
-/* ===== Navbar ===== */
-/* ===== Navbar ===== */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 30px;
-  background: #e9f1fd;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+    /* ===== Navbar ===== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 30px;
+      background: #e9f1fd;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.nav-left, .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
-/* 🔑 Remove underline + force white text */
-nav a,
-nav a:link,
-nav a:visited,
-nav a:hover,
-nav a:active {
-  text-decoration: none !important;
-  color: white !important;   /* Always white */
-}
+    nav a,
+    nav a:link,
+    nav a:visited,
+    nav a:hover,
+    nav a:active {
+      text-decoration: none !important;
+      color: white !important;
+    }
 
-.nav-left .btn,
-.nav-right .btn {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: white !important;   /* Force text white */
-  border: none;
-  padding: 8px 18px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+    .nav-left .btn,
+    .nav-right .btn {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white !important;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-.nav-left .btn:hover,
-.nav-right .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-}
+    .nav-left .btn:hover,
+    .nav-right .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
 
     /* Dark Mode Toggle */
     .toggle {
@@ -74,19 +74,36 @@ nav a:active {
       cursor: pointer;
       font-size: 16px;
       box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+      transition: background 0.3s;
     }
 
-    /* Dark mode styles */
+    /* ===== Dark mode styles ===== */
     body.dark {
-      background: #1e293b;
+      background: #0f172a;
       color: #f8fafc;
     }
 
     body.dark nav {
-      background: #334155;
+      background: #1e293b;
     }
 
     body.dark .paper {
+      background: #1e293b;
+      color: #f1f5f9;
+      border-top: 4px solid #60a5fa;
+    }
+
+    body.dark .tag {
+      background: #334155;
+      color: #e2e8f0;
+    }
+
+    body.dark .tag:hover {
+      background: #3b82f6;
+      color: white;
+    }
+
+    body.dark .toggle {
       background: #334155;
       color: #f8fafc;
     }
@@ -106,6 +123,10 @@ nav a:active {
       margin: 25px 0;
       font-size: 2.2em;
       letter-spacing: 1px;
+    }
+
+    body.dark h1 {
+      color: #f8fafc;
     }
 
     .tags {
@@ -162,11 +183,19 @@ nav a:active {
       color: #2c3e50;
     }
 
+    body.dark .paper h3 {
+      color: #f8fafc;
+    }
+
     .paper .authors {
       font-size: 14px;
       color: #7f8c8d;
       font-style: italic;
       margin-bottom: 10px;
+    }
+
+    body.dark .paper .authors {
+      color: #cbd5e1;
     }
 
     .paper .abstract {
@@ -175,6 +204,10 @@ nav a:active {
       line-height: 1.5;
       flex-grow: 1;
       margin-bottom: 15px;
+    }
+
+    body.dark .paper .abstract {
+      color: #e2e8f0;
     }
 
     .paper .paper-tags {
@@ -186,6 +219,154 @@ nav a:active {
       border-radius: 8px;
       display: inline-block;
       align-self: flex-start;
+    }
+
+    body.dark .paper .paper-tags {
+      background: #1e40af;
+      color: #bfdbfe;
+    }
+     /* ===== Footer ===== */
+    .modern-footer {
+      background: #e9f1fd;
+      padding: 40px 20px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .footer-card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .footer-card h3,
+    .footer-card h4 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #2c3e50;
+    }
+
+    .footer-links-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links-section ul li {
+      margin: 8px 0;
+    }
+
+    .footer-links-section ul li a {
+      color: #2c3e50;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-links-section ul li a:hover {
+      color: #2563eb;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: #f1f5f9;
+      border-radius: 50%;
+      font-size: 18px;
+      color: #2563eb;
+      transition: all 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #2c3e50;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 15px;
+    }
+
+    .heart {
+      color: red;
+    }
+
+          /* ===== Dark mode styles ===== */
+    body.dark {
+      background: #0f172a;
+      color: #f8fafc;
+    }
+
+    body.dark nav {
+      background: #1e293b;
+    }
+
+    body.dark .paper {
+      background: #1e293b;
+      color: #f1f5f9;
+      border-top: 4px solid #60a5fa;
+    }
+
+    body.dark .tag {
+      background: #334155;
+      color: #e2e8f0;
+    }
+
+    body.dark .tag:hover {
+      background: #3b82f6;
+      color: white;
+    }
+
+    body.dark .toggle {
+      background: #334155;
+      color: #f8fafc;
+    }
+
+    body.dark .modern-footer {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f3f4f6;
+    }
+
+    body.dark .footer-card {
+      background: #1f2937;
+      color: #f3f4f6;
+    }
+
+    body.dark .footer-links-section ul li a {
+      color: #f3f4f6;
+    }
+
+    body.dark .footer-links-section ul li a:hover {
+      color: #60a5fa;
+    }
+
+    body.dark .social-icons a {
+      background: #1f2937;
+      color: #f3f4f6;
+    }
+
+    body.dark .social-icons a:hover {
+      background: #2563eb;
+      color: #fff;
     }
 
     @media (max-width: 1200px) {
@@ -212,8 +393,6 @@ nav a:active {
   <nav>
     <div class="nav-left">
       <a href="index.html"><button class="btn">🏠 Home</button></a>
-    
-
     </div>
     <div class="nav-right">
       <a href="about.html"><button class="btn">About Us</button></a>
@@ -221,7 +400,7 @@ nav a:active {
       <a href="Faq.html"><button class="btn">FAQ</button></a>
       <a href="contact.html"><button class="btn">Contact Us</button></a>
       <a href="tools.html"><button class="btn">Tools</button></a>
-      <button class="toggle" onclick="toggleDark()">🌙</button></a>
+      <button id="darkToggle" class="toggle">🌙</button>
     </div>
   </nav>
 
@@ -313,6 +492,45 @@ nav a:active {
     </div>
   </div>
 
+   <!-- ===== Footer ===== -->
+  <footer class="modern-footer" aria-label="Footer">
+    <div class="footer-top">
+      <div class="footer-card">
+        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        <p>A platform to organize, filter, and explore research papers easily.</p>
+      </div>
+      <div class="footer-links-section footer-card">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="about.html"><i class="fas fa-users"></i> About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+          <li><a href="Faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-section footer-card">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+          <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
+          <li><a href="open-source.html"><i class="fas fa-code-branch"></i> Open Source</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-section footer-card">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:supriyadpandey502@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Research Paper Organizer | Built with <span class="heart">♥</span> for researchers worldwide</p>
+    </div>
+  </footer>
+
+
   <script>
     function filterPapers(tag) {
       const papers = document.querySelectorAll('.paper');
@@ -326,10 +544,37 @@ nav a:active {
       });
     }
 
-    // Dark mode toggle
-    function toggleDark() {
-      document.body.classList.toggle('dark');
+    // Dark mode toggle with sun/moon + save preference
+    const toggleBtn = document.getElementById("darkToggle");
+
+    function setTheme(isDark) {
+      if (isDark) {
+        document.body.classList.add('dark');
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme", "dark");
+      } else {
+        document.body.classList.remove('dark');
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme", "light");
+      }
     }
+
+    function toggleDark() {
+      const isDark = !document.body.classList.contains('dark');
+      setTheme(isDark);
+    }
+
+    // Load saved preference
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        setTheme(true);
+      } else {
+        setTheme(false);
+      }
+    });
+
+    toggleBtn.addEventListener("click", toggleDark);
   </script>
 </body>
 </html>
