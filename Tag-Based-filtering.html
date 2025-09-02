@@ -240,6 +240,15 @@ nav a:active {
     <span class="tag" onclick="filterPapers('DataScience')">Data Science</span>
   </div>
 
+  <!-- ===== AI Tag Suggestion UI ===== -->
+  <div style="max-width:600px;margin:30px auto 10px auto;padding:20px;background:#f9fafb;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+    <h2>AI Tag Suggestions</h2>
+    <label>Title: <input type="text" id="paperTitle" style="width:90%"></label><br><br>
+    <label>Abstract: <textarea id="paperAbstract" rows="3" style="width:90%"></textarea></label><br><br>
+    <button onclick="showTagSuggestions()" style="padding:8px 18px;border-radius:6px;background:#2563eb;color:#fff;border:none;cursor:pointer;">Suggest Tags</button>
+    <div id="tagSuggestions" style="margin-top:15px;font-size:16px;"></div>
+  </div>
+
   <!-- ===== Papers Grid ===== -->
   <div class="papers" id="papers">
     <div class="paper" data-tags="AI ML">
@@ -313,6 +322,18 @@ nav a:active {
     </div>
   </div>
 
+  <script src="js/tag-suggest.js"></script>
+  <script src="js/cloud-sync.js"></script>
+  <!-- ===== Cloud Sync UI ===== -->
+  <div style="max-width:600px;margin:30px auto 10px auto;padding:20px;background:#f9fafb;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+    <h2>Cloud Sync</h2>
+    <label>Upload Paper (PDF): <input type="file" id="cloudPaperFile" accept="application/pdf"></label>
+    <button onclick="uploadPaperToCloud()" style="padding:8px 18px;border-radius:6px;background:#2563eb;color:#fff;border:none;cursor:pointer;">Upload to Cloud</button>
+    <div id="cloudUploadResult" style="margin-top:10px;"></div>
+    <hr>
+    <label>Download by File Name: <input type="text" id="cloudFileName" placeholder="Enter file name from cloud"></label>
+    <button onclick="downloadPaperFromCloud()" style="padding:8px 18px;border-radius:6px;background:#2563eb;color:#fff;border:none;cursor:pointer;">Download from Cloud</button>
+  </div>
   <script>
     function filterPapers(tag) {
       const papers = document.querySelectorAll('.paper');

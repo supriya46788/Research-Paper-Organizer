@@ -1296,3 +1296,18 @@ backToTopBtn.addEventListener("click", () => {
 
 // Custom chatbot functionality removed - now using Chatbase integration
 
+async function getSuggestedTags(title, abstract) {
+  try {
+    const response = await fetch("/api/research-papers/suggest-tags", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, abstract })
+    });
+    if (!response.ok) throw new Error("Failed to get tag suggestions");
+    const data = await response.json();
+    return data.suggestedTags || [];
+  } catch (err) {
+    alert("Error getting tag suggestions: " + err.message);
+    return [];
+  }
+}

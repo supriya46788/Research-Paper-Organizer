@@ -18,6 +18,9 @@ const researchPaperSchema = new mongoose.Schema(
     pdfData: { type: Buffer },
     rating: { type: Number, min: 0, max: 5 },
     isFavorite: { type: Boolean, default: false },
+    cloudProvider: { type: String },
+    cloudFileUrl: { type: String },
+    annotations: { type: Object },
   },
   {
     timestamps: true,

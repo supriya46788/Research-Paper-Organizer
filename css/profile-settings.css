@@ -1,0 +1,72 @@
+/* Theme Styles */
+:root {
+    --primary-bg: #fff;
+    --primary-text: #222;
+    --secondary-bg: #f5f5f5;
+    --button-bg: #007bff;
+    --button-hover: #0056b3;
+}
+
+.theme-dark {
+    --primary-bg: #181818;
+    --primary-text: #f5f5f5;
+    --secondary-bg: #232323;
+    --button-bg: #3333cc;
+    --button-hover: #222288;
+}
+
+.profile-settings-container {
+    background: var(--primary-bg);
+    color: var(--primary-text);
+}
+
+body.theme-dark {
+    background: var(--secondary-bg);
+    color: var(--primary-text);
+}
+/* Profile & Settings Page Styles */
+.profile-settings-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+.profile-settings-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.profile-settings-container section {
+    margin-bottom: 25px;
+}
+.profile-settings-container label {
+    display: block;
+    margin-bottom: 10px;
+}
+.profile-settings-container input[type="text"],
+.profile-settings-container input[type="email"],
+.profile-settings-container select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.profile-settings-container button {
+    background: var(--button-bg);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+}
+.profile-settings-container button:hover {
+    background: var(--button-hover);
+}
+#profileMessage {
+    margin-top: 20px;
+    text-align: center;
+    color: #28a745;
+}
