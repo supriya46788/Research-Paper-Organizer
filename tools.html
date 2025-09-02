@@ -177,6 +177,9 @@
       <i class="fa-solid fa-arrow-up"></i>
     </button>
 
+   
+
+
   <!-- Modern Footer -->
   <footer class="modern-footer" aria-label="Footer">
     <div class="footer-top">
@@ -713,7 +716,7 @@ border-top-color: rgba(224, 224, 224, 0.1);
   justify-content: center;
 }
 }
-    /* Back to Top Button Styles */
+    /* Scroll to Back & Top Button Styles */
     #backToTop {
        /* Center the icon */
   display: flex;
@@ -768,22 +771,38 @@ border-top-color: rgba(224, 224, 224, 0.1);
     const nav = document.querySelector(".navbar-right-links");
     nav.classList.toggle("show");
   }
- //back to top button 
+ // Scroll to back & top button 
 // Show button when scrolled down
 const backToTop = document.getElementById("backToTop");
+const icon = backToTop.querySelector("i");
 
-// Show/hide button with fade
+// Show button on scroll
 window.addEventListener("scroll", () => {
   if (window.scrollY > 100) {
     backToTop.classList.add("show");
+
+    
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
+      icon.classList.remove("fa-arrow-down");
+      icon.classList.add("fa-arrow-up");
+    } else {
+      icon.classList.remove("fa-arrow-up");
+      icon.classList.add("fa-arrow-down");
+    }
   } else {
     backToTop.classList.remove("show");
   }
 });
 
-// Smooth scroll to top
+// Button click behaviour
 backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (icon.classList.contains("fa-arrow-down")) {
+    // Scroll to bottom
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+  } else {
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 });
 
 
