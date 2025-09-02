@@ -369,6 +369,59 @@
       background: #2563eb;
       color: #fff;
     }
+    /* Base style for both AI Tag + Cloud Sync */
+.feature-card {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f9fafb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  color: #111;
+}
+
+.feature-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.feature-card input,
+.feature-card textarea {
+  width: 100%;
+  margin: 5px 0 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.feature-card button {
+  margin-top: 10px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dark mode version */
+body.dark .feature-card {
+  background: #1e293b;
+  color: #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+body.dark .feature-card input,
+body.dark .feature-card textarea {
+  background: #334155;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+}
+
+body.dark .feature-card button {
+  background: #3b82f6;
+}
+
 
     @media (max-width: 1200px) {
       .papers {
@@ -420,6 +473,18 @@
     <span class="tag" onclick="filterPapers('DataScience')">Data Science</span>
   </div>
 
+   <!-- ===== AI Tag Suggestion ===== -->
+<div class="feature-card">
+  <h2>AI Tag Suggestions</h2>
+  <label>Paper Title:
+    <input type="text" id="paperTitle">
+  </label>
+  <label>Paper Abstract:
+    <textarea id="paperAbstract" rows="4"></textarea>
+  </label>
+  <button onclick="showTagSuggestions()">Get Suggestions</button>
+  <p id="tagSuggestions"></p>
+</div>
   <!-- ===== Papers Grid ===== -->
   <div class="papers" id="papers">
     <div class="paper" data-tags="AI ML">
@@ -493,7 +558,22 @@
     </div>
   </div>
 
-   <!-- ===== Footer ===== -->
+     <!-- ===== Cloud Sync UI ===== -->
+  <div class="feature-card">
+  <h2>Cloud Sync</h2>
+  <label>Upload Paper (PDF):
+    <input type="file" id="cloudPaperFile" accept="application/pdf">
+  </label>
+  <button onclick="uploadPaperToCloud()">Upload to Cloud</button>
+  <div id="cloudUploadResult"></div>
+  <hr>
+  <label>Download by File Name:
+    <input type="text" id="cloudFileName" placeholder="Enter file name from cloud">
+  </label>
+  <button onclick="downloadPaperFromCloud()">Download from Cloud</button>
+</div>
+
+  <!-- ===== Footer ===== -->
   <footer class="modern-footer" aria-label="Footer">
     <div class="footer-top">
       <div class="footer-card">
@@ -531,53 +611,41 @@
     </div>
   </footer>
 
-  
-
-
+  <!-- ===== Scripts ===== -->
+  <script src="js/tag-suggest.js"></script>
+  <script src="js/cloud-sync.js"></script>
   <script>
     function filterPapers(tag) {
       const papers = document.querySelectorAll('.paper');
       papers.forEach(paper => {
         const tags = paper.getAttribute('data-tags').split(' ');
-        if (tag === 'all' || tags.includes(tag)) {
-          paper.style.display = 'flex';
-        } else {
-          paper.style.display = 'none';
-        }
+        paper.style.display = (tag === 'all' || tags.includes(tag)) ? 'flex' : 'none';
       });
     }
 
-    // Dark mode toggle with sun/moon + save preference
-    const toggleBtn = document.getElementById("darkToggle");
-
-    function setTheme(isDark) {
-      if (isDark) {
-        document.body.classList.add('dark');
-        toggleBtn.textContent = "☀️";
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.body.classList.remove('dark');
-        toggleBtn.textContent = "🌙";
-        localStorage.setItem("theme", "light");
-      }
-    }
-
-    function toggleDark() {
-      const isDark = !document.body.classList.contains('dark');
-      setTheme(isDark);
-    }
-
-    // Load saved preference
-    window.addEventListener("DOMContentLoaded", () => {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme === "dark") {
-        setTheme(true);
-      } else {
-        setTheme(false);
-      }
+    // Dark mode toggle
+    const darkToggle = document.getElementById("darkToggle");
+    darkToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      darkToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
     });
 
-    toggleBtn.addEventListener("click", toggleDark);
+    // Dummy Tag Suggestion
+    function showTagSuggestions() {
+      const title = document.getElementById("paperTitle").value;
+      const abstract = document.getElementById("paperAbstract").value;
+      const suggestions = [];
+      if (/AI|artificial/i.test(title + abstract)) suggestions.push("AI");
+      if (/machine learning|ML/i.test(title + abstract)) suggestions.push("ML");
+      if (/vision|image|object/i.test(title + abstract)) suggestions.push("CV");
+      if (/NLP|language|text/i.test(title + abstract)) suggestions.push("NLP");
+      if (/robot/i.test(title + abstract)) suggestions.push("Robotics");
+      if (/health|medical/i.test(title + abstract)) suggestions.push("Healthcare");
+      if (/data|analytics|big data/i.test(title + abstract)) suggestions.push("Data Science");
+
+      document.getElementById("tagSuggestions").textContent = 
+        suggestions.length ? "Suggested tags: " + suggestions.join(", ") : "No suggestions found.";
+    }
   </script>
 </body>
 </html>
