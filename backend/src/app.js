@@ -28,6 +28,7 @@ import cookieParser from "cookie-parser";
 import researchPaperRoutes from "./routes/researchPaperRoutes.js";
 import geminiRoutes from "./routes/geminiRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import cloudRoutes from "./routes/cloudRoutes.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -47,6 +48,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/papers", researchPaperRoutes);
 app.use("/api/gemini", geminiRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/cloud", cloudRoutes);
 
 const startServer = async () => {
   await connectDB();
