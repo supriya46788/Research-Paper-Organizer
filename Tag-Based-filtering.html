@@ -473,7 +473,7 @@ body.dark .feature-card button {
     <span class="tag" onclick="filterPapers('DataScience')">Data Science</span>
   </div>
 
-   <!-- ===== AI Tag Suggestion ===== -->
+  
 <div class="feature-card">
   <h2>AI Tag Suggestions</h2>
   <label>Paper Title:
@@ -485,6 +485,9 @@ body.dark .feature-card button {
   <button onclick="showTagSuggestions()">Get Suggestions</button>
   <p id="tagSuggestions"></p>
 </div>
+
+
+
   <!-- ===== Papers Grid ===== -->
   <div class="papers" id="papers">
     <div class="paper" data-tags="AI ML">
@@ -547,31 +550,24 @@ body.dark .feature-card button {
       <h3>Object Detection</h3>
       <p class="authors">Kevin White, Meta AI</p>
       <p class="abstract">YOLO and Faster R-CNN models for real-time object detection in images and videos.</p>
-      <p class="paper-tags">CV, AI</p>
-    </div>
-
-    <div class="paper" data-tags="Robotics ML">
-      <h3>Reinforcement Learning for Robots</h3>
-      <p class="authors">Hiro Tanaka, Tokyo Univ</p>
-      <p class="abstract">Applying RL algorithms to train robots for complex real-world tasks in dynamic environments.</p>
-      <p class="paper-tags">Robotics, ML</p>
+           <p class="paper-tags">CV, AI</p>
     </div>
   </div>
 
-     <!-- ===== Cloud Sync UI ===== -->
+  <!-- ===== Cloud Sync UI ===== -->
   <div class="feature-card">
-  <h2>Cloud Sync</h2>
-  <label>Upload Paper (PDF):
-    <input type="file" id="cloudPaperFile" accept="application/pdf">
-  </label>
-  <button onclick="uploadPaperToCloud()">Upload to Cloud</button>
-  <div id="cloudUploadResult"></div>
-  <hr>
-  <label>Download by File Name:
-    <input type="text" id="cloudFileName" placeholder="Enter file name from cloud">
-  </label>
-  <button onclick="downloadPaperFromCloud()">Download from Cloud</button>
-</div>
+    <h2>Cloud Sync</h2>
+    <label>Upload Paper (PDF):
+      <input type="file" id="cloudPaperFile" accept="application/pdf">
+    </label>
+    <button onclick="uploadPaperToCloud()">Upload to Cloud</button>
+    <div id="cloudUploadResult"></div>
+    <hr>
+    <label>Download by File Name:
+      <input type="text" id="cloudFileName" placeholder="Enter file name from cloud">
+    </label>
+    <button onclick="downloadPaperFromCloud()">Download from Cloud</button>
+  </div>
 
   <!-- ===== Footer ===== -->
   <footer class="modern-footer" aria-label="Footer">
@@ -640,11 +636,10 @@ body.dark .feature-card button {
       if (/vision|image|object/i.test(title + abstract)) suggestions.push("CV");
       if (/NLP|language|text/i.test(title + abstract)) suggestions.push("NLP");
       if (/robot/i.test(title + abstract)) suggestions.push("Robotics");
-      if (/health|medical/i.test(title + abstract)) suggestions.push("Healthcare");
-      if (/data|analytics|big data/i.test(title + abstract)) suggestions.push("Data Science");
-
-      document.getElementById("tagSuggestions").textContent = 
-        suggestions.length ? "Suggested tags: " + suggestions.join(", ") : "No suggestions found.";
+      if (/health|medical|patient/i.test(title + abstract)) suggestions.push("Healthcare");
+      if (/data|analytics|big/i.test(title + abstract)) suggestions.push("DataScience");
+      document.getElementById("tagSuggestions").textContent =
+        suggestions.length ? "Suggested Tags: " + suggestions.join(", ") : "No suggestions found.";
     }
   </script>
 </body>
