@@ -1230,19 +1230,36 @@ border-top-color: rgba(224, 224, 224, 0.1);
     })();
 
     // Back to top button functionality
-    const backToTopButton = document.getElementById('backToTop');
+    const  bottomToTopButton = document.getElementById("backToTop");
+    const icon =  bottomToTopButton.querySelector("i");
 
-    window.addEventListener('scroll', function() {
-      if (window.pageYOffset > 300) {
-        backToTopButton.style.display = 'block';
-      } else {
-        backToTopButton.style.display = 'none';
-      }
-    });
+   window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+     bottomToTopButton.style.display = "block";
 
-    backToTopButton.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
+      icon.classList.remove("fa-arrow-down");
+      icon.classList.add("fa-arrow-up");
+    } else {
+      icon.classList.remove("fa-arrow-up");
+      icon.classList.add("fa-arrow-down");
+    }
+  } else {
+     bottomToTopButton.style.display = "none";
+  }
+});
+
+  bottomToTopButton.addEventListener("click", () => {
+  if (icon.classList.contains("fa-arrow-down")) {
+    // scroll to bottom
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+  } else {
+    // scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+});
+
 
     // Load GitHub contributors
     async function loadContributors() {
