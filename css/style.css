@@ -2250,3 +2250,154 @@ body.dark-mode .chatbot-input-container {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
 }
+.tts-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(47, 44, 160, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(47, 44, 160, 0.1);
+}
+
+.tts-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(47, 44, 160, 0.2);
+}
+
+.tts-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(47, 44, 160, 0.3);
+}
+
+.tts-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(47, 44, 160, 0.2);
+}
+
+.tts-play {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.tts-play:hover {
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.tts-pause {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.tts-pause:hover {
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.tts-resume {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.tts-resume:hover {
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.tts-stop {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.tts-stop:hover {
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Disabled state for TTS buttons */
+.tts-btn:disabled {
+  background: linear-gradient(135deg, #9ca3af, #6b7280) !important;
+  color: #d1d5db !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: 0.6;
+}
+
+.tts-btn:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background: linear-gradient(135deg, #9ca3af, #6b7280) !important;
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.speed-control label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+.speed-control input {
+  width: 80px;
+  padding: 0.4rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.speed-control input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(47, 44, 160, 0.1);
+}
+
+/* Dark mode styles for TTS controls */
+body.dark-mode .tts-controls {
+  background: rgba(70, 152, 229, 0.1);
+  border-color: rgba(70, 152, 229, 0.2);
+}
+
+body.dark-mode .speed-control label {
+  color: var(--text-light);
+}
+
+body.dark-mode .speed-control input {
+  background: #374151;
+  border-color: #4b5563;
+  color: var(--text-light);
+}
+
+body.dark-mode .speed-control input:focus {
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 3px rgba(70, 152, 229, 0.2);
+}
+
+/* Responsive design for TTS controls */
+@media (max-width: 768px) {
+  .tts-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .speed-control {
+    margin-left: 0;
+    justify-content: center;
+  }
+  
+  .tts-btn {
+    justify-content: center;
+  }
+}
