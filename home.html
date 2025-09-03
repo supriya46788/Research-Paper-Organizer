@@ -77,8 +77,8 @@
 .label-1 {
   margin-top: 10px;
   background: linear-gradient(90deg, #0056b3, #00BFFF); /* darker to lighter blue */
+  background-clip: text;
   -webkit-background-clip: text;
-
   -webkit-text-fill-color: transparent;
   font-weight: 700; /* bolder */
   font-size: 15px;  /* increased size */
@@ -87,6 +87,7 @@
 .label-1:hover {
   margin-top: 10px;
   background: linear-gradient(90deg, #185ba3, #add3e0); /* darker to lighter blue */
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 17px;  /* increased size */
@@ -674,10 +675,10 @@ body.dark-mode .copy-btn:hover {
         </svg>
 
         <div id="menu-items-container">
-          <a href="#" class="menu-item">Home</a>
-          <a href="#" class="menu-item">About us</a>
+          <a href="home.html" class="menu-item">Home</a>
+          <a href="about.html" class="menu-item">About us</a>
 
-          <a href="#" class="menu-item">FAQ</a>
+          <a href="Faq.html" class="menu-item">FAQ</a>
           <a href="contact.html" class="menu-item">Contact Us</a>
         </div>
         <svg id="menu-close-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -700,58 +701,45 @@ body.dark-mode .copy-btn:hover {
           <select class="filter-select" id="topicFilter" onchange="filterPapers()">
             <option value="">All Topics</option>
           </select>
-        </div>
-        <div class="filter-container">
-          <!-- Year Range -->
           <select id="minYear" class="filter-select">
             <option value="">From Year</option>
           </select>
-
-          <div class="filter-container">
-            <!-- Favorites Filter -->
-            <select
-              class="filter-select"
-              id="favoriteFilter"
-              onchange="filterPapers()"
-            >
-              <option value="">All Papers</option>
-              <option value="favorites">Favorites Only</option>
-              <option value="non-favorites">Non-Favorites</option>
-            </select>
-          </div>
-          <div class="filter-container">
-            <!-- Rating Filter -->
-            <select
-              class="filter-select"
-              id="ratingFilter"
-              onchange="filterPapers()"
-            >
-              <option value="">All Ratings</option>
-              <option value="5">5 Stars</option>
-              <option value="4">4+ Stars</option>
-              <option value="3">3+ Stars</option>
-              <option value="2">2+ Stars</option>
-              <option value="1">1+ Stars</option>
-              <option value="0">Unrated</option>
-            </select>
-          </div>
-          <div class="filter-container">
-            <!-- Sort Options -->
-            <select
-              class="filter-select"
-              id="sortFilter"
-              onchange="filterPapers()"
-            >
-              <option value="">Default</option>
-              <option value="rating-desc">Highest Rated</option>
-              <option value="rating-asc">Lowest Rated</option>
-              <option value="favorites">Favorites First</option>
-              <option value="title-asc">Title A-Z</option>
-              <option value="title-desc">Title Z-A</option>
-              <option value="year-desc">Newest First</option>
-              <option value="year-asc">Oldest First</option>
-            </select>
-          </div>
+          <select
+            class="filter-select"
+            id="favoriteFilter"
+            onchange="filterPapers()"
+          >
+            <option value="">All Papers</option>
+            <option value="favorites">Favorites Only</option>
+            <option value="non-favorites">Non-Favorites</option>
+          </select>
+          <select
+            class="filter-select"
+            id="ratingFilter"
+            onchange="filterPapers()"
+          >
+            <option value="">All Ratings</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4+ Stars</option>
+            <option value="3">3+ Stars</option>
+            <option value="2">2+ Stars</option>
+            <option value="1">1+ Stars</option>
+            <option value="0">Unrated</option>
+          </select>
+          <select
+            class="filter-select"
+            id="sortFilter"
+            onchange="filterPapers()"
+          >
+            <option value="">Default</option>
+            <option value="rating-desc">Highest Rated</option>
+            <option value="rating-asc">Lowest Rated</option>
+            <option value="favorites">Favorites First</option>
+            <option value="title-asc">Title A-Z</option>
+            <option value="title-desc">Title Z-A</option>
+            <option value="year-desc">Newest First</option>
+            <option value="year-asc">Oldest First</option>
+          </select>
         </div>
       </div>
   </div>

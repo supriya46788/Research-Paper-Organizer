@@ -98,6 +98,20 @@ document.addEventListener("DOMContentLoaded", function () {
   updateTopicsFilter();
   currentFilteredPapers = papers;
   renderPaginatedPapers();
+  
+  // Handle window resize for mobile behavior
+  window.addEventListener('resize', function() {
+    const detailsSection = document.querySelector(".details-section");
+    if (selectedPaper && detailsSection) {
+      if (window.innerWidth <= 600) {
+        detailsSection.classList.add("mobile-show");
+        document.body.style.overflow = "hidden";
+      } else {
+        detailsSection.classList.remove("mobile-show");
+        document.body.style.overflow = "";
+      }
+    }
+  });
   applyThemeFromStorage();
 });
 document.addEventListener('click', function(e) {
@@ -456,9 +470,16 @@ function showPaperDetails() {
   const noSelection = document.getElementById("noSelection");
   const paperDetails = document.getElementById("paperDetails");
   const detailsContent = document.getElementById("detailsContent");
+  const detailsSection = document.querySelector(".details-section");
 
   noSelection.classList.add("hidden");
   paperDetails.classList.remove("hidden");
+  
+  // Add mobile-specific behavior
+  if (window.innerWidth <= 600) {
+    detailsSection.classList.add("mobile-show");
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
+  }
 
   detailsContent.innerHTML = `
         <div class="detail-section">
@@ -627,9 +648,17 @@ function closeDetails() {
   selectedPaper = null;
   const noSelection = document.getElementById("noSelection");
   const paperDetails = document.getElementById("paperDetails");
+  const detailsSection = document.querySelector(".details-section");
 
   noSelection.classList.remove("hidden");
   paperDetails.classList.add("hidden");
+  
+  // Remove mobile-specific behavior
+  if (detailsSection) {
+    detailsSection.classList.remove("mobile-show");
+    document.body.style.overflow = ""; // Restore scrolling
+  }
+  
   renderPapers(); // Re-render to update selection
 }
 
@@ -955,6 +984,19 @@ menuOpenButton.addEventListener("click", displayMenu);
 menuCloseButton.addEventListener("click", hideMenu);
 
 menuItems.forEach((menuItem) => menuItem.addEventListener("click", hideMenu));
+
+// Mobile slide-in navbar toggle (for .navbar-right-links)
+const mobileNavPanel = document.querySelector('.navbar-right-links');
+// If present, wire up the existing menu open/close icons to toggle it too
+if (mobileNavPanel) {
+  const headerMenuBtn = document.getElementById('menu-open-btn');
+  const headerCloseBtn = document.getElementById('menu-close-btn');
+
+  const toggleMobileNav = () => mobileNavPanel.classList.toggle('active');
+
+  if (headerMenuBtn) headerMenuBtn.addEventListener('click', toggleMobileNav);
+  if (headerCloseBtn) headerCloseBtn.addEventListener('click', toggleMobileNav);
+}
 
 // Dark Mode: Initialization & Toggle
 function applyThemeFromStorage() {
