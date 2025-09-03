@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
   <title>Research Paper Organiser - Tag Filtering</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,57 +16,55 @@
       transition: background 0.3s, color 0.3s;
     }
 
-/* ===== Navbar ===== */
-/* ===== Navbar ===== */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 30px;
-  background: #e9f1fd;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+    /* ===== Navbar ===== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 30px;
+      background: #e9f1fd;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-.nav-left, .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
+    .nav-left, .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
-/* 🔑 Remove underline + force white text */
-nav a,
-nav a:link,
-nav a:visited,
-nav a:hover,
-nav a:active {
-  text-decoration: none !important;
-  color: white !important;   /* Always white */
-}
+    nav a,
+    nav a:link,
+    nav a:visited,
+    nav a:hover,
+    nav a:active {
+      text-decoration: none !important;
+      color: white !important;
+    }
 
-.nav-left .btn,
-.nav-right .btn {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: white !important;   /* Force text white */
-  border: none;
-  padding: 8px 18px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+    .nav-left .btn,
+    .nav-right .btn {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      color: white !important;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
-.nav-left .btn:hover,
-.nav-right .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-}
+    .nav-left .btn:hover,
+    .nav-right .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
 
     /* Dark Mode Toggle */
     .toggle {
@@ -74,19 +75,36 @@ nav a:active {
       cursor: pointer;
       font-size: 16px;
       box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+      transition: background 0.3s;
     }
 
-    /* Dark mode styles */
+    /* ===== Dark mode styles ===== */
     body.dark {
-      background: #1e293b;
+      background: #0f172a;
       color: #f8fafc;
     }
 
     body.dark nav {
-      background: #334155;
+      background: #1e293b;
     }
 
     body.dark .paper {
+      background: #1e293b;
+      color: #f1f5f9;
+      border-top: 4px solid #60a5fa;
+    }
+
+    body.dark .tag {
+      background: #334155;
+      color: #e2e8f0;
+    }
+
+    body.dark .tag:hover {
+      background: #3b82f6;
+      color: white;
+    }
+
+    body.dark .toggle {
       background: #334155;
       color: #f8fafc;
     }
@@ -106,6 +124,10 @@ nav a:active {
       margin: 25px 0;
       font-size: 2.2em;
       letter-spacing: 1px;
+    }
+
+    body.dark h1 {
+      color: #f8fafc;
     }
 
     .tags {
@@ -162,11 +184,19 @@ nav a:active {
       color: #2c3e50;
     }
 
+    body.dark .paper h3 {
+      color: #f8fafc;
+    }
+
     .paper .authors {
       font-size: 14px;
       color: #7f8c8d;
       font-style: italic;
       margin-bottom: 10px;
+    }
+
+    body.dark .paper .authors {
+      color: #cbd5e1;
     }
 
     .paper .abstract {
@@ -175,6 +205,10 @@ nav a:active {
       line-height: 1.5;
       flex-grow: 1;
       margin-bottom: 15px;
+    }
+
+    body.dark .paper .abstract {
+      color: #e2e8f0;
     }
 
     .paper .paper-tags {
@@ -187,6 +221,207 @@ nav a:active {
       display: inline-block;
       align-self: flex-start;
     }
+
+    body.dark .paper .paper-tags {
+      background: #1e40af;
+      color: #bfdbfe;
+    }
+     /* ===== Footer ===== */
+    .modern-footer {
+      background: #e9f1fd;
+      padding: 40px 20px 20px;
+      margin-top: 50px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-bottom: 30px;
+    }
+
+    .footer-card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .footer-card h3,
+    .footer-card h4 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      color: #2c3e50;
+    }
+
+    .footer-links-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links-section ul li {
+      margin: 8px 0;
+    }
+
+    .footer-links-section ul li a {
+      color: #2c3e50;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-links-section ul li a:hover {
+      color: #2563eb;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: #f1f5f9;
+      border-radius: 50%;
+      font-size: 18px;
+      color: #2563eb;
+      transition: all 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      font-size: 14px;
+      color: #2c3e50;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 15px;
+    }
+
+    .heart {
+      color: red;
+    }
+
+          /* ===== Dark mode styles ===== */
+    body.dark {
+      background: #0f172a;
+      color: #f8fafc;
+    }
+
+    body.dark nav {
+      background: #1e293b;
+    }
+
+    body.dark .paper {
+      background: #1e293b;
+      color: #f1f5f9;
+      border-top: 4px solid #60a5fa;
+    }
+
+    body.dark .tag {
+      background: #334155;
+      color: #e2e8f0;
+    }
+
+    body.dark .tag:hover {
+      background: #3b82f6;
+      color: white;
+    }
+
+    body.dark .toggle {
+      background: #334155;
+      color: #f8fafc;
+    }
+
+    body.dark .modern-footer {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f3f4f6;
+    }
+
+    body.dark .footer-card {
+      background: #1f2937;
+      color: #f3f4f6;
+    }
+
+    body.dark .footer-links-section ul li a {
+      color: #f3f4f6;
+    }
+
+    body.dark .footer-links-section ul li a:hover {
+      color: #60a5fa;
+    }
+
+    body.dark .social-icons a {
+      background: #1f2937;
+      color: #f3f4f6;
+    }
+
+    body.dark .social-icons a:hover {
+      background: #2563eb;
+      color: #fff;
+    }
+    /* Base style for both AI Tag + Cloud Sync */
+.feature-card {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px 30px;
+  border-radius: 10px;
+  background: #f9fafb;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  color: #111;
+}
+
+.feature-card h2 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.feature-card input,
+.feature-card textarea {
+  width: 100%;
+  margin: 5px 0 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.feature-card button {
+  margin-top: 10px;
+  padding: 8px 18px;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dark mode version */
+body.dark .feature-card {
+  background: #1e293b;
+  color: #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+body.dark .feature-card input,
+body.dark .feature-card textarea {
+  background: #334155;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+}
+
+body.dark .feature-card button {
+  background: #3b82f6;
+}
+
 
     @media (max-width: 1200px) {
       .papers {
@@ -212,8 +447,6 @@ nav a:active {
   <nav>
     <div class="nav-left">
       <a href="index.html"><button class="btn">🏠 Home</button></a>
-    
-
     </div>
     <div class="nav-right">
       <a href="about.html"><button class="btn">About Us</button></a>
@@ -221,7 +454,7 @@ nav a:active {
       <a href="Faq.html"><button class="btn">FAQ</button></a>
       <a href="contact.html"><button class="btn">Contact Us</button></a>
       <a href="tools.html"><button class="btn">Tools</button></a>
-      <button class="toggle" onclick="toggleDark()">🌙</button></a>
+      <button id="darkToggle" class="toggle">🌙</button>
     </div>
   </nav>
 
@@ -241,13 +474,19 @@ nav a:active {
   </div>
 
   <!-- ===== AI Tag Suggestion UI ===== -->
-  <div style="max-width:600px;margin:30px auto 10px auto;padding:20px;background:#f9fafb;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-    <h2>AI Tag Suggestions</h2>
-    <label>Title: <input type="text" id="paperTitle" style="width:90%"></label><br><br>
-    <label>Abstract: <textarea id="paperAbstract" rows="3" style="width:90%"></textarea></label><br><br>
-    <button onclick="showTagSuggestions()" style="padding:8px 18px;border-radius:6px;background:#2563eb;color:#fff;border:none;cursor:pointer;">Suggest Tags</button>
-    <div id="tagSuggestions" style="margin-top:15px;font-size:16px;"></div>
-  </div>
+  
+<div class="feature-card">
+  <h2>AI Tag Suggestions</h2>
+  <label>Paper Title:
+    <input type="text" id="paperTitle">
+  </label>
+  <label>Paper Abstract:
+    <textarea id="paperAbstract" rows="4"></textarea>
+  </label>
+  <button onclick="showTagSuggestions()">Get Suggestions</button>
+  <p id="tagSuggestions"></p>
+</div>
+
 
   <!-- ===== Papers Grid ===== -->
   <div class="papers" id="papers">
@@ -311,45 +550,97 @@ nav a:active {
       <h3>Object Detection</h3>
       <p class="authors">Kevin White, Meta AI</p>
       <p class="abstract">YOLO and Faster R-CNN models for real-time object detection in images and videos.</p>
-      <p class="paper-tags">CV, AI</p>
-    </div>
-
-    <div class="paper" data-tags="Robotics ML">
-      <h3>Reinforcement Learning for Robots</h3>
-      <p class="authors">Hiro Tanaka, Tokyo Univ</p>
-      <p class="abstract">Applying RL algorithms to train robots for complex real-world tasks in dynamic environments.</p>
-      <p class="paper-tags">Robotics, ML</p>
+           <p class="paper-tags">CV, AI</p>
     </div>
   </div>
 
   <script src="js/tag-suggest.js"></script>
   <script src="js/cloud-sync.js"></script>
-  <!-- ===== Cloud Sync UI ===== -->
-  <div style="max-width:600px;margin:30px auto 10px auto;padding:20px;background:#f9fafb;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-    <h2>Cloud Sync</h2>
-    <label>Upload Paper (PDF): <input type="file" id="cloudPaperFile" accept="application/pdf"></label>
-    <button onclick="uploadPaperToCloud()" style="padding:8px 18px;border-radius:6px;background:#2563eb;color:#fff;border:none;cursor:pointer;">Upload to Cloud</button>
-    <div id="cloudUploadResult" style="margin-top:10px;"></div>
-    <hr>
-    <label>Download by File Name: <input type="text" id="cloudFileName" placeholder="Enter file name from cloud"></label>
-    <button onclick="downloadPaperFromCloud()" style="padding:8px 18px;border-radius:6px;background:#2563eb;color:#fff;border:none;cursor:pointer;">Download from Cloud</button>
+  <!-- ===== Cloud Sync ===== -->
+<div class="feature-card">
+  <h2>Cloud Sync</h2>
+  <label>
+    Upload Paper (PDF):
+    <input type="file" id="cloudPaperFile" accept="application/pdf">
+  </label>
+  <button onclick="uploadPaperToCloud()">Upload to Cloud</button>
+  <div id="cloudUploadResult"></div>
+  <hr>
+  <label>
+    Download by File Name:
+    <input type="text" id="cloudFileName" placeholder="Enter file name from cloud">
+  </label>
+  <button onclick="downloadPaperFromCloud()">Download from Cloud</button>
+</div>
+
+<!-- ===== Footer ===== -->
+<footer class="modern-footer" aria-label="Footer">
+  <div class="footer-top">
+    <div class="footer-card">
+      <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+      <p>A platform to organize, filter, and explore research papers easily.</p>
+    </div>
+    <div class="footer-links-section footer-card">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html"><i class="fas fa-users"></i> About Us</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="Faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-section footer-card">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+        <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
+        <li><a href="open-source.html"><i class="fas fa-code-branch"></i> Open Source</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-section footer-card">
+      <h4>Connect</h4>
+      <div class="social-icons">
+        <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:supriyadpandey502@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
   </div>
+  <div class="footer-bottom">
+    <p>© 2025 Research Paper Organizer | Built with <span class="heart">♥</span> for researchers worldwide</p>
+  </div>
+</footer>
+
   <script>
     function filterPapers(tag) {
       const papers = document.querySelectorAll('.paper');
       papers.forEach(paper => {
         const tags = paper.getAttribute('data-tags').split(' ');
-        if (tag === 'all' || tags.includes(tag)) {
-          paper.style.display = 'flex';
-        } else {
-          paper.style.display = 'none';
-        }
+        paper.style.display = (tag === 'all' || tags.includes(tag)) ? 'flex' : 'none';
       });
     }
 
     // Dark mode toggle
-    function toggleDark() {
-      document.body.classList.toggle('dark');
+    const darkToggle = document.getElementById("darkToggle");
+    darkToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      darkToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
+    });
+
+    // Dummy Tag Suggestion
+    function showTagSuggestions() {
+      const title = document.getElementById("paperTitle").value;
+      const abstract = document.getElementById("paperAbstract").value;
+      const suggestions = [];
+      if (/AI|artificial/i.test(title + abstract)) suggestions.push("AI");
+      if (/machine learning|ML/i.test(title + abstract)) suggestions.push("ML");
+      if (/vision|image|object/i.test(title + abstract)) suggestions.push("CV");
+      if (/NLP|language|text/i.test(title + abstract)) suggestions.push("NLP");
+      if (/robot/i.test(title + abstract)) suggestions.push("Robotics");
+      if (/health|medical|patient/i.test(title + abstract)) suggestions.push("Healthcare");
+      if (/data|analytics|big/i.test(title + abstract)) suggestions.push("DataScience");
+      document.getElementById("tagSuggestions").textContent =
+        suggestions.length ? "Suggested Tags: " + suggestions.join(", ") : "No suggestions found.";
     }
   </script>
 </body>
