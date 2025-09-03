@@ -7,6 +7,7 @@ let editingPaper = null;
 let utterance = null;
 let full_text = "";
 let nvoice = null;
+let speechRate = 1;
 let pdf = null; // Holds PDF.js document
 let current_page = 1;
 let isSpeechPaused = false; // Track pause/resume state
@@ -479,14 +480,13 @@ async function speakText() {
   isSpeechPaused = false;
   isSpeechActive = true;
   updateTTSButtons();
-  
   const page = await pdf.getPage(currentPage);
   const textContent = await page.getTextContent();
   const pageText = textContent.items.map(item => item.str).join(" ");  
   utterance = new SpeechSynthesisUtterance(pageText);
   utterance.voice=nvoice;
   utterance.lang="en-US";
-  utterance.rate=1;
+  utterance.rate=speechRate;
   utterance.pitch=1; // optional: add events
   utterance.onstart = () => {
     isSpeechPaused = false;
@@ -574,8 +574,8 @@ function updateTTSButtons() {
 }
 function setSpeechRate(rate) {
   if (utterance) {
-    utterance.rate = rate;
-    stopSpeech();
+    window.speechSynthesis.pause();
+    speechRate = rate;
     speakText(utterance.text);
   }
 }
@@ -590,9 +590,11 @@ function setSpeechRate(rate) {
      utterance=null; // Prevent triggering next page speech
   }
   selectedPaper = papers.find((p) => p.id === id);
+  if (selectedPaper.pdfData) {
   const base64 = selectedPaper.pdfData.split(',')[1]; // Remove data URL prefix
   const arrayBuffer = base64ToArrayBuffer(base64);
   pdf=await pdfjsLib.getDocument({data: arrayBuffer}).promise;
+  }
   showPaperDetails();
   renderPapers(); // Re-render to update selection
 }
@@ -733,7 +735,7 @@ function showPaperDetails() {
               </button>
               <div class="speed-control">
                 <label for="rate">Speed:</label>
-                <input type="number" id="rate" value="1" step="0.1" min="0.5" max="2">
+                <input type="number" onchange="setSpeechRate(this.value)" id="rate" value="1" step="0.1" min="0.5" max="2">
               </div>
             </div>
             
