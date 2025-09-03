@@ -4,7 +4,13 @@ let papers = [];
 let topics = [];
 let selectedPaper = null;
 let editingPaper = null;
-
+let utterance = null;
+let full_text = "";
+let nvoice = null;
+let pdf = null; // Holds PDF.js document
+let current_page = 1;
+let isSpeechPaused = false; // Track pause/resume state
+let isSpeechActive = false; // Track if speech is currently active
 const PAPERS_KEY = "papers_db";
 const TOPICS_KEY = "topics_db";
 
@@ -441,10 +447,152 @@ function renderPapers(filteredPapers = papers) {
     )
     .join("");
 }
+function base64ToArrayBuffer(base64) {
+  const binaryString = window.atob(base64);
+  const len = binaryString.length;
+  const bytes = new Uint8Array(len);
+  for (let i = 0; i < len; i++) {
+    bytes[i] = binaryString.charCodeAt(i);
+  }
+  return bytes.buffer;
+}
+async function speakText() {
+  if(nvoice===null || speechSynthesis.getVoices().length===0){
+    window.speechSynthesis.onvoiceschanged = () => {
+      const nvoices = window.speechSynthesis.getVoices();
+      if(nvoices.length > 0){
+        nvoice = nvoices.find(v => v.name === "Google US English") || nvoices[0];
+      }
+    };
+  }
+  if(currentPage > pdf.numPages){
+    if(confirm("You have reached the end of the document. Would you like to restart?")){
+      currentPage = 1;
+      speakText();
+    }
+    return;
+  }
+  if (utterance) {
+    window.speechSynthesis.cancel();
+  }
+  // Reset pause state when starting new speech
+  isSpeechPaused = false;
+  isSpeechActive = true;
+  updateTTSButtons();
+  
+  const page = await pdf.getPage(currentPage);
+  const textContent = await page.getTextContent();
+  const pageText = textContent.items.map(item => item.str).join(" ");  
+  utterance = new SpeechSynthesisUtterance(pageText);
+  utterance.voice=nvoice;
+  utterance.lang="en-US";
+  utterance.rate=1;
+  utterance.pitch=1; // optional: add events
+  utterance.onstart = () => {
+    isSpeechPaused = false;
+    isSpeechActive = true;
+    updateTTSButtons();
+  };
+  utterance.onend = () => {
+    if(currentPage >= pdf.numPages) {
+      // Speech has ended completely
+      isSpeechActive = false;
+      isSpeechPaused = false;
+      updateTTSButtons();
+    } else {
+      currentPage++;
+      speakText(); // Recursively speak next page
+    }
+  };
+  utterance.onerror = () => {
+    // Handle speech error
+    isSpeechActive = false;
+    isSpeechPaused = false;
+    updateTTSButtons();
+  };
+  window.speechSynthesis.speak(utterance);
+}
+function pauseSpeech() {
+  if (utterance) {
+    window.speechSynthesis.pause();
+    isSpeechPaused = true;
+    updateTTSButtons();
+  }
+}
+function resumeSpeech() {
+  if (utterance) {
+    window.speechSynthesis.resume();
+    isSpeechPaused = false;
+    updateTTSButtons();
+  }
+}
+function togglePlayPause() {
+  if (!isSpeechActive) {
+    // Start playing
+    speakText();
+  } else if (isSpeechPaused) {
+    // Resume speech
+    resumeSpeech();
+  } else {
+    // Pause speech
+    pauseSpeech();
+  }
+}
+function stopSpeech() {
+  if (utterance) {
+    window.speechSynthesis.cancel();
+    isSpeechPaused = false;
+    isSpeechActive = false;
+    updateTTSButtons();
+  }
+}
+function updateTTSButtons() {
+  const playPauseBtn = document.getElementById("playPauseBtn");
+  const stopBtn = document.getElementById("stopBtn");
+  
+  // Update play/pause button
+  if (playPauseBtn) {
+    if (!isSpeechActive) {
+      // Not playing - show play button
+      playPauseBtn.innerHTML = '<i class="fas fa-play"></i> Play';
+      playPauseBtn.className = 'tts-btn tts-play';
+    } else if (isSpeechPaused) {
+      // Paused - show resume button
+      playPauseBtn.innerHTML = '<i class="fas fa-play"></i> Resume';
+      playPauseBtn.className = 'tts-btn tts-resume';
+    } else {
+      // Playing - show pause button
+      playPauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
+      playPauseBtn.className = 'tts-btn tts-pause';
+    }
+  }
+  
+  // Enable/disable stop button based on speech activity
+  if (stopBtn) {
+    stopBtn.disabled = !isSpeechActive;
+  }
+}
+function setSpeechRate(rate) {
+  if (utterance) {
+    utterance.rate = rate;
+    stopSpeech();
+    speakText(utterance.text);
+  }
+}
+
+
 
 // Select paper and show details
-function selectPaper(id) {
+ async function selectPaper(id) {
+  if(utterance){
+     window.speechSynthesis.cancel();
+     currentPage=1;
+     utterance=null; // Prevent triggering next page speech
+  }
   selectedPaper = papers.find((p) => p.id === id);
+  const base64 = selectedPaper.pdfData.split(',')[1]; // Remove data URL prefix
+  const arrayBuffer = base64ToArrayBuffer(base64);
+  pdf=await pdfjsLib.getDocument({data: arrayBuffer}).promise;
   showPaperDetails();
   renderPapers(); // Re-render to update selection
 }
@@ -574,6 +722,21 @@ function showPaperDetails() {
           selectedPaper.pdfData
             ? `
         <div class="detail-section">
+        <div class="tts-controls">
+              <button id="playPauseBtn" class="tts-btn tts-play" onclick="togglePlayPause()">
+                <i class="fas fa-play"></i>
+                Play
+              </button>
+              <button id="stopBtn" class="tts-btn tts-stop" onclick="stopSpeech()">
+                <i class="fas fa-stop"></i>
+                Stop
+              </button>
+              <div class="speed-control">
+                <label for="rate">Speed:</label>
+                <input type="number" id="rate" value="1" step="0.1" min="0.5" max="2">
+              </div>
+            </div>
+            
             <h4>PDF Preview</h4>
             <iframe src="${selectedPaper.pdfData}" class="pdf-preview" frameborder="0"></iframe>
         </div>
@@ -608,6 +771,9 @@ function showPaperDetails() {
             </div>
         </div>
     `;
+    setTimeout(() => {
+        updateTTSButtons();
+    }, 100);
 }
 // ✅ Apply dark mode if active
 if (document.body.classList.contains("dark-mode")) {
