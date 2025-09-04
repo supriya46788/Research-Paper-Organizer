@@ -30,6 +30,7 @@
         .catch((err) => console.error("SW registration failed:", err));
     });
   }
+  
 </script>
 
 <body>
@@ -259,27 +260,28 @@
 
   <!-- Stats Section -->
   <section class="stats fade-in">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item fade-in">
-          <div class="stat-number">10,000+</div>
-          <div class="stat-label">Researchers</div>
-        </div>
-        <div class="stat-item fade-in">
-          <div class="stat-number">500,000+</div>
-          <div class="stat-label">Papers Organized</div>
-        </div>
-        <div class="stat-item fade-in">
-          <div class="stat-number">50+</div>
-          <div class="stat-label">Universities</div>
-        </div>
-        <div class="stat-item fade-in">
-          <div class="stat-number">99.9%</div>
-          <div class="stat-label">Uptime</div>
-        </div>
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" data-target="10000">0</div>
+        <div class="stat-label">Researchers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="500000">0</div>
+        <div class="stat-label">Papers Organized</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="50">0</div>
+        <div class="stat-label">Universities</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="99.9" data-decimals="1">0</div>
+        <div class="stat-label">Uptime (%)</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- ===== Testimonials Section ===== -->
   <section id="testimonials">
