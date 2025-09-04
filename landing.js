@@ -70,6 +70,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+function animateCounter(el) {
+  const target = parseFloat(el.dataset.target);
+  const decimals = el.dataset.decimals ? parseInt(el.dataset.decimals) : 0;
+  let start = 0;
+  const duration = 2000; // 2 seconds
+  const step = (timestamp) => {
+    if (!el.startTime) el.startTime = timestamp;
+    const progress = Math.min((timestamp - el.startTime) / duration, 1);
+    const value = (progress * target).toFixed(decimals);
+    el.textContent = value + (decimals === 0 ? '+' : '');
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      entry.target.querySelectorAll('.stat-number').forEach(animateCounter);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.stats').forEach(section => observer.observe(section));
 
 // Utility functions
 function scrollToSection(sectionId) {
