@@ -224,6 +224,7 @@ body.dark-mode .profile-container {
 .logout-btn:hover {
   background: #b91c1c;
 }
+/* Statistics Grid */
 .stats-grid {
   display: grid;
   gap: 2rem;

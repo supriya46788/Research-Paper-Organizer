@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+// Animated counters for stats
 function animateCounter(el) {
   const target = parseFloat(el.dataset.target);
   const decimals = el.dataset.decimals ? parseInt(el.dataset.decimals) : 0;
