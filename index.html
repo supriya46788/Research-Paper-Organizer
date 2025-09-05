@@ -1161,6 +1161,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       const loadingScreen = document.getElementById("loading-screen");
       const loadingText = document.getElementById("loading-text");
+      
 
       const target = document.querySelector(".typing-text");
       const progressPercentage = document.querySelector(
@@ -1175,6 +1176,12 @@
 
       let index = 0;
       let progress = 0;
+
+      //changed: check if user has already seen the loading screen
+      const hasSeenLoading = localStorage.getItem("hasSeenLoading");
+
+      //changed: Only run loadinganimation if first-time visitor
+      if ( !hasSeenLoading ){
 
       // Enhanced text transition function
       function updateLoadingText() {
@@ -1222,6 +1229,9 @@
       setTimeout(() => {
         clearInterval(textInterval); // stop changing text
         loadingScreen.classList.add("hidden");
+
+        //changed: Mark that user has seen loading
+        localStorage.setItem("hasSeenLoading", "true");
         //Added typewriter effect in heading
         if (target) {
           const text = target.textContent;
@@ -1252,7 +1262,29 @@
           document.querySelector(".hero-image").classList.add("animate");
         }, 300);
       }, 6000); // adjust as needed
-    });
+    } else {
+      //changed: Skip loading entirely for returning visitors
+      loadingScreen.classList.add("hidden");
+
+      //Run typewriter effect and hero animations immediately
+      if (target) {
+      const text = target.textContent;
+      target.textContent = "";
+      let i = 0;
+      function typeWriter() {
+        if (i < text.length) {
+          target.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 80);
+        }
+      }
+      typeWriter();
+    }
+    document.querySelector(".hero-content").classList.add("animate");
+    document.querySelector(".hero-image").classList.add("animate");
+  } 
+});
+    
 
     //after executing slideright remove it so that other animation can start
     setTimeout(() => {
