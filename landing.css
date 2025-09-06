@@ -101,6 +101,37 @@ body {
   font-size: 1.75rem;
 }
 
+/* Header for mobile view */
+@media screen and (max-width:410px) {
+  .nav-container {
+    max-width: 375px;
+    margin: 0 auto;
+    gap: 0.3rem;
+    padding: 1rem 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .nav-brand {
+    font-size: 1.2rem;
+  }
+  #logo {
+    width: 65px;
+    height: 65px;
+    position: relative;
+    left: 0;
+  }
+  .nav-brand i {
+    margin-left: 0.5rem;
+    font-size: 1.5rem;
+  }
+  .mobile-menu-toggle i{
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+}
+
 .nav-links {
   display: flex;
   align-items: center;
