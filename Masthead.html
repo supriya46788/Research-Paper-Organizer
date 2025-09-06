@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Masthead | Research Paper Organizer</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="landing.css" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="landing.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -48,35 +52,35 @@
       }
 
       /* Navbar Dark Mode */
-body.dark-mode .landing-nav {
-  background: rgba(31, 41, 55, 0.95); /* dark background with blur */
-  border-bottom: 1px solid #374151;
-}
+      body.dark-mode .landing-nav {
+        background: rgba(31, 41, 55, 0.95); /* dark background with blur */
+        border-bottom: 1px solid #374151;
+      }
 
-body.dark-mode .nav-brand {
-  color: var(--primary);
-}
+      body.dark-mode .nav-brand {
+        color: var(--primary);
+      }
 
-body.dark-mode .nav-links a {
-  color: var(--dark); /* light text */
-}
+      body.dark-mode .nav-links a {
+        color: var(--dark); /* light text */
+      }
 
-body.dark-mode .nav-links a::after {
-  background: var(--primary);
-}
+      body.dark-mode .nav-links a::after {
+        background: var(--primary);
+      }
 
-body.dark-mode .contact {
-  background: #1f2937; /* dark gray background */
-  color: var(--dark);  /* light text */
-}
+      body.dark-mode .contact {
+        background: #1f2937; /* dark gray background */
+        color: var(--dark);  /* light text */
+      }
 
-body.dark-mode .contact a {
-  color: var(--primary);
-}
+      body.dark-mode .contact a {
+        color: var(--primary);
+      }
 
-body.dark-mode .contact p {
-  color: var(--dark);
-}
+      body.dark-mode .contact p {
+        color: var(--dark);
+      }
 
 
       * {
@@ -85,7 +89,7 @@ body.dark-mode .contact p {
         box-sizing: border-box;
       }
       body {
-        font-family: "Inter", sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         background: var(--light);
         color: var(--dark);
         line-height: 1.6;
@@ -289,7 +293,7 @@ body.dark-mode .contact p {
       }
 
       .footer-brand p {
-        font-size: 0.95;
+        font-size: 1rem;
         font-weight: 300;
         line-height: 1.5;
         opacity: 0.9;
@@ -324,6 +328,11 @@ body.dark-mode .contact p {
       .footer-links-section ul li a:hover {
         color: #fff;
         transform: translateX(5px);
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
       }
 
       .social-icons {
@@ -479,24 +488,40 @@ body.dark-mode .contact p {
         background: rgba(0, 0, 0, 0.3);
         border-top-color: rgba(224, 224, 224, 0.1);
       }
-      .heart {
-        color: red;
-      }
-      /* Back to Top */
+
+      /* Back to Top Button Styles */
       #backToTop {
+        height: 60px;
+        width: 60px;
         position: fixed;
         bottom: 30px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        background: var(--gradient);
-        color: #fff;
+        right: 30px;
+        z-index: 1000;
+        background: linear-gradient(135deg, #0077b5, #4facfe);
+        color: white;
         border: none;
-        font-size: 20px;
-        display: none;
+        border-radius: 50%;
+        padding: 15px;
+        font-size: 18px;
         cursor: pointer;
-        box-shadow: var(--shadow);
+        display: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      #backToTop:hover {
+        transform: scale(1.1);
+        opacity: 0.9;
+        box-shadow: rgba(0, 0, 0, 0.8);
+      }
+
+      @media (max-width: 600px) {
+        #backToTop {
+          padding: 12px;
+          font-size: 16px;
+          bottom: 20px;
+          right: 20px;
+        }
       }
 
       /* Responsive */
@@ -612,7 +637,10 @@ body.dark-mode .contact p {
     </section>
 
     <!-- Back to Top -->
-    <button id="backToTop">↑</button>
+     <!-- Back to Top Button -->
+    <button id="backToTop">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <!-- Footer -->
     <!-- Modern Footer -->
@@ -692,14 +720,41 @@ body.dark-mode .contact p {
       );
       cards.forEach((c) => observer.observe(c));
 
-      // Back to Top
-      const backToTop = document.getElementById("backToTop");
+      // Scroll to back & top button & show button when scrolled down
+      const bottomToTopButton = document.getElementById("backToTop");
+      const icon = bottomToTopButton.querySelector("i");
+
       window.addEventListener("scroll", () => {
-        backToTop.style.display = window.scrollY > 150 ? "block" : "none";
+        if (window.scrollY > 100) {
+          bottomToTopButton.style.display = "block";
+
+          if (
+            window.scrollY + window.innerHeight >=
+            document.documentElement.scrollHeight - 10
+          ) {
+            icon.classList.remove("fa-arrow-down");
+            icon.classList.add("fa-arrow-up");
+          } else {
+            icon.classList.remove("fa-arrow-up");
+            icon.classList.add("fa-arrow-down");
+          }
+        } else {
+          bottomToTopButton.style.display = "none";
+        }
       });
-      backToTop.addEventListener("click", () =>
-        window.scrollTo({ top: 0, behavior: "smooth" })
-      );
+
+      bottomToTopButton.addEventListener("click", () => {
+        if (icon.classList.contains("fa-arrow-down")) {
+          // scroll to bottom
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: "smooth",
+          });
+        } else {
+          // scroll to top
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
 
       // Dark mode toggle
       const darkToggle = document.getElementById("darkToggle");
