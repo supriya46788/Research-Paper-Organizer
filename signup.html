@@ -227,6 +227,24 @@
         });
       });
     });
+
+  //script for progress bar on sign-up page
+  const passwordInput = document.getElementById("signupPassword");
+  const passwordStrength = document.getElementById("passwordStrength");
+
+  passwordStrength.style.display = "none";
+
+  passwordInput.addEventListener("focus", () => {
+    passwordStrength.style.display = "block";
+  });
+
+  passwordInput.addEventListener("blur", () => {
+    passwordStrength.style.display = "none";
+  });
+
+  passwordInput.addEventListener("input", () => {
+    passwordStrength.style.display = "block";
+  });
   </script>
     
     <script src="js/auth.js"></script>
