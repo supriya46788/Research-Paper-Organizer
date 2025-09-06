@@ -1,27 +1,22 @@
 <!DOCTYPE html>
-  
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research Paper Organizer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+  <title>Research Paper Organizer - Home</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- SweetAlert2 CDN -->
-   
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js"></script>
-<script>
-  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js';
-</script>
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js';
+  </script>
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
+  <link rel="manifest" href="./favicon/site.webmanifest" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
   <style>
     /* Ensure dark mode styles work */
     body.dark-mode {
@@ -82,7 +77,7 @@
   margin-top: 10px;
   background: linear-gradient(90deg, #0056b3, #00BFFF); /* darker to lighter blue */
   -webkit-background-clip: text;
-
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700; /* bolder */
   font-size: 15px;  /* increased size */
@@ -92,6 +87,7 @@
   margin-top: 10px;
   background: linear-gradient(90deg, #185ba3, #add3e0); /* darker to lighter blue */
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 17px;  /* increased size */
 }
@@ -616,6 +612,628 @@ body.dark-mode .copy-btn {
 body.dark-mode .copy-btn:hover {
   color: #93c5fd;
 }
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+
+/* Mobile Navigation */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.navbar-right-links {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
+  .navbar-right-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-right-links.active {
+    left: 0;
+  }
+  
+  .navbar-right-links .nav-item {
+    padding: 1rem 2rem;
+    width: 200px;
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar-right-links .nav-item:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateX(5px);
+  }
+}
+
+/* Mobile Header */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .header-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .header-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .header-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+}
+
+/* Mobile Search Bar */
+@media (max-width: 768px) {
+  .search-bar {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .search-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .search-input-container {
+    width: 100%;
+  }
+  
+  .filter-container {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .filter-container select,
+  .filter-container input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+  
+  .search-input {
+    padding: 0.8rem 0.8rem 0.8rem 2.5rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+}
+
+/* Mobile Main Grid */
+@media (max-width: 1024px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .details-section {
+    position: static;
+    margin-top: 1rem;
+  }
+}
+
+/* Mobile Papers Section */
+@media (max-width: 768px) {
+  .papers-section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .papers-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .paper-card {
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .paper-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .paper-actions {
+    align-self: flex-end;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  
+  .paper-title {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+  
+  .paper-authors {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .paper-meta {
+    font-size: 0.7rem;
+    gap: 0.3rem;
+  }
+  
+  .topic-badge, .tag-badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+/* Mobile Details Section */
+@media (max-width: 768px) {
+  .details-section {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .details-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .details-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .details-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  .detail-section h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .detail-section h4 {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .detail-section p {
+    font-size: 0.8rem;
+  }
+  
+  .paper-link {
+    font-size: 0.8rem;
+  }
+  
+  .tags-container {
+    gap: 0.3rem;
+  }
+  
+  .detail-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+/* Mobile Modals */
+@media (max-width: 768px) {
+  .modal {
+    margin: 0.5rem;
+    max-height: 95vh;
+    width: calc(100% - 1rem);
+  }
+  
+  .modal-content {
+    padding: 1rem;
+  }
+  
+  .modal-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .modal-title {
+    font-size: 1.2rem;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  .form-input, .form-textarea {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+  
+  .form-textarea {
+    min-height: 100px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+}
+
+/* Mobile Drop Zone */
+@media (max-width: 768px) {
+  #drop-zone {
+    padding: 20px;
+    margin: 1rem 0;
+  }
+  
+  .label-1 {
+    font-size: 0.9rem;
+  }
+  
+  .label-1:hover {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile Footer */
+@media (max-width: 768px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .footer-social {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+}
+
+/* Mobile Stats Grid */
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .stat-item {
+    padding: 1rem;
+  }
+  
+  .stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .stat-label {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-item {
+    padding: 0.8rem;
+  }
+}
+
+/* Mobile Dark Mode Toggle */
+@media (max-width: 768px) {
+  .dark-toggle {
+    padding: 0.5rem;
+    font-size: 1rem;
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Mobile User Menu */
+@media (max-width: 768px) {
+  .user-dropdown {
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    min-width: auto;
+  }
+}
+
+/* Mobile Back to Top Button */
+@media (max-width: 768px) {
+  #backToTop {
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 12px;
+    font-size: 16px;
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Mobile TTS Controls */
+@media (max-width: 768px) {
+  .tts-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .speed-control {
+    margin-left: 0;
+    justify-content: center;
+  }
+  
+  .tts-btn {
+    justify-content: center;
+    min-height: 44px;
+  }
+}
+
+/* Mobile Rating Controls */
+@media (max-width: 768px) {
+  .paper-quick-rating {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem;
+  }
+  
+  .quick-stars {
+    gap: 0.2rem;
+  }
+  
+  .quick-star {
+    font-size: 1.5rem;
+    padding: 0.2rem;
+  }
+}
+
+/* Mobile Pagination */
+@media (max-width: 768px) {
+  .pagination-controls {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  
+  .pagination-controls button {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Mobile General Improvements */
+@media (max-width: 768px) {
+  body {
+    padding: 0.5rem;
+    font-size: 14px;
+  }
+  
+  .container {
+    padding: 0;
+  }
+  
+  /* Ensure all interactive elements are touch-friendly */
+  button, .btn-primary, .btn-secondary, .nav-item, 
+  .paper-action-btn, .copy-btn, .close-btn {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Improve scrolling on mobile */
+  .papers-list, .modal-content {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 0.25rem;
+    font-size: 13px;
+  }
+  
+  .header-title {
+    font-size: 1.3rem;
+  }
+  
+  .header-subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .paper-card {
+    padding: 0.8rem;
+  }
+  
+  .paper-title {
+    font-size: 0.95rem;
+  }
+  
+  .details-section {
+    padding: 0.8rem;
+  }
+  
+  .modal {
+    margin: 0.25rem;
+    width: calc(100% - 0.5rem);
+  }
+}
+
+/* Additional Mobile Enhancements */
+@media (max-width: 768px) {
+  /* Improve touch scrolling */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Better focus states for mobile */
+  button:focus, 
+  .btn-primary:focus, 
+  .btn-secondary:focus,
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+  
+  /* Improve text selection on mobile */
+  .paper-title, .paper-authors, .paper-abstract {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+  }
+  
+  /* Better spacing for mobile */
+  .section {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Improve button spacing */
+  .btn-group {
+    gap: 0.5rem;
+  }
+  
+  /* Better modal handling */
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  /* Improve form layout */
+  .form-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  /* Better table responsiveness */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Improve card hover states for touch */
+  .paper-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Better loading states */
+  .loading-spinner {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Improve notification positioning */
+  .notification {
+    left: 0.5rem;
+    right: 0.5rem;
+    width: auto;
+    max-width: none;
+  }
+}
+
+/* Dark mode mobile improvements */
+@media (max-width: 768px) {
+  body.dark-mode .navbar-right-links {
+    background: rgba(31, 41, 55, 0.98);
+    backdrop-filter: blur(10px);
+  }
+  
+  body.dark-mode .navbar-right-links .nav-item:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+  
+  body.dark-mode .mobile-menu-toggle {
+    color: #d1d5db;
+  }
+}
   </style>
   
 </head>
@@ -623,9 +1241,14 @@ body.dark-mode .copy-btn:hover {
 <body>
   <div class="container">
     <nav class="navbar">
-      <a href="#" class="nav-item">Home</a>
+      <a href="#" class="nav-item nav-brand">Home</a>
+      
+      <!-- Mobile menu toggle -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
 
-      <div class="navbar-right-links">
+      <div class="navbar-right-links" id="navbarLinks">
         <a href="about.html" class="nav-item">About us</a>
         <a href="blog.html" class="nav-item">Blogs</a>
         <a href="Faq.html" class="nav-item">FAQ</a>
@@ -1202,7 +1825,7 @@ box-shadow: rgba(0,0,0,0.8);
     function checkAuthentication() {
       const currentUser = localStorage.getItem('current_user');
       if (!currentUser) {
-        window.location.href = 'landing.html'; // Redirect to landing page if not authenticated
+        window.location.href = 'index.html'; // Redirect to landing page if not authenticated
         return false;
       }
       return true;
@@ -1384,6 +2007,41 @@ document.addEventListener("DOMContentLoaded", function () {
       updateButtonPosition();
     }
   });
+
+  // Mobile menu toggle functionality
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const navbarLinks = document.getElementById('navbarLinks');
+  
+  if (mobileMenuToggle && navbarLinks) {
+    mobileMenuToggle.addEventListener('click', () => {
+      navbarLinks.classList.toggle('active');
+      const icon = mobileMenuToggle.querySelector('i');
+      if (navbarLinks.classList.contains('active')) {
+        icon.className = 'fas fa-times';
+      } else {
+        icon.className = 'fas fa-bars';
+      }
+    });
+
+    // Close mobile menu when clicking on a link
+    const navItems = navbarLinks.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navbarLinks.classList.remove('active');
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.className = 'fas fa-bars';
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (event) => {
+      if (!navbarLinks.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+        navbarLinks.classList.remove('active');
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.className = 'fas fa-bars';
+      }
+    });
+  }
 });
 </script>
 </body>

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
   <title>Research Paper Organizer - Organize Your Research Efficiently</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
@@ -25,7 +25,7 @@
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
       navigator.serviceWorker
-        .register("./sw.js")
+        .register("./sw.js?v=20250103")
         .then((reg) => console.log("Service Worker registered:", reg.scope))
         .catch((err) => console.error("SW registration failed:", err));
     });
@@ -546,8 +546,17 @@
 
     /* Responsive Design */
     @media (max-width: 768px) {
+      #testimonials {
+        padding: 40px 15px;
+      }
+
+      #testimonials h2 {
+        font-size: 2.2rem;
+        margin-bottom: 25px;
+      }
+
       .testimonials-track {
-        animation-duration: 7.5s;
+        animation-duration: 8s;
         gap: 20px;
       }
 
@@ -561,9 +570,34 @@
         width: 70px;
         height: 70px;
       }
+
+      .testimonial-card h3 {
+        font-size: 1rem;
+      }
+
+      .testimonial-card .designation {
+        font-size: 0.8rem;
+      }
+
+      .testimonial-card .feedback {
+        font-size: 0.85rem;
+      }
+
+      .testimonial-card .tags {
+        font-size: 0.75rem;
+      }
     }
 
     @media (max-width: 480px) {
+      #testimonials {
+        padding: 30px 10px;
+      }
+
+      #testimonials h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+      }
+
       .testimonials-track {
         animation-duration: 6s;
         gap: 15px;
@@ -575,8 +609,59 @@
         padding: 18px;
       }
 
-      #testimonials h2 {
-        font-size: 2rem;
+      .testimonial-card img {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 12px;
+      }
+
+      .testimonial-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+      }
+
+      .testimonial-card .designation {
+        font-size: 0.75rem;
+        margin-bottom: 12px;
+      }
+
+      .testimonial-card .feedback {
+        font-size: 0.8rem;
+        margin: 12px 0;
+      }
+
+      .testimonial-card .tags {
+        font-size: 0.7rem;
+        margin-top: 12px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .testimonial-card {
+        min-width: 220px;
+        max-width: 220px;
+        padding: 15px;
+      }
+
+      .testimonial-card img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .testimonial-card h3 {
+        font-size: 0.9rem;
+      }
+
+      .testimonial-card .designation {
+        font-size: 0.7rem;
+      }
+
+      .testimonial-card .feedback {
+        font-size: 0.75rem;
+      }
+
+      .testimonial-card .tags {
+        font-size: 0.65rem;
       }
     }
 
@@ -865,48 +950,123 @@
     }
 
     @media (max-width: 768px) {
-      .footer-top {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 3rem;
+      .modern-footer {
+        padding: 40px 15px 15px;
       }
 
-      .footer-brand h2 {
-        font-size: 1.5rem;
+      .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-brand h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+      }
+
+      .footer-brand p {
+        font-size: 0.9rem;
       }
 
       .footer-links-section h4 {
         font-size: 1rem;
+        margin-bottom: 8px;
       }
 
       .footer-links-section ul li a {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        padding: 3px;
+        padding-left: 15px;
       }
 
       .social-icons a {
         width: 35px;
         height: 35px;
       }
-    }
 
-    @media (max-width: 756px) and (min-width: 730px),
-    (max-width: 601px) and (min-width: 540px) {
-      .footer-card {
-        gap: 4rem;
+      .footer-bottom {
+        padding-top: 12px;
+        font-size: 0.85rem;
       }
     }
 
     @media (max-width: 480px) {
+      .modern-footer {
+        padding: 30px 10px 10px;
+      }
+
       .footer-top {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
         text-align: center;
+      }
+
+      .footer-brand h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+      }
+
+      .footer-brand p {
+        font-size: 0.85rem;
+        margin-top: 15px;
+      }
+
+      .footer-links-section h4 {
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+      }
+
+      .footer-links-section ul li a {
+        font-size: 0.85rem;
+        justify-content: center;
+        padding: 2px;
+        padding-left: 0;
       }
 
       .social-icons {
         justify-content: center;
+        margin-top: 8px;
+      }
+
+      .social-icons a {
+        width: 32px;
+        height: 32px;
+      }
+
+      .footer-bottom {
+        padding-top: 10px;
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .modern-footer {
+        padding: 25px 8px 8px;
+      }
+
+      .footer-brand h3 {
+        font-size: 1.1rem;
+      }
+
+      .footer-brand p {
+        font-size: 0.8rem;
+      }
+
+      .footer-links-section h4 {
+        font-size: 0.9rem;
       }
 
       .footer-links-section ul li a {
-        justify-content: center;
+        font-size: 0.8rem;
+      }
+
+      .social-icons a {
+        width: 30px;
+        height: 30px;
+      }
+
+      .footer-bottom {
+        font-size: 0.75rem;
       }
     }
 
@@ -1160,7 +1320,7 @@
     </div>
   </footer>
 
-  <script src="landing.js"></script>
+  <script src="landing.js?v=20250103"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -1340,7 +1500,7 @@
         ".fade-in, .slide-left, .slide-right"
       );
 
-      const observer = new IntersectionObserver(
+      const scrollObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -1351,11 +1511,10 @@
         { threshold: 0.2 }
       );
 
-      elements.forEach((el) => observer.observe(el));
+      elements.forEach((el) => scrollObserver.observe(el));
     });
   </script>
 
-  <script src="landing.js"></script>
   <script>
     const toggle = document.querySelector(".mobile-menu-toggle");
     const navLinks = document.querySelector(".nav-links");

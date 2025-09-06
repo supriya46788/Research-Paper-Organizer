@@ -1,5 +1,7 @@
 // Landing Page JavaScript
+console.log("Loading landing.js...");
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM Content Loaded");
 
   // Smooth scroll for anchor links
   function scrollToFeatures() {
@@ -86,17 +88,18 @@ function animateCounter(el) {
   requestAnimationFrame(step);
 }
 
-const observer = new IntersectionObserver((entries) => {
+console.log("Creating statsObserver...");
+const statsObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('show');
       entry.target.querySelectorAll('.stat-number').forEach(animateCounter);
-      observer.unobserve(entry.target);
+      statsObserver.unobserve(entry.target);
     }
   });
 }, { threshold: 0.3 });
 
-document.querySelectorAll('.stats').forEach(section => observer.observe(section));
+document.querySelectorAll('.stats').forEach(section => statsObserver.observe(section));
 
 // Utility functions
 function scrollToSection(sectionId) {
