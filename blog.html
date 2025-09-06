@@ -86,6 +86,54 @@
   }
 }
       /* Footer CSS*/
+  /* NEW: Search Bar Styles */
+  .search-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+    margin: 1.5rem auto; /* Center it */
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 12px 20px 12px 40px; /* Make space for icon */
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  #searchInput:focus {
+    outline: none;
+    border-color: #2c5aa0;
+    box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.2);
+  }
+
+  .search-container .fa-search {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #aaa;
+    transition: color 0.3s ease;
+  }
+   .search-container:focus-within .fa-search {
+     color: #2c5aa0;
+   }
+
+  /* Dark mode search styles */
+  body.dark-mode #searchInput {
+    background-color: #2d3748;
+    border-color: #4a5568;
+    color: #e0e0e0;
+  }
+  body.dark-mode #searchInput:focus {
+    border-color: #90cdf4;
+    box-shadow: 0 0 0 3px rgba(144, 205, 244, 0.2);
+  }
+   body.dark-mode .search-container:focus-within .fa-search {
+     color: #90cdf4;
+   }
+
     .modern-footer {
   width: 100vw; /* Full viewport width */
   margin-left: calc(-50vw + 50%); /* Center it if inside a constrained container */
@@ -338,6 +386,11 @@ border-top-color: rgba(224, 224, 224, 0.1);
     <header class="blog-header">
       <h1>📖 Our Blog</h1>
       <p>Updates, Tips &amp; Insights from the Research Community</p>
+
+      <div class="search-container">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input type="search" id="searchInput" placeholder="Search posts by title or keyword..." aria-label="Search blog posts" />
+      </div>
 
       <!-- Category Filters (accessible + color-coded) -->
       <div class="category-filters utility-text-center"
@@ -622,63 +675,79 @@ border-top-color: rgba(224, 224, 224, 0.1);
     function qs(sel, scope=document){ return scope.querySelector(sel); }
     function qsa(sel, scope=document){ return Array.from(scope.querySelectorAll(sel)); }
 
-    // ------- Category Filtering (URL param + localStorage + a11y)
+    // ------- UPDATED: Combined Search and Category Filtering
     (function() {
+      const searchInput = qs('#searchInput');
       const buttons = qsa('.filter-btn');
-      const cards   = qsa('.blog-card');
-      const empty   = qs('#emptyState');
+      const cards = qsa('.blog-card');
+      const empty = qs('#emptyState');
 
-      // keyboard navigation (Left/Right)
-      buttons.forEach((btn, idx) => {
-        btn.addEventListener('keydown', (e) => {
-          if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-            e.preventDefault();
-            const dir = e.key === 'ArrowRight' ? 1 : -1;
-            const next = buttons[(idx + dir + buttons.length) % buttons.length];
-            next.focus();
-          }
-        });
-      });
-
-      function setActive(category){
-        buttons.forEach(b => {
-          const isActive = b.dataset.category === category || (category === 'all' && b.dataset.category === 'all');
-          b.classList.toggle('active', isActive);
-          b.setAttribute('aria-pressed', String(isActive));
-        });
-      }
-
-      function applyFilter(category){
+      function masterFilter() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const activeCategory = qs('.filter-btn.active').dataset.category;
+        
         let visibleCount = 0;
+        
         cards.forEach(card => {
-          const match = category === 'all' || card.dataset.category === category;
-          card.hidden = !match;
-          card.style.display = match ? 'flex' : 'none';
-          visibleCount += match ? 1 : 0;
+          const title = (qs('h2', card)?.textContent || '').toLowerCase();
+          const paragraph = (qs('p', card)?.textContent || '').toLowerCase();
+          const tag = (qs('.badge', card)?.textContent || '').toLowerCase();
+          const cardCategory = card.dataset.category;
+
+          const categoryMatch = activeCategory === 'all' || cardCategory === activeCategory;
+          const searchMatch = title.includes(searchTerm) || paragraph.includes(searchTerm) || tag.includes(searchTerm);
+
+          const isVisible = categoryMatch && searchMatch;
+
+          card.hidden = !isVisible;
+          card.style.display = isVisible ? 'flex' : 'none';
+          if (isVisible) visibleCount++;
         });
-        empty.hidden = visibleCount !== 0;
-        if (visibleCount === 0) empty.focus?.();
-        // Persist
-        localStorage.setItem('blogFilter', category);
-        const url = new URL(window.location);
-        if (category === 'all') url.searchParams.delete('cat'); else url.searchParams.set('cat', category);
-        history.replaceState({}, '', url);
+
+        empty.hidden = visibleCount > 0;
+        if (visibleCount === 0) {
+            empty.textContent = 'No posts found matching your criteria.';
+            empty.focus?.();
+        }
       }
 
+      // --- Event Listeners ---
+
+      // Listen for typing in the search bar
+      searchInput.addEventListener('input', masterFilter);
+
+      // Listen for category button clicks
       buttons.forEach(btn => {
         btn.addEventListener('click', () => {
-          const cat = btn.dataset.category;
-          setActive(cat);
-          applyFilter(cat);
+          // Set active state
+          buttons.forEach(b => b.classList.remove('active', 'aria-pressed'));
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+          
+          // Persist and apply filter
+          localStorage.setItem('blogFilter', btn.dataset.category);
+          const url = new URL(window.location);
+          if (btn.dataset.category === 'all') url.searchParams.delete('cat'); else url.searchParams.set('cat', btn.dataset.category);
+          history.replaceState({}, '', url);
+
+          masterFilter();
         });
       });
-
-      // init from URL > localStorage > default
+      
+      // --- Initial Load ---
       const urlCat = new URLSearchParams(location.search).get('cat');
       const storedCat = localStorage.getItem('blogFilter');
-      const cat = urlCat || storedCat || 'all';
-      setActive(cat);
-      applyFilter(cat);
+      const initialCat = urlCat || storedCat || 'all';
+
+      // Set the initial active button
+      buttons.forEach(b => {
+        const isActive = b.dataset.category === initialCat;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-pressed', String(isActive));
+      });
+      
+      // Apply the initial filter
+      masterFilter();
     })();
 
     // ------- Scroll-in Animations (prefers-reduced-motion respected)
