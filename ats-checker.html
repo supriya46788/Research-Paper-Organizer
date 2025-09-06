@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer & Annotator | Research Paper Organizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ats-checker.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                Home
+            </a>
+
+            <div class="navbar-right-links">
+                <a href="about.html" class="nav-item">About us</a>
+                <a href="blog.html" class="nav-item">Blogs</a>
+                <a href="Faq.html" class="nav-item">FAQ</a>
+                <a href="contact.html" class="nav-item">Contact Us</a>
+                <a href="tools.html" class="nav-item">Tools</a>
+                <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+
+      <h1>ATS Resume Score Checker</h1>
+      <p class="lead">
+        Upload your resume (and optionally a job description) to get an ATS
+        score based on formatting, keyword richness, and JD match.
+      </p>
+
+      <div class="card">
+        <div class="controls">
+          <label for="resumeFile">Upload Resume</label>
+          <input id="resumeFile" type="file" accept=".pdf,.docx,.txt" />
+
+          <label for="jdFile">Upload Job Description (optional)</label>
+          <input id="jdFile" type="file" accept=".pdf,.docx,.txt" />
+
+          <button id="analyzeBtn" class="btn">Analyze</button>
+        </div>
+
+        <div class="results" id="results" aria-live="polite"></div>
+
+        <div style="margin-top: 20px">
+          <div class="small">Score</div>
+          <div class="score" id="score">—</div>
+
+          <div style="margin-top: 10px">
+            <div class="small">Checks</div>
+            <div class="check">
+              <input type="checkbox" id="hasContact" disabled />
+              <label for="hasContact">Contact info (email or phone)</label>
+            </div>
+            <div class="check">
+              <input type="checkbox" id="formattingOk" disabled />
+              <label for="formattingOk">No obvious tables/images</label>
+            </div>
+            <div class="check">
+              <input type="checkbox" id="lengthOk" disabled />
+              <label for="lengthOk">Reasonable length (100–1000 words)</label>
+            </div>
+            <div class="check">
+              <input type="checkbox" id="hasSkills" disabled />
+              <label for="hasSkills">Contains skills section/keywords</label>
+            </div>
+            <div class="check">
+              <input type="checkbox" id="jdMatchOk" disabled />
+              <label for="jdMatchOk"
+                >Job description match (if JD uploaded)</label
+              >
+            </div>
+          </div>
+
+          <footer>
+            <strong>Note:</strong> This is a simple client-side check. For
+            deeper ATS analysis, a backend NLP service would be required.
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.16/mammoth.browser.min.js"></script>
+
+    <script>
+      const fileInput = document.getElementById("resumeFile");
+      const jdInput = document.getElementById("jdFile");
+      const analyzeBtn = document.getElementById("analyzeBtn");
+      const resultsEl = document.getElementById("results");
+      const scoreEl = document.getElementById("score");
+      const hasContactEl = document.getElementById("hasContact");
+      const formattingOkEl = document.getElementById("formattingOk");
+      const lengthOkEl = document.getElementById("lengthOk");
+      const hasSkillsEl = document.getElementById("hasSkills");
+      const jdMatchEl = document.getElementById("jdMatchOk");
+
+      async function extractTextFromFile(file) {
+        if (!file) return "";
+        const name = file.name.toLowerCase();
+        if (name.endsWith(".pdf")) {
+          const arrayBuffer = await file.arrayBuffer();
+          const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+          let text = "";
+          for (let i = 1; i <= pdf.numPages; i++) {
+            const page = await pdf.getPage(i);
+            const content = await page.getTextContent();
+            text += content.items.map((it) => it.str).join(" ") + "\n";
+          }
+          return text;
+        } else if (name.endsWith(".docx")) {
+          const arrayBuffer = await file.arrayBuffer();
+          const result = await mammoth.extractRawText({ arrayBuffer });
+          return result.value;
+        } else {
+          return await file.text();
+        }
+      }
+
+      function extractContactInfo(text) {
+        const emailMatch = text.match(
+          /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/
+        );
+        const phoneMatch = text.match(
+          /(?:\+?\d{1,3}[\s-]?)?(?:\d{10}|\d{3}[\s-]\d{3}[\s-]\d{4}|\d{5}[\s-]\d{5})/
+        );
+        return emailMatch || phoneMatch;
+      }
+
+      analyzeBtn.addEventListener("click", async () => {
+        const resumeFile = fileInput.files[0];
+        const jdFile = jdInput.files[0];
+        if (!resumeFile) {
+          resultsEl.innerHTML =
+            '<div class="small">Please upload a resume file.</div>';
+          return;
+        }
+
+        resultsEl.innerHTML = '<div class="small">Analyzing resume...</div>';
+        let resumeText = await extractTextFromFile(resumeFile);
+        resumeText = resumeText.replace(/\s+/g, " ").trim();
+
+        let jdText = "";
+        if (jdFile)
+          jdText = (await extractTextFromFile(jdFile))
+            .replace(/\s+/g, " ")
+            .trim();
+
+        // Checks
+        const hasContact = extractContactInfo(resumeText);
+        hasContactEl.checked = hasContact;
+
+        const wordCount = resumeText.split(/\s+/).length;
+        lengthOkEl.checked = wordCount >= 100 && wordCount <= 1000;
+
+        const formattingIssues = /\[image\]|\.png|\.jpg|table|columns?/i.test(
+          resumeText
+        );
+        formattingOkEl.checked = !formattingIssues;
+
+        const skillsKeywords =
+          /(skills|technologies|languages|tools|frameworks)/i.test(resumeText);
+        hasSkillsEl.checked = skillsKeywords;
+
+        // JD keyword matching
+        let jdMatch = false;
+        if (jdText) {
+          const jdWords = jdText.toLowerCase().split(/\W+/);
+          const commonSkills = [
+            "javascript",
+            "python",
+            "c++",
+            "sql",
+            "html",
+            "css",
+            "react",
+            "node",
+            "java",
+            "aws",
+          ];
+          let matches = commonSkills.filter(
+            (k) => resumeText.toLowerCase().includes(k) && jdWords.includes(k)
+          );
+          jdMatch = matches.length > 0;
+          jdMatchEl.checked = jdMatch;
+        } else {
+          jdMatchEl.checked = false;
+        }
+
+        // Score calculation
+        let score = 0;
+        if (hasContact) score += 20;
+        if (lengthOkEl.checked) score += 20;
+        if (formattingOkEl.checked) score += 20;
+        if (skillsKeywords) score += 20;
+        if (jdMatch) score += 20;
+
+        scoreEl.textContent = score + "%";
+
+        resultsEl.innerHTML = `<div class="small"><strong>Word count:</strong> ${wordCount}</div>`;
+      });
+    </script>
+</body>
+</html>
