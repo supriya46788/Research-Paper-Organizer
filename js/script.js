@@ -1439,8 +1439,9 @@ function populateYearSelect(id, startYear, endYear) {
 
 
     // Populate both dropdowns from 2050 → 1950
-    populateYearSelect("minYear", 2050, 1950);
-    populateYearSelect("maxYear", 2050, 1950);
+const currentYear = new Date().getFullYear();
+populateYearSelect("minYear", currentYear, 1950);
+populateYearSelect("maxYear", currentYear, 1950);
 
 // Get the button
 const backToTopBtn = document.getElementById("backToTop");
