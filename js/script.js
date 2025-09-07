@@ -1426,42 +1426,60 @@ function importPapers() {
   input.click();
 }
 
-//Calendar Logic 
+// ===============================
+// 📅 Year Dropdown Logic (safe)
+// ===============================
 function populateYearSelect(id, startYear, endYear) {
-        const select = document.getElementById(id);
-        for (let year = startYear; year >= endYear; year--) {
-            const option = document.createElement("option");
-            option.value = year;
-            option.textContent = year;
-            select.appendChild(option);
-        }
-    }
+  const select = document.getElementById(id);
+  if (!select) return; // guard if element doesn't exist
 
+  // Keep existing placeholder if present
+  const first = select.querySelector("option:first-child");
+  select.innerHTML = "";
+  if (first && first.value === "") select.appendChild(first);
 
-    // Populate both dropdowns from 2050 → 1950
-const currentYear = new Date().getFullYear();
-populateYearSelect("minYear", currentYear, 1950);
-populateYearSelect("maxYear", currentYear, 1950);
-
-// Get the button
-const backToTopBtn = document.getElementById("backToTop");
-
-// Show button when scrolled down
-window.onscroll = function () {
-  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-    backToTopBtn.style.display = "block";
-  } else {
-    backToTopBtn.style.display = "none";
+  for (let year = startYear; year >= endYear; year--) {
+    const option = document.createElement("option");
+    option.value = String(year);
+    option.textContent = String(year);
+    select.appendChild(option);
   }
-};
+}
 
-// Smooth scroll to top
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  const currentYear = new Date().getFullYear();
+
+  // Populate existing dropdowns
+  populateYearSelect("minYear", currentYear, 1950);
+  // Only populate/bind maxYear if it exists in HTML
+  populateYearSelect("maxYear", currentYear, 1950);
+
+  const minEl = document.getElementById("minYear");
+  const maxEl = document.getElementById("maxYear");
+
+  if (minEl) minEl.addEventListener("change", filterPapers);
+  if (maxEl) maxEl.addEventListener("change", filterPapers);
+
+  // Optionally re-run once to reflect any default year selection
+  // (won’t hurt if values are empty)
+  filterPapers();
+
+  // ===============================
+  // 🔝 Back to Top Button Logic
+  // ===============================
+  const backToTopBtn = document.getElementById("backToTop");
+  if (backToTopBtn) {
+    window.addEventListener("scroll", () => {
+      const scrolled =
+        document.body.scrollTop > 200 || document.documentElement.scrollTop > 200;
+      backToTopBtn.style.display = scrolled ? "block" : "none";
+    });
+    backToTopBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
 });
+
 
 // Custom chatbot functionality removed - now using Chatbase integration
 
