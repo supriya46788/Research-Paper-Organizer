@@ -38,63 +38,78 @@
         score based on formatting, keyword richness, and JD match.
       </p>
 
-      <div class="card">
-        <div class="controls">
-          <label for="resumeFile">Upload Resume</label>
-          <input id="resumeFile" type="file" accept=".pdf,.docx,.txt" />
-
-          <label for="jdFile">Upload Job Description (optional)</label>
-          <input id="jdFile" type="file" accept=".pdf,.docx,.txt" />
-
-          <button id="analyzeBtn" class="btn">Analyze</button>
-        </div>
-
-        <div class="results" id="results" aria-live="polite"></div>
-
-        <div style="margin-top: 20px">
-          <div class="small">Score</div>
-          <div class="score" id="score">—</div>
-
-          <div style="margin-top: 10px">
-            <div class="small">Checks</div>
-            <div class="check">
-              <input type="checkbox" id="hasContact" disabled />
-              <label for="hasContact">Contact info (email or phone)</label>
+    <div>
+        <div class="card">
+          <div class="controls">
+            <div class="input-resume">
+              <label for="resumeFile">
+                Upload Resume
+              </label>
+              <input id="resumeFile" type="file" accept=".pdf,.docx,.txt" />
+              <span id="resumeFileName" class="custom-file">No file chosen</span>
             </div>
-            <div class="check">
-              <input type="checkbox" id="formattingOk" disabled />
-              <label for="formattingOk">No obvious tables/images</label>
+            <div class="input-jd">
+              <label for="jdFile">
+                Upload Job Description (optional)
+              </label>
+              <input id="jdFile" type="file" accept=".pdf,.docx,.txt" />
+              <span id="jdFileName" class="custom-file">No file chosen</span>
             </div>
-            <div class="check">
-              <input type="checkbox" id="lengthOk" disabled />
-              <label for="lengthOk">Reasonable length (100–1000 words)</label>
-            </div>
-            <div class="check">
-              <input type="checkbox" id="hasSkills" disabled />
-              <label for="hasSkills">Contains skills section/keywords</label>
-            </div>
-            <div class="check">
-              <input type="checkbox" id="jdMatchOk" disabled />
-              <label for="jdMatchOk"
-                >Job description match (if JD uploaded)</label
-              >
+            
+            <button id="analyzeBtn" class="btn">Analyze</button>
+          </div>
+          <div class="result-container">
+            <div class="results" id="results" aria-live="polite"></div>
+
+            <div style="margin-top: 20px">
+              <div class="results">Score</div>
+                <div class="score-wrapper">
+                  <div class="score" id="score">—</div>
+                </div>
             </div>
           </div>
+          
 
-          <footer>
-            <strong>Note:</strong> This is a simple client-side check. For
-            deeper ATS analysis, a backend NLP service would be required.
-          </footer>
+            <div style="margin-top: 10px">
+              <div class="results"><strong>Checks</strong></div>
+              <div class="check">
+                <input type="checkbox" id="hasContact" disabled />
+                <label class="check-label" for="hasContact">Contact info (email or phone)</label>
+              </div>
+              <div class="check">
+                <input type="checkbox" id="formattingOk" disabled />
+                <label class="check-label" for="formattingOk">No obvious tables/images</label>
+              </div>
+              <div class="check">
+                <input type="checkbox" id="lengthOk" disabled />
+                <label class="check-label" for="lengthOk">Reasonable length (100–1000 words)</label>
+              </div>
+              <div class="check">
+                <input type="checkbox" id="hasSkills" disabled />
+                <label class="check-label" for="hasSkills">Contains skills section/keywords</label>
+              </div>
+              <div class="check">
+                <input type="checkbox" id="jdMatchOk" disabled />
+                <label class="check-label" for="jdMatchOk">Job description match (if JD uploaded)</label>
+              </div>
+            </div>
+
+            <footer>
+              <strong>Note:</strong> This is a simple client-side check. For
+              deeper ATS analysis, a backend NLP service would be required.
+            </footer>
+          </div>
         </div>
-      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.16/mammoth.browser.min.js"></script>
 
     <script>
-      const fileInput = document.getElementById("resumeFile");
-      const jdInput = document.getElementById("jdFile");
+      const resumeFile = document.getElementById("resumeFile");
+      const jdFile = document.getElementById("jdFile");
+      const resumeFileName = document.getElementById("resumeFileName");
+      const jdFileName = document.getElementById("jdFileName");
       const analyzeBtn = document.getElementById("analyzeBtn");
       const resultsEl = document.getElementById("results");
       const scoreEl = document.getElementById("score");
@@ -103,6 +118,16 @@
       const lengthOkEl = document.getElementById("lengthOk");
       const hasSkillsEl = document.getElementById("hasSkills");
       const jdMatchEl = document.getElementById("jdMatchOk");
+
+      resumeFile.addEventListener("change", () => {
+        resumeFileName.textContent =
+          resumeFile.files.length > 0 ? resumeFile.files[0].name : "No file chosen";
+      });
+
+      jdFile.addEventListener("change", () => {
+        jdFileName.textContent =
+          jdFile.files.length > 0 ? jdFile.files[0].name : "No file chosen";
+      });
 
       async function extractTextFromFile(file) {
         if (!file) return "";
@@ -137,21 +162,21 @@
       }
 
       analyzeBtn.addEventListener("click", async () => {
-        const resumeFile = fileInput.files[0];
-        const jdFile = jdInput.files[0];
-        if (!resumeFile) {
+        const resume = resumeFile.files[0];
+        const jd = jdFile.files[0];
+        if (!resume) {
           resultsEl.innerHTML =
             '<div class="small">Please upload a resume file.</div>';
           return;
         }
 
         resultsEl.innerHTML = '<div class="small">Analyzing resume...</div>';
-        let resumeText = await extractTextFromFile(resumeFile);
+        let resumeText = await extractTextFromFile(resume);
         resumeText = resumeText.replace(/\s+/g, " ").trim();
 
         let jdText = "";
-        if (jdFile)
-          jdText = (await extractTextFromFile(jdFile))
+        if (jd)
+          jdText = (await extractTextFromFile(jd))
             .replace(/\s+/g, " ")
             .trim();
 
@@ -204,9 +229,10 @@
         if (skillsKeywords) score += 20;
         if (jdMatch) score += 20;
 
+        
         scoreEl.textContent = score + "%";
 
-        resultsEl.innerHTML = `<div class="small"><strong>Word count:</strong> ${wordCount}</div>`;
+        resultsEl.innerHTML = `<div><strong>Word count:</strong> ${wordCount}</div>`;
       });
     </script>
 </body>

@@ -16,8 +16,10 @@ body {
   background: #aecdec;
   color: #e6eef8;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: flex-start;
+  min-height: 100vh;
   padding: 28px;
 }
 .container {
@@ -47,13 +49,65 @@ p.lead {
   border-radius: 10px;
 }
 label {
-  display: block;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f1f5f9;
   margin-bottom: 6px;
-  color: var(--muted);
+  background-color: #2f4d89;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
 }
 .controls input[type="file"] {
   display: block;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #062949;
+  height: 200px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #062949;
+  height: 200px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.input-resume, .input-jd {
+  margin: 15px;
+  border-radius: 10px;
+}
+
+#resumeFileName, #jdFileName {
+  margin-left: 8px;
+  color: var(--accent);
+  background-color: #082650;
+  font-weight: 600;
+  padding: 6px 12px;
+}
+
+#resumeFile, #jdFile {
+  display: none;
+}
+
+.custom-file {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--glass);
+  color: var(--muted);
+  cursor: pointer;
 }
 .btn {
   display: inline-block;
@@ -69,11 +123,41 @@ label {
 .results {
   margin-top: 12px;
 }
+
+.score-wrapper {
+  position: relative;
+  width: 140px;
+  height: 40px;
+  margin: 20px auto;
+}
+
+.progress-ring__background {
+  fill: none;
+  stroke: #334155;
+  stroke-width: 12;
+}
+
+.progress-ring__circle {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 12;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 900ms cubic-bezier(.2,.8,.2,1);
+}
+
 .score {
-  font-size: 48px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
   font-weight: 700;
   color: var(--accent);
+  text-align: center;
 }
+
 .list {
   margin: 8px 0 0;
   padding: 0;
@@ -89,14 +173,74 @@ label {
   color: var(--muted);
 }
 .small {
-  font-size: 13px;
+  font-size: 16px;
+  margin: 4px;
+  text-align: center;
   color: var(--muted);
+}
+
+.results {
+  font-size: 20px;
+  text-align: center;
 }
 .check {
   display: flex;
   gap: 8px;
   align-items: center;
   margin-top: 6px;
+}
+input[type="checkbox"] {
+    display: none;
+  }
+
+
+.check label {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.check-label {
+  position: relative;
+  padding-left: 40px !important;
+  cursor: pointer;
+  font-size: 12px !important;
+  background-color:#0f192d
+}
+
+.check label::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 8px;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  box-sizing: border-box;
+}
+
+.check input[type="checkbox"]:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 10px;
+  width: 6px;
+  height: 11px;
+  border: solid rgb(0, 73, 128);
+  border-width: 0 5px 5px 0;
+  transform: rotate(45deg);
+}
+
+.check label:hover::before {
+  background-color: #e0e0e0;
+}
+
+.check input[type="checkbox"]:disabled + label::before {
+  background-color: #ddd;
+  border-color: #aaa;
 }
 footer {
   margin-top: 12px;
