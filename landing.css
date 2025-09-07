@@ -1422,6 +1422,6 @@ body {
     flex-direction: row;
     gap: 20px;
     background: none;
-    box-shadow: none;
+    box-shadow: none; 
   }
 }
