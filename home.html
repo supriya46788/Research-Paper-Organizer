@@ -1,639 +1,1400 @@
 <!DOCTYPE html>
-  
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research Paper Organizer</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <!-- SweetAlert2 CDN -->
-   
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js"></script>
-<script>
-  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js';
-</script>
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+ 
   <style>
-    /* Ensure dark mode styles work */
-    body.dark-mode {
-      background: #111827 !important;
-      color: #d1d5db !important;
-    }
-    
-    body.dark-mode .header {
-      background: #1f2937 !important;
-      color: #d1d5db !important;
-    }
-    
-    body.dark-mode .search-bar {
-      background: #1f2937 !important;
-      color: #d1d5db !important;
-    }
-    
-    body.dark-mode .papers-section {
-      background: #1f2937 !important;
-      color: #d1d5db !important;
-    }
-    
-    body.dark-mode .paper-card {
-      background: #374151 !important;
-      color: #d1d5db !important;
-      border-color: #4b5563 !important;
-    }
-    
-    body.dark-mode .modal {
-      background: #1f2937 !important;
-      color: #d1d5db !important;
-    }
-    
-    body.dark-mode input, 
-    body.dark-mode textarea, 
-    body.dark-mode select {
-      background: #374151 !important;
-      color: #d1d5db !important;
-      border-color: #4b5563 !important;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-   
+    :root {
+      /* Dark blue theme colors */
+      --primary-bg: #1e2a3a;
+      --secondary-bg: #2d3e50;
+      --accent-bg: #34495e;
+      --card-bg: #3b4f66;
+      --text-primary: #ecf0f1;
+      --text-secondary: #bdc3c7;
+      --text-muted: #95a5a6;
+      --border-color: #4a5f7a;
+      --shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+      --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+      --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+      
+      /* Brand colors - blue theme */
+      --brand-primary: #3498db;
+      --brand-secondary: #2980b9;
+      --brand-accent: #5dade2;
+      --success: #27ae60;
+      --warning: #f39c12;
+      --error: #e74c3c;
+      --info: #17a2b8;
+      
+      /* Gradients */
+      --gradient-primary: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+      --gradient-accent: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+      --gradient-success: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+      
+      /* Typography */
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Fira Code', 'Monaco', monospace;
+      
+      /* Spacing */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      
+      /* Borders */
+      --border-radius-sm: 6px;
+      --border-radius-md: 8px;
+      --border-radius-lg: 12px;
+      --border-radius-xl: 16px;
+      --border-radius-2xl: 24px;
+      
+      /* Animations */
+      --transition-fast: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--primary-bg);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: var(--transition-normal);
+      overflow-x: hidden;
+    }
+
+    /* Enhanced Container */
+    .container {
+      min-height: 100vh;
+      background: var(--primary-bg);
+      position: relative;
+    }
+
+    /* Modern Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-lg) var(--space-xl);
+      background: var(--secondary-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: var(--transition-normal);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .nav-item {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--border-radius-md);
+      transition: var(--transition-fast);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      transition: var(--transition-normal);
+      z-index: -1;
+    }
+
+    .nav-item:hover::before {
+      left: 0;
+    }
+
+    .nav-item:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .navbar-right-links {
+      display: flex;
+      gap: var(--space-sm);
+    }
+
+    /* Enhanced Header */
+    .header {
+      background: var(--secondary-bg);
+      border-radius: var(--border-radius-2xl) var(--border-radius-2xl) 0 0;
+      margin: var(--space-lg);
+      box-shadow: var(--shadow-heavy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
+
+    .header-content {
+      padding: var(--space-2xl);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-xl);
+    }
+
+    .header-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .header-title i {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      margin-top: var(--space-sm);
+      font-weight: 400;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    /* Enhanced Buttons */
+    .btn-primary, .add-btn {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--border-radius-lg);
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      cursor: pointer;
+      transition: var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .btn-primary::before, .add-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: var(--transition-slow);
+    }
+
+    .btn-primary:hover::before, .add-btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-primary:hover, .add-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--accent-bg);
+      color: var(--text-primary);
+      border: 2px solid var(--border-color);
+      padding: var(--space-md) var(--space-lg);
+      border-radius: var(--border-radius-lg);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-normal);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .btn-secondary:hover {
+      background: var(--brand-primary);
+      color: white;
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .dark-toggle {
+      background: var(--accent-bg);
+      border: 2px solid var(--border-color);
+      color: var(--text-primary);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dark-toggle:hover {
+      transform: rotate(180deg) scale(1.1);
+      background: var(--gradient-primary);
+      color: white;
+      border-color: transparent;
+    }
+
+    /* Enhanced Search Bar */
+    .search-bar {
+      background: var(--secondary-bg);
+      margin: 0 var(--space-lg);
+      padding: var(--space-xl);
+      border-radius: var(--border-radius-xl);
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--border-color);
+    }
+
+    .search-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .search-input-container {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: var(--space-lg);
+      padding-left: 3.5rem;
+      border: 2px solid var(--border-color);
+      border-radius: var(--border-radius-lg);
+      font-size: 1rem;
+      background: var(--accent-bg);
+      color: var(--text-primary);
+      transition: var(--transition-fast);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: var(--space-md);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1.25rem;
+    }
+
+    .filter-container {
+      display: flex;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .filter-select {
+      padding: var(--space-md) var(--space-lg);
+      border: 2px solid var(--border-color);
+      border-radius: var(--border-radius-md);
+      background: var(--accent-bg);
+      color: var(--text-primary);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      min-width: 140px;
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    }
+
+    /* Enhanced Main Grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-xl);
+      margin: var(--space-xl);
+      min-height: 600px;
+    }
+
+    .papers-section, .details-section {
+      background: var(--secondary-bg);
+      border-radius: var(--border-radius-xl);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-medium);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .papers-section::before, .details-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-primary);
+    }
+
+    .papers-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-lg);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .papers-title::before {
+      content: '';
+      width: 4px;
+      height: 2rem;
+      background: var(--gradient-primary);
+      border-radius: 2px;
+    }
+
+    /* Enhanced Empty State */
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-2xl);
+      text-align: center;
+      min-height: 300px;
+      border: 2px dashed var(--border-color);
+      border-radius: var(--border-radius-xl);
+      background: rgba(52, 152, 219, 0.03);
+      transition: var(--transition-normal);
+    }
+
+    .empty-state:hover {
+      border-color: var(--brand-primary);
+      background: rgba(52, 152, 219, 0.05);
+      transform: scale(1.02);
+    }
+
+    .empty-state i {
+      font-size: 4rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-lg);
+      opacity: 0.7;
+    }
+
+    .empty-state p {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Enhanced Paper Cards */
+    .paper-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius-lg);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-md);
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: var(--transition-normal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .paper-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gradient-primary);
+      opacity: 0;
+      transition: var(--transition-normal);
+    }
+
+    .paper-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-heavy);
+      border-color: var(--brand-primary);
+      background: var(--accent-bg);
+    }
+
+    .paper-card:hover::before {
+      opacity: 1;
+    }
+
+    .paper-card.selected {
+      background: var(--accent-bg);
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .paper-card.selected::before {
+      opacity: 1;
+    }
+
+    /* Enhanced Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: var(--transition-normal);
+    }
+
+    .modal-overlay:not(.hidden) {
+      opacity: 1;
+    }
+
+    .modal {
+      background: var(--secondary-bg);
+      border-radius: var(--border-radius-2xl);
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-heavy);
+      transform: scale(0.9);
+      transition: var(--transition-normal);
+      border: 1px solid var(--border-color);
+    }
+
+    .modal-overlay:not(.hidden) .modal {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      padding: var(--space-xl);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: var(--border-radius-2xl) var(--border-radius-2xl) 0 0;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: var(--space-sm);
+      border-radius: var(--border-radius-md);
+      transition: var(--transition-fast);
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+
+    .modal-content {
+      padding: var(--space-xl);
+    }
+
+    /* Enhanced Drop Zone */
     #drop-zone {
-  border: 2px dashed #4a90e2;
-  border-radius: 16px;
-  padding: 35px;
-  text-align: center;
-  background: #f8fbff;
-  color: #4a90e2;
-  transition: all 0.3s;
-}
-#drop-zone:hover {
-  background: #eef4ff;
-  border-color: #357ABD;
-  transform: scale(1.02);
-}
-.label-1 {
-  margin-top: 10px;
-  background: linear-gradient(90deg, #0056b3, #00BFFF); /* darker to lighter blue */
-  -webkit-background-clip: text;
+      border: 3px dashed var(--brand-primary);
+      border-radius: var(--border-radius-xl);
+      padding: var(--space-2xl);
+      text-align: center;
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.05), rgba(41, 128, 185, 0.05));
+      color: var(--brand-primary);
+      transition: var(--transition-normal);
+      margin-bottom: var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
 
-  -webkit-text-fill-color: transparent;
-  font-weight: 700; /* bolder */
-  font-size: 15px;  /* increased size */
-  letter-spacing: 0.5px; /* adds spacing for a cleaner look */
-}
-.label-1:hover {
-  margin-top: 10px;
-  background: linear-gradient(90deg, #185ba3, #add3e0); /* darker to lighter blue */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 17px;  /* increased size */
-}
+    #drop-zone::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.1), transparent);
+      transition: var(--transition-slow);
+    }
 
-/* General Paper Details Section */
-.details-section {
-  background-color: #f9f9f9; /* light default */
-  color: #111; 
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-}
+    #drop-zone:hover::before {
+      left: 100%;
+    }
 
-/* Dark Mode */
-.details-section.dark-mode {
-  background-color: #1f1f2e;
-  color: #e0e0e0;
-  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
-}
+    #drop-zone:hover {
+      border-color: var(--brand-secondary);
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(41, 128, 185, 0.1));
+      transform: scale(1.02);
+      box-shadow: var(--shadow-medium);
+    }
 
-/* Detail Titles */
-.details-title, .detail-section h3, .detail-section h4 {
-  margin-bottom: 8px;
-  color: inherit;
-}
+    #drop-zone .icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-lg);
+      animation: bounce 2s infinite;
+    }
 
-/* Content Paragraphs */
-.detail-section p {
-  margin: 5px 0 12px 0;
-  line-height: 1.5;
-  color: inherit;
-}
+    @keyframes bounce {
+      0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+      40%, 43% { transform: translate3d(0,-30px,0); }
+      70% { transform: translate3d(0,-15px,0); }
+      90% { transform: translate3d(0,-4px,0); }
+    }
 
-/* Tags */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.detail-tag {
-  background-color: #e0e0e0;
-  color: #111;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-.details-section.dark-mode .detail-tag {
-  background-color: #33334d;
-  color: #f0f0f0;
-}
+    #browse-btn {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: var(--space-md) var(--space-xl);
+      border-radius: var(--border-radius-lg);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-normal);
+      margin-top: var(--space-md);
+    }
 
-/* Rating & Favorite */
-.rating-favorite-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-}
-.paper-rating .stars {
-  color: #ffc107; /* gold stars */
-  font-size: 1.1rem;
-}
-.details-section.dark-mode .paper-rating .stars {
-  color: #ffcc00;
-}
-.paper-favorite i {
-  color: #e74c3c; /* red heart */
-}
+    #browse-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+    }
 
-/* PDF Preview */
-.pdf-preview {
-  width: 100%;
-  height: 300px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-.details-section.dark-mode .pdf-preview {
-  border: 1px solid #444;
-}
+    /* Enhanced Form Elements */
+    .form-group {
+      margin-bottom: var(--space-lg);
+    }
 
-/* Citation Section */
-.citation-section {
-  margin-top: 15px;
-}
-.citation-item {
-  background-color: #f0f0f0e7;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-.details-section.dark-mode .citation-item {
-  background-color: #2a2a3c;
-}
-.citation-text {
-  font-size: 0.9rem;
-  margin-top: 4px;
-  color: inherit;
-}
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #3498db;
-  margin-left: 8px;
-}
-.details-section.dark-mode .copy-btn {
-  color: #6ab0ff;
-}
-.details-section.dark-mode .details-title {
-  border-bottom: 1px solid #555;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
-}
-/* Light mode */
-.detail-label {
-  font-weight: 500;
-  color: #374151; /* dark gray for readability */
-}
+    .form-label {
+      display: block;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
 
-/* Dark mode */
-body.dark-mode .detail-label {
-  color: #dcdce6; /* light gray for dark theme */
-}
-.detail-label {
-  transition: color 0.3s ease;
-}
-.details-title {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 5px;
-}
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: var(--space-lg);
+      border: 2px solid var(--border-color);
+      border-radius: var(--border-radius-md);
+      background: var(--accent-bg);
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: var(--transition-fast);
+    }
 
-.details-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #374151; /* light mode */
-}
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--brand-primary);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+      transform: translateY(-1px);
+    }
 
-body.dark-mode .details-title::after {
-  background-color: #dcdce6; /* dark mode */
-}
-/* General Paper Details Section */
-.details-section {
-  background-color: #f9f9f9; /* light default */
-  color: #111; 
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-}
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
 
-/* Dark Mode */
-.details-section.dark-mode {
-  background-color: #1f1f2e;
-  color: #e0e0e0;
-  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
-}
+    /* Enhanced Star Rating */
+    .stars-rating {
+      display: flex;
+      gap: var(--space-xs);
+      margin-top: var(--space-sm);
+    }
 
-/* Detail Titles */
-.details-title, .detail-section h3, .detail-section h4 {
-  margin-bottom: 8px;
-  color: inherit;
-}
+    .star {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
 
-/* Content Paragraphs */
-.detail-section p {
-  margin: 5px 0 12px 0;
-  line-height: 1.5;
-  color: inherit;
-}
+    .star:hover, .star.active {
+      color: #f39c12;
+      transform: scale(1.2);
+    }
 
-/* Tags */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.detail-tag {
-  background-color: #e0e0e0;
-  color: #111;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-.details-section.dark-mode .detail-tag {
-  background-color: #33334d;
-  color: #f0f0f0;
-}
+    /* Enhanced Favorite */
+    .favorite-container {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-top: var(--space-sm);
+    }
 
-/* Rating & Favorite */
-.rating-favorite-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-}
-.paper-rating .stars {
-  color: #ffc107; /* gold stars */
-  font-size: 1.1rem;
-}
-.details-section.dark-mode .paper-rating .stars {
-  color: #ffcc00;
-}
-.paper-favorite i {
-  color: #e74c3c; /* red heart */
-}
+    .favorite-checkbox {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      cursor: pointer;
+    }
 
-/* PDF Preview */
-.pdf-preview {
-  width: 100%;
-  height: 300px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-.details-section.dark-mode .pdf-preview {
-  border: 1px solid #444;
-}
+    .favorite-icon {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      transition: var(--transition-fast);
+    }
 
-/* Citation Section */
-.citation-section {
-  margin-top: 15px;
-}
-.citation-item {
-  background-color: #f0f0f0e7;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-.details-section.dark-mode .citation-item {
-  background-color: #2a2a3c;
-}
-.citation-text {
-  font-size: 0.9rem;
-  margin-top: 4px;
-  color: inherit;
-}
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #3498db;
-  margin-left: 8px;
-}
-.details-section.dark-mode .copy-btn {
-  color: #6ab0ff;
-}
-.details-section.dark-mode .details-title {
-  border-bottom: 1px solid #555;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
-}
-/* Light mode */
-.detail-label {
-  font-weight: 500;
-  color: #374151; /* dark gray for readability */
-}
+    .favorite-checkbox input:checked + .favorite-icon {
+      color: var(--error);
+      transform: scale(1.2);
+    }
 
-/* Dark mode */
-body.dark-mode .detail-label {
-  color: #dcdce6; /* light gray for dark theme */
-}
-.detail-label {
-  transition: color 0.3s ease;
-}
-.details-title {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 5px;
-}
+    /* Loading Spinner */
+    .loading-spinner {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--secondary-bg);
+      padding: var(--space-xl);
+      border-radius: var(--border-radius-xl);
+      box-shadow: var(--shadow-heavy);
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      z-index: 2000;
+      border: 1px solid var(--border-color);
+    }
 
-.details-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #374151; /* light mode */
-}
+    .loading-spinner i {
+      font-size: 1.5rem;
+      color: var(--brand-primary);
+    }
 
-body.dark-mode .details-title::after {
-  background-color: #dcdce6; /* dark mode */
-}
-/* Paper Details Section */
-.details-section {
-  background-color: #f9f9f9;
-  color: #111827;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+    /* Utility Classes */
+    .hidden { display: none !important; }
 
-/* Dark mode */
-body.dark-mode .details-section {
-  background-color: #1f2937;
-  color: #f3f4f6;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
+    /* Mobile Menu */
+    .menu {
+      display: none;
+    }
 
-/* Header inside Paper Details */
-/* ===== General Paper Details Section ===== */
-.details-section {
-  background-color: #f9f9f9; /* light default */
-  color: #111827; 
-  padding: 20px;
-  border-radius: 12px;
-  margin: 15px 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-}
+    /* Enhanced Responsive Design */
+    @media (max-width: 1024px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+      }
+      
+      .header-title {
+        font-size: 2rem;
+      }
+      
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
-body.dark-mode .details-section {
-  background-color: #1f2937;
-  color: #e0e0e0;
-  box-shadow: 0 4px 12px rgba(255,255,255,0.05);
-}
+    @media (max-width: 768px) {
+      .navbar-right-links {
+        display: none;
+      }
+      
+      .menu {
+        display: block;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-lg);
+      }
+      
+      .header-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .search-content {
+        gap: var(--space-md);
+      }
+      
+      .filter-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .filter-select {
+        min-width: auto;
+        width: 100%;
+      }
+      
+      .main-grid {
+        margin: var(--space-md);
+        gap: var(--space-md);
+      }
+      
+      .papers-section, .details-section {
+        padding: var(--space-lg);
+      }
+      
+      .modal {
+        width: 95%;
+        margin: var(--space-md);
+      }
+    }
 
-/* ===== Header & Titles ===== */
-.details-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 6px;
-}
+    @media (max-width: 480px) {
+      .header-title {
+        font-size: 1.75rem;
+      }
+      
+      .header-buttons {
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .btn-primary, .add-btn, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
 
-.details-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 150px;
-  height: 3px;
-  background-color: #3b82f6; /* light blue underline */
-  border-radius: 2px;
-}
+    /* Enhanced animations */
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-body.dark-mode .details-title::after {
-  background-color: #60a5fa; /* accent blue */
-}
+    .paper-card {
+      animation: slideInUp 0.3s ease-out;
+    }
 
-/* ===== Close Button ===== */
-.details-header .close-btn {
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  font-weight: bold;
-  color: #e74c3c; /* red */
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    /* Back to Top Button Enhancement */
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-primary);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-heavy);
+      transition: var(--transition-normal);
+      z-index: 1000;
+      display: none;
+    }
 
-.details-header .close-btn:hover {
-  transform: scale(1.1);
-  color: #ff5252; /* hover red */
-}
+    #backToTop:hover {
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 15px 35px rgba(52, 152, 219, 0.4);
+    }
 
-/* ===== Content Sections ===== */
-.details-content p {
-  line-height: 1.6;
-  margin: 6px 0 14px 0;
-  color: inherit;
-}
+    /* Footer Enhancement */
+    .modern-footer {
+      background: linear-gradient(135deg, var(--secondary-bg), var(--accent-bg));
+      color: var(--text-primary);
+      padding: var(--space-2xl);
+      border-radius: var(--border-radius-2xl) var(--border-radius-2xl) 0 0;
+      margin-top: var(--space-2xl);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
 
-.detail-label {
-  font-weight: 500;
-  color: #374151;
-  transition: color 0.3s ease;
-}
+    .modern-footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--gradient-primary);
+    }
 
-body.dark-mode .detail-label {
-  color: #dcdce6;
-}
+    .footer-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-xl);
+      margin-bottom: var(--space-xl);
+    }
 
-/* ===== Tags ===== */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 8px 0;
-}
+    .footer-card {
+      background: rgba(52, 152, 219, 0.05);
+      padding: var(--space-xl);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid var(--border-color);
+      transition: var(--transition-normal);
+    }
 
-.detail-tag {
-  background-color: #e0e7ff;
-  color: #1d4ed8;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
+    .footer-card:hover {
+      background: rgba(52, 152, 219, 0.1);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+    }
 
-.detail-tag:hover {
-  background-color: #2563eb;
-  color: #ffffff;
-}
+    .footer-brand h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
 
-body.dark-mode .detail-tag {
-  background-color: #374151;
-  color: #60a5fa;
-}
+    .social-icons {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
 
-body.dark-mode .detail-tag:hover {
-  background-color: #3b82f6;
-  color: #ffffff;
-}
+    .social-icons a {
+      width: 50px;
+      height: 50px;
+      background: var(--accent-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      transition: var(--transition-normal);
+      border: 1px solid var(--border-color);
+    }
 
-/* ===== Rating & Favorite ===== */
-.rating-favorite-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-}
+    .social-icons a:hover {
+      background: var(--brand-primary);
+      transform: scale(1.1) translateY(-2px);
+      box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+      border-color: var(--brand-primary);
+    }
 
-.paper-rating .stars {
-  color: #ffc107;
-  font-size: 1.1rem;
-}
+    .footer-bottom {
+      text-align: center;
+      padding-top: var(--space-lg);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
 
-body.dark-mode .paper-rating .stars {
-  color: #ffcc00;
-}
+    .heart {
+      color: #ef4444;
+      animation: pulse 2s infinite;
+    }
 
-.paper-favorite i {
-  color: #e74c3c;
-}
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
 
-body.dark-mode .paper-favorite i {
-  color: #ff6b6b;
-}
+    /* Enhanced Paper Details */
+    .details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-lg);
+      border-bottom: 2px solid var(--border-color);
+      position: relative;
+    }
 
-/* ===== PDF Preview ===== */
-.pdf-preview {
-  width: 100%;
-  height: 300px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  transition: all 0.3s ease;
-}
+    .details-header::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100px;
+      height: 2px;
+      background: var(--gradient-primary);
+    }
 
-.pdf-preview:hover {
-  transform: scale(1.01);
-  border-color: #3b82f6;
-}
+    .details-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
 
-body.dark-mode .pdf-preview {
-  border: 1px solid #444;
-}
+    .close-btn {
+      background: none;
+      border: none;
+      color: var(--error);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: var(--space-sm);
+      border-radius: 50%;
+      transition: var(--transition-fast);
+    }
 
-/* ===== Citation Section ===== */
-.citation-section {
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    .close-btn:hover {
+      background: rgba(239, 68, 68, 0.1);
+      transform: scale(1.1);
+    }
 
-/* Light mode citation */
-.citation-item {
-  background-color: #eef2ff; /* light blue card */
-  color: #111827; /* dark text */
-  padding: 12px 14px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.2s ease;
-}
+    .detail-section {
+      margin-bottom: var(--space-lg);
+      padding: var(--space-lg);
+      background: var(--accent-bg);
+      border-radius: var(--border-radius-lg);
+      border-left: 4px solid var(--brand-primary);
+      transition: var(--transition-normal);
+    }
 
-.citation-item:hover {
-  background-color: #2563eb; /* hover blue */
-  color: #111827; /* keep text readable */
-}
+    .detail-section:hover {
+      transform: translateX(4px);
+      box-shadow: var(--shadow-light);
+    }
 
-.citation-item .citation-text {
-  font-size: 0.9rem;
-  color: inherit;
-}
+    .detail-label {
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-xs);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
 
-/* Dark mode citation */
-body.dark-mode .citation-item {
-  background-color: #1f2937;
-  color: #f3f4f6;
-}
+    .detail-tag {
+      display: inline-block;
+      background: var(--brand-primary);
+      color: white;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--border-radius-lg);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin: var(--space-xs);
+      transition: var(--transition-fast);
+    }
 
-body.dark-mode .citation-item:hover {
-  background-color: #3b82f6;
-  color: #ffffff;
-}
+    .detail-tag:hover {
+      background: var(--brand-secondary);
+      transform: translateY(-1px);
+    }
 
-/* Copy button */
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #3498db;
-  transition: all 0.2s ease;
-}
+    .citation-item {
+      background: var(--accent-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius-md);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-md);
+      position: relative;
+      transition: var(--transition-normal);
+    }
 
-.copy-btn:hover {
-  color: #1d4ed8;
-}
+    .citation-item:hover {
+      border-color: var(--brand-primary);
+      box-shadow: var(--shadow-light);
+    }
 
-body.dark-mode .copy-btn {
-  color: #60a5fa;
-}
+    .copy-btn {
+      background: var(--brand-primary);
+      color: white;
+      border: none;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--border-radius-md);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
 
-body.dark-mode .copy-btn:hover {
-  color: #93c5fd;
-}
+    .copy-btn:hover {
+      background: var(--brand-secondary);
+      transform: translateY(-1px);
+    }
+
+    .pdf-preview {
+      width: 100%;
+      height: 400px;
+      border: 2px solid var(--border-color);
+      border-radius: var(--border-radius-lg);
+      transition: var(--transition-normal);
+    }
+
+    .pdf-preview:hover {
+      border-color: var(--brand-primary);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* Enhanced pagination */
+    .pagination-controls {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-xl);
+    }
+
+    .pagination-btn {
+      padding: var(--space-md);
+      border: 2px solid var(--border-color);
+      background: var(--secondary-bg);
+      color: var(--text-primary);
+      border-radius: var(--border-radius-md);
+      cursor: pointer;
+      transition: var(--transition-fast);
+      min-width: 45px;
+      text-align: center;
+    }
+
+    .pagination-btn:hover, .pagination-btn.active {
+      background: var(--brand-primary);
+      color: white;
+      border-color: var(--brand-primary);
+      transform: translateY(-1px);
+    }
+    .username-display {
+      display: flex;
+      align-items: center;
+      padding: 0 var(--space-md);
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    /* ADD THIS CSS */
+    .user-menu {
+      position: relative;
+    }
+    .user-menu-button {
+      background-color: var(--accent-bg);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .user-menu-dropdown {
+      position: absolute;
+      top: 120%;
+      right: 0;
+      background-color: var(--secondary-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      z-index: 10;
+      width: 220px;
+      padding: var(--space-sm);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .user-menu-dropdown.hidden {
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+    }
+    .user-info {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: var(--space-sm);
+    }
+    .user-info strong {
+      display: block;
+    }
+    .user-info span {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .logout-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-md);
+      color: var(--error);
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+    }
+    .logout-link:hover {
+      background-color: var(--accent-bg);
+    }
+    /* Mobile enhancements */
+    @media (max-width: 640px) {
+      :root {
+        --space-xs: 0.125rem;
+        --space-sm: 0.25rem;
+        --space-md: 0.5rem;
+        --space-lg: 1rem;
+        --space-xl: 1.5rem;
+        --space-2xl: 2rem;
+      }
+
+      .container {
+        padding: 0;
+      }
+
+      .navbar {
+        padding: var(--space-md);
+        flex-wrap: wrap;
+      }
+
+      .header {
+        margin: var(--space-md);
+        border-radius: var(--border-radius-lg);
+      }
+
+      .header-content {
+        padding: var(--space-lg);
+      }
+
+      .search-bar {
+        margin: 0 var(--space-md);
+        padding: var(--space-lg);
+      }
+
+      .main-grid {
+        margin: var(--space-md);
+      }
+
+      .modal {
+        width: calc(100% - 2rem);
+        margin: var(--space-md);
+      }
+
+      .modal-content {
+        padding: var(--space-lg);
+      }
+
+      #drop-zone {
+        padding: var(--space-xl);
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      #backToTop {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
+
+    /* Accessibility enhancements */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus styles for accessibility */
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--brand-primary);
+      outline-offset: 2px;
+    }
+
+    /* High contrast mode support */
+    @media (prefers-contrast: high) {
+      :root {
+        --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.3);
+        --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.3);
+        --shadow-heavy: 0 8px 16px rgba(0, 0, 0, 0.3);
+      }
+    }
+    /* ADD THIS CSS for new paper card design */
+    .paper-card {
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-lg);
+      background: var(--accent-bg);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Add a subtle shadow */
+      transition: var(--transition-fast);
+    }
+    .card-title-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-md);
+    }
+    .card-title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: var(--space-sm);
+      color: var(--text-primary);
+    }
+    .card-actions {
+      display: flex;
+      gap: var(--space-md);
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+    .card-actions a, .card-actions button {
+      color: inherit;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .card-actions a:hover, .card-actions button:hover {
+      color: var(--brand-primary);
+      transform: scale(1.1);
+    }
+    .card-authors {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: var(--space-md);
+    }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      font-size: 0.9rem;
+      margin-bottom: var(--space-md);
+    }
+    .tag {
+      background-color: var(--secondary-bg);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      border: 1px solid var(--border-color);
+    }
+    .topic-tag {
+      background-color: var(--brand-primary);
+      color: white;
+      border: none;
+    }
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .card-rating {
+      border-top: 1px solid var(--border-color);
+      margin-top: var(--space-md);
+      padding-top: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .card-rating .stars {
+      color: #facc15;
+    }
   </style>
-  
 </head>
 
 <body>
   <div class="container">
+    <!-- Enhanced Navbar -->
     <nav class="navbar">
-      <a href="#" class="nav-item">Home</a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-home"></i> Home
+      </a>
 
       <div class="navbar-right-links">
-        <a href="about.html" class="nav-item">About us</a>
-        <a href="blog.html" class="nav-item">Blogs</a>
-        <a href="Faq.html" class="nav-item">FAQ</a>
-        <a href="contact.html" class="nav-item">Contact Us</a>
-        <a href="tools.html" class="nav-item">Tools</a>
+        <a href="about.html" class="nav-item">
+          <i class="fas fa-users"></i> About
+        </a>
+        <a href="blog.html" class="nav-item">
+          <i class="fas fa-blog"></i> Blog
+        </a>
+        <a href="Faq.html" class="nav-item">
+          <i class="fas fa-question-circle"></i> FAQ
+        </a>
+        <a href="contact.html" class="nav-item">
+          <i class="fas fa-envelope"></i> Contact
+        </a>
+        <a href="tools.html" class="nav-item">
+          <i class="fas fa-tools"></i> Tools
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <div class="menu">
+        <button id="menu-toggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </nav>
-    <!-- Header -->
+
+    <!-- Enhanced Header -->
     <div class="header">
       <div class="header-content">
         <div>
@@ -642,14 +1403,33 @@ body.dark-mode .copy-btn:hover {
             Research Paper Organizer
           </h1>
           <p class="header-subtitle">
-            Organize, track, and cite your research papers efficiently
+            Organize, track, and cite your research papers with modern elegance
           </p>
         </div>
 
-        <!-- Right side buttons -->
         <div class="header-buttons">
-          <button class="dark-toggle" id="darkModeToggle" title="Toggle Dark Mode">
-            <i class="fas fa-moon"></i>
+          <div class="user-menu">
+            <button id="userMenuButton" class="user-menu-button">
+              <i class="fas fa-user-circle"></i>
+              <span id="usernameButtonText">User</span> <i class="fas fa-chevron-down"></i>
+            </button>
+            <div id="userMenuDropdown" class="user-menu-dropdown hidden">
+              <div class="user-info">
+                <strong id="dropdownUsername">User Name</strong> <span id="dropdownUserEmail">user@example.com</span> </div>
+              <div id="themeToggleContainer" class="theme-toggle-container">
+                <span>Theme</span>
+                <button id="darkModeToggle" class="theme-toggle-button">
+                    <i class="fas fa-moon"></i>
+                </button>
+              </div>
+              <a href="#" id="logoutButton" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i> Logout
+              </a>
+            </div>
+          </div>
+
+          <button id="settingsButton" class="user-menu-button" title="Settings">
+            <i class="fas fa-cog"></i>
           </button>
 
           <button class="add-btn" onclick="showAddForm()">
@@ -657,735 +1437,1030 @@ body.dark-mode .copy-btn:hover {
             Add Paper
           </button>
           <button class="add-btn" onclick="location.href='summarize.html'">
-          <i class="fas fa-align-left"></i>
-          Summarize Paper
+            <i class="fas fa-align-left"></i>
+            Summarize
           </button>
-
           <button class="btn-secondary" onclick="importPapers()">
             <i class="fas fa-file-import"></i> Import
           </button>
-
           <button class="btn-secondary" onclick="exportPapers()">
             <i class="fas fa-file-export"></i> Export
           </button>
-
         </div>
-      </div>
-      <div class="menu">
-        <svg id="menu-open-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-          stroke="currentColor" class="menu-btn">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-
-        <div id="menu-items-container">
-          <a href="#" class="menu-item">Home</a>
-          <a href="#" class="menu-item">About us</a>
-
-          <a href="#" class="menu-item">FAQ</a>
-          <a href="contact.html" class="menu-item">Contact Us</a>
-        </div>
-        <svg id="menu-close-btn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-          stroke="currentColor" class="menu-btn">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-        </svg>
       </div>
     </div>
 
-    <!-- Search and Filter Bar -->
+    <!-- Enhanced Search Bar -->
     <div class="search-bar">
       <div class="search-content">
         <div class="search-input-container">
           <i class="fas fa-search search-icon"></i>
-          <input type="text" class="search-input" placeholder="Search papers by title, author, or abstract..."
-            id="searchInput" oninput="filterPapers()" />
+          <input type="text" class="search-input" placeholder="Search papers by title, author, or abstract..." id="searchInput" oninput="filterPapers()" />
         </div>
         <div class="filter-container">
           <i class="fas fa-filter" style="color: #6b7280"></i>
           <select class="filter-select" id="topicFilter" onchange="filterPapers()">
             <option value="">All Topics</option>
           </select>
-        </div>
-        <div class="filter-container">
-          <!-- Year Range -->
           <select id="minYear" class="filter-select">
             <option value="">From Year</option>
           </select>
-
-          <div class="filter-container">
-            <!-- Favorites Filter -->
-            <select
-              class="filter-select"
-              id="favoriteFilter"
-              onchange="filterPapers()"
-            >
-              <option value="">All Papers</option>
-              <option value="favorites">Favorites Only</option>
-              <option value="non-favorites">Non-Favorites</option>
-            </select>
-          </div>
-          <div class="filter-container">
-            <!-- Rating Filter -->
-            <select
-              class="filter-select"
-              id="ratingFilter"
-              onchange="filterPapers()"
-            >
-              <option value="">All Ratings</option>
-              <option value="5">5 Stars</option>
-              <option value="4">4+ Stars</option>
-              <option value="3">3+ Stars</option>
-              <option value="2">2+ Stars</option>
-              <option value="1">1+ Stars</option>
-              <option value="0">Unrated</option>
-            </select>
-          </div>
-          <div class="filter-container">
-            <!-- Sort Options -->
-            <select
-              class="filter-select"
-              id="sortFilter"
-              onchange="filterPapers()"
-            >
-              <option value="">Default</option>
-              <option value="rating-desc">Highest Rated</option>
-              <option value="rating-asc">Lowest Rated</option>
-              <option value="favorites">Favorites First</option>
-              <option value="title-asc">Title A-Z</option>
-              <option value="title-desc">Title Z-A</option>
-              <option value="year-desc">Newest First</option>
-              <option value="year-asc">Oldest First</option>
-            </select>
-          </div>
+          <select class="filter-select" id="favoriteFilter" onchange="filterPapers()">
+            <option value="">All Papers</option>
+            <option value="favorites">Favorites Only</option>
+            <option value="non-favorites">Non-Favorites</option>
+          </select>
+          <select class="filter-select" id="ratingFilter" onchange="filterPapers()">
+            <option value="">All Ratings</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4+ Stars</option>
+            <option value="3">3+ Stars</option>
+            <option value="2">2+ Stars</option>
+            <option value="1">1+ Stars</option>
+            <option value="0">Unrated</option>
+          </select>
+          <select class="filter-select" id="sortFilter" onchange="filterPapers()">
+            <option value="">Default</option>
+            <option value="rating-desc">Highest Rated</option>
+            <option value="rating-asc">Lowest Rated</option>
+            <option value="favorites">Favorites First</option>
+            <option value="title-asc">Title A-Z</option>
+            <option value="title-desc">Title Z-A</option>
+            <option value="year-desc">Newest First</option>
+            <option value="year-asc">Oldest First</option>
+          </select>
         </div>
-      </div>
-  </div>
-      <div class="main-grid">
-        <!-- Papers List -->
-        <div class="papers-section">
-          <h2 class="papers-title">Papers (<span id="paperCount">0</span>)</h2>
-
-          <div id="emptyState" class="empty-state">
-            <i class="fas fa-book-open"></i>
-            <p>No papers found</p>
-            <p style="font-size: 0.875rem">
-              Add your first research paper to get started
-            </p>
-          </div>
-
-          <div id="papersList" class="papers-list hidden"></div>
-          <!-- Pagination Controls for navigating between pages (ADDED FOR PAGINATION FEATURE) -->
-          <div id="paginationControls" class="pagination-controls"></div>
-        </div>
-
-        <!-- Paper Details -->
-        <div class="details-section">
-          <div id="noSelection" class="empty-state">
-            <i class="fas fa-book-open"></i>
-            <p>Select a paper to view details</p>
-          </div>
-
-          <div id="paperDetails" class="hidden">
-            <div class="details-header">
-              <h2 class="details-title">Paper Details</h2>
-              <button class="close-btn" onclick="closeDetails()">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-            <div class="details-content" id="detailsContent">
-              <!-- Paper details go here -->
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Add/Edit Paper Modal -->
-      <div id="modalOverlay" class="modal-overlay hidden">
-        <div class="modal">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="modalTitle">Add New Paper</h2>
-              <button class="modal-close" onclick="hideAddForm()">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-
-            <form id="paperForm">
-              <div id="drop-zone">
-                <div class="icon">
-                  <i class="fas fa-cloud-upload-alt"></i>
-                </div>
-                <h3>Drag & Drop to Upload File</h3>
-                <p>OR</p>
-                <button id="browse-btn" type="button">Browse File</button>
-                <input type="file" id="pdfUpload" accept="application/pdf" required hidden />
-              </div>
-              <!-- Placeholder for showing uploaded file -->
-              <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>
-              
-              <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
-                <label class="form-label label-1">PDF Preview</label>
-                <iframe
-                  id="pdfPreview"
-                  class="pdf-preview"
-                  src=""
-                  frameborder="0"
-                ></iframe>
-                
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Title *</label>
-                <input type="text" class="form-input" id="title" required />
-              </div>
-
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label label-1">Authors *</label>
-                  <input type="text" class="form-input" id="authors" required />
-                </div>
-                <div class="form-group">
-                  <label class="form-label label-1">Year</label>
-                  <input type="number" class="form-input" id="year" />
-                </div>
-              </div>
-
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label label-1">Journal/Conference</label>
-                  <input type="text" class="form-input" id="journal" />
-                </div>
-                <div class="form-group">
-                  <label class="form-label label-1">Topic</label>
-                  <input type="text" class="form-input" id="topic" />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">URL</label>
-                <input type="url" class="form-input" id="url" />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Tags (comma-separated)</label>
-                <input type="text" class="form-input" id="tags" placeholder="machine learning, neural networks, AI" />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Abstract</label>
-                <textarea class="form-textarea" id="abstract" rows="3"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Notes</label>
-                <textarea class="form-textarea" id="notes" rows="4"></textarea>
-              </div>
-
-              <!-- Rating and Favorite Section -->
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label label-1">Rating</label>
-                  <div class="rating-container">
-                    <div class="stars-rating" id="starsRating">
-                      <span class="star" data-rating="1">★</span>
-                      <span class="star" data-rating="2">★</span>
-                      <span class="star" data-rating="3">★</span>
-                      <span class="star" data-rating="4">★</span>
-                      <span class="star" data-rating="5">★</span>
-                    </div>
-                    <input type="hidden" id="rating" value="0" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="form-label label-1">Favorite</label>
-                  <div class="favorite-container">
-                    <label class="favorite-checkbox">
-                      <input type="checkbox" id="isFavorite" />
-                      <span class="favorite-icon" style="margin-top: 10px;">
-                        <i class="fas fa-heart " ></i>
-                      </span>
-                      <span class="favorite-text"><p class="label-1">Mark as favorite</p></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-actions">
-                <button type="button" class="btn-secondary" onclick="hideAddForm()">
-                  Cancel
-                </button>
-                <button type="submit" class="btn-primary">
-                  <i class="fas fa-save"></i>
-                  <span id="submitText">Add Paper</span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <div id="loadingSpinner" class="loading-spinner hidden">
-        <i class="fas fa-spinner fa-spin"></i> Saving Paper...
       </div>
     </div>
 
-    <style>
-      /* Back to Top Button Styles */
-#backToTop {
-  height: 50px;
-  width: 50px;
-position: fixed;
-bottom: 80px;
-right: 25px;
-z-index: 998;
-background: linear-gradient(135deg,#0077b5 ,#4facfe );
-color: white;
-border: none;
-border-radius: 50%;
-padding: 15px;
-font-size: 18px;
-cursor: pointer;
-display: none;
-box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-transition: transform 0.3s ease, opacity 0.3s ease;
-}
+    <!-- Enhanced Main Grid -->
+    <div class="main-grid">
+      <!-- Papers List -->
+      <div class="papers-section">
+        <h2 class="papers-title">
+          Papers (<span id="paperCount">0</span>)
+        </h2>
 
-#backToTop:hover {
-transform: scale(1.1);
-opacity: 0.9;
-box-shadow: rgba(0,0,0,0.8);
-}
+        <div id="emptyState" class="empty-state">
+          <i class="fas fa-book-open"></i>
+          <p>No papers found</p>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">
+            Add your first research paper to get started
+          </p>
+        </div>
 
-@media (max-width: 600px) {
-#backToTop {
-  padding: 12px;
-  font-size: 16px;
-  bottom: 20px;
-  right: 20px;
-}
-}
-  </style>
+        <div id="papersList" class="papers-list hidden"></div>
+        <div id="paginationControls" class="pagination-controls"></div>
+      </div>
 
-  <style>
-    /* Modern Footer Styles */
-    .modern-footer {
-      width: 100vw; /* Full viewport width */
-      margin-left: calc(-50vw + 50%); /* Center it if inside a constrained container */
-      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-      color: #fff;
-      padding: 60px 20px 20px;
-      border-radius: 25px 25px 0 0;
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-      overflow-x: hidden;
-    }
+      <!-- Enhanced Paper Details -->
+      <div class="details-section">
+        <div id="noSelection" class="empty-state">
+          <i class="fas fa-file-alt"></i>
+          <p>Select a paper to view details</p>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">
+            Click on any paper to see its complete information
+          </p>
+        </div>
 
-    .footer-top {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-bottom: 30px;
-    }
+        <div id="paperDetails" class="hidden">
+          <div class="details-header">
+            <h2 class="details-title">Paper Details</h2>
+            <button class="close-btn" onclick="closeDetails()" aria-label="Close details">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="details-content" id="detailsContent">
+            <!-- Paper details will be populated here -->
+          </div>
+        </div>
+      </div>
+    </div>
 
-    .footer-brand h3 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
+    <!-- Enhanced Modal -->
+    <div id="modalOverlay" class="modal-overlay hidden">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Add New Paper</h2>
+          <button class="modal-close" onclick="hideAddForm()" aria-label="Close modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
 
-    .footer-brand h3 i {
-      margin-right: 10px;
-      font-size: 1.6rem;
-      vertical-align: middle;
-    }
+        <div class="modal-content">
+          <form id="paperForm">
+            <!-- Enhanced Drop Zone -->
+            <div id="drop-zone">
+              <div class="icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <h3>Drag & Drop PDF File</h3>
+              <p>OR</p>
+              <button id="browse-btn" type="button">Browse Files</button>
+              <input type="file" id="pdfUpload" accept="application/pdf" hidden />
+            </div>
 
-    .footer-brand p {
-      font-size: 1rem;
-      line-height: 1.5;
-      opacity: 0.9;
-    }
+            <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>
+            
+            <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
+              <label class="form-label">PDF Preview</label>
+              <iframe id="pdfPreview" class="pdf-preview" frameborder="0"></iframe>
+            </div>
 
-    .footer-links-section h4 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: 5px;
-    }
+            <div class="form-group">
+              <label class="form-label">Title *</label>
+              <input type="text" class="form-input" id="title" required />
+            </div>
 
-    .footer-links-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Authors *</label>
+                <input type="text" class="form-input" id="authors" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Year</label>
+                <input type="number" class="form-input" id="year" />
+              </div>
+            </div>
 
-    .footer-links-section ul li {
-      margin-bottom: 8px;
-    }
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Journal/Conference</label>
+                <input type="text" class="form-input" id="journal" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Topic</label>
+                <input type="text" class="form-input" id="topic" />
+              </div>
+            </div>
 
-    .footer-links-section ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
+            <div class="form-group">
+              <label class="form-label">URL</label>
+              <input type="url" class="form-input" id="url" />
+            </div>
 
-    .footer-links-section ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
+            <div class="form-group">
+              <label class="form-label">Tags (comma-separated)</label>
+              <input type="text" class="form-input" id="tags" placeholder="machine learning, neural networks, AI" />
+            </div>
 
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      margin-top: 5px;
-    }
+            <div class="form-group">
+              <label class="form-label">Abstract</label>
+              <textarea class="form-textarea" id="abstract" rows="3"></textarea>
+            </div>
 
-    .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: #fff;
-      transition: 0.3s;
-    }
+            <div class="form-group">
+              <label class="form-label">Notes</label>
+              <textarea class="form-textarea" id="notes" rows="4"></textarea>
+            </div>
 
-    .social-icons a:hover {
-      background: #fff;
-      color: #2c5aa0;
-      transform: scale(1.1);
-    }
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Rating</label>
+                <div class="rating-container">
+                  <div class="stars-rating" id="starsRating">
+                    <span class="star" data-rating="1">★</span>
+                    <span class="star" data-rating="2">★</span>
+                    <span class="star" data-rating="3">★</span>
+                    <span class="star" data-rating="4">★</span>
+                    <span class="star" data-rating="5">★</span>
+                  </div>
+                  <input type="hidden" id="rating" value="0" />
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Favorite</label>
+                <div class="favorite-container">
+                  <label class="favorite-checkbox">
+                    <input type="checkbox" id="isFavorite" />
+                    <span class="favorite-icon">
+                      <i class="fas fa-heart"></i>
+                    </span>
+                    <span class="favorite-text">Mark as favorite</span>
+                  </label>
+                </div>
+              </div>
+            </div>
 
-    .footer-bottom {
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      padding-top: 15px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
+            <div class="form-actions" style="display: flex; gap: var(--space-md); justify-content: flex-end; margin-top: var(--space-xl);">
+              <button type="button" class="btn-secondary" onclick="hideAddForm()">
+                <i class="fas fa-times"></i>
+                Cancel
+              </button>
+              <button type="submit" class="btn-primary">
+                <i class="fas fa-save"></i>
+                <span id="submitText">Add Paper</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
-    .footer-card {
-      flex: 1 1 200px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 20px;
-      min-width: 200px;
-    }
-
-    .footer-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-card ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-card ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-      padding: 5px;
-      padding-left: 20px;
-    }
-
-    .footer-card ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    .heart {
-      color: #e74c3c;
-    }
-
-    @media (max-width: 768px) {
-      .footer-top {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .footer-brand h3 {
-        font-size: 1.5rem;
-      }
-
-      .footer-links-section h4 {
-        font-size: 1rem;
-      }
-
-      .footer-links-section ul li a {
-        font-size: 0.95rem;
-      }
-
-      .social-icons a {
-        width: 35px;
-        height: 35px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .social-icons {
-        justify-content: center;
-      }
-
-      .footer-links-section ul li a {
-        justify-content: center;
-      }
-    }
-  </style>
-
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner hidden">
+      <i class="fas fa-spinner fa-spin"></i>
+      <span>Saving Paper...</span>
+    </div>
 
     <!-- Back to Top Button -->
-<button id="backToTop" title="Scroll" aria-label="Scroll">
-  <i class="fa-solid fa-arrow-down"></i>
-</button>
+    <button id="backToTop" title="Back to Top" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
+    <!-- Enhanced Footer -->
+    <footer class="modern-footer">
+      <div class="footer-top">
+        <div class="footer-card">
+          <div class="footer-brand">
+            <h3>
+              <i class="fas fa-book-open"></i>
+              Research Paper Organizer
+            </h3>
+            <p>Organize, track, and manage your research papers with modern elegance and powerful features.</p>
+            <div class="social-icons">
+              <a href="https://github.com/supriya46788" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="mailto:supriyadpandey502@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
 
+        <div class="footer-card">
+          <h4 style="margin-bottom: var(--space-md); font-size: 1.1rem;">Quick Links</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: var(--space-sm);">
+              <a href="index.html" style="color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: var(--space-sm);">
+                <i class="fas fa-home"></i> Home
+              </a>
+            </li>
+            <li style="margin-bottom: var(--space-sm);">
+              <a href="about.html" style="color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: var(--space-sm);">
+                <i class="fas fa-users"></i> About Us
+              </a>
+            </li>
+            <li style="margin-bottom: var(--space-sm);">
+              <a href="contact.html" style="color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: var(--space-sm);">
+                <i class="fas fa-envelope"></i> Contact
+              </a>
+            </li>
+            <li>
+              <a href="Faq.html" style="color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: var(--space-sm);">
+                <i class="fas fa-question-circle"></i> FAQ
+              </a>
+            </li>
+          </ul>
+        </div>
 
-  <!-- Modern Footer -->
-  <footer class="modern-footer" aria-label="Footer">
-    <div class="footer-top">
-      <div class="footer-brand footer-card">
-        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
-      </div>
-
-      <div class="footer-links-section footer-card" >
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Connect</h4>
-        <div class="social-icons">
-          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-  <i class="fab fa-linkedin"></i>
-</a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <div class="footer-card">
+          <h4 style="margin-bottom: var(--space-md); font-size: 1.1rem;">Resources</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: var(--space-sm);">
+              <a href="blog.html" style="color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: var(--space-sm);">
+                <i class="fas fa-blog"></i> Blog
+              </a>
+            </li>
+            <li style="margin-bottom: var(--space-sm);">
+              <a href="glossary.html" style="color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: var(--space-sm);">
+                <i class="fas fa-book"></i> Glossary
+              </a>
+            </li>
+            <li>
+              <a href="open-source.html" style="color: var(--text-secondary); text-decoration: none; display: flex; align-items: center; gap: var(--space-sm);">
+                <i class="fas fa-code-branch"></i> Open Source
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-links-section footer-card">
+          <h4>Connect</h4>
+          <div class="social-icons">
+            <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+         </div>
         </div>
       </div>
-    </div>
 
-    <div class="footer-bottom">
-  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-</div>
-
-  </footer>
-
+      <div class="footer-bottom">
+        © 2025 Research Paper Organizer | Made with <span class="heart">♥</span> for researchers worldwide
+      </div>
+    </footer>
+  </div>
+  
   <script>
-    // Authentication check
-    function checkAuthentication() {
-      const currentUser = localStorage.getItem('current_user');
-      if (!currentUser) {
-        window.location.href = 'landing.html'; // Redirect to landing page if not authenticated
-        return false;
+    // Enhanced JavaScript functionality
+    let papers = JSON.parse(localStorage.getItem('papers_db')) || 
+    [
+      // This is sample data that will load if the user's storage is empty.
+      {
+          "id": 1,
+          "title": "Attention Is All You Need",
+          "authors": "Vaswani, A., Shazeer, N., Parmar, N., et al.",
+          "topic": "Machine Learning",
+          "year": "2017",
+          "tags": "transformers,attention,nlp",
+          "rating": 5,
+          "url": "https://arxiv.org/abs/1706.03762",
+          "isFavorite": true,
+          "dateAdded": "2025-09-07T12:00:00.000Z"
+      },
+      {
+          "id": 2,
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers",
+          "authors": "Devlin, J., Chang, M. W., Lee, K., Toutanova, K.",
+          "topic": "Machine Learning",
+          "year": "2018",
+          "tags": "nlp,transformers,bert",
+          "rating": 5,
+          "url": "https://arxiv.org/abs/1810.04805",
+          "isFavorite": false,
+          "dateAdded": "2025-09-07T11:00:00.000Z"
       }
-      return true;
-    }
+    ];
+    let currentEditingId = null;
+    let selectedPaperId = null;
 
-    // Run auth check before loading script
-    if (!checkAuthentication()) {
-      throw new Error('User not authenticated');
-    }
-
+    // Dark mode toggle (remove since we're using dark theme by default)
+    const darkModeToggle = document.getElementById('darkModeToggle');
     
-      //back to top button 
-// Show button when scrolled down
-const bottomToTopButton = document.getElementById("backToTop");
-const icon = bottomToTopButton.querySelector("i");
+    // Always use light mode toggle icon since we're in dark mode
+    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    
+    darkModeToggle.addEventListener('click', () => {
+      // Toggle between dark and light themes
+      document.body.classList.toggle('light-mode');
+      
+      if (document.body.classList.contains('light-mode')) {
+        // Switch to light mode colors
+        document.documentElement.style.setProperty('--primary-bg', '#ffffff');
+        document.documentElement.style.setProperty('--secondary-bg', '#f8fafc');
+        document.documentElement.style.setProperty('--accent-bg', '#f1f5f9');
+        document.documentElement.style.setProperty('--card-bg', '#ffffff');
+        document.documentElement.style.setProperty('--text-primary', '#1e293b');
+        document.documentElement.style.setProperty('--text-secondary', '#64748b');
+        document.documentElement.style.setProperty('--text-muted', '#94a3b8');
+        document.documentElement.style.setProperty('--border-color', '#e2e8f0');
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        localStorage.setItem('darkMode', 'disabled');
+      } else {
+        // Switch back to dark mode colors
+        document.documentElement.style.setProperty('--primary-bg', '#1e2a3a');
+        document.documentElement.style.setProperty('--secondary-bg', '#2d3e50');
+        document.documentElement.style.setProperty('--accent-bg', '#34495e');
+        document.documentElement.style.setProperty('--card-bg', '#3b4f66');
+        document.documentElement.style.setProperty('--text-primary', '#ecf0f1');
+        document.documentElement.style.setProperty('--text-secondary', '#bdc3c7');
+        document.documentElement.style.setProperty('--text-muted', '#95a5a6');
+        document.documentElement.style.setProperty('--border-color', '#4a5f7a');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        localStorage.setItem('darkMode', 'enabled');
+      }
+    });
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    bottomToTopButton.style.display = "block";
-
-    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
-      icon.classList.remove("fa-arrow-down");
-      icon.classList.add("fa-arrow-up");
-    } else {
-      icon.classList.remove("fa-arrow-up");
-      icon.classList.add("fa-arrow-down");
+    // Check for saved theme preference
+    if (localStorage.getItem('darkMode') === 'disabled') {
+      darkModeToggle.click();
     }
-  } else {
-    bottomToTopButton.style.display = "none";
-  }
-});
 
-bottomToTopButton.addEventListener("click", () => {
-  if (icon.classList.contains("fa-arrow-down")) {
-    // scroll to bottom
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
-  } else {
-    // scroll to top
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-});
+    // Back to top functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
 
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
 
-  </script>
+    // Star rating functionality
+    function initializeStarRating() {
+      const stars = document.querySelectorAll('.star');
+      const ratingInput = document.getElementById('rating');
+      
+      stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+          const rating = index + 1;
+          ratingInput.value = rating;
+          updateStarDisplay(rating);
+        });
+        
+        star.addEventListener('mouseenter', () => {
+          updateStarDisplay(index + 1);
+        });
+      });
 
-    <script src="js/script.js"></script>
-<style>
-/* Bubble button mobile sizing */
-@media (max-width: 768px) {
-  button#chatbase-bubble-button {
-    position: fixed !important;
-    /* bottom: 300px !important;
-    left:300px !important; */
-    width: 55px !important;
-    height: 55px !important;
-    border-radius: 50% !important;
-    z-index: 2147483647 !important; 
-  }
+      document.getElementById('starsRating').addEventListener('mouseleave', () => {
+        updateStarDisplay(parseInt(ratingInput.value) || 0);
+      });
+    }
 
-  button#chatbase-bubble-button svg {
-    width: 28px !important;
-    height: 28px !important;
-  }
-}
-@media (max-width: 768px) {
-  #chatbase-bubble-button {
-    position: fixed !important;
-    z-index: 2147483647 !important; 
-  }
+    function updateStarDisplay(rating) {
+      const stars = document.querySelectorAll('.star');
+      stars.forEach((star, index) => {
+        if (index < rating) {
+          star.classList.add('active');
+        } else {
+          star.classList.remove('active');
+        }
+      });
+    }
 
-  /* Jab window open ho */
-  #chatbase-bubble-window[style*="display: flex"] + #chatbase-bubble-button {
-    bottom: 15px !important; 
-  }
-}
-button#chatbase-bubble-button div {
-  width: 100% !important;
-  height: 100% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
+    // Modal functions
+    function showAddForm() {
+      document.getElementById('modalOverlay').classList.remove('hidden');
+      document.getElementById('modalTitle').textContent = 'Add New Paper';
+      document.getElementById('submitText').textContent = 'Add Paper';
+      currentEditingId = null;
+      clearForm();
+      initializeStarRating();
+    }
 
-/* Window responsive – act like card */
-@media (max-width: 768px) {
-  #chatbase-bubble-window {
-    position: absolute;
-    width: 90% !important;
-    height: 75% !important;
-    bottom: 80px !important;
-    right: 15px !important;
-    left: auto !important;
-    top: auto !important;
-    border-radius: 16px !important;
-    background: transparent !important; /* remove white bg */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
-  }
+    function hideAddForm() {
+      document.getElementById('modalOverlay').classList.add('hidden');
+      clearForm();
+    }
 
-  #chatbase-bubble-window iframe {
-    border-radius: 16px !important;
-    background: black !important; /* chatbot stays black */
-  }
-}
-</style>
-    <!-- Chatbase Integration -->
-     <script>
-        (function(){
-            if(!window.chatbase || window.chatbase("getState") !== "initialized"){
-                window.chatbase = (...arguments) => {
-                    if(!window.chatbase.q){ window.chatbase.q = [] }
-                    window.chatbase.q.push(arguments)
-                };
-                window.chatbase = new Proxy(window.chatbase, {
-                    get(target, prop) {
-                        if(prop === "q"){ return target.q }
-                        return (...args) => target(prop, ...args)
-                    }
-                });
+    function clearForm() {
+      document.getElementById('paperForm').reset();
+      document.getElementById('rating').value = '0';
+      updateStarDisplay(0);
+      document.getElementById('pdfPreviewContainer').classList.add('hidden');
+      document.getElementById('uploaded-file').style.display = 'none';
+    }
+
+    // Paper management functions
+    function filterPapers() {
+      // Implementation for filtering papers
+      renderPapers();
+    }
+
+    // REPLACE your old renderPapers function with this one
+    function renderPapers() {
+      const papersList = document.getElementById('papersList');
+      const emptyState = document.getElementById('emptyState');
+      const paperCount = document.getElementById('paperCount');
+      
+      if (!papers || papers.length === 0) {
+        emptyState.classList.remove('hidden');
+        papersList.classList.add('hidden');
+        paperCount.textContent = '0';
+        return;
+      }
+      
+      emptyState.classList.add('hidden');
+      papersList.classList.remove('hidden');
+      paperCount.textContent = papers.length;
+      
+      papersList.innerHTML = papers.map(paper => {
+        // Ensure rating is a number, default to 0
+        const rating = Number(paper.rating) || 0;
+        const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+        const tags = paper.tags; // Get the tags value
+
+        return `
+          <div class="paper-card" onclick="selectPaper(${paper.id})">
+            <div class="card-title-actions">
+              <h3 class="card-title">${paper.title}</h3>
+              <div class="card-actions">
+                <a href="${paper.url || '#'}" target="_blank" title="Open Link" onclick="event.stopPropagation()"><i class="fas fa-external-link-alt"></i></a>
+                <button onclick="toggleFavorite(${paper.id}, event)" title="Favorite"><i class="${paper.isFavorite ? 'fas' : 'far'} fa-heart"></i></button>
+                <button onclick="editPaper(${paper.id}, event)" title="Edit"><i class="fas fa-edit"></i></button>
+                <button onclick="deletePaper(${paper.id}, event)" title="Delete"><i class="fas fa-trash"></i></button>
+              </div>
+            </div>
+            <p class="card-authors">${paper.authors}</p>
+            <div class="card-meta">
+              ${paper.topic ? `<span class="tag topic-tag">${paper.topic}</span>` : ''}
+              ${paper.year ? `<span class="meta-item"><i class="fas fa-calendar-alt"></i> ${paper.year}</span>` : ''}
+              
+              ${typeof tags === 'string' && tags ? tags.split(',').map(tag => `<span class="tag">#${tag.trim()}</span>`).join('') : ''}
+
+            </div>
+            <div class="card-rating">
+              <span>Rate:</span>
+              <div class="stars">${stars}</div>
+              <span>(${rating}/5)</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectPaper(paperId) {
+      selectedPaperId = paperId;
+      const paper = papers.find(p => p.id === paperId);
+      if (!paper) return;
+
+      document.getElementById('noSelection').classList.add('hidden');
+      document.getElementById('paperDetails').classList.remove('hidden');
+
+      const detailsContent = document.getElementById('detailsContent');
+      detailsContent.innerHTML = `
+        <div class="detail-section">
+          <div class="detail-label">Title</div>
+          <h3 style="color: var(--text-primary); margin-bottom: var(--space-md);">${paper.title}</h3>
+        </div>
+
+        <div class="detail-section">
+          <div class="detail-label">Authors</div>
+          <p>${paper.authors}</p>
+        </div>
+
+        ${paper.year ? `
+          <div class="detail-section">
+            <div class="detail-label">Year</div>
+            <p>${paper.year}</p>
+          </div>
+        ` : ''}
+
+        ${paper.journal ? `
+          <div class="detail-section">
+            <div class="detail-label">Journal/Conference</div>
+            <p>${paper.journal}</p>
+          </div>
+        ` : ''}
+
+        ${paper.topic ? `
+          <div class="detail-section">
+            <div class="detail-label">Topic</div>
+            <p>${paper.topic}</p>
+          </div>
+        ` : ''}
+
+        ${paper.abstract ? `
+          <div class="detail-section">
+            <div class="detail-label">Abstract</div>
+            <p style="text-align: justify; line-height: 1.6;">${paper.abstract}</p>
+          </div>
+        ` : ''}
+
+        ${paper.tags ? `
+          <div class="detail-section">
+            <div class="detail-label">Tags</div>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-sm);">
+              ${paper.tags.split(',').map(tag => `
+                <span class="detail-tag">${tag.trim()}</span>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <div class="detail-section">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div class="detail-label">Rating</div>
+              <div class="stars" style="color: #fbbf24; font-size: 1.2rem;">
+                ${paper.rating ? '★'.repeat(paper.rating) + '☆'.repeat(5-paper.rating) : 'Not rated'}
+              </div>
+            </div>
+            <div style="text-align: center;">
+              <div class="detail-label">Favorite</div>
+              <i class="fas fa-heart" style="color: ${paper.isFavorite ? '#ef4444' : 'var(--text-muted)'}; font-size: 1.5rem;"></i>
+            </div>
+          </div>
+        </div>
+
+        ${paper.notes ? `
+          <div class="detail-section">
+            <div class="detail-label">Notes</div>
+            <p style="text-align: justify; line-height: 1.6;">${paper.notes}</p>
+          </div>
+        ` : ''}
+
+        ${paper.url ? `
+          <div class="detail-section">
+            <div class="detail-label">URL</div>
+            <a href="${paper.url}" target="_blank" style="color: var(--brand-primary); text-decoration: none;">
+              ${paper.url} <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        ` : ''}
+
+        ${paper.pdfData ? `
+          <div class="detail-section">
+            <div class="detail-label">PDF Preview</div>
+            <iframe src="${paper.pdfData}" class="pdf-preview" style="margin-top: var(--space-md);"></iframe>
+          </div>
+        ` : ''}
+
+        <div class="detail-section">
+          <div class="detail-label">Citations</div>
+          <div style="display: flex; flex-direction: column; gap: var(--space-md); margin-top: var(--space-md);">
+            ${generateCitations(paper).map(citation => `
+              <div class="citation-item">
+                <div style="display: flex; justify-content: space-between; align-items: start;">
+                  <div>
+                    <strong>${citation.type}</strong>
+                    <div class="citation-text" style="margin-top: var(--space-sm);">${citation.text}</div>
+                  </div>
+                  <button class="copy-btn" onclick="copyCitation('${citation.text.replace(/'/g, "\\'")}')">
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div style="display: flex; gap: var(--space-md); margin-top: var(--space-xl); justify-content: flex-end;">
+          <button class="btn-secondary" onclick="editPaper(${paper.id})">
+            <i class="fas fa-edit"></i> Edit
+          </button>
+          <button class="btn-secondary" onclick="deletePaper(${paper.id})" style="background: var(--error); color: white; border-color: var(--error);">
+            <i class="fas fa-trash"></i> Delete
+          </button>
+        </div>
+      `;
+
+      renderPapers(); // Re-render to show selection
+    }
+
+    function closeDetails() {
+      selectedPaperId = null;
+      document.getElementById('noSelection').classList.remove('hidden');
+      document.getElementById('paperDetails').classList.add('hidden');
+      renderPapers(); // Re-render to remove selection
+    }
+
+    function generateCitations(paper) {
+      const year = paper.year ? paper.year : 'n.d.';
+      const authors = paper.authors || 'Unknown';
+      const title = paper.title || 'Untitled';
+      const journal = paper.journal || '';
+
+      return [
+        {
+          type: 'APA',
+          text: `${authors} (${year}). ${title}. ${journal ? journal + '.' : ''}`
+        },
+        {
+          type: 'MLA',
+          text: `${authors}. "${title}" ${journal ? journal + ', ' : ''}${year}.`
+        },
+        {
+          type: 'Chicago',
+          text: `${authors}. "${title}" ${journal ? journal + ' ' : ''}(${year}).`
+        }
+      ];
+    }
+
+    function copyCitation(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        // Show toast notification
+        Swal.fire({
+          title: 'Copied!',
+          text: 'Citation copied to clipboard',
+          icon: 'success',
+          timer: 2000,
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false
+        });
+      });
+    }
+
+    function editPaper(paperId) {
+      const paper = papers.find(p => p.id === paperId);
+      if (!paper) return;
+
+      currentEditingId = paperId;
+      document.getElementById('modalTitle').textContent = 'Edit Paper';
+      document.getElementById('submitText').textContent = 'Update Paper';
+
+      // Populate form
+      document.getElementById('title').value = paper.title || '';
+      document.getElementById('authors').value = paper.authors || '';
+      document.getElementById('year').value = paper.year || '';
+      document.getElementById('journal').value = paper.journal || '';
+      document.getElementById('topic').value = paper.topic || '';
+      document.getElementById('url').value = paper.url || '';
+      document.getElementById('tags').value = paper.tags || '';
+      document.getElementById('abstract').value = paper.abstract || '';
+      document.getElementById('notes').value = paper.notes || '';
+      document.getElementById('rating').value = paper.rating || '0';
+      document.getElementById('isFavorite').checked = paper.isFavorite || false;
+
+      updateStarDisplay(paper.rating || 0);
+
+      if (paper.pdfData) {
+        document.getElementById('pdfPreviewContainer').classList.remove('hidden');
+        document.getElementById('pdfPreview').src = paper.pdfData;
+      }
+
+      showAddForm();
+      initializeStarRating();
+    }
+
+    function deletePaper(paperId) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ef4444',
+        cancelButtonColor: '#6b7280',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          papers = papers.filter(p => p.id !== paperId);
+          localStorage.setItem('papers_db', JSON.stringify(papers));
+          
+          if (selectedPaperId === paperId) {
+            closeDetails();
+          }
+          
+          renderPapers();
+          
+          Swal.fire({
+            title: 'Deleted!',
+            text: 'Your paper has been deleted.',
+            icon: 'success',
+            timer: 2000,
+            showConfirmButton: false
+          });
+        }
+      });
+    }
+
+    // File upload handling
+    function initializeFileUpload() {
+      const dropZone = document.getElementById('drop-zone');
+      const fileInput = document.getElementById('pdfUpload');
+      const browseBtn = document.getElementById('browse-btn');
+
+      browseBtn.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      dropZone.addEventListener('click', () => {
+        fileInput.click();
+      });
+
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = 'var(--brand-secondary)';
+        dropZone.style.backgroundColor = 'rgba(59, 130, 246, 0.1)';
+      });
+
+      dropZone.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        dropZone.style.borderColor = 'var(--brand-primary)';
+        dropZone.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const files = e.dataTransfer.files;
+        if (files.length > 0 && files[0].type === 'application/pdf') {
+          handleFileUpload(files[0]);
+        }
+        dropZone.style.borderColor = 'var(--brand-primary)';
+        dropZone.style.backgroundColor = 'rgba(59, 130, 246, 0.05)';
+      });
+
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+          handleFileUpload(e.target.files[0]);
+        }
+      });
+    }
+
+    function handleFileUpload(file) {
+      const uploadedFile = document.getElementById('uploaded-file');
+      const pdfPreview = document.getElementById('pdfPreview');
+      const pdfPreviewContainer = document.getElementById('pdfPreviewContainer');
+
+      uploadedFile.innerHTML = `
+        <div style="display: flex; align-items: center; gap: var(--space-md); padding: var(--space-md); background: var(--accent-bg); border-radius: var(--border-radius-md); margin-top: var(--space-md);">
+          <i class="fas fa-file-pdf" style="color: #ef4444; font-size: 1.5rem;"></i>
+          <div>
+            <div style="font-weight: 600;">${file.name}</div>
+            <div style="color: var(--text-muted); font-size: 0.85rem;">${(file.size / 1024 / 1024).toFixed(2)} MB</div>
+          </div>
+        </div>
+      `;
+      uploadedFile.style.display = 'block';
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const pdfData = e.target.result;
+        pdfPreview.src = pdfData;
+        pdfPreviewContainer.classList.remove('hidden');
+        
+        // Store PDF data for saving
+        window.currentPdfData = pdfData;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Form submission
+    document.getElementById('paperForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const loadingSpinner = document.getElementById('loadingSpinner');
+      loadingSpinner.classList.remove('hidden');
+
+      setTimeout(() => {
+        const formData = {
+          id: currentEditingId || Date.now(),
+          title: document.getElementById('title').value,
+          authors: document.getElementById('authors').value,
+          year: document.getElementById('year').value,
+          journal: document.getElementById('journal').value,
+          topic: document.getElementById('topic').value,
+          url: document.getElementById('url').value,
+          tags: document.getElementById('tags').value,
+          abstract: document.getElementById('abstract').value,
+          notes: document.getElementById('notes').value,
+          rating: parseInt(document.getElementById('rating').value) || 0,
+          isFavorite: document.getElementById('isFavorite').checked,
+          pdfData: window.currentPdfData || null,
+          dateAdded: new Date().toISOString()
+        };
+
+        if (currentEditingId) {
+          // Update existing paper
+          const index = papers.findIndex(p => p.id === currentEditingId);
+          if (index !== -1) {
+            papers[index] = { ...papers[index], ...formData };
+          }
+        } else {
+          // Add new paper
+          papers.push(formData);
+        }
+
+        localStorage.setItem('papers_db', JSON.stringify(papers));
+        
+        loadingSpinner.classList.add('hidden');
+        hideAddForm();
+        renderPapers();
+        
+        Swal.fire({
+          title: currentEditingId ? 'Updated!' : 'Added!',
+          text: `Paper has been ${currentEditingId ? 'updated' : 'added'} successfully.`,
+          icon: 'success',
+          timer: 2000,
+          showConfirmButton: false
+        });
+
+        window.currentPdfData = null;
+        currentEditingId = null;
+      }, 1000);
+    });
+
+    // Import/Export functions
+    function importPapers() {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.json';
+      input.onchange = function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            try {
+              const importedPapers = JSON.parse(e.target.result);
+              papers = [...papers, ...importedPapers];
+              localStorage.setItem('papers_db', JSON.stringify(papers));
+              renderPapers();
+              
+              Swal.fire({
+                title: 'Success!',
+                text: `${importedPapers.length} papers imported successfully.`,
+                icon: 'success'
+              });
+            } catch (error) {
+              Swal.fire({
+                title: 'Error!',
+                text: 'Invalid file format.',
+                icon: 'error'
+              });
             }
-            const onLoad = function(){
-                const script = document.createElement("script");
-                script.src = "https://www.chatbase.co/embed.min.js";
-                script.id = "SZQX20er6m-s8iNiFcBtK";
-                script.domain = "www.chatbase.co";
-                document.body.appendChild(script)
-            };
-            if(document.readyState === "complete"){ onLoad() }
-            else { window.addEventListener("load", onLoad) }
-        })();
-    </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const bubbleWindow = document.getElementById("chatbase-bubble-window");
-  const bubbleButton = document.getElementById("chatbase-bubble-button");
-
-  if (!bubbleWindow || !bubbleButton) return;
-
-  function setImportant(el, prop, value) {
-    el.style.setProperty(prop, value, "important");
-  }
-
-  function updateButtonPosition() {
-    const rect = bubbleWindow.getBoundingClientRect();
-
-    if (bubbleWindow.style.display === "flex") {
-      // Button below chat window (no changes here)
-      const topPos = window.scrollY + rect.bottom + 10;
-      const leftPos = rect.left;
-
-      setImportant(bubbleButton, "position", "fixed");
-      setImportant(bubbleButton, "top", topPos + "px");
-      setImportant(bubbleButton, "left", leftPos + "px");
-      setImportant(bubbleButton, "bottom", "auto");
-      setImportant(bubbleButton, "right", "auto");
-    } else {
-      // Closed position with left:300px; bottom:300px
-      setImportant(bubbleButton, "position", "fixed");
-      setImportant(bubbleButton, "bottom", "300px");
-      setImportant(bubbleButton, "left", "300px");
-      setImportant(bubbleButton, "top", "auto");
-      setImportant(bubbleButton, "right", "auto");
+          };
+          reader.readAsText(file);
+        }
+      };
+      input.click();
     }
-  }
 
-  updateButtonPosition();
-  window.addEventListener("scroll", updateButtonPosition);
-  window.addEventListener("resize", updateButtonPosition);
+    function exportPapers() {
+      if (papers.length === 0) {
+        Swal.fire({
+          title: 'No papers to export',
+          text: 'Add some papers first.',
+          icon: 'info'
+        });
+        return;
+      }
 
-  // Toggle chat window
-  bubbleButton.addEventListener("click", () => {
-    bubbleWindow.style.display = bubbleWindow.style.display === "flex" ? "none" : "flex";
-    updateButtonPosition();
-  });
+      const dataStr = JSON.stringify(papers, null, 2);
+      const dataBlob = new Blob([dataStr], {type: 'application/json'});
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `research-papers-${new Date().toISOString().split('T')[0]}.json`;
+      link.click();
+      URL.revokeObjectURL(url);
 
-  // Handle iframe close button
-  window.addEventListener("message", (event) => {
-    if (event.data?.type === "chatbase-close") {
-      bubbleWindow.style.display = "none";
-      updateButtonPosition();
+      Swal.fire({
+        title: 'Exported!',
+        text: 'Papers exported successfully.',
+        icon: 'success',
+        timer: 2000,
+        showConfirmButton: false
+      });
     }
-  });
-});
-</script>
+
+    // REPLACE your existing DOMContentLoaded listener with this one
+    document.addEventListener('DOMContentLoaded', function() {
+      // --- Setup User Menu ---
+      const userMenuButton = document.getElementById('userMenuButton');
+      const userMenuDropdown = document.getElementById('userMenuDropdown');
+      const logoutButton = document.getElementById('logoutButton');
+      const currentUserJSON = localStorage.getItem('current_user');
+
+      if (currentUserJSON) {
+        try {
+          const user = JSON.parse(currentUserJSON);
+          document.getElementById('usernameButtonText').textContent = user.name;
+          document.getElementById('dropdownUsername').textContent = user.name;
+          document.getElementById('dropdownUserEmail').textContent = user.email;
+        } catch (e) {
+          console.error("Could not parse user from localStorage", e);
+          document.getElementById('usernameButtonText').textContent = currentUserJSON;
+        }
+      }
+
+      userMenuButton.addEventListener('click', () => {
+        userMenuDropdown.classList.toggle('hidden');
+      });
+
+      logoutButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('current_user');
+        window.location.href = 'landing.html'; // Or your login page
+      });
+
+      window.addEventListener('click', (e) => {
+        if (!userMenuButton.contains(e.target) && !userMenuDropdown.contains(e.target)) {
+          userMenuDropdown.classList.add('hidden');
+        }
+      });
+
+      // --- Initialize Other Functionality ---
+      initializeFileUpload();
+      renderPapers();
+
+      // Authentication check
+      if (!currentUserJSON) {
+        window.location.href = 'landing.html';
+        return;
+      }
+    });
+    // ADD this new function
+    function toggleFavorite(paperId, event) {
+      event.stopPropagation(); // Prevent card selection
+      const paper = papers.find(p => p.id === paperId);
+      if (paper) {
+        paper.isFavorite = !paper.isFavorite;
+        localStorage.setItem('papers_db', JSON.stringify(papers));
+        renderPapers();
+      }
+    }
+
+    // UPDATE the editPaper and deletePaper functions
+    function editPaper(paperId, event) {
+      if (event) event.stopPropagation();
+      // ... rest of the function is the same
+      const paper = papers.find(p => p.id === paperId);
+      if (!paper) return;
+      // ...
+    }
+
+    function deletePaper(paperId, event) {
+      if (event) event.stopPropagation();
+      // ... rest of the function is the same
+      Swal.fire({ /* ... */ });
+    }
+  </script>
+  <script src="js/script.js"></script>
 </body>
-
 </html>
