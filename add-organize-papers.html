@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Papers Page</title>
+    <link rel="stylesheet" href="./css/add-organize-papers.css" />
+  </head>
+  <body>
+    <!-- Add Your Papers Section -->
+    <section class="Add-section">
+      <h2>➋ Add Your Papers</h2>
+      <p>
+        Upload PDFs, add paper details manually, or import from existing
+        libraries.
+      </p>
+
+      <div class="upload-box">
+        <p>Drag & Drop your papers here</p>
+        <p>or</p>
+        <input type="file" id="fileUpload" multiple />
+        <label for="fileUpload">Choose Files</label>
+      </div>
+
+      <div class="file-list" id="fileList"></div>
+    </section>
+
+    <!-- Organize & Search Section -->
+    <section id="organize-section">
+      <h2>➌ Organize & Search</h2>
+      <p>
+        Use tags, topics, and ratings to organize your collection and find
+        papers instantly.
+      </p>
+      <div class="search">
+        <input
+          type="search"
+          id="searchPapers"
+          placeholder="Search Your Papers.."
+        />
+      </div>
+      <div class="tags">
+        <div class="tag">Machine Learning</div>
+        <div class="tag">AI</div>
+        <div class="tag">Blockchain</div>
+        <div class="tag">Data Science</div>
+        <div class="tag">NLP</div>
+        <div class="tag">Healthcare</div>
+      </div>
+    </section>
+    <script>
+      const fileInput = document.getElementById("fileUpload");
+      const fileList = document.getElementById("fileList");
+
+      fileInput.addEventListener("change", () => {
+        fileList.innerHTML = ""; // clear old list
+        Array.from(fileInput.files).forEach((file) => {
+          const fileItem = document.createElement("div");
+          fileItem.className = "file-item";
+          fileItem.innerHTML = `<span>${file.name}</span> (${(
+            file.size / 1024
+          ).toFixed(1)} KB)`;
+          fileList.appendChild(fileItem);
+        });
+      });
+    </script>
+  </body>
+</html>
