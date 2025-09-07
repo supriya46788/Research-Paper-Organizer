@@ -16,29 +16,27 @@
 
   <!-- Header -->
       <!-- Navigation -->
-    <nav class="landing-nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <i class="fas fa-book-open" style="color: linear-gradient(135deg, #4a90e2, #357abd);"></i>
-                <span style="color: linear-gradient(135deg, #4a90e2, #357abd);">Research Paper Organizer</span>
-            </div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it Works</a>
-                <a href="about.html">About</a>
-                <a href="tools.html">Tools</a>
-                <a href="contact.html">Contact</a>
-                
-                <button class="btn-primary" onclick="window.location.href='signup.html'">Get Started</button>
-            </div>
-            <div class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div id="darkModeToggle" class="dark-toggle">
-          <i class="fas fa-moon"></i>
+   <nav class="navbar">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+       <!-- Hamburger div (shows only on mobile) -->
+  <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+        <div class="navbar-right-links">
+            <a href="about.html" class="nav-item">About us</a>
+            <a href="blog.html" class="nav-item">Blogs</a>
+            <a href="Faq.html" class="nav-item">FAQ</a>
+            <a href="contact.html" class="nav-item">Contact Us</a>
+            <a href="tools.html" class="nav-item">Tools</a>
+            <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+                <i class="fas fa-sun"></i>
+            </button>
         </div>
-        </div>
-       
     </nav>
   <header class="glossary-header">
     <a href="index.html" class="back-home">&larr; Back to Home</a>
@@ -176,8 +174,45 @@
   </footer>
 
 
-  <script src="js/glossary.js">
+  <script src="js/glossary.js"></script>
+  <script>
+  function toggleMenu() {
+    const nav = document.querySelector(".navbar-right-links");
+    nav.classList.toggle("show");
+  }
 
-  </script>
+    // Dark Mode Toggle Function
+    function toggleDarkMode() {
+        const body = document.body;
+        const darkToggle = document.getElementById('darkModeToggle');
+        const icon = darkToggle.querySelector('i');
+        
+        body.classList.toggle('dark-mode');
+        
+        // Update icon
+        if (body.classList.contains('dark-mode')) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    }
+
+    // Load dark mode preference on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const darkMode = localStorage.getItem('darkMode');
+        const darkToggle = document.getElementById('darkModeToggle');
+        const icon = darkToggle.querySelector('i');
+        
+        if (darkMode === 'enabled') {
+            document.body.classList.add('dark-mode');
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+        }
+    });
+</script>
 </body>
 </html>
