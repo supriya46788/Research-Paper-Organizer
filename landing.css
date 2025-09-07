@@ -1467,7 +1467,7 @@ body {
     flex-direction: row;
     gap: 20px;
     background: none;
-    box-shadow: none;
+    box-shadow: none; 
   }
 }
 /* ==== Dark Mode Overrides for Landing Page ==== */
