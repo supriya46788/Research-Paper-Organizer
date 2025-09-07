@@ -1,3 +1,4 @@
+<a name="top"></a>
 <div align="center">
 
 **📚 Research Paper Organizer**
@@ -224,7 +225,7 @@ This project is licensed under the MIT License - see the [`License`](https://git
 | Role          | Name               | GitHub Profile                                      | LinkedIn Profile                                                        |
 | ------------- | ------------------ | --------------------------------------------------- | ----------------------------------------------------------------------- |
 | Mentor 1   | Sanskriti saran |  [Sanskriti-Saran](https://github.com/Sanskriti-Saran)  | [sanskriti-saran](https://www.linkedin.com/in/sanskriti-saran-982280240/) |
-| Mentor 2   | MEKALA VAMSHI YADAV |  [VAMSHIYADAV46](https://github.com/VAMSHIYADAV46)  | []() |
+| Mentor 2   | MEKALA VAMSHI YADAV |  [VAMSHIYADAV46](https://github.com/VAMSHIYADAV46)  | [MEKALA VAMSHI YADAV](https://www.linkedin.com/in/mekalavamshiyadav/) |
 
 ---
 

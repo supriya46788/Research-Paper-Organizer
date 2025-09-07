@@ -1,98 +1,135 @@
-# 🌟 Code of Conduct — Research Paper Organizer
+<p align="center">
+  <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/344/external-research-university-flaticons-lineal-color-flat-icons.png" width="100" alt="Research Icon"/>
+</p>
+
+<h1 align="center">🌟 Code of Conduct</h1>
+<h3 align="center">for the Research Paper Organizer Project</h3>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Community-Friendly-blueviolet?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/OpenSource-❤-green?style=for-the-badge"/>
+</p>
+
+---
+
+## 📑 Table of Contents
+- [Our Commitment](#-our-commitment)
+- [Our Standards](#-our-standards)
+- [Reporting Guidelines](#-reporting-guidelines)
+- [Enforcement Policy](#-enforcement-policy)
+- [Core Values](#-our-core-values)
+- [Contributor Pledge](#-contributor-pledge)
+- [Final Note](#-final-note)
 
 ---
 
 ## 💌 Our Commitment
+We—maintainers, contributors, and community members of **Research Paper Organizer**—pledge to create a **harassment-free, inclusive, and respectful** environment for everyone, regardless of:
 
-We, the maintainers, contributors, and community members of **Research Paper Organizer**, pledge to make participation in our project and our community a **harassment-free experience** for everyone, regardless of:
-
-- Age    
+- Age  
 - Visible or invisible disability  
-- Ethnicity 
-- Gender identity and expression  
-- Level of experience   
-- Nationality   
-- Personal appearance   
+- Ethnicity  
+- Gender identity & expression  
+- Experience level  
+- Nationality  
+- Appearance  
 - Race  
-- Sexual identity and orientation 
+- Sexual identity & orientation  
 
-We commit to creating an environment where **everyone feels safe, respected, and empowered to contribute**.
+---
+
+| ⚠️ **Important**: Harassment of any kind will not be tolerated. |
+|---------------------------------------------------------------|
 
 ---
 
 ## 🤝 Our Standards
 
-To create a welcoming and positive environment, all participants are expected to follow these guidelines:
+### ✅ Positive Behaviors
+- Show empathy & kindness  
+- Respect differing opinions  
+- Give and accept constructive feedback gracefully  
+- Take responsibility for mistakes & learn from them  
+- Prioritize what benefits the community and project  
+- Credit the work of others  
+- Keep discussions focused and professional  
 
-### ✅ Positive Examples of Behavior
-- Demonstrating empathy and kindness toward other people.  
-- Being respectful of differing opinions, viewpoints, and experiences.  
-- Giving and gracefully accepting constructive feedback.  
-- Accepting responsibility and apologizing to those affected by mistakes, and learning from the experience.  
-- Focusing on what is best for the community and project.  
-- Acknowledging and crediting the work of others.  
-- Staying on-topic in discussions and avoiding unnecessary arguments.
-
-### 🚫 Unacceptable Behavior
-- The use of sexualized language or imagery, and unwelcome sexual attention or advances ❌.  
-- Trolling, insulting or derogatory comments, and personal or political attacks ⚠️.  
-- Public or private harassment 📛.  
-- Publishing others’ private information (such as a physical or email address) without their explicit permission 🔒.  
-- Other conduct which could reasonably be considered inappropriate in a professional setting 🛑.  
+### 🚫 Unacceptable Behaviors
+| ❌ Sexualized language, imagery, or unwelcome advances |  
+|-------------------------------------------------------|  
+| ⚠️ Trolling, insulting or derogatory comments, political attacks |  
+| 📛 Public or private harassment |  
+| 🔒 Publishing private information without consent |  
+| 🛑 Other unprofessional or disruptive conduct |  
 
 ---
 
 ## 📬 Reporting Guidelines
 
-If you witness or experience unacceptable behavior, please report it as soon as possible:
+If you experience or witness unacceptable behavior:
 
-1. **Contact**: Send an email to **supriyadpandey502@gmail.com**📧.  
-2. **Include details**:  
-   - Description of the incident 📄  
-   - Date, time, and location 🗓️  
-   - Names of individuals involved (if known) 🧾  
-   - Any supporting evidence (screenshots, logs, etc.) 📷  
-3. **Confidentiality**: All reports will be reviewed and investigated promptly and fairly. Your privacy will be respected, and details will be shared only with those who need to know.  
+1. **Contact**: Email 📧 **supriyadpandey502@gmail.com**  
+2. **Include**:
+   - Incident description  
+   - Date, time, and location  
+   - Names involved (if known)  
+   - Evidence (screenshots, logs, etc.)  
+3. **Confidentiality**: Reports will be investigated promptly and fairly. Privacy will be respected.  
 
 ---
 
 ## ⚖️ Enforcement Policy
 
-Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior. They will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
+Community leaders will clarify and enforce these standards fairly.  
 
-### Potential Consequences
-- **Warning** ⚠️ — A private, written warning about the violation.  
-- **Temporary Ban** ⏳ — Suspension from participation in community spaces for a specific period.  
-- **Permanent Ban** 🚫 — Removal from all community participation without the possibility of return.  
-- **Issue Reversal** 🔄 — If an action was taken in error, it will be reversed and an apology issued.  
+**Possible Actions**:  
+- ⚠️ **Warning** – Private written notice  
+- ⏳ **Temporary Ban** – Suspension for a period  
+- 🚫 **Permanent Ban** – Removal from all spaces  
+- 🔄 **Issue Reversal** – If an action was mistaken, it will be reversed with apology  
 
 ---
 
 ## 🌱 Our Core Values
+A strong community grows like research itself—through consistency and collaboration:  
 
-Like habit tracking itself, a healthy community thrives on consistent, positive actions:
-
-- **Consistency** — Regularly practicing respect and empathy.  
-- **Growth** — Being open to feedback and continuous learning.  
-- **Support** — Encouraging the success of others.  
-- **Balance** — Respecting time, boundaries, and well-being.  
+- **Consistency** – Practicing respect and empathy daily  
+- **Growth** – Being open to feedback & learning  
+- **Support** – Uplifting and helping others succeed  
+- **Balance** – Respecting time, boundaries & well-being  
 
 ---
 
-
 ## 📜 Contributor Pledge
+By contributing, you agree to:  
 
-By contributing to this project, you agree to:
-- Uphold the values expressed in this Code of Conduct.  
-- Engage respectfully with all contributors and maintainers.  
-- Accept feedback with an open mind and respond constructively.  
-- Report any violations you witness or experience.  
+- Uphold this Code of Conduct  
+- Engage respectfully with contributors and maintainers  
+- Accept feedback with an open mind  
+- Report any violations you witness or experience  
+
+<p align="center">
+  <img src="https://img.shields.io/badge/✅-Commit_to_Respect-green?style=flat-square"/>
+</p>
 
 ---
 
 ## 💖 Final Note
+Open source is more than just code—it’s about people sharing, learning, and growing together.  
 
-We believe **open source is more than just code** — it’s about people collaborating, sharing, and growing together.  
-Let’s make **Research Paper Organizer** a place where kindness is the default, respect is mutual, and contributions are celebrated 🎉.  
+Let’s make **Research Paper Organizer** a community where:  
+✨ Kindness is the default  
+✨ Respect is mutual  
+✨ Contributions are celebrated  
 
-Happy contributing! 🌸✨
+<p align="center">
+  🌸 Happy Contributing! 🌸
+</p>
+
+<p align="center">
+  <img src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/344/external-research-university-flaticons-lineal-color-flat-icons.png" width="80" alt="Research Icon"/>
+</p>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:3b82f6,100:9333ea&height=80&section=footer"/>
+</p>

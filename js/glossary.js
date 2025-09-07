@@ -76,21 +76,61 @@ window.addEventListener("scroll", function() {
 });
 
 // 🔝 Back to top button
-const backToTop = document.getElementById("backToTop");
+const bottomToTopButton = document.getElementById("backToTop");
+const icon = bottomToTopButton.querySelector("i");
+
 window.addEventListener("scroll", () => {
   if (window.scrollY > 100) {
-    backToTop.style.display = "block";
+    bottomToTopButton.style.display = "block";
+
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
+      icon.classList.remove("fa-arrow-down");
+      icon.classList.add("fa-arrow-up");
+    } else {
+      icon.classList.remove("fa-arrow-up");
+      icon.classList.add("fa-arrow-down");
+    }
   } else {
-    backToTop.style.display = "none";
+    bottomToTopButton.style.display = "none";
   }
 });
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+
+bottomToTopButton.addEventListener("click", () => {
+  if (icon.classList.contains("fa-arrow-down")) {
+    // scroll to bottom
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+  } else {
+    // scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 });
+
 
 // Mobile menu toggle
 document.querySelector(".mobile-menu-toggle").addEventListener("click", () => {
   document.querySelector(".nav-links").classList.toggle("active");
 });
+
+const darkToggle = document.getElementById("darkModeToggle");
+const body = document.body;
+
+// Load preference
+if (localStorage.getItem("darkMode") === "enabled") {
+  body.classList.add("dark-mode");
+}
+
+// Toggle button
+darkToggle.addEventListener("click", () => {
+  body.classList.toggle("dark-mode");
+
+  if (body.classList.contains("dark-mode")) {
+    localStorage.setItem("darkMode", "enabled");
+    darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  } else {
+    localStorage.setItem("darkMode", "disabled");
+    darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
+  }
+});
+
 
 

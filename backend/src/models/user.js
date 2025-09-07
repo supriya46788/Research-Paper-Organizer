@@ -13,6 +13,13 @@ const userSchema = new mongoose.Schema(
     password: { type: String }, // Made password optional
     googleId: { type: String }, // Added googleId
     isVerified: { type: Boolean, default: true }, // Auto-verify Google users
+    preferences: {
+      theme: { type: String, default: 'light' }
+    },
+    notifications: {
+      email: { type: Boolean, default: false },
+      push: { type: Boolean, default: false }
+    }
   },
   {
     timestamps: true,

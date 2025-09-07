@@ -14,6 +14,9 @@
   <body>
     <div class="auth-container">
       <div class="auth-card">
+        <!-- <=============Added Issue #465 =============> -->
+        <button class="close-btn" onclick="window.history.back()">✖</button>
+        <!-- <=============Ended Issue #465 =============> -->
         <div class="auth-header">
           <i class="fas fa-book-open"></i>
           <h1>Research Paper Organizer</h1>
@@ -227,6 +230,24 @@
         });
       });
     });
+
+  //script for progress bar on sign-up page
+  const passwordInput = document.getElementById("signupPassword");
+  const passwordStrength = document.getElementById("passwordStrength");
+
+  passwordStrength.style.display = "none";
+
+  passwordInput.addEventListener("focus", () => {
+    passwordStrength.style.display = "block";
+  });
+
+  passwordInput.addEventListener("blur", () => {
+    passwordStrength.style.display = "none";
+  });
+
+  passwordInput.addEventListener("input", () => {
+    passwordStrength.style.display = "block";
+  });
   </script>
     
     <script src="js/auth.js"></script>

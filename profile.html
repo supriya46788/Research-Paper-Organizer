@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile & Settings</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://kit.fontawesome.com/yourkit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="profile-container">
+    <h2>User Profile</h2>
+    <div class="profile-info">
+      <p><strong>Name:</strong> <span id="profileName"></span></p>
+      <p><strong>Email:</strong> <span id="profileEmail"></span></p>
+      <p><strong>Account Created:</strong> <span id="profileCreated"></span></p>
+    </div>
+    <hr>
+    <h3>Settings</h3>
+    <div class="settings-section">
+      <label for="themeSelect">Theme:</label>
+      <select id="themeSelect">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+    </div>
+    <button onclick="logout()" class="logout-btn">Logout</button>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const user = JSON.parse(localStorage.getItem('current_user'));
+      if (!user) {
+        window.location.href = 'login.html';
+        return;
+      }
+      document.getElementById('profileName').textContent = user.name;
+      document.getElementById('profileEmail').textContent = user.email;
+      document.getElementById('profileCreated').textContent = user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A';
+      const themeSelect = document.getElementById('themeSelect');
+      themeSelect.value = localStorage.getItem('theme') || 'light';
+      themeSelect.addEventListener('change', function() {
+        localStorage.setItem('theme', this.value);
+        document.body.className = this.value === 'dark' ? 'dark-mode' : '';
+      });
+    });
+    function logout() {
+      localStorage.removeItem('current_user');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>

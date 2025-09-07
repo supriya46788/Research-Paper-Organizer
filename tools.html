@@ -117,6 +117,7 @@
   <button class="filter-btn" data-filter="writing">Writing</button>
   <button class="filter-btn" data-filter="citation">Citation</button>
   <button class="filter-btn" data-filter="analysis">Analysis</button>
+  <button class="filter-btn" data-filter="papers">Papers</button>
 </div>
 
 <!-- Tools Grid -->
@@ -170,12 +171,32 @@
     <a href="https://www.duplichecker.com/" target="_blank">Visit</a>
   </div>
 
+  
+  <div class="tool-card" data-category="analysis">
+    <img src="images/ats-resume.png" alt="PDF Annotator">
+    <h3>ATS Resume Checker</h3>
+    <p>Instantly analyze your resume for ATS compatibility, formatting, and keywords to boost your job application success.</p>
+    <a href="ats-checker.html">Open Tool</a>
+  </div>
+
+
+  <div class="tool-card" data-category="papers">
+    <img src="images/research.png" alt="ACM Digital Library">
+    <h3>ACM Digital Library</h3>
+    <p>Get access to scholarly articles, conference papers, and journals in computing and information technology.</p>
+    <a href="https://dl.acm.org/" target="_blank">Visit</a>
+  </div>
+
+
 </div>
 
     <!-- Back to Top Button -->
     <button id="backToTop">
       <i class="fa-solid fa-arrow-up"></i>
     </button>
+
+   
+
 
   <!-- Modern Footer -->
   <footer class="modern-footer" aria-label="Footer">
@@ -201,6 +222,9 @@
           <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
           <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
           <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+          <li>
+            <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
+          </li>
         </ul>
       </div>
 
@@ -209,7 +233,7 @@
         <div class="social-icons">
           <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
 <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-  <i class="fab fa-linkedin" style="color: white;"></i>
+  <i class="fab fa-linkedin"></i>
 </a>
           <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
@@ -713,7 +737,7 @@ border-top-color: rgba(224, 224, 224, 0.1);
   justify-content: center;
 }
 }
-    /* Back to Top Button Styles */
+    /* Scroll to Back & Top Button Styles */
     #backToTop {
        /* Center the icon */
   display: flex;
@@ -768,22 +792,38 @@ border-top-color: rgba(224, 224, 224, 0.1);
     const nav = document.querySelector(".navbar-right-links");
     nav.classList.toggle("show");
   }
- //back to top button 
+ // Scroll to back & top button 
 // Show button when scrolled down
 const backToTop = document.getElementById("backToTop");
+const icon = backToTop.querySelector("i");
 
-// Show/hide button with fade
+// Show button on scroll
 window.addEventListener("scroll", () => {
   if (window.scrollY > 100) {
     backToTop.classList.add("show");
+
+    
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
+      icon.classList.remove("fa-arrow-down");
+      icon.classList.add("fa-arrow-up");
+    } else {
+      icon.classList.remove("fa-arrow-up");
+      icon.classList.add("fa-arrow-down");
+    }
   } else {
     backToTop.classList.remove("show");
   }
 });
 
-// Smooth scroll to top
+// Button click behaviour
 backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (icon.classList.contains("fa-arrow-down")) {
+    // Scroll to bottom
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+  } else {
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 });
 
 

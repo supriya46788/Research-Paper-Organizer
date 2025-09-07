@@ -146,7 +146,7 @@
 
     .card p {
       font-size: 1.1rem;
-      color: #6b7280;
+      color: #565656;
       line-height: 1.7;
       margin-bottom: 1rem;
     }
@@ -215,29 +215,43 @@
       font-size: 1rem;
     }
 
+    /* FIXED: Social Links Spacing */
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 0.75rem;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
     }
 
     .social-links a {
       color: #6b7280;
       text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
       background: #f8fafc;
       transition: all 0.3s ease;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      min-width: fit-content;
+      white-space: nowrap;
+      border: 1px solid #e5e7eb;
     }
 
     .social-links a:hover {
       background: #2f2ca0;
       color: white;
       transform: translateY(-2px);
+      border-color: #2f2ca0;
+      box-shadow: 0 4px 12px rgba(47, 44, 160, 0.3);
+    }
+
+    .social-links a i {
+      font-size: 1rem;
+      flex-shrink: 0;
     }
 
     .contributors-grid {
@@ -616,6 +630,19 @@
         width: 35px;
         height: 35px;
       }
+
+      /* Mobile Social Links Fix */
+      .social-links {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: center;
+      }
+      
+      .social-links a {
+        width: 85%;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+      }
     }
 
     @media (max-width: 480px) {
@@ -630,6 +657,11 @@
 
       .footer-links-section ul li a {
         justify-content: center;
+      }
+
+      .social-links a {
+        width: 90%;
+        font-size: 0.9rem;
       }
     }
     .footer-bottom .heart {
@@ -664,17 +696,6 @@
         font-size: 16px;
         bottom: 20px;
         right: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .contributors-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .social-links {
-        flex-direction: column;
-        gap: 0.5rem;
       }
     }
 
@@ -813,15 +834,18 @@
       border: 3px solid #63b3ed !important;
     }
 
-    /* Social Links Dark Mode */
+    /* FIXED: Social Links Dark Mode */
     body.dark-mode .social-links a {
-      background: rgba(224, 224, 224, 0.1) !important;
+      background: rgba(99, 179, 237, 0.1) !important;
       color: #e0e0e0 !important;
+      border: 1px solid rgba(99, 179, 237, 0.3) !important;
     }
 
     body.dark-mode .social-links a:hover {
-      background: rgba(144, 205, 244, 0.2) !important;
-      color: #90cdf4 !important;
+      background: #63b3ed !important;
+      color: #1a202c !important;
+      border-color: #63b3ed !important;
+      box-shadow: 0 4px 12px rgba(99, 179, 237, 0.4) !important;
     }
 
     /* Contributor Cards Dark Mode */
@@ -924,12 +948,12 @@ body.dark-mode .footer-links a:hover {
 color: #90cdf4;
 }
 
-body.dark-mode .social-links a {
+body.dark-mode .social-icons a {
 background: rgba(224, 224, 224, 0.1);
 color: #e0e0e0;
 }
 
-body.dark-mode .social-links a:hover {
+body.dark-mode .social-icons a:hover {
 background: rgba(144, 205, 244, 0.2);
 color: #90cdf4;
 }
@@ -1034,10 +1058,12 @@ border-top-color: rgba(224, 224, 224, 0.1);
             <p class="team-role">Project Founder & Lead Developer</p>
             <div class="social-links">
               <a href="https://github.com/supriya46788" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i> GitHub
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
               </a>
               <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-linkedin"></i> LinkedIn
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
               </a>
             </div>
           </div>
@@ -1136,6 +1162,9 @@ border-top-color: rgba(224, 224, 224, 0.1);
           <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
           <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
           <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+          <li>
+            <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
+          </li>
         </ul>
       </div>
 
@@ -1144,7 +1173,7 @@ border-top-color: rgba(224, 224, 224, 0.1);
         <div class="social-icons">
           <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
 <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-  <i class="fab fa-linkedin" style="color: white;"></i>
+  <i class="fab fa-linkedin"></i>
 </a>
           <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
@@ -1204,19 +1233,36 @@ border-top-color: rgba(224, 224, 224, 0.1);
     })();
 
     // Back to top button functionality
-    const backToTopButton = document.getElementById('backToTop');
+    const  bottomToTopButton = document.getElementById("backToTop");
+    const icon =  bottomToTopButton.querySelector("i");
 
-    window.addEventListener('scroll', function() {
-      if (window.pageYOffset > 300) {
-        backToTopButton.style.display = 'block';
-      } else {
-        backToTopButton.style.display = 'none';
-      }
-    });
+   window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+     bottomToTopButton.style.display = "block";
 
-    backToTopButton.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
+      icon.classList.remove("fa-arrow-down");
+      icon.classList.add("fa-arrow-up");
+    } else {
+      icon.classList.remove("fa-arrow-up");
+      icon.classList.add("fa-arrow-down");
+    }
+  } else {
+     bottomToTopButton.style.display = "none";
+  }
+});
+
+  bottomToTopButton.addEventListener("click", () => {
+  if (icon.classList.contains("fa-arrow-down")) {
+    // scroll to bottom
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+  } else {
+    // scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+});
+
 
     // Load GitHub contributors
     async function loadContributors() {
@@ -1313,6 +1359,12 @@ border-top-color: rgba(224, 224, 224, 0.1);
           username: 'WebDevPro',
           avatar: 'https://via.placeholder.com/60x60/ff9800/ffffff?text=WD',
           contributions: '8'
+        },
+        {
+          name:'Aditya Singh',
+          username:'Adez017',
+          avatar: 'https://via.placeholder.com/60x60/9c27b0/ffffff?text=AS',
+          contributions: '5'
         },
         {
           name: 'ReactMaster',

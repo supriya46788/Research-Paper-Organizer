@@ -249,6 +249,9 @@
           <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
           <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
           <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+          <li>
+            <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
+          </li>
         </ul>
       </div>
 
@@ -257,7 +260,7 @@
         <div class="social-icons">
           <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
 <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-  <i class="fab fa-linkedin" style="color: white;"></i>
+  <i class="fab fa-linkedin"></i>
 </a>
           <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
@@ -272,7 +275,10 @@
 
 
     <!-- Back to Top Button -->
-    <button id="backToTop">↑</button>
+  <button id="backToTop" title="Scroll" aria-label="Scroll">
+  <i class="fa-solid fa-arrow-down"></i>
+</button>
+
     <style>/* Back to Top Button Styles */
         #backToTop {
             height: 50px;
@@ -375,19 +381,35 @@
 //back to top button 
 // Show button when scrolled down
 const backToTop = document.getElementById("backToTop");
+const icon = backToTop.querySelector("i");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 50) {
+  window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
     backToTop.style.display = "block";
-  } else {
+
+    // agar page ke bottom par hai
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
+      icon.classList.remove("fa-arrow-down");
+      icon.classList.add("fa-arrow-up");
+    } else {
+      icon.classList.remove("fa-arrow-up");
+      icon.classList.add("fa-arrow-down");
+    }
+    } else {
     backToTop.style.display = "none";
   }
 });
 
-// Smooth scroll to top
-backToTop.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  backToTop.addEventListener("click", () => {
+  if (icon.classList.contains("fa-arrow-down")) {
+    // scroll to bottom
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+  } else {
+    // scroll to top
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 });
+
     </script>
 </body>
 </html>
