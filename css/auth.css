@@ -50,6 +50,28 @@ body {
   width: 100%;
 }
 
+/* <=============Added Issue #480 =============> */
+.close-btn {
+  background: #f3f4f6;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #1f2937;
+  transition: background 0.3s ease;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+}
+
+.close-btn:hover {
+  background: #e5e7eb;
+}
+/* <=============Ended Issue #480 =============> */
+
+
 .auth-header {
   text-align: center;
   margin-bottom: 2rem;
