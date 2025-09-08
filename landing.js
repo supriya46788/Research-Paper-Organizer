@@ -1,6 +1,5 @@
 // Landing Page JavaScript
 document.addEventListener("DOMContentLoaded", function () {
-
   // Smooth scroll for anchor links
   function scrollToFeatures() {
     document.getElementById("features").scrollIntoView({
@@ -48,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
   function checkAuthStatus() {
     const currentUser = localStorage.getItem("current_user");
     if (currentUser) {
-      // User is logged in, redirect to app
       window.location.href = "home.html";
     }
   }
@@ -62,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       const href = this.getAttribute("onclick").match(/'([^']+)'/)[1];
       if (href === "index.html") {
-        // Check auth before redirecting to app
         checkAuthStatus();
       } else {
         window.location.href = href;
@@ -70,6 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
 // Animated counters for stats
 function animateCounter(el) {
   const target = parseFloat(el.dataset.target);
@@ -110,7 +108,6 @@ function addLoadingState(button) {
   const originalText = button.innerHTML;
   button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
   button.disabled = true;
-
   setTimeout(() => {
     button.innerHTML = originalText;
     button.disabled = false;

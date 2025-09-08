@@ -6,21 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research Paper Organizer - Organize Your Research Efficiently</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="landing.css" />
-
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="landing.css" />
   <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
-
   <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
   <link rel="manifest" href="./favicon/site.webmanifest" />
   <meta name="theme-color" content="#2563eb" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" />
 </head>
+
 <script>
   if ("serviceWorker" in navigator) {
     window.addEventListener("load", () => {
@@ -30,7 +24,6 @@
         .catch((err) => console.error("SW registration failed:", err));
     });
   }
-  
 </script>
 
 <body>
@@ -47,15 +40,14 @@
       <div class="progress-percentage">0%</div>
     </div>
   </div>
-  <!-- Navigation -->
 
+  <!-- Navigation -->
   <nav class="landing-nav">
     <div class="nav-container">
       <a href="#top" class="nav-brand">
         <i class="fas fa-book-open"></i>
         <span>Research Paper Organizer</span>
       </a>
-
       <div class="nav-links">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it Works</a>
@@ -65,12 +57,10 @@
         <button class="btn-primary" onclick="window.location.href='signup.html'">
           Get Started
         </button>
-        <!-- Add dark mode toggle here -->
         <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode">
           <i class="fas fa-moon"></i>
         </button>
       </div>
-
       <div class="mobile-menu-toggle">
         <i class="fas fa-bars"></i>
       </div>
@@ -80,7 +70,6 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-container">
-      <!-- Left side -->
       <div class="hero-content animate">
         <h1>Organize Your Research Papers Like Never Before</h1>
         <p>
@@ -98,8 +87,6 @@
         </div>
         <p class="hero-note">No credit card required • 30-day free trial</p>
       </div>
-
-      <!-- Right side -->
       <div class="hero-image animate">
         <div class="hero-mockup">
           <div class="mockup-header">
@@ -110,20 +97,26 @@
             </div>
           </div>
           <div class="mockup-content">
-            <div class="mockup-paper">
+            <div class="pinned-section">
+              <h3>Pinned Papers</h3>
+              <div id="pinned-papers"></div>
+            </div>
+            <div class="mockup-paper" data-paper-id="paper1">
               <div class="paper-title">Attention Is All You Need</div>
               <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
               <div class="paper-tags">
                 <span>Machine Learning</span>
                 <span>Transformers</span>
+                <i class="fas fa-star pin-icon" title="Pin Paper"></i>
               </div>
             </div>
-            <div class="mockup-paper">
+            <div class="mockup-paper" data-paper-id="paper2">
               <div class="paper-title">BERT: Pre-training of Deep...</div>
               <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
               <div class="paper-tags">
                 <span>NLP</span>
                 <span>Pre-training</span>
+                <i class="fas fa-star pin-icon" title="Pin Paper"></i>
               </div>
             </div>
           </div>
@@ -142,7 +135,6 @@
           and academics
         </p>
       </div>
-
       <div class="features-grid">
         <div class="feature-card slide-left">
           <div class="feature-icon">
@@ -154,7 +146,6 @@
             authors, abstracts, and tags.
           </p>
         </div>
-
         <div class="feature-card slide-right">
           <div class="feature-icon">
             <i class="fas fa-tags"></i>
@@ -165,7 +156,6 @@
             track of important research.
           </p>
         </div>
-
         <div class="feature-card slide-left">
           <div class="feature-icon">
             <i class="fas fa-star"></i>
@@ -176,7 +166,6 @@
             contributions.
           </p>
         </div>
-
         <div class="feature-card slide-right">
           <div class="feature-icon">
             <i class="fas fa-quote-right"></i>
@@ -187,7 +176,6 @@
             click.
           </p>
         </div>
-
         <div class="feature-card slide-left">
           <div class="feature-icon">
             <i class="fas fa-file-pdf"></i>
@@ -198,7 +186,6 @@
             preview capabilities.
           </p>
         </div>
-
         <div class="feature-card slide-right">
           <div class="feature-icon">
             <i class="fas fa-cloud"></i>
@@ -220,10 +207,8 @@
         <h2>Get Started in 3 Simple Steps</h2>
         <p>Start organizing your research papers in minutes</p>
       </div>
-
       <div class="steps-container">
-        <div class="step fade-in"  onclick="window.location.href='signup.html'" >
-          <!-- onclick for create your account -->
+        <div class="step fade-in" onclick="window.location.href='signup.html'">
           <div class="step-number">1</div>
           <div class="step-content">
             <h3>Create Your Account</h3>
@@ -233,7 +218,6 @@
             </p>
           </div>
         </div>
-        <!-- redirect to add papers html -->
         <div class="step fade-in" onclick="window.location.href='add-organize-papers.html'">
           <div class="step-number">2</div>
           <div class="step-content">
@@ -244,7 +228,6 @@
             </p>
           </div>
         </div>
-
         <div class="step fade-in" onclick="window.location.href='add-organize-papers.html'">
           <div class="step-number">3</div>
           <div class="step-content">
@@ -261,35 +244,33 @@
 
   <!-- Stats Section -->
   <section class="stats fade-in">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number" data-target="10000">0</div>
-        <div class="stat-label">Researchers</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number" data-target="500000">0</div>
-        <div class="stat-label">Papers Organized</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number" data-target="50">0</div>
-        <div class="stat-label">Universities</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number" data-target="99.9" data-decimals="1">0</div>
-        <div class="stat-label">Uptime (%)</div>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="10000">0</div>
+          <div class="stat-label">Researchers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500000">0</div>
+          <div class="stat-label">Papers Organized</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-label">Universities</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="99.9" data-decimals="1">0</div>
+          <div class="stat-label">Uptime (%)</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-  <!-- ===== Testimonials Section ===== -->
+  <!-- Testimonials Section -->
   <section id="testimonials">
     <h2>What Our Users Say</h2>
     <div class="testimonials-marquee">
       <div class="testimonials-track">
-        <!-- First set of testimonials -->
         <div class="testimonial-card">
           <img src="testimonialw.png" alt="User Photo" />
           <h3>Dr. Sarah Lee</h3>
@@ -300,7 +281,6 @@
           </p>
           <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
         </div>
-
         <div class="testimonial-card">
           <img src="test1.jpg" alt="User Photo" />
           <h3>Michael Chen</h3>
@@ -311,7 +291,6 @@
           </p>
           <p class="tags">💡 Great UI • ⚡ Fast</p>
         </div>
-
         <div class="testimonial-card">
           <img src="testimonialw.png" alt="User Photo" />
           <h3>Ananya Sharma</h3>
@@ -322,7 +301,6 @@
           </p>
           <p class="tags">🤝 Collaboration • 📚 Productivity</p>
         </div>
-
         <div class="testimonial-card">
           <img src="test1.jpg" alt="User Photo" />
           <h3>Dr. James Wilson</h3>
@@ -333,7 +311,6 @@
           </p>
           <p class="tags">🎓 Academic • 📖 Organization</p>
         </div>
-
         <div class="testimonial-card">
           <img src="testimonialw.png" alt="User Photo" />
           <h3>Elena Rodriguez</h3>
@@ -344,7 +321,6 @@
           </p>
           <p class="tags">📝 Citations • ⚡ Efficient</p>
         </div>
-
         <!-- Duplicate set for seamless loop -->
         <div class="testimonial-card">
           <img src="testimonialw.png" alt="User Photo" />
@@ -356,7 +332,6 @@
           </p>
           <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
         </div>
-
         <div class="testimonial-card">
           <img src="test1.jpg" alt="User Photo" />
           <h3>Michael Chen</h3>
@@ -367,7 +342,6 @@
           </p>
           <p class="tags">💡 Great UI • ⚡ Fast</p>
         </div>
-
         <div class="testimonial-card">
           <img src="testimonialw.png" alt="User Photo" />
           <h3>Ananya Sharma</h3>
@@ -378,7 +352,6 @@
           </p>
           <p class="tags">🤝 Collaboration • 📚 Productivity</p>
         </div>
-
         <div class="testimonial-card">
           <img src="test1.jpg" alt="User Photo" />
           <h3>Dr. James Wilson</h3>
@@ -389,7 +362,6 @@
           </p>
           <p class="tags">🎓 Academic • 📖 Organization</p>
         </div>
-
         <div class="testimonial-card">
           <img src="testimonialw.png" alt="User Photo" />
           <h3>Elena Rodriguez</h3>
@@ -404,7 +376,7 @@
     </div>
   </section>
 
-  <!-- ===== CSS ===== -->
+  <!-- CSS for Testimonials and Pinned Papers -->
   <style>
     #testimonials {
       padding: 50px 20px;
@@ -420,7 +392,6 @@
       margin-bottom: 30px;
     }
 
-    /* Marquee Container */
     .testimonials-marquee {
       overflow: hidden;
       position: relative;
@@ -437,7 +408,6 @@
           transparent);
     }
 
-    /* Marquee Track */
     .testimonials-track {
       display: flex;
       gap: 30px;
@@ -445,17 +415,14 @@
       width: fit-content;
     }
 
-    /* Pause animation on hover */
     .testimonials-marquee:hover .testimonials-track {
       animation-play-state: paused;
     }
 
-    /* Marquee Animation */
     @keyframes marquee {
       0% {
         transform: translateX(0);
       }
-
       100% {
         transform: translateX(-50%);
       }
@@ -545,7 +512,6 @@
       margin-top: 15px;
     }
 
-    /* Responsive Design */
     @media (max-width: 768px) {
       .testimonials-track {
         animation-duration: 7.5s;
@@ -581,14 +547,11 @@
       }
     }
 
-    /* ==== Dark mode fixes for Testimonials (append at end of testimonials <style>) ==== */
     body.dark-mode #testimonials {
       background: #0f172a;
-      /* darker section bg */
       color: #e5e7eb;
     }
 
-    /* keep the side-fade mask but ensure opacity only, not light tint */
     body.dark-mode .testimonials-marquee {
       -webkit-mask: linear-gradient(90deg,
           transparent,
@@ -602,12 +565,9 @@
           transparent);
     }
 
-    /* cards */
     body.dark-mode .testimonial-card {
       background: #1f2937;
-      /* card bg */
       color: #e5e7eb;
-      /* default text */
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
 
@@ -616,7 +576,6 @@
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
     }
 
-    /* inner text tones */
     body.dark-mode .testimonial-card h3 {
       color: #f3f4f6;
     }
@@ -633,34 +592,103 @@
       color: #93c5fd;
     }
 
-    /* avatar ring */
     body.dark-mode .testimonial-card img {
       border-color: #374151;
     }
+
+    /* Pinned Papers Section */
+    .pinned-section {
+      margin-bottom: 1.5rem;
+      padding: 1rem;
+      background: #f1f5f9;
+      border-radius: 0.5rem;
+    }
+
+    .pinned-section h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+
+    .pin-icon {
+      cursor: pointer;
+      color: #6b7280;
+      transition: color 0.3s ease;
+      margin-left: auto;
+    }
+
+    .pin-icon.pinned {
+      color: #f59e0b;
+    }
+
+    .pin-icon:hover {
+      color: #f59e0b;
+    }
+
+    body.dark-mode .pinned-section {
+      background: #1e293b;
+    }
+
+    body.dark-mode .pinned-section h3 {
+      color: #e5e7eb;
+    }
   </style>
 
-  <!-- ===== JS Marquee Enhancement ===== -->
+  <!-- JS for Pinned Papers -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Add smooth marquee functionality
-      const marqueeTrack = document.querySelector(".testimonials-track");
+      const pinnedPapersContainer = document.getElementById("pinned-papers");
+      const pinIcons = document.querySelectorAll(".pin-icon");
 
-      // Optional: Add click functionality to testimonial cards
-      const cards = document.querySelectorAll(".testimonial-card");
-      cards.forEach((card) => {
-        card.addEventListener("click", () => {
-          // Add a subtle pulse effect when clicked
-          card.style.transform = "scale(0.98)";
-          setTimeout(() => {
-            card.style.transform = "";
-          }, 150);
+      // Load pinned papers from localStorage
+      let pinnedPapers = JSON.parse(localStorage.getItem("pinnedPapers")) || [];
+
+      // Function to render pinned papers
+      function renderPinnedPapers() {
+        pinnedPapersContainer.innerHTML = "";
+        pinnedPapers.forEach(paperId => {
+          const paper = document.querySelector(`.mockup-paper[data-paper-id="${paperId}"]`);
+          if (paper) {
+            const clone = paper.cloneNode(true);
+            clone.querySelector(".pin-icon").classList.add("pinned");
+            pinnedPapersContainer.appendChild(clone);
+          }
+        });
+      }
+
+      // Function to update localStorage
+      function updatePinnedPapers() {
+        localStorage.setItem("pinnedPapers", JSON.stringify(pinnedPapers));
+        renderPinnedPapers();
+      }
+
+      // Toggle pin status
+      pinIcons.forEach(icon => {
+        const paper = icon.closest(".mockup-paper");
+        const paperId = paper.dataset.paperId;
+
+        // Set initial pinned state
+        if (pinnedPapers.includes(paperId)) {
+          icon.classList.add("pinned");
+        }
+
+        icon.addEventListener("click", () => {
+          if (pinnedPapers.includes(paperId)) {
+            // Unpin
+            pinnedPapers = pinnedPapers.filter(id => id !== paperId);
+            icon.classList.remove("pinned");
+          } else {
+            // Pin
+            pinnedPapers.push(paperId);
+            icon.classList.add("pinned");
+          }
+          updatePinnedPapers();
         });
       });
 
-      // Reduce motion for users who prefer it
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        marqueeTrack.style.animationDuration = "30s";
-      }
+      // Initial render
+      renderPinnedPapers();
     });
   </script>
 
@@ -685,413 +713,6 @@
     </div>
   </section>
 
-  <style>
-    /* Back to Top Button Styles */
-    #backToTop {
-      height: 60px;
-      width: 60px;
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 1000;
-      background: linear-gradient(135deg, #0077b5, #4facfe);
-      color: white;
-      border: none;
-      border-radius: 50%;
-      padding: 15px;
-      font-size: 18px;
-      cursor: pointer;
-      display: none;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    #backToTop:hover {
-      transform: scale(1.1);
-      opacity: 0.9;
-      box-shadow: rgba(0, 0, 0, 0.8);
-    }
-
-    @media (max-width: 600px) {
-      #backToTop {
-        padding: 12px;
-        font-size: 16px;
-        bottom: 20px;
-        right: 20px;
-      }
-    }
-
-    .modern-footer {
-      width: 100vw;
-      /* Full viewport width */
-      margin-left: calc(-50vw + 50%);
-      /* Center it if inside a constrained container */
-      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-      color: #fff;
-      padding: 60px 20px 20px;
-      border-radius: 25px 25px 0 0;
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-      overflow-x: hidden;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-bottom: 30px;
-    }
-
-    .footer-brand h2 {
-      font-size: 10px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .footer-brand h2 i {
-      margin-right: 10px;
-      font-size: 1rem;
-      vertical-align: middle;
-    }
-
-    .footer-brand p {
-      font-size: 1rem;
-      font-weight: 300;
-      line-height: 1.5;
-      opacity: 0.9;
-    }
-
-    .footer-links-section h4 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: 5px;
-    }
-
-    .footer-links-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links-section ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-links-section ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
-
-    .footer-links-section ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      margin-top: 5px;
-    }
-
-    .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: #fff;
-      transition: 0.3s;
-    }
-
-    .social-icons a:hover {
-      background: #fff;
-      color: #2c5aa0;
-      transform: scale(1.1);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      padding-top: 15px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    .footer-card {
-      flex: 1 1 200px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      padding: 20px;
-      min-width: 200px;
-    }
-
-    .footer-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-card ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-card ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-
-      padding: 5px;
-      padding-left: 20px;
-    }
-
-    .footer-card ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    @media (max-width: 768px) {
-      .footer-top {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 3rem;
-      }
-
-      .footer-brand h2 {
-        font-size: 1.5rem;
-      }
-
-      .footer-links-section h4 {
-        font-size: 1rem;
-      }
-
-      .footer-links-section ul li a {
-        font-size: 0.95rem;
-      }
-
-      .social-icons a {
-        width: 35px;
-        height: 35px;
-      }
-    }
-
-    @media (max-width: 756px) and (min-width: 730px),
-    (max-width: 601px) and (min-width: 540px) {
-      .footer-card {
-        gap: 4rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .social-icons {
-        justify-content: center;
-      }
-
-      .footer-links-section ul li a {
-        justify-content: center;
-      }
-    }
-
-    .footer-bottom .heart {
-      color: inherit;
-    }
-
-    .features-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-      /* 👈 ye center karega */
-      margin: 3rem 0;
-    }
-
-    .feature-card {
-      flex: 1 1 250px;
-      max-width: 300px;
-      background: #fff;
-      border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-    }
-
-    .feature-icon {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 1rem auto;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      color: #fff;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover .feature-icon {
-      transform: scale(1.1) rotate(8deg);
-    }
-
-    .feature-card h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      color: #333;
-    }
-
-    .feature-card p {
-      font-size: 0.95rem;
-      color: #666;
-      line-height: 1.6;
-    }
-
-    /* Dark Mode Footer Styles */
-    body.dark-mode .modern-footer {
-      background: linear-gradient(135deg, #1a202c, #2d3748);
-    }
-
-    body.dark-mode .footer-section h3,
-    body.dark-mode .footer-section h4 {
-      color: #e0e0e0;
-    }
-
-    body.dark-mode .footer-section h4 {
-      border-bottom-color: rgba(224, 224, 224, 0.2);
-    }
-
-    body.dark-mode .footer-links a {
-      color: rgba(224, 224, 224, 0.8);
-    }
-
-    body.dark-mode .footer-links a:hover {
-      color: #90cdf4;
-    }
-
-    body.dark-mode .social-links a {
-      background: rgba(224, 224, 224, 0.1);
-      color: #e0e0e0;
-    }
-
-    body.dark-mode .social-links a:hover {
-      background: rgba(144, 205, 244, 0.2);
-      color: #90cdf4;
-    }
-
-    body.dark-mode .footer-bottom {
-      background: rgba(0, 0, 0, 0.3);
-      border-top-color: rgba(224, 224, 224, 0.1);
-    }
-
-    /* Dark mode toggle styles */
-    .dark-toggle {
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      padding: 8px;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-    }
-
-    .dark-toggle:hover {
-      transform: scale(1.1);
-    }
-
-    /* Dark mode styles */
-    body.dark-mode {
-      background-color: #1a202c;
-      color: #e2e8f0;
-    }
-
-    body.dark-mode .landing-nav {
-      background-color: #2d3748;
-    }
-
-    body.dark-mode .nav-links a {
-      color: #e2e8f0;
-    }
-
-    body.dark-mode .feature-card {
-      background-color: #2d3748;
-      color: #e2e8f0;
-    }
-
-    body.dark-mode .feature-card p {
-      color: #cbd5e0;
-    }
-
-    /* ==== Dark Mode Fixes for "How it Works" (3 Simple Steps) ==== */
-    body.dark-mode .how-it-works {
-      background-color: #0f172a;
-      color: #e2e8f0;
-    }
-
-    body.dark-mode .how-it-works .section-header h2,
-    body.dark-mode .how-it-works .section-header p {
-      color: #f1f5f9;
-    }
-
-    body.dark-mode .steps-container .step {
-      background-color: #1e293b;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-    }
-
-    body.dark-mode .steps-container .step-number {
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
-      color: #fff;
-      border-radius: 50%;
-      font-weight: bold;
-      font-size: 1.2rem;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    body.dark-mode .steps-container .step-content h3 {
-      color: #f3f4f6;
-    }
-
-    body.dark-mode .steps-container .step-content p {
-      color: #cbd5e1;
-    }
-  </style>
-
   <!-- Back to Top Button -->
   <button id="backToTop">
     <i class="fa-solid fa-arrow-up"></i>
@@ -1106,55 +727,33 @@
           Organize, track, and manage your research papers seamlessly.
         </p>
       </div>
-
       <div class="footer-links-section footer-card">
         <h4>Quick Links</h4>
         <ul>
-          <li>
-            <a href="index.html"><i class="fas fa-home"></i>Home</a>
-          </li>
-          <li>
-            <a href="about.html"><i class="fas fa-users"></i>About Us</a>
-          </li>
-          <li>
-            <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
-          </li>
-          <li>
-            <a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
-          </li>
+          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
+          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+          <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
         </ul>
       </div>
-
       <div class="footer-links-section footer-card">
         <h4>Resources</h4>
         <ul>
-          <li>
-            <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
-          </li>
-          <li>
-            <a href="glossary.html"><i class="fas fa-book"></i>Glossary</a>
-          </li>
-          <li>
-            <a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a>
-          </li>
-          <li>
-            <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
-          </li>
+          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
+          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+          <li><a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a></li>
         </ul>
       </div>
-
       <div class="footer-links-section footer-card">
         <h4>Connect</h4>
         <div class="social-icons">
           <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i>
-          </a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i>
-          </a>
+          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
     </div>
-
     <div class="footer-bottom">
       © 2025 Research Paper Organizer | Made with
       <span class="heart">&hearts;</span> for researchers worldwide
@@ -1163,87 +762,87 @@
 
   <script src="landing.js"></script>
 
+  <!-- Loading Screen Script -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const loadingScreen = document.getElementById("loading-screen");
       const loadingText = document.getElementById("loading-text");
-      
-
       const target = document.querySelector(".typing-text");
-      const progressPercentage = document.querySelector(
-        ".progress-percentage"
-      );
+      const progressPercentage = document.querySelector(".progress-percentage");
       const texts = [
         "Organizing your thoughts...",
         "Drafting your ideas...",
         "Structuring your research...",
         "Building your knowledge...",
       ];
-
       let index = 0;
       let progress = 0;
-
-      //changed: check if user has already seen the loading screen
       const hasSeenLoading = localStorage.getItem("hasSeenLoading");
 
-      //changed: Only run loadinganimation if first-time visitor
-      if ( !hasSeenLoading ){
+      if (!hasSeenLoading) {
+        function updateLoadingText() {
+          index = (index + 1) % texts.length;
+          loadingText.style.transform = "translateY(-25px) scale(0.95)";
+          loadingText.style.opacity = "0";
+          setTimeout(() => {
+            loadingText.innerHTML = texts[index] + '<span class="dots"></span>';
+            loadingText.style.transform = "translateY(25px) scale(0.95)";
+            loadingText.offsetHeight;
+            loadingText.style.transform = "translateY(0) scale(1)";
+            loadingText.style.opacity = "1";
+          }, 300);
+        }
 
-      // Enhanced text transition function
-      function updateLoadingText() {
-        index = (index + 1) % texts.length;
-
-        // Add smooth slide out effect with bounce
-        loadingText.style.transform = "translateY(-25px) scale(0.95)";
-        loadingText.style.opacity = "0";
+        function updateProgress() {
+          progress = Math.min(progress + Math.random() * 15 + 10, 100);
+          if (progressPercentage) {
+            progressPercentage.textContent = Math.round(progress) + "%";
+          }
+          if (progress < 100) {
+            setTimeout(updateProgress, 1200 + Math.random() * 800);
+          }
+        }
 
         setTimeout(() => {
-          loadingText.innerHTML = texts[index] + '<span class="dots"></span>';
-          loadingText.style.transform = "translateY(25px) scale(0.95)";
+          loadingScreen.classList.add("show");
+          updateProgress();
+        }, 100);
 
-          // Trigger reflow to ensure transform is applied
-          loadingText.offsetHeight;
+        const textInterval = setInterval(updateLoadingText, 2500);
 
-          // Slide in with smooth transition and bounce
-          loadingText.style.transform = "translateY(0) scale(1)";
-          loadingText.style.opacity = "1";
-        }, 300);
-      }
-
-      // Update progress percentage
-      function updateProgress() {
-        progress = Math.min(progress + Math.random() * 15 + 10, 100);
-        if (progressPercentage) {
-          progressPercentage.textContent = Math.round(progress) + "%";
-        }
-
-        if (progress < 100) {
-          setTimeout(updateProgress, 1200 + Math.random() * 800);
-        }
-      }
-
-      // Enhanced entrance animation
-      setTimeout(() => {
-        loadingScreen.classList.add("show");
-        updateProgress();
-      }, 100);
-
-      // Change text every 2.5 seconds for better rhythm
-      const textInterval = setInterval(updateLoadingText, 2500);
-
-      // Hide loading screen after 6 seconds with enhanced exit animation
-      setTimeout(() => {
-        clearInterval(textInterval); // stop changing text
+        setTimeout(() => {
+          clearInterval(textInterval);
+          loadingScreen.classList.add("hidden");
+          localStorage.setItem("hasSeenLoading", "true");
+          if (target) {
+            const text = target.textContent;
+            target.textContent = "";
+            let i = 0;
+            function typeWriter() {
+              if (i < text.length) {
+                target.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 80);
+              }
+            }
+            typeWriter();
+          }
+          document.querySelector(".hero-content").classList.add("animate");
+          document.querySelector(".hero-image").classList.add("animate");
+          loadingScreen.style.transform = "scale(1.08) rotate(1deg)";
+          loadingScreen.style.filter = "blur(1px)";
+          setTimeout(() => {
+            loadingScreen.classList.add("hidden");
+            document.querySelector(".hero-content").classList.add("animate");
+            document.querySelector(".hero-image").classList.add("animate");
+          }, 300);
+        }, 6000);
+      } else {
         loadingScreen.classList.add("hidden");
-
-        //changed: Mark that user has seen loading
-        localStorage.setItem("hasSeenLoading", "true");
-        //Added typewriter effect in heading
         if (target) {
           const text = target.textContent;
           target.textContent = "";
           let i = 0;
-
           function typeWriter() {
             if (i < text.length) {
               target.textContent += text.charAt(i);
@@ -1253,59 +852,21 @@
           }
           typeWriter();
         }
-        //after that added sideLeft and slide right animation
         document.querySelector(".hero-content").classList.add("animate");
         document.querySelector(".hero-image").classList.add("animate");
-
-        // Add exit preparation with scale and rotation
-        loadingScreen.style.transform = "scale(1.08) rotate(1deg)";
-        loadingScreen.style.filter = "blur(1px)";
-
-        setTimeout(() => {
-          loadingScreen.classList.add("hidden");
-          //after that added sideLeft and slide right animation
-          document.querySelector(".hero-content").classList.add("animate");
-          document.querySelector(".hero-image").classList.add("animate");
-        }, 300);
-      }, 6000); // adjust as needed
-    } else {
-      //changed: Skip loading entirely for returning visitors
-      loadingScreen.classList.add("hidden");
-
-      //Run typewriter effect and hero animations immediately
-      if (target) {
-      const text = target.textContent;
-      target.textContent = "";
-      let i = 0;
-      function typeWriter() {
-        if (i < text.length) {
-          target.textContent += text.charAt(i);
-          i++;
-          setTimeout(typeWriter, 80);
-        }
       }
-      typeWriter();
-    }
-    document.querySelector(".hero-content").classList.add("animate");
-    document.querySelector(".hero-image").classList.add("animate");
-  } 
-});
-    
+    });
 
-    //after executing slideright remove it so that other animation can start
     setTimeout(() => {
       document.querySelector(".hero-image").classList.remove("animate");
     }, 7000);
 
-    //Scroll to back & top button
-    // Show button when scrolled down
     const bottomToTopButton = document.getElementById("backToTop");
     const icon = bottomToTopButton.querySelector("i");
 
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
         bottomToTopButton.style.display = "block";
-
         if (
           window.scrollY + window.innerHeight >=
           document.documentElement.scrollHeight - 10
@@ -1323,13 +884,11 @@
 
     bottomToTopButton.addEventListener("click", () => {
       if (icon.classList.contains("fa-arrow-down")) {
-        // scroll to bottom
         window.scrollTo({
           top: document.documentElement.scrollHeight,
           behavior: "smooth",
         });
       } else {
-        // scroll to top
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     });
@@ -1337,10 +896,7 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const elements = document.querySelectorAll(
-        ".fade-in, .slide-left, .slide-right"
-      );
-
+      const elements = document.querySelectorAll(".fade-in, .slide-left, .slide-right");
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -1351,34 +907,31 @@
         },
         { threshold: 0.2 }
       );
-
       elements.forEach((el) => observer.observe(el));
     });
   </script>
 
-  <script src="landing.js"></script>
   <script>
     const toggle = document.querySelector(".mobile-menu-toggle");
     const navLinks = document.querySelector(".nav-links");
 
     toggle.addEventListener("click", () => {
       navLinks.classList.toggle("active");
-      toggle.classList.toggle("open"); // for rotating icon if you want
+      toggle.classList.toggle("open");
     });
-    // Close menu when a link is clicked
+
     navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("active");
       });
     });
   </script>
+
   <script>
-    // Dark mode functionality
     document.addEventListener("DOMContentLoaded", () => {
       const darkModeToggle = document.getElementById("darkModeToggle");
       const icon = darkModeToggle.querySelector("i");
 
-      // Check for saved dark mode preference
       if (localStorage.getItem("darkMode") === "enabled") {
         document.body.classList.add("dark-mode");
         icon.classList.replace("fa-moon", "fa-sun");
@@ -1386,8 +939,6 @@
 
       darkModeToggle.addEventListener("click", () => {
         document.body.classList.toggle("dark-mode");
-
-        // Update icon and save preference
         if (document.body.classList.contains("dark-mode")) {
           icon.classList.replace("fa-moon", "fa-sun");
           localStorage.setItem("darkMode", "enabled");
@@ -1399,5 +950,4 @@
     });
   </script>
 </body>
-
 </html>
