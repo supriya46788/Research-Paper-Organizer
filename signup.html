@@ -146,7 +146,7 @@
                   aria-describedby="termsError"
                 />
                 <label for="agreeTerms" class="checkbox-label">
-                  I agree to the <a href="#" class="terms-link" id="showTos">Terms of Service</a> and <a href="privacy.html" class="terms-link" target="_blank">Privacy Policy</a> <span class="required">*</span>
+                  I agree to the <a href="terms-of-service.html" class="terms-link" target="_blank">Terms of Service</a> and <a href="privacy.html" class="terms-link" target="_blank">Privacy Policy</a> <span class="required">*</span>
                 </label>
               </div>
               <div id="termsError" class="error-message" role="alert" aria-live="polite"></div>
@@ -175,22 +175,7 @@
     </div>
 
     <script>
-    // TERMS AND PRIVACY CONTENT
-    const tosContent = `
-      <h2>Terms of Service</h2>
-      <p>
-        By using the Research Paper Organizer ("the Service"), you agree to the following terms:
-      </p>
-      <ul style="text-align:left;">
-        <li><strong>Account Responsibility:</strong> You are responsible for all activity on your account.</li>
-        <li><strong>Content:</strong> You retain ownership of your uploaded papers, notes, and metadata. You grant us a license solely for the purposes of storing, organizing, and displaying your research within your account.</li>
-        <li><strong>Usage:</strong> The Service is provided for academic and organizational purposes only. You may not use it for unlawful activities.</li>
-        <li><strong>Data Security:</strong> Reasonable measures are taken to protect your data, but no system is perfectly secure. You are encouraged to keep backups of important research.</li>
-        <li><strong>Termination:</strong> We reserve the right to suspend or terminate accounts engaged in misuse or violation of these terms.</li>
-        <li><strong>Changes:</strong> These Terms may be updated. Continued use after notice of changes implies acceptance of the new terms.</li>
-      </ul>
-    `;
-
+    // PRIVACY CONTENT (Terms of Service content moved to dedicated page)
     const privacyContent = `
       <h2>Privacy Policy</h2>
       <p>
@@ -207,18 +192,21 @@
       </ul>
     `;
 
-    // HANDLE MODAL POPUPS
+    // HANDLE MODAL POPUPS (Terms of Service modal removed - now links to dedicated page)
     document.addEventListener('DOMContentLoaded', function () {
-      // Terms of Service
-      document.getElementById('showTos').addEventListener('click', function (e) {
-        e.preventDefault();
-        Swal.fire({
-          html: tosContent,
-          width: 600,
-          confirmButtonText: "Close",
-          customClass: {popup: 'tos-privacy-popup'}
+      // Privacy Policy modal (if needed)
+      const privacyLink = document.getElementById('showPrivacy');
+      if (privacyLink) {
+        privacyLink.addEventListener('click', function (e) {
+          e.preventDefault();
+          Swal.fire({
+            html: privacyContent,
+            width: 600,
+            confirmButtonText: "Close",
+            customClass: {popup: 'tos-privacy-popup'}
+          });
         });
-      });
+      }
     });
 
   //script for progress bar on sign-up page
