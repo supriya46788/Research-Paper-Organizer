@@ -146,7 +146,7 @@
                   aria-describedby="termsError"
                 />
                 <label for="agreeTerms" class="checkbox-label">
-                  I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a> <span class="required">*</span>
+                  I agree to the <a href="#" class="terms-link" id="showTos">Terms of Service</a> and <a href="privacy.html" class="terms-link" target="_blank">Privacy Policy</a> <span class="required">*</span>
                 </label>
               </div>
               <div id="termsError" class="error-message" role="alert" aria-live="polite"></div>
@@ -214,16 +214,6 @@
         e.preventDefault();
         Swal.fire({
           html: tosContent,
-          width: 600,
-          confirmButtonText: "Close",
-          customClass: {popup: 'tos-privacy-popup'}
-        });
-      });
-      // Privacy Policy
-      document.getElementById('showPrivacy').addEventListener('click', function (e) {
-        e.preventDefault();
-        Swal.fire({
-          html: privacyContent,
           width: 600,
           confirmButtonText: "Close",
           customClass: {popup: 'tos-privacy-popup'}
