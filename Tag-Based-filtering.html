@@ -1,647 +1,802 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-  <title>Research Paper Organiser - Tag Filtering</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f7fb;
-      margin: 0;
-      padding: 0;
-      transition: background 0.3s, color 0.3s;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    /* ===== Navbar ===== */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 30px;
-      background: #e9f1fd;
-      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+    <title>Research Paper Organiser - Tag Filtering</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
-    .nav-left, .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f4f7fb;
+        margin: 0;
+        padding: 0;
+        transition: background 0.3s, color 0.3s;
+      }
 
-    nav a,
-    nav a:link,
-    nav a:visited,
-    nav a:hover,
-    nav a:active {
-      text-decoration: none !important;
-      color: white !important;
-    }
-
-    .nav-left .btn,
-    .nav-right .btn {
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
-      color: white !important;
-      border: none;
-      padding: 8px 18px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-left .btn:hover,
-    .nav-right .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-    }
-
-    /* Dark Mode Toggle */
-    .toggle {
-      background: white;
-      border-radius: 6px;
-      border: none;
-      padding: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-      transition: background 0.3s;
-    }
-
-    /* ===== Dark mode styles ===== */
-    body.dark {
-      background: #0f172a;
-      color: #f8fafc;
-    }
-
-    body.dark nav {
-      background: #1e293b;
-    }
-
-    body.dark .paper {
-      background: #1e293b;
-      color: #f1f5f9;
-      border-top: 4px solid #60a5fa;
-    }
-
-    body.dark .tag {
-      background: #334155;
-      color: #e2e8f0;
-    }
-
-    body.dark .tag:hover {
-      background: #3b82f6;
-      color: white;
-    }
-
-    body.dark .toggle {
-      background: #334155;
-      color: #f8fafc;
-    }
-
-    /* Responsive Navbar */
-    @media (max-width: 768px) {
+      /* ===== Navbar ===== */
       nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 30px;
+        background: #e9f1fd;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .nav-left,
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      nav a,
+      nav a:link,
+      nav a:visited,
+      nav a:hover,
+      nav a:active {
+        text-decoration: none !important;
+        color: white !important;
+      }
+
+      .nav-left .btn,
+      .nav-right .btn {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white !important;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .nav-left .btn:hover,
+      .nav-right .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Dark Mode Toggle */
+      .toggle {
+        background: white;
+        border-radius: 6px;
+        border: none;
+        padding: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+        transition: background 0.3s;
+      }
+
+      /* ===== Dark mode styles ===== */
+      body.dark {
+        background: #0f172a;
+        color: #f8fafc;
+      }
+
+      body.dark nav {
+        background: #1e293b;
+      }
+
+      body.dark .paper {
+        background: #1e293b;
+        color: #f1f5f9;
+        border-top: 4px solid #60a5fa;
+      }
+
+      body.dark .tag {
+        background: #334155;
+        color: #e2e8f0;
+      }
+
+      body.dark .tag:hover {
+        background: #3b82f6;
+        color: white;
+      }
+
+      body.dark .toggle {
+        background: #334155;
+        color: #f8fafc;
+      }
+
+      /* Responsive Navbar */
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+
+      /* ===== Existing styles kept below ===== */
+      h1 {
+        text-align: center;
+        color: #2c3e50;
+        margin: 25px 0;
+        font-size: 2.2em;
+        letter-spacing: 1px;
+      }
+
+      body.dark h1 {
+        color: #f8fafc;
+      }
+
+      .tags {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .tag {
+        display: inline-block;
+        background: #ecf0f1;
+        color: #2c3e50;
+        padding: 8px 16px;
+        border-radius: 25px;
+        margin: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.25s ease-in-out;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .tag:hover {
+        background: #3498db;
+        color: white;
+        transform: scale(1.05);
+      }
+
+      .papers {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+        padding: 0 30px 40px;
+      }
+
+      .paper {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border-top: 4px solid #3498db;
+        display: flex;
         flex-direction: column;
-        gap: 10px;
+        justify-content: space-between;
       }
-    }
 
-    /* ===== Existing styles kept below ===== */
-    h1 {
-      text-align: center;
-      color: #2c3e50;
-      margin: 25px 0;
-      font-size: 2.2em;
-      letter-spacing: 1px;
-    }
-
-    body.dark h1 {
-      color: #f8fafc;
-    }
-
-    .tags {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #ecf0f1;
-      color: #2c3e50;
-      padding: 8px 16px;
-      border-radius: 25px;
-      margin: 6px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.25s ease-in-out;
-      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .tag:hover {
-      background: #3498db;
-      color: white;
-      transform: scale(1.05);
-    }
-
-    .papers {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
-      padding: 0 30px 40px;
-    }
-
-    .paper {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0px 6px 12px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-      border-top: 4px solid #3498db;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .paper:hover {
-      transform: translateY(-8px);
-      box-shadow: 0px 10px 20px rgba(0,0,0,0.15);
-    }
-
-    .paper h3 {
-      margin: 0 0 12px;
-      font-size: 18px;
-      color: #2c3e50;
-    }
-
-    body.dark .paper h3 {
-      color: #f8fafc;
-    }
-
-    .paper .authors {
-      font-size: 14px;
-      color: #7f8c8d;
-      font-style: italic;
-      margin-bottom: 10px;
-    }
-
-    body.dark .paper .authors {
-      color: #cbd5e1;
-    }
-
-    .paper .abstract {
-      font-size: 14px;
-      color: #34495e;
-      line-height: 1.5;
-      flex-grow: 1;
-      margin-bottom: 15px;
-    }
-
-    body.dark .paper .abstract {
-      color: #e2e8f0;
-    }
-
-    .paper .paper-tags {
-      font-size: 13px;
-      font-weight: bold;
-      color: #2980b9;
-      background: #ecf5ff;
-      padding: 5px 10px;
-      border-radius: 8px;
-      display: inline-block;
-      align-self: flex-start;
-    }
-
-    body.dark .paper .paper-tags {
-      background: #1e40af;
-      color: #bfdbfe;
-    }
-     /* ===== Footer ===== */
-    .modern-footer {
-      background: #e9f1fd;
-      padding: 40px 20px 20px;
-      margin-top: 50px;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      margin-bottom: 30px;
-    }
-
-    .footer-card {
-      background: #fff;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0px 2px 6px rgba(0,0,0,0.08);
-    }
-
-    .footer-card h3,
-    .footer-card h4 {
-      margin-top: 0;
-      margin-bottom: 12px;
-      color: #2c3e50;
-    }
-
-    .footer-links-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links-section ul li {
-      margin: 8px 0;
-    }
-
-    .footer-links-section ul li a {
-      color: #2c3e50;
-      text-decoration: none;
-      font-size: 14px;
-      transition: color 0.3s;
-    }
-
-    .footer-links-section ul li a:hover {
-      color: #2563eb;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 12px;
-      margin-top: 10px;
-    }
-
-    .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      background: #f1f5f9;
-      border-radius: 50%;
-      font-size: 18px;
-      color: #2563eb;
-      transition: all 0.3s;
-    }
-
-    .social-icons a:hover {
-      background: #2563eb;
-      color: white;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      font-size: 14px;
-      color: #2c3e50;
-      border-top: 1px solid #cbd5e1;
-      padding-top: 15px;
-    }
-
-    .heart {
-      color: red;
-    }
-
-          /* ===== Dark mode styles ===== */
-    body.dark {
-      background: #0f172a;
-      color: #f8fafc;
-    }
-
-    body.dark nav {
-      background: #1e293b;
-    }
-
-    body.dark .paper {
-      background: #1e293b;
-      color: #f1f5f9;
-      border-top: 4px solid #60a5fa;
-    }
-
-    body.dark .tag {
-      background: #334155;
-      color: #e2e8f0;
-    }
-
-    body.dark .tag:hover {
-      background: #3b82f6;
-      color: white;
-    }
-
-    body.dark .toggle {
-      background: #334155;
-      color: #f8fafc;
-    }
-
-    body.dark .modern-footer {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #f3f4f6;
-    }
-
-    body.dark .footer-card {
-      background: #1f2937;
-      color: #f3f4f6;
-    }
-
-    body.dark .footer-links-section ul li a {
-      color: #f3f4f6;
-    }
-
-    body.dark .footer-links-section ul li a:hover {
-      color: #60a5fa;
-    }
-
-    body.dark .social-icons a {
-      background: #1f2937;
-      color: #f3f4f6;
-    }
-
-    body.dark .social-icons a:hover {
-      background: #2563eb;
-      color: #fff;
-    }
-    /* Base style for both AI Tag + Cloud Sync */
-.feature-card {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 30px 30px;
-  border-radius: 10px;
-  background: #f9fafb;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  color: #111;
-}
-
-.feature-card h2 {
-  margin-bottom: 10px;
-  font-size: 1.3rem;
-}
-
-.feature-card input,
-.feature-card textarea {
-  width: 100%;
-  margin: 5px 0 10px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-
-.feature-card button {
-  margin-top: 10px;
-  padding: 8px 18px;
-  border-radius: 6px;
-  background: #2563eb;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-/* Dark mode version */
-body.dark .feature-card {
-  background: #1e293b;
-  color: #e2e8f0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-}
-
-body.dark .feature-card input,
-body.dark .feature-card textarea {
-  background: #334155;
-  color: #e2e8f0;
-  border: 1px solid #475569;
-}
-
-body.dark .feature-card button {
-  background: #3b82f6;
-}
-
-
-    @media (max-width: 1200px) {
-      .papers {
-        grid-template-columns: repeat(3, 1fr);
+      .paper:hover {
+        transform: translateY(-8px);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
       }
-    }
 
-    @media (max-width: 900px) {
-      .papers {
-        grid-template-columns: repeat(2, 1fr);
+      .paper h3 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        color: #2c3e50;
       }
-    }
 
-    @media (max-width: 600px) {
-      .papers {
-        grid-template-columns: 1fr;
+      body.dark .paper h3 {
+        color: #f8fafc;
       }
-    }
-  </style>
-</head>
-<body>
-  <!-- ===== Navbar ===== -->
-  <nav>
-    <div class="nav-left">
-      <a href="index.html"><button class="btn">🏠 Home</button></a>
+
+      .paper .authors {
+        font-size: 14px;
+        color: #7f8c8d;
+        font-style: italic;
+        margin-bottom: 10px;
+      }
+
+      body.dark .paper .authors {
+        color: #cbd5e1;
+      }
+
+      .paper .abstract {
+        font-size: 14px;
+        color: #34495e;
+        line-height: 1.5;
+        flex-grow: 1;
+        margin-bottom: 15px;
+      }
+
+      body.dark .paper .abstract {
+        color: #e2e8f0;
+      }
+
+      .paper .paper-tags {
+        font-size: 13px;
+        font-weight: bold;
+        color: #2980b9;
+        background: #ecf5ff;
+        padding: 5px 10px;
+        border-radius: 8px;
+        display: inline-block;
+        align-self: flex-start;
+      }
+
+      body.dark .paper .paper-tags {
+        background: #1e40af;
+        color: #bfdbfe;
+      }
+      /* ===== Footer ===== */
+      .modern-footer {
+        background: #e9f1fd;
+        padding: 40px 20px 20px;
+        margin-top: 50px;
+      }
+
+      .footer-top {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+        margin-bottom: 30px;
+      }
+
+      .footer-card {
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+      }
+
+      .footer-card h3,
+      .footer-card h4 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        color: #2c3e50;
+      }
+
+      .footer-links-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links-section ul li {
+        margin: 8px 0;
+      }
+
+      .footer-links-section ul li a {
+        color: #2c3e50;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+      }
+
+      .footer-links-section ul li a:hover {
+        color: #2563eb;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 12px;
+        margin-top: 10px;
+      }
+
+      .social-icons a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background: #f1f5f9;
+        border-radius: 50%;
+        font-size: 18px;
+        color: #2563eb;
+        transition: all 0.3s;
+      }
+
+      .social-icons a:hover {
+        background: #2563eb;
+        color: white;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        font-size: 14px;
+        color: #2c3e50;
+        border-top: 1px solid #cbd5e1;
+        padding-top: 15px;
+      }
+
+      .heart {
+        color: red;
+      }
+
+      /* ===== Dark mode styles ===== */
+      body.dark {
+        background: #0f172a;
+        color: #f8fafc;
+      }
+
+      body.dark nav {
+        background: #1e293b;
+      }
+
+      body.dark .paper {
+        background: #1e293b;
+        color: #f1f5f9;
+        border-top: 4px solid #60a5fa;
+      }
+
+      body.dark .tag {
+        background: #334155;
+        color: #e2e8f0;
+      }
+
+      body.dark .tag:hover {
+        background: #3b82f6;
+        color: white;
+      }
+
+      body.dark .toggle {
+        background: #334155;
+        color: #f8fafc;
+      }
+
+      body.dark .modern-footer {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: #f3f4f6;
+      }
+
+      body.dark .footer-card {
+        background: #1f2937;
+        color: #f3f4f6;
+      }
+
+      body.dark .footer-links-section ul li a {
+        color: #f3f4f6;
+      }
+
+      body.dark .footer-links-section ul li a:hover {
+        color: #60a5fa;
+      }
+
+      body.dark .social-icons a {
+        background: #1f2937;
+        color: #f3f4f6;
+      }
+
+      body.dark .social-icons a:hover {
+        background: #2563eb;
+        color: #fff;
+      }
+      /* Base style for both AI Tag + Cloud Sync */
+      .feature-card {
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 30px 30px;
+        border-radius: 10px;
+        background: #f9fafb;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        color: #111;
+      }
+
+      .feature-card h2 {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+      }
+
+      .feature-card input,
+      .feature-card textarea {
+        width: 100%;
+        margin: 5px 0 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+      }
+
+      .feature-card button {
+        margin-top: 10px;
+        padding: 8px 18px;
+        border-radius: 6px;
+        background: #2563eb;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Dark mode version */
+      body.dark .feature-card {
+        background: #1e293b;
+        color: #e2e8f0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      }
+
+      body.dark .feature-card input,
+      body.dark .feature-card textarea {
+        background: #334155;
+        color: #e2e8f0;
+        border: 1px solid #475569;
+      }
+
+      body.dark .feature-card button {
+        background: #3b82f6;
+      }
+
+      @media (max-width: 1200px) {
+        .papers {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .papers {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .papers {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Scrolling Button */
+
+      #backToTop {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999;
+        background: linear-gradient(135deg, #0077b5, #4facfe);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 15px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      #backToTop.show {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      #backToTop:hover {
+        transform: scale(1.1);
+        opacity: 0.9;
+        box-shadow: rgba(0, 0, 0, 0.8);
+      }
+
+      @media (max-width: 600px) {
+        #backToTop {
+          padding: 12px;
+          font-size: 16px;
+          bottom: 20px;
+          right: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===== Navbar ===== -->
+    <nav>
+      <div class="nav-left">
+        <a href="index.html"><button class="btn">🏠 Home</button></a>
+      </div>
+      <div class="nav-right">
+        <a href="about.html"><button class="btn">About Us</button></a>
+        <a href="blog.html"><button class="btn">Blogs</button></a>
+        <a href="Faq.html"><button class="btn">FAQ</button></a>
+        <a href="contact.html"><button class="btn">Contact Us</button></a>
+        <a href="tools.html"><button class="btn">Tools</button></a>
+        <button id="darkToggle" class="toggle">🌙</button>
+      </div>
+    </nav>
+
+    <!-- Scrolling Button -->
+    <button id="backToTop" title="Scroll" aria-label="Scroll">
+      <i class="fa-solid fa-arrow-down"></i>
+    </button>
+
+    <!-- ===== Heading ===== -->
+    <h1>📚 Research Paper Organiser</h1>
+
+    <!-- ===== Tag Filter ===== -->
+    <div class="tags">
+      <span class="tag" onclick="filterPapers('all')">All</span>
+      <span class="tag" onclick="filterPapers('AI')">AI</span>
+      <span class="tag" onclick="filterPapers('ML')">ML</span>
+      <span class="tag" onclick="filterPapers('NLP')">NLP</span>
+      <span class="tag" onclick="filterPapers('CV')">Computer Vision</span>
+      <span class="tag" onclick="filterPapers('Robotics')">Robotics</span>
+      <span class="tag" onclick="filterPapers('Healthcare')">Healthcare</span>
+      <span class="tag" onclick="filterPapers('DataScience')"
+        >Data Science</span
+      >
     </div>
-    <div class="nav-right">
-      <a href="about.html"><button class="btn">About Us</button></a>
-      <a href="blog.html"><button class="btn">Blogs</button></a>
-      <a href="Faq.html"><button class="btn">FAQ</button></a>
-      <a href="contact.html"><button class="btn">Contact Us</button></a>
-      <a href="tools.html"><button class="btn">Tools</button></a>
-      <button id="darkToggle" class="toggle">🌙</button>
-    </div>
-  </nav>
 
-  <!-- ===== Heading ===== -->
-  <h1>📚 Research Paper Organiser</h1>
+    <!-- ===== AI Tag Suggestion UI ===== -->
 
-  <!-- ===== Tag Filter ===== -->
-  <div class="tags">
-    <span class="tag" onclick="filterPapers('all')">All</span>
-    <span class="tag" onclick="filterPapers('AI')">AI</span>
-    <span class="tag" onclick="filterPapers('ML')">ML</span>
-    <span class="tag" onclick="filterPapers('NLP')">NLP</span>
-    <span class="tag" onclick="filterPapers('CV')">Computer Vision</span>
-    <span class="tag" onclick="filterPapers('Robotics')">Robotics</span>
-    <span class="tag" onclick="filterPapers('Healthcare')">Healthcare</span>
-    <span class="tag" onclick="filterPapers('DataScience')">Data Science</span>
-  </div>
-
-  <!-- ===== AI Tag Suggestion UI ===== -->
-  
-<div class="feature-card">
-  <h2>AI Tag Suggestions</h2>
-  <label>Paper Title:
-    <input type="text" id="paperTitle">
-  </label>
-  <label>Paper Abstract:
-    <textarea id="paperAbstract" rows="4"></textarea>
-  </label>
-  <button onclick="showTagSuggestions()">Get Suggestions</button>
-  <p id="tagSuggestions"></p>
-</div>
-
-
-  <!-- ===== Papers Grid ===== -->
-  <div class="papers" id="papers">
-    <div class="paper" data-tags="AI ML">
-      <h3>Neural Networks</h3>
-      <p class="authors">John Doe, MIT</p>
-      <p class="abstract">Explores the fundamentals of neural networks and their applications in pattern recognition and classification.</p>
-      <p class="paper-tags">AI, ML</p>
+    <div class="feature-card">
+      <h2>AI Tag Suggestions</h2>
+      <label
+        >Paper Title:
+        <input type="text" id="paperTitle" />
+      </label>
+      <label
+        >Paper Abstract:
+        <textarea id="paperAbstract" rows="4"></textarea>
+      </label>
+      <button onclick="showTagSuggestions()">Get Suggestions</button>
+      <p id="tagSuggestions"></p>
     </div>
 
-    <div class="paper" data-tags="NLP AI">
-      <h3>Transformer Models</h3>
-      <p class="authors">Jane Smith, Stanford</p>
-      <p class="abstract">Introduction to transformer architectures for NLP tasks like translation, summarization, and Q&A systems.</p>
-      <p class="paper-tags">NLP, AI</p>
-    </div>
+    <!-- ===== Papers Grid ===== -->
+    <div class="papers" id="papers">
+      <div class="paper" data-tags="AI ML">
+        <h3>Neural Networks</h3>
+        <p class="authors">John Doe, MIT</p>
+        <p class="abstract">
+          Explores the fundamentals of neural networks and their applications in
+          pattern recognition and classification.
+        </p>
+        <p class="paper-tags">AI, ML</p>
+      </div>
 
-    <div class="paper" data-tags="CV ML">
-      <h3>Image Recognition</h3>
-      <p class="authors">Alan Turing, Oxford</p>
-      <p class="abstract">A study on convolutional neural networks and their impact on modern computer vision applications.</p>
-      <p class="paper-tags">CV, ML</p>
-    </div>
+      <div class="paper" data-tags="NLP AI">
+        <h3>Transformer Models</h3>
+        <p class="authors">Jane Smith, Stanford</p>
+        <p class="abstract">
+          Introduction to transformer architectures for NLP tasks like
+          translation, summarization, and Q&A systems.
+        </p>
+        <p class="paper-tags">NLP, AI</p>
+      </div>
 
-    <div class="paper" data-tags="AI">
-      <h3>Explainable AI</h3>
-      <p class="authors">Rachel Green, Google AI</p>
-      <p class="abstract">Techniques to make AI models interpretable, ensuring transparency and trustworthiness in AI systems.</p>
-      <p class="paper-tags">AI</p>
-    </div>
+      <div class="paper" data-tags="CV ML">
+        <h3>Image Recognition</h3>
+        <p class="authors">Alan Turing, Oxford</p>
+        <p class="abstract">
+          A study on convolutional neural networks and their impact on modern
+          computer vision applications.
+        </p>
+        <p class="paper-tags">CV, ML</p>
+      </div>
 
-    <div class="paper" data-tags="Robotics AI">
-      <h3>AI in Robotics</h3>
-      <p class="authors">Mike Johnson, CMU</p>
-      <p class="abstract">Integration of AI algorithms in robotics for navigation, control, and real-time decision-making.</p>
-      <p class="paper-tags">Robotics, AI</p>
-    </div>
+      <div class="paper" data-tags="AI">
+        <h3>Explainable AI</h3>
+        <p class="authors">Rachel Green, Google AI</p>
+        <p class="abstract">
+          Techniques to make AI models interpretable, ensuring transparency and
+          trustworthiness in AI systems.
+        </p>
+        <p class="paper-tags">AI</p>
+      </div>
 
-    <div class="paper" data-tags="Healthcare AI ML">
-      <h3>AI for Healthcare</h3>
-      <p class="authors">Dr. Priya Mehta, Harvard</p>
-      <p class="abstract">AI-powered diagnostic systems for early disease detection and personalized treatment recommendations.</p>
-      <p class="paper-tags">Healthcare, AI, ML</p>
-    </div>
+      <div class="paper" data-tags="Robotics AI">
+        <h3>AI in Robotics</h3>
+        <p class="authors">Mike Johnson, CMU</p>
+        <p class="abstract">
+          Integration of AI algorithms in robotics for navigation, control, and
+          real-time decision-making.
+        </p>
+        <p class="paper-tags">Robotics, AI</p>
+      </div>
 
-    <div class="paper" data-tags="DataScience ML">
-      <h3>Big Data Analytics</h3>
-      <p class="authors">Wei Zhang, Tsinghua</p>
-      <p class="abstract">Efficient frameworks and ML pipelines for processing and analyzing large-scale datasets.</p>
-      <p class="paper-tags">DataScience, ML</p>
-    </div>
+      <div class="paper" data-tags="Healthcare AI ML">
+        <h3>AI for Healthcare</h3>
+        <p class="authors">Dr. Priya Mehta, Harvard</p>
+        <p class="abstract">
+          AI-powered diagnostic systems for early disease detection and
+          personalized treatment recommendations.
+        </p>
+        <p class="paper-tags">Healthcare, AI, ML</p>
+      </div>
 
-    <div class="paper" data-tags="NLP">
-      <h3>Sentiment Analysis</h3>
-      <p class="authors">Maria Lopez, Toronto</p>
-      <p class="abstract">Using NLP and deep learning techniques to determine sentiment polarity in text data.</p>
-      <p class="paper-tags">NLP</p>
-    </div>
+      <div class="paper" data-tags="DataScience ML">
+        <h3>Big Data Analytics</h3>
+        <p class="authors">Wei Zhang, Tsinghua</p>
+        <p class="abstract">
+          Efficient frameworks and ML pipelines for processing and analyzing
+          large-scale datasets.
+        </p>
+        <p class="paper-tags">DataScience, ML</p>
+      </div>
 
-    <div class="paper" data-tags="CV AI">
-      <h3>Object Detection</h3>
-      <p class="authors">Kevin White, Meta AI</p>
-      <p class="abstract">YOLO and Faster R-CNN models for real-time object detection in images and videos.</p>
-           <p class="paper-tags">CV, AI</p>
-    </div>
-  </div>
+      <div class="paper" data-tags="NLP">
+        <h3>Sentiment Analysis</h3>
+        <p class="authors">Maria Lopez, Toronto</p>
+        <p class="abstract">
+          Using NLP and deep learning techniques to determine sentiment polarity
+          in text data.
+        </p>
+        <p class="paper-tags">NLP</p>
+      </div>
 
-  <script src="js/tag-suggest.js"></script>
-  <script src="js/cloud-sync.js"></script>
-  <!-- ===== Cloud Sync ===== -->
-<div class="feature-card">
-  <h2>Cloud Sync</h2>
-  <label>
-    Upload Paper (PDF):
-    <input type="file" id="cloudPaperFile" accept="application/pdf">
-  </label>
-  <button onclick="uploadPaperToCloud()">Upload to Cloud</button>
-  <div id="cloudUploadResult"></div>
-  <hr>
-  <label>
-    Download by File Name:
-    <input type="text" id="cloudFileName" placeholder="Enter file name from cloud">
-  </label>
-  <button onclick="downloadPaperFromCloud()">Download from Cloud</button>
-</div>
-
-<!-- ===== Footer ===== -->
-<footer class="modern-footer" aria-label="Footer">
-  <div class="footer-top">
-    <div class="footer-card">
-      <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-      <p>A platform to organize, filter, and explore research papers easily.</p>
-    </div>
-    <div class="footer-links-section footer-card">
-      <h4>Quick Links</h4>
-      <ul>
-        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="about.html"><i class="fas fa-users"></i> About Us</a></li>
-        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-        <li><a href="Faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
-      </ul>
-    </div>
-    <div class="footer-links-section footer-card">
-      <h4>Resources</h4>
-      <ul>
-        <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
-        <li><a href="glossary.html"><i class="fas fa-book"></i> Glossary</a></li>
-        <li><a href="open-source.html"><i class="fas fa-code-branch"></i> Open Source</a></li>
-      </ul>
-    </div>
-    <div class="footer-links-section footer-card">
-      <h4>Connect</h4>
-      <div class="social-icons">
-        <a href="https://github.com/supriya46788" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:supriyadpandey502@gmail.com"><i class="fas fa-envelope"></i></a>
+      <div class="paper" data-tags="CV AI">
+        <h3>Object Detection</h3>
+        <p class="authors">Kevin White, Meta AI</p>
+        <p class="abstract">
+          YOLO and Faster R-CNN models for real-time object detection in images
+          and videos.
+        </p>
+        <p class="paper-tags">CV, AI</p>
       </div>
     </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 Research Paper Organizer | Built with <span class="heart">♥</span> for researchers worldwide</p>
-  </div>
-</footer>
 
-  <script>
-    function filterPapers(tag) {
-      const papers = document.querySelectorAll('.paper');
-      papers.forEach(paper => {
-        const tags = paper.getAttribute('data-tags').split(' ');
-        paper.style.display = (tag === 'all' || tags.includes(tag)) ? 'flex' : 'none';
+    <script src="js/tag-suggest.js"></script>
+    <script src="js/cloud-sync.js"></script>
+    <!-- ===== Cloud Sync ===== -->
+    <div class="feature-card">
+      <h2>Cloud Sync</h2>
+      <label>
+        Upload Paper (PDF):
+        <input type="file" id="cloudPaperFile" accept="application/pdf" />
+      </label>
+      <button onclick="uploadPaperToCloud()">Upload to Cloud</button>
+      <div id="cloudUploadResult"></div>
+      <hr />
+      <label>
+        Download by File Name:
+        <input
+          type="text"
+          id="cloudFileName"
+          placeholder="Enter file name from cloud"
+        />
+      </label>
+      <button onclick="downloadPaperFromCloud()">Download from Cloud</button>
+    </div>
+
+    <!-- ===== Footer ===== -->
+    <footer class="modern-footer" aria-label="Footer">
+      <div class="footer-top">
+        <div class="footer-card">
+          <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+          <p>
+            A platform to organize, filter, and explore research papers easily.
+          </p>
+        </div>
+        <div class="footer-links-section footer-card">
+          <h4>Quick Links</h4>
+          <ul>
+            <li>
+              <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+              <a href="about.html"><i class="fas fa-users"></i> About Us</a>
+            </li>
+            <li>
+              <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            </li>
+            <li>
+              <a href="Faq.html"><i class="fas fa-question-circle"></i> FAQ</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-links-section footer-card">
+          <h4>Resources</h4>
+          <ul>
+            <li>
+              <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+            </li>
+            <li>
+              <a href="glossary.html"><i class="fas fa-book"></i> Glossary</a>
+            </li>
+            <li>
+              <a href="open-source.html"
+                ><i class="fas fa-code-branch"></i> Open Source</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="footer-links-section footer-card">
+          <h4>Connect</h4>
+          <div class="social-icons">
+            <a href="https://github.com/supriya46788" target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/supriyapandey595"
+              target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a href="mailto:supriyadpandey502@gmail.com"
+              ><i class="fas fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © 2025 Research Paper Organizer | Built with
+          <span class="heart">♥</span> for researchers worldwide
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      function filterPapers(tag) {
+        const papers = document.querySelectorAll(".paper");
+        papers.forEach((paper) => {
+          const tags = paper.getAttribute("data-tags").split(" ");
+          paper.style.display =
+            tag === "all" || tags.includes(tag) ? "flex" : "none";
+        });
+      }
+
+      // Dark mode toggle
+      const darkToggle = document.getElementById("darkToggle");
+      darkToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        darkToggle.textContent = document.body.classList.contains("dark")
+          ? "☀️"
+          : "🌙";
       });
-    }
 
-    // Dark mode toggle
-    const darkToggle = document.getElementById("darkToggle");
-    darkToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      darkToggle.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
-    });
+      // Dummy Tag Suggestion
+      function showTagSuggestions() {
+        const title = document.getElementById("paperTitle").value;
+        const abstract = document.getElementById("paperAbstract").value;
+        const suggestions = [];
+        if (/AI|artificial/i.test(title + abstract)) suggestions.push("AI");
+        if (/machine learning|ML/i.test(title + abstract))
+          suggestions.push("ML");
+        if (/vision|image|object/i.test(title + abstract))
+          suggestions.push("CV");
+        if (/NLP|language|text/i.test(title + abstract))
+          suggestions.push("NLP");
+        if (/robot/i.test(title + abstract)) suggestions.push("Robotics");
+        if (/health|medical|patient/i.test(title + abstract))
+          suggestions.push("Healthcare");
+        if (/data|analytics|big/i.test(title + abstract))
+          suggestions.push("DataScience");
+        document.getElementById("tagSuggestions").textContent =
+          suggestions.length
+            ? "Suggested Tags: " + suggestions.join(", ")
+            : "No suggestions found.";
+      }
 
-    // Dummy Tag Suggestion
-    function showTagSuggestions() {
-      const title = document.getElementById("paperTitle").value;
-      const abstract = document.getElementById("paperAbstract").value;
-      const suggestions = [];
-      if (/AI|artificial/i.test(title + abstract)) suggestions.push("AI");
-      if (/machine learning|ML/i.test(title + abstract)) suggestions.push("ML");
-      if (/vision|image|object/i.test(title + abstract)) suggestions.push("CV");
-      if (/NLP|language|text/i.test(title + abstract)) suggestions.push("NLP");
-      if (/robot/i.test(title + abstract)) suggestions.push("Robotics");
-      if (/health|medical|patient/i.test(title + abstract)) suggestions.push("Healthcare");
-      if (/data|analytics|big/i.test(title + abstract)) suggestions.push("DataScience");
-      document.getElementById("tagSuggestions").textContent =
-        suggestions.length ? "Suggested Tags: " + suggestions.join(", ") : "No suggestions found.";
-    }
-  </script>
-</body>
+      // Scrolling Button
+      const bottomToTopButton = document.getElementById("backToTop");
+      const icon = bottomToTopButton.querySelector("i");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+          bottomToTopButton.classList.add("show");
+
+          if (
+            window.scrollY + window.innerHeight >=
+            document.documentElement.scrollHeight - 10
+          ) {
+            icon.classList.replace("fa-arrow-down", "fa-arrow-up");
+          } else {
+            icon.classList.replace("fa-arrow-up", "fa-arrow-down");
+          }
+        } else {
+          bottomToTopButton.classList.remove("show");
+        }
+      });
+
+      bottomToTopButton.addEventListener("click", () => {
+        if (icon.classList.contains("fa-arrow-down")) {
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: "smooth",
+          });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    </script>
+  </body>
 </html>
