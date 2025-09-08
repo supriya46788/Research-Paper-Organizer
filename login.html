@@ -4,19 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login - Research Paper Organizer</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/auth.css" />
   </head>
   <body>
     <div class="auth-container">
       <div class="auth-card">
-        <!-- <=============Added Issue #465 =============> -->
         <button class="close-btn" onclick="window.history.back()">✖</button>
-        <!-- <=============Ended Issue #465 =============> -->
         <div class="auth-header">
           <i class="fas fa-book-open"></i>
           <h1>Research Paper Organizer</h1>
@@ -49,31 +44,122 @@
               <span class="checkmark"></span>
               Remember me
             </label>
-            
-            <p class="forgot-link">
-            <a href="forgot-password.html">Forgot your password?</a>
-            </p>
+            <p class="forgot-link"><a href="forgot-password.html">Forgot your password?</a></p>
           </div>
           
           <button type="submit" class="auth-btn">
-            <i class="fas fa-sign-in-alt"></i>
-            Sign In
+            <i class="fas fa-sign-in-alt"></i> Sign In
           </button>
 
           <button type="button" class="google-btn">
-            <i class="fab fa-google"></i>
-            Continue with Google
+            <i class="fab fa-google"></i> Continue with Google
          </button>
          
-          <div class="auth-divider">
-            <span>Don't have an account?</span>
-          </div>
-          
+          <div class="auth-divider"><span>Don't have an account?</span></div>
           <a href="signup.html" class="auth-link">Create new account</a>
         </form>
       </div>
     </div>
-    
-    <script src="js/auth.js"></script>
+
+    <!-- IMPORTANT: type="module" so imports work -->
+    <script type="module">
+      // Firebase imports (module)
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+        GoogleAuthProvider,
+        signInWithPopup,
+        signInWithRedirect,
+        getRedirectResult
+      } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+      // --- Firebase config (keep your project's values) ---
+      const firebaseConfig = {
+        apiKey: "AIzaSyB7T6tQESngOlz0AbY1fgI0DftDuExDpOc",
+        authDomain: "research-paper-organizer-ca69a.firebaseapp.com",
+        projectId: "research-paper-organizer-ca69a",
+        storageBucket: "research-paper-organizer-ca69a.appspot.com", // correct format
+        messagingSenderId: "28007049483",
+        appId: "1:28007049483:web:f0bf8e25c603f532525a0e",
+        measurementId: "G-QLCYSH5QP3"
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
+
+      // Process redirect result (if user used redirect fallback previously)
+      getRedirectResult(auth)
+        .then((result) => {
+          if (result && result.user) {
+            console.log("Redirect sign-in result:", result.user);
+            Swal.fire("Success", `Welcome, ${result.user.displayName || result.user.email}`, "success")
+              .then(()=> window.location.href = "index.html");
+          }
+        })
+        .catch((err) => {
+          console.warn("getRedirectResult error:", err);
+        });
+
+      // Login with email/password
+      const loginForm = document.getElementById("loginForm");
+      if (loginForm) {
+        loginForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const email = document.getElementById("loginEmail").value.trim();
+          const password = document.getElementById("loginPassword").value;
+
+          try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            console.log("Email login success:", userCredential.user);
+            Swal.fire("Success", `Welcome back, ${userCredential.user.email}`, "success")
+              .then(()=> window.location.href = "index.html");
+          } catch (err) {
+            console.error("Email login error:", err);
+            Swal.fire("Login Failed", err.message, "error");
+          }
+        });
+      }
+
+      // Google login (popup with redirect fallback)
+      const googleBtn = document.querySelector(".google-btn");
+      if (googleBtn) {
+        googleBtn.addEventListener("click", async () => {
+          try {
+            const result = await signInWithPopup(auth, provider);
+            console.log("Popup sign-in success:", result.user);
+            Swal.fire("Success", `Welcome, ${result.user.displayName}`, "success")
+              .then(()=> window.location.href = "index.html");
+          } catch (err) {
+            console.warn("Popup sign-in error:", err);
+            // If popup is blocked in some browsers, fall back to redirect:
+            if (err.code === "auth/popup-blocked" || err.code === "auth/cancelled-popup-request" || err.code === "auth/popup-closed-by-user") {
+              try {
+                await signInWithRedirect(auth, provider);
+                // page will redirect — result handled by getRedirectResult above
+              } catch (rErr) {
+                console.error("Redirect fallback error:", rErr);
+                Swal.fire("Error", rErr.message || "Google sign-in failed", "error");
+              }
+            } else {
+              Swal.fire("Google Login Failed", err.message, "error");
+            }
+          }
+        });
+      }
+
+      // Toggle password visibility (global helper)
+      window.togglePassword = function (id) {
+        const input = document.getElementById(id);
+        if (!input) return;
+        input.type = input.type === "password" ? "text" : "password";
+      };
+
+      // Debug helper: show auth state change in console (optional)
+      // import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+      // onAuthStateChanged(auth, user => console.log("Auth state changed:", user));
+    </script>
   </body>
 </html>
