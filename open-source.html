@@ -14,6 +14,84 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+
+    <!-- issue #484 started-->
+     
+    <style>
+  .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  flex-wrap: wrap;
+}
+.hamburger-container {
+  display: none;
+  flex-direction: column;
+  /* justify-content: center; */
+  cursor: pointer;
+  gap: 5px;
+  padding: 10px;
+}
+
+.hamburger-container .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: 0.3s;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hamburger-container {
+    display: flex;
+  }
+
+ 
+  .navbar {
+    display: flex;
+   justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .navbar-right-links {
+    display: none;
+    position: absolute;
+    top: 70px;              /* adjust depending on navbar height */
+    right: 10px;  
+    margin:15px;          /* aligns the box to the right */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    z-index: 1000;
+    width: max-content;     /* only as wide as content */
+    min-width: 150px;  
+  }
+
+  .navbar-right-links.show {
+    display: flex;
+  }
+
+  .nav-item {
+    display: inline-flex;           /* Ensures icon and text are in a row */
+  align-items: center;           /* Vertical centering */
+  justify-content: center;
+    padding: 1rem;
+    width:10rem;
+    font-size: 1rem;
+    
+  }
+}
+</style>
+
+<!-- issue #484 Ended -->
+
     <style>
       /* Reset + Base */
       * {
@@ -657,12 +735,37 @@
     </style>
   </head>
   <body>
-    <a href="index.html" class="back-home"
-      ><i class="fas fa-arrow-left"></i> Back</a
-    >
-    <div id="darkModeToggle" class="dark-toggle">
-      <i class="fas fa-moon"></i>
-    </div>
+
+<!-- issue #484 Started -->
+
+<a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back</a>
+   <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+       <!-- Hamburger div (shows only on mobile) -->
+  <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+        <div class="navbar-right-links">
+            <a href="about.html" class="nav-item">About us</a>
+            <a href="blog.html" class="nav-item">Blogs</a>
+            <a href="Faq.html" class="nav-item">FAQ</a>
+            <a href="contact.html" class="nav-item">Contact Us</a>
+            <a href="tools.html" class="nav-item">Tools</a>
+            <div id="darkModeToggle" class="dark-toggle">
+              <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav> 
+
+<!-- issue #484 Ended -->
+
     <header>
       <h1>🌐 Open Source Community</h1>
       <h2>Discover Projects • Contribute • Grow</h2>
