@@ -7,9 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/pdf-viewer.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/nano.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr"></script>
 </head>
 <body>
     <div class="container">
@@ -87,9 +89,7 @@
                         Note
                     </button>
                     
-                    <div class="color-picker">
-                        <input type="color" id="annotation-color" value="#ffff00" title="Annotation Color">
-                    </div>
+                    <div class="color-picker" id="color-picker"></div>
                     
                     <button id="undo-btn" class="action-btn">
                         <i class="fas fa-undo"></i>
