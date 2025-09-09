@@ -12,6 +12,8 @@ class PDFAnnotator {
         this.isDrawing = false;
         this.lastPosition = null;
         this.currentPenPoints = []; // Track pen drawing points
+        this.eraserSize = 20; // Eraser brush size
+        this.isErasing = false; // Track eraser state
         
         // Wait for DOM to be fully loaded before initializing
         if (document.readyState === 'loading') {
@@ -65,51 +67,25 @@ class PDFAnnotator {
         });
         
         // Color picker
-        const colorPicker = Pickr.create({
-            el: '.color-picker',
-            theme: 'nano',
-
-            default: 'rgba(255, 235, 59, 0.95)',
-
-            swatches: [
-                'rgba(244, 67, 54, 1)',
-                'rgba(233, 30, 99, 0.95)',
-                'rgba(156, 39, 176, 0.9)',
-                'rgba(103, 58, 183, 0.85)',
-                'rgba(63, 81, 181, 0.8)',
-                'rgba(33, 150, 243, 0.75)',
-                'rgba(3, 169, 244, 0.7)',
-                'rgba(0, 188, 212, 0.7)',
-                'rgba(0, 150, 136, 0.75)',
-                'rgba(76, 175, 80, 0.8)',
-                'rgba(139, 195, 74, 0.85)',
-                'rgba(205, 220, 57, 0.9)',
-                'rgba(255, 235, 59, 0.95)',
-                'rgba(255, 193, 7, 1)'
-            ],
-
-            components: {
-
-                // Main components
-                preview: true,
-                opacity: true,
-                hue: true,
-
-                // Input / output Options
-                interaction: {
-                    hex: false,
-                    save: true
-                }
-            }
-        });
+        const colorPicker = document.getElementById('annotation-color');
         if (colorPicker) {
-            colorPicker.on('change', (color, instance) => {
-                let hex = color.toHEXA().toString();
-                this.currentColor = hex;
+            colorPicker.addEventListener('change', (e) => {
+                this.currentColor = e.target.value;
             });
         }
-
-
+        
+        // Eraser size control
+        const eraserSizeControl = document.getElementById('eraser-size');
+        const eraserSizeValue = document.getElementById('eraser-size-value');
+        if (eraserSizeControl) {
+            eraserSizeControl.addEventListener('input', (e) => {
+                const size = parseInt(e.target.value);
+                this.setEraserSize(size);
+                if (eraserSizeValue) {
+                    eraserSizeValue.textContent = size;
+                }
+            });
+        }
         
         // Page navigation
         const prevBtn = document.getElementById('prev-page');
@@ -142,6 +118,7 @@ class PDFAnnotator {
             this.annotationCanvas.addEventListener('mousemove', (e) => this.continueAnnotation(e));
             this.annotationCanvas.addEventListener('mouseup', (e) => this.endAnnotation(e));
             this.annotationCanvas.addEventListener('click', (e) => this.handleCanvasClick(e));
+            this.annotationCanvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
             
             // Touch support for mobile
             this.annotationCanvas.addEventListener('touchstart', (e) => this.handleTouch(e, 'start'));
@@ -359,6 +336,17 @@ class PDFAnnotator {
         document.querySelectorAll('.tool-btn').forEach(btn => btn.classList.remove('active'));
         document.querySelector(`[data-tool="${tool}"]`).classList.add('active');
         
+        // Show/hide eraser size control
+        const eraserSizeControl = document.getElementById('eraser-size-control');
+        if (eraserSizeControl) {
+            eraserSizeControl.style.display = tool === 'eraser' ? 'flex' : 'none';
+        }
+        
+        // Hide eraser preview when switching away from eraser
+        if (tool !== 'eraser') {
+            this.hideEraserPreview();
+        }
+        
         // Update cursor
         this.updateCursor();
     }
@@ -374,6 +362,9 @@ class PDFAnnotator {
                 break;
             case 'note':
                 canvas.style.cursor = 'pointer';
+                break;
+            case 'eraser':
+                canvas.style.cursor = `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="black" stroke-width="2"/></svg>') 12 12, auto`;
                 break;
             default:
                 canvas.style.cursor = 'default';
@@ -411,6 +402,10 @@ class PDFAnnotator {
             this.annotationCtx.lineCap = 'round';
             this.annotationCtx.lineJoin = 'round';
             console.log('Started pen drawing at:', pos);
+        } else if (this.currentTool === 'eraser') {
+            // Start erasing
+            this.isErasing = true;
+            this.eraseAtPosition(pos);
         }
     }
 
@@ -424,6 +419,9 @@ class PDFAnnotator {
             this.currentPenPoints.push(pos);
             this.annotationCtx.lineTo(pos.x, pos.y);
             this.annotationCtx.stroke();
+        } else if (this.currentTool === 'eraser') {
+            // Continue erasing
+            this.eraseAtPosition(pos);
         } else if (['highlight', 'underline', 'strikethrough'].includes(this.currentTool)) {
             // Show preview rectangle
             this.redrawAnnotations();
@@ -453,6 +451,11 @@ class PDFAnnotator {
             }
             // Clear current pen points
             this.currentPenPoints = [];
+        } else if (this.currentTool === 'eraser') {
+            // End erasing
+            this.isErasing = false;
+            this.hideEraserPreview();
+            this.renderAnnotations(); // Re-render to show final result
         } else if (['highlight', 'underline', 'strikethrough'].includes(this.currentTool)) {
             // Save selection annotation
             const rect = {
@@ -481,6 +484,17 @@ class PDFAnnotator {
         if (this.currentTool === 'note') {
             const pos = this.getCanvasPosition(event);
             this.showNoteModal(pos);
+        } else if (this.currentTool === 'eraser') {
+            const pos = this.getCanvasPosition(event);
+            this.saveState();
+            this.eraseAtPosition(pos);
+        }
+    }
+
+    handleMouseMove(event) {
+        if (this.currentTool === 'eraser' && !this.isDrawing) {
+            const pos = this.getCanvasPosition(event);
+            this.showEraserPreview(pos);
         }
     }
 
@@ -618,6 +632,179 @@ class PDFAnnotator {
         this.annotationCtx.strokeStyle = this.currentColor;
         this.annotationCtx.lineWidth = 1;
         this.annotationCtx.strokeRect(rect.x, rect.y, rect.width, rect.height);
+    }
+
+    // Eraser
+    eraseAtPosition(position) {
+        const currentPageAnnotations = this.annotations.filter(ann => ann.page === this.currentPage);
+        let annotationsModified = false;
+        this.showEraserPreview(position);
+        for (let i = currentPageAnnotations.length - 1; i >= 0; i--) {
+            const annotation = currentPageAnnotations[i];
+            const annotationIndex = this.annotations.indexOf(annotation);
+            
+            if (this.isPositionInAnnotation(position, annotation)) {
+                if (annotation.type === 'pen') {
+                    const modifiedPoints = this.erasePenPoints(annotation.points, position);
+                    if (modifiedPoints.length === 0) {
+                        this.annotations.splice(annotationIndex, 1);
+                        annotationsModified = true;
+                    } else if (modifiedPoints.length !== annotation.points.length) {
+                        annotation.points = modifiedPoints;
+                        annotationsModified = true;
+                    }
+                } else if (['highlight', 'underline', 'strikethrough'].includes(annotation.type)) 
+                    if (this.isPositionInRect(position, annotation.rect)) {
+                        this.annotations.splice(annotationIndex, 1);
+                        annotationsModified = true;
+                    }
+                } else if (annotation.type === 'note') {
+                    const distance = Math.sqrt(
+                        Math.pow(position.x - annotation.position.x, 2) + 
+                        Math.pow(position.y - annotation.position.y, 2)
+                    );
+                    if (distance <= this.eraserSize) {
+                        this.annotations.splice(annotationIndex, 1);
+                        annotationsModified = true;
+                    }
+                }
+            }
+        }
+
+        if (annotationsModified) {
+            this.updateAnnotationsList();
+            this.renderAnnotations();
+        }
+    }
+
+    showEraserPreview(position) {
+        if (!this.eraserPreviewCanvas) {
+            this.eraserPreviewCanvas = document.createElement('canvas');
+            this.eraserPreviewCanvas.style.position = 'absolute';
+            this.eraserPreviewCanvas.style.pointerEvents = 'none';
+            this.eraserPreviewCanvas.style.zIndex = '1000';
+            this.eraserPreviewCanvas.style.border = '2px dashed #ff6b6b';
+            this.eraserPreviewCanvas.style.borderRadius = '50%';
+            this.eraserPreviewCanvas.width = this.eraserSize * 2;
+            this.eraserPreviewCanvas.height = this.eraserSize * 2;
+            
+            const canvasContainer = document.getElementById('canvas-wrapper');
+            if (canvasContainer) {
+                canvasContainer.appendChild(this.eraserPreviewCanvas);
+            }
+        }
+        const rect = this.annotationCanvas.getBoundingClientRect();
+        const canvasContainer = document.getElementById('canvas-wrapper');
+        const containerRect = canvasContainer.getBoundingClientRect();
+        
+        this.eraserPreviewCanvas.style.left = (rect.left - containerRect.left + position.x - this.eraserSize) + 'px';
+        this.eraserPreviewCanvas.style.top = (rect.top - containerRect.top + position.y - this.eraserSize) + 'px';
+        this.eraserPreviewCanvas.style.display = 'block';
+    }
+
+    hideEraserPreview() {
+        if (this.eraserPreviewCanvas) {
+            this.eraserPreviewCanvas.style.display = 'none';
+        }
+    }
+
+    isPositionInAnnotation(position, annotation) {
+        switch (annotation.type) {
+            case 'pen':
+                return this.isPositionInPenStroke(position, annotation.points);
+            case 'highlight':
+            case 'underline':
+            case 'strikethrough':
+                return this.isPositionInRect(position, annotation.rect);
+            case 'note':
+                const distance = Math.sqrt(
+                    Math.pow(position.x - annotation.position.x, 2) + 
+                    Math.pow(position.y - annotation.position.y, 2)
+                );
+                return distance <= this.eraserSize;
+            default:
+                return false;
+        }
+    }
+
+    isPositionInPenStroke(position, points) {
+        if (!points || points.length < 2) return false;
+        for (let i = 0; i < points.length; i++) {
+            const distance = Math.sqrt(
+                Math.pow(position.x - points[i].x, 2) + 
+                Math.pow(position.y - points[i].y, 2)
+            );
+            if (distance <= this.eraserSize) {
+                return true;
+            }
+        }
+        for (let i = 0; i < points.length - 1; i++) {
+            if (this.isPositionNearLineSegment(position, points[i], points[i + 1])) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    isPositionNearLineSegment(position, start, end) {
+        const A = position.x - start.x;
+        const B = position.y - start.y;
+        const C = end.x - start.x;
+        const D = end.y - start.y;
+
+        const dot = A * C + B * D;
+        const lenSq = C * C + D * D;
+        
+        if (lenSq === 0) return false;
+
+        let param = dot / lenSq;
+
+        let xx, yy;
+
+        if (param < 0) {
+            xx = start.x;
+            yy = start.y;
+        } else if (param > 1) {
+            xx = end.x;
+            yy = end.y;
+        } else {
+            xx = start.x + param * C;
+            yy = start.y + param * D;
+        }
+
+        const dx = position.x - xx;
+        const dy = position.y - yy;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        return distance <= this.eraserSize;
+    }
+
+    isPositionInRect(position, rect) {
+        return position.x >= rect.x && 
+               position.x <= rect.x + rect.width &&
+               position.y >= rect.y && 
+               position.y <= rect.y + rect.height;
+    }
+
+    erasePenPoints(points, eraserPosition) {
+        return points.filter(point => {
+            const distance = Math.sqrt(
+                Math.pow(eraserPosition.x - point.x, 2) + 
+                Math.pow(eraserPosition.y - point.y, 2)
+            );
+            return distance > this.eraserSize;
+        });
+    }
+
+    setEraserSize(size) {
+        this.eraserSize = Math.max(3, Math.min(100, size));
+        console.log('Eraser size set to:', this.eraserSize);
+        
+        if (this.eraserPreviewCanvas) {
+            this.eraserPreviewCanvas.width = this.eraserSize * 2;
+            this.eraserPreviewCanvas.height = this.eraserSize * 2;
+        }
     }
 
     redrawAnnotations() {
