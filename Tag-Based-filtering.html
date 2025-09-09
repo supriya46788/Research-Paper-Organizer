@@ -374,7 +374,7 @@
         color: #fff;
       }
       /* Base style for both AI Tag + Cloud Sync */
-      .feature-card {
+      /* .feature-card {
         max-width: 600px;
         margin: 30px auto;
         padding: 30px 30px;
@@ -409,7 +409,7 @@
       }
 
       /* Dark mode version */
-      body.dark .feature-card {
+      /* body.dark .feature-card { 
         background: #1e293b;
         color: #e2e8f0;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -424,7 +424,7 @@
 
       body.dark .feature-card button {
         background: #3b82f6;
-      }
+      } */
 
       @media (max-width: 1200px) {
         .papers {
@@ -527,7 +527,7 @@
 
     <!-- ===== AI Tag Suggestion UI ===== -->
 
-    <div class="feature-card">
+    <!-- <div class="feature-card">
       <h2>AI Tag Suggestions</h2>
       <label
         >Paper Title:
@@ -539,7 +539,7 @@
       </label>
       <button onclick="showTagSuggestions()">Get Suggestions</button>
       <p id="tagSuggestions"></p>
-    </div>
+    </div> -->
 
     <!-- ===== Papers Grid ===== -->
     <div class="papers" id="papers">
@@ -634,10 +634,10 @@
       </div>
     </div>
 
-    <script src="js/tag-suggest.js"></script>
-    <script src="js/cloud-sync.js"></script>
+    <!-- <script src="js/tag-suggest.js"></script> -->
+    <!-- <script src="js/cloud-sync.js"></script> -->
     <!-- ===== Cloud Sync ===== -->
-    <div class="feature-card">
+    <!-- <div class="feature-card">
       <h2>Cloud Sync</h2>
       <label>
         Upload Paper (PDF):
@@ -655,7 +655,7 @@
         />
       </label>
       <button onclick="downloadPaperFromCloud()">Download from Cloud</button>
-    </div>
+    </div> -->
 
     <!-- ===== Footer ===== -->
     <footer class="modern-footer" aria-label="Footer">
@@ -744,27 +744,27 @@
       });
 
       // Dummy Tag Suggestion
-      function showTagSuggestions() {
-        const title = document.getElementById("paperTitle").value;
-        const abstract = document.getElementById("paperAbstract").value;
-        const suggestions = [];
-        if (/AI|artificial/i.test(title + abstract)) suggestions.push("AI");
-        if (/machine learning|ML/i.test(title + abstract))
-          suggestions.push("ML");
-        if (/vision|image|object/i.test(title + abstract))
-          suggestions.push("CV");
-        if (/NLP|language|text/i.test(title + abstract))
-          suggestions.push("NLP");
-        if (/robot/i.test(title + abstract)) suggestions.push("Robotics");
-        if (/health|medical|patient/i.test(title + abstract))
-          suggestions.push("Healthcare");
-        if (/data|analytics|big/i.test(title + abstract))
-          suggestions.push("DataScience");
-        document.getElementById("tagSuggestions").textContent =
-          suggestions.length
-            ? "Suggested Tags: " + suggestions.join(", ")
-            : "No suggestions found.";
-      }
+      // function showTagSuggestions() {
+      //   const title = document.getElementById("paperTitle").value;
+      //   const abstract = document.getElementById("paperAbstract").value;
+      //   const suggestions = [];
+      //   if (/AI|artificial/i.test(title + abstract)) suggestions.push("AI");
+      //   if (/machine learning|ML/i.test(title + abstract))
+      //     suggestions.push("ML");
+      //   if (/vision|image|object/i.test(title + abstract))
+      //     suggestions.push("CV");
+      //   if (/NLP|language|text/i.test(title + abstract))
+      //     suggestions.push("NLP");
+      //   if (/robot/i.test(title + abstract)) suggestions.push("Robotics");
+      //   if (/health|medical|patient/i.test(title + abstract))
+      //     suggestions.push("Healthcare");
+      //   if (/data|analytics|big/i.test(title + abstract))
+      //     suggestions.push("DataScience");
+      //   document.getElementById("tagSuggestions").textContent =
+      //     suggestions.length
+      //       ? "Suggested Tags: " + suggestions.join(", ")
+      //       : "No suggestions found.";
+      // }
 
       // Scrolling Button
       const bottomToTopButton = document.getElementById("backToTop");
