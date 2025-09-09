@@ -287,119 +287,11 @@
   <!-- ===== Testimonials Section ===== -->
   <section id="testimonials">
     <h2>What Our Users Say</h2>
+    
     <div class="testimonials-marquee">
-      <div class="testimonials-track">
+      <div class="testimonials-track" id="testimonials-track">
         <!-- First set of testimonials -->
-        <div class="testimonial-card">
-          <img src="testimonialw.png" alt="User Photo" />
-          <h3>Dr. Sarah Lee</h3>
-          <p class="designation">PhD Student, AI Researcher</p>
-          <p class="feedback">
-            "The Research Paper Organizer has transformed how I manage my
-            reading list. It's intuitive and saves me hours every week!"
-          </p>
-          <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
-        </div>
-
-        <div class="testimonial-card">
-          <img src="test1.jpg" alt="User Photo" />
-          <h3>Michael Chen</h3>
-          <p class="designation">Data Scientist</p>
-          <p class="feedback">
-            "I love the clean interface and the ability to tag and search
-            papers instantly. A must-have for researchers!"
-          </p>
-          <p class="tags">💡 Great UI • ⚡ Fast</p>
-        </div>
-
-        <div class="testimonial-card">
-          <img src="testimonialw.png" alt="User Photo" />
-          <h3>Ananya Sharma</h3>
-          <p class="designation">Graduate Student</p>
-          <p class="feedback">
-            "This tool has streamlined my literature review process and made
-            collaboration so much easier."
-          </p>
-          <p class="tags">🤝 Collaboration • 📚 Productivity</p>
-        </div>
-
-        <div class="testimonial-card">
-          <img src="test1.jpg" alt="User Photo" />
-          <h3>Dr. James Wilson</h3>
-          <p class="designation">Research Professor</p>
-          <p class="feedback">
-            "Fantastic tool for academic research! The organization features
-            help me stay on top of the latest papers in my field."
-          </p>
-          <p class="tags">🎓 Academic • 📖 Organization</p>
-        </div>
-
-        <div class="testimonial-card">
-          <img src="testimonialw.png" alt="User Photo" />
-          <h3>Elena Rodriguez</h3>
-          <p class="designation">PhD Candidate</p>
-          <p class="feedback">
-            "The citation feature alone saves me countless hours. Perfect for
-            literature reviews and thesis writing!"
-          </p>
-          <p class="tags">📝 Citations • ⚡ Efficient</p>
-        </div>
-
-        <!-- Duplicate set for seamless loop -->
-        <div class="testimonial-card">
-          <img src="testimonialw.png" alt="User Photo" />
-          <h3>Dr. Sarah Lee</h3>
-          <p class="designation">PhD Student, AI Researcher</p>
-          <p class="feedback">
-            "The Research Paper Organizer has transformed how I manage my
-            reading list. It's intuitive and saves me hours every week!"
-          </p>
-          <p class="tags">⭐ Ease of Use • ⏱ Time-Saving</p>
-        </div>
-
-        <div class="testimonial-card">
-          <img src="test1.jpg" alt="User Photo" />
-          <h3>Michael Chen</h3>
-          <p class="designation">Data Scientist</p>
-          <p class="feedback">
-            "I love the clean interface and the ability to tag and search
-            papers instantly. A must-have for researchers!"
-          </p>
-          <p class="tags">💡 Great UI • ⚡ Fast</p>
-        </div>
-
-        <div class="testimonial-card">
-          <img src="testimonialw.png" alt="User Photo" />
-          <h3>Ananya Sharma</h3>
-          <p class="designation">Graduate Student</p>
-          <p class="feedback">
-            "This tool has streamlined my literature review process and made
-            collaboration so much easier."
-          </p>
-          <p class="tags">🤝 Collaboration • 📚 Productivity</p>
-        </div>
-
-        <div class="testimonial-card">
-          <img src="test1.jpg" alt="User Photo" />
-          <h3>Dr. James Wilson</h3>
-          <p class="designation">Research Professor</p>
-          <p class="feedback">
-            "Fantastic tool for academic research! The organization features
-            help me stay on top of the latest papers in my field."
-          </p>
-          <p class="tags">🎓 Academic • 📖 Organization</p>
-        </div>
-
-        <div class="testimonial-card">
-          <img src="testimonialw.png" alt="User Photo" />
-          <h3>Elena Rodriguez</h3>
-          <p class="designation">PhD Candidate</p>
-          <p class="feedback">
-            "The citation feature alone saves me countless hours. Perfect for
-            literature reviews and thesis writing!"
-          </p>
-          <p class="tags">📝 Citations • ⚡ Efficient</p>
-        </div>
+        
       </div>
     </div>
   </section>
@@ -637,32 +529,226 @@
     body.dark-mode .testimonial-card img {
       border-color: #374151;
     }
+    /* default: running */
+.testimonials-track {
+  animation-play-state: running;
+}
+
+/* pause when hovering anywhere over the section */
+#testimonials:hover .testimonials-track {
+  animation-play-state: paused !important;
+}
+
   </style>
 
   <!-- ===== JS Marquee Enhancement ===== -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Add smooth marquee functionality
-      const marqueeTrack = document.querySelector(".testimonials-track");
+(() => {
+  // ====== CONFIG ======
+  const REPO = "supriya46788/Research-Paper-Organizer"; // owner/repo
+  const STARGAZERS_API = `https://api.github.com/repos/${REPO}/stargazers?per_page=30`;
 
-      // Optional: Add click functionality to testimonial cards
-      const cards = document.querySelectorAll(".testimonial-card");
-      cards.forEach((card) => {
-        card.addEventListener("click", () => {
-          // Add a subtle pulse effect when clicked
-          card.style.transform = "scale(0.98)";
-          setTimeout(() => {
-            card.style.transform = "";
-          }, 150);
-        });
-      });
+  // Generic, positive blurbs (rotated)
+  const NICE_BLURBS = [
+  "The Research Paper Organizer makes it easy to keep my reading list structured and searchable. It’s saved me hours during literature reviews 📚.",
+  
+  "I finally have one place to tag, search, and revisit all my papers. Simple to use and incredibly effective ⭐.",
+  
+  "This tool has streamlined how I organize references and notes. What used to take hours now takes just minutes ⚡.",
+  
+  "Managing citations and keeping track of papers used to be stressful. With this project, the process feels smooth and effortless.",
+  
+  "The clean interface helps me focus on research rather than sorting through messy folders. It’s a huge productivity boost.",
+  
+  "I use it daily to track what I’ve read and what’s pending. It keeps my workflow organized and efficient.",
+  
+  "Collaboration is much easier now—sharing papers and staying aligned with my team is seamless 🤝.",
+  
+  "Searching across hundreds of papers takes seconds instead of hours. It’s become a must-have for my thesis work.",
+  
+  "This project keeps everything organized without unnecessary complexity. It’s reliable, fast, and very intuitive.",
+  
+  "Exactly what I needed to stay on top of my reading and references. It fits perfectly into my academic workflow."
+];
 
-      // Reduce motion for users who prefer it
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        marqueeTrack.style.animationDuration = "30s";
+
+  // ====== UTIL ======
+  function selectTrack() {
+    // Prefer explicit ID if present; otherwise first .testimonials-track
+    let track = document.getElementById("testimonials-track");
+    if (!track) {
+      track = document.querySelector(".testimonials-track");
+    }
+    return track;
+  }
+
+  function ensureTestimonialsSkeleton() {
+    // Make sure the base structure exists even if HTML had only the section
+    let section = document.getElementById("testimonials");
+    if (!section) return null;
+
+    // Find or create marquee container
+    let marquee = section.querySelector(".testimonials-marquee");
+    if (!marquee) {
+      marquee = document.createElement("div");
+      marquee.className = "testimonials-marquee";
+      section.appendChild(marquee);
+    }
+
+    // Find or create track
+    let track = selectTrack();
+    if (!track) {
+      track = document.createElement("div");
+      track.className = "testimonials-track";
+      track.id = "testimonials-track";
+      marquee.appendChild(track);
+    }
+    return track;
+  }
+
+  function cardHTML(user, i) {
+    const blurb = NICE_BLURBS[i % NICE_BLURBS.length];
+    // We use @login as the visible name, link to profile, and show avatar
+    return `
+      <div class="testimonial-card">
+        <img src="${user.avatar_url}" alt="${user.login}'s avatar" />
+        <h3><a href="${user.html_url}" target="_blank" rel="noopener noreferrer">@${user.login}</a></h3>
+        <p class="designation">Contributor</p>
+        <p class="feedback">"${blurb}"</p>
+        <p class="tags">⭐ Open Source • 📖 Research</p>
+      </div>
+    `;
+  }
+
+  function placeholderHTML(message) {
+    return `
+      <div class="testimonial-card">
+        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub logo" />
+        <h3>@you</h3>
+        <p class="designation">Be the first stargazer!</p>
+        <p class="feedback">"${message}"</p>
+        <p class="tags">✨ Community • 🚀 Getting Started</p>
+      </div>
+    `;
+  }
+
+  async function fetchStargazers() {
+    const res = await fetch(STARGAZERS_API, {
+      headers: {
+        "Accept": "application/vnd.github+json"
       }
     });
-  </script>
+    if (!res.ok) {
+      throw new Error(`GitHub API error: ${res.status}`);
+    }
+    const data = await res.json();
+    // Defensive: ensure array
+    return Array.isArray(data) ? data : [];
+  }
+
+  function duplicateForSeamlessLoop(track) {
+    // Duplicate all children once to allow your translateX(-50%) loop
+    const firstSet = Array.from(track.children);
+    if (firstSet.length === 0) return;
+    firstSet.forEach(node => track.appendChild(node.cloneNode(true)));
+  }
+
+  function attachPulseOnClick(scope=document) {
+    const cards = scope.querySelectorAll(".testimonial-card");
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        card.style.transform = "scale(0.98)";
+        setTimeout(() => {
+          card.style.transform = "";
+        }, 150);
+      });
+    });
+  }
+
+  function applyReducedMotion(track) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Longer duration = slower movement
+      track.style.animationDuration = "30s";
+    }
+  }
+
+  async function init() {
+    // Wait for DOM
+    if (document.readyState === "loading") {
+      await new Promise(r => document.addEventListener("DOMContentLoaded", r, { once: true }));
+    }
+
+    const track = ensureTestimonialsSkeleton();
+    if (!track) {
+      console.warn("Testimonials section (#testimonials) not found.");
+      return;
+    }
+
+    // Clear any existing static cards (from the old HTML)
+    track.innerHTML = "";
+
+    try {
+      const stargazers = await fetchStargazers();
+
+      if (stargazers.length === 0) {
+        track.innerHTML = placeholderHTML("Star the repo to show up here.");
+      } else {
+        // Build one full set
+        const firstSetHTML = stargazers
+          .map((u, i) => cardHTML(u, i))
+          .join("");
+
+        track.innerHTML = firstSetHTML;
+
+        // If very few stargazers, pad by reusing to ensure marquee looks filled
+        const minCardsForNiceMarquee = 8;
+        if (track.children.length < minCardsForNiceMarquee) {
+          const needed = minCardsForNiceMarquee - track.children.length;
+          for (let i = 0; i < needed; i++) {
+            const clone = track.children[i % track.children.length].cloneNode(true);
+            track.appendChild(clone);
+          }
+        }
+
+        // Duplicate the set once for seamless loop
+        duplicateForSeamlessLoop(track);
+      }
+    } catch (err) {
+      console.error(err);
+      track.innerHTML = placeholderHTML("Having trouble loading stargazers—please refresh later.");
+    }
+
+    // Bind behaviors
+    attachPulseOnClick(track);
+    applyReducedMotion(track);
+  }
+
+  // Kick off
+  init();
+})();
+</script>
+
+<script>
+  (function setMarqueeSpeed(){
+    const track = document.querySelector(".testimonials-track");
+    if (!track) return;
+
+    // 👇 Set your desired speed here
+    const SECS = 100; // e.g. 45s = slower, try 60 for even slower
+
+    // Force duration and the full animation shorthand with !important
+    track.style.setProperty("animation-duration", SECS + "s", "important");
+    track.style.setProperty("animation", `marquee ${SECS}s linear infinite`, "important");
+
+    // If your page re-renders this node later, re-apply once on the next tick too
+    setTimeout(() => {
+      track.style.setProperty("animation-duration", SECS + "s", "important");
+      track.style.setProperty("animation", `marquee ${SECS}s linear infinite`, "important");
+    }, 0);
+  })();
+</script>
+
+
 
   <!-- CTA Section -->
   <section class="cta">
