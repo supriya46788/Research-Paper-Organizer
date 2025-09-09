@@ -30,7 +30,7 @@
         .catch((err) => console.error("SW registration failed:", err));
     });
   }
-  
+
 </script>
 
 <body>
@@ -82,7 +82,13 @@
     <div class="hero-container">
       <!-- Left side -->
       <div class="hero-content animate">
-        <h1>Organize Your Research Papers Like Never Before</h1>
+        <h1 class="animated-title">
+          <span class="line">Organize Your Research</span><br>
+          <span class="line">Papers Like Never</span><br>
+          <span class="line">Before</span>
+        </h1>
+
+
         <p>
           Streamline your academic workflow with our intelligent research
           paper management system. Track, organize, and cite your papers
@@ -222,7 +228,7 @@
       </div>
 
       <div class="steps-container">
-        <div class="step fade-in"  onclick="window.location.href='signup.html'" >
+        <div class="step fade-in" onclick="window.location.href='signup.html'">
           <!-- onclick for create your account -->
           <div class="step-number">1</div>
           <div class="step-content">
@@ -261,27 +267,27 @@
 
   <!-- Stats Section -->
   <section class="stats fade-in">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number" data-target="10000">0</div>
-        <div class="stat-label">Researchers</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number" data-target="500000">0</div>
-        <div class="stat-label">Papers Organized</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number" data-target="50">0</div>
-        <div class="stat-label">Universities</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number" data-target="99.9" data-decimals="1">0</div>
-        <div class="stat-label">Uptime (%)</div>
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="10000">0</div>
+          <div class="stat-label">Researchers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500000">0</div>
+          <div class="stat-label">Papers Organized</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-label">Universities</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="99.9" data-decimals="1">0</div>
+          <div class="stat-label">Uptime (%)</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
   <!-- ===== Testimonials Section ===== -->
@@ -1147,7 +1153,8 @@
         <h4>Connect</h4>
         <div class="social-icons">
           <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i
+              class="fab fa-linkedin"></i>
           </a>
           <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i>
           </a>
@@ -1164,10 +1171,22 @@
   <script src="landing.js"></script>
 
   <script>
+    document.querySelectorAll(".line").forEach((line, lineIndex) => {
+      const letters = line.textContent.split("");
+      line.textContent = "";
+
+      letters.forEach((letter, i) => {
+        const span = document.createElement("span");
+        span.textContent = letter;
+        span.style.animationDelay = `${(i * 0.05) + (lineIndex * 0.8)}s`;
+        line.appendChild(span);
+      });
+    });
+
     document.addEventListener("DOMContentLoaded", function () {
       const loadingScreen = document.getElementById("loading-screen");
       const loadingText = document.getElementById("loading-text");
-      
+
 
       const target = document.querySelector(".typing-text");
       const progressPercentage = document.querySelector(
@@ -1187,63 +1206,96 @@
       const hasSeenLoading = localStorage.getItem("hasSeenLoading");
 
       //changed: Only run loadinganimation if first-time visitor
-      if ( !hasSeenLoading ){
+      if (!hasSeenLoading) {
 
-      // Enhanced text transition function
-      function updateLoadingText() {
-        index = (index + 1) % texts.length;
+        // Enhanced text transition function
+        function updateLoadingText() {
+          index = (index + 1) % texts.length;
 
-        // Add smooth slide out effect with bounce
-        loadingText.style.transform = "translateY(-25px) scale(0.95)";
-        loadingText.style.opacity = "0";
+          // Add smooth slide out effect with bounce
+          loadingText.style.transform = "translateY(-25px) scale(0.95)";
+          loadingText.style.opacity = "0";
 
+          setTimeout(() => {
+            loadingText.innerHTML = texts[index] + '<span class="dots"></span>';
+            loadingText.style.transform = "translateY(25px) scale(0.95)";
+
+            // Trigger reflow to ensure transform is applied
+            loadingText.offsetHeight;
+
+            // Slide in with smooth transition and bounce
+            loadingText.style.transform = "translateY(0) scale(1)";
+            loadingText.style.opacity = "1";
+          }, 300);
+        }
+
+        // Update progress percentage
+        function updateProgress() {
+          progress = Math.min(progress + Math.random() * 15 + 10, 100);
+          if (progressPercentage) {
+            progressPercentage.textContent = Math.round(progress) + "%";
+          }
+
+          if (progress < 100) {
+            setTimeout(updateProgress, 1200 + Math.random() * 800);
+          }
+        }
+
+        // Enhanced entrance animation
         setTimeout(() => {
-          loadingText.innerHTML = texts[index] + '<span class="dots"></span>';
-          loadingText.style.transform = "translateY(25px) scale(0.95)";
+          loadingScreen.classList.add("show");
+          updateProgress();
+        }, 100);
 
-          // Trigger reflow to ensure transform is applied
-          loadingText.offsetHeight;
+        // Change text every 2.5 seconds for better rhythm
+        const textInterval = setInterval(updateLoadingText, 2500);
 
-          // Slide in with smooth transition and bounce
-          loadingText.style.transform = "translateY(0) scale(1)";
-          loadingText.style.opacity = "1";
-        }, 300);
-      }
+        // Hide loading screen after 6 seconds with enhanced exit animation
+        setTimeout(() => {
+          clearInterval(textInterval); // stop changing text
+          loadingScreen.classList.add("hidden");
 
-      // Update progress percentage
-      function updateProgress() {
-        progress = Math.min(progress + Math.random() * 15 + 10, 100);
-        if (progressPercentage) {
-          progressPercentage.textContent = Math.round(progress) + "%";
-        }
+          //changed: Mark that user has seen loading
+          localStorage.setItem("hasSeenLoading", "true");
+          //Added typewriter effect in heading
+          if (target) {
+            const text = target.textContent;
+            target.textContent = "";
+            let i = 0;
 
-        if (progress < 100) {
-          setTimeout(updateProgress, 1200 + Math.random() * 800);
-        }
-      }
+            function typeWriter() {
+              if (i < text.length) {
+                target.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 80);
+              }
+            }
+            typeWriter();
+          }
+          //after that added sideLeft and slide right animation
+          document.querySelector(".hero-content").classList.add("animate");
+          document.querySelector(".hero-image").classList.add("animate");
 
-      // Enhanced entrance animation
-      setTimeout(() => {
-        loadingScreen.classList.add("show");
-        updateProgress();
-      }, 100);
+          // Add exit preparation with scale and rotation
+          loadingScreen.style.transform = "scale(1.08) rotate(1deg)";
+          loadingScreen.style.filter = "blur(1px)";
 
-      // Change text every 2.5 seconds for better rhythm
-      const textInterval = setInterval(updateLoadingText, 2500);
-
-      // Hide loading screen after 6 seconds with enhanced exit animation
-      setTimeout(() => {
-        clearInterval(textInterval); // stop changing text
+          setTimeout(() => {
+            loadingScreen.classList.add("hidden");
+            //after that added sideLeft and slide right animation
+            document.querySelector(".hero-content").classList.add("animate");
+            document.querySelector(".hero-image").classList.add("animate");
+          }, 300);
+        }, 6000); // adjust as needed
+      } else {
+        //changed: Skip loading entirely for returning visitors
         loadingScreen.classList.add("hidden");
 
-        //changed: Mark that user has seen loading
-        localStorage.setItem("hasSeenLoading", "true");
-        //Added typewriter effect in heading
+        //Run typewriter effect and hero animations immediately
         if (target) {
           const text = target.textContent;
           target.textContent = "";
           let i = 0;
-
           function typeWriter() {
             if (i < text.length) {
               target.textContent += text.charAt(i);
@@ -1253,44 +1305,11 @@
           }
           typeWriter();
         }
-        //after that added sideLeft and slide right animation
         document.querySelector(".hero-content").classList.add("animate");
         document.querySelector(".hero-image").classList.add("animate");
-
-        // Add exit preparation with scale and rotation
-        loadingScreen.style.transform = "scale(1.08) rotate(1deg)";
-        loadingScreen.style.filter = "blur(1px)";
-
-        setTimeout(() => {
-          loadingScreen.classList.add("hidden");
-          //after that added sideLeft and slide right animation
-          document.querySelector(".hero-content").classList.add("animate");
-          document.querySelector(".hero-image").classList.add("animate");
-        }, 300);
-      }, 6000); // adjust as needed
-    } else {
-      //changed: Skip loading entirely for returning visitors
-      loadingScreen.classList.add("hidden");
-
-      //Run typewriter effect and hero animations immediately
-      if (target) {
-      const text = target.textContent;
-      target.textContent = "";
-      let i = 0;
-      function typeWriter() {
-        if (i < text.length) {
-          target.textContent += text.charAt(i);
-          i++;
-          setTimeout(typeWriter, 80);
-        }
       }
-      typeWriter();
-    }
-    document.querySelector(".hero-content").classList.add("animate");
-    document.querySelector(".hero-image").classList.add("animate");
-  } 
-});
-    
+    });
+
 
     //after executing slideright remove it so that other animation can start
     setTimeout(() => {
