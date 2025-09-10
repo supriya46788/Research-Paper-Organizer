@@ -232,7 +232,9 @@ This project is licensed under the MIT License - see the [`License`](https://git
 
 **👨‍💻 Built with ❤️ by Research-Paper-Organizer Team**
 
-**❤️ Pandey Supriya and Contributors ❤️** [open an issue](https://github.com/supriya46788/Research-Paper-Organizer/issues) | [Watch Demo](https://supriya46788.github.io/Research-Paper-Organizer/)
+**❤️Supriya Pandey and Contributors ❤️**
+
+[open an issue](https://github.com/supriya46788/Research-Paper-Organizer/issues) | [Watch Demo](https://supriya46788.github.io/Research-Paper-Organizer/)
 
 ---
 
