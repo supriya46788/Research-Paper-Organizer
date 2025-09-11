@@ -81,7 +81,11 @@
 .label-1 {
   margin-top: 10px;
   background: linear-gradient(90deg, #0056b3, #00BFFF); /* darker to lighter blue */
-  -webkit-background-clip: text;
+  /* Updated code for compatibility */
+  -webkit-background-clip: text; /* Chrome, Safari */
+  -moz-background-clip: text;    /* Firefox (optional, older versions) */
+  background-clip: text;         /* Standard property */
+
 
   -webkit-text-fill-color: transparent;
   font-weight: 700; /* bolder */
@@ -91,7 +95,11 @@
 .label-1:hover {
   margin-top: 10px;
   background: linear-gradient(90deg, #185ba3, #add3e0); /* darker to lighter blue */
-  -webkit-background-clip: text;
+  /* Updated code for compatibility */
+-webkit-background-clip: text; /* Chrome, Safari */
+-moz-background-clip: text;    /* Firefox (optional, older versions) */
+background-clip: text;         /* Standard property */
+
   -webkit-text-fill-color: transparent;
   font-size: 17px;  /* increased size */
 }
@@ -1297,14 +1305,13 @@ button#chatbase-bubble-button div {
     right: 15px !important;
     left: auto !important;
     top: auto !important;
-    border-radius: 16px !important;
-    background: transparent !important; /* remove white bg */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+    border-radius: 16px !important; /* remove white bg */
+    box-shadow: 0 4px 12px rgba(236, 233, 233, 0.3) !important;
   }
 
   #chatbase-bubble-window iframe {
     border-radius: 16px !important;
-    background: black !important; /* chatbot stays black */
+    background: rgb(193, 21, 21) !important; /* chatbot stays black */
   }
 }
 </style>
@@ -1326,13 +1333,14 @@ button#chatbase-bubble-button div {
             const onLoad = function(){
                 const script = document.createElement("script");
                 script.src = "https://www.chatbase.co/embed.min.js";
-                script.id = "SZQX20er6m-s8iNiFcBtK";
+                script.id = "ubDfCZ-KoiucQjQos4LDA";
                 script.domain = "www.chatbase.co";
                 document.body.appendChild(script)
             };
             if(document.readyState === "complete"){ onLoad() }
             else { window.addEventListener("load", onLoad) }
         })();
+        
     </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
