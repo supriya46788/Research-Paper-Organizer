@@ -130,17 +130,8 @@ body.dark-mode .nav-item:hover {
 
 /* Header Styles */
 .header {
-  background-color: #7298e5;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
-  padding: 1.8rem;
-  margin-bottom: 1.5rem;
-}
-/* Header Styles */
-.header {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  border: none;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
   display: flex;
@@ -215,14 +206,13 @@ body.dark-mode #menu-items-container {
 .profile-container {
   max-width: 400px;
   margin: 3rem auto;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(99,102,241,0.08);
+  background: transparent;
+  border: none;
   padding: 2rem 2.5rem;
   text-align: left;
 }
 body.dark-mode .profile-container {
-  background: #1f2937;
+  background: transparent;
   color: #f3f4f6;
 }
 .profile-info p {
@@ -473,9 +463,8 @@ body.dark-mode #footer-outer h3 {
 }
 /* Search and Filter Bar */
 .search-bar {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  border: none;
   padding: 1rem;
   margin-bottom: 1.5rem;
 }
@@ -559,9 +548,8 @@ body.dark-mode #footer-outer h3 {
 
 /* Papers List */
 .papers-section {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  border: none;
   padding: 1.5rem;
 }
 
@@ -591,12 +579,11 @@ body.dark-mode #footer-outer h3 {
   margin-top: 20px;
 }
 .paper-card {
-  background-color: #7298e5;
-  border: 1px solid #141414;
-  border-radius: 12px;
+  background-color: transparent;
+  border: none;
   padding: 1.2rem;
   cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.35s ease;
   position: relative;
   overflow: hidden;
 }
@@ -606,41 +593,23 @@ body.dark-mode #footer-outer h3 {
 
 .paper-card {
   font-family: 'Poppins', sans-serif;
-  background-color: #7298e5;
-  border: 1px solid #141414;
-  border-radius: 12px;
+  background-color: transparent;
+  border: none;
   padding: 1.2rem;
   cursor: pointer;
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition: transform 0.35s ease;
   position: relative;
   overflow: hidden;
 }
 
-/* Animated gradient border effect with blue-violet tones */
+/* Remove gradient border effect */
 .paper-card::before {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(45deg, #4f46e5, #3b82f6, #06b6d4, #8b5cf6);
-  background-size: 300% 300%;
-  border-radius: 14px;
-  z-index: -1;
-  animation: borderGlow 6s ease infinite;
-  opacity: 0;
-  transition: opacity 0.35s ease;
+  display: none;
 }
 
-/* Hover lift + glow */
+/* Hover effect without box shadow */
 .paper-card:hover {
   transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
-}
-
-.paper-card:hover::before {
-  opacity: 1;
 }
 
 @keyframes borderGlow {
@@ -740,9 +709,8 @@ body.dark-mode #footer-outer h3 {
 
 /* Paper Details */
 .details-section {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  border: none;
   padding: 1.5rem;
   position: sticky;
   top: 1rem;
@@ -894,9 +862,8 @@ body.dark-mode #footer-outer h3 {
 }
 
 .modal {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  border: none;
   max-width: 42rem;
   width: 100%;
   max-height: 90vh;
@@ -1888,9 +1855,8 @@ body.dark-mode .paper-rating .rating-text {
   gap: 0.5rem;
   margin-top: 0.75rem;
   padding: 0.5rem;
-  background-color: #f9fafb;
-  border-radius: 6px;
-  border: 1px solid #e5e7eb;
+  background-color: transparent;
+  border: none;
 }
 
 .rating-label {
@@ -1932,8 +1898,8 @@ body.dark-mode .paper-rating .rating-text {
 
 /* Dark mode for quick rating */
 body.dark-mode .paper-quick-rating {
-  background-color: #374151;
-  border-color: #4b5563;
+  background-color: transparent;
+  border: none;
 }
 
 body.dark-mode .rating-label,
@@ -2302,9 +2268,8 @@ body.dark-mode .chatbot-input-container {
   align-items: center;
   margin-bottom: 1rem;
   padding: 1rem;
-  background: rgba(47, 44, 160, 0.05);
-  border-radius: 10px;
-  border: 1px solid rgba(47, 44, 160, 0.1);
+  background: transparent;
+  border: none;
 }
 
 .tts-btn {
@@ -2411,8 +2376,8 @@ body.dark-mode .chatbot-input-container {
 
 /* Dark mode styles for TTS controls */
 body.dark-mode .tts-controls {
-  background: rgba(70, 152, 229, 0.1);
-  border-color: rgba(70, 152, 229, 0.2);
+  background: transparent;
+  border: none;
 }
 
 body.dark-mode .speed-control label {
