@@ -59,6 +59,61 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 
 ----
 
+**🛠️ Tech Stack**
+ - HTML 
+ - CSS
+ - JavaScript 
+ - Python
+
+----
+
+# 📂 Research Paper Organizer - Project Structure
+
+📦 RESEARCH-PAPER-ORGANIZER    
+├── 📂 backend                 # Backend-related code (APIs, logic)  
+├── 📂 css                     # Stylesheets    
+├── 📂 docs                    # Documentation files  
+├── 📂 favicon                 # Favicon files  
+├── 📂 images                  # Project images (UI, icons, etc.)   
+├── 📂 js                      # JavaScript files    
+├── .gitignore                 # Git ignore rules  
+├── License                    # License file  
+├──landing.js
+├──landing.css
+├── index.html                 # Main entry page  
+├── about.html / about_new.html  
+├── add-organize-papers.html  
+├── ats-checker.html  
+├── auth-callback.html  
+├── blog.html  
+├── contact.html  
+├── faq.html  
+├── forgot-password.html  
+├── glossary.html  
+├── hemingway.html  
+├── home.html  
+├── login.html  
+├── manage.py                  
+├── masthead.html  
+├── offline.html  
+├── open-source.html  
+├── pdf-annotator.html  
+├── pdf-viewer.html  
+├── privacy.html  
+├── profile.html  
+├── profile-settings.html  
+├── roadmap.html  
+├── signup.html  
+├── site.webmanifest  
+├── summarize.html  
+├── terms-of-service.html  
+├── tools.html  
+│  
+├── Research_Paper_Summary.py  
+└── package.json               
+
+----
+
 **💡 How to Use**
 
 1. Clone this repo:
@@ -69,6 +124,24 @@ git clone https://github.com/supriya46788/Research-Paper-Organizer.git
 
 2. Open `index.html` in your browser (right click and open with live server).
 3. Start adding your research papers directly.
+
+----
+
+## 🚀 Getting Started
+
+Before running the project, make sure you have the following installed:
+
+### ✅ Prerequisites
+
+- **Git** – to clone the repository  
+
+- **Python 3.8+** – required for backend scripts (`manage.py`, `Research_Paper_Summary.py`)  
+  
+- **Node.js & npm** – required for frontend dependencies (`package.json`)  
+  
+- **Code Editor (VS Code recommended)** – for editing and running the project  
+
+- **Web Browser (Chrome/Firefox)** – to view the HTML pages
 
 ----
 

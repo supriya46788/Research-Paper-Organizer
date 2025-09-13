@@ -16,7 +16,33 @@ body {
 
 .google-btn {
   width: 100%;
-  background: #4285F4;
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 1rem;
+
+}
+
+.google-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  font-size: 0.88rem;
+  box-shadow: 2px 2px #1d4ed8 ;
+}
+
+.auth-btn {
+  width: 100%;
+  background: #2563eb;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -32,9 +58,11 @@ body {
   margin-top: 1rem;
 }
 
-.google-btn:hover {
-  background: #357ae8;
+.auth-btn:hover {
+  background: #1d4ed8;
   transform: translateY(-1px);
+  font-size: 0.88rem;
+  box-shadow: 2px 2px #1d4ed8;
 }
 
 .auth-container {
@@ -68,6 +96,7 @@ body {
 
 .close-btn:hover {
   background: #e5e7eb;
+  font-size: 1.05rem;
 }
 /* <=============Ended Issue #480 =============> */
 
@@ -271,6 +300,7 @@ body {
 
 .password-toggle:hover {
   color: #6b7280;
+  border: 2px solid #1d4ed8;
 }
 
 .password-toggle i{
@@ -319,12 +349,15 @@ body {
   color: #6b7280;
   cursor: pointer;
   user-select: none;
+  
 }
 
 .checkbox-container input[type="checkbox"] {
   width: 1rem;
   height: 1rem;
   accent-color: #2563eb;
+   box-shadow: 2px shadow #1d4ed8 ;
+
 }
 
 .forgot-link,
@@ -340,28 +373,7 @@ body {
   color: #1d4ed8;
 }
 
-.auth-btn {
-  width: 100%;
-  background: #2563eb;
-  color: white;
-  border: none;
-  padding: 0.875rem 1.5rem;
-  border-radius: 8px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  transition: background-color 0.2s, transform 0.1s;
-  margin-top: 0.5rem;
-}
 
-.auth-btn:hover {
-  background: #1d4ed8;
-  transform: translateY(-1px);
-}
 
 .auth-btn:active {
   transform: translateY(0);
@@ -375,6 +387,8 @@ body {
   text-align: center;
   margin: 1rem 0;
   position: relative;
+  margin-top: 1px;
+
 }
 
 .auth-divider::before {
@@ -397,18 +411,22 @@ body {
 .auth-link {
   display: block;
   text-align: center;
-  color: #2563eb;
+  color: #1d4ed8;
   text-decoration: none;
   font-weight: 500;
   padding: 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 2px solid #d1d5db;
   border-radius: 8px;
   transition: all 0.2s;
+  position: relative;
+  margin-top: 2px;
 }
 
 .auth-link:hover {
-  background: #f8fafc;
+  background-color: #f8fafc;
   border-color: #2563eb;
+  box-shadow: 2px 2px #1d4ed8;
+  font-weight: 600;
 }
 
 /* Mobile Responsive - Matching your existing breakpoints */
@@ -547,9 +565,9 @@ body.dark-mode .checkbox-container {
   color: #9ca3af;
 }
 
-/* body.dark-mode .auth-divider::before {
+ body.dark-mode .auth-divider::before {
   background: #374151;
-} */
+} 
 
 body.dark-mode .auth-divider span {
   background: #1f2937;
