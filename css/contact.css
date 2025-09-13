@@ -636,12 +636,16 @@ body.dark-mode {
       border-radius: 50%;
       color: #fff;
       transition: 0.3s;
+      text-decoration: none;
+      border-bottom: none;
     }
 
     .social-icons a:hover {
       background: #fff;
       color: #2c5aa0;
       transform: scale(1.1);
+      text-decoration: none;
+      border-bottom: none;
     }
 
     .footer-bottom {
