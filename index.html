@@ -9,6 +9,7 @@
 
   <link rel="stylesheet" href="./css/style.css" />
   <link rel="stylesheet" href="landing.css" />
+  <link rel="stylesheet" href="slider.css">
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="landing.css" />
@@ -47,12 +48,19 @@
       <div class="progress-percentage">0%</div>
     </div>
   </div>
+
+
+
+
   <!-- Navigation -->
 
   <nav class="landing-nav">
     <div class="nav-container">
       <a href="#top" class="nav-brand">
+        
+        
         <i class="fas fa-book-open"></i>
+        
         <span>Research Paper Organizer</span>
       </a>
 
@@ -71,14 +79,114 @@
         </button>
       </div>
 
-      <div class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-      </div>
+
+</div>
+
+
+</div>
+
     </div>
   </nav>
 
+  <br><br><br>
+
+<!-- Carosule Slider -->
+       
+    <div class="slider">
+
+
+        <div class="list">
+
+            <div class="item">
+                <img src="./images/SMART SEARCH 1.jpg" alt="">
+
+                <div class="content">
+                    <div class="title">Smart Search</div>
+                    
+                    <div class="description">
+                       Find papers instantly with intelligent search across titles, authors, abstracts, and tags.
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="./images/SMART ORGANISATION.jpg" alt="">
+
+                <div class="content">
+                    <div class="title">Smart Organization</div>
+                  
+                    <div class="description">
+                       Categorize papers by topics, tags, and custom labels. Never lose track of important research.
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="./images/CLOUD SYNC.png" alt="">
+
+                <div class="content">
+                    <div class="title">Cloud Sync</div>
+                   
+                    <div class="description">
+                       Access your research library from anywhere with secure cloud storage.
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="item">
+                <img src="./images/PDF MANAGAMENT 1.jpg" alt="">
+
+                <div class="content">
+                    <div class="title">PDF Management</div>
+                   
+                    <div class="description">
+                        Upload and store PDFs directly in your library with built-in preview capabilities.
+                    </div>
+                   
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="thumbnail">
+
+            <div class="item">
+                <img src="./images/SMART SEARCH 1.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./images/SMART ORGANISATION.jpg" alt="">
+            </div>
+            <div class="item">
+                <img src="./images/CLOUD SYNC.png" alt="">
+            </div>
+            <div class="item">
+                <img src="./images/PDF MANAGAMENT 1.jpg" alt="">
+            </div>
+
+        </div>
+
+
+        <div class="nextPrevArrows">
+            <button class="prev"> < </button>
+            <button class="next"> > </button>
+        </div>
+
+
+    </div>
+    <!-- Carousel Slider -->
+
+
+
+
+
+
   <!-- Hero Section -->
   <section class="hero">
+    
     <div class="hero-container">
       <!-- Left side -->
       <div class="hero-content animate">
@@ -1508,6 +1616,17 @@
       });
     });
   </script>
+  <script>
+  function openSidebar() {
+    document.getElementById("sidebar").style.width = "250px";
+  }
+
+  function closeSidebar() {
+    document.getElementById("sidebar").style.width = "0";
+  }
+</script>
+
+   <script src="app.js"></script>
 </body>
 
 </html>
