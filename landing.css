@@ -87,6 +87,8 @@ body {
   gap: 0.5rem;
   border-bottom: none;
   text-decoration: none;
+  flex: 0 0 auto;
+  min-width: 250px;
 }
 #logo {
   width: 65px;
@@ -135,6 +137,7 @@ body {
   display: flex;
   align-items: center;
   gap: 2rem;
+  flex: 0 0 auto;
 }
 
 .nav-links a{
