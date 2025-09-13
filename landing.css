@@ -55,7 +55,6 @@ body {
   width: 100%;
   max-width: 100%;
   background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   transition: all 0.3s ease;
@@ -1399,13 +1398,6 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-.nav-links {
-  background-color: white;
-}
-
-body.dark-mode .nav-links {
-  background-color: black;
-}
 
 
 /* Mobile Menu responsive layout fix*/
@@ -1463,6 +1455,14 @@ body.dark-mode .nav-links {
   .mobile-menu-toggle {
     transition: transform var(--animation-normal) var(--easing-standard);
   }
+  .nav-links {
+  background-color: white;
+}
+
+body.dark-mode .nav-links {
+  background-color: #2d3748;
+}
+
 }
 
 /* Desktop - hide hamburger */
