@@ -1399,6 +1399,15 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
+.nav-links {
+  background-color: white;
+}
+
+body.dark-mode .nav-links {
+  background-color: black;
+}
+
+
 /* Mobile Menu responsive layout fix*/
 @media (max-width: 1150px) {
   .mobile-menu-toggle {
@@ -1433,7 +1442,8 @@ body {
   }
 
   .nav-links.active {
-    display: flex; /* slide in */
+    display: flex;
+    width: 85vw; /* slide in */
   }
 
   .nav-links a ,.nav-links button{
@@ -1441,7 +1451,7 @@ body {
     align-items: center; /* Vertical centering */
     justify-content: center;
     padding: 1rem;
-    width: 10rem;
+    width: 70vw;
     font-size: 1rem;
   }
 
