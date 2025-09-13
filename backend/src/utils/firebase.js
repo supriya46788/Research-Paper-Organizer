@@ -1,20 +1,16 @@
-// Firebase config and admin SDK setup
-import admin from 'firebase-admin';
-import { getStorage } from 'firebase-admin/storage';
-import { join, dirname } from 'path';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 
+// Resolve dirname in ESM
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-dotenv.config({ path: join(__dirname, '../../.env') });
+const __dirname = path.dirname(__filename);
 
-if (!admin.apps.length) {
-  admin.initializeApp({
-    credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)),
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET
-  });
-}
+// Load service account JSON manually
+const serviceAccountPath = path.join(
+  __dirname,
+  "../config/serviceAccountKey.json"
+);
+const serviceAccount = JSON.parse(fs.readFileSync(serviceAccountPath, "utf-8"));
 
-export const bucket = getStorage().bucket();
-export default admin;
+export default serviceAccount;

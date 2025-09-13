@@ -11,13 +11,20 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/auth.css" />
 
-<link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
-<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
-<link rel="manifest" href="./favicon/site.webmanifest" />
-<meta name="theme-color" content="#2563eb" />
-
-
+    <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="./favicon/favicon-48x48.png"
+    />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <meta name="theme-color" content="#2563eb" />
   </head>
   <body>
     <div class="auth-container">
@@ -30,67 +37,83 @@
           <h1>Research Paper Organizer</h1>
           <p>Create your account</p>
         </div>
-        
-        <form id="signupForm" class="auth-form" novalidate>
+
+        <form id="signupForm" class="auth-form" novalidate type="button">
           <div class="form-group">
-            <label for="signupName">Full Name <span class="required">*</span></label>
+            <label for="signupName"
+              >Full Name <span class="required">*</span></label
+            >
             <div class="input-wrapper">
               <div class="input-container">
                 <i class="fas fa-user"></i>
-                <input 
-                  type="text" 
-                  id="signupName" 
+                <input
+                  type="text"
+                  id="signupName"
                   name="name"
                   autocomplete="name"
-                  required 
-                  placeholder="Enter your full name" 
+                  required
+                  placeholder="Enter your full name"
                   aria-required="true"
                   aria-describedby="nameError"
                 />
               </div>
-              <div id="nameError" class="error-message" role="alert" aria-live="polite"></div>
+              <div
+                id="nameError"
+                class="error-message"
+                role="alert"
+                aria-live="polite"
+              ></div>
             </div>
           </div>
-          
+
           <div class="form-group">
-            <label for="signupEmail">Email Address <span class="required">*</span></label>
+            <label for="signupEmail"
+              >Email Address <span class="required">*</span></label
+            >
             <div class="input-wrapper">
               <div class="input-container">
                 <i class="fas fa-envelope"></i>
-                <input 
-                  type="email" 
-                  id="signupEmail" 
+                <input
+                  type="email"
+                  id="signupEmail"
                   name="email"
                   autocomplete="email"
-                  required 
-                  placeholder="Enter your email" 
+                  required
+                  placeholder="Enter your email"
                   aria-required="true"
                   aria-describedby="emailError"
                 />
               </div>
-              <div id="emailError" class="error-message" role="alert" aria-live="polite"></div>
+              <div
+                id="emailError"
+                class="error-message"
+                role="alert"
+                aria-live="polite"
+              ></div>
             </div>
           </div>
-          
+
           <div class="form-group">
-            <label for="signupPassword">Password <span class="required">*</span></label>
+            <label for="signupPassword"
+              >Password <span class="required">*</span></label
+            >
             <div class="input-wrapper">
               <div class="input-container">
                 <i class="fas fa-lock"></i>
-                <input 
-                  type="password" 
-                  id="signupPassword" 
+                <input
+                  type="password"
+                  id="signupPassword"
                   name="password"
                   autocomplete="new-password"
-                  required 
+                  required
                   minlength="8"
-                  placeholder="Create a password" 
+                  placeholder="Create a password"
                   aria-required="true"
                   aria-describedby="passwordError passwordRequirements"
                 />
-                <button 
-                  type="button" 
-                  class="password-toggle" 
+                <button
+                  type="button"
+                  class="password-toggle"
                   aria-label="Toggle password visibility"
                   data-target="signupPassword"
                 >
@@ -107,84 +130,110 @@
                 </ul>
               </div>
 
-              <div id="passwordError" class="error-message" role="alert" aria-live="polite"></div>
+              <div
+                id="passwordError"
+                class="error-message"
+                role="alert"
+                aria-live="polite"
+              ></div>
               <div class="password-strength" id="passwordStrength">
                 <div class="strength-bar"></div>
               </div>
             </div>
           </div>
-          
+
           <div class="form-group">
-            <label for="confirmPassword">Confirm Password <span class="required">*</span></label>
+            <label for="confirmPassword"
+              >Confirm Password <span class="required">*</span></label
+            >
             <div class="input-wrapper">
               <div class="input-container">
                 <i class="fas fa-lock"></i>
-                <input 
-                  type="password" 
-                  id="confirmPassword" 
+                <input
+                  type="password"
+                  id="confirmPassword"
                   name="confirmPassword"
                   autocomplete="new-password"
-                  required 
-                  placeholder="Confirm your password" 
+                  required
+                  placeholder="Confirm your password"
                   aria-required="true"
                   aria-describedby="confirmPasswordError"
                 />
-                <button 
-                  type="button" 
-                  class="password-toggle" 
+                <button
+                  type="button"
+                  class="password-toggle"
                   aria-label="Toggle password visibility"
                   data-target="confirmPassword"
                 >
                   <i class="fas fa-eye"></i>
                 </button>
               </div>
-              <div id="confirmPasswordError" class="error-message" role="alert" aria-live="polite"></div>
+              <div
+                id="confirmPasswordError"
+                class="error-message"
+                role="alert"
+                aria-live="polite"
+              ></div>
             </div>
           </div>
-          
+
           <div class="form-group">
             <div class="input-wrapper">
               <div class="checkbox-container">
-                <input 
-                  type="checkbox" 
-                  id="agreeTerms" 
+                <input
+                  type="checkbox"
+                  id="agreeTerms"
                   name="agreeTerms"
                   required
                   aria-required="true"
                   aria-describedby="termsError"
                 />
                 <label for="agreeTerms" class="checkbox-label">
-                  I agree to the <a href="terms-of-service.html" class="terms-link" target="_blank">Terms of Service</a> and <a href="privacy.html" class="terms-link" target="_blank">Privacy Policy</a> <span class="required">*</span>
+                  I agree to the
+                  <a
+                    href="terms-of-service.html"
+                    class="terms-link"
+                    target="_blank"
+                    >Terms of Service</a
+                  >
+                  and
+                  <a href="privacy.html" class="terms-link" target="_blank"
+                    >Privacy Policy</a
+                  >
+                  <span class="required">*</span>
                 </label>
               </div>
-              <div id="termsError" class="error-message" role="alert" aria-live="polite"></div>
+              <div
+                id="termsError"
+                class="error-message"
+                role="alert"
+                aria-live="polite"
+              ></div>
             </div>
           </div>
 
-          
           <button type="submit" class="auth-btn" disabled>
             <i class="fas fa-user-plus"></i>
             Create Account
           </button>
+          <div class="google-auth">
+            <button type="button" class="google-btn">
+              <i class="fab fa-google"></i>
+              Continue with Google
+            </button>
+          </div>
 
-          <button type="button" class="google-btn">
-            <i class="fab fa-google"></i>
-            Continue with Google
-         </button>
-         
           <div class="auth-divider">
             <span>Already have an account?</span>
-            
-
-        </div>
-        <a href="login.html" class="auth-link">Sign in instead</a>
-      </form>
-    </div>
+          </div>
+          <a href="login.html" class="auth-link">Sign in instead</a>
+        </form>
+      </div>
     </div>
 
     <script>
-    // PRIVACY CONTENT (Terms of Service content moved to dedicated page)
-    const privacyContent = `
+      // PRIVACY CONTENT (Terms of Service content moved to dedicated page)
+      const privacyContent = `
       <h2>Privacy Policy</h2>
       <p>
         Your privacy is important to us. This policy outlines how your information is handled:
@@ -200,48 +249,44 @@
       </ul>
     `;
 
-    // HANDLE MODAL POPUPS (Terms of Service modal removed - now links to dedicated page)
-    document.addEventListener('DOMContentLoaded', function () {
-      // Privacy Policy modal (if needed)
-      const privacyLink = document.getElementById('showPrivacy');
-      if (privacyLink) {
-        privacyLink.addEventListener('click', function (e) {
-          e.preventDefault();
-          Swal.fire({
-            html: privacyContent,
-            width: 600,
-            confirmButtonText: "Close",
-            customClass: {popup: 'tos-privacy-popup'}
+      // HANDLE MODAL POPUPS (Terms of Service modal removed - now links to dedicated page)
+      document.addEventListener("DOMContentLoaded", function () {
+        // Privacy Policy modal (if needed)
+        const privacyLink = document.getElementById("showPrivacy");
+        if (privacyLink) {
+          privacyLink.addEventListener("click", function (e) {
+            e.preventDefault();
+            Swal.fire({
+              html: privacyContent,
+              width: 600,
+              confirmButtonText: "Close",
+              customClass: { popup: "tos-privacy-popup" },
+            });
           });
-        });
-      }
-    });
+        }
+      });
 
-  //script for progress bar on sign-up page
-  const passwordInput = document.getElementById("signupPassword");
-  const passwordStrength = document.getElementById("passwordStrength");
+      //script for progress bar on sign-up page
+      const passwordInput = document.getElementById("signupPassword");
+      const passwordStrength = document.getElementById("passwordStrength");
 
-  passwordStrength.style.display = "none";
+      passwordStrength.style.display = "none";
 
-  passwordInput.addEventListener("focus", () => {
-    passwordStrength.style.display = "block";
-  });
+      passwordInput.addEventListener("focus", () => {
+        passwordStrength.style.display = "block";
+      });
 
-  passwordInput.addEventListener("blur", () => {
-    passwordStrength.style.display = "none";
-  });
+      passwordInput.addEventListener("blur", () => {
+        passwordStrength.style.display = "none";
+      });
 
-  passwordInput.addEventListener("input", () => {
-    passwordStrength.style.display = "block";
-  });
-  </script>
-    
-    <script src="js/auth.js"></script>
-  <script src="js/form-validation.js"></script>
+      passwordInput.addEventListener("input", () => {
+        passwordStrength.style.display = "block";
+      });
+    </script>
 
+    <script type="module" src="js/auth.js"></script>
 
-
-  
-
-</body>
+    <script src="js/form-validation.js"></script>
+  </body>
 </html>
