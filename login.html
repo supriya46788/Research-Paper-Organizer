@@ -1,79 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login - Research Paper Organizer</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="css/auth.css" />
-  </head>
-  <body>
-    <div class="auth-container">
-      <div class="auth-card">
-        <!-- <=============Added Issue #465 =============> -->
-        <button class="close-btn" onclick="window.history.back()">✖</button>
-        <!-- <=============Ended Issue #465 =============> -->
-        <div class="auth-header">
-          <i class="fas fa-book-open"></i>
-          <h1>Research Paper Organizer</h1>
-          <p>Sign in to your account</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Research Paper Organizer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <button class="close-btn" onclick="window.history.back()">✖</button>
+      <div class="auth-header">
+        <i class="fas fa-book-open"></i>
+        <h1>Research Paper Organizer</h1>
+        <p>Sign in to your account</p>
+      </div>
+      
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <div class="input-container">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="loginEmail" required placeholder="Enter your email" />
+          </div>
         </div>
         
-        <form id="loginForm" class="auth-form">
-          <div class="form-group">
-            <label for="loginEmail">Email Address</label>
-            <div class="input-container">
-              <i class="fas fa-envelope"></i>
-              <input type="email" id="loginEmail" required placeholder="Enter your email" />
-            </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <div class="input-container">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="loginPassword" required placeholder="Enter your password" />
+            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+              <i class="fas fa-eye"></i>
+            </button>
           </div>
-          
-          <div class="form-group">
-            <label for="loginPassword">Password</label>
-            <div class="input-container">
-              <i class="fas fa-lock"></i>
-              <input type="password" id="loginPassword" required placeholder="Enter your password" />
-              <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
-                <i class="fas fa-eye"></i>
-              </button>
-            </div>
-          </div>
-          
-          <div class="form-options">
-            <label class="checkbox-container">
-              <input type="checkbox" id="rememberMe" />
-              <span class="checkmark"></span>
-              Remember me
-            </label>
-            
-            <p class="forgot-link">
+        </div>
+        
+        <div class="form-options">
+          <label class="checkbox-container">
+            <input type="checkbox" id="rememberMe" />
+            <span class="checkmark"></span>
+            Remember me
+          </label>
+          <p class="forgot-link">
             <a href="forgot-password.html">Forgot your password?</a>
-            </p>
-          </div>
-          
-          <button type="submit" class="auth-btn">
-            <i class="fas fa-sign-in-alt"></i>
-            Sign In
-          </button>
+          </p>
+        </div>
+        
+        <button type="submit" class="auth-btn">
+          <i class="fas fa-sign-in-alt"></i>
+          Sign In
+        </button>
 
-          <button type="button" class="google-btn">
-            <i class="fab fa-google"></i>
-            Continue with Google
-         </button>
-         
-          <div class="auth-divider">
-            <span>Don't have an account?</span>
-          </div>
-          
-          <a href="signup.html" class="auth-link">Create new account</a>
-        </form>
-      </div>
+        <button type="button" class="google-btn">
+          <i class="fab fa-google"></i>
+          Continue with Google
+        </button>
+        
+        <div class="auth-divider">
+          <span>Don't have an account?</span>
+        </div>
+        <a href="signup.html" class="auth-link">Create new account</a>
+      </form>
     </div>
-    
-    <script src="js/auth.js"></script>
-  </body>
+  </div>
+
+  <!-- Firebase Google Login -->
+  <script type="module">
+    // Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    // Your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAkmEiD7GbDx04l04LeLXPBWAVApDVhDl8",
+      authDomain: "garage-app-2bd94.firebaseapp.com",
+      projectId: "garage-app-2bd94",
+      storageBucket: "garage-app-2bd94.firebasestorage.app",
+      messagingSenderId: "1084699462209",
+      appId: "1:1084699462209:web:15d1b61a55b55290d794c0"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // Google Sign-In Button
+    document.querySelector(".google-btn").addEventListener("click", async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        Swal.fire({
+          icon: "success",
+          title: "Welcome!",
+          text: `Logged in as ${user.displayName}`,
+        });
+        console.log("User Info:", user);
+      } catch (error) {
+        console.error(error);
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: error.message,
+        });
+      }
+    });
+  </script>
+</body>
 </html>
