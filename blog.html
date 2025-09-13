@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Meta -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog | Research Paper Organizer</title>
-  <meta name="description" content="Updates, tips, tools, and insights from the research community. Filter by category and explore our latest posts." />
+  <meta name="description"
+    content="Updates, tips, tools, and insights from the research community. Filter by category and explore our latest posts." />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- Your global styles should remain as-is -->
@@ -13,103 +15,113 @@
   <!-- Updated blog styles below -->
   <link rel="stylesheet" href="css/blog.css" />
 
-<link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
-<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
-<link rel="manifest" href="./favicon/site.webmanifest" />
-<meta name="theme-color" content="#2563eb" />
+  <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
+  <link rel="manifest" href="./favicon/site.webmanifest" />
+  <meta name="theme-color" content="#2563eb" />
 
 
 </head>
 <style>
-
-  .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem;
-  flex-wrap: wrap;
-}
-.hamburger-container {
-  display: none;
-  flex-direction: column;
-  /* justify-content: center; */
-  cursor: pointer;
-  gap: 5px;
-  padding: 10px;
-}
-
-.hamburger-container .bar {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  transition: 0.3s;
-}
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .hamburger-container {
-    display: flex;
-  }
-
- 
   .navbar {
     display: flex;
-   justify-content: space-between;
+    justify-content: space-between;
     align-items: center;
+    padding: 1.5rem;
     flex-wrap: wrap;
-    position: relative;
   }
 
-  .navbar-right-links {
+  .hamburger-container {
     display: none;
-    position: absolute;
-    top: 70px;              /* adjust depending on navbar height */
-    right: 10px;  
-    margin:15px;          /* aligns the box to the right */
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
     flex-direction: column;
-    gap: 0.75rem;
-    z-index: 1000;
-    width: max-content;     /* only as wide as content */
-    min-width: 150px;  
+    /* justify-content: center; */
+    cursor: pointer;
+    gap: 5px;
+    padding: 10px;
   }
 
-  .navbar-right-links.show {
-    display: flex;
+  .hamburger-container .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    transition: 0.3s;
   }
 
-  .nav-item {
-    display: inline-flex;           /* Ensures icon and text are in a row */
-  align-items: center;           /* Vertical centering */
-  justify-content: center;
-    padding: 1rem;
-    width:10rem;
-    font-size: 1rem;
-    
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .hamburger-container {
+      display: flex;
+    }
+
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .navbar-right-links {
+      display: none;
+      position: absolute;
+      top: 70px;
+      /* adjust depending on navbar height */
+      right: 10px;
+      margin: 15px;
+      /* aligns the box to the right */
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      flex-direction: column;
+      gap: 0.75rem;
+      z-index: 1000;
+      width: max-content;
+      /* only as wide as content */
+      min-width: 150px;
+    }
+
+    .navbar-right-links.show {
+      display: flex;
+    }
+
+    .nav-item {
+      display: inline-flex;
+      /* Ensures icon and text are in a row */
+      align-items: center;
+      /* Vertical centering */
+      justify-content: center;
+      padding: 1rem;
+      width: 10rem;
+      font-size: 1rem;
+
+    }
   }
-}
-      /* Footer CSS*/
+
+  /* Footer CSS*/
   /* NEW: Search Bar Styles */
   .search-container {
     position: relative;
     width: 100%;
-    max-width: 600px; /* Adjust as needed */
-    margin: 1.5rem auto; /* Center it */
+    max-width: 600px;
+    /* Adjust as needed */
+    margin: 1.5rem auto;
+    /* Center it */
   }
 
   #searchInput {
     width: 100%;
-    padding: 12px 20px 12px 40px; /* Make space for icon */
+    padding: 12px 20px 12px 40px;
+    /* Make space for icon */
     border: 1px solid #ddd;
     border-radius: 50px;
     font-size: 1rem;
     transition: all 0.3s ease;
   }
+
   #searchInput:focus {
     outline: none;
     border-color: #2c5aa0;
@@ -124,9 +136,10 @@
     color: #aaa;
     transition: color 0.3s ease;
   }
-   .search-container:focus-within .fa-search {
-     color: #2c5aa0;
-   }
+
+  .search-container:focus-within .fa-search {
+    color: #2c5aa0;
+  }
 
   /* Dark mode search styles */
   body.dark-mode #searchInput {
@@ -134,236 +147,270 @@
     border-color: #4a5568;
     color: #e0e0e0;
   }
+
   body.dark-mode #searchInput:focus {
     border-color: #90cdf4;
     box-shadow: 0 0 0 3px rgba(144, 205, 244, 0.2);
   }
-   body.dark-mode .search-container:focus-within .fa-search {
-     color: #90cdf4;
-   }
 
-    .modern-footer {
-  width: 100vw; /* Full viewport width */
-  margin-left: calc(-50vw + 50%); /* Center it if inside a constrained container */
-  background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-  color: #fff;
-  padding: 60px 20px 20px;
-  border-radius: 25px 25px 0 0;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-  overflow-x: hidden;
-}
+  body.dark-mode .search-container:focus-within .fa-search {
+    color: #90cdf4;
+  }
+
+  .modern-footer {
+    width: 100vw;
+    /* Full viewport width */
+    margin-left: calc(-50vw + 50%);
+    /* Center it if inside a constrained container */
+    background: linear-gradient(135deg, #1f3c88, #2c5aa0);
+    color: #fff;
+    padding: 60px 20px 20px;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    overflow-x: hidden;
+  }
 
 
+  .footer-top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .footer-brand h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-brand h2 i {
+    margin-right: 10px;
+    font-size: 1.6rem;
+    vertical-align: middle;
+  }
+
+  .footer-brand p {
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.9;
+  }
+
+  .footer-links-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 5px;
+  }
+
+  .footer-links-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-links-section ul li {
+    margin-bottom: 8px;
+  }
+
+  .footer-links-section ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+  }
+
+  .footer-links-section ul li a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+  }
+
+  .social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    transition: 0.3s;
+  }
+
+  .social-icons a:hover {
+    background: #fff;
+    color: #2c5aa0;
+    transform: scale(1.1);
+  }
+
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .footer-card {
+    flex: 1 1 200px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    min-width: 200px;
+  }
+
+  .footer-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-card ul li {
+    margin-bottom: 8px;
+  }
+
+  .footer-card ul li a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+
+    padding: 5px;
+    padding-left: 20px;
+  }
+
+  .footer-card ul li a:hover {
+    color: #fff;
+    transform: translateX(5px);
+  }
+
+  @media (max-width: 768px) {
     .footer-top {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 3rem;
     }
 
     .footer-brand h2 {
-      font-size: 1.8rem;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-    }
-
-    .footer-brand h2 i {
-      margin-right: 10px;
-      font-size: 1.6rem;
-      vertical-align: middle;
-    }
-
-    .footer-brand p {
-      font-size: 1rem;
-      line-height: 1.5;
-      opacity: 0.9;
+      font-size: 1.5rem;
     }
 
     .footer-links-section h4 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: 5px;
-    }
-
-    .footer-links-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links-section ul li {
-      margin-bottom: 8px;
+      font-size: 1rem;
     }
 
     .footer-links-section ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
-
-    .footer-links-section ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      margin-top: 5px;
+      font-size: 0.95rem;
     }
 
     .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: #fff;
-      transition: 0.3s;
+      width: 35px;
+      height: 35px;
     }
-
-    .social-icons a:hover {
-      background: #fff;
-      color: #2c5aa0;
-      transform: scale(1.1);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      padding-top: 15px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-    .footer-card {
-      flex: 1 1 200px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 20px;
-      min-width: 200px;
-    }
- .footer-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-card ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-card ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-      
-      padding: 5px;
-      padding-left: 20px;
-    }
-
-    .footer-card ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    @media (max-width: 768px) {
-      .footer-top {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 3rem;
-      }
-
-      .footer-brand h2 {
-        font-size: 1.5rem;
-      }
-
-      .footer-links-section h4 {
-        font-size: 1rem;
-      }
-
-      .footer-links-section ul li a {
-        font-size: 0.95rem;
-      }
-
-      .social-icons a {
-        width: 35px;
-        height: 35px;
-      }
-    }
-
-     @media (max-width: 756px) and (min-width: 730px),
-       (max-width: 601px) and (min-width: 540px) {
-  .footer-card {
-    gap: 4rem;
   }
-}
 
-    @media (max-width: 480px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .social-icons {
-        justify-content: center;
-      }
-
-      .footer-links-section ul li a {
-        justify-content: center;
-      }
+  @media (max-width: 756px) and (min-width: 730px),
+  (max-width: 601px) and (min-width: 540px) {
+    .footer-card {
+      gap: 4rem;
     }
-    .footer-bottom .heart {
-  color: inherit;  
+  }
+
+  @media (max-width: 480px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .social-icons {
+      justify-content: center;
+    }
+
+    .footer-links-section ul li a {
+      justify-content: center;
+    }
+  }
+
+  .footer-bottom .heart {
+    color: inherit;
+  }
+
+  /* Dark Mode Footer Styles */
+  body.dark-mode .modern-footer {
+    background: linear-gradient(135deg, #1a202c, #2d3748);
+  }
+
+  body.dark-mode .footer-section h3,
+  body.dark-mode .footer-section h4 {
+    color: #e0e0e0;
+  }
+
+  body.dark-mode .footer-section h4 {
+    border-bottom-color: rgba(224, 224, 224, 0.2);
+  }
+
+  body.dark-mode .footer-links a {
+    color: rgba(224, 224, 224, 0.8);
+  }
+
+  body.dark-mode .footer-links a:hover {
+    color: #90cdf4;
+  }
+
+  body.dark-mode .social-links a {
+    background: rgba(224, 224, 224, 0.1);
+    color: #e0e0e0;
+  }
+
+  body.dark-mode .social-links a:hover {
+    background: rgba(144, 205, 244, 0.2);
+    color: #90cdf4;
+  }
+
+  body.dark-mode .footer-bottom {
+    background: rgba(0, 0, 0, 0.3);
+    border-top-color: rgba(224, 224, 224, 0.1);
+  }
+
+  #searchSuggestions {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: #ffffff; /* Force white background */
+  color: #000000;            /* Force black text */
+  position: absolute;
+  width: calc(100% - 40px); /* matches input width */
+  z-index: 1000;
+  display: none;
+  border-radius: 6px;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* little shadow */
 }
 
-/* Dark Mode Footer Styles */
-body.dark-mode .modern-footer {
-background: linear-gradient(135deg, #1a202c, #2d3748);
+#searchSuggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
 }
 
-body.dark-mode .footer-section h3,
-body.dark-mode .footer-section h4 {
-color: #e0e0e0;
+#searchSuggestions li:hover {
+  background-color: #f5f5f5;
 }
-
-body.dark-mode .footer-section h4 {
-border-bottom-color: rgba(224, 224, 224, 0.2);
-}
-
-body.dark-mode .footer-links a {
-color: rgba(224, 224, 224, 0.8);
-}
-
-body.dark-mode .footer-links a:hover {
-color: #90cdf4;
-}
-
-body.dark-mode .social-links a {
-background: rgba(224, 224, 224, 0.1);
-color: #e0e0e0;
-}
-
-body.dark-mode .social-links a:hover {
-background: rgba(144, 205, 244, 0.2);
-color: #90cdf4;
-}
-
-body.dark-mode .footer-bottom {
-background: rgba(0, 0, 0, 0.3);
-border-top-color: rgba(224, 224, 224, 0.1);
-}
-
 
 </style>
+
 <body>
   <div class="container">
     <!-- Navigation (unchanged visual; accessible semantics) -->
@@ -372,12 +419,12 @@ border-top-color: rgba(224, 224, 224, 0.1);
         <i class="fas fa-book-open" aria-hidden="true"></i>
         <span>Home</span>
       </a>
-       <!-- Hamburger div (shows only on mobile) -->
-  <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-  </div>
+      <!-- Hamburger div (shows only on mobile) -->
+      <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
       <div class="navbar-right-links" role="menubar" aria-label="Site">
         <a href="about.html" class="nav-item" role="menuitem">About us</a>
         <a href="blog.html" class="nav-item" role="menuitem" aria-current="page">Blogs</a>
@@ -397,13 +444,14 @@ border-top-color: rgba(224, 224, 224, 0.1);
 
       <div class="search-container">
         <i class="fas fa-search" aria-hidden="true"></i>
-        <input type="search" id="searchInput" placeholder="Search posts by title or keyword..." aria-label="Search blog posts" />
+        <input type="search" id="searchInput" placeholder="Search posts by title or keyword..."
+          aria-label="Search blog posts" />
+        <ul id="searchSuggestions"></ul>
       </div>
 
+
       <!-- Category Filters (accessible + color-coded) -->
-      <div class="category-filters utility-text-center"
-           role="group"
-           aria-label="Filter posts by category">
+      <div class="category-filters utility-text-center" role="group" aria-label="Filter posts by category">
         <button type="button" class="filter-btn active" data-category="all" aria-pressed="true">All</button>
         <button type="button" class="filter-btn" data-category="tips" aria-pressed="false">Tips</button>
         <button type="button" class="filter-btn" data-category="ai" aria-pressed="false">AI</button>
@@ -432,7 +480,8 @@ border-top-color: rgba(224, 224, 224, 0.1);
           <div class="tags">
             <span class="badge badge-tips">Tips</span>
           </div>
-          <a href="https://www.immerse.education/student-life/academic-life/tips-to-improve-research-skills/#:~:text=1.,Skills%20for%20Successful%20Research%20Reports" class="read-more" aria-label="Read more: 11 Research Tips for Students">Read More →</a>
+          <a href="https://www.immerse.education/student-life/academic-life/tips-to-improve-research-skills/#:~:text=1.,Skills%20for%20Successful%20Research%20Reports"
+            class="read-more" aria-label="Read more: 11 Research Tips for Students">Read More →</a>
         </div>
       </article>
 
@@ -499,7 +548,8 @@ border-top-color: rgba(224, 224, 224, 0.1);
       <!-- Card 5 -->
       <article class="blog-card" data-category="productivity">
         <figure class="blog-media">
-          <img src="images/time-management.jpg" alt="Time management illustration" loading="lazy" width="800" height="500" />
+          <img src="images/time-management.jpg" alt="Time management illustration" loading="lazy" width="800"
+            height="500" />
         </figure>
         <div class="blog-content">
           <h2>Time Management for Researchers</h2>
@@ -539,7 +589,8 @@ border-top-color: rgba(224, 224, 224, 0.1);
       <!-- Card 7 -->
       <article class="blog-card" data-category="productivity">
         <figure class="blog-media">
-          <img src="images/collaborating.jpg" alt="People collaborating on research" loading="lazy" width="800" height="500" />
+          <img src="images/collaborating.jpg" alt="People collaborating on research" loading="lazy" width="800"
+            height="500" />
         </figure>
         <div class="blog-content">
           <h2>Collaborating on Research Projects</h2>
@@ -600,71 +651,72 @@ border-top-color: rgba(224, 224, 224, 0.1);
     <!-- Empty state -->
     <p id="emptyState" class="empty-state" hidden>No posts found for this category.</p>
 
-        <!-- Back to Top Button -->
-<button id="backToTop">
-  <i class="fa-solid fa-arrow-up"></i>
-</button>
+    <!-- Back to Top Button -->
+    <button id="backToTop">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
-   
-  <!-- Modern Footer -->
-  <footer class="modern-footer" aria-label="Footer">
-    <div class="footer-top">
-      <div class="footer-brand footer-card">
-        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
-      </div>
 
-      <div class="footer-links-section footer-card" >
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-        </ul>
-      </div>
+    <!-- Modern Footer -->
+    <footer class="modern-footer" aria-label="Footer">
+      <div class="footer-top">
+        <div class="footer-brand footer-card">
+          <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+          <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
+        </div>
 
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-          <li>
-            <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
-          </li>
-        </ul>
-      </div>
+        <div class="footer-links-section footer-card">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
+            <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
+            <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
+          </ul>
+        </div>
 
-      <div class="footer-links-section footer-card">
-        <h4>Connect</h4>
-        <div class="social-icons">
-          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-  <i class="fab fa-linkedin"></i>
-</a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <div class="footer-links-section footer-card">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
+            <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
+            <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
+            <li>
+              <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-links-section footer-card">
+          <h4>Connect</h4>
+          <div class="social-icons">
+            <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"
+              class="linkedin-icon">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="footer-bottom">
-  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-</div>
+      <div class="footer-bottom">
+        © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
+      </div>
 
-  </footer>
+    </footer>
 
   </div>
 
   <!-- JS (inline for easy drop-in; feel free to extract) -->
   <script>
-   
-  function toggleMenu() {
-    const nav = document.querySelector(".navbar-right-links");
-    nav.classList.toggle("show");
-  }
+
+    function toggleMenu() {
+      const nav = document.querySelector(".navbar-right-links");
+      nav.classList.toggle("show");
+    }
     // ------- Dark Mode Toggle (unchanged behavior, aria + persistence)
-    (function() {
+    (function () {
       const btn = document.getElementById('darkModeToggle');
       const icon = btn.querySelector('i');
       const apply = (enabled) => {
@@ -680,11 +732,11 @@ border-top-color: rgba(224, 224, 224, 0.1);
     })();
 
     // ------- Utilities
-    function qs(sel, scope=document){ return scope.querySelector(sel); }
-    function qsa(sel, scope=document){ return Array.from(scope.querySelectorAll(sel)); }
+    function qs(sel, scope = document) { return scope.querySelector(sel); }
+    function qsa(sel, scope = document) { return Array.from(scope.querySelectorAll(sel)); }
 
     // ------- UPDATED: Combined Search and Category Filtering
-    (function() {
+    (function () {
       const searchInput = qs('#searchInput');
       const buttons = qsa('.filter-btn');
       const cards = qsa('.blog-card');
@@ -693,9 +745,9 @@ border-top-color: rgba(224, 224, 224, 0.1);
       function masterFilter() {
         const searchTerm = searchInput.value.toLowerCase();
         const activeCategory = qs('.filter-btn.active').dataset.category;
-        
+
         let visibleCount = 0;
-        
+
         cards.forEach(card => {
           const title = (qs('h2', card)?.textContent || '').toLowerCase();
           const paragraph = (qs('p', card)?.textContent || '').toLowerCase();
@@ -714,8 +766,8 @@ border-top-color: rgba(224, 224, 224, 0.1);
 
         empty.hidden = visibleCount > 0;
         if (visibleCount === 0) {
-            empty.textContent = 'No posts found matching your criteria.';
-            empty.focus?.();
+          empty.textContent = 'No posts found matching your criteria.';
+          empty.focus?.();
         }
       }
 
@@ -731,7 +783,7 @@ border-top-color: rgba(224, 224, 224, 0.1);
           buttons.forEach(b => b.classList.remove('active', 'aria-pressed'));
           btn.classList.add('active');
           btn.setAttribute('aria-pressed', 'true');
-          
+
           // Persist and apply filter
           localStorage.setItem('blogFilter', btn.dataset.category);
           const url = new URL(window.location);
@@ -741,7 +793,7 @@ border-top-color: rgba(224, 224, 224, 0.1);
           masterFilter();
         });
       });
-      
+
       // --- Initial Load ---
       const urlCat = new URLSearchParams(location.search).get('cat');
       const storedCat = localStorage.getItem('blogFilter');
@@ -753,7 +805,7 @@ border-top-color: rgba(224, 224, 224, 0.1);
         b.classList.toggle('active', isActive);
         b.setAttribute('aria-pressed', String(isActive));
       });
-      
+
       // Apply the initial filter
       masterFilter();
     })();
@@ -794,39 +846,88 @@ border-top-color: rgba(224, 224, 224, 0.1);
       });
     })();
 
-         //back to top button 
-// Show button when scrolled down
-const backToTop = document.getElementById("backToTop");
-const icon = backToTop.querySelector("i");
+    //back to top button 
+    // Show button when scrolled down
+    const backToTop = document.getElementById("backToTop");
+    const icon = backToTop.querySelector("i");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    backToTop.style.display = "block";
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        backToTop.style.display = "block";
 
-   
-    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
-      icon.classList.remove("fa-arrow-down");
-      icon.classList.add("fa-arrow-up");
-    } else {
-      icon.classList.remove("fa-arrow-up");
-      icon.classList.add("fa-arrow-down");
-    }
-  } else {
-    backToTop.style.display = "none";
-  }
-});
 
- backToTop.addEventListener("click", () => {
-  if (icon.classList.contains("fa-arrow-down")) {
-    // scroll to bottom
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
-  } else {
-    // scroll to top
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-});
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
+          icon.classList.remove("fa-arrow-down");
+          icon.classList.add("fa-arrow-up");
+        } else {
+          icon.classList.remove("fa-arrow-up");
+          icon.classList.add("fa-arrow-down");
+        }
+      } else {
+        backToTop.style.display = "none";
+      }
+    });
+
+    backToTop.addEventListener("click", () => {
+      if (icon.classList.contains("fa-arrow-down")) {
+        // scroll to bottom
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+      } else {
+        // scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+    //Auto-suggest search functionality
+    document.addEventListener("DOMContentLoaded", () => {
+      const searchInput = document.getElementById("searchInput");
+      const suggestionBox = document.getElementById("searchSuggestions");
+
+      // grab all blog titles from cards
+      const headings = Array.from(document.querySelectorAll(".blog-card h2")).map(h => ({
+        text: h.innerText,
+        element: h
+      }));
+
+      searchInput.addEventListener("input", () => {
+        const query = searchInput.value.toLowerCase();
+        suggestionBox.innerHTML = "";
+
+        if (!query) {
+          suggestionBox.style.display = "none";
+          return;
+        }
+
+        const matches = headings.filter(h => h.text.toLowerCase().includes(query));
+
+        if (matches.length === 0) {
+          suggestionBox.style.display = "none";
+          return;
+        }
+
+        matches.forEach(match => {
+          const li = document.createElement("li");
+          li.textContent = match.text;
+          li.onclick = () => {
+            match.element.scrollIntoView({ behavior: "smooth", block: "center" });
+            searchInput.value = match.text;
+            suggestionBox.style.display = "none";
+          };
+          suggestionBox.appendChild(li);
+        });
+
+        suggestionBox.style.display = "block";
+      });
+
+      // hide suggestions when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!searchInput.contains(e.target) && !suggestionBox.contains(e.target)) {
+          suggestionBox.style.display = "none";
+        }
+      });
+    });
 
 
   </script>
 </body>
+
 </html>
