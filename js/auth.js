@@ -237,7 +237,7 @@ class AuthSystem {
 
     setTimeout(() => {
       this.showSuccess("Account created successfully!", () => {
-        window.location.href = "login.html";
+        window.location.href = "index.html";
       });
     }, 1500);
   }
