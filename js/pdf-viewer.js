@@ -8,15 +8,16 @@ class PDFAnnotator {
         this.currentPage = 1;
         this.scale = 1.0;
         this.currentTool = 'highlight';
-        this.currentColor = '#ffff00';
+            this.currentColor = '#FFFF00'; // Default highlight color
         this.annotations = [];
         this.undoStack = [];
         this.redoStack = [];
-        this.isDrawing = false;
-        this.lastPosition = null;
-        this.currentPenPoints = []; // Track pen drawing points
-        this.eraserSize = 20; // Eraser brush size
-        this.isErasing = false; // Track eraser state
+    this.isDrawing = false;
+    this.lastPosition = null;
+    this.currentPenPoints = []; // Track pen drawing points
+    this.eraserSize = 20; // Eraser brush size
+    this.isErasing = false; // Track eraser state
+    this.lineWidth = 2; // Default line width
         // Wait for DOM to be fully loaded before initializing
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.initializeElements());
@@ -26,6 +27,26 @@ class PDFAnnotator {
     }
 
     initializeElements() {
+        // Line width slider integration
+        var lineWidthSlider = document.getElementById('line-width');
+        var lineWidthValue = document.getElementById('line-width-value');
+        if (lineWidthSlider && lineWidthValue) {
+            lineWidthSlider.value = this.lineWidth;
+            lineWidthValue.textContent = this.lineWidth;
+            lineWidthSlider.addEventListener('input', (e) => {
+                this.lineWidth = parseInt(e.target.value);
+                lineWidthValue.textContent = this.lineWidth;
+            });
+            
+        }
+        // Color wheel integration
+        var colorWheel = document.getElementById('color-wheel');
+        if (colorWheel) {
+            colorWheel.value = this.currentColor;
+            colorWheel.addEventListener('input', (e) => {
+                this.currentColor = e.target.value;
+            });
+        }
         // Get canvas elements
         this.canvas = document.getElementById('pdf-canvas');
         this.annotationCanvas = document.getElementById('annotation-canvas');
@@ -52,11 +73,19 @@ class PDFAnnotator {
     }
 
     initializeEventListeners() {
-        // Rotate button
-        const rotateBtn = document.getElementById('rotate-page');
-        if (rotateBtn) {
-            rotateBtn.addEventListener('click', () => {
-                this.rotation = (this.rotation + 180) % 360;
+        // Rotate Left button
+        const rotateLeftBtn = document.getElementById('rotate-left');
+        if (rotateLeftBtn) {
+            rotateLeftBtn.addEventListener('click', () => {
+                this.rotation = (this.rotation - 90 + 360) % 360;
+                this.renderPage();
+            });
+        }
+        // Rotate Right button
+        const rotateRightBtn = document.getElementById('rotate-right');
+        if (rotateRightBtn) {
+            rotateRightBtn.addEventListener('click', () => {
+                this.rotation = (this.rotation + 90) % 360;
                 this.renderPage();
             });
         }
@@ -425,15 +454,18 @@ class PDFAnnotator {
         this.saveState();
         
         if (this.currentTool === 'pen') {
-            // Initialize pen drawing
-            this.currentPenPoints = [pos]; // Start with first point
+            // Pen freehand
+            this.currentPenPoints = [pos];
             this.annotationCtx.beginPath();
             this.annotationCtx.moveTo(pos.x, pos.y);
             this.annotationCtx.strokeStyle = this.currentColor;
-            this.annotationCtx.lineWidth = 2;
+            this.annotationCtx.lineWidth = this.lineWidth;
+            this.annotationCtx.setLineDash([]);
             this.annotationCtx.lineCap = 'round';
             this.annotationCtx.lineJoin = 'round';
-            console.log('Started pen drawing at:', pos);
+        } else if (['underline', 'strikethrough'].includes(this.currentTool)) {
+            // For underline/strike, just record start position
+            this.currentPenPoints = [pos];
         } else if (this.currentTool === 'eraser') {
             // Start erasing
             this.isErasing = true;
@@ -447,10 +479,19 @@ class PDFAnnotator {
         const pos = this.getCanvasPosition(event);
         
         if (this.currentTool === 'pen') {
-            // Add point to current pen stroke
+            // Pen freehand
             this.currentPenPoints.push(pos);
             this.annotationCtx.lineTo(pos.x, pos.y);
             this.annotationCtx.stroke();
+        } else if (['underline', 'strikethrough'].includes(this.currentTool)) {
+            // For underline/strike, show preview horizontal line
+            if (this.currentPenPoints.length === 1) {
+                this.currentPenPoints[1] = pos;
+            } else {
+                this.currentPenPoints[1] = pos;
+            }
+            this.redrawAnnotations();
+            this.drawHorizontalLinePreview(this.currentPenPoints[0], this.currentPenPoints[1], this.currentTool);
         } else if (this.currentTool === 'eraser') {
             // Continue erasing
             this.eraseAtPosition(pos);
@@ -468,20 +509,40 @@ class PDFAnnotator {
         const pos = this.getCanvasPosition(event);
         
         if (this.currentTool === 'pen') {
-            // Save pen stroke with all collected points
+            // Pen freehand
             if (this.currentPenPoints && this.currentPenPoints.length > 0) {
                 const annotation = {
                     type: 'pen',
                     page: this.currentPage,
                     color: this.currentColor,
-                    points: [...this.currentPenPoints], // Copy the points array
-                    lineWidth: 2,
+                    points: [...this.currentPenPoints],
+                    lineWidth: this.lineWidth,
                     timestamp: Date.now()
                 };
                 this.addAnnotation(annotation);
-                console.log('Pen annotation saved with', this.currentPenPoints.length, 'points');
             }
-            // Clear current pen points
+            this.currentPenPoints = [];
+        } else if (['underline', 'strikethrough'].includes(this.currentTool)) {
+            // Save horizontal line annotation
+            if (this.currentPenPoints.length === 2) {
+                const start = this.currentPenPoints[0];
+                const end = this.currentPenPoints[1];
+                // Snap to horizontal
+                const y = (this.currentTool === 'underline') ? Math.max(start.y, end.y) + this.lineWidth * 2 : (start.y + end.y) / 2;
+                const annotation = {
+                    type: this.currentTool,
+                    page: this.currentPage,
+                    color: this.currentColor,
+                    lineWidth: this.lineWidth,
+                    dash: (this.currentTool === 'strikethrough'),
+                    points: [
+                        { x: Math.min(start.x, end.x), y: y },
+                        { x: Math.max(start.x, end.x), y: y }
+                    ],
+                    timestamp: Date.now()
+                };
+                this.addAnnotation(annotation);
+            }
             this.currentPenPoints = [];
         } else if (this.currentTool === 'eraser') {
             // End erasing
@@ -574,10 +635,8 @@ class PDFAnnotator {
     renderAnnotations() {
         // Clear annotation canvas
         this.annotationCtx.clearRect(0, 0, this.annotationCanvas.width, this.annotationCanvas.height);
-        
-        // Clear notes container
-        this.notesContainer.innerHTML = '';
-        
+        // Remove any leftover sticky notes from notesContainer (if any)
+        if (this.notesContainer) this.notesContainer.innerHTML = '';
         // Render annotations for current page
         this.annotations.filter(ann => ann.page === this.currentPage).forEach(annotation => {
             this.renderAnnotation(annotation);
@@ -590,68 +649,97 @@ class PDFAnnotator {
                 this.annotationCtx.fillStyle = this.hexToRgba(annotation.color, 0.3);
                 this.annotationCtx.fillRect(annotation.rect.x, annotation.rect.y, annotation.rect.width, annotation.rect.height);
                 break;
-                
-            case 'underline':
-                this.annotationCtx.strokeStyle = annotation.color;
-                this.annotationCtx.lineWidth = 2;
-                this.annotationCtx.beginPath();
-                this.annotationCtx.moveTo(annotation.rect.x, annotation.rect.y + annotation.rect.height);
-                this.annotationCtx.lineTo(annotation.rect.x + annotation.rect.width, annotation.rect.y + annotation.rect.height);
-                this.annotationCtx.stroke();
-                break;
-                
-            case 'strikethrough':
-                this.annotationCtx.strokeStyle = annotation.color;
-                this.annotationCtx.lineWidth = 2;
-                this.annotationCtx.beginPath();
-                this.annotationCtx.moveTo(annotation.rect.x, annotation.rect.y + annotation.rect.height / 2);
-                this.annotationCtx.lineTo(annotation.rect.x + annotation.rect.width, annotation.rect.y + annotation.rect.height / 2);
-                this.annotationCtx.stroke();
-                break;
-                
             case 'pen':
                 if (annotation.points && annotation.points.length > 0) {
                     this.annotationCtx.strokeStyle = annotation.color;
                     this.annotationCtx.lineWidth = annotation.lineWidth || 2;
+                    this.annotationCtx.setLineDash([]);
                     this.annotationCtx.lineCap = 'round';
                     this.annotationCtx.lineJoin = 'round';
                     this.annotationCtx.beginPath();
-                    
-                    // Move to first point
                     this.annotationCtx.moveTo(annotation.points[0].x, annotation.points[0].y);
-                    
-                    // Draw lines to subsequent points
                     for (let i = 1; i < annotation.points.length; i++) {
                         this.annotationCtx.lineTo(annotation.points[i].x, annotation.points[i].y);
                     }
-                    
                     this.annotationCtx.stroke();
-                    console.log('Rendered pen annotation with', annotation.points.length, 'points');
                 }
                 break;
-                
+            case 'underline':
+            case 'strikethrough':
+                if (annotation.points && annotation.points.length === 2) {
+                    this.annotationCtx.strokeStyle = annotation.color;
+                    this.annotationCtx.lineWidth = annotation.lineWidth || 4;
+                    this.annotationCtx.lineCap = 'round';
+                    this.annotationCtx.lineJoin = 'round';
+                    if (annotation.type === 'strikethrough' && annotation.dash) {
+                        this.annotationCtx.setLineDash([8, 4]);
+                    } else {
+                        this.annotationCtx.setLineDash([]);
+                    }
+                    this.annotationCtx.beginPath();
+                    this.annotationCtx.moveTo(annotation.points[0].x, annotation.points[0].y);
+                    this.annotationCtx.lineTo(annotation.points[1].x, annotation.points[1].y);
+                    this.annotationCtx.stroke();
+                    this.annotationCtx.setLineDash([]);
+                }
+                break;
             case 'note':
-                this.renderStickyNote(annotation);
+                // Draw sticky note on canvas instead of HTML
+                const ctx = this.annotationCtx;
+                const x = annotation.position.x;
+                const y = annotation.position.y;
+                const noteWidth = 120;
+                const noteHeight = 60;
+                // Draw note background
+                ctx.save();
+                ctx.globalAlpha = 0.9;
+                ctx.fillStyle = '#fff8b0';
+                ctx.strokeStyle = '#e0c200';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.rect(x, y, noteWidth, noteHeight);
+                ctx.fill();
+                ctx.stroke();
+                ctx.globalAlpha = 1.0;
+                // Draw note text
+                ctx.fillStyle = '#333';
+                ctx.font = '13px Arial';
+                ctx.textBaseline = 'top';
+                const lines = annotation.text.split('\n');
+                let textY = y + 8;
+                for (let line of lines) {
+                    ctx.fillText(line, x + 8, textY, noteWidth - 16);
+                    textY += 18;
+                }
+                ctx.restore();
                 break;
         }
     }
 
-    renderStickyNote(annotation) {
-        const noteDiv = document.createElement('div');
-        noteDiv.className = 'sticky-note';
-        noteDiv.style.left = `${annotation.position.x}px`;
-        noteDiv.style.top = `${annotation.position.y}px`;
-        
-        noteDiv.innerHTML = `
-            <div class="note-content">${this.escapeHtml(annotation.text)}</div>
-            <div class="note-actions">
-                <button class="note-btn" onclick="pdfAnnotator.editNote(${annotation.timestamp})">Edit</button>
-                <button class="note-btn" onclick="pdfAnnotator.deleteAnnotation(${annotation.timestamp})">Delete</button>
-            </div>
-        `;
-        
-        this.notesContainer.appendChild(noteDiv);
+    drawHorizontalLinePreview(start, end, tool) {
+        if (!start || !end) return;
+        const ctx = this.annotationCtx;
+        ctx.save();
+        ctx.strokeStyle = this.currentColor;
+        ctx.lineWidth = this.lineWidth;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        if (tool === 'strikethrough') {
+            ctx.setLineDash([8, 4]);
+        } else {
+            ctx.setLineDash([]);
+        }
+        // Snap to horizontal
+        const y = (tool === 'underline') ? Math.max(start.y, end.y) + this.lineWidth * 2 : (start.y + end.y) / 2;
+        ctx.beginPath();
+        ctx.moveTo(Math.min(start.x, end.x), y);
+        ctx.lineTo(Math.max(start.x, end.x), y);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
     }
+
+    // Removed renderStickyNote: notes are now rendered on canvas
 
     drawSelectionPreview(start, end) {
         const rect = {
@@ -870,44 +958,60 @@ class PDFAnnotator {
             annotationsByPage[page].forEach(annotation => {
                 const item = document.createElement('div');
                 item.className = 'annotation-item fade-in';
-                
                 let content = '';
-                switch (annotation.type) {
-                    case 'note':
-                        content = annotation.text;
-                        break;
-                    case 'highlight':
-                        content = 'Highlighted text';
-                        break;
-                    case 'underline':
-                        content = 'Underlined text';
-                        break;
-                    case 'strikethrough':
-                        content = 'Strikethrough text';
-                        break;
-                    case 'pen':
-                        content = 'Pen drawing';
-                        break;
+                let isNote = annotation.type === 'note';
+                if (isNote) {
+                    // Show only a short preview (first 30 chars)
+                    let preview = annotation.text ? annotation.text.substring(0, 30) : '';
+                    if (annotation.text && annotation.text.length > 30) preview += '...';
+                    content = `<span class="note-preview" style="cursor:pointer; color:#333;" title="Click to expand">${this.escapeHtml(preview)}</span>`;
+                } else {
+                    switch (annotation.type) {
+                        case 'highlight':
+                            content = 'Highlighted text';
+                            break;
+                        case 'underline':
+                            content = 'Underlined text';
+                            break;
+                        case 'strikethrough':
+                            content = 'Strikethrough text';
+                            break;
+                        case 'pen':
+                            content = 'Pen drawing';
+                            break;
+                    }
                 }
-                
                 item.innerHTML = `
-                    <div class="annotation-main" onclick="pdfAnnotator.goToAnnotation(${annotation.timestamp})">
+                    <div class="annotation-main" data-annotation-timestamp="${annotation.timestamp}" style="position:relative;" onclick="pdfAnnotator.goToAnnotation(${annotation.timestamp})">
                         <div class="annotation-type">${annotation.type.charAt(0).toUpperCase() + annotation.type.slice(1)}</div>
-                        <div class="annotation-content">${this.escapeHtml(content)}</div>
+                        <div class="annotation-content">${content}</div>
                         <div class="annotation-page">Page ${annotation.page}</div>
                     </div>
                     <div class="annotation-actions">
-                        ${annotation.type === 'note' ? `
-                            <button class="annotation-edit-btn" onclick="pdfAnnotator.editNote(${annotation.timestamp})" title="Edit note">
+                        ${isNote ? `
+                            <button class="annotation-edit-btn" onclick="event.stopPropagation(); pdfAnnotator.editNote(${annotation.timestamp})" title="Edit note">
                                 <i class="fas fa-edit"></i>
                             </button>
                         ` : ''}
-                        <button class="annotation-delete-btn" onclick="pdfAnnotator.deleteAnnotation(${annotation.timestamp})" title="Delete annotation">
+                        <button class="annotation-delete-btn" onclick="event.stopPropagation(); pdfAnnotator.deleteAnnotation(${annotation.timestamp})" title="Delete annotation">
                             <i class="fas fa-trash"></i>
                         </button>
                     </div>
                 `;
-                
+                // Add expand/collapse for notes
+                if (isNote) {
+                    item.querySelector('.note-preview').addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        let expanded = item.querySelector('.note-full');
+                        if (!expanded) {
+                            expanded = document.createElement('div');
+                            expanded.className = 'note-full';
+                            expanded.style = 'background:#fffbe6; color:#333; border:1px solid #ffd700; border-radius:6px; padding:8px 12px; margin-top:6px; position:absolute; left:0; z-index:10; min-width:180px; max-width:320px; box-shadow:0 2px 8px rgba(0,0,0,0.12);';
+                            expanded.innerHTML = `<div style='font-size:15px; margin-bottom:6px;'>${this.escapeHtml(annotation.text)}</div><button style='font-size:13px; background:#ffd700; border:none; border-radius:4px; padding:2px 10px; margin-right:6px; cursor:pointer;' onclick='event.stopPropagation(); this.parentNode.remove();'>Close</button>`;
+                            item.querySelector('.annotation-main').appendChild(expanded);
+                        }
+                    });
+                }
                 list.appendChild(item);
             });
         });
@@ -1021,9 +1125,9 @@ class PDFAnnotator {
             annotations: this.annotations,
             timestamp: Date.now()
         };
-        
         localStorage.setItem('pdf_annotations', JSON.stringify(data));
-        
+        // Update the left annotations panel to preview current annotations
+        this.updateAnnotationsList();
         // Show success message
         this.showMessage('Annotations saved successfully!', 'success');
     }
@@ -1676,16 +1780,20 @@ document.addEventListener('DOMContentLoaded', () => {
 let annotations = []; // Use your actual annotation data structure
 
 // Export Annotations
-document.getElementById('export-annotations').onclick = function() {
-    const data = JSON.stringify(annotations, null, 2);
-    const blob = new Blob([data], {type: 'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'annotations.json';
-    a.click();
-    URL.revokeObjectURL(url);
-};
+document.addEventListener('DOMContentLoaded', () => {
+    // Attach Export button handler AFTER pdfAnnotator is initialized
+    const exportBtn = document.getElementById('export-annotations');
+    if (exportBtn) {
+        exportBtn.addEventListener('click', () => {
+            if (window.pdfAnnotator && typeof pdfAnnotator.exportAnnotations === 'function') {
+                pdfAnnotator.exportAnnotations();
+            } else {
+                alert("PDF Annotator not initialized!");
+            }
+        });
+    }
+});
+
 
 // Import Annotations
 document.getElementById('import-annotations').onclick = function() {

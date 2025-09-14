@@ -68,37 +68,42 @@
                         <i class="fas fa-highlighter"></i>
                         Highlight
                     </button>
-                    
                     <button id="underline-tool" class="tool-btn" data-tool="underline">
                         <i class="fas fa-underline"></i>
                         Underline
                     </button>
-                    
                     <button id="strikethrough-tool" class="tool-btn" data-tool="strikethrough">
                         <i class="fas fa-strikethrough"></i>
                         Strike
                     </button>
-                    
                     <button id="pen-tool" class="tool-btn" data-tool="pen">
                         <i class="fas fa-pen"></i>
                         Pen
                     </button>
-                    
                     <button id="note-tool" class="tool-btn" data-tool="note">
                         <i class="fas fa-sticky-note"></i>
                         Note
                     </button>
-                    
+                    <!-- Color Picker (Color Wheel) -->
                     <div class="color-picker" id="color-picker"></div>
-                    
-                    <button id="undo-btn" class="action-btn">
-                        <i class="fas fa-undo"></i>
-                    </button>
-                    
-                    <button id="redo-btn" class="action-btn">
-                        <i class="fas fa-redo"></i>
-                    </button>
-                    
+                    <input type="color" id="color-wheel" title="Choose color" style="width: 32px; height: 32px; border: none; background: none; cursor: pointer; vertical-align: middle; margin-left: 8px;" />
+                    <div class="tool-setting" style="display: flex; align-items: center; margin-left: 10px;">
+                        <label for="line-width" style="margin-right: 5px; font-size: 14px;">Width:</label>
+                        <input type="range" id="line-width" min="1" max="20" value="2" style="width: 80px;">
+                        <span id="line-width-value" style="margin-left: 5px; min-width: 20px; text-align: center;">2</span>
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:center; margin: 0 6px;">
+                        <button id="undo-btn" class="action-btn" title="Undo">
+                            <i class="fas fa-undo"></i>
+                        </button>
+                        <span style="font-size:11px; color:#555; margin-top:4px;">Undo</span>
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items:center; margin: 0 6px;">
+                        <button id="redo-btn" class="action-btn" title="Redo">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                        <span style="font-size:11px; color:#555; margin-top:4px;">Redo</span>
+                    </div>
                     <button id="clear-all" class="action-btn danger">
                         <i class="fas fa-trash"></i>
                         Clear All
@@ -118,10 +123,24 @@
                         <i class="fas fa-chevron-right"></i>
                     </button>
 
-                    <!-- Rotate Button -->
-                    <button id="rotate-page" class="nav-btn" title="Rotate 180°">
-                        <i class="fas fa-sync-alt"></i>
-                    </button>
+                    <div style="display: flex; flex-direction: column; align-items: center; margin: 0 8px;">
+                        <div style="display: flex; flex-direction: row; align-items: center; gap: 8px;">
+                            <!-- Rotate Left Button -->
+                            <div style="display:flex; flex-direction:column; align-items:center;">
+                                <button id="rotate-left" class="nav-btn" title="Rotate Page Left 90°">
+                                    <i class="fas fa-undo"></i>
+                                </button>
+                                <span style="font-size:11px; color:#555; margin-top:4px;">Rotate Left</span>
+                            </div>
+                            <!-- Rotate Right Button -->
+                            <div style="display:flex; flex-direction:column; align-items:center;">
+                                <button id="rotate-right" class="nav-btn" title="Rotate Page Right 90°">
+                                    <i class="fas fa-redo"></i>
+                                </button>
+                                <span style="font-size:11px; color:#555; margin-top:4px;">Rotate Right</span>
+                            </div>
+                        </div>
+                    </div>
                     
                     <div class="zoom-controls">
                         <button id="zoom-out" class="zoom-btn">
