@@ -1413,7 +1413,7 @@ body.dark-mode #clearPdfBtn:hover {
   select,
   textarea,
   button:not(#backToTop) {
-    width: 100% !important;
+    width: 90% !important;
     font-size: 14px !important;
     padding: 0.75rem !important;
     box-sizing: border-box !important;
@@ -2445,4 +2445,121 @@ body.dark-mode .speed-control input:focus {
   .tts-btn {
     justify-content: center;
   }
+}
+/* Sidebar base */
+.sidebar {
+  height: 100%;
+  width: 0; /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
+  z-index: 9999;
+}
+
+/* Sidebar links */
+.sidebar a {
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #f1f1f1;
+  display: block;
+  transition: 0.2s;
+}
+
+.sidebar a:hover {
+  background: #2563eb;
+  color: white;
+  border-radius: 4px;
+}
+
+/* Close button (X) */
+.sidebar .closebtn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 30px;
+  color: #fff;
+}
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 100%;
+  background: #111;
+  color: white;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  color: #4f8ef7;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #4f8ef7;
+}
+
+/* Push main content */
+.main-content {
+  margin-left: 240px; /* space for sidebar */
+  padding: 20px;
+}
+/* Sidebar hidden by default */
+.sidebar {
+  height: 100%;
+  width: 0; /* hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  z-index: 2000;
+}
+
+.sidebar a {
+  padding: 12px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #f1f1f1;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #575757;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 36px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Hamburger Button */
+.hamburger {
+  font-size: 26px;
+  cursor: pointer;
+  color: #2563eb; /* matches your theme */
 }

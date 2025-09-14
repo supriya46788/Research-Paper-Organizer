@@ -1,81 +1,59 @@
 import streamlit as st
+import PyPDF2
 from gtts import gTTS
-import fitz  
 import tempfile
+import matplotlib.pyplot as plt
+from collections import Counter
+import re
+import io
 
+# ------------------- APP CONFIG -------------------
+st.set_page_config(page_title="AI Research Paper Assistant", page_icon="📄", layout="wide")
 
-# APP CONFIG
-st.set_page_config(page_title="AI Research Paper Assistant", page_icon="📄", layout="centered")
-
-
-# CUSTOM CSS
-st.markdown(
-    """
-    <style>
-        /* Background */
-        .stApp { background-color: #9fcbf5 !important; color: black !important; }
-
-        /* Global text */
-        h1, h2, h3, h4, h5, h6, p, label, span { color: black !important; }
-
-        /* Title */
-        .title-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.08);
-            text-align: center;
-            margin-bottom: 20px;
-            color: black !important;
-        }
-
-        /* File uploader box */
-        div[data-testid="stFileUploader"] {
-            border: 2px dashed #4a90e2 !important;
-            background-color: #f5f2f2 !important;
-            border-radius: 12px;
-            padding: 30px;
-        }
-
-        /* Buttons */
-        div.stButton > button { border-radius: 8px; padding: 10px 22px; font-weight: 600; border: none; }
-
-        /* Upload & Summarize button */
-        div.stButton > button:first-child {
-            background: linear-gradient(90deg, #2f80ed, #56ccf2) !important;
-            color: white !important;
-        }
-
-        /* Back button */
-        div.stButton > button[kind="secondary"], div.stButton > button:nth-child(2) {
-            background-color: #e6e9f5 !important;
-            color: black !important;
-        }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-
-# SESSION STATE INIT
-if "uploaded_file" not in st.session_state:
-    st.session_state.uploaded_file = None
+# ------------------- SESSION STATE -------------------
 if "summary" not in st.session_state:
     st.session_state.summary = ""
+if "detailed_summary" not in st.session_state:
+    st.session_state.detailed_summary = ""
 if "audio_file" not in st.session_state:
     st.session_state.audio_file = None
+if "pdf_text" not in st.session_state:
+    st.session_state.pdf_text = ""
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
 
-
-# FUNCTIONS
-def extract_text_from_pdf(pdf_file):
+# ------------------- FUNCTIONS -------------------
+def extract_text_from_pdf(uploaded_file):
     text = ""
-    pdf_document = fitz.open(stream=pdf_file.read(), filetype="pdf")
-    for page_num in range(len(pdf_document)):
-        text += pdf_document[page_num].get_text()
+    reader = PyPDF2.PdfReader(uploaded_file)
+    for page in reader.pages:
+        page_text = page.extract_text() or ""
+        text += page_text
     return text
 
-def generate_summary(text):
-    return text[:900] + "..." if len(text) > 900 else text
+def generate_summaries(text):
+    # Simulated AI Summaries (Replace with LLM API later)
+    tldr = text[:300] + "..." if len(text) > 300 else text
+    detailed = text[:1000] + "..." if len(text) > 1000 else text
+    return tldr, detailed
+
+def generate_visualizations(text):
+    # Basic visualization: word frequency
+    words = re.findall(r'\b\w+\b', text.lower())
+    common_words = [w for w in words if len(w) > 4]
+    counter = Counter(common_words)
+    most_common = counter.most_common(5)
+    labels, values = zip(*most_common)
+
+    fig, ax = plt.subplots()
+    ax.bar(labels, values, color="skyblue")
+    ax.set_title("Top Keywords in Paper")
+    ax.set_ylabel("Frequency")
+
+    buf = io.BytesIO()
+    plt.savefig(buf, format="png")
+    buf.seek(0)
+    return buf
 
 def text_to_speech(text):
     tts = gTTS(text=text, lang="en")
@@ -83,46 +61,64 @@ def text_to_speech(text):
     tts.save(temp_file.name)
     return temp_file.name
 
+def chat_with_ai(user_input):
+    # Simulated chatbot response
+    response = f"This is a simulated answer to: '{user_input}'. Replace with AI model API."
+    return response
 
-# TITLE
-st.markdown("<div class='title-card'><h2>📑 Upload Your Research Paper</h2><p>Upload a PDF to get a concise summary</p></div>", unsafe_allow_html=True)
+# ------------------- UI HEADER -------------------
+st.title("📄 AI Research Paper Assistant")
+st.markdown("Upload a PDF, explore summaries, keyword charts, and chat with an AI assistant.")
 
+uploaded_file = st.file_uploader("Upload PDF", type=["pdf"])
 
-# MAIN CARD
-st.markdown("<div class='main-card'>", unsafe_allow_html=True)
-uploaded_file = st.file_uploader("Choose PDF File", type=["pdf"])
-
-# Buttons
-col1, col2 = st.columns([1, 2])
-with col1:
-    summarize_btn = st.button("📑 Upload & Summarize")
-with col2:
-    home_btn = st.button("⬅️ Back to Home")
-st.markdown("</div>", unsafe_allow_html=True)
-
-
-# BUTTON LOGIC
-if home_btn:
-    st.session_state.uploaded_file = None
-    st.session_state.summary = ""
-    st.session_state.audio_file = None
-    st.info("Back to Home clicked!")
-
-
-# Upload & Summarize button
-if summarize_btn and uploaded_file:
-    with st.spinner("Extracting & summarizing..."):
+# ------------------- PROCESS PDF -------------------
+if uploaded_file and st.button("🔍 Process PDF"):
+    with st.spinner("Reading and summarizing your PDF..."):
         text = extract_text_from_pdf(uploaded_file)
-        st.session_state.summary = generate_summary(text)
-        st.session_state.audio_file = text_to_speech(st.session_state.summary)
-        st.success("✅ Summary Generated!")
+        st.session_state.pdf_text = text
+        tldr, detailed = generate_summaries(text)
+        st.session_state.summary = tldr
+        st.session_state.detailed_summary = detailed
+        st.session_state.audio_file = text_to_speech(tldr)
+    st.success("✅ PDF processed successfully!")
 
+# ------------------- TABS -------------------
+if st.session_state.pdf_text:
+    tab1, tab2, tab3 = st.tabs(["🧠 Summary", "📊 Visuals", "🤖 AI Assistant"])
 
-# DISPLAY SUMMARY
-if st.session_state.summary:
-    st.markdown("<div class='main-card'>", unsafe_allow_html=True)
-    st.text_area("Summary", st.session_state.summary, height=250)
-    if st.button("🔊 Read Summary Aloud"):
-        if st.session_state.audio_file:
-            st.audio(st.session_state.audio_file, format="audio/mp3")
-    st.markdown("</div>", unsafe_allow_html=True)
+    # --- TAB 1: Summary ---
+    with tab1:
+        st.subheader("TL;DR Summary")
+        st.write(st.session_state.summary)
+
+        st.subheader("Detailed Summary")
+        st.write(st.session_state.detailed_summary)
+
+        if st.button("🔊 Read Summary Aloud"):
+            if st.session_state.audio_file:
+                st.audio(st.session_state.audio_file, format="audio/mp3")
+
+    # --- TAB 2: Visuals ---
+    with tab2:
+        st.subheader("Keyword Analysis")
+        chart = generate_visualizations(st.session_state.pdf_text)
+        st.image(chart, caption="Top Keywords in Paper")
+
+    # --- TAB 3: AI Assistant ---
+    with tab3:
+        st.subheader("Chat with AI Assistant")
+        user_query = st.text_input("Ask a question about this paper")
+        if st.button("💬 Send"):
+            if user_query.strip():
+                ai_response = chat_with_ai(user_query)
+                st.session_state.chat_history.append(("You", user_query))
+                st.session_state.chat_history.append(("AI", ai_response))
+
+        for sender, msg in st.session_state.chat_history:
+            if sender == "You":
+                st.markdown(f"**🧑 You:** {msg}")
+            else:
+                st.markdown(f"**🤖 AI:** {msg}")
+else:
+    st.info("📂 Upload a PDF and click **Process PDF** to begin.")

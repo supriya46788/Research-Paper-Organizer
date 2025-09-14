@@ -1,298 +1,175 @@
 <!--open-source.html file-->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Open Source Community</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <link rel="stylesheet" href="landing.css" />
-    
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="landing.css" />
-    <link rel="stylesheet" href="css/open-source.css">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-     
-  </head>
-  <body>
 
-<!-- Navigation -->
-   <nav class="navbar">
-        <a href="index.html" class="nav-item">
-            <i class="fas fa-book-open"></i>
-            Home
-        </a>
-       <!-- Hamburger div (shows only on mobile) -->
-  <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-  </div>
-        <div class="navbar-right-links">
-            <a href="about.html" class="nav-item">About us</a>
-            <a href="blog.html" class="nav-item">Blogs</a>
-            <a href="Faq.html" class="nav-item">FAQ</a>
-            <a href="contact.html" class="nav-item">Contact Us</a>
-            <a href="tools.html" class="nav-item">Tools</a>
-            <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-                <i class="fas fa-sun"></i>
-            </button>
-        </div>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Source Community</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="landing.css" />
 
-    <header class="open-source-header">
-      <h1>🌐 Open Source Community</h1>
-      <h2>Discover Projects • Contribute • Grow</h2>
-    </header>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="landing.css" />
+  <link rel="stylesheet" href="css/open-source.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    <div class="controls">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search repos by name or language..."
-      />
-      <button onclick="searchRepos()">Search</button>
-      <button onclick="filterRepos('all')">All</button>
-      <button onclick="filterRepos('ai')">AI</button>
-      <button onclick="filterRepos('ml')">ML</button>
-      <button onclick="filterRepos('js')">JS</button>
-      <button onclick="filterRepos('html')">HTML</button>
-      <button onclick="filterRepos('css')">CSS</button>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-item">
+      <i class="fas fa-book-open"></i>
+      Home
+    </a>
+    <!-- Hamburger div (shows only on mobile) -->
+    <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
+    <div class="navbar-right-links">
+      <a href="about.html" class="nav-item">About us</a>
+      <a href="blog.html" class="nav-item">Blogs</a>
+      <a href="Faq.html" class="nav-item">FAQ</a>
+      <a href="contact.html" class="nav-item">Contact Us</a>
+      <a href="tools.html" class="nav-item">Tools</a>
+      <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+        <i class="fas fa-sun"></i>
+      </button>
+    </div>
+  </nav>
 
-    <div class="repo-container" id="repo-container"></div>
+  <header class="open-source-header">
+    <h1>🌐 Open Source Community</h1>
+    <h2>Discover Projects • Contribute • Grow</h2>
+  </header>
 
-    <section class="contribute">
-      <h2>🤝 How to Contribute</h2>
-      <div class="contribute-grid">
-        <div class="contribute-card">
-          <h3>Fork & Clone</h3>
-          <p>
-            Fork the repo and clone it locally using <code>git clone</code>.
-          </p>
-        </div>
-        <div class="contribute-card">
-          <h3>Create a Branch</h3>
-          <p>
-            Create a feature branch with
-            <code>git checkout -b feature-name</code>.
-          </p>
-        </div>
-        <div class="contribute-card">
-          <h3>Make Changes</h3>
-          <p>Add your features or fix bugs with clean commits.</p>
-        </div>
-        <div class="contribute-card">
-          <h3>Submit PR</h3>
-          <p>Push and open a Pull Request for review.</p>
-        </div>
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search repos by name or language..." />
+    <button onclick="searchRepos()">Search</button>
+    <button onclick="filterRepos('all')">All</button>
+    <button onclick="filterRepos('ai')">AI</button>
+    <button onclick="filterRepos('ml')">ML</button>
+    <button onclick="filterRepos('js')">JS</button>
+    <button onclick="filterRepos('html')">HTML</button>
+    <button onclick="filterRepos('css')">CSS</button>
+  </div>
+
+  <div class="repo-container" id="repo-container"></div>
+
+  <section class="contribute">
+    <h2>🤝 How to Contribute</h2>
+    <div class="contribute-grid">
+      <div class="contribute-card">
+        <h3>Fork & Clone</h3>
+        <p>
+          Fork the repo and clone it locally using <code>git clone</code>.
+        </p>
       </div>
-    </section>
-
-    <section class="acknowledge">
-      <h2>🏆 Acknowledgements</h2>
-      <div class="ack-grid">
-        <div class="ack-card">
-          <h3>GSSoC</h3>
-          <p>
-            GirlScript Summer of Code empowers students to contribute to open
-            source projects with mentorship.
-          </p>
-        </div>
+      <div class="contribute-card">
+        <h3>Create a Branch</h3>
+        <p>
+          Create a feature branch with
+          <code>git checkout -b feature-name</code>.
+        </p>
       </div>
-    </section>
+      <div class="contribute-card">
+        <h3>Make Changes</h3>
+        <p>Add your features or fix bugs with clean commits.</p>
+      </div>
+      <div class="contribute-card">
+        <h3>Submit PR</h3>
+        <p>Push and open a Pull Request for review.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Back to Top Button -->
+  <section class="acknowledge">
+    <h2>🏆 Acknowledgements</h2>
+    <div class="ack-grid">
+      <div class="ack-card">
+        <h3>GSSoC</h3>
+        <p>
+          GirlScript Summer of Code empowers students to contribute to open
+          source projects with mentorship.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
   <button id="backToTop">
     <i class="fa-solid fa-arrow-up"></i>
   </button>
 
-    <!-- Modern Footer -->
-    <footer class="modern-footer" aria-label="Footer">
-      <div class="footer-top">
-        <div class="footer-brand footer-card" id="top-card">
-          <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-          <p style="margin-top: 20px">
-            Organize, track, and manage your research papers seamlessly.
-          </p>
-        </div>
-
-        <div class="footer-links-section footer-card">
-          <h4>Quick Links</h4>
-          <ul>
-            <li>
-              <a href="index.html"><i class="fas fa-book-open"></i>Home</a>
-            </li>
-            <li>
-              <a href="about.html"><i class="fas fa-users"></i>About Us</a>
-            </li>
-            <li>
-              <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
-            </li>
-            <li>
-              <a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="footer-links-section footer-card">
-          <h4>Resources</h4>
-          <ul>
-            <li>
-              <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
-            </li>
-            <li>
-              <a href="glossary.html"><i class="fas fa-book"></i>Glossary</a>
-            </li>
-            <li>
-              <a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a>
-            </li>
-            <li>
-              <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="footer-links-section footer-card">
-          <h4>Connect</h4>
-          <div class="social-icons">
-            <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i>
-            </a>
-          </div>
-        </div>
+  <!-- Modern Footer -->
+  <footer class="modern-footer" aria-label="Footer">
+    <div class="footer-top">
+      <div class="footer-brand footer-card" id="top-card">
+        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        <p style="margin-top: 20px">
+          Organize, track, and manage your research papers seamlessly.
+        </p>
       </div>
 
-      <div class="footer-bottom">
-        © 2025 Research Paper Organizer | Made with
-        <span class="heart">&hearts;</span> for researchers worldwide
+      <div class="footer-links-section footer-card">
+        <h4>Quick Links</h4>
+        <ul>
+          <li>
+            <a href="index.html"><i class="fas fa-book-open"></i>Home</a>
+          </li>
+          <li>
+            <a href="about.html"><i class="fas fa-users"></i>About Us</a>
+          </li>
+          <li>
+            <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
+          </li>
+          <li>
+            <a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
+          </li>
+        </ul>
       </div>
-    </footer>
 
-    <script>
+      <div class="footer-links-section footer-card">
+        <h4>Resources</h4>
+        <ul>
+          <li>
+            <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
+          </li>
+          <li>
+            <a href="glossary.html"><i class="fas fa-book"></i>Glossary</a>
+          </li>
+          <li>
+            <a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a>
+          </li>
+          <li>
+            <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
+          </li>
+        </ul>
+      </div>
 
-// for issue #484
-// Mobile menu toggle
-    function toggleMenu() {
-      const navbarRightLinks = document.querySelector('.navbar-right-links');
-      navbarRightLinks.classList.toggle('show');
-    }
+      <div class="footer-links-section footer-card">
+        <h4>Connect</h4>
+        <div class="social-icons">
+          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i
+              class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+    </div>
 
-      const githubUser = "supriya46788";
-      let allRepos = [];
+    <div class="footer-bottom">
+      © 2025 Research Paper Organizer | Made with
+      <span class="heart">&hearts;</span> for researchers worldwide
+    </div>
+  </footer>
+</body>
+<script src="js/open-source.js"></script>
 
-      async function fetchRepos() {
-        const res = await fetch(
-          `https://api.github.com/users/${githubUser}/repos?per_page=12&sort=updated`
-        );
-        const data = await res.json();
-        allRepos = data.map((repo) => ({
-          name: repo.name,
-          desc: repo.description || "No description",
-          url: repo.html_url,
-          language: repo.language ? repo.language.toLowerCase() : "other",
-          tags: repo.language ? [repo.language.toLowerCase()] : ["other"],
-        }));
-        displayRepos(allRepos);
-      }
-
-      function displayRepos(list) {
-        const container = document.getElementById("repo-container");
-        container.innerHTML = "";
-        list.forEach((repo) => {
-          container.innerHTML += `
-      <div class="repo">
-        <h3>${repo.name}</h3>
-        <p>${repo.desc}</p>
-        <div class="tags">${repo.tags
-          .map((t) => `<span>${t.toUpperCase()}</span>`)
-          .join("")}</div>
-        <a href="${repo.url}" target="_blank">🔗 View Repo</a>
-      </div>`;
-        });
-      }
-
-      function searchRepos() {
-        const term = document.getElementById("searchInput").value.toLowerCase();
-        displayRepos(
-          allRepos.filter(
-            (r) =>
-              r.name.toLowerCase().includes(term) || r.language.includes(term)
-          )
-        );
-      }
-
-      function filterRepos(tag) {
-        if (tag === "all") displayRepos(allRepos);
-        else displayRepos(allRepos.filter((r) => r.tags.includes(tag)));
-      }
-
-      // 🌙 Dark Mode Toggle
-      const darkToggle = document.getElementById("darkModeToggle");
-      const body = document.body;
-
-      // Load preference
-      if (localStorage.getItem("darkMode") === "enabled") {
-        body.classList.add("dark-mode");
-        darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      }
-
-      // Toggle event
-      darkToggle.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
-
-        if (body.classList.contains("dark-mode")) {
-          localStorage.setItem("darkMode", "enabled");
-          darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-          localStorage.setItem("darkMode", "disabled");
-          darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        }
-      });
-      
-      //Scroll to back & top button
-      // Show button when scrolled down
-      const bottomToTopButton = document.getElementById("backToTop");
-      const icon = bottomToTopButton.querySelector("i");
-
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 100) {
-          bottomToTopButton.style.display = "block";
-
-          if (
-            window.scrollY + window.innerHeight >=
-            document.documentElement.scrollHeight - 10
-          ) {
-            icon.classList.remove("fa-arrow-down");
-            icon.classList.add("fa-arrow-up");
-          } else {
-            icon.classList.remove("fa-arrow-up");
-            icon.classList.add("fa-arrow-down");
-          }
-        } else {
-          bottomToTopButton.style.display = "none";
-        }
-      });
-
-      bottomToTopButton.addEventListener("click", () => {
-        if (icon.classList.contains("fa-arrow-down")) {
-          // scroll to bottom
-          window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: "smooth",
-          });
-        } else {
-          // scroll to top
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      });
-
-      fetchRepos();
-    </script>
-  </body>
 </html>

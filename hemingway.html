@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hemingway Editor | Research Paper Organizer</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/hemingway.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Navigation -->
+    <nav class="navbar">
+      <a href="index.html" class="nav-item">
+        <i class="fas fa-book-open"></i>
+        Home
+      </a>
+      <div class="navbar-right-links">
+        <a href="about.html" class="nav-item">About us</a>
+        <a href="blog.html" class="nav-item">Blogs</a>
+        <a href="Faq.html" class="nav-item">FAQ</a>
+        <a href="contact.html" class="nav-item">Contact Us</a>
+        <a href="tools.html" class="nav-item">Tools</a>
+        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+            <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </nav>
+
+    <h1>Hemingway Style Editor</h1>
+    <p class="lead">Analyze your writing for readability, passive voice, adverbs, and long sentences.</p>
+
+    <div class="card">
+      <textarea id="editor" placeholder="Type or paste your text here..."></textarea>
+      <button id="analyzeBtn" class="btn">Analyze</button>
+    </div>
+
+    <div class="result-container">
+      <h3>Analysis Result:</h3>
+      <div id="output"></div>
+      <div class="stats">
+        <p><strong>Word Count:</strong> <span id="wordCount">0</span></p>
+        <p><strong>Readability Score:</strong> <span id="readability">—</span></p>
+      </div>
+    </div>
+
+    <footer>
+      <strong>Note:</strong> This is a client-side tool. For advanced NLP suggestions, integration with AI services is required.
+    </footer>
+  </div>
+
+  <script>
+    function analyzeText() {
+      let text = document.getElementById("editor").value;
+      let analyzed = text;
+
+      // Highlight long sentences (>20 words)
+      analyzed = analyzed.replace(/([^.!?]*[.!?])/g, (sentence) => {
+        const words = sentence.trim().split(/\s+/).length;
+        if (words > 20) return `<span class="highlight-long">${sentence}</span>`;
+        return sentence;
+      });
+
+      // Highlight passive voice
+      analyzed = analyzed.replace(/\b(was|were|is|are|been|being)\s+\w+ed\b/gi,
+        match => `<span class="highlight-passive">${match}</span>`);
+
+      // Highlight adverbs ending with -ly
+      analyzed = analyzed.replace(/\b\w+ly\b/gi,
+        match => `<span class="highlight-adverb">${match}</span>`);
+
+      // Update output
+      document.getElementById("output").innerHTML = analyzed;
+
+      // Word count
+      const wordCount = text.trim() === "" ? 0 : text.trim().split(/\s+/).length;
+      document.getElementById("wordCount").textContent = wordCount;
+
+      // Readability (Flesch–Kincaid approximation)
+      const sentences = text.split(/[.!?]+/).filter(Boolean).length || 1;
+      const syllables = text.toLowerCase().match(/[aeiouy]{1,2}/g)?.length || 1;
+      const score = 206.835 - (1.015 * (wordCount / sentences)) - (84.6 * (syllables / wordCount));
+      document.getElementById("readability").textContent = score.toFixed(1);
+    }
+
+    document.getElementById("analyzeBtn").addEventListener("click", analyzeText);
+  </script>
+</body>
+</html>
