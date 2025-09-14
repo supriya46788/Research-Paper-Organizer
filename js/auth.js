@@ -12,24 +12,15 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
 
-// // Firebase configuration template
-// const firebaseConfig = {
-//   apiKey: "YOUR_API_KEY_HERE",
-//   authDomain: "your-project-id.firebaseapp.com",
-//   projectId: "your-project-id",
-//   storageBucket: "your-project-id.appspot.com",
-//   messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-//   appId: "YOUR_APP_ID",
-//   measurementId: "YOUR_MEASUREMENT_ID", // optional (only if you enabled Analytics)
-// };
+// Firebase configuration template
 const firebaseConfig = {
-  apiKey: "AIzaSyD1kwTdlpjL5IG8xWp8LJZz1woiT0EbAW8",
-  authDomain: "research-paper-organizer-94b73.firebaseapp.com",
-  projectId: "research-paper-organizer-94b73",
-  storageBucket: "research-paper-organizer-94b73.appspot.com", // fixed .app to .appspot.com
-  messagingSenderId: "384122759913",
-  appId: "1:384122759913:web:7a2802151e701f4d61de78",
-  measurementId: "G-K8EF0YR2P1",
+  apiKey: "YOUR_API_KEY_HERE",
+  authDomain: "your-project-id.firebaseapp.com",
+  projectId: "your-project-id",
+  storageBucket: "your-project-id.appspot.com",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID",
+  measurementId: "YOUR_MEASUREMENT_ID", // optional (only if you enabled Analytics)
 };
 
 // ✅ Initialize Firebase
