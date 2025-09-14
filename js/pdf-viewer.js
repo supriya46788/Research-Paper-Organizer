@@ -1,5 +1,8 @@
 // PDF Viewer and Annotation System
 class PDFAnnotator {
+    rotation = 0; // Track current rotation in degrees
+    // Track the current PDF.js render task
+    currentRenderTask = null;
     constructor() {
         this.pdfDoc = null;
         this.currentPage = 1;
@@ -14,7 +17,6 @@ class PDFAnnotator {
         this.currentPenPoints = []; // Track pen drawing points
         this.eraserSize = 20; // Eraser brush size
         this.isErasing = false; // Track eraser state
-        
         // Wait for DOM to be fully loaded before initializing
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.initializeElements());
@@ -50,6 +52,14 @@ class PDFAnnotator {
     }
 
     initializeEventListeners() {
+        // Rotate button
+        const rotateBtn = document.getElementById('rotate-page');
+        if (rotateBtn) {
+            rotateBtn.addEventListener('click', () => {
+                this.rotation = (this.rotation + 180) % 360;
+                this.renderPage();
+            });
+        }
         // File upload handlers - check if elements exist first
         const pdfUpload = document.getElementById('pdf-upload');
         const pdfUploadMain = document.getElementById('pdf-upload-main');
@@ -185,7 +195,9 @@ class PDFAnnotator {
                 console.error('Canvas container not found!');
             }
             
+            // Always start at first page after upload
             this.currentPage = 1;
+            console.log('Set currentPage to', this.currentPage, 'of', this.pdfDoc.numPages);
             await this.renderPage();
             this.clearAnnotations();
             
@@ -200,13 +212,23 @@ class PDFAnnotator {
     async renderPage() {
         if (!this.pdfDoc) {
             console.log('No PDF document loaded');
+            this.showMessage('No PDF document loaded. Please upload a PDF.', 'error');
+            // Always show the canvas container for debugging
+            const canvasContainer = document.getElementById('pdf-canvas-container');
+            if (canvasContainer) {
+                canvasContainer.classList.add('show');
+                canvasContainer.style.display = 'block';
+            }
             return;
         }
 
         try {
-            console.log('Rendering page:', this.currentPage);
+            console.log('Rendering page:', this.currentPage, 'of', this.pdfDoc.numPages);
+            if (this.currentPage < 1) this.currentPage = 1;
+            if (this.currentPage > this.pdfDoc.numPages) this.currentPage = this.pdfDoc.numPages;
             const page = await this.pdfDoc.getPage(this.currentPage);
-            const viewport = page.getViewport({ scale: this.scale });
+            // Apply rotation to viewport
+            const viewport = page.getViewport({ scale: this.scale, rotation: this.rotation });
 
             console.log('Viewport dimensions:', viewport.width, 'x', viewport.height);
 
@@ -230,6 +252,16 @@ class PDFAnnotator {
             this.ctx.fillStyle = 'white';
             this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
+            // Cancel any previous render task before starting a new one
+            if (this.currentRenderTask && this.currentRenderTask.cancel) {
+                try {
+                    this.currentRenderTask.cancel();
+                    console.log('Previous render task cancelled.');
+                } catch (e) {
+                    console.warn('Error cancelling previous render task:', e);
+                }
+            }
+
             // Render PDF page
             const renderContext = {
                 canvasContext: this.ctx,
@@ -237,24 +269,24 @@ class PDFAnnotator {
             };
 
             console.log('Starting page render...');
-            const renderTask = page.render(renderContext);
-            
-            renderTask.promise.then(() => {
+            this.currentRenderTask = page.render(renderContext);
+
+            this.currentRenderTask.promise.then(() => {
                 console.log('Page rendered successfully');
-                
+                this.currentRenderTask = null;
                 // Verify canvas has content
                 const imageData = this.ctx.getImageData(0, 0, this.canvas.width, this.canvas.height);
                 const hasContent = imageData.data.some(pixel => pixel !== 0);
                 console.log('Canvas has content:', hasContent);
-                
                 if (!hasContent) {
                     console.warn('Canvas appears empty, trying alternative rendering...');
                     // Try rendering with different parameters
                     this.alternativeRender(page, viewport);
                 }
             }).catch((error) => {
+                this.currentRenderTask = null;
                 console.error('Render promise failed:', error);
-                throw error;
+                this.showMessage('Failed to render PDF page. Error: ' + (error && error.message ? error.message : error), 'error');
             });
 
             // Center the canvas wrapper
@@ -264,19 +296,19 @@ class PDFAnnotator {
                 canvasWrapper.style.textAlign = 'center';
                 canvasWrapper.style.width = '100%';
             }
-            
+
             // Update page info
             const currentPageElement = document.getElementById('current-page');
             if (currentPageElement) {
                 currentPageElement.textContent = this.currentPage;
             }
-            
+
             // Render annotations for current page
             this.renderAnnotations();
-            
+
         } catch (error) {
             console.error('Error rendering page:', error);
-            alert('Error rendering PDF page: ' + error.message);
+            this.showMessage('Error rendering PDF page: ' + error.message, 'error');
         }
     }
 
@@ -653,7 +685,7 @@ class PDFAnnotator {
                         annotation.points = modifiedPoints;
                         annotationsModified = true;
                     }
-                } else if (['highlight', 'underline', 'strikethrough'].includes(annotation.type)) 
+                } else if (['highlight', 'underline', 'strikethrough'].includes(annotation.type)) {
                     if (this.isPositionInRect(position, annotation.rect)) {
                         this.annotations.splice(annotationIndex, 1);
                         annotationsModified = true;
@@ -1506,6 +1538,69 @@ startxref
         return div.innerHTML;
     }
 }
+
+// --- Global initialization code (must be outside the class) ---
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded - Initializing PDF Annotator');
+    // Check if PDF.js is loaded
+    if (typeof pdfjsLib === 'undefined') {
+        console.error('PDF.js library not loaded!');
+        alert('PDF.js library failed to load. Please refresh the page and try again.');
+        return;
+    }
+    // Check if jsPDF is loaded
+    setTimeout(() => {
+        console.log('Checking jsPDF availability...');
+        console.log('window.jspdf:', typeof window.jspdf);
+        console.log('window.jsPDF:', typeof window.jsPDF);
+        if (window.jspdf && window.jspdf.jsPDF) {
+            console.log('✅ jsPDF loaded successfully via window.jspdf.jsPDF');
+        } else if (window.jsPDF) {
+            console.log('✅ jsPDF loaded successfully via window.jsPDF');
+        } else {
+            console.warn('⚠️ jsPDF library not detected - PDF export will fall back to summary');
+        }
+        // Test html2canvas
+        if (typeof html2canvas !== 'undefined') {
+            console.log('✅ html2canvas loaded successfully');
+        } else {
+            console.warn('⚠️ html2canvas not loaded - using fallback method');
+        }
+    }, 2000); // Check after 2 seconds to allow libraries to load
+    // Set PDF.js worker
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    console.log('PDF.js worker configured');
+    // Initialize the annotator
+    try {
+        pdfAnnotator = new PDFAnnotator();
+        console.log('PDF Annotator initialized successfully');
+    } catch (error) {
+        console.error('Error initializing PDF Annotator:', error);
+        alert('Failed to initialize PDF Annotator. Please refresh the page.');
+    }
+    // Add CSS for toast animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        .sticky-note {
+            pointer-events: auto !important;
+        }
+        .note-content {
+            pointer-events: auto !important;
+        }
+    `;
+    document.head.appendChild(style);
+});
+
 
 // Initialize the PDF Annotator when the page loads
 let pdfAnnotator;
