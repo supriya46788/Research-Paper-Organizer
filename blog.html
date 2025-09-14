@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <!-- Meta -->
   <meta charset="UTF-8" />
@@ -101,7 +102,6 @@
     }
   }
 
-  /* Footer CSS*/
   /* NEW: Search Bar Styles */
   .search-container {
     position: relative;
@@ -157,42 +157,84 @@
     color: #90cdf4;
   }
 
+
+
+  #searchSuggestions {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: #ffffff; /* Force white background */
+  color: #000000;            /* Force black text */
+  position: absolute;
+  width: calc(100% - 40px); /* matches input width */
+  z-index: 1000;
+  display: none;
+  border-radius: 6px;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* little shadow */
+}
+
+#searchSuggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+#searchSuggestions li:hover {
+  background-color: #f5f5f5;
+}
+
+  /* Modern Footer Styles */
   .modern-footer {
-    width: 100vw;
-    /* Full viewport width */
-    margin-left: calc(-50vw + 50%);
-    /* Center it if inside a constrained container */
+    width: 100vw; /* Full viewport width */
+    margin-left: calc(-50vw + 50%); /* Center it if inside a constrained container */
     background: linear-gradient(135deg, #1f3c88, #2c5aa0);
     color: #fff;
-    padding: 60px 20px 20px;
-    border-radius: 25px 25px 0 0;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+    padding: 40px 60px 0px;
+    border: none;
     overflow-x: hidden;
+    position: relative;
+    border-radius: 0; /* Make edges square */
   }
 
+  @media (max-width: 768px) {
+    .modern-footer {
+      padding: 40px 20px 0px;
+    }
+  }
 
   .footer-top {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    margin-bottom: 30px;
+    grid-template-columns: 1fr 0.8fr 0.8fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .footer-top {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
   }
 
   .footer-brand h2 {
-    font-size: 1.8rem;
+    font-size: 10px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+    flex-direction: column;
   }
 
   .footer-brand h2 i {
     margin-right: 10px;
-    font-size: 1.6rem;
+    font-size: 1rem;
     vertical-align: middle;
   }
 
   .footer-brand p {
     font-size: 1rem;
+    font-weight: 300;
     line-height: 1.5;
     opacity: 0.9;
   }
@@ -228,6 +270,11 @@
     transform: translateX(5px);
   }
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   .social-icons {
     display: flex;
     gap: 10px;
@@ -254,18 +301,83 @@
 
   .footer-bottom {
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 15px;
+    border: none;
+    padding: 15px 60px;
     font-size: 0.9rem;
     opacity: 0.8;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: rgba(0, 0, 0, 0.2);
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .footer-bottom {
+      padding: 15px 20px;
+    }
   }
 
   .footer-card {
     flex: 1 1 200px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 20px;
+    background: transparent;
+    border: none;
+    padding: 15px;
     min-width: 200px;
+  }
+
+  /* Contact Info */
+  .contact-info {
+    margin: 15px 0;
+  }
+
+  .contact-info p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .contact-info i {
+    margin-right: 8px;
+    color: #3b82f6;
+  }
+
+  /* Legal Links */
+  .legal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .legal-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    padding: 8px 0;
+    border-radius: 4px;
+    position: relative;
+  }
+
+  .legal-links a:hover {
+    transform: translateX(5px);
+    padding-left: 8px;
+  }
+
+  /* Enhanced Section Headers */
+  .footer-links-section h4 {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  .footer-links-section h4 i {
+    margin-right: 8px;
+    color: #3b82f6;
   }
 
   .footer-card ul {
@@ -275,7 +387,11 @@
   }
 
   .footer-card ul li {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
+  }
+
+  .footer-card ul li:last-child {
+    margin-bottom: 0;
   }
 
   .footer-card ul li a {
@@ -285,7 +401,6 @@
     align-items: center;
     gap: 8px;
     transition: 0.3s;
-
     padding: 5px;
     padding-left: 20px;
   }
@@ -319,13 +434,6 @@
     }
   }
 
-  @media (max-width: 756px) and (min-width: 730px),
-  (max-width: 601px) and (min-width: 540px) {
-    .footer-card {
-      gap: 4rem;
-    }
-  }
-
   @media (max-width: 480px) {
     .footer-top {
       grid-template-columns: 1fr;
@@ -345,69 +453,16 @@
     color: inherit;
   }
 
-  /* Dark Mode Footer Styles */
-  body.dark-mode .modern-footer {
-    background: linear-gradient(135deg, #1a202c, #2d3748);
+  /* Remove any default margins/padding that could cause white space */
+  html, body {
+    margin: 0;
+    padding: 0;
   }
 
-  body.dark-mode .footer-section h3,
-  body.dark-mode .footer-section h4 {
-    color: #e0e0e0;
+  /* Ensure footer is at the very bottom */
+  .modern-footer {
+    margin-bottom: 0;
   }
-
-  body.dark-mode .footer-section h4 {
-    border-bottom-color: rgba(224, 224, 224, 0.2);
-  }
-
-  body.dark-mode .footer-links a {
-    color: rgba(224, 224, 224, 0.8);
-  }
-
-  body.dark-mode .footer-links a:hover {
-    color: #90cdf4;
-  }
-
-  body.dark-mode .social-links a {
-    background: rgba(224, 224, 224, 0.1);
-    color: #e0e0e0;
-  }
-
-  body.dark-mode .social-links a:hover {
-    background: rgba(144, 205, 244, 0.2);
-    color: #90cdf4;
-  }
-
-  body.dark-mode .footer-bottom {
-    background: rgba(0, 0, 0, 0.3);
-    border-top-color: rgba(224, 224, 224, 0.1);
-  }
-
-  #searchSuggestions {
-  list-style: none;
-  margin: 4px 0 0;
-  padding: 0;
-  max-height: 200px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  background-color: #ffffff; /* Force white background */
-  color: #000000;            /* Force black text */
-  position: absolute;
-  width: calc(100% - 40px); /* matches input width */
-  z-index: 1000;
-  display: none;
-  border-radius: 6px;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* little shadow */
-}
-
-#searchSuggestions li {
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-#searchSuggestions li:hover {
-  background-color: #f5f5f5;
-}
 
 </style>
 
@@ -656,57 +711,90 @@
       <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-
-    <!-- Modern Footer -->
-    <footer class="modern-footer" aria-label="Footer">
-      <div class="footer-top">
-        <div class="footer-brand footer-card">
-          <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-          <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
+  <!-- Modern Footer -->
+  <footer class="modern-footer" aria-label="Footer">
+    <div class="footer-top">
+      <div class="footer-brand footer-card" id="top-card">
+        <h3><a href="index.html" style="color: inherit; text-decoration: none;"><i class="fas fa-book-open"></i> Research Paper Organizer</a></h3>
+        <p style="margin-top: 15px; margin-bottom: 15px;">
+          Organize, track, and manage your research papers seamlessly. Join thousands of researchers worldwide.
+        </p>
+        
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> Available Worldwide</p>
+          <p><i class="fas fa-clock"></i> 24/7 Support</p>
         </div>
-
-        <div class="footer-links-section footer-card">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-            <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-            <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links-section footer-card">
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-            <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-            <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-            <li>
-              <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="footer-links-section footer-card">
-          <h4>Connect</h4>
-          <div class="social-icons">
-            <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"
-              class="linkedin-icon">
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-          </div>
-        </div>
+        
       </div>
 
-      <div class="footer-bottom">
-        © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
+      <div class="footer-links-section footer-card">
+        <h4><i class="fas fa-link"></i> Quick Links</h4>
+        <ul>
+          <li>
+            <a href="index.html"><i class="fas fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="about.html"><i class="fas fa-users"></i>About Us</a>
+          </li>
+          <li>
+            <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
+          </li>
+          <li>
+            <a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
+          </li>
+          <li>
+            <a href="tools.html"><i class="fas fa-tools"></i>Tools</a>
+          </li>
+        </ul>
       </div>
 
-    </footer>
+      <div class="footer-links-section footer-card">
+        <h4><i class="fas fa-graduation-cap"></i> Research Tools</h4>
+        <ul>
+          <li>
+            <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
+          </li>
+          <li>
+            <a href="glossary.html"><i class="fas fa-book"></i>Glossary</a>
+          </li>
+          <li>
+            <a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a>
+          </li>
+          <li>
+            <a href="add-organize-papers.html"><i class="fas fa-plus-circle"></i>Add Papers</a>
+          </li>
+          <li>
+            <a href="summarize.html"><i class="fas fa-file-alt"></i>Summarize</a>
+          </li>
+          <li>
+            <a href="pdf-viewer.html"><i class="fas fa-edit"></i>PDF Annotator</a>
+          </li>
+        </ul>
+      </div>
 
-  </div>
+      <div class="footer-links-section footer-card">
+        <h4><i class="fas fa-users"></i> Connect & Support</h4>
+        <div class="social-icons">
+          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+          <a href="https://discord.gg/researchpaperorganizer" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+          <a href="https://twitter.com/researchpaperorg" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://youtube.com/researchpaperorganizer" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        
+        <div class="legal-links">
+          <a href="privacy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a>
+          <a href="terms-of-service.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 Research Paper Organizer | Made with
+      <span class="heart">&hearts;</span> for researchers worldwide
+    </div>
+  </footer>
 
   <!-- JS (inline for easy drop-in; feel free to extract) -->
   <script>
