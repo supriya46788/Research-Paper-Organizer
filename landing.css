@@ -334,13 +334,14 @@ body {
 
 /* Mockup */
 .hero-mockup {
-  background: transparent;
-  border: none;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
 .mockup-header {
-  background: transparent;
+  background: #f1f5f9;
   padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
@@ -370,10 +371,11 @@ body {
 }
 
 .mockup-paper {
-  background: transparent;
-  border: none;
+  background: #f8fafc;
+  border-radius: 0.5rem;
   padding: 1.5rem;
   margin-bottom: 1rem;
+  border-left: 4px solid #2563eb;
 }
 
 .paper-title {
@@ -454,8 +456,9 @@ body {
 }
 
 .feature-card {
-  background: transparent;
-  border: none;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
   padding: 2rem;
   text-align: center;
   transition: all 0.3s ease;
@@ -466,6 +469,7 @@ body {
 
 .feature-card:hover {
   transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .feature-icon {
@@ -506,10 +510,14 @@ body {
   align-items: center;
   text-align: center;
   padding: 2rem;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.3, 1);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.25, 1, 0.3, 1);
 }
 .step.fade-in.show:hover {
   transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
 .step-number {
@@ -580,23 +588,45 @@ body {
 }
 
 .stat-item {
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
   padding: 2rem;
-  transition: transform var(--animation-normal) var(--easing-standard);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform var(--animation-normal) var(--easing-standard),
+    background-color var(--animation-normal) ease,
+    box-shadow var(--animation-normal) ease;
   cursor: pointer;
   color: #fff;
   user-select: none;
+  border: 1px solid transparent;
   position: relative;
 }
 
 .stat-item:hover {
   transform: translateY(-4px);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
 
-/* Remove hover glow effect */
+/* Subtle hover glow effect */
 .stat-item::before {
-  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity var(--animation-normal) ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.stat-item:hover::before {
+  opacity: 1;
 }
 
 .stat-number {
