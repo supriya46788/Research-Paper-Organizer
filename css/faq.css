@@ -248,10 +248,9 @@ body.dark-mode .faq-container {
   background: linear-gradient(135deg, #1f3c88, #2c5aa0);
   color: #fff;
   padding: 60px 20px 20px;
-  border-radius: 0;
+  border-radius: 25px 25px 0 0;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
   overflow-x: hidden;
-  margin-bottom: 0;
 }
 
 
@@ -342,7 +341,6 @@ body.dark-mode .faq-container {
       padding-top: 15px;
       font-size: 0.9rem;
       opacity: 0.8;
-      margin-bottom: 0;
     }
     .footer-card {
       flex: 1 1 200px;
@@ -500,15 +498,4 @@ color: #90cdf4;
 body.dark-mode .footer-bottom {
 background: rgba(0, 0, 0, 0.3);
 border-top-color: rgba(224, 224, 224, 0.1);
-}
-
-/* Remove any potential white space below footer */
-body {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-html {
-  margin-bottom: 0;
-  padding-bottom: 0;
 }

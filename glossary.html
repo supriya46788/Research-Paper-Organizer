@@ -44,271 +44,6 @@
     <input type="text" id="searchBar" placeholder="Search for a term...">
   </header>
   <style>
-    /* Modern Footer Styles */
-    .modern-footer {
-      width: 100vw; /* Full viewport width */
-      margin-left: calc(-50vw + 50%); /* Center it if inside a constrained container */
-      background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-      color: #fff;
-      padding: 40px 60px 0px;
-      border: none;
-      overflow-x: hidden;
-      position: relative;
-      border-radius: 0; /* Make edges square */
-    }
-
-    @media (max-width: 768px) {
-      .modern-footer {
-        padding: 40px 20px 0px;
-      }
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1fr 0.8fr 0.8fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 20px;
-    }
-
-    @media (max-width: 768px) {
-      .footer-top {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      }
-    }
-
-    .footer-brand h2 {
-      font-size: 10px;
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .footer-brand h2 i {
-      margin-right: 10px;
-      font-size: 1rem;
-      vertical-align: middle;
-    }
-
-    .footer-brand p {
-      font-size: 1rem;
-      font-weight: 300;
-      line-height: 1.5;
-      opacity: 0.9;
-    }
-
-    .footer-links-section h4 {
-      font-size: 1.1rem;
-      margin-bottom: 10px;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-      padding-bottom: 5px;
-    }
-
-    .footer-links-section ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-links-section ul li {
-      margin-bottom: 8px;
-    }
-
-    .footer-links-section ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-    }
-
-    .footer-links-section ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      margin-top: 5px;
-    }
-
-    .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      color: #fff;
-      transition: 0.3s;
-    }
-
-    .social-icons a:hover {
-      background: #fff;
-      color: #2c5aa0;
-      transform: scale(1.1);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      border: none;
-      padding: 15px 60px;
-      font-size: 0.9rem;
-      opacity: 0.8;
-      width: 100vw;
-      margin-left: calc(-50vw + 50%);
-      background: rgba(0, 0, 0, 0.2);
-      position: relative;
-      bottom: 0;
-      left: 0;
-    }
-
-    @media (max-width: 768px) {
-      .footer-bottom {
-        padding: 15px 20px;
-      }
-    }
-
-    .footer-card {
-      flex: 1 1 200px;
-      background: transparent;
-      border: none;
-      padding: 15px;
-      min-width: 200px;
-    }
-
-    /* Contact Info */
-    .contact-info {
-      margin: 15px 0;
-    }
-
-    .contact-info p {
-      margin: 8px 0;
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .contact-info i {
-      margin-right: 8px;
-      color: #3b82f6;
-    }
-
-    /* Legal Links */
-    .legal-links {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .legal-links a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      padding: 8px 0;
-      border-radius: 4px;
-      position: relative;
-    }
-
-    .legal-links a:hover {
-      transform: translateX(5px);
-      padding-left: 8px;
-    }
-
-    /* Enhanced Section Headers */
-    .footer-links-section h4 {
-      color: #fff;
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .footer-links-section h4 i {
-      margin-right: 8px;
-      color: #3b82f6;
-    }
-
-    .footer-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .footer-card ul li {
-      margin-bottom: 4px;
-    }
-
-    .footer-card ul li:last-child {
-      margin-bottom: 0;
-    }
-
-    .footer-card ul li a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.3s;
-      padding: 5px;
-      padding-left: 20px;
-    }
-
-    .footer-card ul li a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    @media (max-width: 768px) {
-      .footer-top {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 3rem;
-      }
-
-      .footer-brand h2 {
-        font-size: 1.5rem;
-      }
-
-      .footer-links-section h4 {
-        font-size: 1rem;
-      }
-
-      .footer-links-section ul li a {
-        font-size: 0.95rem;
-      }
-
-      .social-icons a {
-        width: 35px;
-        height: 35px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .footer-top {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .social-icons {
-        justify-content: center;
-      }
-
-      .footer-links-section ul li a {
-        justify-content: center;
-      }
-    }
-
-    .footer-bottom .heart {
-      color: inherit;
-    }
   </style>
 
   <!-- Alphabet Navigation -->
@@ -377,20 +112,14 @@
   <footer class="modern-footer" aria-label="Footer">
     <div class="footer-top">
       <div class="footer-brand footer-card" id="top-card">
-        <h3><a href="index.html" style="color: inherit; text-decoration: none;"><i class="fas fa-book-open"></i> Research Paper Organizer</a></h3>
-        <p style="margin-top: 15px; margin-bottom: 15px;">
-          Organize, track, and manage your research papers seamlessly. Join thousands of researchers worldwide.
+        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+        <p style="margin-top: 20px">
+          Organize, track, and manage your research papers seamlessly.
         </p>
-        
-        <div class="contact-info">
-          <p><i class="fas fa-map-marker-alt"></i> Available Worldwide</p>
-          <p><i class="fas fa-clock"></i> 24/7 Support</p>
-        </div>
-        
       </div>
 
       <div class="footer-links-section footer-card">
-        <h4><i class="fas fa-link"></i> Quick Links</h4>
+        <h4>Quick Links</h4>
         <ul>
           <li>
             <a href="index.html"><i class="fas fa-home"></i>Home</a>
@@ -404,14 +133,11 @@
           <li>
             <a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
           </li>
-          <li>
-            <a href="tools.html"><i class="fas fa-tools"></i>Tools</a>
-          </li>
         </ul>
       </div>
 
       <div class="footer-links-section footer-card">
-        <h4><i class="fas fa-graduation-cap"></i> Research Tools</h4>
+        <h4>Resources</h4>
         <ul>
           <li>
             <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
@@ -423,31 +149,19 @@
             <a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a>
           </li>
           <li>
-            <a href="add-organize-papers.html"><i class="fas fa-plus-circle"></i>Add Papers</a>
-          </li>
-          <li>
-            <a href="summarize.html"><i class="fas fa-file-alt"></i>Summarize</a>
-          </li>
-          <li>
-            <a href="pdf-viewer.html"><i class="fas fa-edit"></i>PDF Annotator</a>
+            <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
           </li>
         </ul>
       </div>
 
       <div class="footer-links-section footer-card">
-        <h4><i class="fas fa-users"></i> Connect & Support</h4>
+        <h4>Connect</h4>
         <div class="social-icons">
           <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-          <a href="https://discord.gg/researchpaperorganizer" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
-          <a href="https://twitter.com/researchpaperorg" target="_blank" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="https://youtube.com/researchpaperorganizer" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-        </div>
-        
-        <div class="legal-links">
-          <a href="privacy.html"><i class="fas fa-user-shield"></i> Privacy Policy</a>
-          <a href="terms-of-service.html"><i class="fas fa-file-contract"></i> Terms of Service</a>
+          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i>
+          </a>
         </div>
       </div>
     </div>
