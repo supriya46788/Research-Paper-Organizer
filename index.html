@@ -81,6 +81,7 @@
       </div>
 
 
+
 </div>
 
 
@@ -1573,16 +1574,16 @@
   <script src="landing.js"></script>
   <script>
     const toggle = document.querySelector(".mobile-menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
+    const navLinksMenu = document.querySelector(".nav-links");
 
     toggle.addEventListener("click", () => {
-      navLinks.classList.toggle("active");
+      navLinksMenu.classList.toggle("active");
       toggle.classList.toggle("open"); // for rotating icon if you want
     });
     // Close menu when a link is clicked
-    navLinks.querySelectorAll("a").forEach((link) => {
+    navLinksMenu.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
-        navLinks.classList.remove("active");
+        navLinksMenu.classList.remove("active");
       });
     });
   </script>
@@ -1591,16 +1592,21 @@
     document.addEventListener("DOMContentLoaded", () => {
       const darkModeToggle = document.getElementById("darkModeToggle");
       const icon = darkModeToggle.querySelector("i");
+      const navLinks = document.querySelector(".nav-links");
+
+      function updateNavLinksBackground() {
+        if (document.body.classList.contains("dark-mode")) {
+          navLinks.style.backgroundColor = "#1e293b";
+        } else {
+          navLinks.style.backgroundColor = "white";
+        }
+      }
 
       // Check for saved dark mode preference
       if (localStorage.getItem("darkMode") === "enabled") {
         document.body.classList.add("dark-mode");
-        if (document.body.classList.contains("dark-mode")) {
-          document.querySelector('.nav-links').style.backgroundColor = "black";
-        } else {
-          document.querySelector('.nav-links').style.backgroundColor = "white";
-        }
         icon.classList.replace("fa-moon", "fa-sun");
+        updateNavLinksBackground();
       }
 
       darkModeToggle.addEventListener("click", () => {
@@ -1614,6 +1620,7 @@
           icon.classList.replace("fa-sun", "fa-moon");
           localStorage.setItem("darkMode", "disabled");
         }
+        updateNavLinksBackground();
       });
     });
   </script>
