@@ -126,7 +126,7 @@ body.dark-mode {
 
 .nav-item:hover {
     background: rgba(59, 130, 246, 0.1);
-    color: var(--primary-blue);
+    /* color: var(--primary-blue); */
     transform: translateY(-2px);
 }
 
