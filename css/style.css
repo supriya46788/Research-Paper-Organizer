@@ -111,6 +111,10 @@ body {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   font-weight: 500;
 }
+/* for sun it must be  white */
+.fa-sun{ 
+   color: #fceeb1;
+}
 
 .nav-item:hover {
   background: #1d4ed8;
