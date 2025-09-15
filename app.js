@@ -1,3 +1,4 @@
+
 let nextBtn = document.querySelector('.next')
 let prevBtn = document.querySelector('.prev')
 
@@ -8,17 +9,31 @@ let thumbnailItems = thumbnail.querySelectorAll('.item')
 
 thumbnail.appendChild(thumbnailItems[0])
 
-// Function for next button 
-nextBtn.onclick = function() {
-    moveSlider('next')
+let autoSlideInterval = 3000; // 3 seconds
+let autoSlideTimer;
+
+function startAutoSlide() {
+    autoSlideTimer = setInterval(() => {
+        moveSlider('next');
+    }, autoSlideInterval);
 }
 
+function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    startAutoSlide();
+}
+
+// Function for next button 
+nextBtn.onclick = function() {
+    moveSlider('next');
+    resetAutoSlide();
+}
 
 // Function for prev button 
 prevBtn.onclick = function() {
-    moveSlider('prev')
+    moveSlider('prev');
+    resetAutoSlide();
 }
-
 
 function moveSlider(direction) {
     let sliderItems = sliderList.querySelectorAll('.item')
@@ -43,3 +58,7 @@ function moveSlider(direction) {
         }
     }, {once: true}) // Remove the event listener after it's triggered once
 }
+
+// Start auto slide when page loads
+startAutoSlide();
+
