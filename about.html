@@ -50,7 +50,7 @@
         }
 
         .navbar-right-links {
-          display: none;
+          display: none !important;
           position: absolute;
           top: 70px; /* adjust depending on navbar height */
           right: 10px;
@@ -68,7 +68,7 @@
         }
 
         .navbar-right-links.show {
-          display: flex;
+          display: flex !important;
         }
 
         .nav-item {
@@ -1347,7 +1347,11 @@
     <script>
       function toggleMenu() {
         const nav = document.querySelector(".navbar-right-links");
-        nav.classList.toggle("show");
+        if(nav.classList.contains("show")){
+          nav.classList.remove("show");
+        }else{
+          nav.classList.add("show");
+        } 
       }
 
       // Dark mode functionality
