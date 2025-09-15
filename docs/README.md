@@ -68,6 +68,7 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 
 # 📂 Research Paper Organizer - Project Structure
 
+```
 📦 RESEARCH-PAPER-ORGANIZER    
 ├── 📂 backend                 # Backend-related code (APIs, logic)  
 ├── 📂 css                     # Stylesheets    
@@ -110,7 +111,7 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 │  
 ├── Research_Paper_Summary.py  
 └── package.json               
-
+```
 ----
 
 **💡 How to Use**
