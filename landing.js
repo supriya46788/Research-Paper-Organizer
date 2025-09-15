@@ -8,6 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function scrollToHowItWorks() {
+    document.getElementById("how-it-works").scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+
   // Add scroll effect to navigation
   window.addEventListener("scroll", function () {
     const nav = document.querySelector(".landing-nav");
@@ -69,6 +75,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // Add event listeners for anchor links to prevent default and smooth scroll
+  document.querySelectorAll('a[href="#features"]').forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      scrollToFeatures();
+    });
+  });
+  document.querySelectorAll('a[href="#how-it-works"]').forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      scrollToHowItWorks();
+    });
+  });
 });
 // Animated counters for stats
 function animateCounter(el) {
@@ -123,9 +143,15 @@ function validateEmail(email) {
   return re.test(email);
 }
 
-// Add to global scope for inline onclick handlers
-window.scrollToFeatures = function () {
-  document.getElementById("features").scrollIntoView({
-    behavior: "smooth",
-  });
-};
+  // Add to global scope for inline onclick handlers
+  window.scrollToFeatures = function () {
+    document.getElementById("features").scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+  window.scrollToHowItWorks = function () {
+    document.getElementById("how-it-works").scrollIntoView({
+      behavior: "smooth",
+    });
+  };
