@@ -976,10 +976,11 @@ box-shadow: rgba(0,0,0,0.8);
   </style>
 
   <style>
-    /* Modern Footer Styles */
     .modern-footer {
-      width: 100vw; /* Full viewport width */
-      margin-left: calc(-50vw + 50%); /* Center it if inside a constrained container */
+      width: 100vw;
+      /* Full viewport width */
+      margin-left: calc(-50vw + 50%);
+      /* Center it if inside a constrained container */
       background: linear-gradient(135deg, #1f3c88, #2c5aa0);
       color: #fff;
       padding: 60px 20px 20px;
@@ -995,21 +996,23 @@ box-shadow: rgba(0,0,0,0.8);
       margin-bottom: 30px;
     }
 
-    .footer-brand h3 {
-      font-size: 1.8rem;
+    .footer-brand h2 {
+      font-size: 10px;
       margin-bottom: 10px;
       display: flex;
       align-items: center;
+      flex-direction: column;
     }
 
-    .footer-brand h3 i {
+    .footer-brand h2 i {
       margin-right: 10px;
-      font-size: 1.6rem;
+      font-size: 1rem;
       vertical-align: middle;
     }
 
     .footer-brand p {
       font-size: 1rem;
+      font-weight: 300;
       line-height: 1.5;
       opacity: 0.9;
     }
@@ -1043,6 +1046,11 @@ box-shadow: rgba(0,0,0,0.8);
     .footer-links-section ul li a:hover {
       color: #fff;
       transform: translateX(5px);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     .social-icons {
@@ -1079,7 +1087,7 @@ box-shadow: rgba(0,0,0,0.8);
 
     .footer-card {
       flex: 1 1 200px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       padding: 20px;
       min-width: 200px;
@@ -1102,6 +1110,7 @@ box-shadow: rgba(0,0,0,0.8);
       align-items: center;
       gap: 8px;
       transition: 0.3s;
+
       padding: 5px;
       padding-left: 20px;
     }
@@ -1111,17 +1120,13 @@ box-shadow: rgba(0,0,0,0.8);
       transform: translateX(5px);
     }
 
-    .heart {
-      color: #e74c3c;
-    }
-
     @media (max-width: 768px) {
       .footer-top {
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 1.5rem;
+        gap: 3rem;
       }
 
-      .footer-brand h3 {
+      .footer-brand h2 {
         font-size: 1.5rem;
       }
 
@@ -1139,6 +1144,13 @@ box-shadow: rgba(0,0,0,0.8);
       }
     }
 
+    @media (max-width: 756px) and (min-width: 730px),
+    (max-width: 601px) and (min-width: 540px) {
+      .footer-card {
+        gap: 4rem;
+      }
+    }
+
     @media (max-width: 480px) {
       .footer-top {
         grid-template-columns: 1fr;
@@ -1153,6 +1165,148 @@ box-shadow: rgba(0,0,0,0.8);
         justify-content: center;
       }
     }
+
+    .footer-bottom .heart {
+      color: inherit;
+    }
+
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      /* 👈 ye center karega */
+      margin: 3rem 0;
+    }
+
+    .feature-card {
+      flex: 1 1 250px;
+      max-width: 300px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 1rem auto;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: #fff;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(8deg);
+    }
+
+    .feature-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+      color: #333;
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Dark Mode Footer Styles */
+    body.dark-mode .modern-footer {
+      background: linear-gradient(135deg, #1a202c, #2d3748);
+    }
+
+    body.dark-mode .footer-section h3,
+    body.dark-mode .footer-section h4 {
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .footer-section h4 {
+      border-bottom-color: rgba(224, 224, 224, 0.2);
+    }
+
+    body.dark-mode .footer-links a {
+      color: rgba(224, 224, 224, 0.8);
+    }
+
+    body.dark-mode .footer-links a:hover {
+      color: #90cdf4;
+    }
+
+    body.dark-mode .social-links a {
+      background: rgba(224, 224, 224, 0.1);
+      color: #e0e0e0;
+    }
+
+    body.dark-mode .social-links a:hover {
+      background: rgba(144, 205, 244, 0.2);
+      color: #90cdf4;
+    }
+
+    body.dark-mode .footer-bottom {
+      background: rgba(0, 0, 0, 0.3);
+      border-top-color: rgba(224, 224, 224, 0.1);
+    }
+
+    /* Dark mode toggle styles */
+    .dark-toggle {
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      padding: 8px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+    }
+
+    .dark-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #1a202c;
+      color: #e2e8f0;
+    }
+
+    body.dark-mode .landing-nav {
+      background-color: #2d3748;
+    }
+
+    body.dark-mode .nav-links a {
+      color: #e2e8f0;
+    }
+
+    body.dark-mode .feature-card {
+      background-color: #2d3748;
+      color: #e2e8f0;
+    }
+
+    body.dark-mode .feature-card p {
+      color: #cbd5e0;
+    }
+
   </style>
 
 
