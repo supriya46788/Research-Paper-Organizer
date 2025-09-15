@@ -124,7 +124,11 @@ body {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
-
+body.dark-mode .navbar{
+  background: linear-gradient(90deg, #1f2937, #111827);
+  color: var(--text-light);
+  box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
+}
 body.dark-mode .nav-item {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: var(--text-light);
