@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Converter</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+      margin: 0; padding: 0;
+      text-align: center;
+    }
+    header {
+      background: linear-gradient(135deg, #4a90e2, #357abd);;
+      padding: 16px;
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .container {
+      margin: 40px auto;
+      background: white;
+      width: 80%;
+      max-width: 600px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .file-label {
+      display: block;
+      border: 2px dashed #05236f;
+      padding: 30px;
+      border-radius: 10px;
+      background:linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+      cursor: pointer;
+    }
+    input[type="file"] { display: none; }
+    select {
+      margin: 20px 0;
+      padding: 10px;
+      font-size: 1rem;
+    }
+    button {
+      background:linear-gradient(135deg, #357abd, #2c5aa0);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover { background:linear-gradient(135deg, #357abd, #2c5aa0); }
+    .message {
+      margin-top: 20px;
+      font-size: 1rem;
+      display: none;
+      white-space: pre-wrap;
+      text-align: left;
+    }
+    .error { color: red; }
+    .success { color: green; }
+  </style>
+</head>
+<body>
+  <header>PDF Converter</header>
+  <div class="container">
+    <h2>Convert PDF ↔ Office Formats</h2>
+    <label class="file-label" for="fileInput" id="fileLabel">Click to upload file</label>
+    <input type="file" id="fileInput">
+
+    <br>
+    <select id="formatSelect">
+      <option value="docx">PDF → Word (.docx)</option>
+      <option value="pptx">PDF → PowerPoint (.pptx)</option>
+      <option value="xlsx">PDF → Excel (.xlsx)</option>
+      <option value="pdf">Other → PDF</option>
+    </select>
+
+    <br><br>
+    <button id="convertBtn">Convert</button>
+
+    <p class="message" id="msg"></p>
+  </div>
+
+  <script>
+    const fileInput = document.getElementById("fileInput");
+    const fileLabel = document.getElementById("fileLabel");
+    const formatSelect = document.getElementById("formatSelect");
+    const convertBtn = document.getElementById("convertBtn");
+    const msg = document.getElementById("msg");
+
+    let selectedFile = null;
+
+    fileInput.addEventListener("change", (e) => {
+      if (e.target.files.length > 0) {
+        selectedFile = e.target.files[0];
+        fileLabel.innerText = "Selected: " + selectedFile.name;
+        msg.style.display = "none";
+      }
+    });
+
+    convertBtn.addEventListener("click", async () => {
+      if (!selectedFile) {
+        alert("Please select a file first!");
+        return;
+      }
+
+      const targetFormat = formatSelect.value;
+      msg.style.display = "block";
+      msg.className = "message";
+      msg.innerText = "⏳ Uploading and converting... please wait";
+
+      try {
+        const formData = new FormData();
+        formData.append("File", selectedFile);
+
+        const SECRET = "xX3NXyFJFoYDkS5YKSqeKKeeILnWmEPb"; // replace with your ConvertAPI secret
+        const ext = selectedFile.name.split(".").pop().toLowerCase();
+        const from = targetFormat === "pdf" ? ext : "pdf";
+
+        const url = `https://v2.convertapi.com/convert/${from}/to/${targetFormat}?Secret=${SECRET}`;
+
+        const response = await fetch(url, {
+          method: "POST",
+          body: formData
+        });
+
+        const result = await response.json();
+        console.log("API Result:", result);
+
+        const files = result.Files || result.files;
+        if (!files || !files[0]) {
+          msg.className = "message error";
+          msg.innerText = "❌ Error: No file data received.\n\n" + JSON.stringify(result, null, 2);
+          return;
+        }
+
+        // Check if we got a direct URL
+        if (files[0].Url) {
+          msg.className = "message success";
+          msg.innerHTML = `✅ Conversion successful! <a href="${files[0].Url}" target="_blank">Download here</a>`;
+          return;
+        }
+
+        // Otherwise use Base64 data
+        if (files[0].FileData) {
+          const fileName = files[0].FileName || "output." + files[0].FileExt;
+          const fileData = files[0].FileData;
+
+          // Convert Base64 → Blob
+          const byteCharacters = atob(fileData);
+          const byteNumbers = new Array(byteCharacters.length);
+          for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+          }
+          const byteArray = new Uint8Array(byteNumbers);
+          const blob = new Blob([byteArray]);
+
+          // Create download link
+          const blobUrl = URL.createObjectURL(blob);
+          msg.className = "message success";
+          msg.innerHTML = `✅ Conversion successful! <a href="${blobUrl}" download="${fileName}">Download here</a>`;
+          return;
+        }
+
+        msg.className = "message error";
+        msg.innerText = "❌ Error: Unknown API response format.";
+      } catch (err) {
+        console.error(err);
+        msg.className = "message error";
+        msg.innerText = "❌ Error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
