@@ -80,6 +80,284 @@
   }
 }
 
+/* Chatbot bubble button styling to match project theme */
+button#chatbase-bubble-button {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  width: 55px !important;
+  height: 55px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #2f2ca0, #4698e5) !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(47, 44, 160, 0.3) !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Force override any default chatbase button styling */
+#chatbase-bubble-button,
+button[id*="chatbase"],
+[class*="chatbase-bubble"] {
+  background: linear-gradient(135deg, #2f2ca0, #4698e5) !important;
+  border: none !important;
+  color: white !important;
+}
+
+button#chatbase-bubble-button:hover {
+  transform: scale(1.1) !important;
+  box-shadow: 0 6px 16px rgba(47, 44, 160, 0.4) !important;
+  background: linear-gradient(135deg, #4698e5, #2f2ca0) !important;
+}
+
+button#chatbase-bubble-button svg {
+  width: 28px !important;
+  height: 28px !important;
+  fill: white !important;
+}
+
+button#chatbase-bubble-button div {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Chatbot bubble button styling - copied from homepage */
+button#chatbase-bubble-button {
+  position: fixed !important;
+  bottom: 20px !important;   
+  right: 20px !important;    
+  width: 55px !important;
+  height: 55px !important;
+  border-radius: 50% !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+button#chatbase-bubble-button svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+button#chatbase-bubble-button div {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Chat window alignment */
+#chatbase-bubble-window {
+  z-index: 2147483647 !important;
+}
+
+/* Bubble button mobile sizing */
+@media (max-width: 768px) {
+  button#chatbase-bubble-button {
+    position: fixed !important;
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50% !important;
+    z-index: 2147483647 !important; 
+  }
+
+  button#chatbase-bubble-button svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  
+  #chatbase-bubble-button {
+    position: fixed !important;
+    z-index: 2147483647 !important; 
+  }
+
+  /* When window is open */
+  #chatbase-bubble-window[style*="display: flex"] + #chatbase-bubble-button {
+    bottom: 15px !important; 
+  }
+  
+  /* Window responsive */
+  #chatbase-bubble-window {
+    position: absolute;
+    width: 90% !important;
+    height: 75% !important;
+    bottom: 80px !important;
+    right: 15px !important;
+    left: auto !important;
+    top: auto !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 12px rgba(236, 233, 233, 0.3) !important;
+  }
+
+  #chatbase-bubble-window iframe {
+    border-radius: 16px !important;
+  }
+}
+
+/* Chat window styling */
+#chatbase-bubble-window {
+  z-index: 2147483647 !important;
+  border-radius: 15px !important;
+  overflow: hidden !important;
+  box-shadow: 0 8px 32px rgba(47, 44, 160, 0.2) !important;
+  border: 2px solid rgba(47, 44, 160, 0.1) !important;
+  /* Apply color filter to change the black theme to blue */
+  filter: hue-rotate(200deg) saturate(1.5) brightness(1.1) !important;
+}
+
+#chatbase-bubble-window iframe {
+  border-radius: 15px !important;
+  /* Apply additional filtering to the iframe content */
+  filter: hue-rotate(200deg) saturate(1.5) brightness(1.1) !important;
+}
+
+/* Alternative approach: Use CSS to completely override the appearance */
+#chatbase-bubble-window::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(47, 44, 160, 0.15), rgba(70, 152, 229, 0.15));
+  pointer-events: none;
+  border-radius: 15px;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* Override Chatbase default styles with project theme */
+#chatbase-bubble-window iframe {
+  border-radius: 15px !important;
+}
+
+/* CSS custom properties that Chatbase might recognize */
+html {
+  --chatbase-primary-color: #2f2ca0;
+  --chatbase-secondary-color: #4698e5;
+  --chatbase-accent-color: #facc15;
+  --chatbase-text-color: #1f2937;
+  --chatbase-bg-color: #f9fafb;
+  --chatbase-bubble-color: #2f2ca0;
+  --chatbase-bubble-text-color: #ffffff;
+}
+
+/* Alternative naming conventions */
+:root {
+  --primary-color: #2f2ca0 !important;
+  --secondary-color: #4698e5 !important;
+  --accent-color: #facc15 !important;
+  --text-color: #1f2937 !important;
+  --background-color: #f9fafb !important;
+  --chat-primary: #2f2ca0 !important;
+  --chat-secondary: #4698e5 !important;
+  --widget-primary: #2f2ca0 !important;
+  --widget-secondary: #4698e5 !important;
+}
+
+/* Attempt to style iframe content through CSS injection */
+#chatbase-bubble-window::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(47, 44, 160, 0.05), rgba(70, 152, 229, 0.05));
+  border-radius: 15px;
+  z-index: 1;
+}
+
+/* More specific targeting for potential chatbase elements */
+[id*="chatbase"] {
+  --primary: #2f2ca0 !important;
+  --secondary: #4698e5 !important;
+}
+
+[class*="chatbase"] {
+  --primary: #2f2ca0 !important;
+  --secondary: #4698e5 !important;
+}
+
+/* Target the chat interface elements inside iframe (these will apply when iframe loads) */
+:root {
+  --chatbase-primary-color: #2f2ca0 !important;
+  --chatbase-secondary-color: #4698e5 !important;
+  --chatbase-accent-color: #facc15 !important;
+  --chatbase-text-color: #1f2937 !important;
+  --chatbase-bg-color: #f9fafb !important;
+}
+
+/* Additional CSS injection for Chatbase styling */
+[data-chatbase-theme] {
+  --primary-color: #2f2ca0 !important;
+  --secondary-color: #4698e5 !important;
+  --accent-color: #facc15 !important;
+  --text-color: #1f2937 !important;
+  --background-color: #f9fafb !important;
+}
+
+/* Force override for chatbase elements that might load */
+.chatbase-widget {
+  --primary: #2f2ca0 !important;
+  --secondary: #4698e5 !important;
+}
+
+/* Style the chatbase iframe content */
+#chatbase-bubble-window * {
+  --primary: #2f2ca0 !important;
+  --secondary: #4698e5 !important;
+}
+
+/* Dark mode chatbot styling */
+body.dark-mode button#chatbase-bubble-button {
+  background: linear-gradient(135deg, #4698e5, #2f2ca0) !important;
+  box-shadow: 0 4px 12px rgba(70, 152, 229, 0.3) !important;
+}
+
+body.dark-mode button#chatbase-bubble-button:hover {
+  background: linear-gradient(135deg, #2f2ca0, #4698e5) !important;
+  box-shadow: 0 6px 16px rgba(70, 152, 229, 0.4) !important;
+}
+
+body.dark-mode #chatbase-bubble-window {
+  box-shadow: 0 8px 32px rgba(70, 152, 229, 0.2) !important;
+  border: 2px solid rgba(70, 152, 229, 0.1) !important;
+}
+
+/* Mobile responsive chatbot */
+@media (max-width: 768px) {
+  #backToTop {
+    bottom: 75px !important;
+    right: 15px !important;
+  }
+}
+
+/* Ensure chatbot works well with FAQ page scroll */
+#chatbase-bubble-window.show {
+  animation: fadeInUp 0.3s ease-out !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
     </style>
 
@@ -360,6 +638,7 @@
             }
         });
     </script>
+    <!-- Chatbase Integration - copied exactly from homepage -->
     <script>
         (function(){
             if(!window.chatbase || window.chatbase("getState") !== "initialized"){
@@ -377,13 +656,67 @@
             const onLoad = function(){
                 const script = document.createElement("script");
                 script.src = "https://www.chatbase.co/embed.min.js";
-                script.id = "SZQX20er6m-s8iNiFcBtK";
+                script.id = "ubDfCZ-KoiucQjQos4LDA";
                 script.domain = "www.chatbase.co";
                 document.body.appendChild(script)
             };
             if(document.readyState === "complete"){ onLoad() }
             else { window.addEventListener("load", onLoad) }
         })();
+        
+    </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const bubbleWindow = document.getElementById("chatbase-bubble-window");
+  const bubbleButton = document.getElementById("chatbase-bubble-button");
+
+  if (!bubbleWindow || !bubbleButton) return;
+
+  function setImportant(el, prop, value) {
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function updateButtonPosition() {
+    const rect = bubbleWindow.getBoundingClientRect();
+
+    if (bubbleWindow.style.display === "flex") {
+      // Button below chat window (no changes here)
+      const topPos = window.scrollY + rect.bottom + 10;
+      const leftPos = rect.left;
+
+      setImportant(bubbleButton, "position", "fixed");
+      setImportant(bubbleButton, "top", topPos + "px");
+      setImportant(bubbleButton, "left", leftPos + "px");
+      setImportant(bubbleButton, "bottom", "auto");
+      setImportant(bubbleButton, "right", "auto");
+    } else {
+      // Closed position with left:300px; bottom:300px
+      setImportant(bubbleButton, "position", "fixed");
+      setImportant(bubbleButton, "bottom", "300px");
+      setImportant(bubbleButton, "left", "300px");
+      setImportant(bubbleButton, "top", "auto");
+      setImportant(bubbleButton, "right", "auto");
+    }
+  }
+
+  updateButtonPosition();
+  window.addEventListener("scroll", updateButtonPosition);
+  window.addEventListener("resize", updateButtonPosition);
+
+  // Toggle chat window
+  bubbleButton.addEventListener("click", () => {
+    bubbleWindow.style.display = bubbleWindow.style.display === "flex" ? "none" : "flex";
+    updateButtonPosition();
+  });
+
+  // Handle iframe close button
+  window.addEventListener("message", (event) => {
+    if (event.data?.type === "chatbase-close") {
+      bubbleWindow.style.display = "none";
+      updateButtonPosition();
+    }
+  });
+});
 
 //back to top button 
 // Show button when scrolled down
