@@ -9,6 +9,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="landing.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="landing.css" />
+  <link rel="stylesheet" href="css/open-source.css">
 
     <style>
       body {
@@ -19,56 +25,18 @@
         transition: background 0.3s, color 0.3s;
       }
 
-      /* ===== Navbar ===== */
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 30px;
-        background: #e9f1fd;
-        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
+      .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  flex-wrap: wrap;
+}
 
-      .nav-left,
-      .nav-right {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      nav a,
-      nav a:link,
-      nav a:visited,
-      nav a:hover,
-      nav a:active {
-        text-decoration: none !important;
-        color: white !important;
-      }
-
-      .nav-left .btn,
-      .nav-right .btn {
-        background: linear-gradient(135deg, #3b82f6, #2563eb);
-        color: white !important;
-        border: none;
-        padding: 8px 18px;
-        border-radius: 10px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: transform 0.2s, box-shadow 0.2s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
-
-      .nav-left .btn:hover,
-      .nav-right .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-      }
+/* Header */
+body.dark-mode .tag-b-f-header {
+  color: white;
+}
 
       /* Dark Mode Toggle */
       .toggle {
@@ -606,20 +574,24 @@
     </style>
   </head>
   <body>
-    <!-- ===== Navbar ===== -->
-    <nav>
-      <div class="nav-left">
-        <a href="index.html"><button class="btn">🏠 Home</button></a>
-      </div>
-      <div class="nav-right">
-        <a href="about.html"><button class="btn">About Us</button></a>
-        <a href="blog.html"><button class="btn">Blogs</button></a>
-        <a href="Faq.html"><button class="btn">FAQ</button></a>
-        <a href="contact.html"><button class="btn">Contact Us</button></a>
-        <a href="tools.html"><button class="btn">Tools</button></a>
-        <button id="darkToggle" class="toggle">🌙</button>
-      </div>
-    </nav>
+
+    <!-- Navigation -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-item">
+      <i class="fas fa-book-open"></i>
+      Home
+    </a>
+    <div class="navbar-right-links">
+      <a href="about.html" class="nav-item">About us</a>
+      <a href="blog.html" class="nav-item">Blogs</a>
+      <a href="Faq.html" class="nav-item">FAQ</a>
+      <a href="contact.html" class="nav-item">Contact Us</a>
+      <a href="tools.html" class="nav-item">Tools</a>
+      <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
+        <i class="fas fa-sun"></i>
+      </button>
+    </div>
+  </nav>
 
     <!-- Scrolling Button -->
     <button id="backToTop" title="Scroll" aria-label="Scroll">
@@ -627,7 +599,7 @@
     </button>
 
     <!-- ===== Heading ===== -->
-    <h1>📚 Research Paper Organiser</h1>
+    <h1 class="tag-b-f-header">📚 Research Paper Organiser</h1>
 
     <!-- ===== Tag Filter ===== -->
     <div class="tags">
@@ -866,14 +838,36 @@
       }
 
       // Dark mode toggle
-      const darkToggle = document.getElementById('darkToggle');
-      darkToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        darkToggle.textContent = document.body.classList.contains('dark')
-          ? '☀️'
-          : '🌙';
-      });
+      // const darkToggle = document.getElementById('darkToggle');
+      // darkToggle.addEventListener('click', () => {
+      //   document.body.classList.toggle('dark');
+      //   darkToggle.textContent = document.body.classList.contains('dark')
+      //     ? '☀️'
+      //     : '🌙';
+      // });
 
+// 🌙 Dark Mode Toggle
+const darkToggle = document.getElementById("darkModeToggle");
+const body = document.body;
+
+// Load preference
+if (localStorage.getItem("darkMode") === "enabled") {
+    body.classList.add("dark-mode");
+    darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+}
+
+// Toggle event
+darkToggle.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+        darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        localStorage.setItem("darkMode", "disabled");
+        darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
+    }
+});
       // Dummy Tag Suggestion
       // function showTagSuggestions() {
       //   const title = document.getElementById("paperTitle").value;
