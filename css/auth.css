@@ -383,30 +383,30 @@ body {
     cursor: not-allowed;
     transform: none;
 }
-.auth-divider {
-  text-align: center;
-  margin: 1rem 0;
-  position: relative;
-  margin-top: 1px;
 
+.auth-divider {
+  position: relative;      
+  text-align: center;      
 }
 
 .auth-divider::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 50%;
+  top: 55%;                
   left: 0;
-  right: 0;
+  width: 100%;
   height: 1px;
-  background: transparent;
+  background: transparent;    
 }
 
 .auth-divider span {
-  background: white;
-  padding: 0 1rem;
-  color: #6b7280;
-  font-size: 0.875rem;
+  position: relative;      
+   color: #6b7280;
+  font-size: 0.875rem;        
+  padding: 0 1rem;       
 }
+
+
 
 .auth-link {
   display: block;
