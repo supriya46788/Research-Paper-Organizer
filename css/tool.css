@@ -158,6 +158,9 @@ border: 1px solid rgba(74, 144, 226, 0.1);
 transform: translateY(-8px);
 box-shadow: 0 8px 30px rgba(74, 144, 226, 0.2);
 border-color: rgba(74, 144, 226, 0.3);
+border-radius: 50%;
+box-shadow: 2px 2px #357abd;
+margin: auto;
 }
 
 .tool-card.show {
@@ -354,6 +357,7 @@ color: #1a202c;
   border-radius: 25px 25px 0 0;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
   overflow-x: hidden;
+  border-radius: 2%;
 }
 
 
