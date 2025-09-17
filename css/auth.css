@@ -78,16 +78,16 @@ body {
   width: 100%;
 }
 
-/* <=============Added Issue #480 =============> */
+/* <=============Updated for Issue #480 =============> */
 .close-btn {
-  background: #f3f4f6;
+  background: none;            /* remove light background */
   border: none;
   border-radius: 6px;
-  padding: 8px 10px;
-  font-size: 1rem;
+  padding: 6px 10px;
+  font-size: 1.2rem;
   cursor: pointer;
-  color: #1f2937;
-  transition: background 0.3s ease;
+  color: #d1d5db;              /* light gray text (good contrast on dark) */
+  transition: color 0.3s ease, transform 0.2s ease;
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -95,10 +95,16 @@ body {
 }
 
 .close-btn:hover {
-  background: #e5e7eb;
-  font-size: 1.05rem;
+  color: #ffffff;              /* bright white on hover */
+  transform: scale(1.1);       /* subtle hover feedback */
+}
+
+.close-btn:focus {
+  outline: 2px solid #ffffff;  /* accessibility focus */
+  outline-offset: 3px;
 }
 /* <=============Ended Issue #480 =============> */
+
 
 
 .auth-header {
