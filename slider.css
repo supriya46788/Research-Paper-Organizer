@@ -3,8 +3,8 @@ a{
 }
 
 header{
-    width: 1140px;
-    max-width: 80%;
+    max-width: 1140px;
+    width: 80%;
     margin: auto;
     height: 50px;
     display: flex;
@@ -113,6 +113,8 @@ header a:hover{
     z-index: 100;
     display: flex;
     gap: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .thumbnail .item{
@@ -120,6 +122,7 @@ header a:hover{
     height: 220px;
     flex-shrink: 0;
     position: relative;
+    display: inline-block;
 }
 
 .thumbnail .item img{
