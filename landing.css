@@ -3,6 +3,9 @@
   --primary-color: #3b82f6;
   --primary-dark: #2563eb;
   --primary-light: rgb(50, 181, 233);
+  --accent-color: #8b5cf6;
+  --accent-dark: #7c3aed;
+  --accent-light: #a78bfa;
   --secondary-color: #64748b;
   --text-color: #1e293b;
   --text-light: #64748b;
@@ -54,11 +57,13 @@ body {
   top: 0;
   width: 100%;
   max-width: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.85);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
   transition: all 0.3s ease;
   overflow: visible;
+  backdrop-filter: saturate(150%) blur(8px);
+  -webkit-backdrop-filter: saturate(150%) blur(8px);
 }
 .mobile-menu-toggle {
   display: none;
@@ -83,12 +88,33 @@ body {
   /* justify-content: flex-start; */
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary-color);
+  color: var(--text-color);
   gap: 0.5rem;
   border-bottom: none;
   text-decoration: none;
   flex: 0 0 auto;
   min-width: 250px;
+}
+#logo { }
+.logo-mark{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent-color));
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(124,58,237,0.35);
+}
+.logo-mark i{ font-size: 18px; line-height: 1; display:block; }
+.nav-brand .brand-text{
+  background: linear-gradient(135deg, #111827, #4b5563);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  letter-spacing: 0.2px;
 }
 #logo {
   width: 65px;
@@ -135,7 +161,7 @@ body {
   .mobile-menu-toggle{
      background: none;              
   border: none;                                                 
-  color: #3b82f6; 
+  color: var(--accent-dark); 
   }
 }
 
@@ -150,32 +176,26 @@ body {
 .nav-links a{
   white-space: nowrap;
   text-decoration: none;
-  color: white;
-  font-weight: 500;
+  color: var(--text-color);
+  font-weight: 600;
   text-align: center;
   white-space: nowrap;
-  background: linear-gradient(
-    135deg,
-    var(--primary-dark),
-    var(--primary-color)
-  );
-  border: none;
-  padding: 0.5rem 1.2rem;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(2, 6, 23, 0.08);
+  padding: 0.55rem 1.1rem;
   cursor: pointer;
-  font-size: 0.9rem;
-  border-radius: 10px;
-  transition: all 0.3s ease;
+  font-size: 0.92rem;
+  border-radius: 999px;
+  transition: all 0.25s ease;
   flex-shrink: 1;
 }
 
 .nav-links a:hover {
-  background: linear-gradient(
-    135deg,
-    var(--primary-dark),
-    var(--primary-light)
-  );
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent-color));
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
 }
 
 .btn-primary,
@@ -306,11 +326,7 @@ body {
 
 /* Buttons */
 .btn-primary {
-  background: linear-gradient(
-    135deg,
-    var(--primary-dark),
-    var(--primary-color)
-  );
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent-color));
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -320,13 +336,9 @@ body {
   cursor: pointer;
 }
 .btn-primary:hover {
-  background: linear-gradient(
-    135deg,
-    var(--primary-dark),
-    var(--primary-light)
-  );
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent-light));
   transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
 }
 
 .btn-secondary {
@@ -1513,8 +1525,14 @@ body.dark-mode .nav-links {
 
 }
 body.dark-mode .nav-links a {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
-  color: #f3f4f6;
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+  color: #e5e7eb;
+}
+body.dark-mode .nav-links a:hover {
+  background: linear-gradient(135deg, var(--accent-dark), var(--accent-color));
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.45);
 }
 /* Hero */
 body.dark-mode .hero {
