@@ -83,6 +83,7 @@
         <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode">
           <i class="fas fa-moon"></i>
         </button>
+        
       </div>
 
 
@@ -1627,6 +1628,57 @@
         }
         updateNavLinksBackground();
       });
+    });
+  </script>
+  <script>
+    // Navbar profile dropdown + auth state handling
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const currentUserRaw = localStorage.getItem('current_user');
+        const currentUser = currentUserRaw ? JSON.parse(currentUserRaw) : null;
+
+        const getStartedBtn = document.querySelector('.nav-links .btn-primary');
+        const navUser = document.getElementById('navUser');
+        const navUserName = document.getElementById('navUserName');
+        const navUserBtn = document.getElementById('navUserBtn');
+        const dropdown = document.getElementById('navUserDropdown');
+        const editBtn = document.getElementById('editProfileBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        if (currentUser) {
+          if (getStartedBtn) getStartedBtn.style.display = 'none';
+          if (navUser) navUser.style.display = 'inline-block';
+          if (navUserName) navUserName.textContent = currentUser.name || 'Profile';
+
+          if (navUserBtn && dropdown) {
+            navUserBtn.addEventListener('click', () => {
+              dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+              if (!navUser.contains(e.target)) dropdown.style.display = 'none';
+            });
+          }
+
+          if (editBtn) {
+            editBtn.addEventListener('click', () => {
+              window.location.href = 'profile-settings.html';
+            });
+          }
+
+          if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+              localStorage.removeItem('current_user');
+              window.location.href = 'index.html';
+            });
+          }
+        } else {
+          if (navUser) navUser.style.display = 'none';
+          if (getStartedBtn) getStartedBtn.style.display = 'inline-block';
+        }
+      } catch (e) {
+        console.warn('Auth UI init failed', e);
+      }
     });
   </script>
   <script>

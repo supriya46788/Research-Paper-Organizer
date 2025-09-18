@@ -679,7 +679,24 @@ body.dark-mode .copy-btn:hover {
           <button class="btn-secondary" onclick="exportPapers()">
             <i class="fas fa-file-export"></i> Export
           </button>
-
+          <!-- Profile dropdown (only visible when logged in) -->
+          <div class="nav-user" id="navUser" style="display:none; position: relative; margin-left:8px;">
+            <button id="navUserBtn" class="nav-user-btn" style="background:transparent; border:none; color:inherit; display:flex; align-items:center; gap:8px; cursor:pointer; padding:8px 10px; border-radius:8px;">
+              <i class="fas fa-user-circle"></i>
+              <span id="navUserName">Profile</span>
+              <i class="fas fa-chevron-down" style="font-size:12px;"></i>
+            </button>
+            <div id="navUserDropdown" class="nav-user-dropdown" style="position:absolute; right:0; top:110%; background:white; color:#111827; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,0.15); min-width:180px; padding:8px 0; display:none; z-index:1500;">
+              <button id="editProfileBtn" style="width:100%; text-align:left; background:transparent; border:none; padding:10px 14px; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                <i class="fas fa-user-cog"></i>
+                Edit Profile
+              </button>
+              <button id="logoutBtn" style="width:100%; text-align:left; background:transparent; border:none; padding:10px 14px; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                <i class="fas fa-right-from-bracket"></i>
+                Logout
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="menu">
@@ -1404,6 +1421,37 @@ button#chatbase-bubble-button svg {
     if (!checkAuthentication()) {
       throw new Error('User not authenticated');
     }
+
+    // Initialize profile dropdown for logged-in users
+    (function initProfileMenu(){
+      try {
+        const userRaw = localStorage.getItem('current_user');
+        const user = userRaw ? JSON.parse(userRaw) : null;
+        const navUser = document.getElementById('navUser');
+        const navUserName = document.getElementById('navUserName');
+        const navUserBtn = document.getElementById('navUserBtn');
+        const dropdown = document.getElementById('navUserDropdown');
+        const editBtn = document.getElementById('editProfileBtn');
+        const logoutBtn = document.getElementById('logoutBtn');
+
+        if (user && navUser) {
+          navUser.style.display = 'inline-block';
+          if (navUserName) navUserName.textContent = user.name || 'Profile';
+
+          if (navUserBtn && dropdown) {
+            navUserBtn.addEventListener('click', () => {
+              dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            });
+            document.addEventListener('click', (e) => {
+              if (!navUser.contains(e.target)) dropdown.style.display = 'none';
+            });
+          }
+
+          if (editBtn) editBtn.addEventListener('click', () => { window.location.href = 'profile-settings.html'; });
+          if (logoutBtn) logoutBtn.addEventListener('click', () => { localStorage.removeItem('current_user'); window.location.href = 'index.html'; });
+        }
+      } catch (e) { console.warn('Profile menu init failed', e); }
+    })();
 
     
       //back to top button 
