@@ -1640,6 +1640,155 @@
 </script>
 
    <script src="app.js"></script>
+
+  <!-- Chatbot Widget -->
+  <style>
+    /* Scoped Chatbot styles */
+    #chatbot-toggle {
+      position: fixed;
+      right: 90px; /* keep distance from backToTop button */
+      bottom: 26px;
+      z-index: 1100;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.2);
+      transition: transform .2s ease;
+    }
+    #chatbot-toggle:hover { transform: scale(1.06); }
+    #chatbot-toggle.shifted { transform: translateY(-8px); }
+
+    #chatbot-container {
+      position: fixed;
+      right: 20px;
+      bottom: 110px; /* keep above backToTop button */
+      width: 340px;
+      max-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+      overflow: hidden;
+      z-index: 1100;
+    }
+    #chatbot-container.hidden { display: none; }
+    body.dark-mode #chatbot-container { background: #1f2937; color: #e5e7eb; }
+
+    .chatbot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+    }
+    .chatbot-header h4 { margin: 0; font-size: 14px; font-weight: 600; }
+    .chatbot-header button {
+      background: transparent; border: none; color: #fff; cursor: pointer; font-size: 18px;
+    }
+
+    #chatbotMessages {
+      padding: 12px;
+      overflow-y: auto;
+      flex: 1;
+      background: #f9fafb;
+    }
+    body.dark-mode #chatbotMessages { background: #0f172a; }
+    .message { display: flex; gap: 8px; margin-bottom: 10px; align-items: flex-start; }
+    .avatar { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .bot-avatar { background: #e0e7ff; }
+    .user-message { justify-content: flex-end; }
+    .message .text {
+      max-width: 75%;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.4;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .bot-message .text { background: #eef2ff; }
+    .user-message .text { background: #dcfce7; }
+    body.dark-mode .bot-message .text { background: #1e293b; }
+    body.dark-mode .user-message .text { background: #065f46; color: #e5e7eb; }
+
+    .chatbot-input {
+      padding: 10px;
+      display: flex;
+      gap: 8px;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      background: #fff;
+    }
+    body.dark-mode .chatbot-input { background: #111827; border-top-color: #374151; }
+    .chatbot-input input {
+      flex: 1;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      outline: none;
+      background: #fff;
+      color: inherit;
+    }
+    body.dark-mode .chatbot-input input { background: #111827; border-color: #374151; color: #e5e7eb; }
+    .chatbot-input button {
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: #fff;
+      padding: 0 14px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .suggestions { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 4px; }
+    .suggestion { border: 1px solid #c7d2fe; background: #eef2ff; color: #1e3a8a; padding: 6px 10px; border-radius: 999px; font-size: 12px; cursor: pointer; }
+    body.dark-mode .suggestion { background: #1e293b; border-color: #374151; color: #e5e7eb; }
+    @media (max-width: 480px) {
+      #chatbot-container { right: 12px; left: 12px; width: auto; bottom: 100px; }
+      #chatbot-toggle { right: 74px; bottom: 16px; }
+    }
+  </style>
+
+  <button id="chatbot-toggle" title="Chat with us">
+    <i class="fa-solid fa-comment"></i>
+  </button>
+
+  <div id="chatbot-container" class="hidden" aria-live="polite">
+    <div class="chatbot-header">
+      <h4>Assistant</h4>
+      <button id="closeChatbot" aria-label="Close">&times;</button>
+    </div>
+    <div id="chatbotMessages">
+      <div class="message bot-message">
+        <div class="avatar bot-avatar">🤖</div>
+        <div class="text">Hi! Ask me anything about organizing research papers.</div>
+      </div>
+      <div class="message bot-message">
+        <div class="avatar bot-avatar">🤖</div>
+        <div class="text">
+          Quick questions you can try:
+          <div class="suggestions">
+            <button class="suggestion" data-question="How do I add a new research paper?">How do I add a new research paper?</button>
+            <button class="suggestion" data-question="How can I tag and organize papers?">How can I tag and organize papers?</button>
+            <button class="suggestion" data-question="Can I sync my library to the cloud?">Can I sync my library to the cloud?</button>
+            <button class="suggestion" data-question="How do I generate citations?">How do I generate citations?</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input id="chatbotInput" type="text" placeholder="Type your question..." />
+      <button id="sendChatbot">Send</button>
+    </div>
+  </div>
+
+  <script src="js/chatbot.js"></script>
 </body>
 
 </html>
