@@ -21,6 +21,7 @@
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+  <link rel="stylesheet" href="./css/removeFilterBtn.css">
   <link rel="manifest" href="/site.webmanifest" />
   <style>
     /* Ensure dark mode styles work */
@@ -767,9 +768,18 @@ body.dark-mode .copy-btn:hover {
               <option value="year-asc">Oldest First</option>
             </select>
           </div>
+          <!-- Clear Filters button added #issue-602 -->
+           <div class="filter-container">
+            <button id="clearFiltersBtn" class="filter-clear-btn" title="Clear all filters">
+               <i class="fas fa-eraser" style="color: #6b7280"></i>
+            </button>
+            <!-- hover text for clear filter button -->
+            <span class="tooltip-text">Clear all filters</span>
+           </div>
         </div>
       </div>
   </div>
+  <!-- Filter section ends here -->
       <div class="main-grid">
         <!-- Papers List -->
         <div class="papers-section">
@@ -1578,6 +1588,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+
+<script src="./js/filterBtn.js"></script>
 </body>
 
 </html>
