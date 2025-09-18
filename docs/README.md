@@ -67,8 +67,6 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
 ----
 ## 📂 Project Structure
 
-```
-## 📂 Project Structure
 
 ```
 📦 Research-Paper-Organizer
