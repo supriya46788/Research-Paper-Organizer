@@ -1,14 +1,17 @@
-# Welcome to Research Paper Organizer
+# Welcome to Research Paper Organizer 🎉  
 
 Hey there! Thanks for checking out our project and considering contributing. This guide will help you get started quickly, whether you're fixing a bug, adding a feature, or improving documentation.
 
 
-## Code of Conduct
+## 🛡️ Code of Conduct [![Community Friendly](https://img.shields.io/badge/Community-Friendly-brightgreen?style=for-the-badge&logo=github)](https://github.com/supriya46788/Research-Paper-Organizer)  
 
-We're building a friendly, inclusive community here. Be respectful, kind, and supportive of others - we're all learning and growing together!
+![Be Kind GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHp6aW8wNmx4cjRkeTI5NWg5ODJqM2VmMTJ5cjgxemh3eHI2bjQ3YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/qgQUggAC3Pfv687qPC/giphy.gif)  
+
+We're building a **friendly**, **inclusive** community here 💖.  
+✨ Be respectful 🙏, kind 🤝, and supportive 🌱 of others – we're all learning 📚 and growing 🌸 together!  
 
 
-## Getting Started
+## 🚀 Getting Started [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-blue?style=for-the-badge&logo=opensourceinitiative)](https://github.com/supriya46788/Research-Paper-Organizer/issues)  
 
 ### 🍴 Fork & Clone
 
@@ -28,6 +31,7 @@ We're building a friendly, inclusive community here. Be respectful, kind, and su
    ```
 
 
+![GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExa2p5NWJqZXhzOHZndWU5dWoyZ2lidHF3ZjRrM2w0Mzd5bjN6bG0wcCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/L1R1tvI9svkIWwpVYr/giphy.gif)  
 ## Development Workflow
 
 ### 🌿 Branching
@@ -49,6 +53,8 @@ We're building a friendly, inclusive community here. Be respectful, kind, and su
    ```
 
 
+![GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXZvbW9yOTFwenB1MmhhMXF2bmc0eWk0Z3NtMGw3OW9jcmU3cWR0ciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1oBwBVLGoLteCP2kyD/giphy.gif)  
+
 ### 🛠️ Making Changes
 
 1. Make your code changes - keep them focused on one specific improvement
@@ -68,8 +74,10 @@ We're building a friendly, inclusive community here. Be respectful, kind, and su
    git push origin your-branch-name
    ```
 
+![GIF](https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3MG9heG9obGE4eGNneG1reWM5ajk1dzRmbWU0NXN4YThvbmd5a213byZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3sDaYbHuv8ypgZCcjG/giphy.gif) 
 
 ## Pull Requests
+
 
 ### Creating a PR
 
@@ -83,6 +91,9 @@ We're building a friendly, inclusive community here. Be respectful, kind, and su
 
 
 ### PR Tips
+
+![GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdjR1MzVxNjBxNjFldzNscGkxaWRqNnFsMmxsajJjMTBsY2QzZmRrdiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/j3spUwkmgYwROZurte/giphy.gif) 
+
 
 - **Keep it focused**: One improvement per PR makes review easier.
 
@@ -133,3 +144,5 @@ Have an idea? We'd love to hear it! When suggesting features:
 3. Consider sharing a rough mockup if it's visual.
 
 Thanks for helping make Research Paper Organizer better! Even small contributions make a difference. 
+
+![GIF](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnpua3N4dmJheDBhZ21iaXdsbjhkaHFueXJteThha2RuZmZneWJhbiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/wIVA0zh5pt0G5YtcAL/giphy.gif) 
