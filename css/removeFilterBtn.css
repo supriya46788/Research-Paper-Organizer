@@ -1,0 +1,81 @@
+/* Clear Filters Button Styles to match filter-select dimensions */
+.filter-clear-btn {
+  padding: 0.5rem 0.50rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: white;
+  color: #6b7280;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+  width: auto;
+  min-width: 40px; 
+}
+
+.filter-clear-btn i {
+  font-size: 1.1rem; 
+}
+
+.filter-clear-btn:hover {
+  background: #f9fafb;
+  border-color: #2563eb;
+}
+
+.filter-clear-btn:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+body.dark-mode .filter-clear-btn {
+  background: #1f2937;
+  border-color: #4b5563;
+  color: #9ca3af;
+}
+
+body.dark-mode .filter-clear-btn:hover {
+  background: #374151;
+  border-color: #3b82f6;
+}
+
+body.dark-mode .filter-clear-btn:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #6b7280;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: 120%; 
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.tooltip-container:hover .tooltip-text {
+  display: block;
+}
+
