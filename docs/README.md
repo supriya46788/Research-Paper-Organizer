@@ -65,6 +65,100 @@ A clean, minimal, and static web-based tool built using **HTML, CSS, and JavaScr
  - Python
 
 ----
+## 📂 Project Structure
+
+
+```
+📦 Research-Paper-Organizer
+├── 📂 .github/                  # GitHub workflows, issue & PR templates
+├── 📂 .vscode/                  # VS Code workspace settings
+├── 📂 backend/                  # Backend code
+│   ├── 📂 src/                  
+│   │   ├── 📂 config/           # Configuration files
+│   │   ├── 📂 controllers/      # Business logic
+│   │   ├── 📂 middleware/       # Middleware functions
+│   │   ├── 📂 models/           # Database models
+│   │   ├── 📂 routes/           # API routes
+│   │   ├── 📂 utils/            # Helper utilities
+│   │   └── 📜 app.js            # App entry point
+│   │
+│   ├── 📜 .env.example          # Example environment variables
+│   ├── 📜 .gitignore            # Git ignore rules
+│   ├── 📜 package-lock.json     # Dependency lockfile
+│   ├── 📜 package.json          # Backend dependencies & scripts
+│   └── 📜 test-env.js           # Environment test script
+│
+├── 📂 css/                      # Stylesheets
+│   ├── 📜 Tag-Based-filtering.css
+│   ├── 📜 about.css
+│   ├── 📜 add-organize-papers.css
+│   ├── 📜 ats-checker.css
+│   ├── 📜 auth.css
+│   ├── 📜 blog.css
+│   ├── 📜 contact.css
+│   ├── 📜 faq.css
+│   ├── 📜 forgot-password.css
+│   ├── 📜 glossary.css
+│   ├── 📜 hemingway.css
+│   ├── 📜 open-source.css
+│   ├── 📜 pdf-annotator.css
+│   ├── 📜 pdf-viewer.css
+│   ├── 📜 profile-settings.css
+│   ├── 📜 style.css
+│   ├── 📜 summarize.css
+│   └── 📜 tool.css
+│
+├── 📂 docs/                     # Documentation files
+├── 📂 favicon/                  # Favicon & PWA assets
+├── 📂 images/                   # Image assets
+├── 📂 js/                       # JavaScript files
+│
+├── 📜 .gitignore
+├── 📜 Faq.html
+├── 📜 License
+├── 📜 Masthead.html
+├── 📜 Pdfconverter.html
+├── 📜 Research_Paper_Summary.py
+├── 📜 TODO.md
+├── 📜 Tag-Based-filtering.html
+├── 📜 about.html
+├── 📜 about_new.html
+├── 📜 add-organize-papers.html
+├── 📜 app.js
+├── 📜 ats-checker.html
+├── 📜 auth-callback.html
+├── 📜 blog.html
+├── 📜 contact.html
+├── 📜 forgot-password.html
+├── 📜 glossary.html
+├── 📜 hemingway.html
+├── 📜 home.html
+├── 📜 index.html
+├── 📜 landing.css
+├── 📜 landing.js
+├── 📜 login.html
+├── 📜 manage.py
+├── 📜 offline.html
+├── 📜 open-source.html
+├── 📜 package.json
+├── 📜 pdf-annotator.html
+├── 📜 pdf-viewer.html
+├── 📜 privacy.html
+├── 📜 profile-settings.html
+├── 📜 profile.html
+├── 📜 roadmap.html
+├── 📜 signup.html
+├── 📜 site.webmanifest
+├── 📜 slider.css
+├── 📜 summarize.html
+├── 📜 terms-of-service.html
+├── 🖼️ test1.jpg
+├── 🖼️ testimonialw.png
+└── 📜 tools.html
+
+```
+
+
 
  
 
