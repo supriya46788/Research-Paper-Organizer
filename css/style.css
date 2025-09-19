@@ -2577,3 +2577,16 @@ body.dark-mode .speed-control input:focus {
   cursor: pointer;
   color: #2563eb; /* matches your theme */
 }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+}
+
+header .hamburger {
+  font-size: 26px;
+  cursor: pointer;
+  color: #2563eb;
+}
+
