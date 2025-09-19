@@ -628,10 +628,208 @@ body.dark-mode .copy-btn:hover {
 .navbar{
   position: sticky;
 }
+html, body { overflow-x: hidden; }
+
+/* Header / buttons / search wrapping */
+.header-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.header-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Search & filters wrap neatly */
+.search-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Make input & selects flexible on small screens but keep widths on desktop */
+.search-input-container {
+  flex: 1 1 260px;
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Slightly limit min width of filter selects so they stack nicely */
+.filter-select {
+  min-width: 110px;
+  max-width: 260px;
+  box-sizing: border-box;
+}
+
+/* Make the group of filters more compact on narrow screens */
+.filter-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Main content grid: keep desktop 2-col but stack on tablet/phone */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 16px;
+  align-items: start;
+}
+
+/* Ensure papers-section and details-section behave when stacked */
+.papers-section, .details-section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Modal responsiveness: keep same look but allow full width on small screens */
+.modal {
+  max-width: 820px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Form grids become vertical on smaller screens */
+.form-grid {
+  display: flex;
+  gap: 12px;
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .form-grid {
+    flex-direction: column;
+  }
+}
+
+/* PDF preview slightly smaller on small screens to avoid overflow */
+@media (max-width: 760px) {
+  .pdf-preview { height: 240px; }
+}
+@media (max-width: 420px) {
+  .pdf-preview { height: 200px; }
+}
+
+/* Stack main grid on smaller screens: list on top, details below */
+@media (max-width: 900px) {
+  .main-grid { grid-template-columns: 1fr 360px; }
+}
+@media (max-width: 760px) {
+  .main-grid { grid-template-columns: 1fr; }
+  .papers-section { order: 1; }
+  .details-section { order: 2; }
+  .details-section { margin-top: 8px; }
+}
+
+/* Improve spacing for header text on small screens */
+@media (max-width: 520px) {
+  .header-title { font-size: 1.02rem; }
+  .header-subtitle { font-size: 0.86rem; }
+}
+
+/* Back to Top button: keep visible and avoid overlapping chat bubble on mobile */
+#backToTop {
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  /* don't change colors */
+}
+
+/* Push back-to-top left on wide screens to avoid overlay with chat */
+@media (min-width: 1024px) {
+  #backToTop { right: 90px; bottom: 20px; }
+}
+
+/* Mobile / small screens: move back-to-top into bottom-right corner */
+@media (max-width: 600px) {
+  #backToTop {
+    right: 18px !important;
+    bottom: 18px !important;
+    display: none; /* display toggled by your script; keep default hidden until scroll */
+  }
+}
+
+/* Chat bubble: override script-set positions so it stays visible on smaller viewports
+   We do NOT change visuals (background/color), only placement/size if needed. */
+#chatbase-bubble-button,
+button#chatbase-bubble-button {
+  /* prefer bottom-right; override any left:300px JS placement */
+  right: 20px !important;
+  left: auto !important;
+  bottom: 20px !important;
+  top: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 2147483647 !important;
+}
+
+/* Make the bubble slightly larger on tiny screens for easier tap */
+@media (max-width: 420px) {
+  #chatbase-bubble-button, button#chatbase-bubble-button {
+    right: 14px !important;
+    bottom: 14px !important;
+    width: 58px !important;
+    height: 58px !important;
+  }
+}
+
+/* Chat window: ensure it doesn't overflow the viewport on mobile */
+#chatbase-bubble-window {
+  max-width: 92vw !important;
+  width: 92vw !important;
+  box-sizing: border-box !important;
+  z-index: 2147483646 !important;
+}
+
+/* When chat window is visible on mobile, fix position so it looks like a card */
+@media (max-width: 760px) {
+  #chatbase-bubble-window {
+    position: fixed !important;
+    bottom: 90px !important;
+    right: 12px !important;
+    left: auto !important;
+    top: auto !important;
+    height: 70vh !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+  }
+  #chatbase-bubble-window iframe {
+    height: 100% !important;
+    width: 100% !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* Make sure any absolute/inline width elements inside containers do not cause horizontal scroll */
+.container, .papers-section, .details-section, .modal, .modern-footer {
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Footer tweaks: keep same appearance but avoid overflow on tiny screens */
+@media (max-width: 420px) {
+  .modern-footer { padding-left: 14px; padding-right: 14px; border-radius: 12px 12px 0 0; }
+}
+
+/* Small utility: ensure select/button groups wrap if too crowded */
+.controls-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
   </style>
   
 </head>
-
 <body>
   <div class="container">
     <nav class="navbar">
