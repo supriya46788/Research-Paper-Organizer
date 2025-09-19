@@ -122,6 +122,44 @@ body {
   box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
 }
 
+/* Mobile hamburger alignment fix */
+@media (max-width: 768px) {
+  .landing-nav .nav-container {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 12px;
+    height: 56px;
+    padding-left: 12px;
+    padding-right: 12px;
+    flex-wrap: nowrap !important;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .mobile-menu-toggle {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 6px;
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: var(--primary-dark);
+    border-radius: 8px;
+  }
+  .mobile-menu-toggle i {
+    pointer-events: none;
+    line-height: 1;
+    display: inline-block;
+  }
+}
+
 
 .nav-item:hover {
   background-color: #115cff; /* Slightly darker blue */
@@ -2577,16 +2615,3 @@ body.dark-mode .speed-control input:focus {
   cursor: pointer;
   color: #2563eb; /* matches your theme */
 }
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-}
-
-header .hamburger {
-  font-size: 26px;
-  cursor: pointer;
-  color: #2563eb;
-}
-
