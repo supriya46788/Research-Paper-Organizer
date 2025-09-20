@@ -256,34 +256,57 @@
       }
 
       .contributor-cards {
-        display: grid !important;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 1.5rem;
-        margin-top: 2rem;
+        display: flex !important;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 26px;
+        margin-top: 6px;
         visibility: visible !important;
-      }
-
-      @media (max-width: 1200px) {
-        .contributor-cards {
-          grid-template-columns: repeat(4, 1fr);
-        }
       }
 
       @media (max-width: 900px) {
         .contributor-cards {
-          grid-template-columns: repeat(3, 1fr);
+          gap: 14px;
         }
       }
 
       @media (max-width: 600px) {
         .contributor-cards {
-          grid-template-columns: repeat(2, 1fr);
+          gap: 7px;
+          margin-top: 1px;
         }
       }
 
-      @media (max-width: 400px) {
+      @media (max-width: 900px) {
+        .contributors {
+          padding: 15px;
+        }
         .contributor-cards {
-          grid-template-columns: 1fr;
+          gap: 14px;
+        }
+        .contributor-card {
+          width: 130px;
+          min-height: 110px;
+          padding: 8px 7px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .contributors {
+          margin: 22px auto;
+          padding: 7px;
+        }
+        .contributors-title {
+          font-size: 1.1rem;
+        }
+        .contributor-cards {
+          gap: 7px;
+          margin-top: 1px;
+        }
+        .contributor-card {
+          width: 95px;
+          min-height: 90px;
+          padding: 3px 2px;
         }
       }
 
@@ -320,79 +343,66 @@
       }
 
       .contributor-card {
-        background: white !important;
-        border-radius: 16px;
-        padding: 1.5rem;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
-        border: 1px solid rgba(99, 102, 241, 0.1);
+        background: #f5f6fa !important;
+        border-radius: 15px;
+        padding: 14px 14px;
+        width: 180px;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0 4px 14px rgba(59,71,87,0.09);
+        border: 1.5px solid #e0e6ef;
+        transition: transform 0.23s, box-shadow 0.23s;
         cursor: pointer;
-        display: block !important;
-        visibility: visible !important;
+        min-height: 140px;
         position: relative;
+        visibility: visible !important;
       }
 
       .contributor-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
-        border-color: #2f2ca0 !important;
+        transform: translateY(-7px) scale(1.03);
+        box-shadow: 0 8px 25px rgba(255,71,87,0.11);
+        background: #fffbe6 !important;
       }
 
-      .contributor-avatar {
-        width: 70px;
-        height: 70px;
+      .contributor-card img {
+        width: 48px;
+        height: 48px;
         border-radius: 50%;
-        margin-bottom: 1rem;
-        border: 2px solid rgba(99, 102, 241, 0.1);
-        transition: all 0.3s ease;
-        display: block !important;
-        margin-left: auto;
-        margin-right: auto;
+        margin-bottom: 8px;
+        border: 2.5px solid #3e2723;
         object-fit: cover;
+        box-shadow: 0 2px 8px rgba(33,33,33,0.11);
       }
 
-      .contributor-avatar:hover {
-        border-color: #2f2ca0 !important;
-      }
-
-      .contributor-name {
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: #1f2937 !important;
-        line-height: 1.3;
+      .contributor-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .contributor-username {
-        color: #6b7280 !important;
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #3e2723;
+        margin-bottom: 2px;
       }
 
-      .contributor-stats {
-        display: flex;
-        justify-content: space-around;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(99, 102, 241, 0.1);
+      .contributor-handle {
+        color: #888;
+        font-size: 0.92rem;
+        margin-bottom: 4px;
       }
 
-      .stat {
-        text-align: center;
-      }
-
-      .stat-number {
+      .contributor-badge {
+        font-size: 0.87rem;
         font-weight: 700;
-        color: #2f2ca0;
-        font-size: 0.9rem;
-      }
-
-      .stat-label {
-        font-size: 0.7rem;
-        color: #6b7280;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
+        background: linear-gradient(45deg, #a4766a, #5d4037);
+        color: #fff;
+        border-radius: 13px;
+        padding: 4px 13px;
+        margin-top: 4px;
+        box-shadow: 0 2px 9px rgba(59,71,87,0.09);
       }
 
       .tech-stack {
@@ -1460,14 +1470,11 @@
               const contributorCard = document.createElement("div");
               contributorCard.className = "contributor-card";
               contributorCard.innerHTML = `
-                <img src="${c.avatar_url}" alt="${c.login}" class="contributor-avatar" />
-                <div class="contributor-name">${c.login}</div>
-                <div class="contributor-username">@${c.login}</div>
-                <div class="contributor-stats">
-                  <div class="stat">
-                    <div class="stat-number">${c.contributions}</div>
-                    <div class="stat-label">Commits</div>
-                  </div>
+                <img src="${c.avatar_url}" alt="${c.login}" />
+                <div class="contributor-info">
+                  <div class="contributor-username">${c.login}</div>
+                  <div class="contributor-handle">@${c.login}</div>
+                  <div class="contributor-badge">${c.contributions} commits</div>
                 </div>
               `;
               contributorCard.onclick = () => window.open(c.html_url, '_blank');
@@ -1546,14 +1553,11 @@
           const contributorCard = document.createElement("div");
           contributorCard.className = "contributor-card";
           contributorCard.innerHTML = `
-            <img src="${contributor.avatar}" alt="${contributor.username}" class="contributor-avatar" />
-            <div class="contributor-name">${contributor.name}</div>
-            <div class="contributor-username">@${contributor.username}</div>
-            <div class="contributor-stats">
-              <div class="stat">
-                <div class="stat-number">${contributor.contributions}</div>
-                <div class="stat-label">Commits</div>
-              </div>
+            <img src="${contributor.avatar}" alt="${contributor.username}" />
+            <div class="contributor-info">
+              <div class="contributor-username">${contributor.name}</div>
+              <div class="contributor-handle">@${contributor.username}</div>
+              <div class="contributor-badge">${contributor.contributions} commits</div>
             </div>
           `;
           contributorCard.onclick = () => window.open(contributor.url, '_blank');
