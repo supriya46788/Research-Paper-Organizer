@@ -1,5 +1,16 @@
 function filterPapers(tag) {
   const papers = document.querySelectorAll(".paper");
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  
+  // Update active button
+  filterButtons.forEach(btn => {
+    btn.classList.remove("active");
+    if (btn.getAttribute("data-filter") === tag) {
+      btn.classList.add("active");
+    }
+  });
+  
+  // Filter papers
   papers.forEach((paper) => {
     const tags = paper.getAttribute("data-tags").split(" ");
     paper.style.display = tag === "all" || tags.includes(tag) ? "flex" : "none";
@@ -16,27 +27,43 @@ function filterPapers(tag) {
 // });
 
 // 🌙 Dark Mode Toggle
-const darkToggle = document.getElementById("darkModeToggle");
-const body = document.body;
-
-// Load preference
-if (localStorage.getItem("darkMode") === "enabled") {
-  body.classList.add("dark-mode");
-  darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+function toggleDarkMode() {
+  const body = document.body;
+  const darkToggle = document.getElementById('darkModeToggle');
+  const icon = darkToggle.querySelector('i');
+  
+  body.classList.toggle('dark-mode');
+  
+  // Update icon
+  if (body.classList.contains('dark-mode')) {
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    icon.classList.remove('fa-sun');
+    icon.classList.add('fa-moon');
+    localStorage.setItem('darkMode', 'disabled');
+  }
 }
 
-// Toggle event
-darkToggle.addEventListener("click", () => {
-  body.classList.toggle("dark-mode");
-
-  if (body.classList.contains("dark-mode")) {
-    localStorage.setItem("darkMode", "enabled");
-    darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
-  } else {
-    localStorage.setItem("darkMode", "disabled");
-    darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
+// Load dark mode preference on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const darkMode = localStorage.getItem('darkMode');
+  const darkToggle = document.getElementById('darkModeToggle');
+  const icon = darkToggle.querySelector('i');
+  
+  if (darkMode === 'enabled') {
+    document.body.classList.add('dark-mode');
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
   }
 });
+
+// Hamburger menu toggle
+function toggleMenu() {
+  const nav = document.querySelector(".navbar-right-links");
+  nav.classList.toggle("show");
+}
 // Dummy Tag Suggestion
 // function showTagSuggestions() {
 //   const title = document.getElementById("paperTitle").value;
