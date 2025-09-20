@@ -255,12 +255,36 @@
         flex-shrink: 0;
       }
 
-      .contributors-grid {
+      .contributor-cards {
         display: grid !important;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1.5rem;
         margin-top: 2rem;
         visibility: visible !important;
+      }
+
+      @media (max-width: 1200px) {
+        .contributor-cards {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .contributor-cards {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .contributor-cards {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 400px) {
+        .contributor-cards {
+          grid-template-columns: 1fr;
+        }
       }
 
       .contributors-section {
@@ -297,12 +321,12 @@
 
       .contributor-card {
         background: white !important;
-        border-radius: 12px;
-        padding: 1.25rem;
+        border-radius: 16px;
+        padding: 1.5rem;
         text-align: center;
         transition: all 0.3s ease;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        border: 1px solid #e5e7eb;
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.1);
         cursor: pointer;
         display: block !important;
         visibility: visible !important;
@@ -310,17 +334,17 @@
       }
 
       .contributor-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15);
-        border-color: #2f2ca0;
+        transform: translateY(-4px);
+        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+        border-color: #2f2ca0 !important;
       }
 
       .contributor-avatar {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
-        margin-bottom: 0.75rem;
-        border: 2px solid #e5e7eb;
+        margin-bottom: 1rem;
+        border: 2px solid rgba(99, 102, 241, 0.1);
         transition: all 0.3s ease;
         display: block !important;
         margin-left: auto;
@@ -329,29 +353,29 @@
       }
 
       .contributor-avatar:hover {
-        border-color: #2f2ca0;
+        border-color: #2f2ca0 !important;
       }
 
       .contributor-name {
-        font-size: 0.95rem;
+        font-size: 1rem;
         font-weight: 600;
-        margin-bottom: 0.25rem;
-        color: #1f2937;
+        margin-bottom: 0.5rem;
+        color: #1f2937 !important;
         line-height: 1.3;
       }
 
       .contributor-username {
-        color: #6b7280;
-        font-size: 0.8rem;
-        margin-bottom: 0.75rem;
+        color: #6b7280 !important;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
       }
 
       .contributor-stats {
         display: flex;
-        justify-content: center;
-        margin-top: 0.75rem;
-        padding-top: 0.75rem;
-        border-top: 1px solid #f3f4f6;
+        justify-content: space-around;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(99, 102, 241, 0.1);
       }
 
       .stat {
@@ -687,10 +711,6 @@
           padding: 2rem 1.5rem;
         }
 
-        .contributors-grid {
-          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-          gap: 1rem;
-        }
 
         .tech-stack {
           grid-template-columns: 1fr;
@@ -1170,23 +1190,9 @@
                 community.
               </p>
             </div>
- 
-          </div>
-            <table class="leaderboard" id="leaderBoard">
-              <thead>
-                <tr>
-                  <th>Rank</th>
-                  <th>Contributor</th>
-                  <th>Contribution</th>
-                  <th>level</th>
-                  <th>Profile</th>
-                </tr>
-              </thead>
-              <tbody id="leaderboard-body">
-                <!-- apear dynamically -->
-                   
-              </tbody>
-            </table>
+            <div class="contributor-cards" id="contributors-container">
+              <!-- Contributors will be loaded dynamically -->
+            </div>
           </div>
         </section>
 
@@ -1426,11 +1432,11 @@
 
       // Load GitHub contributors
       async function loadContributors() { 
-        const leaderboardBody = document.getElementById("leaderboard-body");
+        const contributorsContainer = document.getElementById("contributors-container");
 
         try {
           // Show loading indicator
-          leaderboardBody.innerHTML =
+          contributorsContainer.innerHTML =
             '<div class="loading"><div class="spinner"></div><p>Loading contributors...</p></div>';
 
           // Get contributors from GitHub API (simplified approach)
@@ -1445,47 +1451,37 @@
           const contributors = await response.json();
           console.log("Contributors loaded:", contributors);
           
-          // render contributors in leader board form
-
+          // render contributors in grid form
           if (Array.isArray(contributors) && contributors.length > 0) { 
              contributors.sort((a, b) => b.contributions - a.contributions);
-          leaderboardBody.innerHTML = "";
+          contributorsContainer.innerHTML = "";
           contributors.forEach((c, rank) => {
-            const tr = document.createElement("tr");
-
             if (c.login !== "supriya46788") {
-              tr.innerHTML = `
-            <td class="rank-icon">${
-              rank === 1 ? "🏆" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : rank
-            }</td>
-            <td>
-              <div class="contributor-info">
-                 <img src="${c.avatar_url}" alt="${c.login}">
-                <div>
-                  <div class = "name">${c.login}</div>
-                  <small>${c.login}</small>
+              const contributorCard = document.createElement("div");
+              contributorCard.className = "contributor-card";
+              contributorCard.innerHTML = `
+                <img src="${c.avatar_url}" alt="${c.login}" class="contributor-avatar" />
+                <div class="contributor-name">${c.login}</div>
+                <div class="contributor-username">@${c.login}</div>
+                <div class="contributor-stats">
+                  <div class="stat">
+                    <div class="stat-number">${c.contributions}</div>
+                    <div class="stat-label">Commits</div>
+                  </div>
                 </div>
-              </div>  
-            </td>
-            <td><div class="contributions">${c.contributions}</div></td>
-            <td><div class="level"> ${
-              rank === 1 ? "🏆Expert" : "Contributors"
-            }</div></td>
-            <td class="profile-link"><a href="${
-              c.html_url
-            }" target="_blank">🔗</a></td>
-          `;
+              `;
+              contributorCard.onclick = () => window.open(c.html_url, '_blank');
+              contributorsContainer.appendChild(contributorCard);
             }
-            leaderboardBody.appendChild(tr);
           });
             console.log("Contributors loaded successfully");
           } else {
-            showFallbackContributors(leaderboardBody);
+            showFallbackContributors(contributorsContainer);
           } 
           
         } catch (error) {
           console.error("Error loading contributors:", error);
-          showFallbackContributors(leaderboardBody);
+          showFallbackContributors(contributorsContainer);
         }
       }
 
@@ -1499,74 +1495,70 @@
             username: "Channpreetk",
             avatar: "https://avatars.githubusercontent.com/u/62991059?v=4",
             contributions: "156",
+            url: "https://github.com/Channpreetk"
           },
           {
             name: "anikethta21",
             username: "anikethta21",
             avatar: "https://via.placeholder.com/60x60/e91e63/ffffff?text=AT",
             contributions: "24",
+            url: "https://github.com/anikethta21"
           },
           {
             name: "dev-xyz",
             username: "dev-xyz",
             avatar: "https://via.placeholder.com/60x60/2196f3/ffffff?text=DX",
             contributions: "18",
+            url: "https://github.com/dev-xyz"
           },
           {
             name: "codeWithAkash",
             username: "codeWithAkash",
             avatar: "https://via.placeholder.com/60x60/4caf50/ffffff?text=CA",
             contributions: "12",
+            url: "https://github.com/codeWithAkash"
           },
           {
             name: "WebDevPro",
             username: "WebDevPro",
             avatar: "https://via.placeholder.com/60x60/ff9800/ffffff?text=WD",
             contributions: "8",
+            url: "https://github.com/WebDevPro"
           },
           {
             name: "Aditya Singh",
             username: "Adez017",
             avatar: "https://via.placeholder.com/60x60/9c27b0/ffffff?text=AS",
             contributions: "5",
+            url: "https://github.com/Adez017"
           },
           {
             name: "ReactMaster",
             username: "ReactMaster",
             avatar: "https://via.placeholder.com/60x60/9c27b0/ffffff?text=RM",
             contributions: "5",
+            url: "https://github.com/ReactMaster"
           },
         ];
 
+        container.innerHTML = "";
         fallbackContributors.forEach((contributor) => {
-          const tr = document.createElement("tr"); 
-          tr.innerHTML = `
-            <td class="rank-icon">${
-              rank === 1 ? "🏆" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : rank
-            }</td>
-            <td>
-              <div class="contributor-info">
-                 <img src="${c.avatar_url}" alt="${c.login}">
-                <div>
-                  <div class = "name">${c.login}</div>
-                  <small>${c.login}</small>
-                </div>
-              </div>  
-            </td>
-            <td><div class="contributions">${c.contributions}</div></td>
-            <td><div class="level"> ${
-              rank === 1 ? "🏆Expert" : "Contributors"
-            }</div></td>
-            <td class="profile-link"><a href="${
-              c.html_url
-            }" target="_blank">🔗</a></td>
-          `; 
-
-         container.innerHTML = "";
-        container.appendChild(tr);
+          const contributorCard = document.createElement("div");
+          contributorCard.className = "contributor-card";
+          contributorCard.innerHTML = `
+            <img src="${contributor.avatar}" alt="${contributor.username}" class="contributor-avatar" />
+            <div class="contributor-name">${contributor.name}</div>
+            <div class="contributor-username">@${contributor.username}</div>
+            <div class="contributor-stats">
+              <div class="stat">
+                <div class="stat-number">${contributor.contributions}</div>
+                <div class="stat-label">Commits</div>
+              </div>
+            </div>
+          `;
+          contributorCard.onclick = () => window.open(contributor.url, '_blank');
+          container.appendChild(contributorCard);
         });
-
-         
       }
 
       // Load contributors when page loads
