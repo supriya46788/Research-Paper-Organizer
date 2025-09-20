@@ -162,11 +162,7 @@ body.dark-mode .nav-item:hover {
   align-items: start;
 }
 
-.menu-btn {
-  width: 2rem;
-  height: 2rem;
-  color: #3b82f6;
-}
+
 
 #menu-close-btn {
   display: none;
@@ -177,23 +173,7 @@ body.dark-mode .nav-item:hover {
   z-index: 99999;
 }
 
-#menu-items-container {
-  background: #3b82f6;
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  z-index: 99999;
-  min-height: 100vh;
 
-  flex-direction: column;
-  gap: 1.5rem;
-  justify-content: center;
-  align-items: center;
-}
 
 body.dark-mode #menu-items-container {
   background: #1f2937;
@@ -1355,16 +1335,6 @@ body.dark-mode #clearPdfBtn:hover {
     align-items: center;
     gap: 1rem;
     padding: 0.5rem 0;
-  }
-
-  .search-input-container,
-  .filter-container {
-    min-width: 130px;
-    flex: 1 1 150px;
-  }
-
-  .search-input-container {
-    flex: 2 1 300px;
   }
 
   .filter-container select,
