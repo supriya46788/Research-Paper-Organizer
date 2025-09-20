@@ -394,15 +394,24 @@
         margin-bottom: 4px;
       }
 
-      .contributor-badge {
-        font-size: 0.87rem;
-        font-weight: 700;
-        background: linear-gradient(45deg, #a4766a, #5d4037);
-        color: #fff;
-        border-radius: 13px;
-        padding: 4px 13px;
+      .contributor-contributions {
         margin-top: 4px;
-        box-shadow: 0 2px 9px rgba(59,71,87,0.09);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contribution-number {
+        font-size: 0.87rem;
+        font-weight: 800;
+        color: #70a1ff;
+      }
+
+      .contribution-label {
+        font-size: 0.92rem;
+        color: #888;
+        margin-top: 2px;
+        text-transform: uppercase;
       }
 
       .tech-stack {
@@ -1474,7 +1483,10 @@
                 <div class="contributor-info">
                   <div class="contributor-username">${c.login}</div>
                   <div class="contributor-handle">@${c.login}</div>
-                  <div class="contributor-badge">${c.contributions} commits</div>
+                  <div class="contributor-contributions">
+                    <span class="contribution-number">${c.contributions}</span>
+                    <span class="contribution-label">contributions</span>
+                  </div>
                 </div>
               `;
               contributorCard.onclick = () => window.open(c.html_url, '_blank');
@@ -1557,7 +1569,10 @@
             <div class="contributor-info">
               <div class="contributor-username">${contributor.name}</div>
               <div class="contributor-handle">@${contributor.username}</div>
-              <div class="contributor-badge">${contributor.contributions} commits</div>
+              <div class="contributor-contributions">
+                <span class="contribution-number">${contributor.contributions}</span>
+                <span class="contribution-label">contributions</span>
+              </div>
             </div>
           `;
           contributorCard.onclick = () => window.open(contributor.url, '_blank');
