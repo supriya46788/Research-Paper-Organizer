@@ -9,7 +9,7 @@
   </head>
   <body>
     <!-- Add Your Papers Section -->
-    <section class="Add-section">
+    <section id="add-section" class="add-section">
       <h2>➋ Add Your Papers</h2>
       <p>
         Upload PDFs, add paper details manually, or import from existing
@@ -27,7 +27,7 @@
     </section>
 
     <!-- Organize & Search Section -->
-    <section id="organize-section">
+    <section id="organize-section" class="organize-section">
       <h2>➌ Organize & Search</h2>
       <p>
         Use tags, topics, and ratings to organize your collection and find
@@ -49,6 +49,7 @@
         <div class="tag">Healthcare</div>
       </div>
     </section>
+
     <script>
       const fileInput = document.getElementById("fileUpload");
       const fileList = document.getElementById("fileList");
@@ -65,5 +66,25 @@
         });
       });
     </script>
+    <script>
+  const toggleBtn = document.getElementById('darkModeToggle');
+
+  // Check if user has a saved preference
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    // Save preference
+    if (document.body.classList.contains('dark-mode')) {
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      localStorage.setItem('darkMode', 'disabled');
+    }
+  });
+</script>
+
   </body>
 </html>
