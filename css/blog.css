@@ -263,9 +263,11 @@ body.dark-mode .social-links a:hover { background: rgba(144,205,244,0.2); color:
 body.dark-mode .footer-bottom { background: rgba(0,0,0,0.3); border-top-color: rgba(224,224,224,0.1); }
 
 /* Dark mode navbar compatibility */
-body.dark-mode .navbar { background: transparent; }
-body.dark-mode .nav-item { background: linear-gradient(135deg, #4a5568, #2d3748); color: #e0e0e0; }
-body.dark-mode .nav-item:hover { background: linear-gradient(135deg, #63b3ed, #4299e1); color: #1a202c; }
+.dark-mode .navbar {
+    background: rgba(17, 24, 39, 0.9);
+    border-bottom: 1px solid #374151;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
