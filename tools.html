@@ -79,7 +79,7 @@
    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    position: relative;
+    /* position: relative; */
   }
 
   .navbar-right-links {
@@ -322,7 +322,7 @@ color: #e0e0e0;
 /* Dark mode toggle button styling */
 .dark-toggle {
   color:#1a1a1a;
-background: none !important;
+/* background: none !important; */
 border: none;
 cursor: pointer;
 padding: 0.6rem 1.2rem;
@@ -331,7 +331,8 @@ transition: all 0.25s ease;
 }
 
 .dark-toggle:hover {
-background: rgba(255, 255, 255, 0.1) !important;
+    
+    color: #1a202c;;
 }
 
 header {
@@ -617,12 +618,15 @@ background: #63b3ed;
 
 /* Dark mode navbar compatibility */
 body.dark-mode .navbar {
-background: transparent;
+    background: transparent;
+    background: linear-gradient(90deg, #1f2937, #111827);
+    color: var(--text-light);
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode .nav-item {
-background: linear-gradient(135deg, #4a5568, #2d3748);
-color: #e0e0e0;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--text-light); 
 }
 
 

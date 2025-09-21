@@ -40,6 +40,7 @@ body {
   background-color:#fff;
   border-radius: 10px;
   margin-bottom: 1.5rem;
+  position: sticky;
 }
 
 
@@ -96,7 +97,7 @@ body {
 
 .nav-item {
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: white;
+  color:white;
   border: none;
   padding: 0.6rem 1.2rem;
   margin: 5px;
@@ -110,6 +111,9 @@ body {
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   font-weight: 500;
+}
+.fa-moon{
+  color:white;
 }
 /* for sun it must be  white */
 .fa-sun{ 
@@ -602,6 +606,7 @@ body.dark-mode #footer-outer h3 {
 #footer-outer {
   margin-top: 15px;
 }
+
 
 @media (min-width: 1024px) {
   .main-grid {
@@ -1111,6 +1116,12 @@ body.dark-mode #footer-outer h3 {
   .details-grid {
     grid-template-columns: 1fr;
   }
+ 
+  body.dark-mode .navbar-right-links{
+    background: linear-gradient(90deg, #1f2937, #111827);
+   
+  }
+
 }
 
 /* Dark Mode */
@@ -1240,10 +1251,11 @@ body.dark-mode .tag-badge {
 
 /* Dark Mode Toggle Styling */
 .dark-toggle {
-  background: #f3f4f6;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
   border: none;
-  border-radius: 6px;
-  padding: 8px 10px;
+  border-radius: 10px;
+  padding: 0.6rem 1.2rem;
   font-size: 1rem;
   cursor: pointer;
   color: #1f2937;
@@ -1251,7 +1263,9 @@ body.dark-mode .tag-badge {
 }
 
 .dark-toggle:hover {
-  background: #e5e7eb;
+  background-color: #115cff;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 /* Optional dark-mode override */
@@ -1261,7 +1275,8 @@ body.dark-mode .tag-badge {
 }
 
 .dark-mode .dark-toggle:hover {
-  background: #4b5563;
+    background: linear-gradient(135deg, #63b3ed, #4299e1);
+    color: #1a202c;
 }
 
 body.dark-mode .swal2-popup {
@@ -2614,4 +2629,8 @@ body.dark-mode .speed-control input:focus {
   font-size: 26px;
   cursor: pointer;
   color: #2563eb; /* matches your theme */
+}
+
+.dark-mode .hamburger-container .bar{
+  background-color: #adadad;
 }
