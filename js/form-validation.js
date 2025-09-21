@@ -4,6 +4,7 @@ class FormValidator {
     this.passwordRequirements = {
       length: { regex: /.{8,}/, message: "At least 8 characters" },
       uppercase: { regex: /[A-Z]/, message: "One uppercase letter" },
+      lowercase: {regex: /[a-z]/, message: "One lowercase letter"},
       number: { regex: /[0-9]/, message: "One number" },
       special: { regex: /[^A-Za-z0-9]/, message: "One special character" },
     };
