@@ -37,7 +37,7 @@ body.dark-mode #darkModeToggle {
 /* Dark mode toggle button styling */
 .dark-toggle {
   color:#1a1a1a;
-background: #fff !important;
+/* background: #fff !important; */
 border: none;
 cursor: pointer;
 padding: 0.6rem 1.2rem;
@@ -46,7 +46,9 @@ transition: all 0.25s ease;
 }
 
 .dark-toggle:hover {
-background: rgba(255, 255, 255, 0.1) !important;
+    background-color: #115cff;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 header {
