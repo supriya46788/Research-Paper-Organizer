@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
   <!-- Meta -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,9 +21,8 @@
   <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
   <link rel="manifest" href="./favicon/site.webmanifest" />
   <meta name="theme-color" content="#2563eb" />
-
-
 </head>
+
 <style>
   .navbar {
     display: flex;
@@ -36,7 +35,6 @@
   .hamburger-container {
     display: none;
     flex-direction: column;
-    /* justify-content: center; */
     cursor: pointer;
     gap: 5px;
     padding: 10px;
@@ -55,23 +53,19 @@
       display: flex;
     }
 
-
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      /* position: relative; */
     }
 
     .navbar-right-links {
       display: none;
       position: absolute;
       top: 70px;
-      /* adjust depending on navbar height */
       right: 10px;
       margin: 15px;
-      /* aligns the box to the right */
       background-color: white;
       border: 1px solid #ddd;
       border-radius: 10px;
@@ -81,7 +75,6 @@
       gap: 0.75rem;
       z-index: 1000;
       width: max-content;
-      /* only as wide as content */
       min-width: 150px;
     }
 
@@ -91,32 +84,25 @@
 
     .nav-item {
       display: inline-flex;
-      /* Ensures icon and text are in a row */
       align-items: center;
-      /* Vertical centering */
       justify-content: center;
       padding: 1rem;
       width: 10rem;
       font-size: 1rem;
-
     }
   }
 
-  /* Footer CSS*/
-  /* NEW: Search Bar Styles */
+  /* Search Bar Styles */
   .search-container {
     position: relative;
     width: 100%;
     max-width: 600px;
-    /* Adjust as needed */
     margin: 1.5rem auto;
-    /* Center it */
   }
 
   #searchInput {
     width: 100%;
     padding: 12px 20px 12px 40px;
-    /* Make space for icon */
     border: 1px solid #ddd;
     border-radius: 50px;
     font-size: 1rem;
@@ -160,9 +146,7 @@
 
   .modern-footer {
     width: 100vw;
-    /* Full viewport width */
     margin-left: calc(-50vw + 50%);
-    /* Center it if inside a constrained container */
     background: linear-gradient(135deg, #1f3c88, #2c5aa0);
     color: #fff;
     padding: 60px 20px 20px;
@@ -170,7 +154,6 @@
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
     overflow-x: hidden;
   }
-
 
   .footer-top {
     display: grid;
@@ -286,7 +269,6 @@
     align-items: center;
     gap: 8px;
     transition: 0.3s;
-
     padding: 5px;
     padding-left: 20px;
   }
@@ -384,43 +366,306 @@
   }
 
   #searchSuggestions {
-  list-style: none;
-  margin: 4px 0 0;
-  padding: 0;
-  max-height: 200px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  background-color: #ffffff; /* Force white background */
-  color: #000000;            /* Force black text */
-  position: absolute;
-  width: calc(100% - 40px); /* matches input width */
-  z-index: 1000;
-  display: none;
-  border-radius: 6px;
-  font-size: 14px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* little shadow */
-}
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #000000;
+    position: absolute;
+    width: calc(100% - 40px);
+    z-index: 1000;
+    display: none;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
 
-#searchSuggestions li {
-  padding: 8px 12px;
-  cursor: pointer;
-}
+  #searchSuggestions li {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
 
-#searchSuggestions li:hover {
-  background-color: #f5f5f5;
-}
+  #searchSuggestions li:hover {
+    background-color: #f5f5f5;
+  }
+
+  /* CUSTOM HOVER EFFECTS */
+  
+  /* Blog Cards Hover Effects */
+  .blog-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+    z-index: 1;
+  }
+
+  .blog-card:hover::before {
+    left: 100%;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .blog-card:hover .blog-media img {
+    transform: scale(1.08);
+    filter: brightness(1.1);
+  }
+
+  .blog-card .blog-media {
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .blog-card .blog-media img {
+    transition: all 0.4s ease;
+  }
+
+  /* Enhanced Read More Button Hover */
+  .read-more {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .read-more::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(44, 90, 160, 0.3), transparent);
+    transition: left 0.5s;
+  }
+
+  .read-more:hover::before {
+    left: 100%;
+  }
+
+  .read-more:hover {
+    color: #2c5aa0;
+    padding-left: 8px;
+    font-weight: 600;
+  }
+
+  /* Badge Hover Effects */
+  .badge {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .badge:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .badge-tips:hover { background-color: #10b981; }
+  .badge-ai:hover { background-color: #8b5cf6; }
+  .badge-updates:hover { background-color: #f59e0b; }
+  .badge-citations:hover { background-color: #ef4444; }
+  .badge-productivity:hover { background-color: #06b6d4; }
+  .badge-tools:hover { background-color: #84cc16; }
+
+  /* Filter Button Enhanced Hover */
+  .filter-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(44, 90, 160, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+  }
+
+  .filter-btn:hover::before {
+    width: 200%;
+    height: 200%;
+  }
+
+  .filter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(44, 90, 160, 0.3);
+    color: #2c5aa0;
+  }
+
+  /* Search Input Hover Effects */
+  .search-container:hover #searchInput {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(44, 90, 160, 0.2);
+  }
+
+  /* Navigation Hover Effects */
+  .nav-item {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #2c5aa0;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-item:hover::after {
+    width: 100%;
+  }
+
+  .nav-item:hover {
+    transform: translateY(-2px);
+    color: #2c5aa0;
+  }
+
+  /* Footer Social Icons Enhanced Hover */
+  .social-icons a {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-icons a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease;
+  }
+
+  .social-icons a:hover::before {
+    width: 120%;
+    height: 120%;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.2) rotate(10deg);
+  }
+
+  /* Back to Top Button Hover */
+  #backToTop {
+    transition: all 0.3s ease;
+  }
+
+  #backToTop:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 20px rgba(44, 90, 160, 0.4);
+    background: linear-gradient(45deg, #2c5aa0, #1f3c88);
+  }
+
+  /* Blog Content Hover Effects */
+  .blog-content h2 {
+    transition: color 0.3s ease;
+  }
+
+  .blog-card:hover .blog-content h2 {
+    color: #2c5aa0;
+  }
+
+  /* Meta Information Hover */
+  .meta time:hover {
+    color: #2c5aa0;
+    cursor: pointer;
+  }
+
+  /* Dark Mode Hover Adjustments */
+  body.dark-mode .blog-card:hover {
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.1);
+  }
+
+  body.dark-mode .nav-item::after {
+    background: #90cdf4;
+  }
+
+  body.dark-mode .nav-item:hover {
+    color: #90cdf4;
+  }
+
+  body.dark-mode .read-more:hover {
+    color: #90cdf4;
+  }
+
+  body.dark-mode .filter-btn:hover {
+    color: #90cdf4;
+    box-shadow: 0 8px 16px rgba(144, 205, 244, 0.3);
+  }
+
+  body.dark-mode .filter-btn::before {
+    background: rgba(144, 205, 244, 0.2);
+  }
+
+  body.dark-mode .search-container:hover #searchInput {
+    box-shadow: 0 4px 12px rgba(144, 205, 244, 0.2);
+  }
+
+  /* Staggered Animation for Cards */
+  .blog-card:nth-child(1) { animation-delay: 0.1s; }
+  .blog-card:nth-child(2) { animation-delay: 0.2s; }
+  .blog-card:nth-child(3) { animation-delay: 0.3s; }
+  .blog-card:nth-child(4) { animation-delay: 0.4s; }
+  .blog-card:nth-child(5) { animation-delay: 0.5s; }
+  .blog-card:nth-child(6) { animation-delay: 0.6s; }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .blog-card,
+    .read-more,
+    .filter-btn,
+    .nav-item,
+    .social-icons a,
+    #backToTop,
+    .badge {
+      transition: none;
+      animation: none;
+    }
+    
+    .blog-card:hover {
+      transform: none;
+    }
+  }
 
 </style>
 
 <body>
   <div class="container">
-    <!-- Navigation (unchanged visual; accessible semantics) -->
+    <!-- Navigation -->
     <nav class="navbar" aria-label="Primary">
       <a href="index.html" class="nav-item">
         <i class="fas fa-book-open" aria-hidden="true"></i>
         <span>Home</span>
       </a>
-      <!-- Hamburger div (shows only on mobile) -->
       <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
         <div class="bar"></div>
         <div class="bar"></div>
@@ -450,8 +695,7 @@
         <ul id="searchSuggestions"></ul>
       </div>
 
-
-      <!-- Category Filters (accessible + color-coded) -->
+      <!-- Category Filters -->
       <div class="category-filters utility-text-center" role="group" aria-label="Filter posts by category">
         <button type="button" class="filter-btn active" data-category="all" aria-pressed="true">All</button>
         <button type="button" class="filter-btn" data-category="tips" aria-pressed="false">Tips</button>
@@ -513,7 +757,7 @@
         </figure>
         <div class="blog-content">
           <h2>New Features in Research Paper Organizer</h2>
-          <p>We’ve added tagging, filtering, and paper previews! Here’s what’s new and how to use them.</p>
+          <p>We've added tagging, filtering, and paper previews! Here's what's new and how to use them.</p>
           <div class="meta">
             <time datetime="2025-07-18">Jul 18, 2025</time>
             <span class="dot">•</span>
@@ -657,7 +901,6 @@
       <i class="fa-solid fa-arrow-up"></i>
     </button>
 
-
     <!-- Modern Footer -->
     <footer class="modern-footer" aria-label="Footer">
       <div class="footer-top">
@@ -704,19 +947,18 @@
       <div class="footer-bottom">
         © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
       </div>
-
     </footer>
 
   </div>
 
-  <!-- JS (inline for easy drop-in; feel free to extract) -->
+  <!-- JavaScript -->
   <script>
-
     function toggleMenu() {
       const nav = document.querySelector(".navbar-right-links");
       nav.classList.toggle("show");
     }
-    // ------- Dark Mode Toggle (unchanged behavior, aria + persistence)
+
+    // Dark Mode Toggle
     (function () {
       const btn = document.getElementById('darkModeToggle');
       const icon = btn.querySelector('i');
@@ -732,11 +974,11 @@
       apply(saved);
     })();
 
-    // ------- Utilities
+    // Utilities
     function qs(sel, scope = document) { return scope.querySelector(sel); }
     function qsa(sel, scope = document) { return Array.from(scope.querySelectorAll(sel)); }
 
-    // ------- UPDATED: Combined Search and Category Filtering
+    // Combined Search and Category Filtering
     (function () {
       const searchInput = qs('#searchInput');
       const buttons = qsa('.filter-btn');
@@ -772,20 +1014,14 @@
         }
       }
 
-      // --- Event Listeners ---
-
-      // Listen for typing in the search bar
       searchInput.addEventListener('input', masterFilter);
 
-      // Listen for category button clicks
       buttons.forEach(btn => {
         btn.addEventListener('click', () => {
-          // Set active state
           buttons.forEach(b => b.classList.remove('active', 'aria-pressed'));
           btn.classList.add('active');
           btn.setAttribute('aria-pressed', 'true');
 
-          // Persist and apply filter
           localStorage.setItem('blogFilter', btn.dataset.category);
           const url = new URL(window.location);
           if (btn.dataset.category === 'all') url.searchParams.delete('cat'); else url.searchParams.set('cat', btn.dataset.category);
@@ -795,23 +1031,20 @@
         });
       });
 
-      // --- Initial Load ---
       const urlCat = new URLSearchParams(location.search).get('cat');
       const storedCat = localStorage.getItem('blogFilter');
       const initialCat = urlCat || storedCat || 'all';
 
-      // Set the initial active button
       buttons.forEach(b => {
         const isActive = b.dataset.category === initialCat;
         b.classList.toggle('active', isActive);
         b.setAttribute('aria-pressed', String(isActive));
       });
 
-      // Apply the initial filter
       masterFilter();
     })();
 
-    // ------- Scroll-in Animations (prefers-reduced-motion respected)
+    // Scroll-in Animations
     (function () {
       const cards = qsa('.blog-card');
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -834,7 +1067,7 @@
       cards.forEach(c => io.observe(c));
     })();
 
-    // ------- Progressive Enhancement: focus visible polyfill-lite
+    // Progressive Enhancement
     (function () {
       window.addEventListener('keydown', (e) => {
         if (e.key === 'Tab' || e.key.startsWith('Arrow')) {
@@ -847,15 +1080,13 @@
       });
     })();
 
-    //back to top button 
-    // Show button when scrolled down
+    // Back to top button 
     const backToTop = document.getElementById("backToTop");
     const icon = backToTop.querySelector("i");
 
     window.addEventListener("scroll", () => {
       if (window.scrollY > 100) {
         backToTop.style.display = "block";
-
 
         if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
           icon.classList.remove("fa-arrow-down");
@@ -871,19 +1102,17 @@
 
     backToTop.addEventListener("click", () => {
       if (icon.classList.contains("fa-arrow-down")) {
-        // scroll to bottom
         window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
       } else {
-        // scroll to top
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     });
-    //Auto-suggest search functionality
+
+    // Auto-suggest search functionality
     document.addEventListener("DOMContentLoaded", () => {
       const searchInput = document.getElementById("searchInput");
       const suggestionBox = document.getElementById("searchSuggestions");
 
-      // grab all blog titles from cards
       const headings = Array.from(document.querySelectorAll(".blog-card h2")).map(h => ({
         text: h.innerText,
         element: h
@@ -919,15 +1148,12 @@
         suggestionBox.style.display = "block";
       });
 
-      // hide suggestions when clicking outside
       document.addEventListener("click", (e) => {
         if (!searchInput.contains(e.target) && !suggestionBox.contains(e.target)) {
           suggestionBox.style.display = "none";
         }
       });
     });
-
-
   </script>
 </body>
 
