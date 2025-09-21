@@ -1,0 +1,63 @@
+# Robots.txt for Research Paper Organizer
+# https://research-paper-organizer.vercel.app
+
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the site
+Allow: /index.html
+Allow: /home.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /blog.html
+Allow: /Faq.html
+Allow: /glossary.html
+Allow: /open-source.html
+Allow: /tools.html
+Allow: /signup.html
+Allow: /login.html
+Allow: /forgot-password.html
+Allow: /privacy.html
+Allow: /terms-of-service.html
+Allow: /roadmap.html
+Allow: /summarize.html
+Allow: /pdf-annotator.html
+Allow: /pdf-viewer.html
+Allow: /Tag-Based-filtering.html
+Allow: /add-organize-papers.html
+Allow: /profile.html
+Allow: /profile-settings.html
+Allow: /ats-checker.html
+Allow: /hemingway.html
+Allow: /Pdfconverter.html
+
+# Allow access to static assets
+Allow: /css/
+Allow: /js/
+Allow: /images/
+Allow: /favicon/
+Allow: /docs/
+
+# Disallow access to backend and sensitive files
+Disallow: /backend/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /manage.py
+Disallow: /Research_Paper_Summary.py
+Disallow: /TODO.md
+Disallow: /test1.jpg
+Disallow: /testimonialw.png
+Disallow: /License
+Disallow: /landing.css
+Disallow: /landing.js
+Disallow: /slider.css
+Disallow: /site.webmanifest
+
+# Sitemap location
+Sitemap: https://research-paper-organizer.vercel.app/sitemap.xml
+
+# Crawl delay (optional - be respectful to servers)
+Crawl-delay: 1
