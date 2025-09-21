@@ -125,3 +125,65 @@ p {
   border: 1px solid #2563eb;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
 }
+
+/* ================= DARK MODE ================= */
+body.dark-mode {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+body.dark-mode h2 {
+  color: #f3f4f6;
+}
+
+body.dark-mode p {
+  color: #cbd5e1;
+}
+
+/* Upload box */
+body.dark-mode .upload-box {
+  background: #1e293b;
+  border-color: #3b82f6;
+  color: #cbd5e1;
+}
+
+body.dark-mode .upload-box:hover {
+  background: #111827;
+}
+
+body.dark-mode .upload-box label {
+  background: #2563eb;
+  color: #fff;
+}
+
+body.dark-mode .upload-box label:hover {
+  background: #1d4ed8;
+}
+
+/* File list items */
+body.dark-mode .file-item {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+/* Tags */
+body.dark-mode .tag {
+  background: #3b82f6;
+  color: #fff;
+}
+
+body.dark-mode .tag:hover {
+  background: #2563eb;
+}
+
+/* Search input */
+body.dark-mode #searchPapers {
+  background: #1e293b;
+  color: #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode #searchPapers:focus {
+  border: 1px solid #3b82f6;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+}
