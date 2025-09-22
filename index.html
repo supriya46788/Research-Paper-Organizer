@@ -704,6 +704,8 @@
       #testimonials:hover .testimonials-track {
         animation-play-state: paused !important;
       }
+
+      
     </style>
 
     <!-- ===== JS Marquee Enhancement ===== -->
@@ -897,6 +899,8 @@
         // Kick off
         init();
       })();
+
+
     </script>
 
     <script>
@@ -1363,12 +1367,108 @@
       body.dark-mode .steps-container .step-content p {
         color: #cbd5e1;
       }
+
+      /* Chatbot Styles */
+#chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+}
+
+#chatbot-toggle {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+#chatbot-window {
+  width: 300px;
+  height: 380px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#chatbot-header {
+  background: #4a90e2;
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#chatbot-messages {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+#chatbot-messages .msg {
+  margin-bottom: 8px;
+}
+
+#chatbot-messages .user {
+  text-align: right;
+  color: #333;
+}
+
+#chatbot-messages .bot {
+  text-align: left;
+  color: #4a90e2;
+}
+
+#chatbot-input {
+  border: none;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  font-size: 14px;
+  outline: none;
+}
+#chatbot-window {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  z-index: 9999; /* ensure it's above other sections */
+}
+
     </style>
 
     <!-- Back to Top Button -->
     <button id="backToTop">
       <i class="fa-solid fa-arrow-up"></i>
     </button>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot">
+      <button id="chatbot-toggle">💬</button>
+      <div id="chatbot-window" class="hidden">
+      <div id="chatbot-header">
+      <span>Research Assistant</span>
+      <button id="chatbot-close">&times;</button>
+    </div>
+    <div id="chatbot-messages"></div>
+    <input type="text" id="chatbot-input" placeholder="Ask me to navigate..." />
+    </div>
+  </div>
 
     <!-- Modern Footer -->
     <footer class="modern-footer" aria-label="Footer">
@@ -1714,8 +1814,62 @@
       function closeSidebar() {
         document.getElementById("sidebar").style.width = "0";
       }
+
+      
+  document.addEventListener("DOMContentLoaded", () => {
+    const chatbotToggle = document.getElementById("chatbot-toggle");
+    const chatbotWindow = document.getElementById("chatbot-window");
+    const chatbotClose = document.getElementById("chatbot-close");
+    const chatbotInput = document.getElementById("chatbot-input");
+    const chatbotMessages = document.getElementById("chatbot-messages");
+
+    function addMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.classList.add("msg", sender);
+      msg.textContent = text;
+      chatbotMessages.appendChild(msg);
+      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
+    chatbotToggle.addEventListener("click", () => {
+      chatbotWindow.classList.toggle("hidden");
+    });
+
+    chatbotClose.addEventListener("click", () => {
+      chatbotWindow.classList.add("hidden");
+    });
+
+    chatbotInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" && chatbotInput.value.trim() !== "") {
+        const userMsg = chatbotInput.value.trim();
+        addMessage(userMsg, "user");
+        chatbotInput.value = "";
+
+        // Command recognition
+        if (/about/i.test(userMsg)) {
+          addMessage("Opening About Page...", "bot");
+          window.location.href = "about.html";
+        } else if (/pdf/i.test(userMsg)) {
+          addMessage("Opening PDF Viewer...", "bot");
+          window.location.href = "pdf-viewer.html";
+        } else if (/feature/i.test(userMsg)) {
+          addMessage("Scrolling to Features...", "bot");
+          document.querySelector("#features").scrollIntoView({ behavior: "smooth" });
+        } else if (/contact/i.test(userMsg)) {
+          addMessage("Opening Contact Page...", "bot");
+          window.location.href = "contact.html";
+        } else {
+          addMessage("❓ Try: 'Go to About Page', 'Show Features', 'Open PDF Viewer'", "bot");
+        }
+      }
+    });
+  });
+
+
     </script>
 
     <script src="app.js"></script>
+    
+
   </body>
 </html>
