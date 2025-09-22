@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   transition: background 0.3s, color 0.3s;
+  height:100vh;
 }
 
 .navbar {
@@ -12,6 +13,12 @@ body {
   align-items: center;
   padding: 1.5rem;
   flex-wrap: wrap;
+   position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
 }
 
 .hamburger-container {

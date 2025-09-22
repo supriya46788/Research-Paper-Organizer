@@ -2,12 +2,27 @@
    RESET
 =========================== */
 /* Nav-Links UI Fixed */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f7fb;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s, color 0.3s;
+  height:100vh;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
   flex-wrap: wrap;
+   position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
 }
 .hamburger-container {
   display: none;
