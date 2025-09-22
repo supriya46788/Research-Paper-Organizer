@@ -1004,7 +1004,7 @@ body.dark-mode #footer-outer h3 {
   padding: 0.80rem;      /* equal padding top/bottom */
   text-align: left;
   width: 100%;
- 
+  height:3.3rem; 
   border: 1px solid #d1d5db;
   border-radius: 8px;
   font-size: 0.875rem;
