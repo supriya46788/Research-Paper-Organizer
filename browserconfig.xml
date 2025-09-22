@@ -2,8 +2,16 @@
 <browserconfig>
     <msapplication>
         <tile>
-            <square150x150logo src="/favicon/android-chrome-192x192.png"/>
+            <square70x70logo src="./favicon/favicon-48x48.png"/>
+            <square150x150logo src="./favicon/android-chrome-192x192.png"/>
+            <square310x310logo src="./favicon/android-chrome-512x512.png"/>
+            <wide310x150logo src="./favicon/android-chrome-512x512.png"/>
             <TileColor>#2563eb</TileColor>
         </tile>
+        <badge>
+            <polling-uri src="./favicon/favicon-32x32.png"/>
+            <frequency>30</frequency>
+            <cycle>1</cycle>
+        </badge>
     </msapplication>
 </browserconfig>

@@ -1,6 +1,32 @@
 {
+  "name": "research-paper-organizer",
+  "version": "1.0.0",
+  "description": "Organize, track, and manage your research papers seamlessly with AI-powered tools",
+  "main": "index.html",
+  "scripts": {
+    "generate-favicons": "node scripts/generate-favicons.js",
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Build process would go here'",
+    "test": "echo 'Tests would go here'"
+  },
+  "keywords": [
+    "research",
+    "papers",
+    "organizer",
+    "pwa",
+    "academic",
+    "productivity"
+  ],
+  "author": "Research Paper Organizer Team",
+  "license": "MIT",
   "dependencies": {
     "firebase": "^12.2.1",
     "resend": "^6.0.1"
+  },
+  "devDependencies": {
+    "canvas": "^2.11.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
