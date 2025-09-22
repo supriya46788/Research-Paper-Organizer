@@ -105,7 +105,6 @@ body {
 /* Header for mobile view */
 @media screen and (max-width: 600px) {
   .nav-container {
-    max-width: 375px;
     margin: 10px;
     gap: 0.3rem;
     padding: 1rem 10px;
@@ -1464,7 +1463,11 @@ body {
 
   .mobile-menu-toggle {
     transition: transform var(--animation-normal) var(--easing-standard);
+    background: none;
+    border: none;
+    color: #3b82f6;
   }
+
   .nav-links {
     background-color: white;
   }
