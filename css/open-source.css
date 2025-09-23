@@ -36,6 +36,8 @@ body {
   transition: 0.3s;
 }
 
+
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .hamburger-container {
@@ -84,7 +86,6 @@ body {
 }
 .dark-toggle {
   color:#1a1a1a;
-  background: #fff !important;
   border: none;
   cursor: pointer;
   padding: 0.6rem 1.2rem;
@@ -92,27 +93,16 @@ body {
   transition: all 0.25s ease;
   }
 
-  .dark-toggle:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  }
-
-  body.dark-mode .navbar {
-    background: transparent;
-  }
+  .dark-mode .navbar {
+    background: rgba(17, 24, 39, 0.9);
+    border-bottom: 1px solid #374151;
+}
 
   body.dark-mode .nav-item {
-    background: linear-gradient(135deg, #4a5568, #2d3748);
+
     color: #e0e0e0;
   }
-
-  body.dark-mode .nav-item:hover {
-    background: linear-gradient(135deg, #63b3ed, #4299e1);
-    color: #1a202c;
-  }
-
-  body.dark-mode #darkModeToggle{
-  background-color: #2c2c2c  !important;   
-}
+  
 
 /* Example text inside open-source.html cards */
 
@@ -361,7 +351,7 @@ body.dark-mode .footer-bottom {
         transform: translateX(-50%);
         width: 80%;
         height: 60px;
-        background: #f8fafc;
+        background: transparent;
         border-radius: 50%;
         z-index: -1;
       }
