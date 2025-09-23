@@ -20,10 +20,10 @@ body {
   border-radius: 10px;
   margin-bottom: 1.5rem;
 }
-
 .hamburger-container {
   display: none;
   flex-direction: column;
+  /* justify-content: center; */
   cursor: pointer;
   gap: 5px;
   padding: 10px;
@@ -36,48 +36,25 @@ body {
   transition: 0.3s;
 }
 
-body.dark-mode .hamburger-container .bar {
-  background-color: #e0e0e0;
-}
 
-/* Header */
-body.dark-mode .tag-b-f-header {
-  color: white;
-}
-
-/* Dark Mode Toggle */
-.toggle {
-  background: white;
-  border-radius: 6px;
+.dark-toggle {
+  color:#1a1a1a;
   border: none;
-  padding: 8px;
   cursor: pointer;
-  font-size: 16px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  }
+
+  .dark-mode .navbar {
+    background: rgba(17, 24, 39, 0.9);
+    border-bottom: 1px solid #374151;
 }
 
-/* ===== Dark mode styles ===== */
-body.dark-mode {
-  background: #0f172a;
-  color: #f8fafc;
-}
+  body.dark-mode .nav-item {
 
-body.dark-mode nav {
-  background: #1e293b;
-}
-
-body.dark-mode .paper {
-  background: #1e293b;
-  color: #f1f5f9;
-  border-top: 4px solid #60a5fa;
-}
-
-
-body.dark-mode .toggle {
-  background: #334155;
-  color: #f8fafc;
-}
+    color: #e0e0e0;
+  }
 
 /* Responsive Navbar */
 @media (max-width: 768px) {
