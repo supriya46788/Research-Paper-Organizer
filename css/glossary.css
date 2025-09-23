@@ -345,9 +345,10 @@ body {
   border-radius: 20px;
   padding: 25px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  transform: translateY(40px);
-  animation: fadeUp 0.6s ease forwards;
+  transition: all 0.3s ease;
+  
+
+  /*animation: fadeUp 0.6s ease forwards;*/
 }
 
 .glossary-item h2 {
@@ -379,14 +380,16 @@ body {
   font-size: 0.9rem;
   color: #444;
 }
-.glossary-item:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(74,144,226,0.25);
+.glossary-item:hover{
+   transform: translateY(-14px);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
 }
-@keyframes fadeUp {
+
+
+/*@keyframes fadeUp {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
-}
+}*/
 
 
 
