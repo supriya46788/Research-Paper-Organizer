@@ -334,8 +334,11 @@
       © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
     </div>
   </footer>
-
   <script>
+    // Initialize EmailJS
+    (function () {
+      emailjs.init("YOUR_PUBLIC_KEY_HERE"); // Replace with your EmailJS public API key
+    })();
     // Toast notification
     function showToast(message, isError = false) {
       const toastContainer = document.getElementById('toastContainer');
@@ -359,28 +362,36 @@
       setTimeout(() => { if (toast.parentNode) toast.parentNode.removeChild(toast); }, 300);
     }
 
-    // ✅ Validation function
-    function validateForm(name, email, subject, message) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+function validateForm(name, email, subject, message) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const nameRegex = /^[A-Za-z\s]+$/; // only letters & spaces
 
-      if (!name.trim()) {
-        showToast("Name is required.", true);
-        return false;
-      }
-      if (!email.trim() || !emailRegex.test(email)) {
-        showToast("Please enter a valid email address.", true);
-        return false;
-      }
-      if (!subject.trim()) {
-        showToast("Subject is required.", true);
-        return false;
-      }
-      if (!message.trim() || message.length < 10) {
-        showToast("Message must be at least 10 characters long.", true);
-        return false;
-      }
-      return true;
+    if (!name.trim()) {
+      showToast("Name is required.", true);
+      return false;
     }
+    if (name.length < 5) {
+      showToast("Name must be at least 5 characters long.", true);
+      return false;
+    }
+    if (!nameRegex.test(name)) {
+      showToast("Name can only contain letters and spaces.", true);
+      return false;
+    }
+    if (!email.trim() || !emailRegex.test(email)) {
+      showToast("Please enter a valid email address.", true);
+      return false;
+    }
+    if (!subject.trim() || subject.length < 5) {
+      showToast("Subject must be at least 5 characters long.", true);
+      return false;
+    }
+    if (!message.trim() || message.length < 10) {
+      showToast("Message must be at least 10 characters long.", true);
+      return false;
+    }
+    return true;
+  }
 
     // Form submission
     document.addEventListener('DOMContentLoaded', function () {
