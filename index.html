@@ -929,6 +929,16 @@
           );
         }, 0);
       })();
+            const marquee = document.querySelector(".testimonials-marquee");
+const track = document.querySelector(".testimonials-track");
+
+marquee.addEventListener("mouseenter", () => {
+  track.style.animationPlayState = "paused";
+});
+
+marquee.addEventListener("mouseleave", () => {
+  track.style.animationPlayState = "running";
+});
     </script>
 
     <!-- CTA Section -->
