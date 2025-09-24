@@ -204,6 +204,8 @@ body {
 .btn-primary.btn-large {
   background: var(--primary-dark);
   color: white;
+  display: flex;
+  justify-content: center;  
 }
 .btn-secondary {
   background: transparent;
