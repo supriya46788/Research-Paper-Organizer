@@ -425,132 +425,126 @@
       }, 300);
     }
 
-    // Form submission handling
-    document.addEventListener('DOMContentLoaded', function () {
-      const contactForm = document.getElementById('contact-form');
+    // Form submission handling with validation
+document.addEventListener('DOMContentLoaded', function () {
+  const contactForm = document.getElementById('contact-form');
+  const nameField = document.getElementById("name");
+  const nameError = document.getElementById("name-error");
+  const nameRegex = /^[A-Za-z\s]+$/;
 
-      if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-          e.preventDefault();
-
-          // Show loading state
-          const submitBtn = contactForm.querySelector('.submit-btn');
-          const submitText = submitBtn.querySelector('.submit-text');
-          const loadingSpinner = submitBtn.querySelector('.loading-spinner');
-
-          submitText.classList.add('hidden');
-          loadingSpinner.classList.remove('hidden');
-
-          // Simulate form submission (replace with your actual EmailJS code)
-          setTimeout(() => {
-            // This is where you would normally call EmailJS
-            // For demonstration, we'll assume success
-            const isSuccess = Math.random() > 0.2; // 80% success rate for demo
-
-            if (isSuccess) {
-              showToast('Message sent successfully! We will get back to you soon.', false);
-              contactForm.reset();
-            } else {
-              showToast('Failed to send message. Please try again later.', true);
-            }
-
-            // Reset button state
-            submitText.classList.remove('hidden');
-            loadingSpinner.classList.add('hidden');
-          }, 1500);
-        });
-      }
-    });
-
-    function toggleMenu() {
-      const nav = document.querySelector(".navbar-right-links");
-      nav.classList.toggle("show");
+  // Name validation function
+  function validateName() {
+    const nameValue = nameField.value.trim();
+    if (!nameRegex.test(nameValue)) {
+      nameError.textContent = "Name must contain only letters and spaces.";
+      nameField.classList.add("error-input"); // optional red border
+      return false; 
+    } else {
+      nameError.textContent = "";
+      nameField.classList.remove("error-input");
+      return true; 
     }
+  }
 
-    // Back to top button 
-    document.addEventListener('DOMContentLoaded', function () {
-      const backToTop = document.getElementById("backToTop");
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-      if (backToTop) {
-        // Show/hide button with fade
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 100) {
-            backToTop.classList.add("show");
-          } else {
-            backToTop.classList.remove("show");
-          }
-        });
-
-        // Smooth scroll to top
-        backToTop.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
+      // ✅ Run validation before submission
+      if (!validateName()) {
+        return; // stop submission
       }
-    });
 
-    // Dark Mode Toggle Function
-    function toggleDarkMode() {
-      const body = document.body;
-      const darkToggle = document.getElementById('darkModeToggle');
-      const icon = darkToggle.querySelector('i');
+      // Show loading state
+      const submitBtn = contactForm.querySelector('.submit-btn');
+      const submitText = submitBtn.querySelector('.submit-text');
+      const loadingSpinner = submitBtn.querySelector('.loading-spinner');
 
-      body.classList.toggle('dark-mode');
+      submitText.classList.add('hidden');
+      loadingSpinner.classList.remove('hidden');
 
-      // Update icon
-      if (body.classList.contains('dark-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        localStorage.setItem('darkMode', 'disabled');
-      }
-    }
+      // Simulate form submission (replace with EmailJS or backend code)
+      setTimeout(() => {
+        const isSuccess = Math.random() > 0.2; // demo purpose
 
-    // Load dark mode preference on page load
-    document.addEventListener('DOMContentLoaded', function () {
-      const darkMode = localStorage.getItem('darkMode');
-      const darkToggle = document.getElementById('darkModeToggle');
-
-      if (darkToggle) {
-        const icon = darkToggle.querySelector('i');
-
-        if (darkMode === 'enabled') {
-          document.body.classList.add('dark-mode');
-          icon.classList.remove('fa-moon');
-          icon.classList.add('fa-sun');
+        if (isSuccess) {
+          showToast('Message sent successfully! We will get back to you soon.', false);
+          contactForm.reset();
+        } else {
+          showToast('Failed to send message. Please try again later.', true);
         }
-      }
+
+        // Reset button state
+        submitText.classList.remove('hidden');
+        loadingSpinner.classList.add('hidden');
+      }, 1500);
     });
 
-    const nameField = document.getElementById("name");
-    const nameError = document.getElementById("name-error");
-    const form = document.getElementById("contact-form");
+    // Live validation on input
+    nameField.addEventListener("input", validateName);
+  }
+});
 
-    form.addEventListener("submit", function (event) {
-      const nameValue = nameField.value.trim();
-      const nameRegex = /^[A-Za-z\s]+$/;
+// Toggle mobile menu
+function toggleMenu() {
+  const nav = document.querySelector(".navbar-right-links");
+  nav.classList.toggle("show");
+}
 
-      if (!nameRegex.test(nameValue)) {
-        nameError.textContent = "Name must contain only letters and spaces.";
-        event.preventDefault(); // stop form submission
+// Back to top button 
+document.addEventListener('DOMContentLoaded', function () {
+  const backToTop = document.getElementById("backToTop");
+
+  if (backToTop) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        backToTop.classList.add("show");
       } else {
-        nameError.textContent = ""; // clear error if valid
+        backToTop.classList.remove("show");
       }
     });
 
-    // optional: live validation while typing
-    nameField.addEventListener("input", function () {
-      const nameValue = nameField.value.trim();
-      const nameRegex = /^[A-Za-z\s]+$/;
-
-      if (!nameRegex.test(nameValue)) {
-        nameError.textContent = "Name must contain only letters and spaces.";
-      } else {
-        nameError.textContent = "";
-      }
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
+  }
+});
+
+// Dark Mode Toggle Function
+function toggleDarkMode() {
+  const body = document.body;
+  const darkToggle = document.getElementById('darkModeToggle');
+  const icon = darkToggle.querySelector('i');
+
+  body.classList.toggle('dark-mode');
+
+  if (body.classList.contains('dark-mode')) {
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    icon.classList.remove('fa-sun');
+    icon.classList.add('fa-moon');
+    localStorage.setItem('darkMode', 'disabled');
+  }
+}
+
+// Load dark mode preference on page load
+document.addEventListener('DOMContentLoaded', function () {
+  const darkMode = localStorage.getItem('darkMode');
+  const darkToggle = document.getElementById('darkModeToggle');
+
+  if (darkToggle) {
+    const icon = darkToggle.querySelector('i');
+
+    if (darkMode === 'enabled') {
+      document.body.classList.add('dark-mode');
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    }
+  }
+});
+
 
   </script>
 </body>
