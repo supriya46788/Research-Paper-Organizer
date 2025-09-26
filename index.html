@@ -969,7 +969,40 @@ marquee.addEventListener("mouseleave", () => {
     </section>
 
     <style>
-      
+      /* Back to Top Button Styles */
+      #backToTop {
+        height: 60px;
+        width: 60px;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+        background: linear-gradient(135deg, #0077b5, #4facfe);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 15px;
+        font-size: 18px;
+        cursor: pointer;
+        display: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+
+      #backToTop:hover {
+        transform: scale(1.1);
+        opacity: 0.9;
+        box-shadow: rgba(0, 0, 0, 0.8);
+      }
+
+      @media (max-width: 600px) {
+        #backToTop {
+          padding: 12px;
+          font-size: 16px;
+          bottom: 20px;
+          right: 20px;
+        }
+      }
 
       .modern-footer {
         width: 100vw;
@@ -1341,257 +1374,7 @@ marquee.addEventListener("mouseleave", () => {
       body.dark-mode .steps-container .step-content p {
         color: #cbd5e1;
       }
-
-    /* Shared floating button styles */
-#chatbot-btn,
-#backToTop {
-  position: fixed;
-  right: 20px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s;
-  z-index: 1000;
-}
-
-/* Chatbot Button */
-#chatbot-btn {
-  bottom: 100px; /* above backToTop */
-  background: #0056d2;
-  color: white;
-  padding: 14px 16px;
-  font-size: 20px;
-}
-#chatbot-btn:hover {
-  background: #0041a8;
-}
-
-/* Back to Top Button */
-#backToTop {
-  height: 60px;
-  width: 60px;
-  bottom: 30px; /* below chatbot */
-  background: linear-gradient(135deg, #0077b5, #4facfe);
-  color: white;
-  padding: 15px;
-  font-size: 18px;
-  display: none; /* hidden until scroll */
-}
-#backToTop:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
-}
-
-/* Chatbot Window */
-#chatbot {
-  position: fixed;
-  bottom: 170px;
-  right: 20px;
-  width: 320px;
-  height: 420px;
-  background: white;
-  border: 2px solid #0056d2;
-  border-radius: 12px;
-  display: none; /* hidden by default */
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0px 6px 12px rgba(0,0,0,0.25);
-  font-family: Arial, sans-serif;
-  z-index: 1002; /* above floating buttons */
-}
-
-#chatbot-btn,
-#backToTop {
-  position: fixed;
-  right: 20px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.18);
-  transition: transform .18s ease, background .18s ease, opacity .18s ease;
-  z-index: 1000;
-}
-
-/* chatbot floating button (above) */
-#chatbot-btn {
-  bottom: 100px;
-  background: #0056d2;
-  color: #fff;
-  padding: 12px 14px;
-  font-size: 20px;
-}
-#chatbot-btn:hover { transform: translateY(-3px); background:#0041a8; }
-
-/* back to top (below) */
-#backToTop {
-  bottom: 30px;
-  height: 60px;
-  width: 60px;
-  background: linear-gradient(135deg,#0077b5,#4facfe);
-  color: white;
-  padding: 12px;
-  font-size: 18px;
-  display: none; /* shown via JS on scroll */
-  align-items: center;
-  justify-content: center;
-}
-#backToTop:hover { transform: scale(1.06); }
-
-/* Chatbot window */
-#chatbot {
-  position: fixed;
-  bottom: 170px;
-  right: 20px;
-  width: 340px;
-  max-width: calc(100% - 40px);
-  height: 460px;
-  max-height: 80vh;
-  background: #fff;
-  border: 2px solid #0056d2;
-  border-radius: 12px;
-  display: none;           /* default closed */
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-  font-family: Arial, Helvetica, sans-serif;
-  z-index: 1002;
-}
-
-/* open state */
-#chatbot.open { display: flex; }
-
-/* header */
-.chatbot-header {
-  background: #0056d2;
-  color: #fff;
-  padding: 12px;
-  display:flex;
-  justify-content: space-between;
-  align-items:center;
-  font-weight: 600;
-}
-.chatbot-header button{
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-/* messages area */
-.chatbot-messages {
-  padding: 12px;
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background: linear-gradient(#fbfdff,#f5f9ff);
-  font-size: 14px;
-}
-
-/* message bubbles */
-.bot-message, .user-message {
-  max-width: 80%;
-  padding: 8px 12px;
-  border-radius: 12px;
-}
-.bot-message {
-  background: #e8f0ff;
-  color: #003c99;
-  align-self: flex-start;
-}
-.user-message {
-  background: #0056d2;
-  color: #fff;
-  align-self: flex-end;
-}
-
-/* quick buttons row */
-.chatbot-quick {
-  display:flex;
-  gap: 8px;
-  padding: 8px 12px;
-  border-top: 1px solid #e6eefc;
-  background: #fff;
-}
-.chatbot-quick .quick-btn{
-  flex:1;
-  border: 1px solid #d7e8ff;
-  background: #f7fbff;
-  padding: 8px;
-  border-radius: 8px;
-  cursor:pointer;
-  font-size: 13px;
-}
-.chatbot-quick .quick-btn:hover{ background:#e8f4ff; }
-
-/* input area */
-.chatbot-input-area{
-  display:flex;
-  gap:6px;
-  padding: 10px;
-  border-top: 1px solid #e6eefc;
-  background: #fff;
-}
-#chatbot-input{
-  flex:1;
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid #dbeefe;
-  outline: none;
-}
-#chatbot-send{
-  background: #0056d2;
-  color:#fff;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor:pointer;
-}
-#chatbot-send:hover{ background:#0041a8; }
-
-/* responsive */
-@media (max-width:600px){
-  #chatbot { right: 14px; left: 14px; width: auto; bottom: 140px; height: 420px; }
-  #chatbot-btn { bottom: 120px; right: 14px; }
-  #backToTop { right: 14px; bottom: 18px; }
-}
-</style>
-
-
-
     </style>
-
-    <div id="chatbot" class="chatbot" aria-hidden="true" role="dialog" aria-label="Site assistant">
-  <div class="chatbot-header">
-    <span>Assistant</span>
-    <button id="chatbot-close" aria-label="Close chat">&times;</button>
-  </div>
-
-  <div id="chatbot-messages" class="chatbot-messages" aria-live="polite">
-    <div class="bot-message">Hi 👋! Try "about", "tools", "signup", or click a quick button below.</div>
-  </div>
-
-  <div class="chatbot-quick">
-    <button class="quick-btn" data-target="about.html">About</button>
-    <button class="quick-btn" data-target="signup.html">Signup</button>
-    <button class="quick-btn" data-target="Faq.html">FAQ</button>
-  </div>
-
-  <form id="chatbot-form" class="chatbot-input-area" onsubmit="return false;">
-    <input type="text" id="chatbot-input" placeholder='Type "about", "tools", "contact"...' autocomplete="off" />
-    <button id="chatbot-send" type="submit">Send</button>
-  </form>
-</div>
-
-<!-- Floating Buttons -->
-<button id="chatbot-btn" aria-label="Open chat">💬</button>
-<button id="backToTop" aria-label="Back to top" title="Back to top">
-  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
-</button>
-
 
     <!-- Back to Top Button -->
     <button id="backToTop">
@@ -1950,130 +1733,8 @@ marquee.addEventListener("mouseleave", () => {
         document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled'
     );
 };
+
     </script>
-        
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-      const chatbotBtn = document.getElementById("chatbot-btn");
-      const chatbot = document.getElementById("chatbot");
-      const closeBtn = document.getElementById("chatbot-close");
-
-      chatbotBtn.addEventListener("click", () => {
-        chatbot.classList.add("open");
-        chatbotBtn.style.display = "none";
-      });
-
-      closeBtn.addEventListener("click", () => {
-        chatbot.classList.remove("open");
-        chatbotBtn.style.display = "block";
-      });
-    });
-document.addEventListener('DOMContentLoaded', () => {
-  const chatbotBtn = document.getElementById('chatbot-btn');
-  const chatbot = document.getElementById('chatbot');
-  const closeBtn = document.getElementById('chatbot-close');
-  const messages = document.getElementById('chatbot-messages');
-  const input = document.getElementById('chatbot-input');
-  const sendBtn = document.getElementById('chatbot-send');
-  const backToTop = document.getElementById('backToTop');
-  const quickBtns = document.querySelectorAll('.quick-btn');
-
-  if (!chatbotBtn || !chatbot || !closeBtn || !messages || !input || !sendBtn || !backToTop) {
-    console.warn('Chatbot: missing DOM elements — make sure you pasted the full block before </body>.');
-    return;
-  }
-
-  function addMessage(text, sender = 'bot') {
-    const el = document.createElement('div');
-    el.className = sender === 'bot' ? 'bot-message' : 'user-message';
-    el.textContent = text;
-    messages.appendChild(el);
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  function openChat() {
-    chatbot.classList.add('open');
-    chatbot.setAttribute('aria-hidden', 'false');
-    chatbotBtn.style.display = 'none'; // hide the open button while chat is open
-    // give a tiny delay then focus
-    setTimeout(() => input.focus(), 120);
-  }
-
-  function closeChat() {
-    chatbot.classList.remove('open');
-    chatbot.setAttribute('aria-hidden', 'true');
-    chatbotBtn.style.display = 'block';
-  }
-
-  // Open chat
-  chatbotBtn.addEventListener('click', openChat);
-
-  // Close chat
-  closeBtn.addEventListener('click', closeChat);
-
-  // Close on Escape
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && chatbot.classList.contains('open')) closeChat();
-  });
-
-  // Quick buttons
-  quickBtns.forEach(b => {
-    b.addEventListener('click', () => {
-      const target = b.getAttribute('data-target');
-      addMessage(b.textContent, 'user');
-      // navigate after a short delay to show feedback
-      setTimeout(() => { window.location.href = target; }, 120);
-    });
-  });
-
-  // Handle commands
-  function handleCommand(command) {
-    const c = command.toLowerCase().trim();
-    if (!c) return addMessage("Please type something or click a quick button.", 'bot');
-
-    // page navigation keywords -> change hrefs to your actual paths
-    if (c.includes('about')) window.location.href = 'about.html';
-    else if (c.includes('contact')) window.location.href = 'contact.html';
-    else if (c.includes('signup') || c.includes('start')) window.location.href = 'signup.html';
-    else if (c.includes('tools')) window.location.href = 'tools.html';
-    else if (c.includes('faq')) window.location.href = 'Faq.html';
-    else if (c.includes('blog')) window.location.href = 'blog.html';
-    else if (c.includes('how')) window.location.href = '#how-it-works';
-    else if (c.includes('features')) window.location.href = '#features';
-    else if (c.includes('glossary')) window.location.href = 'glossary.html';
-    else if (c.includes('open') || c.includes('opensource')) window.location.href = 'open-source.html';
-    else if (c.includes('tag') || c.includes('filter')) window.location.href = 'Tag-Based-filtering.html';
-    else addMessage("I didn't get that. Try: about, contact, signup, tools, faq, blog, glossary.", 'bot');
-  }
-
-  // Send by button / enter
-  sendBtn.addEventListener('click', () => {
-    const text = input.value.trim();
-    if (!text) return;
-    addMessage(text, 'user');
-    input.value = '';
-    handleCommand(text);
-  });
-  input.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      sendBtn.click();
-    }
-  });
-
-  // Back-to-top show/hide & action
-  function updateBackToTopVisibility() {
-    if (window.scrollY > 200) backToTop.style.display = 'flex';
-    else backToTop.style.display = 'none';
-  }
-  window.addEventListener('scroll', updateBackToTopVisibility);
-  updateBackToTopVisibility(); // init
-
-  backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-});
-</script>
 
     <script src="app.js"></script>
   </body>
