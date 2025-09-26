@@ -66,6 +66,114 @@
   background-color: #333;
   transition: 0.3s;
 }
+     .mobile-drawer {
+        position: fixed;
+        top: 0;
+        right: -300px; /* hidden by default */
+        width: 260px;
+        height: 100%;
+        background: white;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        padding: 3rem 1.5rem;
+        gap: 1rem;
+        transition: right 0.3s ease;
+        z-index: 999;
+      }
+
+      /* Drawer active state */
+      .mobile-drawer.active {
+        right: 0;
+      }
+
+      /* Close button */
+      .drawer-close {
+        position: absolute; 
+        top: 1rem;
+        right: 1rem; 
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1000; 
+        margin: 0; 
+      }
+
+      .mobile-drawer a {
+        font-size: 1rem;
+        color: #1f2937;
+        padding: 0.5rem 0.75rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+      }
+
+      /* Hover (mobile only) */
+      .mobile-drawer a:hover {
+        color: #2563eb;
+      }
+
+      /* Active tab (mobile only) */
+      .mobile-drawer a.active {
+        font-weight: 600;
+        color: white !important;
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        border-radius: 8px;
+        padding: 0.6rem 1rem;
+      }
+
+      /* Hover glow on active (mobile only) */
+      .mobile-drawer a.active:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(59, 130, 246, 0.6);
+      }
+      body.dark-mode .mobile-drawer a {
+        color: #e5e7eb; /* A light, readable grey */
+      }
+
+      body.dark-mode .mobile-drawer a:hover {
+        color: #ffffff;
+        background-color: #374151;
+      }
+      body.dark-mode .drawer-close {
+        color: #ffffff;
+      }
+
+      
+
+      /* Default: desktop view */
+      .navbar-right-links {
+        display: flex; /* show links */
+        gap: 1rem;
+      }
+
+      .mobile-menu-toggle {
+        display: none; /* hide hamburger */
+      }
+
+      /* Mobile view: hide desktop links, show hamburger */
+      @media (max-width: 768px) {
+        .navbar-right-links {
+          display: none; 
+        }
+
+        .mobile-menu-toggle {
+          display: block; 
+          background: none;
+          border: none;
+          font-size: 1.8rem; 
+          cursor: pointer;
+          padding: 0.5rem;  
+          margin-left: auto; 
+        }
+
+      .mobile-menu-toggle i {
+          font-size: 1.5rem; 
+          line-height: 1;
+        }
+      }
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -78,7 +186,7 @@
     display: flex;
    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     /* position: relative; */
   }
 
@@ -108,7 +216,7 @@
     display: inline-flex;           /* Ensures icon and text are in a row */
   align-items: center;           /* Vertical centering */
   justify-content: center;
-    padding: 1rem;
+    padding: 1rem 2rem;
     width:10rem;
     font-size: 1rem;
     
@@ -128,28 +236,60 @@
 <body>
 <div class="container">
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Primary">
         <a href="index.html" class="nav-item">
-            <i class="fas fa-book-open"></i>
-            Home
+          <i class="fas fa-book-open" aria-hidden="true"></i>
+          <span>Home</span>
         </a>
-       <!-- Hamburger div (shows only on mobile) -->
-  <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
-    <div class="bar"></div>
-    <div class="bar"></div>
-    <div class="bar"></div>
-  </div>
-        <div class="navbar-right-links">
-            <a href="about.html" class="nav-item">About us</a>
-            <a href="blog.html" class="nav-item">Blogs</a>
-            <a href="Faq.html" class="nav-item">FAQ</a>
-            <a href="contact.html" class="nav-item">Contact Us</a>
-            <a href="tools.html" class="nav-item">Tools</a>
-            <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-                <i class="fas fa-moon"></i>
-            </button>
+
+        <button class="mobile-menu-toggle" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="navbar-right-links" role="menubar" aria-label="Site">
+          <a href="about.html" class="nav-item" role="menuitem">About us</a>
+          <a
+            href="blog.html"
+            class="nav-item"
+            role="menuitem"
+            aria-current="page"
+            >Blogs</a
+          >
+          <a href="Faq.html" class="nav-item" role="menuitem">FAQ</a>
+          <a href="contact.html" class="nav-item" role="menuitem">Contact Us</a>
+          <a href="tools.html" class="nav-item">Tools</a>
+          <button
+            class="dark-toggle nav-item"
+            id="darkModeToggle"
+            title="Toggle Dark Mode"
+            aria-pressed="false"
+          >
+            <i class="fas fa-moon" aria-hidden="true"></i
+            ><span class="sr-only">Toggle dark mode</span>
+          </button>
         </div>
-    </nav>
+
+
+        <div id="mobileDrawer" class="mobile-drawer">
+          <div class="drawer-close-container">
+            <button class="drawer-close" aria-label="Close menu">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <a href="about.html" aria-current="page">About us</a>
+          <a href="blog.html">Blogs</a>
+          <a href="Faq.html">FAQ</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="tools.html">Tools</a>
+          
+          <button
+            class="dark-toggle nav-item dark-mode-toggle"
+            title="Toggle Dark Mode"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </nav>
 
 <header>
   <h1>Research Resources & Tools</h1>
@@ -973,6 +1113,129 @@ backToTop.addEventListener("click", () => {
         }
     });
 </script>
+<script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const drawer = document.getElementById("mobileDrawer");
+        const openBtn = document.querySelector(".mobile-menu-toggle");
+        const closeBtn = drawer.querySelector(".drawer-close");
 
+        // Open drawer
+        openBtn.addEventListener("click", () => {
+          drawer.classList.add("active");
+          openBtn.style.display = "none"; // hide hamburger
+        });
+
+        // Close drawer
+        closeBtn.addEventListener("click", () => {
+          drawer.classList.remove("active");
+          openBtn.style.display = "block"; // show hamburger back
+        });
+
+        // Close drawer on link click
+        drawer.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            drawer.classList.remove("active");
+            openBtn.style.display = "block"; // show hamburger back
+          });
+        });
+      });
+    </script>
+    <script>
+      // Dark mode functionality
+      document.addEventListener("DOMContentLoaded", () => {
+        // Select ALL toggle buttons using the new class
+        const darkModeToggles = document.querySelectorAll(".dark-mode-toggle");
+        const navLinks = document.querySelector(".nav-links");
+        const mobileDrawer = document.querySelector(".mobile-drawer");
+
+        function updateNavLinksBackground() {
+          const bgColor = document.body.classList.contains("dark-mode")
+            ? "#1e293b"
+            : "white";
+          if (navLinks) navLinks.style.backgroundColor = bgColor;
+          if (mobileDrawer) mobileDrawer.style.backgroundColor = bgColor;
+        }
+
+        function setDarkMode(enabled) {
+          if (enabled) {
+            document.body.classList.add("dark-mode");
+            // Update all icons to stay in sync
+            darkModeToggles.forEach((toggle) => {
+              const icon = toggle.querySelector("i");
+              if (icon) icon.classList.replace("fa-moon", "fa-sun");
+            });
+            localStorage.setItem("darkMode", "enabled");
+          } else {
+            document.body.classList.remove("dark-mode");
+            // Update all icons to stay in sync
+            darkModeToggles.forEach((toggle) => {
+              const icon = toggle.querySelector("i");
+              if (icon) icon.classList.replace("fa-sun", "fa-moon");
+            });
+            localStorage.setItem("darkMode", "disabled");
+          }
+          updateNavLinksBackground();
+        }
+
+        // Check for saved dark mode preference on page load
+        if (localStorage.getItem("darkMode") === "enabled") {
+          setDarkMode(true);
+        } else {
+          setDarkMode(false);
+        }
+
+        // Loop through each button and add the click event
+        darkModeToggles.forEach((toggle) => {
+          toggle.addEventListener("click", () => {
+            // On click, toggle the dark mode state
+            const isDarkMode = document.body.classList.contains("dark-mode");
+            setDarkMode(!isDarkMode);
+          });
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const mobileNavLinks = document.querySelectorAll(".mobile-drawer a");
+        const sections = document.querySelectorAll("section[id]");
+        const currentPage = window.location.pathname;
+
+        mobileNavLinks.forEach((link) => {
+          const linkPath = new URL(link.href).pathname;
+          if (
+            linkPath === currentPage &&
+            !link.getAttribute("href").startsWith("#")
+          ) {
+            link.classList.add("active");
+          }
+        });
+
+        const observerOptions = {
+          root: null,
+          rootMargin: "-40% 0px -40% 0px",
+          threshold: 0,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              mobileNavLinks.forEach((link) => link.classList.remove("active"));
+
+              const id = entry.target.getAttribute("id");
+              const correspondingLink = document.querySelector(
+                `.mobile-drawer a[href="#${id}"]`
+              );
+              if (correspondingLink) {
+                correspondingLink.classList.add("active");
+              }
+            }
+          });
+        }, observerOptions);
+
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      });
+    </script>
 </body>
 </html>

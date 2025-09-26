@@ -1554,6 +1554,7 @@ body.dark-mode #clearPdfBtn:hover {
   .details-grid {
     grid-template-columns: 1fr;
   }
+
 }
 @media (max-width: 400px) {
   .header-title i {

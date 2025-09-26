@@ -4,36 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Research Paper Organizer - Organize Your Research Efficiently</title>
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform." />
-    <meta name="keywords" content="research papers, academic research, paper organizer, citation management, research workflow, academic tools, paper management, research organization" />
+    <meta
+      name="description"
+      content="Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform."
+    />
+    <meta
+      name="keywords"
+      content="research papers, academic research, paper organizer, citation management, research workflow, academic tools, paper management, research organization"
+    />
     <meta name="author" content="Research Paper Organizer Team" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#2563eb" />
     <link rel="canonical" href="https://research-paper-organizer.vercel.app/" />
-    
+
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Research Paper Organizer - Organize Your Research Efficiently" />
-    <meta property="og:description" content="Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform." />
-    <meta property="og:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
-    <meta property="og:url" content="https://research-paper-organizer.vercel.app/" />
+    <meta
+      property="og:title"
+      content="Research Paper Organizer - Organize Your Research Efficiently"
+    />
+    <meta
+      property="og:description"
+      content="Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform."
+    />
+    <meta
+      property="og:image"
+      content="https://research-paper-organizer.vercel.app/og-image.png"
+    />
+    <meta
+      property="og:url"
+      content="https://research-paper-organizer.vercel.app/"
+    />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Research Paper Organizer" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Research Paper Organizer - Academic Research Management Tool" />
-    
+    <meta
+      property="og:image:alt"
+      content="Research Paper Organizer - Academic Research Management Tool"
+    />
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Research Paper Organizer - Organize Your Research Efficiently" />
-    <meta name="twitter:description" content="Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform." />
-    <meta name="twitter:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
-    <meta name="twitter:image:alt" content="Research Paper Organizer - Academic Research Management Tool" />
-    
+    <meta
+      name="twitter:title"
+      content="Research Paper Organizer - Organize Your Research Efficiently"
+    />
+    <meta
+      name="twitter:description"
+      content="Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform."
+    />
+    <meta
+      name="twitter:image"
+      content="https://research-paper-organizer.vercel.app/og-image.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Research Paper Organizer - Academic Research Management Tool"
+    />
+
     <!-- Additional SEO Meta Tags -->
     <meta name="application-name" content="Research Paper Organizer" />
-    <meta name="apple-mobile-web-app-title" content="Research Paper Organizer" />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Research Paper Organizer"
+    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="format-detection" content="telephone=no" />
@@ -48,7 +84,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="landing.css" />
     <link rel="stylesheet" href="slider.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="landing.css" />
     <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
@@ -102,15 +138,10 @@
 
     <nav class="landing-nav">
       <div class="nav-container">
-        <a href="#top" class="nav-brand">
+        <a href="index.html" class="nav-brand">
           <i class="fas fa-book-open"></i>
-
           <span>Research Paper Organizer</span>
         </a>
-        <!-- hamburger menu for mobiles -->
-        <button class="mobile-menu-toggle" aria-label="Toggle menu">
-          <i class="fas fa-bars"></i>
-        </button>
 
         <div class="nav-links">
           <a href="#features">Features</a>
@@ -124,10 +155,37 @@
           >
             Get Started
           </button>
-          <!-- Add dark mode toggle here -->
           <button
-            class="dark-toggle nav-item"
-            id="darkModeToggle"
+            class="dark-toggle nav-item dark-mode-toggle"
+            title="Toggle Dark Mode"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Open menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div id="mobileDrawer" class="mobile-drawer">
+          <div class="drawer-close-container">
+            <button class="drawer-close" aria-label="Close menu">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it Works</a>
+          <a href="about.html">About</a>
+          <a href="tools.html">Tools</a>
+          <a href="contact.html">Contact</a>
+          <button
+            class="btn-primary custom-center-btn"
+            onclick="window.location.href='signup.html'"
+          >
+            Get Started
+          </button>
+          <button
+            class="dark-toggle nav-item dark-mode-toggle"
             title="Toggle Dark Mode"
           >
             <i class="fas fa-moon"></i>
@@ -455,6 +513,24 @@
 
     <!-- ===== CSS ===== -->
     <style>
+      .custom-center-btn {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary-color)
+        );
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 8px;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        margin-left: 4px;
+      }
+
       #testimonials {
         padding: 50px 20px;
         background: #f9fafb;
@@ -704,9 +780,123 @@
       #testimonials:hover .testimonials-track {
         animation-play-state: paused !important;
       }
+      .mobile-drawer {
+        position: fixed;
+        top: 0;
+        right: -300px; /* hidden by default */
+        width: 260px;
+        height: 100%;
+        background: white;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        padding: 3rem 1.5rem;
+        gap: 1rem;
+        transition: right 0.3s ease;
+        z-index: 999;
+      }
+
+      /* Drawer active state */
+      .mobile-drawer.active {
+        right: 0;
+      }
+
+      /* Close button */
+      .drawer-close {
+        position: absolute; /* absolute positioning relative to drawer */
+        top: 1rem; /* distance from top */
+        right: 1rem; /* distance from right */
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1000; /* ensure it’s above other content */
+        margin: 0; /* remove margin */
+      }
+
+      .mobile-drawer a {
+        font-size: 1rem;
+        color: #1f2937;
+        padding: 0.5rem 0.75rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+      }
+
+      /* Hover (mobile only) */
+      .mobile-drawer a:hover {
+        color: #2563eb;
+      }
+
+      /* Active tab (mobile only) */
+      .mobile-drawer a.active {
+        font-weight: 600;
+        color: white !important;
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        border-radius: 8px;
+        padding: 0.6rem 1rem;
+      }
+
+      /* Hover glow on active (mobile only) */
+      .mobile-drawer a.active:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(59, 130, 246, 0.6);
+      }
+      body.dark-mode .mobile-drawer a {
+        color: #e5e7eb; /* A light, readable grey */
+      }
+
+      body.dark-mode .mobile-drawer a:hover {
+        color: #ffffff;
+        background-color: #374151;
+      }
+      body.dark-mode .drawer-close {
+        color: #ffffff;
+      }
     </style>
 
     <!-- ===== JS Marquee Enhancement ===== -->
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileNavLinks = document.querySelectorAll(".mobile-drawer a");
+    const sections = document.querySelectorAll("section[id]");
+    const currentPage = window.location.pathname;
+
+    mobileNavLinks.forEach(link => {
+      const linkPath = new URL(link.href).pathname;
+      if (linkPath === currentPage && !link.getAttribute('href').startsWith('#')) {
+        link.classList.add("active");
+      }
+    });
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-40% 0px -40% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          mobileNavLinks.forEach(link => link.classList.remove("active"));
+          
+          const id = entry.target.getAttribute('id');
+          const correspondingLink = document.querySelector(`.mobile-drawer a[href="#${id}"]`);
+          if (correspondingLink) {
+            correspondingLink.classList.add("active");
+          }
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+
     <script>
       (() => {
         // ====== CONFIG ======
@@ -929,16 +1119,44 @@
           );
         }, 0);
       })();
-            const marquee = document.querySelector(".testimonials-marquee");
-const track = document.querySelector(".testimonials-track");
+      const marquee = document.querySelector(".testimonials-marquee");
+      const track = document.querySelector(".testimonials-track");
 
-marquee.addEventListener("mouseenter", () => {
-  track.style.animationPlayState = "paused";
-});
+      marquee.addEventListener("mouseenter", () => {
+        track.style.animationPlayState = "paused";
+      });
 
-marquee.addEventListener("mouseleave", () => {
-  track.style.animationPlayState = "running";
-});
+      marquee.addEventListener("mouseleave", () => {
+        track.style.animationPlayState = "running";
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const drawer = document.getElementById("mobileDrawer");
+        const openBtn = document.querySelector(".mobile-menu-toggle");
+        const closeBtn = drawer.querySelector(".drawer-close");
+
+        // Open drawer
+        openBtn.addEventListener("click", () => {
+          drawer.classList.add("active");
+          openBtn.style.display = "none"; // hide hamburger
+        });
+
+        // Close drawer
+        closeBtn.addEventListener("click", () => {
+          drawer.classList.remove("active");
+          openBtn.style.display = "block"; // show hamburger back
+        });
+
+        // Close drawer on link click
+        drawer.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            drawer.classList.remove("active");
+            openBtn.style.display = "block"; // show hamburger back
+          });
+        });
+      });
     </script>
 
     <!-- CTA Section -->
@@ -1296,7 +1514,12 @@ marquee.addEventListener("mouseleave", () => {
 
       /* Dark mode toggle styles */
       .dark-toggle {
-        background:  linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+        background: linear-gradient(
+          135deg,
+          #2f2ca0,
+          #4698e5
+
+        );
         border: none;
         color: inherit;
         cursor: pointer;
@@ -1310,7 +1533,7 @@ marquee.addEventListener("mouseleave", () => {
 
       .dark-toggle:hover {
         transform: scale(1.1);
-        background:#3b82f6 ;
+        background: #3b82f6;
       }
 
       /* Dark mode styles */
@@ -1666,57 +1889,60 @@ marquee.addEventListener("mouseleave", () => {
 
     <script src="landing.js"></script>
     <script>
-      const toggle = document.querySelector(".mobile-menu-toggle");
-      const navLinksMenu = document.querySelector(".nav-links");
-
-      toggle.addEventListener("click", () => {
-        navLinksMenu.classList.toggle("active");
-        // toggle.classList.toggle("open"); // for rotating icon if you want
-      });
-      // Close menu when a link is clicked
-      navLinksMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinksMenu.classList.remove("active");
-        });
-      });
-    </script>
-    <script>
       // Dark mode functionality
       document.addEventListener("DOMContentLoaded", () => {
-        const darkModeToggle = document.getElementById("darkModeToggle");
-        const icon = darkModeToggle.querySelector("i");
+        // Select ALL toggle buttons using the new class
+        const darkModeToggles = document.querySelectorAll(".dark-mode-toggle");
         const navLinks = document.querySelector(".nav-links");
+        const mobileDrawer = document.querySelector(".mobile-drawer");
 
         function updateNavLinksBackground() {
-          if (document.body.classList.contains("dark-mode")) {
-            navLinks.style.backgroundColor = "#1e293b";
-          } else {
-            navLinks.style.backgroundColor = "white";
-          }
+          const bgColor = document.body.classList.contains("dark-mode")
+            ? "#1e293b"
+            : "white";
+          if (navLinks) navLinks.style.backgroundColor = bgColor;
+          if (mobileDrawer) mobileDrawer.style.backgroundColor = bgColor;
         }
 
-        // Check for saved dark mode preference
-        if (localStorage.getItem("darkMode") === "enabled") {
-          document.body.classList.add("dark-mode");
-          icon.classList.replace("fa-moon", "fa-sun");
-          updateNavLinksBackground();
-        }
-
-        darkModeToggle.addEventListener("click", () => {
-          document.body.classList.toggle("dark-mode");
-
-          // Update icon and save preference
-          if (document.body.classList.contains("dark-mode")) {
-            icon.classList.replace("fa-moon", "fa-sun");
+        function setDarkMode(enabled) {
+          if (enabled) {
+            document.body.classList.add("dark-mode");
+            // Update all icons to stay in sync
+            darkModeToggles.forEach((toggle) => {
+              const icon = toggle.querySelector("i");
+              if (icon) icon.classList.replace("fa-moon", "fa-sun");
+            });
             localStorage.setItem("darkMode", "enabled");
           } else {
-            icon.classList.replace("fa-sun", "fa-moon");
+            document.body.classList.remove("dark-mode");
+            // Update all icons to stay in sync
+            darkModeToggles.forEach((toggle) => {
+              const icon = toggle.querySelector("i");
+              if (icon) icon.classList.replace("fa-sun", "fa-moon");
+            });
             localStorage.setItem("darkMode", "disabled");
           }
           updateNavLinksBackground();
+        }
+
+        // Check for saved dark mode preference on page load
+        if (localStorage.getItem("darkMode") === "enabled") {
+          setDarkMode(true);
+        } else {
+          setDarkMode(false);
+        }
+
+        // Loop through each button and add the click event
+        darkModeToggles.forEach((toggle) => {
+          toggle.addEventListener("click", () => {
+            // On click, toggle the dark mode state
+            const isDarkMode = document.body.classList.contains("dark-mode");
+            setDarkMode(!isDarkMode);
+          });
         });
       });
     </script>
+
     <script>
       function openSidebar() {
         document.getElementById("sidebar").style.width = "250px";
@@ -1727,13 +1953,12 @@ marquee.addEventListener("mouseleave", () => {
       }
 
       const toggleDarkMode = () => {
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem(
-        'darkMode',
-        document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled'
-    );
-};
-
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem(
+          "darkMode",
+          document.body.classList.contains("dark-mode") ? "enabled" : "disabled"
+        );
+      };
     </script>
 
     <script src="app.js"></script>

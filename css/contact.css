@@ -93,19 +93,7 @@ body.dark-mode {
 }
 
 /* Navigation Styles */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    transition: all 0.3s ease;
-}
+
 
 .dark-mode .navbar {
     background: rgba(17, 24, 39, 0.9);
