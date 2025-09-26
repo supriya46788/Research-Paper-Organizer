@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="landing.css" />
     <link rel="stylesheet" href="slider.css" />
+    <link rel="stylesheet" href="css/chatbot.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="landing.css" />
@@ -1374,12 +1375,6 @@ marquee.addEventListener("mouseleave", () => {
       body.dark-mode .steps-container .step-content p {
         color: #cbd5e1;
       }
-    </style>
-
-    <!-- Back to Top Button -->
-    <button id="backToTop">
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
 
     <!-- Modern Footer -->
     <footer class="modern-footer" aria-label="Footer">
@@ -1733,9 +1728,31 @@ marquee.addEventListener("mouseleave", () => {
         document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled'
     );
 };
+</script>
 
-    </script>
+<script>
+  // Back-to-top functionality only
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTop = document.getElementById('backToTop');
+    
+    if (backToTop) {
+      // Back-to-top show/hide & action
+      function updateBackToTopVisibility() {
+        if (window.scrollY > 200) backToTop.style.display = 'flex';
+        else backToTop.style.display = 'none';
+      }
+      window.addEventListener('scroll', updateBackToTopVisibility);
+      updateBackToTopVisibility(); // init
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
+
 
     <script src="app.js"></script>
+    <script src="js/chatbot.js"></script>
   </body>
 </html>
