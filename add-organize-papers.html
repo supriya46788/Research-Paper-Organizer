@@ -1,90 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Papers Page</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/add-organize-papers.css" />
-  </head>
-  <body>
-    <!-- Add Your Papers Section -->
-    <section id="add-section" class="add-section">
-      <h2>➋ Add Your Papers</h2>
-      <p>
-        Upload PDFs, add paper details manually, or import from existing
-        libraries.
-      </p>
 
-      <div class="upload-box">
-        <p>Drag & Drop your papers here</p>
-        <p>or</p>
-        <input type="file" id="fileUpload" multiple />
-        <label for="fileUpload">Choose Files</label>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Papers Page</title>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/add-organize-papers.css" />
+</head>
 
-      <div class="file-list" id="fileList"></div>
-    </section>
+<body>
+  <!-- Add Your Papers Section -->
+  <section id="add-section" class="add-section">
+    <h2>➋ Add Your Papers</h2>
+    <p>
+      Upload PDFs, add paper details manually, or import from existing
+      libraries.
+    </p>
 
-    <!-- Organize & Search Section -->
-    <section id="organize-section" class="organize-section">
-      <h2>➌ Organize & Search</h2>
-      <p>
-        Use tags, topics, and ratings to organize your collection and find
-        papers instantly.
-      </p>
-      <div class="search">
-        <input
-          type="search"
-          id="searchPapers"
-          placeholder="Search Your Papers.."
-        />
-      </div>
-      <div class="tags">
-        <div class="tag">Machine Learning</div>
-        <div class="tag">AI</div>
-        <div class="tag">Blockchain</div>
-        <div class="tag">Data Science</div>
-        <div class="tag">NLP</div>
-        <div class="tag">Healthcare</div>
-      </div>
-    </section>
+    <div class="upload-box">
+      <p>Drag & Drop your papers here</p>
+      <p>or</p>
+      <input type="file" id="fileUpload" multiple />
+      <label for="fileUpload">Choose Files</label>
+    </div>
 
-    <script>
-      const fileInput = document.getElementById("fileUpload");
-      const fileList = document.getElementById("fileList");
+    <div class="file-list" id="fileList"></div>
+    <div class="prevImage"></div>
+  </section>
 
-      fileInput.addEventListener("change", () => {
-        fileList.innerHTML = ""; // clear old list
-        Array.from(fileInput.files).forEach((file) => {
-          const fileItem = document.createElement("div");
-          fileItem.className = "file-item";
-          fileItem.innerHTML = `<span>${file.name}</span> (${(
-            file.size / 1024
-          ).toFixed(1)} KB)`;
-          fileList.appendChild(fileItem);
-        });
+  <!-- Organize & Search Section -->
+  <section id="organize-section" class="organize-section">
+    <h2>➌ Organize & Search</h2>
+    <p>
+      Use tags, topics, and ratings to organize your collection and find
+      papers instantly.
+    </p>
+    <div class="search">
+      <input type="search" id="searchPapers" placeholder="Search Your Papers.." />
+    </div>
+    <div class="tags">
+      <div class="tag">Machine Learning</div>
+      <div class="tag">AI</div>
+      <div class="tag">Blockchain</div>
+      <div class="tag">Data Science</div>
+      <div class="tag">NLP</div>
+      <div class="tag">Healthcare</div>
+    </div>
+  </section>
+
+  <script>
+    const fileInput = document.getElementById("fileUpload");
+    const fileList = document.getElementById("fileList");
+    const prevDiv = document.querySelector(".prevImage");
+    fileInput.addEventListener("change", () => {
+      fileList.innerHTML = ""; // clear old list
+      prevDiv.innerHTML = "";
+      Array.from(fileInput.files).forEach((file, index) => {
+        const fileItem = document.createElement("div");
+        fileItem.className = "file-item";
+
+        fileItem.innerHTML = `<span>${file.name}</span> (${(
+          file.size / 1024
+        ).toFixed(1)} KB)`;
+
+        if (file) {
+
+          const previewBtn = document.createElement("button");
+          previewBtn.className = "preview-btn";
+          previewBtn.innerText = "👁️ Preview";
+
+          let previewImg;
+          
+          if (file.type.startsWith("image/")) {
+            previewImg = document.createElement("img");
+            previewImg.className = "preview-img";
+          } else {
+            previewImg = document.createElement("iframe");
+            previewImg.className = "preview-frame preview-img";
+          }
+
+          previewBtn.addEventListener("click", () => {
+            const fileURL = URL.createObjectURL(file);
+            previewImg.src = fileURL;
+            previewImg.style.display = "block";
+          });
+
+          fileItem.appendChild(previewBtn);
+          prevDiv.appendChild(previewImg);
+        }
+
+        fileList.appendChild(fileItem);
       });
-    </script>
-    <script>
-  const toggleBtn = document.getElementById('darkModeToggle');
+    });
+  </script>
+  <script>
+    const toggleBtn = document.getElementById('darkModeToggle');
 
-  // Check if user has a saved preference
-  if (localStorage.getItem('darkMode') === 'enabled') {
-    document.body.classList.add('dark-mode');
-  }
-
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-
-    // Save preference
-    if (document.body.classList.contains('dark-mode')) {
-      localStorage.setItem('darkMode', 'enabled');
-    } else {
-      localStorage.setItem('darkMode', 'disabled');
+    // Check if user has a saved preference
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
     }
-  });
-</script>
 
-  </body>
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+
+      // Save preference
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    });
+  </script>
+
+</body>
+
 </html>
