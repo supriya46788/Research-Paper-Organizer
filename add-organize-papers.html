@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Papers Page</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <!-- Keep font-awesome from main -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="./css/add-organize-papers.css" />
 </head>
 
@@ -53,10 +55,11 @@
     const fileInput = document.getElementById("fileUpload");
     const fileList = document.getElementById("fileList");
     const prevDiv = document.querySelector(".prevImage");
+
     fileInput.addEventListener("change", () => {
       fileList.innerHTML = ""; // clear old list
       prevDiv.innerHTML = "";
-      Array.from(fileInput.files).forEach((file, index) => {
+      Array.from(fileInput.files).forEach((file) => {
         const fileItem = document.createElement("div");
         fileItem.className = "file-item";
 
@@ -65,13 +68,11 @@
         ).toFixed(1)} KB)`;
 
         if (file) {
-
           const previewBtn = document.createElement("button");
           previewBtn.className = "preview-btn";
-          previewBtn.innerText = "👁️ Preview";
+          previewBtn.innerHTML = '<i class="fa fa-eye"></i> Preview';
 
           let previewImg;
-          
           if (file.type.startsWith("image/")) {
             previewImg = document.createElement("img");
             previewImg.className = "preview-img";
@@ -79,11 +80,18 @@
             previewImg = document.createElement("iframe");
             previewImg.className = "preview-frame preview-img";
           }
+          previewImg.style.display = "none";
 
           previewBtn.addEventListener("click", () => {
-            const fileURL = URL.createObjectURL(file);
-            previewImg.src = fileURL;
-            previewImg.style.display = "block";
+            if (previewImg.style.display === "none") {
+              const fileURL = URL.createObjectURL(file);
+              previewImg.src = fileURL;
+              previewImg.style.display = "block";
+              previewBtn.innerHTML = '<i class="fa fa-eye-slash"></i> Close Preview';
+            } else {
+              previewImg.style.display = "none";
+              previewBtn.innerHTML = '<i class="fa fa-eye"></i> Preview';
+            }
           });
 
           fileItem.appendChild(previewBtn);
@@ -94,10 +102,10 @@
       });
     });
   </script>
+
   <script>
     const toggleBtn = document.getElementById('darkModeToggle');
 
-    // Check if user has a saved preference
     if (localStorage.getItem('darkMode') === 'enabled') {
       document.body.classList.add('dark-mode');
     }
@@ -105,7 +113,6 @@
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
 
-      // Save preference
       if (document.body.classList.contains('dark-mode')) {
         localStorage.setItem('darkMode', 'enabled');
       } else {
@@ -115,5 +122,4 @@
   </script>
 
 </body>
-
 </html>
