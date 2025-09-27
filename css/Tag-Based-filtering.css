@@ -162,15 +162,10 @@ body.dark-mode .filter-bar {
   border: 1px solid rgba(74, 85, 104, 0.3);
 }
 
-body.dark-mode .filter-btn {
-  background: linear-gradient(135deg, #4a5568, #2d3748);
-  color: #e0e0e0;
-  border: 1px solid rgba(74, 85, 104, 0.5);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
 
-body.dark-mode .filter-btn:hover,
-body.dark-mode .filter-btn.active {
+
+body.dark-mode .filter-btn:hover
+ {
   background: linear-gradient(135deg, #63b3ed, #4299e1);
   color: #1a202c;
   box-shadow: 0 4px 15px rgba(99, 179, 237, 0.4);
