@@ -264,3 +264,26 @@ body.dark-mode #searchPapers:focus {
     transform: scale(1);
   }
 }
+.preview-btn {
+  background-color: #007bff;   /* blue background */
+  color: white;               /* white text */
+  border: none;               /* remove default border */
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.preview-btn.close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: red;
+  transform: rotate(-45deg);
+  background-color: #0056b3;  /* darker blue on hover */
+}

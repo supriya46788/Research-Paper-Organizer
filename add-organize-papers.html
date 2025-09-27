@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Papers Page</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="./css/add-organize-papers.css" />
 </head>
 
@@ -53,6 +54,7 @@
     const fileInput = document.getElementById("fileUpload");
     const fileList = document.getElementById("fileList");
     const prevDiv = document.querySelector(".prevImage");
+
     fileInput.addEventListener("change", () => {
       fileList.innerHTML = ""; // clear old list
       prevDiv.innerHTML = "";
@@ -68,10 +70,10 @@
 
           const previewBtn = document.createElement("button");
           previewBtn.className = "preview-btn";
-          previewBtn.innerText = "👁️ Preview";
 
+          previewBtn.innerHTML = '<i class="fa fa-eye"></i> Preview';
           let previewImg;
-          
+
           if (file.type.startsWith("image/")) {
             previewImg = document.createElement("img");
             previewImg.className = "preview-img";
@@ -79,11 +81,18 @@
             previewImg = document.createElement("iframe");
             previewImg.className = "preview-frame preview-img";
           }
+          previewImg.style.display = "none";
 
           previewBtn.addEventListener("click", () => {
-            const fileURL = URL.createObjectURL(file);
-            previewImg.src = fileURL;
-            previewImg.style.display = "block";
+            if (previewImg.style.display === "none") {
+              const fileURL = URL.createObjectURL(file);
+              previewImg.src = fileURL;
+              previewImg.style.display = "block";
+              previewBtn.innerHTML = '<i class="fa fa-eye-slash"></i> Close Preview';
+            } else {
+              previewImg.style.display = "none";
+              previewBtn.innerHTML = '<i class="fa fa-eye"></i> Preview';
+            }
           });
 
           fileItem.appendChild(previewBtn);
