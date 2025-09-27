@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Papers Page</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <!-- Keep font-awesome from main -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="./css/add-organize-papers.css" />
 </head>
@@ -88,9 +87,11 @@
               previewImg.src = fileURL;
               previewImg.style.display = "block";
               previewBtn.innerHTML = '<i class="fa fa-eye-slash"></i> Close Preview';
+              previewBtn.classList.add("close");
             } else {
               previewImg.style.display = "none";
               previewBtn.innerHTML = '<i class="fa fa-eye"></i> Preview';
+              previewBtn.classList.remove("close");
             }
           });
 
@@ -106,6 +107,7 @@
   <script>
     const toggleBtn = document.getElementById('darkModeToggle');
 
+    // Check if user has a saved preference
     if (localStorage.getItem('darkMode') === 'enabled') {
       document.body.classList.add('dark-mode');
     }
@@ -113,6 +115,7 @@
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
 
+      // Save preference
       if (document.body.classList.contains('dark-mode')) {
         localStorage.setItem('darkMode', 'enabled');
       } else {

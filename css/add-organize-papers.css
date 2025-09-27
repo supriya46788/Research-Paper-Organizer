@@ -193,7 +193,7 @@ body.dark-mode #searchPapers:focus {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
 }
 
-/* PREVIEW IMAGE CSS */
+/* ================= PREVIEW STYLES ================= */
 .file-item {
   margin-bottom: 20px;
 }
@@ -230,7 +230,7 @@ body.dark-mode #searchPapers:focus {
   transform: rotate(-45deg);
 }
 
-/* Preview image / iframe */
+/* Preview image */
 .preview-img {
   display: none;
   width: 250px;
@@ -248,6 +248,16 @@ body.dark-mode #searchPapers:focus {
   box-shadow: 0px 10px 20px rgba(37, 117, 252, 0.4),
               0px 4px 10px rgba(0, 0, 0, 0.15);
   border-color: #2575fc;
+}
+
+.prevImage {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .preview-frame {
