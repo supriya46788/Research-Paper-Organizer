@@ -35,10 +35,12 @@
 /* Small screens: avoid bottom-right UI crowding */
 @media (max-width: 600px) {
   #feedbackFab {
-    top: auto;
-    bottom: 90px;
-    right: 16px;
-    transform: none;
+    width: 48px !important;   /* larger touch target for mobile */
+    height: 48px !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    bottom: 90px;              /* already set */
+    right: 16px;               /* already set */
   }
 }
 
