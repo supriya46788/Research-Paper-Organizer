@@ -63,7 +63,6 @@ p {
 .upload-box label:hover {
   background: #2563eb;
 }
-
 /* File list */
 .file-list {
   margin-top: 20px;
@@ -85,7 +84,6 @@ p {
 .file-item span {
   flex: 1;
 }
-
 /* Organize section */
 .tags {
   display: flex;
@@ -108,13 +106,11 @@ p {
 .tag:hover {
   background: #bae6fd;
 }
-
 .search {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 #searchPapers {
   margin: 1rem 1.2rem;
   width: 300px;
@@ -125,7 +121,6 @@ p {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   color: #000;
 }
-
 #searchPapers:focus {
   border: 1px solid #2563eb;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
@@ -193,24 +188,22 @@ body.dark-mode #searchPapers:focus {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
 }
 
-/* ================= PREVIEW STYLES ================= */
+/* PREVIEW IMAGE CSS */
+
 .file-item {
   margin-bottom: 20px;
 }
 
-/* Preview button */
 .preview-btn {
   margin-left: 10px;
-  padding: 6px 12px;
+  padding: 5px 10px;
   cursor: pointer;
   border: none;
   border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #fff;
   background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
-  transition: all 0.3s ease;
-  position: relative; /* allows ::after in close state */
+  color: #fff;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 .preview-btn:hover {
@@ -218,19 +211,25 @@ body.dark-mode #searchPapers:focus {
   transform: scale(1.05);
 }
 
-/* Close button state */
-.preview-btn.close::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #0056b3; /* darker blue slash */
-  transform: rotate(-45deg);
+.preview-img {
+  display: none; 
+  width: 150px;
+  margin-top: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Preview image */
+.prevImage {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  flex-wrap: wrap;
+  gap: 20px;  
+}
+
 .preview-img {
   display: none;
   width: 250px;
@@ -250,19 +249,9 @@ body.dark-mode #searchPapers:focus {
   border-color: #2575fc;
 }
 
-.prevImage {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
 .preview-frame {
-  width: 50%;
-  height: 400px;
+  width: 50%;    
+  height: 400px;  
 }
 
 @keyframes fadeIn {
@@ -274,4 +263,27 @@ body.dark-mode #searchPapers:focus {
     opacity: 1;
     transform: scale(1);
   }
+}
+.preview-btn {
+  background-color: #007bff;   /* blue background */
+  color: white;               /* white text */
+  border: none;               /* remove default border */
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.preview-btn.close::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: red;
+  transform: rotate(-45deg);
+  background-color: #0056b3;  /* darker blue on hover */
 }
