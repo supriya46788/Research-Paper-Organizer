@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="slider.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/feedback.css" />
     <link rel="stylesheet" href="landing.css" />
     <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
 
@@ -1734,6 +1735,100 @@ marquee.addEventListener("mouseleave", () => {
     );
 };
 
+    </script>
+
+    <!-- Floating Feedback Button -->
+    <button id="feedbackFab" aria-label="Open feedback" title="Send feedback">💬</button>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
+      <div class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 id="feedbackTitle" class="modal-title">We value your feedback</h2>
+            <button class="modal-close" id="feedbackCloseBtn" aria-label="Close feedback modal">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <form id="feedbackForm" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="fbName" class="form-label">Name</label>
+                <input id="fbName" class="form-input" type="text" placeholder="Your name" required />
+              </div>
+              <div class="form-group">
+                <label for="fbEmail" class="form-label">Email</label>
+                <input id="fbEmail" class="form-input" type="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="fbMessage" class="form-label">Feedback</label>
+              <textarea id="fbMessage" class="form-textarea" rows="4" placeholder="Share your thoughts..." required></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-secondary" id="feedbackCancelBtn">Cancel</button>
+              <button type="submit" class="btn-primary" id="feedbackSubmitBtn">
+                <i class="fas fa-paper-plane"></i> Submit
+              </button>
+            </div>
+          </form>
+          <div id="feedbackThankYou" class="hidden" style="text-align:center; padding: 1rem;">
+            <h3>Thank you for your valuable feedback</h3>
+            <p>Redirecting you to the homepage...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Feedback FAB and Modal Logic
+      document.addEventListener('DOMContentLoaded', () => {
+        const fab = document.getElementById('feedbackFab');
+        const overlay = document.getElementById('feedbackModalOverlay');
+        const closeBtn = document.getElementById('feedbackCloseBtn');
+        const cancelBtn = document.getElementById('feedbackCancelBtn');
+        const form = document.getElementById('feedbackForm');
+        const thankYou = document.getElementById('feedbackThankYou');
+        const nameInput = document.getElementById('fbName');
+
+        function openModal() {
+          overlay.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+          setTimeout(() => nameInput?.focus(), 0);
+        }
+
+        function closeModal() {
+          overlay.classList.add('hidden');
+          document.body.style.overflow = '';
+          form.classList.remove('hidden');
+          thankYou.classList.add('hidden');
+          form.reset();
+        }
+
+        fab.addEventListener('click', openModal);
+        closeBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeModal();
+        });
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+          }
+          // Show thank you, then redirect after a few seconds
+          form.classList.add('hidden');
+          thankYou.classList.remove('hidden');
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 3000);
+        });
+      });
     </script>
 
     <script src="app.js"></script>
