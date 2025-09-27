@@ -153,15 +153,7 @@ body.dark-mode .controls input {
   border: 1px solid #374151;
 }
 
-/* Alphabet Nav */
-body.dark-mode .controls button {
-  color: #f3f4f6;
-  background: #1f2937;
-  border: 1px solid #374151;
-}
-body.dark-mode .controls button:hover {
-  background: #374151;
-}
+
 
 /* Open-source Items */
 body.dark-mode .repo {
