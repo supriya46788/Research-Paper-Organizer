@@ -72,7 +72,10 @@
       crossorigin="anonymous"
     />
   </head>
-  <script>
+ 
+
+  <body>
+     <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker
@@ -82,8 +85,6 @@
       });
     }
   </script>
-
-  <body>
     <!-- Loading Screen -->
     <div id="loading-screen">
       <div class="loading-background-animation"></div>
