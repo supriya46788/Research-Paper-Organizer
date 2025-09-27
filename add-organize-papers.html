@@ -11,6 +11,11 @@
 </head>
 
 <body>
+  <!-- Dark Mode Toggle Button -->
+  <button id="darkModeToggle" class="dark-mode-toggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <!-- Add Your Papers Section -->
   <section id="add-section" class="add-section">
     <h2>➋ Add Your Papers</h2>
@@ -58,7 +63,8 @@
     fileInput.addEventListener("change", () => {
       fileList.innerHTML = ""; // clear old list
       prevDiv.innerHTML = "";
-      Array.from(fileInput.files).forEach((file) => {
+      
+      Array.from(fileInput.files).forEach((file, index) => {
         const fileItem = document.createElement("div");
         fileItem.className = "file-item";
 
@@ -70,8 +76,8 @@
           const previewBtn = document.createElement("button");
           previewBtn.className = "preview-btn";
           previewBtn.innerHTML = '<i class="fa fa-eye"></i> Preview';
-
           let previewImg;
+
           if (file.type.startsWith("image/")) {
             previewImg = document.createElement("img");
             previewImg.className = "preview-img";
@@ -102,23 +108,26 @@
         fileList.appendChild(fileItem);
       });
     });
-  </script>
 
-  <script>
+    // Dark mode functionality
     const toggleBtn = document.getElementById('darkModeToggle');
+    const toggleIcon = toggleBtn.querySelector('i');
 
     // Check if user has a saved preference
     if (localStorage.getItem('darkMode') === 'enabled') {
       document.body.classList.add('dark-mode');
+      toggleIcon.className = 'fas fa-sun';
     }
 
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
 
-      // Save preference
+      // Update icon
       if (document.body.classList.contains('dark-mode')) {
+        toggleIcon.className = 'fas fa-sun';
         localStorage.setItem('darkMode', 'enabled');
       } else {
+        toggleIcon.className = 'fas fa-moon';
         localStorage.setItem('darkMode', 'disabled');
       }
     });
