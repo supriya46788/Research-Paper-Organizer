@@ -1,3 +1,65 @@
+/* Signup Progress Bar Styles */
+.signup-progress {
+  margin-bottom: 2rem;
+}
+.progress-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+.progress-bar-fill {
+  height: 100%;
+  width: 50%;
+  background: #2563eb;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color:  #2563eb;
+  margin-top: 0.25rem;
+}
+.step-label {
+  opacity: 0.6;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.step-label.active {
+  opacity: 1;
+  color: #7c3aed;
+}
+
+
+
+/* Password Strength Bar Styles */
+.strength-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.25rem;
+}
+.strength-bar-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 4px;
+  transition: width 0.3s, background 0.3s;
+}
+.strength-bar-fill.weak {
+  background: #ef4444;
+}
+.strength-bar-fill.medium {
+  background: #eab308;
+}
+.strength-bar-fill.strong {
+  background: #22c55e;
+}
 * {
   margin: 0;
   padding: 0;
