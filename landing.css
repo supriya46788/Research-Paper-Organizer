@@ -49,7 +49,7 @@ body {
 }
 
 /* Navigation */
-.landing-nav {
+/* .landing-nav {
   position: fixed;
   top: 0;
   width: 100%;
@@ -59,14 +59,14 @@ body {
   z-index: 1000;
   transition: all 0.3s ease;
   overflow: visible;
-}
+} */
 .mobile-menu-toggle {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
-.nav-container {
+/* .nav-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 20px;
@@ -75,13 +75,13 @@ body {
   align-items: center;
   flex-wrap: wrap;
   /* justify-content: flex-start; */
-}
+/* }  */
 
-.nav-brand {
+/* .nav-brand {
   display: flex;
   align-items: center;
   /* justify-content: flex-start; */
-  font-size: 1.5rem;
+  /* font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-color);
   gap: 0.5rem;
@@ -89,7 +89,7 @@ body {
   text-decoration: none;
   flex: 0 0 auto;
   min-width: 250px;
-}
+} */ */
 #logo {
   width: 65px;
   height: 65px;
@@ -138,15 +138,15 @@ body {
   }
 }
 
-.nav-links {
+/* .nav-links {
   display: flex;
   align-items: center;
   gap: 2rem;
   flex: 0 0 auto;
   background-color: white;
-}
+} */
 
-.nav-links a {
+/* .nav-links a {
   white-space: nowrap;
   text-decoration: none;
   color: white;
@@ -165,6 +165,159 @@ body {
   border-radius: 10px;
   transition: all 0.3s ease;
   flex-shrink: 1;
+} */
+/* Navbar container */
+.landing-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  overflow: visible;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+}
+
+/* Nav container aligns content */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Navbar Brand (logo + title) */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  gap: 0.5rem;
+  text-decoration: none;
+  min-width: 250px;
+  transition: color 0.3s ease;
+}
+.nav-brand:hover {
+  color: var(--primary-dark);
+}
+
+/* Navbar links container with consistent spacing and button look */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+}
+
+/* Navbar link buttons with gradient background consistent with site theme */
+.nav-links a {
+  background:linear-gradient(135deg, var(--primary), var(--primary-dark) 65%);
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1.3rem;
+  font-size: 1.05rem;
+  border-radius: 19px;
+  font-weight: 600;
+  box-shadow: 0 2px 14px rgba(59,130,246,0.08), 0 1.5px 4px rgba(47,44,160,0.06);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+/* Hover effect with smooth transition and glow */
+.nav-links a:hover {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(59,130,246,0.25);
+  color: white;
+}
+
+/* Get Started special button styling */
+.get-started-btn {
+ background:linear-gradient(135deg, var(--primary), var(--primary-dark) 65%);
+  color: #fff;
+  border: none;
+  padding: 0.80rem 1.0rem;
+  font-size: 1.05rem;
+  border-radius: 19px;
+  font-weight: 600;
+  box-shadow: 0 2px 14px rgba(59,130,246,0.08), 0 1.5px 4px rgba(47,44,160,0.06);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  user-select: none;
+}
+.get-started-btn:hover {
+ background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(59,130,246,0.25);
+  color: white;
+}
+
+/* Dark mode overrides */
+body.dark-mode .landing-nav {
+  background: rgba(31, 41, 55, 0.95);
+  border-bottom-color: #374151;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.9);
+}
+
+body.dark-mode .nav-links {
+  background: transparent; /* keep transparent for consistency */
+  box-shadow: none;
+}
+
+body.dark-mode .nav-links a {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #f3f4f6;
+  box-shadow: 0 4px 10px rgba(40,100,255,0.25);
+}
+
+body.dark-mode .nav-links a:hover {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  box-shadow: 0 6px 22px rgba(30,120,255,0.4);
+  color: #fff;
+}
+
+/* Mobile responsive layout */
+@media screen and (max-width: 768px) {
+  .nav-container {
+    max-width: 375px;
+    margin: 10px auto;
+    gap: 0.3rem;
+    padding: 0 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 0;
+    background-color: transparent;
+  }
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    padding: 0.7rem 0;
+    font-size: 1.2rem;
+  }
+  .get-started-btn {
+    margin-left: 0;
+  }
 }
 
 .nav-links a:hover {
@@ -1489,7 +1642,7 @@ body {
     display: flex !important;
     position: static;
     flex-direction: row;
-    gap: 20px;
+    gap: 16px;
     background: none;
     box-shadow: none;
   }
@@ -1511,7 +1664,7 @@ body.dark-mode .nav-links {
   box-shadow: 0 0 20px rgba(9, 9, 9, 0.6); /* soft blur outward */
 }
 body.dark-mode .nav-links a {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  background: linear-gradient(135deg, #2626a7 10%, #3488d6 100%);
   color: #f3f4f6;
 }
 /* Hero */

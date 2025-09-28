@@ -115,11 +115,11 @@
         <div class="nav-links">
           <a href="#features">Features</a>
           <a href="#how-it-works">How it Works</a>
-          <a href="about.html">About</a>
-          <a href="tools.html">Tools</a>
+          <a href="about.html" class="nav-item" role="menuitem">About</a>
+          <a href="tools.html" class="nav-item">Tools</a>
           <a href="contact.html">Contact</a>
           <button
-            class="btn-primary"
+            class="get-started-btn" style="margin-left: 0px"
             onclick="window.location.href='signup.html'"
           >
             Get Started
@@ -127,6 +127,7 @@
           <!-- Add dark mode toggle here -->
           <button
             class="dark-toggle nav-item"
+            style="margin-left: 0px;"
             id="darkModeToggle"
             title="Toggle Dark Mode"
           >
@@ -1300,7 +1301,7 @@ marquee.addEventListener("mouseleave", () => {
         border: none;
         color: inherit;
         cursor: pointer;
-        padding: 8px;
+        padding: 10px;
         font-size: 1.2rem;
         display: flex;
         align-items: center;
