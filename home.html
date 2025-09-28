@@ -59,7 +59,6 @@
   <link rel="stylesheet" href="./css/removeFilterBtn.css">
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/tooltip.css" />
   <style>
     /* Ensure dark mode styles work */
     body.dark-mode {
@@ -672,24 +671,14 @@ body.dark-mode .copy-btn:hover {
 <body>
   <div class="container">
     <nav class="navbar">
-      <a href="#" class="nav-item tooltip-container">
-        Home
-        <span class="tooltip-text">Go to Home page</span>
-      </a>
+      <a href="#" class="nav-item">Home</a>
 
       <div class="navbar-right-links">
-        <a href="about.html" class="nav-item tooltip-container">
-          About us
-          <span class="tooltip-text">Learn more about us</span>
-        </a>
-        <a href="Faq.html" class="nav-item tooltip-container">
-          FAQ
-          <span class="tooltip-text">Frequently Asked Questions</span>
-        </a>
-        <a href="contact.html" class="nav-item tooltip-container">
-          Contact Us
-          <span class="tooltip-text">Get in touch with us</span>
-        </a>
+        <a href="about.html" class="nav-item">About us</a>
+        <a href="blog.html" class="nav-item">Blogs</a>
+        <a href="Faq.html" class="nav-item">FAQ</a>
+        <a href="contact.html" class="nav-item">Contact Us</a>
+        <a href="tools.html" class="nav-item">Tools</a>
       </div>
     </nav>
     <!-- Header -->
@@ -711,41 +700,22 @@ body.dark-mode .copy-btn:hover {
             <i class="fas fa-moon"></i>
           </button>
 
-<div class="tooltip-container">
-  <button class="dark-toggle" id="darkModeToggle">
-    <i class="fas fa-moon"></i>
-  </button>
-  <span class="tooltip-text">Toggle Dark Mode</span>
-</div>
+          <button class="add-btn" onclick="showAddForm()">
+            <i class="fas fa-plus"></i>
+            Add Paper
+          </button>
+          <button class="add-btn" onclick="location.href='summarize.html'">
+          <i class="fas fa-align-left"></i>
+          Summarize Paper
+          </button>
 
-<div class="tooltip-container">
-  <button class="add-btn" onclick="showAddForm()">
-    <i class="fas fa-plus"></i> Add Paper
-  </button>
-  <span class="tooltip-text">Add a new research paper</span>
-</div>
+          <button class="btn-secondary" onclick="importPapers()">
+            <i class="fas fa-file-import"></i> Import
+          </button>
 
-<div class="tooltip-container">
-  <button class="add-btn" onclick="location.href='summarize.html'">
-    <i class="fas fa-align-left"></i> Summarize Paper
-  </button>
-  <span class="tooltip-text">Summarize selected paper</span>
-</div>
-
-<div class="tooltip-container">
-  <button class="btn-secondary" onclick="importPapers()">
-    <i class="fas fa-file-import"></i> Import
-  </button>
-  <span class="tooltip-text">Import papers from file</span>
-</div>
-
-<div class="tooltip-container">
-  <button class="btn-secondary" onclick="exportPapers()">
-    <i class="fas fa-file-export"></i> Export
-  </button>
-  <span class="tooltip-text">Export papers to file</span>
-</div>
-
+          <button class="btn-secondary" onclick="exportPapers()">
+            <i class="fas fa-file-export"></i> Export
+          </button>
 
         </div>
       </div>
@@ -836,12 +806,11 @@ body.dark-mode .copy-btn:hover {
           </div>
           <!-- Clear Filters button added #issue-602 -->
            <div class="filter-container">
-          <div class="tooltip-container">
-          <button id="clearFiltersBtn" class="filter-clear-btn">
-            <i class="fas fa-eraser" style="color: #6b7280"></i>
-          </button>
-          <span class="tooltip-text">Clear all filters</span>
-        </div>
+            <button id="clearFiltersBtn" class="filter-clear-btn" title="Clear all filters">
+               <i class="fas fa-eraser" style="color: #6b7280"></i>
+            </button>
+            <!-- hover text for clear filter button -->
+            <span class="tooltip-text">Clear all filters</span>
            </div>
         </div>
       </div>
@@ -1657,7 +1626,6 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <script src="./js/filterBtn.js"></script>
-<script src="js/tooltip.js"></script>
 </body>
 
 </html>
