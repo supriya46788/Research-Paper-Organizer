@@ -144,77 +144,77 @@ body.dark-mode {
 }
 
 /* Hero Section */
+/* Default (Light Mode) */
 .contact-hero {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5rem 2rem 3rem;
+    padding: 4rem 2rem;
     text-align: center;
     position: relative;
-    background: linear-gradient(135deg, #4e54c8, #8f94fb); /* Smooth gradient */
-    color: #fff;
+    background: linear-gradient(135deg, #e6eeff, #f9faff); /* Light pastel gradient */
+    color: #1a1a1a; /* Dark text for readability */
     overflow: hidden;
     border-radius: 16px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.contact-hero::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: -50px;
-    width: 200px;
-    height: 200px;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 50%;
-    z-index: 0;
-    animation: pulse 6s infinite ease-in-out;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .hero-content {
-    max-width: 650px;
+    max-width: 600px;
     z-index: 1;
     animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    background: linear-gradient(90deg, #ffffff, #e0e0ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 1px;
+    color: #3742fa; /* Accent blue */
 }
 
 .hero-subtitle {
     font-size: 1.2rem;
     opacity: 0.9;
     margin-bottom: 2rem;
-    line-height: 1.6;
-    color: #f0f0f0;
+    color: #333; /* Neutral dark gray */
 }
 
 .hero-decoration {
     position: absolute;
     top: 2rem;
     right: 2rem;
-    font-size: 4rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 3.5rem;
+    color: #3742fa;
+    opacity: 0.25;
     animation: float 3s ease-in-out infinite;
+}
+
+/* Dark Mode */
+.dark-mode .contact-hero {
+    background: linear-gradient(135deg, #2b2f77, #1e1e2f); /* Darker gradient */
+    color: #ffffff; /* White text */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
+}
+
+
+.dark-mode .hero-title {
+    color: #8f94fb; /* Softer purple accent */
+}
+
+.dark-mode .hero-subtitle {
+    color: #d1d1d1; /* Light gray for readability */
+}
+
+.dark-mode .hero-decoration {
+    color: #8f94fb;
+    opacity: 0.25;
 }
 
 /* Floating animation */
 @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Pulse background animation */
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.08; }
-    50% { transform: scale(1.2); opacity: 0.15; }
+    50% { transform: translateY(-8px); }
 }
 
 /* Fade-in animation */
@@ -222,6 +222,8 @@ body.dark-mode {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+
 
 
 /* Contact Container */
