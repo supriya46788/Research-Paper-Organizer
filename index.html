@@ -417,7 +417,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="stats fade-in">
+    <section class="stats fade-in color">
       <div class="container">
         <div class="stats-grid">
           <div class="stat-item">
@@ -1373,6 +1373,32 @@ marquee.addEventListener("mouseleave", () => {
 
       body.dark-mode .steps-container .step-content p {
         color: #cbd5e1;
+      }
+
+      /* ==== Dark Mode Fixes for Stats Section ==== */
+      body.dark-mode .color{
+        background: #0f172a;
+      }
+      body.dark-mode .stat-item{
+        background: #1e293b;
+      }
+      .color{
+        background:white;
+      }
+      .stat-item{
+        background: #f9fafb;
+      }
+      .stat-number{
+        color:#3b82f6;
+      }
+      .stat-label{
+        color:#1e293b;
+      }
+      body.dark-mode .stat-label{
+        color:#e0e7ff;
+      }
+      body.dark-mode .stat-number{
+        color:#60a5fa;
       }
     </style>
 
