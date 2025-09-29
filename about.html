@@ -293,57 +293,35 @@
       }
 
       .contributor-cards {
-        display: flex !important;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 26px;
-        margin-top: 6px;
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+        padding: 1rem;
         visibility: visible !important;
       }
 
       @media (max-width: 900px) {
         .contributor-cards {
-          gap: 14px;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1.5rem;
+          padding: 0.5rem;
         }
       }
 
       @media (max-width: 600px) {
         .contributor-cards {
-          gap: 7px;
-          margin-top: 1px;
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 1rem;
+          margin-top: 1rem;
+          padding: 0.25rem;
         }
       }
 
-      @media (max-width: 900px) {
-        .contributors {
-          padding: 15px;
-        }
+      @media (max-width: 480px) {
         .contributor-cards {
-          gap: 14px;
-        }
-        .contributor-card {
-          width: 130px;
-          min-height: 110px;
-          padding: 8px 7px;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .contributors {
-          margin: 22px auto;
-          padding: 7px;
-        }
-        .contributors-title {
-          font-size: 1.1rem;
-        }
-        .contributor-cards {
-          gap: 7px;
-          margin-top: 1px;
-        }
-        .contributor-card {
-          width: 95px;
-          min-height: 90px;
-          padding: 3px 2px;
+          grid-template-columns: 1fr;
+          gap: 1rem;
         }
       }
 
@@ -380,75 +358,207 @@
       }
 
       .contributor-card {
-        background: #f5f6fa !important;
-        border-radius: 15px;
-        padding: 14px 14px;
-        width: 180px;
+        background: linear-gradient(145deg, #ffffff, #f8fafc) !important;
+        border-radius: 20px;
+        padding: 2rem 1.5rem;
+        width: 100%;
         display: flex !important;
         flex-direction: column;
         align-items: center;
-        box-shadow: 0 4px 14px rgba(59,71,87,0.09);
-        border: 1.5px solid #e0e6ef;
-        transition: transform 0.23s, box-shadow 0.23s;
+        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.12);
+        border: 2px solid transparent;
+        background-clip: padding-box;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
-        min-height: 140px;
+        min-height: 240px;
         position: relative;
         visibility: visible !important;
+        overflow: hidden;
+      }
+
+      .contributor-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #7298e5, #2f2ca0, #4698e5);
+        border-radius: 20px;
+        padding: 2px;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: -1;
+      }
+
+      .contributor-card:hover::before {
+        opacity: 1;
       }
 
       .contributor-card:hover {
-        transform: translateY(-7px) scale(1.03);
-        box-shadow: 0 8px 25px rgba(255,71,87,0.11);
-        background: #fffbe6 !important;
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(99, 102, 241, 0.25);
+        background: linear-gradient(145deg, #ffffff, #f0f4ff) !important;
+      }
+
+      .contributor-card::after {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(114, 152, 229, 0.1) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: -1;
+      }
+
+      .contributor-card:hover::after {
+        opacity: 1;
       }
 
       .contributor-card img {
-        width: 48px;
-        height: 48px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
-        margin-bottom: 8px;
-        border: 2.5px solid #3e2723;
+        margin-bottom: 1.2rem;
+        border: 3px solid;
+        border-image: linear-gradient(135deg, #7298e5, #2f2ca0) 1;
         object-fit: cover;
-        box-shadow: 0 2px 8px rgba(33,33,33,0.11);
+        box-shadow: 0 8px 24px rgba(47, 44, 160, 0.2);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        z-index: 1;
+      }
+
+      .contributor-card:hover img {
+        transform: scale(1.1) rotateY(5deg);
+        box-shadow: 0 12px 36px rgba(47, 44, 160, 0.3);
+        border-image: linear-gradient(135deg, #4698e5, #7298e5) 1;
       }
 
       .contributor-info {
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
+        z-index: 1;
+        position: relative;
       }
 
       .contributor-username {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #3e2723;
-        margin-bottom: 2px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+        transition: color 0.3s ease;
+        letter-spacing: -0.02em;
+      }
+
+      .contributor-card:hover .contributor-username {
+        color: #2f2ca0;
+        text-shadow: 0 2px 4px rgba(47, 44, 160, 0.1);
       }
 
       .contributor-handle {
-        color: #888;
-        font-size: 0.92rem;
-        margin-bottom: 4px;
+        color: #6b7280;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .contributor-card:hover .contributor-handle {
+        color: #4b5563;
       }
 
       .contributor-contributions {
-        margin-top: 4px;
+        margin-top: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
+        background: linear-gradient(135deg, #e0e7ff, #f1f5f9);
+        padding: 0.75rem 1.5rem;
+        border-radius: 16px;
+        border: 1px solid rgba(99, 102, 241, 0.1);
+        transition: all 0.3s ease;
+        min-width: 120px;
+      }
+
+      .contributor-card:hover .contributor-contributions {
+        background: linear-gradient(135deg, #2f2ca0, #4698e5);
+        border-color: transparent;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(47, 44, 160, 0.2);
       }
 
       .contribution-number {
-        font-size: 0.87rem;
+        font-size: 1.25rem;
         font-weight: 800;
-        color: #70a1ff;
+        color: #2f2ca0;
+        transition: color 0.3s ease;
+        margin-bottom: 0.25rem;
+      }
+
+      .contributor-card:hover .contribution-number {
+        color: #ffffff;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
       }
 
       .contribution-label {
-        font-size: 0.92rem;
-        color: #888;
-        margin-top: 2px;
+        font-size: 0.75rem;
+        color: #6b7280;
+        margin-top: 0;
         text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        transition: color 0.3s ease;
+      }
+
+      .contributor-card:hover .contribution-label {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      /* Enhanced Loading State */
+      .loading-skeleton {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        border-radius: 20px;
+        min-height: 240px;
+      }
+
+      @keyframes loading {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+
+      /* Rank Badge */
+      .contributor-rank {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        z-index: 2;
+        transition: all 0.3s ease;
+      }
+
+      .contributor-card:hover .contributor-rank {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
       }
 
       .tech-stack {
@@ -931,15 +1041,79 @@
 
       /* Contributor Cards Dark Mode */
       body.dark-mode .contributor-card {
-        background: #2d3748 !important;
+        background: linear-gradient(145deg, #2d3748, #1a202c) !important;
         color: #e0e0e0 !important;
-        border: 1px solid rgba(99, 179, 237, 0.3) !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+      }
+
+      body.dark-mode .contributor-card::before {
+        background: linear-gradient(135deg, #63b3ed, #4299e1, #3182ce);
       }
 
       body.dark-mode .contributor-card:hover {
-        border-color: #63b3ed !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+        background: linear-gradient(145deg, #374151, #2d3748) !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+      }
+
+      body.dark-mode .contributor-card::after {
+        background: radial-gradient(circle, rgba(99, 179, 237, 0.15) 0%, transparent 70%);
+      }
+
+      body.dark-mode .contributor-card img {
+        border-image: linear-gradient(135deg, #63b3ed, #4299e1) 1;
+        box-shadow: 0 8px 24px rgba(99, 179, 237, 0.3);
+      }
+
+      body.dark-mode .contributor-card:hover img {
+        border-image: linear-gradient(135deg, #90cdf4, #63b3ed) 1;
+        box-shadow: 0 12px 36px rgba(99, 179, 237, 0.4);
+      }
+
+      body.dark-mode .contributor-username {
+        color: #e0e0e0 !important;
+      }
+
+      body.dark-mode .contributor-card:hover .contributor-username {
+        color: #90cdf4 !important;
+      }
+
+      body.dark-mode .contributor-handle {
+        color: #a0aec0 !important;
+      }
+
+      body.dark-mode .contributor-card:hover .contributor-handle {
+        color: #cbd5e0 !important;
+      }
+
+      body.dark-mode .contributor-contributions {
+        background: linear-gradient(135deg, rgba(99, 179, 237, 0.1), rgba(160, 174, 192, 0.1)) !important;
+        border-color: rgba(99, 179, 237, 0.2) !important;
+      }
+
+      body.dark-mode .contributor-card:hover .contributor-contributions {
+        background: linear-gradient(135deg, #4299e1, #63b3ed) !important;
+        border-color: transparent !important;
+      }
+
+      body.dark-mode .contribution-number {
+        color: #63b3ed !important;
+      }
+
+      body.dark-mode .contributor-card:hover .contribution-number {
+        color: #ffffff !important;
+      }
+
+      body.dark-mode .contribution-label {
+        color: #a0aec0 !important;
+      }
+
+      body.dark-mode .contributor-card:hover .contribution-label {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+
+      body.dark-mode .loading-skeleton {
+        background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+        background-size: 200% 100%;
       }
 
       /* Contributors Section Title Dark Mode */
@@ -1491,9 +1665,16 @@
         const contributorsContainer = document.getElementById("contributors-container");
 
         try {
-          // Show loading indicator
-          contributorsContainer.innerHTML =
-            '<div class="loading"><div class="spinner"></div><p>Loading contributors...</p></div>';
+          // Show loading indicator with enhanced skeleton
+          contributorsContainer.innerHTML = `
+            <div class="loading">
+              <div class="spinner"></div>
+              <p>Loading our amazing contributors...</p>
+            </div>
+            <div class="contributor-cards">
+              ${Array(6).fill().map(() => '<div class="loading-skeleton"></div>').join('')}
+            </div>
+          `;
 
           // Get contributors from GitHub API (simplified approach)
           const response = await fetch(
@@ -1511,12 +1692,22 @@
           if (Array.isArray(contributors) && contributors.length > 0) { 
              contributors.sort((a, b) => b.contributions - a.contributions);
           contributorsContainer.innerHTML = "";
+          
+          // Create the grid container
+          const gridContainer = document.createElement('div');
+          gridContainer.className = 'contributor-cards';
+          
           contributors.forEach((c, rank) => {
             if (c.login !== "supriya46788") {
               const contributorCard = document.createElement("div");
               contributorCard.className = "contributor-card";
+              
+              // Add rank badge for top contributors
+              const rankBadge = rank < 3 ? `<div class="contributor-rank">${rank + 1}</div>` : '';
+              
               contributorCard.innerHTML = `
-                <img src="${c.avatar_url}" alt="${c.login}" />
+                ${rankBadge}
+                <img src="${c.avatar_url}" alt="${c.login}" loading="lazy" />
                 <div class="contributor-info">
                   <div class="contributor-username">${c.login}</div>
                   <div class="contributor-handle">@${c.login}</div>
@@ -1527,9 +1718,11 @@
                 </div>
               `;
               contributorCard.onclick = () => window.open(c.html_url, '_blank');
-              contributorsContainer.appendChild(contributorCard);
+              gridContainer.appendChild(contributorCard);
             }
           });
+          
+          contributorsContainer.appendChild(gridContainer);
             console.log("Contributors loaded successfully");
           } else {
             showFallbackContributors(contributorsContainer);
@@ -1556,53 +1749,63 @@
           {
             name: "anikethta21",
             username: "anikethta21",
-            avatar: "https://via.placeholder.com/60x60/e91e63/ffffff?text=AT",
+            avatar: "https://via.placeholder.com/70x70/e91e63/ffffff?text=AT",
             contributions: "24",
             url: "https://github.com/anikethta21"
           },
           {
             name: "dev-xyz",
             username: "dev-xyz",
-            avatar: "https://via.placeholder.com/60x60/2196f3/ffffff?text=DX",
+            avatar: "https://via.placeholder.com/70x70/2196f3/ffffff?text=DX",
             contributions: "18",
             url: "https://github.com/dev-xyz"
           },
           {
             name: "codeWithAkash",
             username: "codeWithAkash",
-            avatar: "https://via.placeholder.com/60x60/4caf50/ffffff?text=CA",
+            avatar: "https://via.placeholder.com/70x70/4caf50/ffffff?text=CA",
             contributions: "12",
             url: "https://github.com/codeWithAkash"
           },
           {
             name: "WebDevPro",
             username: "WebDevPro",
-            avatar: "https://via.placeholder.com/60x60/ff9800/ffffff?text=WD",
+            avatar: "https://via.placeholder.com/70x70/ff9800/ffffff?text=WD",
             contributions: "8",
             url: "https://github.com/WebDevPro"
           },
           {
             name: "Aditya Singh",
             username: "Adez017",
-            avatar: "https://via.placeholder.com/60x60/9c27b0/ffffff?text=AS",
+            avatar: "https://via.placeholder.com/70x70/9c27b0/ffffff?text=AS",
             contributions: "5",
             url: "https://github.com/Adez017"
           },
           {
             name: "ReactMaster",
             username: "ReactMaster",
-            avatar: "https://via.placeholder.com/60x60/9c27b0/ffffff?text=RM",
+            avatar: "https://via.placeholder.com/70x70/9c27b0/ffffff?text=RM",
             contributions: "5",
             url: "https://github.com/ReactMaster"
           },
         ];
 
         container.innerHTML = "";
-        fallbackContributors.forEach((contributor) => {
+        
+        // Create the grid container
+        const gridContainer = document.createElement('div');
+        gridContainer.className = 'contributor-cards';
+        
+        fallbackContributors.forEach((contributor, index) => {
           const contributorCard = document.createElement("div");
           contributorCard.className = "contributor-card";
+          
+          // Add rank badge for top contributors
+          const rankBadge = index < 3 ? `<div class="contributor-rank">${index + 1}</div>` : '';
+          
           contributorCard.innerHTML = `
-            <img src="${contributor.avatar}" alt="${contributor.username}" />
+            ${rankBadge}
+            <img src="${contributor.avatar}" alt="${contributor.username}" loading="lazy" />
             <div class="contributor-info">
               <div class="contributor-username">${contributor.name}</div>
               <div class="contributor-handle">@${contributor.username}</div>
@@ -1613,8 +1816,10 @@
             </div>
           `;
           contributorCard.onclick = () => window.open(contributor.url, '_blank');
-          container.appendChild(contributorCard);
+          gridContainer.appendChild(contributorCard);
         });
+        
+        container.appendChild(gridContainer);
       }
 
       // Load contributors when page loads
