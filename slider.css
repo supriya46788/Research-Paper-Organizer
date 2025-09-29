@@ -132,33 +132,39 @@ header a:hover{
 
 
 /* nextPrevArrows Section  */
-.nextPrevArrows{
+.nextPrevArrows {
     position: absolute;
-    top: 80%;
-    right: 52%;
-    z-index: 100;
-    width: 300px;
-    max-width: 30%;
+    top: 50%;
+    width: 100%;
     display: flex;
-    gap: 10px;
-    align-items: center;
+    justify-content: space-between; /* prev left, next right */
+    padding: 0 20px; /* distance from edges */
+    pointer-events: auto;
+    z-index: 100;
 }
-.nextPrevArrows button{
-    width: 40px;
-    height: 40px;
+
+.nextPrevArrows button {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: #3B82F6;
+    background: rgba(56, 189, 248, 0.3); /* light sky blue, semi-transparent */
     border: none;
-    color: #fff;
-    font-family: monospace;
+    color: #fff; /* keep arrow white for contrast */
+    font-size: 24px;
     font-weight: bold;
-    transition: .5s;
     cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
 }
-.nextPrevArrows button:hover{
-    background-color: #fff;
-    color: #000;
+
+.nextPrevArrows button:hover {
+    background: rgba(255, 255, 255, 0.7); /* stronger on hover */
+    color: #3b82f6; /* primary color on hover for accent */
 }
+
 
 /* Animation Part */
 .slider .list .item:nth-child(1){
