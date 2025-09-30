@@ -11,7 +11,7 @@
     />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="landing.css" />
-
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="landing.css" />
     <link rel="stylesheet" href="css/open-source.css" />
@@ -24,6 +24,12 @@
         <i class="fas fa-book-open"></i>
         Home
       </a>
+      <!-- Hamburger div (shows only on mobile) -->
+      <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
       <div class="navbar-right-links">
         <a href="about.html" class="nav-item">About us</a>
         <a href="blog.html" class="nav-item">Blogs</a>
@@ -50,17 +56,15 @@
     <h1 class="tag-b-f-header">📚 Research Paper Organiser</h1>
 
     <!-- ===== Tag Filter ===== -->
-    <div class="tags">
-      <span class="tag" onclick="filterPapers('all')">All</span>
-      <span class="tag" onclick="filterPapers('AI')">AI</span>
-      <span class="tag" onclick="filterPapers('ML')">ML</span>
-      <span class="tag" onclick="filterPapers('NLP')">NLP</span>
-      <span class="tag" onclick="filterPapers('CV')">Computer Vision</span>
-      <span class="tag" onclick="filterPapers('Robotics')">Robotics</span>
-      <span class="tag" onclick="filterPapers('Healthcare')">Healthcare</span>
-      <span class="tag" onclick="filterPapers('DataScience')"
-        >Data Science</span
-      >
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all" onclick="filterPapers('all')">All</button>
+      <button class="filter-btn" data-filter="AI" onclick="filterPapers('AI')">AI</button>
+      <button class="filter-btn" data-filter="ML" onclick="filterPapers('ML')">ML</button>
+      <button class="filter-btn" data-filter="NLP" onclick="filterPapers('NLP')">NLP</button>
+      <button class="filter-btn" data-filter="CV" onclick="filterPapers('CV')">Computer Vision</button>
+      <button class="filter-btn" data-filter="Robotics" onclick="filterPapers('Robotics')">Robotics</button>
+      <button class="filter-btn" data-filter="Healthcare" onclick="filterPapers('Healthcare')">Healthcare</button>
+      <button class="filter-btn" data-filter="DataScience" onclick="filterPapers('DataScience')">Data Science</button>
     </div>
 
     <!-- ===== AI Tag Suggestion UI ===== -->
