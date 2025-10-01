@@ -58,11 +58,11 @@ body {
   margin-top: 1rem;
 }
 
-.auth-btn:hover {
+.auth-btn:hover:not(:disabled) {
   background: #1d4ed8;
   transform: translateY(-1px);
   font-size: 0.88rem;
-  box-shadow: 2px 2px #1d4ed8;
+  box-shadow: 0 4px 8px rgba(29, 78, 216, 0.3);
 }
 
 .auth-container {
@@ -76,6 +76,7 @@ body {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   padding: 2rem;
   width: 100%;
+  position: relative;
 }
 
 /* <=============Updated for Issue #480 =============> */
@@ -86,8 +87,8 @@ body {
   padding: 6px 10px;
   font-size: 1.2rem;
   cursor: pointer;
-  color: #d1d5db;              /* light gray text (good contrast on dark) */
-  transition: color 0.3s ease, transform 0.2s ease;
+  color: #6b7280;              /* gray text for good contrast */
+  transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease;
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -95,12 +96,13 @@ body {
 }
 
 .close-btn:hover {
-  color: #ffffff;              /* bright white on hover */
+  color: #dc2626;              /* red color on hover for visibility */
+  background-color: #fee2e2;   /* light red background for better visibility */
   transform: scale(1.1);       /* subtle hover feedback */
 }
 
 .close-btn:focus {
-  outline: 2px solid #ffffff;  /* accessibility focus */
+  outline: 2px solid #dc2626;  /* red focus outline for accessibility */
   outline-offset: 3px;
 }
 /* <=============Ended Issue #480 =============> */
@@ -596,6 +598,20 @@ body.dark-mode .auth-btn {
 body.dark-mode .auth-btn:disabled {
     background-color: #4b5563;
 }
-body.dark-mode .auth-btn:hover {
+body.dark-mode .auth-btn:hover:not(:disabled) {
   background: #2563eb;
+}
+
+/* Dark mode close button styles */
+body.dark-mode .close-btn {
+  color: #9ca3af;
+}
+
+body.dark-mode .close-btn:hover {
+  color: #ef4444;
+  background-color: #450a0a;
+}
+
+body.dark-mode .close-btn:focus {
+  outline-color: #ef4444;
 }
