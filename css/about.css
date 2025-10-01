@@ -11,7 +11,7 @@
 } */
 body {
   font-family: "Segoe UI", Tahoma, sans-serif;
-  background: #f9f9f9;
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;

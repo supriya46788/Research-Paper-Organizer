@@ -5,6 +5,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us | Research Paper Organizer</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Get in touch with the Research Paper Organizer team. We'd love to hear from you. Send us a message and we'll respond as soon as possible." />
+  <meta name="keywords"
+    content="contact research organizer, support, help, feedback, research paper tool, academic software support" />
+  <meta name="author" content="Research Paper Organizer Team" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="canonical" href="https://research-paper-organizer.vercel.app/contact.html" />
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Contact Us | Research Paper Organizer" />
+  <meta property="og:description"
+    content="Get in touch with the Research Paper Organizer team. We'd love to hear from you. Send us a message and we'll respond as soon as possible." />
+  <meta property="og:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+  <meta property="og:url" content="https://research-paper-organizer.vercel.app/contact.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Research Paper Organizer" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Contact Research Paper Organizer Team" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact Us | Research Paper Organizer" />
+  <meta name="twitter:description"
+    content="Get in touch with the Research Paper Organizer team. We'd love to hear from you. Send us a message and we'll respond as soon as possible." />
+  <meta name="twitter:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+  <meta name="twitter:image:alt" content="Contact Research Paper Organizer Team" />
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="application-name" content="Research Paper Organizer" />
+  <meta name="apple-mobile-web-app-title" content="Research Paper Organizer" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="msapplication-TileColor" content="#2563eb" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="css/contact.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -105,7 +144,7 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        position: relative;
+        /* position: relative; */
       }
 
       .navbar-right-links {
@@ -143,23 +182,30 @@
         width: 10rem;
         font-size: 1rem;
       }
-      
+
       .toast-container {
         left: 20px;
         right: 20px;
       }
-      
+
       .toast {
         max-width: 100%;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 0.9em;
+        margin-top: 4px;
+        display: block;
       }
     }
   </style>
 
-<link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
-<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
-<link rel="manifest" href="./favicon/site.webmanifest" />
-<meta name="theme-color" content="#2563eb" />
+  <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
+  <link rel="manifest" href="./favicon/site.webmanifest" />
+  <meta name="theme-color" content="#2563eb" />
 
 </head>
 
@@ -252,6 +298,7 @@
                 <i class="fas fa-user"></i>
                 Name
               </label>
+              <span id="name-error" class="error-message"></span>
             </div>
             <div class="form-group">
               <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
@@ -344,31 +391,31 @@
       const toastContainer = document.getElementById('toastContainer');
       const toast = document.createElement('div');
       toast.className = isError ? 'toast error' : 'toast';
-      
+
       toast.innerHTML = `
         <div class="toast-icon">${isError ? '⚠️' : '✓'}</div>
         <div class="toast-message">${message}</div>
         <button class="toast-close">&times;</button>
       `;
-      
+
       toastContainer.appendChild(toast);
-      
+
       // Show toast with a slight delay to allow DOM update
       setTimeout(() => {
         toast.classList.add('show');
       }, 10);
-      
+
       // Set timeout to remove toast
       setTimeout(() => {
         hideToast(toast);
       }, 5000);
-      
+
       // Add click event to close button
       toast.querySelector('.toast-close').addEventListener('click', () => {
         hideToast(toast);
       });
     }
-    
+
     function hideToast(toast) {
       toast.classList.remove('show');
       setTimeout(() => {
@@ -377,105 +424,128 @@
         }
       }, 300);
     }
-    
-    // Form submission handling
-    document.addEventListener('DOMContentLoaded', function() {
-      const contactForm = document.getElementById('contact-form');
-      
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Show loading state
-          const submitBtn = contactForm.querySelector('.submit-btn');
-          const submitText = submitBtn.querySelector('.submit-text');
-          const loadingSpinner = submitBtn.querySelector('.loading-spinner');
-          
-          submitText.classList.add('hidden');
-          loadingSpinner.classList.remove('hidden');
-          
-          // Simulate form submission (replace with your actual EmailJS code)
-          setTimeout(() => {
-            // This is where you would normally call EmailJS
-            // For demonstration, we'll assume success
-            const isSuccess = Math.random() > 0.2; // 80% success rate for demo
-            
-            if (isSuccess) {
-              showToast('Message sent successfully! We will get back to you soon.', false);
-              contactForm.reset();
-            } else {
-              showToast('Failed to send message. Please try again later.', true);
-            }
-            
-            // Reset button state
-            submitText.classList.remove('hidden');
-            loadingSpinner.classList.add('hidden');
-          }, 1500);
-        });
-      }
-    });
-    
-    function toggleMenu() {
-      const nav = document.querySelector(".navbar-right-links");
-      nav.classList.toggle("show");
+
+    // Form submission handling with validation
+document.addEventListener('DOMContentLoaded', function () {
+  const contactForm = document.getElementById('contact-form');
+  const nameField = document.getElementById("name");
+  const nameError = document.getElementById("name-error");
+  const nameRegex = /^[A-Za-z\s]+$/;
+
+  // Name validation function
+  function validateName() {
+    const nameValue = nameField.value.trim();
+    if (!nameRegex.test(nameValue)) {
+      nameError.textContent = "Name must contain only letters and spaces.";
+      nameField.classList.add("error-input"); // optional red border
+      return false; 
+    } else {
+      nameError.textContent = "";
+      nameField.classList.remove("error-input");
+      return true; 
     }
-    
-    // Back to top button 
-    document.addEventListener('DOMContentLoaded', function() {
-      const backToTop = document.getElementById("backToTop");
-      
-      if (backToTop) {
-        // Show/hide button with fade
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 100) {
-            backToTop.classList.add("show");
-          } else {
-            backToTop.classList.remove("show");
-          }
-        });
-        
-        // Smooth scroll to top
-        backToTop.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
+  }
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // ✅ Run validation before submission
+      if (!validateName()) {
+        return; // stop submission
       }
-    });
-    
-    // Dark Mode Toggle Function
-    function toggleDarkMode() {
-      const body = document.body;
-      const darkToggle = document.getElementById('darkModeToggle');
-      const icon = darkToggle.querySelector('i');
-      
-      body.classList.toggle('dark-mode');
-      
-      // Update icon
-      if (body.classList.contains('dark-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        localStorage.setItem('darkMode', 'disabled');
-      }
-    }
-    
-    // Load dark mode preference on page load
-    document.addEventListener('DOMContentLoaded', function () {
-      const darkMode = localStorage.getItem('darkMode');
-      const darkToggle = document.getElementById('darkModeToggle');
-      
-      if (darkToggle) {
-        const icon = darkToggle.querySelector('i');
-        
-        if (darkMode === 'enabled') {
-          document.body.classList.add('dark-mode');
-          icon.classList.remove('fa-moon');
-          icon.classList.add('fa-sun');
+
+      // Show loading state
+      const submitBtn = contactForm.querySelector('.submit-btn');
+      const submitText = submitBtn.querySelector('.submit-text');
+      const loadingSpinner = submitBtn.querySelector('.loading-spinner');
+
+      submitText.classList.add('hidden');
+      loadingSpinner.classList.remove('hidden');
+
+      // Simulate form submission (replace with EmailJS or backend code)
+      setTimeout(() => {
+        const isSuccess = Math.random() > 0.2; // demo purpose
+
+        if (isSuccess) {
+          showToast('Message sent successfully! We will get back to you soon.', false);
+          contactForm.reset();
+        } else {
+          showToast('Failed to send message. Please try again later.', true);
         }
+
+        // Reset button state
+        submitText.classList.remove('hidden');
+        loadingSpinner.classList.add('hidden');
+      }, 1500);
+    });
+
+    // Live validation on input
+    nameField.addEventListener("input", validateName);
+  }
+});
+
+// Toggle mobile menu
+function toggleMenu() {
+  const nav = document.querySelector(".navbar-right-links");
+  nav.classList.toggle("show");
+}
+
+// Back to top button 
+document.addEventListener('DOMContentLoaded', function () {
+  const backToTop = document.getElementById("backToTop");
+
+  if (backToTop) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
       }
     });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+});
+
+// Dark Mode Toggle Function
+function toggleDarkMode() {
+  const body = document.body;
+  const darkToggle = document.getElementById('darkModeToggle');
+  const icon = darkToggle.querySelector('i');
+
+  body.classList.toggle('dark-mode');
+
+  if (body.classList.contains('dark-mode')) {
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    icon.classList.remove('fa-sun');
+    icon.classList.add('fa-moon');
+    localStorage.setItem('darkMode', 'disabled');
+  }
+}
+
+// Load dark mode preference on page load
+document.addEventListener('DOMContentLoaded', function () {
+  const darkMode = localStorage.getItem('darkMode');
+  const darkToggle = document.getElementById('darkModeToggle');
+
+  if (darkToggle) {
+    const icon = darkToggle.querySelector('i');
+
+    if (darkMode === 'enabled') {
+      document.body.classList.add('dark-mode');
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    }
+  }
+});
+
+
   </script>
 </body>
 
