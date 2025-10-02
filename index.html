@@ -456,7 +456,7 @@
     <!-- ===== CSS ===== -->
     <style>
       #testimonials {
-        padding: 50px 20px;
+        padding: 20px 20px;
         background: #f9fafb;
         text-align: center;
         overflow: hidden;
@@ -496,6 +496,7 @@
         gap: 30px;
         animation: marquee 20s linear infinite;
         width: fit-content;
+        padding: 30px;
       }
 
       /* Pause animation on hover */
@@ -515,7 +516,7 @@
       }
 
       .testimonial-card {
-        background: white;
+        /* background: white; */
         padding: 25px;
         border-radius: 16px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -527,12 +528,16 @@
         position: relative;
         opacity: 1;
         transform: none;
+        background: linear-gradient(90deg, #e9f3fb 0%, #f0f9ff 100%);
+        /* subtle blue shade gradient */
+        border-radius: 18px;
       }
 
       .testimonial-card:hover {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        /* background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); */
+         background: linear-gradient(90deg, #e9f3fb 0%, #f0f9ff 100%);
       }
 
       .testimonial-card::before {
