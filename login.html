@@ -24,6 +24,136 @@
       href="./favicon/favicon-48x48.png"
     />
     <link rel="manifest" href="./favicon/site.webmanifest" />
+    <style>
+      /* Dark mode for login page - same as signup page */
+      
+body.dark-mode {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  color: #e4e4e4;
+}
+
+body.dark-mode .auth-card {
+  background: #1f2937;
+  box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+}
+
+body.dark-mode .auth-header h1 {
+  color: #f3f4f6;
+}
+
+body.dark-mode .auth-header p {
+  color: #9ca3af;
+}
+
+body.dark-mode .auth-header i {
+  color: #3b82f6;
+}
+
+body.dark-mode .form-group label {
+  color: #e5e7eb;
+}
+body.dark-mode .input-container input {
+  border-color: #374151;
+  color: #f3f4f6;
+}
+
+body.dark-mode .input-container input::placeholder {
+  color: #9ca3af;
+}
+
+body.dark-mode .input-container input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+body.dark-mode .input-container i,
+body.dark-mode .password-toggle {
+  color: #9ca3af;
+}
+
+body.dark-mode .password-toggle:hover {
+  color: #d1d5db;
+}
+
+
+
+body.dark-mode .checkbox-container {
+  color: #9ca3af;
+}
+
+body.dark-mode .auth-btn {
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+}
+
+body.dark-mode .auth-btn:hover {
+  background: #2563eb;
+}
+
+body.dark-mode .auth-btn:disabled {
+  background-color: #4b5563;
+}
+
+
+
+body.dark-mode .auth-divider span {
+  color: #9ca3af;
+  background: #1f2937;
+}
+
+body.dark-mode .auth-divider::before {
+  background: #374151;
+}
+
+body.dark-mode .auth-link {
+  background: #111827;
+  border-color: #374151;
+  color: #3b82f6;
+}
+
+body.dark-mode .auth-link:hover {
+  background: #374151;
+  color: #3b82f6;
+}
+body.dark-mode .google-btn{
+  background: #3b82f6;;
+  border-color: #374151;
+  color: white;
+}
+
+body.dark-mode .google-btn:hover {
+  background: #2563eb;
+}
+
+body.dark-mode .error-message {
+  color: #f87171;
+}
+
+body.dark-mode .password-strength {
+  background-color: #374151;
+}
+
+body.dark-mode .password-requirements {
+  background-color: #111827;
+  border: 1px solid #374151;
+  color: #d1d5db;
+}
+
+body.dark-mode .password-requirements p {
+  color: #f3f4f6;
+}
+
+body.dark-mode .close-btn {
+  color: #9ca3af;
+}
+
+body.dark-mode .close-btn:hover {
+  color: #ffffff;
+}
+
+    </style>
   </head>
   <body>
     <div class="auth-container">
@@ -39,7 +169,7 @@
 
         <form id="loginForm" class="auth-form">
           <div class="form-group">
-            <label for="loginEmail">Email Address</label>
+            <label for="loginEmail">Email Address <span class="required">*</span></label>
             <div class="input-container">
               <i class="fas fa-envelope"></i>
               <input
@@ -52,7 +182,7 @@
           </div>
 
           <div class="form-group">
-            <label for="loginPassword">Password</label>
+            <label for="loginPassword">Password <span class="required">*</span></label>
             <div class="input-container">
               <i class="fas fa-lock"></i>
               <input
@@ -105,5 +235,14 @@
     </div>
 
     <script type="module" src="js/auth.js"></script>
+  <script>
+window.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('darkMode') === 'enabled'){
+        document.body.classList.add('dark-mode');
+    }
+});
+</script>
+
+
   </body>
 </html>
