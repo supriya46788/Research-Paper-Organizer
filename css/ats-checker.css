@@ -1,4 +1,22 @@
 :root {
+  --bg: #aecdec;
+  --text: #111827;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --muted: #475569;
+  --glass: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode {
+  --bg: #0f1724;
+  --text: #e6eef8;
+  --card: #0b1220;
+  --accent: #60a5fa;
+  --muted: #94a3b8;
+  --glass: rgba(255, 255, 255, 0.03);
+}
+
+:root {
   --bg: #0f1724;
   --card: #0b1220;
   --accent: #60a5fa;
@@ -60,6 +78,14 @@ label {
 }
 .controls input[type="file"] {
   display: block;
+}
+
+.heading {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 700;
+  color: #000000; 
+  margin-bottom: 6px;
 }
 
 .controls {

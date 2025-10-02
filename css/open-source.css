@@ -1,9 +1,24 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f7fb;
+  margin: 0;
+  padding: 0;
+  transition: background 0.3s, color 0.3s;
+  height:100vh;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
   flex-wrap: wrap;
+   position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
 }
 .hamburger-container {
   display: none;
@@ -20,6 +35,8 @@
   background-color: #333;
   transition: 0.3s;
 }
+
+
 
 /* Responsive styles */
 @media (max-width: 768px) {
@@ -69,7 +86,6 @@
 }
 .dark-toggle {
   color:#1a1a1a;
-  background: #fff !important;
   border: none;
   cursor: pointer;
   padding: 0.6rem 1.2rem;
@@ -77,27 +93,16 @@
   transition: all 0.25s ease;
   }
 
-  .dark-toggle:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  }
-
-  body.dark-mode .navbar {
-    background: transparent;
-  }
+  .dark-mode .navbar {
+    background: rgba(17, 24, 39, 0.9);
+    border-bottom: 1px solid #374151;
+}
 
   body.dark-mode .nav-item {
-    background: linear-gradient(135deg, #4a5568, #2d3748);
+
     color: #e0e0e0;
   }
-
-  body.dark-mode .nav-item:hover {
-    background: linear-gradient(135deg, #63b3ed, #4299e1);
-    color: #1a202c;
-  }
-
-  body.dark-mode #darkModeToggle{
-  background-color: #2c2c2c  !important;   
-}
+  
 
 /* Example text inside open-source.html cards */
 
@@ -148,15 +153,7 @@ body.dark-mode .controls input {
   border: 1px solid #374151;
 }
 
-/* Alphabet Nav */
-body.dark-mode .controls button {
-  color: #f3f4f6;
-  background: #1f2937;
-  border: 1px solid #374151;
-}
-body.dark-mode .controls button:hover {
-  background: #374151;
-}
+
 
 /* Open-source Items */
 body.dark-mode .repo {
@@ -346,7 +343,7 @@ body.dark-mode .footer-bottom {
         transform: translateX(-50%);
         width: 80%;
         height: 60px;
-        background: #f8fafc;
+        background: transparent;
         border-radius: 50%;
         z-index: -1;
       }

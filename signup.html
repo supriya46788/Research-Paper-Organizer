@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/auth.css" />
 
@@ -125,6 +126,7 @@
                 <ul>
                   <li data-requirement="length">At least 8 characters</li>
                   <li data-requirement="uppercase">One uppercase letter</li>
+                  <li data-requirement="lowercase">One lowercase letter</li>
                   <li data-requirement="number">One number</li>
                   <li data-requirement="special">One special character</li>
                 </ul>
@@ -283,6 +285,16 @@
       passwordInput.addEventListener("input", () => {
         passwordStrength.style.display = "block";
       });
+
+      // darkmode.js
+
+// Apply saved dark mode preference
+window.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('darkMode') === 'enabled'){
+        document.body.classList.add('dark-mode');
+    }
+});
+
     </script>
 
     <script type="module" src="js/auth.js"></script>

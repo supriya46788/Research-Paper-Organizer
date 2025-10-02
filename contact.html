@@ -1,483 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us | Research Paper Organizer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    crossorigin="anonymous" />
-  <script>
-    (function () {
-      emailjs.init("YOUR_PUBLIC_KEY_HERE"); // Replace with your EmailJS public API key
-    })();
-  </script>
-  <style>
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .hamburger-container {
-      display: none;
-      flex-direction: column;
-      /* justify-content: center; */
-      cursor: pointer;
-      gap: 5px;
-      padding: 10px;
-    }
-
-    .hamburger-container .bar {
-      width: 25px;
-      height: 3px;
-      background-color:#3b82f6;
-      transition: 0.3s;
-    }
-
-    /* Toast notification styles */
-    .toast-container {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .toast {
-      background-color: #120697;
-      color: white;
-      padding: 16px 24px;
-      border-radius: 4px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      opacity: 0;
-      transform: translateX(100%);
-      transition: opacity 0.3s, transform 0.3s;
-      max-width: 350px;
-    }
-
-    .toast.error {
-      background-color: #f44336;
-    }
-
-    .toast.show {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .toast-icon {
-      font-size: 20px;
-    }
-
-    .toast-message {
-      flex: 1;
-    }
-
-    .toast-close {
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 768px) {
-      .hamburger-container {
-        display: flex;
-      }
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Research Paper Organizer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <script>
+      (function () {
+        emailjs.init("YOUR_PUBLIC_KEY_HERE"); // Replace with your EmailJS public API key
+      })();
+    </script>
+    <style>
       .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 1.5rem;
         flex-wrap: wrap;
-        position: relative;
       }
 
-      .navbar-right-links {
+      .hamburger-container {
         display: none;
-        position: absolute;
-        top: 70px;
-        /* adjust depending on navbar height */
-        right: 10px;
-        margin: 15px;
-        /* aligns the box to the right */
-        background-color: white;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        padding: 1rem;
         flex-direction: column;
-        gap: 0.75rem;
-        z-index: 1000;
-        width: max-content;
-        /* only as wide as content */
-        min-width: 150px;
+        /* justify-content: center; */
+        cursor: pointer;
+        gap: 5px;
+        padding: 10px;
       }
 
-      .navbar-right-links.show {
-        display: flex;
+      .hamburger-container .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #3b82f6;
+        transition: 0.3s;
       }
 
-      .nav-item {
-        display: inline-flex;
-        /* Ensures icon and text are in a row */
-        align-items: center;
-        /* Vertical centering */
-        justify-content: center;
-        padding: 1rem;
-        width: 10rem;
-        font-size: 1rem;
-      }
-      
+      /* Toast notification styles */
       .toast-container {
-        left: 20px;
+        position: fixed;
+        top: 20px;
         right: 20px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
-      
+
       .toast {
-        max-width: 100%;
+        background-color: #120697;
+        color: white;
+        padding: 16px 24px;
+        border-radius: 4px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: opacity 0.3s, transform 0.3s;
+        max-width: 350px;
       }
-    }
-  </style>
 
-<link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
-<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
-<link rel="manifest" href="./favicon/site.webmanifest" />
-<meta name="theme-color" content="#2563eb" />
+      .toast.error {
+        background-color: #f44336;
+      }
 
-</head>
+      .toast.show {
+        opacity: 1;
+        transform: translateX(0);
+      }
 
-<body>
-  <!-- Toast container -->
-  <div class="toast-container" id="toastContainer"></div>
+      .toast-icon {
+        font-size: 20px;
+      }
 
-  <div class="container">
-    <!-- Navigation -->
-    <nav class="navbar">
-      <a href="index.html" class="nav-item">
-        <i class="fas fa-book-open"></i>
-        Home
-      </a>
-      <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-      <div class="navbar-right-links">
-        <a href="about.html" class="nav-item">About us</a>
-        <a href="blog.html" class="nav-item">Blogs</a>
-        <a href="Faq.html" class="nav-item">FAQ</a>
-        <a href="contact.html" class="nav-item">Contact Us</a>
-        <a href="tools.html" class="nav-item">Tools</a>
-        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
-    </nav>
+      .toast-message {
+        flex: 1;
+      }
 
-    <!-- Hero Section -->
-    <div class="contact-hero">
-      <div class="hero-content">
-        <div class="heading">
-          <div class="hero-decoration">
-        <i class="fas fa-envelope"></i>
-      </div>
-        <h1 class="hero-title">Get in Touch</h1>
+      .toast-close {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .hamburger-container {
+          display: flex;
+        }
+
+        .navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          position: relative;
+        }
+
+        .navbar-right-links {
+          display: none;
+          position: absolute;
+          top: 70px;
+          /* adjust depending on navbar height */
+          right: 10px;
+          margin: 15px;
+          /* aligns the box to the right */
+          background-color: white;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 1rem;
+          flex-direction: column;
+          gap: 0.75rem;
+          z-index: 1000;
+          width: max-content;
+          /* only as wide as content */
+          min-width: 150px;
+        }
+
+        .navbar-right-links.show {
+          display: flex;
+        }
+
+        .nav-item {
+          display: inline-flex;
+          /* Ensures icon and text are in a row */
+          align-items: center;
+          /* Vertical centering */
+          justify-content: center;
+          padding: 1rem;
+          width: 10rem;
+          font-size: 1rem;
+        }
+
+        .toast-container {
+          left: 20px;
+          right: 20px;
+        }
+
+        .toast {
+          max-width: 100%;
+        }
+      }
+    </style>
+
+    <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="./favicon/favicon-48x48.png"
+    />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <meta name="theme-color" content="#2563eb" />
+  </head>
+
+  <body>
+    <!-- Toast container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="container">
+      <!-- Navigation -->
+      <nav class="navbar">
+        <a href="index.html" class="nav-item">
+          <i class="fas fa-book-open"></i>
+          Home
+        </a>
+        <div
+          class="hamburger-container"
+          onclick="toggleMenu()"
+          aria-label="Toggle Menu"
+        >
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
         </div>
-        <p class="hero-subtitle">We'd love to hear from you. Send us a message and we'll respond as soon as possible.
-        </p>
-      </div>
-    </div>
+        <div class="navbar-right-links">
+          <a href="about.html" class="nav-item">About us</a>
+          <a href="blog.html" class="nav-item">Blogs</a>
+          <a href="Faq.html" class="nav-item">FAQ</a>
+          <a href="contact.html" class="nav-item">Contact Us</a>
+          <a href="tools.html" class="nav-item">Tools</a>
+          <button
+            class="dark-toggle nav-item"
+            id="darkModeToggle"
+            title="Toggle Dark Mode"
+            onclick="toggleDarkMode()"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </nav>
 
-
-    <!-- Contact Section -->
-    <div class="contact-container">
-      <!-- Contact Information -->
-      <div class="contact-info">
-        <h2>Contact Information</h2>
-        <div class="info-cards">
-          <div class="info-card">
-            <div class="card-icon">
+      <!-- Hero Section -->
+      <div class="contact-hero">
+        <div class="hero-content">
+          <div class="heading">
+            <div class="hero-decoration">
               <i class="fas fa-envelope"></i>
             </div>
-            <div class="card-content">
-              <h3>Email</h3>
-              <p>research@organizer.com</p>
-            </div>
+            <h1 class="hero-title">Get in Touch</h1>
           </div>
-          <div class="info-card">
-            <div class="card-icon">
-              <i class="fas fa-clock"></i>
-            </div>
-            <div class="card-content">
-              <h3>Response Time</h3>
-              <p>Within 24 hours</p>
-            </div>
-          </div>
-          <div class="info-card">
-            <div class="card-icon">
-              <i class="fas fa-headset"></i>
-            </div>
-            <div class="card-content">
-              <h3>Support</h3>
-              <p>24/7 Online Support</p>
-            </div>
-          </div>
+          <p class="hero-subtitle">
+            We'd love to hear from you. Send us a message and we'll respond as
+            soon as possible.
+          </p>
         </div>
       </div>
 
-      <!-- Contact Form -->
-      <div class="contact-form-box">
-        <h2 class="contact-title">Send us a Message</h2>
-        <p class="contact-subtitle">Fill out the form below and we'll get back to you promptly</p>
-        <form id="contact-form" class="contact-form">
-          <div class="form-row">
-            <div class="form-group">
-              <input type="text" id="name" name="name" class="form-input" placeholder=" " required>
-              <label for="name" class="form-label">
-                <i class="fas fa-user"></i>
-                Name
-              </label>
-            </div>
-            <div class="form-group">
-              <input type="email" id="email" name="email" class="form-input" placeholder=" " required>
-              <label for="email" class="form-label">
+      <!-- Contact Section -->
+      <div class="contact-container">
+        <!-- Contact Information -->
+        <div class="contact-info">
+          <h2>Contact Information</h2>
+          <div class="info-cards">
+            <div class="info-card">
+              <div class="card-icon">
                 <i class="fas fa-envelope"></i>
-                Email
-              </label>
+              </div>
+              <div class="card-content">
+                <h3>Email</h3>
+                <p>research@organizer.com</p>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="card-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="card-content">
+                <h3>Response Time</h3>
+                <p>Within 24 hours</p>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="card-icon">
+                <i class="fas fa-headset"></i>
+              </div>
+              <div class="card-content">
+                <h3>Support</h3>
+                <p>24/7 Online Support</p>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <input type="text" id="subject" name="subject" class="form-input" placeholder=" " required>
-            <label for="subject" class="form-label">
-              <i class="fas fa-tag"></i>
-              Subject
-            </label>
-          </div>
-          <div class="form-group">
-            <textarea id="message" name="message" class="form-textarea" rows="5" placeholder=" " required></textarea>
-            <label for="message" class="form-label">
-              <i class="fas fa-comment"></i>
-              Message
-            </label>
-          </div>
-          <button type="submit" class="submit-btn">
-            <span class="submit-text">
-              <i class="fas fa-paper-plane"></i>
-              Send Message
-            </span>
-            <span class="loading-spinner hidden"><i class="fas fa-spinner fa-spin"></i></span>
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- Back to Top Button -->
-  <button id="backToTop">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-  <!-- Footer -->
-  <footer class="modern-footer" aria-label="Footer">
-    <div class="footer-top">
-      <div class="footer-brand footer-card">
-        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
-      </div>
+        </div>
 
-      <div class="footer-links-section footer-card">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-          <li>
-            <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Connect</h4>
-        <div class="social-icons">
-          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <!-- Contact Form -->
+        <div class="contact-form-box">
+          <h2 class="contact-title">Send us a Message</h2>
+          <p class="contact-subtitle">
+            Fill out the form below and we'll get back to you promptly
+          </p>
+          <form id="contact-form" class="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="form-input"
+                  placeholder=" "
+                  required
+                />
+                <label for="name" class="form-label">
+                  <i class="fas fa-user"></i>
+                  Name
+                </label>
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  placeholder=" "
+                  required
+                />
+                <label for="email" class="form-label">
+                  <i class="fas fa-envelope"></i>
+                  Email
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                class="form-input"
+                placeholder=" "
+                required
+              />
+              <label for="subject" class="form-label">
+                <i class="fas fa-tag"></i>
+                Subject
+              </label>
+            </div>
+            <div class="form-group">
+              <textarea
+                id="message"
+                name="message"
+                class="form-textarea"
+                rows="5"
+                placeholder=" "
+                required
+              ></textarea>
+              <label for="message" class="form-label">
+                <i class="fas fa-comment"></i>
+                Message
+              </label>
+            </div>
+            <button type="submit" class="submit-btn">
+              <span class="submit-text">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+              </span>
+              <span class="loading-spinner hidden"
+                ><i class="fas fa-spinner fa-spin"></i
+              ></span>
+            </button>
+          </form>
         </div>
       </div>
     </div>
+    <!-- Back to Top Button -->
+    <button id="backToTop">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+    <!-- Footer -->
+    <footer class="modern-footer" aria-label="Footer">
+      <div class="footer-top">
+        <div class="footer-brand footer-card">
+          <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
+          <p style="margin-top: 20px">
+            Organize, track, and manage your research papers seamlessly.
+          </p>
+        </div>
 
-    <div class="footer-bottom">
-      © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-    </div>
+        <div class="footer-links-section footer-card">
+          <h4>Quick Links</h4>
+          <ul>
+            <li>
+              <a href="index.html"><i class="fas fa-home"></i>Home</a>
+            </li>
+            <li>
+              <a href="about.html"><i class="fas fa-users"></i>About Us</a>
+            </li>
+            <li>
+              <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
+            </li>
+            <li>
+              <a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
+            </li>
+          </ul>
+        </div>
 
-  </footer>
+        <div class="footer-links-section footer-card">
+          <h4>Resources</h4>
+          <ul>
+            <li>
+              <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
+            </li>
+            <li>
+              <a href="glossary.html"><i class="fas fa-book"></i>Glossary</a>
+            </li>
+            <li>
+              <a href="open-source.html"
+                ><i class="fas fa-code-branch"></i>Open Source</a
+              >
+            </li>
+            <li>
+              <a href="Tag-Based-filtering.html"
+                ><i class="fas fa-book"></i>Tag Based Filtering</a
+              >
+            </li>
+          </ul>
+        </div>
 
-  <script>
-    // Toast notification functions
-    function showToast(message, isError = false) {
-      const toastContainer = document.getElementById('toastContainer');
-      const toast = document.createElement('div');
-      toast.className = isError ? 'toast error' : 'toast';
-      
-      toast.innerHTML = `
-        <div class="toast-icon">${isError ? '⚠️' : '✓'}</div>
+        <div class="footer-links-section footer-card">
+          <h4>Connect</h4>
+          <div class="social-icons">
+            <a
+              href="https://github.com/supriya46788"
+              target="_blank"
+              title="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/supriyapandey595"
+              target="_blank"
+              title="LinkedIn"
+              class="linkedin-icon"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:supriyadpandey502@gmail.com" title="Email"
+              ><i class="fas fa-envelope"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © 2025 Research Paper Organizer | Made with
+        <span class="heart">&hearts;</span> for researchers worldwide
+      </div>
+    </footer>
+
+    <script>
+      // Toast notification functions
+      function showToast(message, isError = false) {
+        const toastContainer = document.getElementById("toastContainer");
+        const toast = document.createElement("div");
+        toast.className = isError ? "toast error" : "toast";
+
+        toast.innerHTML = `
+        <div class="toast-icon">${isError ? "⚠️" : "✓"}</div>
         <div class="toast-message">${message}</div>
         <button class="toast-close">&times;</button>
       `;
-      
-      toastContainer.appendChild(toast);
-      
-      // Show toast with a slight delay to allow DOM update
-      setTimeout(() => {
-        toast.classList.add('show');
-      }, 10);
-      
-      // Set timeout to remove toast
-      setTimeout(() => {
-        hideToast(toast);
-      }, 5000);
-      
-      // Add click event to close button
-      toast.querySelector('.toast-close').addEventListener('click', () => {
-        hideToast(toast);
-      });
-    }
-    
-    function hideToast(toast) {
-      toast.classList.remove('show');
-      setTimeout(() => {
-        if (toast.parentNode) {
-          toast.parentNode.removeChild(toast);
-        }
-      }, 300);
-    }
-    
-    // Form submission handling
-    document.addEventListener('DOMContentLoaded', function() {
-      const contactForm = document.getElementById('contact-form');
-      
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Show loading state
-          const submitBtn = contactForm.querySelector('.submit-btn');
-          const submitText = submitBtn.querySelector('.submit-text');
-          const loadingSpinner = submitBtn.querySelector('.loading-spinner');
-          
-          submitText.classList.add('hidden');
-          loadingSpinner.classList.remove('hidden');
-          
-          // Simulate form submission (replace with your actual EmailJS code)
-          setTimeout(() => {
-            // This is where you would normally call EmailJS
-            // For demonstration, we'll assume success
-            const isSuccess = Math.random() > 0.2; // 80% success rate for demo
-            
-            if (isSuccess) {
-              showToast('Message sent successfully! We will get back to you soon.', false);
-              contactForm.reset();
-            } else {
-              showToast('Failed to send message. Please try again later.', true);
-            }
-            
-            // Reset button state
-            submitText.classList.remove('hidden');
-            loadingSpinner.classList.add('hidden');
-          }, 1500);
-        });
-      }
-    });
-    
-    function toggleMenu() {
-      const nav = document.querySelector(".navbar-right-links");
-      nav.classList.toggle("show");
-    }
-    
-    // Back to top button 
-    document.addEventListener('DOMContentLoaded', function() {
-      const backToTop = document.getElementById("backToTop");
-      
-      if (backToTop) {
-        // Show/hide button with fade
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 100) {
-            backToTop.classList.add("show");
-          } else {
-            backToTop.classList.remove("show");
-          }
-        });
-        
-        // Smooth scroll to top
-        backToTop.addEventListener("click", () => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-      }
-    });
-    
-    // Dark Mode Toggle Function
-    function toggleDarkMode() {
-      const body = document.body;
-      const darkToggle = document.getElementById('darkModeToggle');
-      const icon = darkToggle.querySelector('i');
-      
-      body.classList.toggle('dark-mode');
-      
-      // Update icon
-      if (body.classList.contains('dark-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        localStorage.setItem('darkMode', 'disabled');
-      }
-    }
-    
-    // Load dark mode preference on page load
-    document.addEventListener('DOMContentLoaded', function () {
-      const darkMode = localStorage.getItem('darkMode');
-      const darkToggle = document.getElementById('darkModeToggle');
-      
-      if (darkToggle) {
-        const icon = darkToggle.querySelector('i');
-        
-        if (darkMode === 'enabled') {
-          document.body.classList.add('dark-mode');
-          icon.classList.remove('fa-moon');
-          icon.classList.add('fa-sun');
-        }
-      }
-    });
-  </script>
-</body>
 
+        toastContainer.appendChild(toast);
+
+        // Show toast with a slight delay to allow DOM update
+        setTimeout(() => {
+          toast.classList.add("show");
+        }, 10);
+
+        // Set timeout to remove toast
+        setTimeout(() => {
+          hideToast(toast);
+        }, 5000);
+
+        // Add click event to close button
+        toast.querySelector(".toast-close").addEventListener("click", () => {
+          hideToast(toast);
+        });
+      }
+
+      function hideToast(toast) {
+        toast.classList.remove("show");
+        setTimeout(() => {
+          if (toast.parentNode) {
+            toast.parentNode.removeChild(toast);
+          }
+        }, 300);
+      }
+
+      // Form submission handling
+      document.addEventListener("DOMContentLoaded", function () {
+        const contactForm = document.getElementById("contact-form");
+
+        if (contactForm) {
+          contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Show loading state
+            const submitBtn = contactForm.querySelector(".submit-btn");
+            const submitText = submitBtn.querySelector(".submit-text");
+            const loadingSpinner = submitBtn.querySelector(".loading-spinner");
+
+            submitText.classList.add("hidden");
+            loadingSpinner.classList.remove("hidden");
+
+            // Simulate form submission (replace with your actual EmailJS code)
+            setTimeout(() => {
+              // This is where you would normally call EmailJS
+              // For demonstration, we'll assume success
+              const isSuccess = Math.random() > 0.2; // 80% success rate for demo
+
+              if (isSuccess) {
+                showToast(
+                  "Message sent successfully! We will get back to you soon.",
+                  false
+                );
+                contactForm.reset();
+              } else {
+                showToast(
+                  "Failed to send message. Please try again later.",
+                  true
+                );
+              }
+
+              // Reset button state
+              submitText.classList.remove("hidden");
+              loadingSpinner.classList.add("hidden");
+            }, 1500);
+          });
+        }
+      });
+
+      function toggleMenu() {
+        const nav = document.querySelector(".navbar-right-links");
+        nav.classList.toggle("show");
+      }
+
+      // Back to top button
+      document.addEventListener("DOMContentLoaded", function () {
+        const backToTop = document.getElementById("backToTop");
+
+        if (backToTop) {
+          // Show/hide button with fade
+          window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+              backToTop.classList.add("show");
+            } else {
+              backToTop.classList.remove("show");
+            }
+          });
+
+          // Smooth scroll to top
+          backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          });
+        }
+      });
+
+      // Dark Mode Toggle Function
+      function toggleDarkMode() {
+        const body = document.body;
+        const darkToggle = document.getElementById("darkModeToggle");
+        const icon = darkToggle.querySelector("i");
+
+        body.classList.toggle("dark-mode");
+
+        // Update icon
+        if (body.classList.contains("dark-mode")) {
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+          localStorage.setItem("darkMode", "disabled");
+        }
+      }
+
+      // Load dark mode preference on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        const darkMode = localStorage.getItem("darkMode");
+        const darkToggle = document.getElementById("darkModeToggle");
+
+        if (darkToggle) {
+          const icon = darkToggle.querySelector("i");
+
+          if (darkMode === "enabled") {
+            document.body.classList.add("dark-mode");
+            icon.classList.remove("fa-moon");
+            icon.classList.add("fa-sun");
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
