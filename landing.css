@@ -1589,3 +1589,12 @@ body.dark-mode .footer-section a:hover {
 .step:hover {
   transform: translateY(-5px);
 }
+.feature-card.slide-left,
+    .feature-card.slide-right {
+      background: rgba(135, 206, 250, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid #1e90ff; /* Solid blue border */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 30px rgba(135, 206, 250, 0.1);
+    }
