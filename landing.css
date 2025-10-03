@@ -1573,3 +1573,19 @@ body.dark-mode .footer-section a {
 body.dark-mode .footer-section a:hover {
   color: #3b82f6;
 }
+.step {
+  background: rgba(135, 206, 250, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid #1e90ff;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(135, 206, 250, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
