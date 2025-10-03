@@ -396,10 +396,19 @@
         visibility: visible !important;
       }
 
-      .contributor-card:hover {
-        transform: translateY(-7px) scale(1.03);
-        box-shadow: 0 8px 25px rgba(255,71,87,0.11);
-        background: #fffbe6 !important;
+     .contributor-card:hover {
+        transform: translateY(-4px) scale(1.02);
+
+        /* Theme-colored border */
+        border: 1.8px solid #667eea;
+
+        /* Soft, smooth emboss/glow effect */
+        box-shadow: 
+          0 4px 12px rgba(102, 126, 234, 0.25), /* soft theme glow */
+          inset 0 2px 6px rgba(255, 255, 255, 0.2); /* subtle inner highlight */
+
+        /* Keep background transparent */
+        background: transparent !important;
       }
 
       .contributor-card img {
