@@ -1,0 +1,78 @@
+/* ---- Strong reset & enforced circular FAB ---- */
+#feedbackFab,
+#feedbackFab * {
+  box-sizing: border-box !important;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+}
+
+/* remove possible pseudo-element backgrounds */
+#feedbackFab::before,
+#feedbackFab::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* fixed circular FAB on the right-middle */
+#feedbackFab {
+  position: fixed !important;
+  top: 50% !important;
+  right: 20px !important;
+  left: auto !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+
+  width: 48px !important;
+  height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  padding: 0 !important;
+
+  border-radius: 50% !important;
+  background-color: #3B82F6 !important;
+  color: #fff !important;
+  border: none !important;
+  cursor: pointer !important;
+  z-index: 10001 !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+}
+
+/* hover / focus behaviour */
+#feedbackFab:hover {
+  transform: translateY(-50%) scale(1.05) !important;
+  background-color: #fff !important;
+  color: #000 !important;
+}
+#feedbackFab:focus {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+/* mobile: slightly larger touch target but still centered-right */
+@media (max-width: 600px) {
+  #feedbackFab,
+  #feedbackFab * {
+    width: 56px !important;
+    height: 56px !important;
+    max-width: 56px !important;
+    max-height: 56px !important;
+  }
+  #feedbackFab {
+    right: 14px !important;
+    top: 65% !important;
+    transform: translateY(-50%) !important;
+  }
+}
