@@ -52,9 +52,12 @@
 
 /* hover / focus behaviour */
 #feedbackFab:hover {
-  transform: translateY(-50%) scale(1.05) !important;
-  background-color: #fff !important;
+  transform: scale(1.1) !important;
+  background-color: #007bff !important;
+  opacity: 0.9;
   color: #000 !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 #feedbackFab:focus {
   outline: 2px solid #2563eb !important;
@@ -65,14 +68,16 @@
 @media (max-width: 600px) {
   #feedbackFab,
   #feedbackFab * {
-    width: 56px !important;
-    height: 56px !important;
-    max-width: 56px !important;
-    max-height: 56px !important;
+    width: 48px !important;
+    height: 48px !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
   }
   #feedbackFab {
-    right: 14px !important;
-    top: 65% !important;
-    transform: translateY(-50%) !important;
+    bottom: 20px !important;
+    left: 20px !important;
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
   }
 }
