@@ -1,44 +1,40 @@
 /* ---- Strong reset & enforced circular FAB ---- */
 #feedbackFab,
 #feedbackFab * {
-  box-sizing: border-box !important;
-  width: 48px !important;
-  height: 48px !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-  max-width: 48px !important;
-  max-height: 48px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  white-space: nowrap !important;
-  overflow: visible !important;
+    box-sizing: border-box !important;
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
 }
 
 /* remove possible pseudo-element backgrounds */
 #feedbackFab::before,
 #feedbackFab::after {
-  content: none !important;
-  display: none !important;
+    content: none !important;
+    display: none !important;
 }
 
-/* fixed circular FAB on the right-middle */
+/* fixed circular FAB on the right-bottom */
 #feedbackFab {
   position: fixed !important;
-  top: auto !important;
-  right: auto !important;
-  left: 20px !important;
-  bottom: 20px !important;
+  bottom: 80px !important; /* slightly above Scroll to Top button */
+  right: 20px !important;  /* move to right edge */
+  left: auto !important;    /* remove left positioning */
+  top: auto !important;     /* remove top positioning */
   transform: none !important;
 
   width: 48px !important;
   height: 48px !important;
-  max-width: 48px !important;
-  max-height: 48px !important;
-  padding: 0 !important;
-
   border-radius: 50% !important;
   background-color: #3B82F6 !important;
   color: #fff !important;
@@ -52,27 +48,30 @@
 
 /* hover / focus behaviour */
 #feedbackFab:hover {
-  transform: translateY(-50%) scale(1.05) !important;
-  background-color: #fff !important;
-  color: #000 !important;
-}
-#feedbackFab:focus {
-  outline: 2px solid #2563eb !important;
-  outline-offset: 2px !important;
+    transform: translateY(-50%) scale(1.05) !important;
+    background-color: #fff !important;
+    color: #000 !important;
 }
 
-/* mobile: slightly larger touch target but still centered-right */
+#feedbackFab:focus {
+    outline: 2px solid #2563eb !important;
+    outline-offset: 2px !important;
+}
+
+/* mobile: keep bottom-right */
 @media (max-width: 600px) {
   #feedbackFab,
   #feedbackFab * {
-    width: 56px !important;
-    height: 56px !important;
-    max-width: 56px !important;
-    max-height: 56px !important;
+    width: 50px !important;
+    height: 50px !important;
+    max-width: 50px !important;
+    max-height: 50px !important;
   }
   #feedbackFab {
-    right: 14px !important;
-    top: 65% !important;
-    transform: translateY(-50%) !important;
+    right: 19px !important;
+    bottom: 80px !important; /* same distance from bottom */
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
   }
 }
