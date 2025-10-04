@@ -27,11 +27,11 @@
 /* fixed circular FAB on the right-middle */
 #feedbackFab {
   position: fixed !important;
-  top: 50% !important;
-  right: 20px !important;
-  left: auto !important;
-  bottom: auto !important;
-  transform: translateY(-50%) !important;
+  top: auto !important;
+  right: auto !important;
+  left: 20px !important;
+  bottom: 20px !important;
+  transform: none !important;
 
   width: 48px !important;
   height: 48px !important;
