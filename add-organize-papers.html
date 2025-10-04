@@ -8,6 +8,7 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="./css/add-organize-papers.css" />
+  <link rel="stylesheet" href="./css/advanced-features.css" />
   <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
 
     <link
@@ -62,6 +63,42 @@
       <div class="tag">NLP</div>
       <div class="tag">Healthcare</div>
     </div>
+  </section>
+
+  <!-- Advanced Features Section -->
+  <section class="advanced-features">
+    <h2>🚀 Advanced Research Tools</h2>
+    <div class="features-nav">
+      <button onclick="showClusterView()" class="feature-btn">📊 Paper Clustering</button>
+      <button onclick="showTrendDashboard()" class="feature-btn">📈 Trend Analysis</button>
+      <button onclick="showMetricsDashboard()" class="feature-btn">📋 Research Metrics</button>
+      <button onclick="showCitationNetwork()" class="feature-btn">🔗 Citation Network</button>
+      <button onclick="showCollaborationHub()" class="feature-btn">👥 Collaboration</button>
+      <button onclick="showExpertMatching()" class="feature-btn">🎯 Expert Matching</button>
+      <button onclick="showImpactDashboard()" class="feature-btn">⚡ Impact Predictor</button>
+    </div>
+    
+    <!-- Feature Containers -->
+    <div id="clusterView" class="feature-container hidden"></div>
+    <div id="networkView" class="feature-container hidden"></div>
+    <div id="trendDashboard" class="feature-container hidden"></div>
+    <div id="metricsDashboard" class="feature-container hidden"></div>
+    <div id="citationNetwork" class="feature-container hidden"></div>
+    <div id="collaborationHub" class="feature-container hidden"></div>
+    <div id="expertMatching" class="feature-container hidden"></div>
+    <div id="impactDashboard" class="feature-container hidden"></div>
+    
+    <!-- Modal Containers -->
+    <div id="goalModal" class="modal-overlay hidden"></div>
+    <div id="createSpaceModal" class="modal-overlay hidden"></div>
+    <div id="readingInterface" class="modal-overlay hidden"></div>
+    <div id="sessionResults" class="modal-overlay hidden"></div>
+    <div id="relatedPapers" class="feature-container hidden"></div>
+    <div id="gapSuggestions" class="feature-container hidden"></div>
+    <div id="citationPath" class="feature-container hidden"></div>
+    <div id="spaceView" class="feature-container hidden"></div>
+    <div id="collaborativePaper" class="feature-container hidden"></div>
+    <div id="impactDetails" class="feature-container hidden"></div>
   </section>
 
   <script>
@@ -134,6 +171,71 @@
       } else {
         localStorage.setItem('darkMode', 'disabled');
       }
+    });
+  </script>
+
+  <!-- Advanced Features Scripts -->
+  <script src="js/clustering.js"></script>
+  <script src="js/trend-analysis.js"></script>
+  <script src="js/reading-assistant.js"></script>
+  <script src="js/impact-predictor.js"></script>
+  <script src="js/research-metrics.js"></script>
+  <script src="js/cross-reference.js"></script>
+  <script src="js/collaboration-hub.js"></script>
+  <script src="js/expert-matching.js"></script>
+  
+  <script>
+    // Initialize with sample data for demo
+    const papers = [
+      {
+        id: 1,
+        title: "Attention Is All You Need",
+        authors: "Vaswani, A., Shazeer, N., Parmar, N., et al.",
+        year: 2017,
+        topic: "Machine Learning",
+        tags: ["transformers", "attention", "nlp"],
+        abstract: "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms.",
+        rating: 5,
+        isFavorite: true
+      },
+      {
+        id: 2,
+        title: "BERT: Pre-training of Deep Bidirectional Transformers",
+        authors: "Devlin, J., Chang, M. W., Lee, K., Toutanova, K.",
+        year: 2018,
+        topic: "Machine Learning",
+        tags: ["bert", "pre-training", "bidirectional"],
+        abstract: "We introduce BERT, which stands for Bidirectional Encoder Representations from Transformers.",
+        rating: 4,
+        isFavorite: false
+      }
+    ];
+    
+    // Feature navigation
+    function hideAllFeatures() {
+      document.querySelectorAll('.feature-container').forEach(container => {
+        container.classList.add('hidden');
+      });
+    }
+    
+    // Update feature buttons to hide others when showing new feature
+    const originalShowFunctions = {
+      showClusterView: window.showClusterView,
+      showTrendDashboard: window.showTrendDashboard,
+      showMetricsDashboard: window.showMetricsDashboard,
+      showCitationNetwork: window.showCitationNetwork,
+      showCollaborationHub: window.showCollaborationHub,
+      showExpertMatching: window.showExpertMatching,
+      showImpactDashboard: window.showImpactDashboard
+    };
+    
+    Object.keys(originalShowFunctions).forEach(funcName => {
+      window[funcName] = function() {
+        hideAllFeatures();
+        if (originalShowFunctions[funcName]) {
+          originalShowFunctions[funcName]();
+        }
+      };
     });
   </script>
 
