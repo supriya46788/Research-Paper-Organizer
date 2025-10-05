@@ -266,6 +266,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="./css/force-dark-override.css" />
 </head>
 
 <body>
@@ -287,9 +288,7 @@
         <a href="Faq.html" class="nav-item">FAQ</a>
         <a href="contact.html" class="nav-item">Contact Us</a>
         <a href="tools.html" class="nav-item">Tools</a>
-        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-          <i class="fas fa-moon"></i>
-        </button>
+        
       </div>
     </nav>
 
@@ -517,65 +516,7 @@
 
   <script>
     // Dark mode toggle function
-    function toggleDarkMode() {
-      const body = document.body;
-      const darkModeToggle = document.getElementById('darkModeToggle');
-      const icon = darkModeToggle.querySelector('i');
-      
-      body.classList.toggle('dark-mode');
-      
-      if (body.classList.contains('dark-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        localStorage.setItem('darkMode', 'disabled');
-      }
-    }
-
-    // Apply saved theme on page load
-    function applyThemeFromStorage() {
-      const darkMode = localStorage.getItem('darkMode');
-      const body = document.body;
-      const darkModeToggle = document.getElementById('darkModeToggle');
-      const icon = darkModeToggle.querySelector('i');
-      
-      if (darkMode === 'enabled') {
-        body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      } else {
-        body.classList.remove('dark-mode');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-      }
-    }
-
-    // Mobile menu toggle
-    function toggleMenu() {
-      const navbarRightLinks = document.querySelector('.navbar-right-links');
-      navbarRightLinks.classList.toggle('show');
-    }
-
-    // Back to top functionality
-    function setupBackToTop() {
-      const backToTop = document.getElementById('backToTop');
-      
-      window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-          backToTop.style.display = 'block';
-        } else {
-          backToTop.style.display = 'none';
-        }
-      });
-      
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+    );
       });
     }
 
