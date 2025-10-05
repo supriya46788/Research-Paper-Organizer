@@ -4,11 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Papers Page</title>
+  <title>🤖 AI Research Command Center | Smart Paper Analytics</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="./css/add-organize-papers.css" />
   <link rel="stylesheet" href="./css/advanced-features.css" />
+  <link rel="stylesheet" href="./css/enhanced-ui.css" />
+  <link rel="stylesheet" href="./css/enhanced-ui-additions.css" />
+  <link rel="stylesheet" href="./css/new-color-theme.css" />
+  <link rel="stylesheet" href="./css/center-align.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
 
     <link
@@ -23,6 +30,91 @@
       href="./favicon/favicon-48x48.png"
     />
     <link rel="manifest" href="./favicon/site.webmanifest" />
+  <style>
+    /* Inline test styles to ensure styling works */
+    body {
+      background: linear-gradient(135deg, #0f0f23 0%, #1a0033 50%, #000000 100%) !important;
+      color: #00ffff !important;
+      font-family: 'Inter', sans-serif !important;
+    }
+    
+    .add-section, .organize-section, .advanced-features {
+      background: rgba(0, 0, 0, 0.4) !important;
+      border: 1px solid rgba(0, 255, 255, 0.3) !important;
+      border-radius: 20px !important;
+      padding: 2rem !important;
+      margin: 2rem auto !important;
+      max-width: 1200px !important;
+      text-align: center !important;
+      box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1) !important;
+    }
+    
+    h2 {
+      background: linear-gradient(135deg, #00ffff 0%, #ff00ff 50%, #00ff7f 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      text-align: center !important;
+      font-size: 2.5rem !important;
+      margin-bottom: 1rem !important;
+    }
+    
+    .feature-btn {
+      background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%) !important;
+      color: white !important;
+      border: none !important;
+      padding: 1.5rem 2rem !important;
+      border-radius: 16px !important;
+      margin: 0.5rem !important;
+      cursor: pointer !important;
+      font-size: 1.1rem !important;
+      transition: all 0.3s ease !important;
+    }
+    
+    .feature-btn:hover {
+      transform: translateY(-5px) scale(1.02) !important;
+    }
+    
+    .upload-box {
+      background: rgba(0, 0, 0, 0.3) !important;
+      border: 2px dashed rgba(0, 255, 127, 0.6) !important;
+      border-radius: 16px !important;
+      padding: 3rem !important;
+      margin: 0 auto !important;
+      max-width: 600px !important;
+    }
+    
+    .search input {
+      background: rgba(0, 0, 0, 0.5) !important;
+      border: 2px solid rgba(0, 255, 255, 0.3) !important;
+      color: #00ffff !important;
+      padding: 16px 24px !important;
+      border-radius: 50px !important;
+      width: 100% !important;
+      max-width: 600px !important;
+    }
+    
+    .tag {
+      background: linear-gradient(135deg, rgba(255, 0, 110, 0.8), rgba(131, 56, 236, 0.8)) !important;
+      color: white !important;
+      padding: 8px 16px !important;
+      border-radius: 20px !important;
+      margin: 4px !important;
+      cursor: pointer !important;
+    }
+    
+    .features-nav {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+      gap: 1rem !important;
+      margin: 2rem 0 !important;
+    }
+    
+    .hidden {
+      display: none !important;
+    }
+  </style>
+  <link rel="stylesheet" href="./css/force-dark-override.css" />
 </head>
 
 <body>
@@ -67,15 +159,16 @@
 
   <!-- Advanced Features Section -->
   <section class="advanced-features">
-    <h2>🚀 Advanced Research Tools</h2>
+    <h2>🤖 AI Research Command Center</h2>
+    <p class="features-subtitle">✨ Next-Gen Analytics • Smart Clustering • Predictive Insights ✨</p>
     <div class="features-nav">
-      <button onclick="showClusterView()" class="feature-btn">📊 Paper Clustering</button>
-      <button onclick="showTrendDashboard()" class="feature-btn">📈 Trend Analysis</button>
-      <button onclick="showMetricsDashboard()" class="feature-btn">📋 Research Metrics</button>
-      <button onclick="showCitationNetwork()" class="feature-btn">🔗 Citation Network</button>
-      <button onclick="showCollaborationHub()" class="feature-btn">👥 Collaboration</button>
-      <button onclick="showExpertMatching()" class="feature-btn">🎯 Expert Matching</button>
-      <button onclick="showImpactDashboard()" class="feature-btn">⚡ Impact Predictor</button>
+      <button onclick="showClusterView()" class="feature-btn">🤖 Smart Clustering</button>
+      <button onclick="showTrendDashboard()" class="feature-btn">🔮 Trend Prophet</button>
+      <button onclick="showMetricsDashboard()" class="feature-btn">📈 Performance Analytics</button>
+      <button onclick="showCitationNetwork()" class="feature-btn">🌐 Knowledge Graph</button>
+      <button onclick="showCollaborationHub()" class="feature-btn">🚀 Team Workspace</button>
+      <button onclick="showExpertMatching()" class="feature-btn">🎆 Expert Finder</button>
+      <button onclick="showImpactDashboard()" class="feature-btn">⚡ Impact AI</button>
     </div>
     
     <!-- Feature Containers -->
@@ -154,25 +247,7 @@
       });
     });
   </script>
-  <script>
-    const toggleBtn = document.getElementById('darkModeToggle');
 
-    // Check if user has a saved preference
-    if (localStorage.getItem('darkMode') === 'enabled') {
-      document.body.classList.add('dark-mode');
-    }
-
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-
-      // Save preference
-      if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        localStorage.setItem('darkMode', 'disabled');
-      }
-    });
-  </script>
 
   <!-- Advanced Features Scripts -->
   <script src="js/clustering.js"></script>
