@@ -39,7 +39,8 @@
   <meta name="format-detection" content="telephone=no" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="msapplication-TileColor" content="#2563eb" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="./css/global-cyberpunk-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- SweetAlert2 CDN -->
    
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -666,6 +667,7 @@ body.dark-mode .copy-btn:hover {
 }
   </style>
   
+  <link rel="stylesheet" href="./css/force-dark-override.css" />
 </head>
 
 <body>
@@ -696,9 +698,7 @@ body.dark-mode .copy-btn:hover {
 
         <!-- Right side buttons -->
         <div class="header-buttons">
-          <button class="dark-toggle" id="darkModeToggle" title="Toggle Dark Mode">
-            <i class="fas fa-moon"></i>
-          </button>
+          
 
           <button class="add-btn" onclick="showAddForm()">
             <i class="fas fa-plus"></i>
@@ -1339,22 +1339,9 @@ button#chatbase-bubble-button svg {
     }
 
     /* Dark mode toggle styles */
-    .dark-toggle {
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      padding: 8px;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-    }
+    
 
-    .dark-toggle:hover {
-      transform: scale(1.1);
-    }
+    
 
     /* Dark mode styles */
     body.dark-mode {
