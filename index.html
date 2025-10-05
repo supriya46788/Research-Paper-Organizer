@@ -45,7 +45,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
+    <link rel="stylesheet" href="./css/global-cyberpunk-theme.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/advanced-features.css" />
     <link rel="stylesheet" href="landing.css" />
     <link rel="stylesheet" href="slider.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -72,7 +74,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       crossorigin="anonymous"
     />
-  </head>
+    <link rel="stylesheet" href="./css/force-dark-override.css" />
+</head>
   <script>
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
@@ -125,14 +128,7 @@
           >
             Get Started
           </button>
-          <!-- Add dark mode toggle here -->
-          <button
-            class="dark-toggle nav-item"
-            id="darkModeToggle"
-            title="Toggle Dark Mode"
-          >
-            <i class="fas fa-moon"></i>
-          </button>
+
         </div>
       </div>
     </nav>
@@ -1300,24 +1296,7 @@ marquee.addEventListener("mouseleave", () => {
         border-top-color: rgba(224, 224, 224, 0.1);
       }
 
-      /* Dark mode toggle styles */
-      .dark-toggle {
-        background:  linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-        border: none;
-        color: inherit;
-        cursor: pointer;
-        padding: 8px;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s ease;
-      }
 
-      .dark-toggle:hover {
-        transform: scale(1.1);
-        background:#3b82f6 ;
-      }
 
       /* Dark mode styles */
       body.dark-mode {
@@ -1491,6 +1470,14 @@ marquee.addEventListener("mouseleave", () => {
       </div>
     </footer>
 
+    <script src="js/clustering.js"></script>
+    <script src="js/trend-analysis.js"></script>
+    <script src="js/reading-assistant.js"></script>
+    <script src="js/impact-predictor.js"></script>
+    <script src="js/research-metrics.js"></script>
+    <script src="js/cross-reference.js"></script>
+    <script src="js/collaboration-hub.js"></script>
+    <script src="js/expert-matching.js"></script>
     <script src="landing.js"></script>
 
     <script>
@@ -1712,42 +1699,7 @@ marquee.addEventListener("mouseleave", () => {
         });
       });
     </script>
-    <script>
-      // Dark mode functionality
-      document.addEventListener("DOMContentLoaded", () => {
-        const darkModeToggle = document.getElementById("darkModeToggle");
-        const icon = darkModeToggle.querySelector("i");
-        const navLinks = document.querySelector(".nav-links");
 
-        function updateNavLinksBackground() {
-          if (document.body.classList.contains("dark-mode")) {
-            navLinks.style.backgroundColor = "#1e293b";
-          } else {
-            navLinks.style.backgroundColor = "white";
-          }
-        }
-
-        // Check for saved dark mode preference
-        if (localStorage.getItem("darkMode") === "enabled") {
-          document.body.classList.add("dark-mode");
-          icon.classList.replace("fa-moon", "fa-sun");
-          updateNavLinksBackground();
-        }
-
-        darkModeToggle.addEventListener("click", () => {
-          document.body.classList.toggle("dark-mode");
-
-          // Update icon and save preference
-          if (document.body.classList.contains("dark-mode")) {
-            icon.classList.replace("fa-moon", "fa-sun");
-            localStorage.setItem("darkMode", "enabled");
-          } else {
-            icon.classList.replace("fa-sun", "fa-moon");
-            localStorage.setItem("darkMode", "disabled");
-          }
-          updateNavLinksBackground();
-        });
-      });
     </script>
     <script>
       function openSidebar() {
@@ -1758,13 +1710,7 @@ marquee.addEventListener("mouseleave", () => {
         document.getElementById("sidebar").style.width = "0";
       }
 
-      const toggleDarkMode = () => {
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem(
-        'darkMode',
-        document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled'
-    );
-};
+
 
     </script>
 
