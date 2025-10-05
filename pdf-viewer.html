@@ -27,6 +27,7 @@
       href="./favicon/favicon-48x48.png"
     />
     <link rel="manifest" href="./favicon/site.webmanifest" />
+  <link rel="stylesheet" href="./css/force-dark-override.css" />
 </head>
 <body>
     <div class="container">
@@ -43,9 +44,7 @@
                 <a href="Faq.html" class="nav-item">FAQ</a>
                 <a href="contact.html" class="nav-item">Contact Us</a>
                 <a href="tools.html" class="nav-item">Tools</a>
-                <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-                    <i class="fas fa-moon"></i>
-                </button>
+                
             </div>
         </nav>
 
@@ -229,36 +228,8 @@
     <script>
         // Dark Mode Toggle Function
         function toggleDarkMode() {
-            const body = document.body;
-            const darkToggle = document.getElementById('darkModeToggle');
-            const icon = darkToggle.querySelector('i');
+            const body = document.body;}
             
-            body.classList.toggle('dark-mode');
-            
-            // Update icon
-            if (body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                localStorage.setItem('darkMode', 'disabled');
-            }
-        }
-
-        // Load dark mode preference on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const darkMode = localStorage.getItem('darkMode');
-            const darkToggle = document.getElementById('darkModeToggle');
-            const icon = darkToggle.querySelector('i');
-            
-            if (darkMode === 'enabled') {
-                document.body.classList.add('dark-mode');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-        });
     </script>
 </body>
 </html>
