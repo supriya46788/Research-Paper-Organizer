@@ -1,0 +1,193 @@
+/* New Color Theme - Cyberpunk Neon */
+
+/* Override existing colors with cyberpunk theme */
+body {
+  background: linear-gradient(135deg, #0f0f23 0%, #1a0033 50%, #000000 100%) !important;
+}
+
+/* Neon particle background */
+body::before {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(0, 255, 127, 0.2) 0%, transparent 50%) !important;
+}
+
+/* Glass containers with neon glow */
+.add-section, .organize-section, .advanced-features {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Neon text gradients */
+h2 {
+  background: linear-gradient(135deg, #00ffff 0%, #ff00ff 50%, #00ff7f 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.5)) !important;
+}
+
+/* Neon feature buttons */
+.feature-btn {
+  background: linear-gradient(135deg, #ff006e 0%, #8338ec 50%, #3a86ff 100%) !important;
+  box-shadow: 0 6px 20px rgba(255, 0, 110, 0.4), 0 0 20px rgba(131, 56, 236, 0.2) !important;
+  border: 1px solid rgba(255, 0, 110, 0.5) !important;
+}
+
+.feature-btn:hover {
+  box-shadow: 0 12px 35px rgba(255, 0, 110, 0.6), 0 0 30px rgba(131, 56, 236, 0.4) !important;
+  transform: translateY(-5px) scale(1.02) !important;
+}
+
+/* Upload box neon styling */
+.upload-box {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 2px dashed rgba(0, 255, 127, 0.6) !important;
+  box-shadow: 0 0 20px rgba(0, 255, 127, 0.2) !important;
+}
+
+.upload-box:hover {
+  border-color: rgba(0, 255, 127, 0.9) !important;
+  box-shadow: 0 0 30px rgba(0, 255, 127, 0.4) !important;
+}
+
+.upload-box label {
+  background: linear-gradient(135deg, #00ff7f 0%, #00ffff 100%) !important;
+  color: #000 !important;
+  box-shadow: 0 4px 15px rgba(0, 255, 127, 0.4) !important;
+}
+
+.upload-box label:hover {
+  box-shadow: 0 8px 25px rgba(0, 255, 127, 0.6) !important;
+}
+
+/* Search input neon glow */
+.search input {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border: 2px solid rgba(0, 255, 255, 0.3) !important;
+  color: #00ffff !important;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2) !important;
+}
+
+.search input:focus {
+  border-color: rgba(0, 255, 255, 0.8) !important;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.4) !important;
+}
+
+.search input::placeholder {
+  color: rgba(0, 255, 255, 0.6) !important;
+}
+
+/* Neon tags */
+.tag {
+  background: linear-gradient(135deg, rgba(255, 0, 110, 0.8), rgba(131, 56, 236, 0.8)) !important;
+  box-shadow: 0 2px 10px rgba(255, 0, 110, 0.3), 0 0 15px rgba(131, 56, 236, 0.2) !important;
+  border: 1px solid rgba(255, 0, 110, 0.4) !important;
+}
+
+.tag:hover {
+  box-shadow: 0 6px 20px rgba(255, 0, 110, 0.5), 0 0 25px rgba(131, 56, 236, 0.4) !important;
+}
+
+/* File items with neon accents */
+.file-item {
+  background: rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(0, 255, 255, 0.2) !important;
+  color: #00ffff !important;
+}
+
+.file-item:hover {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border-color: rgba(0, 255, 255, 0.5) !important;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3) !important;
+}
+
+.preview-btn {
+  background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%) !important;
+  box-shadow: 0 4px 15px rgba(255, 0, 110, 0.3) !important;
+}
+
+.preview-btn:hover {
+  box-shadow: 0 8px 25px rgba(255, 0, 110, 0.5) !important;
+}
+
+/* Feature containers with neon borders */
+.feature-container {
+  background: rgba(0, 0, 0, 0.6) !important;
+  border: 1px solid rgba(0, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 255, 0.1) !important;
+}
+
+/* Modal styling */
+.modal-overlay {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.modal-content {
+  background: rgba(0, 0, 0, 0.9) !important;
+  border: 2px solid rgba(0, 255, 255, 0.4) !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 255, 255, 0.2) !important;
+  color: #00ffff !important;
+}
+
+/* Form elements neon styling */
+input, textarea, select {
+  background: rgba(0, 0, 0, 0.7) !important;
+  border: 2px solid rgba(0, 255, 255, 0.3) !important;
+  color: #00ffff !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: rgba(0, 255, 255, 0.8) !important;
+  box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.2), 0 0 15px rgba(0, 255, 255, 0.3) !important;
+}
+
+input::placeholder, textarea::placeholder {
+  color: rgba(0, 255, 255, 0.5) !important;
+}
+
+/* Button styling */
+button:not(.feature-btn):not(.preview-btn) {
+  background: linear-gradient(135deg, #ff006e 0%, #8338ec 100%) !important;
+  box-shadow: 0 4px 15px rgba(255, 0, 110, 0.3) !important;
+}
+
+button:not(.feature-btn):not(.preview-btn):hover {
+  box-shadow: 0 8px 25px rgba(255, 0, 110, 0.5) !important;
+}
+
+/* Features subtitle */
+.features-subtitle {
+  color: rgba(0, 255, 255, 0.9) !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+}
+
+/* Text colors */
+p, span, div {
+  color: rgba(0, 255, 255, 0.8) !important;
+}
+
+/* Dark mode overrides */
+body.dark-mode {
+  background: linear-gradient(135deg, #000000 0%, #1a0033 50%, #0f0f23 100%) !important;
+}
+
+body.dark-mode .add-section,
+body.dark-mode .organize-section,
+body.dark-mode .advanced-features {
+  background: rgba(0, 0, 0, 0.7) !important;
+  border-color: rgba(255, 0, 255, 0.4) !important;
+}
+
+body.dark-mode .search input {
+  background: rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(255, 0, 255, 0.4) !important;
+  color: #ff00ff !important;
+}
+
+body.dark-mode .features-subtitle {
+  color: rgba(255, 0, 255, 0.9) !important;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.5) !important;
+}

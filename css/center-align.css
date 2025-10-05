@@ -1,0 +1,90 @@
+/* Center Alignment Styles */
+
+/* Center all sections */
+.add-section, .organize-section, .advanced-features {
+  text-align: center !important;
+  max-width: 1200px !important;
+  margin: 2rem auto !important;
+}
+
+/* Center headings */
+h2 {
+  text-align: center !important;
+}
+
+/* Center paragraphs */
+p {
+  text-align: center !important;
+  max-width: 800px !important;
+  margin: 0 auto 1rem auto !important;
+}
+
+/* Center upload box */
+.upload-box {
+  margin: 0 auto !important;
+  max-width: 600px !important;
+}
+
+/* Center search input */
+.search {
+  max-width: 600px !important;
+  margin: 0 auto !important;
+}
+
+/* Center tags */
+.tags {
+  justify-content: center !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+}
+
+/* Center features navigation */
+.features-nav {
+  justify-content: center !important;
+  max-width: 1000px !important;
+  margin: 0 auto !important;
+}
+
+/* Center features subtitle */
+.features-subtitle {
+  text-align: center !important;
+  max-width: 600px !important;
+  margin: 0 auto 2rem auto !important;
+}
+
+/* Center file list */
+.file-list {
+  max-width: 800px !important;
+  margin: 0 auto !important;
+}
+
+/* Center feature containers */
+.feature-container {
+  max-width: 1200px !important;
+  margin: 2rem auto !important;
+}
+
+/* Center modal content */
+.modal-content {
+  margin: 0 auto !important;
+}
+
+/* Center body content */
+body {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  min-height: 100vh !important;
+}
+
+/* Responsive centering */
+@media (max-width: 768px) {
+  .add-section, .organize-section, .advanced-features {
+    max-width: 95% !important;
+    margin: 1rem auto !important;
+  }
+  
+  .upload-box, .search {
+    max-width: 100% !important;
+  }
+}
