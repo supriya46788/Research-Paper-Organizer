@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="./css/force-dark-override.css" />
 </head>
 <body>
     <div class="container">
@@ -27,9 +28,7 @@
                 <a href="Faq.html" class="nav-item">FAQ</a>
                 <a href="contact.html" class="nav-item">Contact Us</a>
                 <a href="tools.html" class="nav-item">Tools</a>
-                <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-                    <i class="fas fa-moon"></i>
-                </button>
+                
             </div>
         </nav>
 
@@ -236,14 +235,8 @@
       resultsEl.innerHTML = `<div><strong>Word count:</strong> ${wordCount}</div>`;
     });
 
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-      if (document.body.classList.contains("dark-mode")) {
-        localStorage.setItem("theme", "dark");
-      } else {
-        localStorage.setItem("theme", "light");
-      }
-    }
+
+    
     window.onload = function () {
       const savedTheme = localStorage.getItem("theme");
       if (savedTheme === "dark") {
