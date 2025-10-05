@@ -490,6 +490,7 @@
 <link rel="manifest" href="./favicon/site.webmanifest" />
 <meta name="theme-color" content="#2563eb" />
 
+  <link rel="stylesheet" href="./css/force-dark-override.css" />
 </head>
 <body>
   <div class="container">
@@ -505,9 +506,7 @@
         <a href="blog.html" class="nav-item" role="menuitem">Blogs</a>
         <a href="Faq.html" class="nav-item" role="menuitem">FAQ</a>
         <a href="contact.html" class="nav-item" role="menuitem">Contact Us</a>
-        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" aria-pressed="false">
-          <i class="fas fa-moon" aria-hidden="true"></i><span class="sr-only">Toggle dark mode</span>
-        </button>
+        
       </div>
     </nav>
 
@@ -728,35 +727,7 @@
   <script>
     // Dark mode functionality
     (function() {
-      const darkModeToggle = document.getElementById('darkModeToggle');
-      const body = document.body;
       
-      // Check for saved dark mode preference or default to light mode
-      const isDarkMode = localStorage.getItem('darkMode') === 'true';
-      
-      if (isDarkMode) {
-        body.classList.add('dark-mode');
-        darkModeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-        darkModeToggle.setAttribute('aria-pressed', 'true');
-      }
-      
-      darkModeToggle.addEventListener('click', function() {
-        body.classList.toggle('dark-mode');
-        const isNowDark = body.classList.contains('dark-mode');
-        
-        // Update icon
-        const icon = this.querySelector('i');
-        if (isNowDark) {
-          icon.classList.replace('fa-moon', 'fa-sun');
-          this.setAttribute('aria-pressed', 'true');
-        } else {
-          icon.classList.replace('fa-sun', 'fa-moon');
-          this.setAttribute('aria-pressed', 'false');
-        }
-        
-        // Save preference
-        localStorage.setItem('darkMode', isNowDark);
-      });
     })();
 
     // Back to top button functionality
