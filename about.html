@@ -43,6 +43,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link rel="stylesheet" href="./css/global-cyberpunk-theme.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/about.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
@@ -1067,7 +1068,8 @@
     />
     <link rel="manifest" href="./favicon/site.webmanifest" />
     <meta name="theme-color" content="#2563eb" />
-  </head>
+    <link rel="stylesheet" href="./css/force-dark-override.css" />
+</head>
   <body>
     <div class="container">
       <!-- Navigation -->
@@ -1100,15 +1102,7 @@
           <a href="Faq.html" class="nav-item" role="menuitem">FAQ</a>
           <a href="contact.html" class="nav-item" role="menuitem">Contact Us</a>
           <a href="tools.html" class="nav-item">Tools</a>
-          <button
-            class="dark-toggle nav-item"
-            id="darkModeToggle"
-            title="Toggle Dark Mode"
-            aria-pressed="false"
-          >
-            <i class="fas fa-moon" aria-hidden="true"></i
-            ><span class="sr-only">Toggle dark mode</span>
-          </button>
+          
         </div>
       </nav>
 
@@ -1427,36 +1421,7 @@
 
       // Dark mode functionality
       (function () {
-        const darkModeToggle = document.getElementById("darkModeToggle");
-        const body = document.body;
-
-        // Check for saved dark mode preference or default to light mode
-        const isDarkMode = localStorage.getItem("darkMode") === "enabled";
-
-        if (isDarkMode) {
-          body.classList.add("dark-mode");
-          darkModeToggle
-            .querySelector("i")
-            .classList.replace("fa-moon", "fa-sun");
-          darkModeToggle.setAttribute("aria-pressed", "true");
-        }
-
-        darkModeToggle.addEventListener("click", function () {
-          body.classList.toggle("dark-mode");
-          const isNowDark = body.classList.contains("dark-mode");
-
-          // Update icon
-          const icon = this.querySelector("i");
-          if (isNowDark) {
-            icon.classList.replace("fa-moon", "fa-sun");
-            this.setAttribute("aria-pressed", "true");
-            localStorage.setItem("darkMode", "enabled");
-          } else {
-            icon.classList.replace("fa-sun", "fa-moon");
-            this.setAttribute("aria-pressed", "false");
-            localStorage.setItem("darkMode", "disabled");
-          }
-        });
+        
       })();
 
       // Back to top button functionality
