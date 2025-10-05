@@ -54,16 +54,8 @@
         color: var(--dark);
       }
 
-      .dark-toggle {
-        font-size: 1.3rem;
-        cursor: pointer;
-        color: var(--primary);
-        margin-left: 1rem;
-        transition: transform 0.3s ease;
-      }
-      .dark-toggle:hover {
-        transform: rotate(20deg);
-      }
+      
+      
 
       /* Navbar Dark Mode */
       body.dark-mode .landing-nav {
@@ -550,7 +542,8 @@
         }
       }
     </style>
-  </head>
+    <link rel="stylesheet" href="./css/force-dark-override.css" />
+</head>
   <body>
     <!-- Navbar -->
     <nav class="landing-nav">
@@ -568,9 +561,7 @@
           </button>
         </div>
         <div class="mobile-menu-toggle"><i class="fas fa-bars"></i></div>
-        <div class="dark-toggle" id="darkToggle">
-          <i class="fas fa-moon"></i>
-        </div>
+        
       </div>
     </nav>
 
@@ -771,18 +762,7 @@
       });
 
       // Dark mode toggle
-      const darkToggle = document.getElementById("darkToggle");
-      darkToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-
-        // Change icon
-        const icon = darkToggle.querySelector("i");
-        if (document.body.classList.contains("dark-mode")) {
-          icon.classList.replace("fa-moon", "fa-sun");
-        } else {
-          icon.classList.replace("fa-sun", "fa-moon");
-        }
-      });
+      
     </script>
   </body>
 </html>
