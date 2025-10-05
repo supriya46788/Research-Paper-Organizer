@@ -1,1524 +1,1227 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us | Research Paper Organizer</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Learn about Research Paper Organizer - a clean, minimal web-based tool for organizing academic research papers. Built with HTML, CSS, and JavaScript for researchers worldwide." />
-    <meta name="keywords" content="about research organizer, academic tools, research management, open source, research paper tool, academic software" />
-    <meta name="author" content="Research Paper Organizer Team" />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#2563eb" />
-    <link rel="canonical" href="https://research-paper-organizer.vercel.app/about.html" />
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="About Us | Research Paper Organizer" />
-    <meta property="og:description" content="Learn about Research Paper Organizer - a clean, minimal web-based tool for organizing academic research papers. Built with HTML, CSS, and JavaScript for researchers worldwide." />
-    <meta property="og:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
-    <meta property="og:url" content="https://research-paper-organizer.vercel.app/about.html" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Research Paper Organizer" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="About Research Paper Organizer Team" />
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="About Us | Research Paper Organizer" />
-    <meta name="twitter:description" content="Learn about Research Paper Organizer - a clean, minimal web-based tool for organizing academic research papers. Built with HTML, CSS, and JavaScript for researchers worldwide." />
-    <meta name="twitter:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
-    <meta name="twitter:image:alt" content="About Research Paper Organizer Team" />
-    
-    <!-- Additional SEO Meta Tags -->
-    <meta name="application-name" content="Research Paper Organizer" />
-    <meta name="apple-mobile-web-app-title" content="Research Paper Organizer" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="msapplication-TileColor" content="#2563eb" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/about.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <style>
-      /* Hamburger div style */
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Research Paper Organizer</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Learn about Research Paper Organizer - a clean, minimal web-based tool for organizing academic research papers. Built with HTML, CSS, and JavaScript for researchers worldwide." />
+  <meta name="keywords"
+    content="about research organizer, academic tools, research management, open source, research paper tool, academic software" />
+  <meta name="author" content="Research Paper Organizer Team" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="canonical" href="https://research-paper-organizer.vercel.app/about.html" />
+  <link rel="stylesheet" href="/css/footer.css">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="About Us | Research Paper Organizer" />
+  <meta property="og:description"
+    content="Learn about Research Paper Organizer - a clean, minimal web-based tool for organizing academic research papers. Built with HTML, CSS, and JavaScript for researchers worldwide." />
+  <meta property="og:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+  <meta property="og:url" content="https://research-paper-organizer.vercel.app/about.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Research Paper Organizer" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="About Research Paper Organizer Team" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Us | Research Paper Organizer" />
+  <meta name="twitter:description"
+    content="Learn about Research Paper Organizer - a clean, minimal web-based tool for organizing academic research papers. Built with HTML, CSS, and JavaScript for researchers worldwide." />
+  <meta name="twitter:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+  <meta name="twitter:image:alt" content="About Research Paper Organizer Team" />
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="application-name" content="Research Paper Organizer" />
+  <meta name="apple-mobile-web-app-title" content="Research Paper Organizer" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="msapplication-TileColor" content="#2563eb" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/about.css" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <style>
+    /* Hamburger div style */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hamburger-container {
+      display: none;
+      flex-direction: column;
+      /* justify-content: center; */
+      cursor: pointer;
+      gap: 5px;
+      padding: 10px;
+    }
+
+    .hamburger-container .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      transition: 0.3s;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .hamburger-container {
+        display: flex;
+      }
+
       .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5rem;
         flex-wrap: wrap;
+        /* position: relative; */
       }
-      .hamburger-container {
-        display: none;
+
+      .navbar-right-links {
+        display: none !important;
+        position: absolute;
+        top: 70px;
+        /* adjust depending on navbar height */
+        right: 10px;
+        margin: 15px;
+        /* aligns the box to the right */
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
         flex-direction: column;
-        /* justify-content: center; */
-        cursor: pointer;
-        gap: 5px;
-        padding: 10px;
-      }
-
-      .hamburger-container .bar {
-        width: 25px;
-        height: 3px;
-        background-color: #333;
-        transition: 0.3s;
-      }
-
-      /* Responsive styles */
-      @media (max-width: 768px) {
-        .hamburger-container {
-          display: flex;
-        }
-
-        .navbar {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          flex-wrap: wrap;
-          /* position: relative; */
-        }
-
-        .navbar-right-links {
-          display: none !important;
-          position: absolute;
-          top: 70px; /* adjust depending on navbar height */
-          right: 10px;
-          margin: 15px; /* aligns the box to the right */
-          background-color: white;
-          border: 1px solid #ddd;
-          border-radius: 10px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          padding: 1rem;
-          flex-direction: column;
-          gap: 0.75rem;
-          z-index: 1000;
-          width: max-content; /* only as wide as content */
-          min-width: 150px;
-        }
-
-
-        .navbar-right-links.show {
-          display: flex !important;
-        }
-
-        .nav-item {
-          display: inline-flex; /* Ensures icon and text are in a row */
-          align-items: center; /* Vertical centering */
-          justify-content: center;
-          padding: 1rem;
-          width: 10rem;
-          font-size: 1rem;
-        }
-      }
-
-      /* About page specific styles */
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        border: 0;
-      }
-
-      .about-header {
-        background-color: #7298e5;
-        border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
-        padding: 3rem 2rem;
-        margin-bottom: 2rem;
-        text-align: center;
-        color: white;
-      }
-
-      .about-header h1 {
-        font-size: clamp(2.5rem, 5vw, 3.5rem);
-        font-weight: 700;
-        margin-bottom: 1rem;
-      }
-
-      .about-header .tagline {
-        font-size: clamp(1rem, 2vw, 1.2rem);
-        opacity: 0.9;
-      }
-
-      .section {
-        margin-bottom: 3rem;
-      }
-
-      .section h2 {
-        font-size: clamp(1.8rem, 3vw, 2.2rem);
-        margin-bottom: 1.5rem;
-        color: #1f2937;
-        display: flex;
-        align-items: center;
         gap: 0.75rem;
+        z-index: 1000;
+        width: max-content;
+        /* only as wide as content */
+        min-width: 150px;
       }
 
-      .section h2 i {
-        color: #2f2ca0;
+
+      .navbar-right-links.show {
+        display: flex !important;
       }
 
-      .card {
-        background: white;
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
-        transition: all 0.3s ease;
-        border: 1px solid rgba(99, 102, 241, 0.1);
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
-      }
-
-      .card p {
-        font-size: 1.1rem;
-        color: #565656;
-        line-height: 1.7;
-        margin-bottom: 1rem;
-      }
-
-      .card p:last-child {
-        margin-bottom: 0;
-      }
-
-      .team-admin {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 3rem;
-      }
-
-      .admin-card {
-        background: white;
-        border-radius: 20px;
-        padding: 2.5rem;
-        text-align: center;
-        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
-        transition: all 0.3s ease;
-        max-width: 400px;
-        border: 2px solid #2f2ca0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .admin-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(135deg, #2f2ca0, #4698e5);
-      }
-
-      .admin-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
-      }
-
-      .team-photo {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        margin-bottom: 1.5rem;
-        border: 3px solid #2f2ca0;
-        object-fit: cover;
-        transition: all 0.3s ease;
-      }
-
-      .team-photo:hover {
-        transform: scale(1.05);
-      }
-
-      .admin-card h3 {
-        font-size: 1.4rem;
-        margin-bottom: 0.5rem;
-        color: #1f2937;
-      }
-
-      .team-role {
-        color: #6b7280;
-        margin-bottom: 1.5rem;
-        font-size: 1rem;
-      }
-
-      /* FIXED: Social Links Spacing */
-      .social-links {
-        display: flex;
-        justify-content: center;
-        gap: 1.2rem;
-        flex-wrap: wrap;
-        margin-top: 0.5rem;
-      }
-
-      .social-links a {
-        color: #6b7280;
-        text-decoration: none;
-        padding: 0.8rem 1.5rem;
-        border-radius: 25px;
-        background: #f8fafc;
-        transition: all 0.3s ease;
-        display: flex;
+      .nav-item {
+        display: inline-flex;
+        /* Ensures icon and text are in a row */
         align-items: center;
-        gap: 0.8rem;
-        font-size: 0.95rem;
-        font-weight: 500;
-        min-width: fit-content;
-        white-space: nowrap;
-        border: 1px solid #e5e7eb;
-      }
-
-      .social-links a:hover {
-        background: #2f2ca0;
-        color: white;
-        transform: translateY(-2px);
-        border-color: #2f2ca0;
-        box-shadow: 0 4px 12px rgba(47, 44, 160, 0.3);
-      }
-
-      .social-links a i {
+        /* Vertical centering */
+        justify-content: center;
+        padding: 1rem;
+        width: 10rem;
         font-size: 1rem;
-        flex-shrink: 0;
+      }
+    }
+
+    /* About page specific styles */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .about-header {
+      background-color: #7298e5;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+      padding: 3rem 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .about-header h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .about-header .tagline {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      opacity: 0.9;
+    }
+
+    .section {
+      margin-bottom: 3rem;
+    }
+
+    .section h2 {
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      margin-bottom: 1.5rem;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section h2 i {
+      color: #2f2ca0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      color: #565656;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .team-admin {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+
+    .admin-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.15);
+      transition: all 0.3s ease;
+      max-width: 400px;
+      border: 2px solid #2f2ca0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .admin-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(135deg, #2f2ca0, #4698e5);
+    }
+
+    .admin-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(99, 102, 241, 0.25);
+    }
+
+    .team-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+      border: 3px solid #2f2ca0;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .team-photo:hover {
+      transform: scale(1.05);
+    }
+
+    .admin-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: #1f2937;
+    }
+
+    .team-role {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    /* FIXED: Social Links Spacing */
+    /* .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    } */
+
+    /* .social-links a {
+      color: #6b7280;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      background: #f8fafc;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      min-width: fit-content;
+      white-space: nowrap;
+      border: 1px solid #e5e7eb;
+    } */
+
+    /* .social-links a:hover {
+      background: #2f2ca0;
+      color: white;
+      transform: translateY(-2px);
+      border-color: #2f2ca0;
+      box-shadow: 0 4px 12px rgba(47, 44, 160, 0.3);
+    }
+
+    .social-links a i {
+      font-size: 1rem;
+      flex-shrink: 0;
+    } */
+
+    .contributor-cards {
+      display: flex !important;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 26px;
+      margin-top: 6px;
+      visibility: visible !important;
+    }
+
+    @media (max-width: 900px) {
+      .contributor-cards {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contributor-cards {
+        gap: 7px;
+        margin-top: 1px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .contributors {
+        padding: 15px;
       }
 
       .contributor-cards {
-        display: flex !important;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 26px;
-        margin-top: 6px;
-        visibility: visible !important;
-      }
-
-      @media (max-width: 900px) {
-        .contributor-cards {
-          gap: 14px;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .contributor-cards {
-          gap: 7px;
-          margin-top: 1px;
-        }
-      }
-
-      @media (max-width: 900px) {
-        .contributors {
-          padding: 15px;
-        }
-        .contributor-cards {
-          gap: 14px;
-        }
-        .contributor-card {
-          width: 130px;
-          min-height: 110px;
-          padding: 8px 7px;
-        }
-      }
-
-      @media (max-width: 600px) {
-        .contributors {
-          margin: 22px auto;
-          padding: 7px;
-        }
-        .contributors-title {
-          font-size: 1.1rem;
-        }
-        .contributor-cards {
-          gap: 7px;
-          margin-top: 1px;
-        }
-        .contributor-card {
-          width: 95px;
-          min-height: 90px;
-          padding: 3px 2px;
-        }
-      }
-
-      .contributors-section {
-        display: block !important;
-        visibility: visible !important;
-        margin-top: 3rem;
-      }
-
-      .contributors-title {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-
-      .contributors-title h3 {
-        color: #1f2937;
-        margin-bottom: 0.5rem;
-        font-size: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-
-      .contributors-title p {
-        color: #6b7280;
-        font-size: 0.95rem;
-      }
-
-      #contributorsContainer {
-        display: block !important;
-        visibility: visible !important;
-        min-height: 200px;
+        gap: 14px;
       }
 
       .contributor-card {
-        background: #f5f6fa !important;
-        border-radius: 15px;
-        padding: 14px 14px;
-        width: 180px;
-        display: flex !important;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 0 4px 14px rgba(59,71,87,0.09);
-        border: 1.5px solid #e0e6ef;
-        transition: transform 0.23s, box-shadow 0.23s;
-        cursor: pointer;
-        min-height: 140px;
-        position: relative;
-        visibility: visible !important;
+        width: 130px;
+        min-height: 110px;
+        padding: 8px 7px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .contributors {
+        margin: 22px auto;
+        padding: 7px;
       }
 
-     .contributor-card:hover {
-        transform: translateY(-4px) scale(1.02);
-
-        /* Theme-colored border */
-        border: 1.8px solid #667eea;
-
-        /* Soft, smooth emboss/glow effect */
-        box-shadow: 
-          0 4px 12px rgba(102, 126, 234, 0.25), /* soft theme glow */
-          inset 0 2px 6px rgba(255, 255, 255, 0.2); /* subtle inner highlight */
-
-        /* Keep background transparent */
-        background: transparent !important;
+      .contributors-title {
+        font-size: 1.1rem;
       }
 
-      .contributor-card img {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        margin-bottom: 8px;
-        border: 2.5px solid #3e2723;
-        object-fit: cover;
-        box-shadow: 0 2px 8px rgba(33,33,33,0.11);
+      .contributor-cards {
+        gap: 7px;
+        margin-top: 1px;
       }
 
-      .contributor-info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      .contributor-card {
+        width: 95px;
+        min-height: 90px;
+        padding: 3px 2px;
+      }
+    }
+
+    .contributors-section {
+      display: block !important;
+      visibility: visible !important;
+      margin-top: 3rem;
+    }
+
+    .contributors-title {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .contributors-title h3 {
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .contributors-title p {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    #contributorsContainer {
+      display: block !important;
+      visibility: visible !important;
+      min-height: 200px;
+    }
+
+    .contributor-card {
+      background: #f5f6fa !important;
+      border-radius: 15px;
+      padding: 14px 14px;
+      width: 180px;
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 14px rgba(59, 71, 87, 0.09);
+      border: 1.5px solid #e0e6ef;
+      transition: transform 0.23s, box-shadow 0.23s;
+      cursor: pointer;
+      min-height: 140px;
+      position: relative;
+      visibility: visible !important;
+    }
+
+    .contributor-card:hover {
+      transform: translateY(-4px) scale(1.02);
+
+      /* Theme-colored border */
+      border: 1.8px solid #667eea;
+
+      /* Soft, smooth emboss/glow effect */
+      box-shadow:
+        0 4px 12px rgba(102, 126, 234, 0.25),
+        /* soft theme glow */
+        inset 0 2px 6px rgba(255, 255, 255, 0.2);
+      /* subtle inner highlight */
+
+      /* Keep background transparent */
+      background: transparent !important;
+    }
+
+    .contributor-card img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      margin-bottom: 8px;
+      border: 2.5px solid #3e2723;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(33, 33, 33, 0.11);
+    }
+
+    .contributor-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contributor-username {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #3e2723;
+      margin-bottom: 2px;
+    }
+
+    .contributor-handle {
+      color: #888;
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+
+    .contributor-contributions {
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .contribution-number {
+      font-size: 0.87rem;
+      font-weight: 800;
+      color: #70a1ff;
+    }
+
+    .contribution-label {
+      font-size: 0.92rem;
+      color: #888;
+      margin-top: 2px;
+      text-transform: uppercase;
+    }
+
+    .tech-stack {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .tech-item {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.1);
+    }
+
+    .tech-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+      border-color: #2f2ca0;
+    }
+
+    .tech-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #2f2ca0;
+    }
+
+    .tech-item h3 {
+      margin-bottom: 0.5rem;
+      color: #1f2937;
+    }
+
+    .tech-item p {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .contribution-list p {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      padding: 0.75rem;
+      background: #f8fafc;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .contribution-list p:hover {
+      background: #e0e7ff;
+    }
+
+    .contribution-list i {
+      margin-right: 0.75rem;
+      width: 20px;
+      color: #2f2ca0;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 4rem 0;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #e0e7ff;
+      border-top: 3px solid #2f2ca0;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 1.5rem;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
       }
 
-      .contributor-username {
-        font-size: 1rem;
-        font-weight: 600;
-        color: #3e2723;
-        margin-bottom: 2px;
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-header {
+        padding: 2rem 1rem;
       }
 
-      .contributor-handle {
-        color: #888;
-        font-size: 0.92rem;
-        margin-bottom: 4px;
+      .card {
+        padding: 1.5rem;
       }
 
-      .contributor-contributions {
-        margin-top: 4px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      .admin-card {
+        padding: 2rem 1.5rem;
       }
 
-      .contribution-number {
-        font-size: 0.87rem;
-        font-weight: 800;
-        color: #70a1ff;
-      }
-
-      .contribution-label {
-        font-size: 0.92rem;
-        color: #888;
-        margin-top: 2px;
-        text-transform: uppercase;
-      }
 
       .tech-stack {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
-      }
-
-      .tech-item {
-        background: white;
-        border-radius: 16px;
-        padding: 2rem;
-        text-align: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.1);
-        border: 1px solid rgba(99, 102, 241, 0.1);
-      }
-
-      .tech-item:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
-        border-color: #2f2ca0;
-      }
-
-      .tech-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: #2f2ca0;
-      }
-
-      .tech-item h3 {
-        margin-bottom: 0.5rem;
-        color: #1f2937;
-      }
-
-      .tech-item p {
-        color: #6b7280;
-        font-size: 0.9rem;
-      }
-
-      .contribution-list p {
-        display: flex;
-        align-items: center;
-        margin-bottom: 0.75rem;
-        padding: 0.75rem;
-        background: #f8fafc;
-        border-radius: 8px;
-        transition: all 0.2s ease;
-      }
-
-      .contribution-list p:hover {
-        background: #e0e7ff;
-      }
-
-      .contribution-list i {
-        margin-right: 0.75rem;
-        width: 20px;
-        color: #2f2ca0;
-      }
-
-      .loading {
-        text-align: center;
-        padding: 4rem 0;
-      }
-
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #e0e7ff;
-        border-top: 3px solid #2f2ca0;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin: 0 auto 1.5rem;
-      }
-
-      @keyframes spin {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      #backToTop {
-        width: 50px;
-        height: 50px;
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 1000;
-        background: linear-gradient(135deg, #2f2ca0, #4698e5);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        padding: 15px;
-        font-size: 18px;
-        cursor: pointer;
-        display: none;
-        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
-
-      #backToTop:hover {
-        transform: scale(1.1);
-        opacity: 0.9;
-        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
-      }
-
-      .modern-footer {
-        width: 100vw; /* Full viewport width */
-        margin-left: calc(
-          -50vw + 50%
-        ); /* Center it if inside a constrained container */
-        background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-        color: #fff;
-        padding: 60px 20px 20px;
-        border-radius: 25px 25px 0 0;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-        overflow-x: hidden;
-      }
-
-      .footer-top {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-bottom: 30px;
-      }
-
-      .footer-brand h2 {
-        font-size: 1.8rem;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-      }
-
-      .footer-brand h2 i {
-        margin-right: 10px;
-        font-size: 1.6rem;
-        vertical-align: middle;
-      }
-
-      .footer-brand p {
-        font-size: 1rem;
-        line-height: 1.5;
-        opacity: 0.9;
-      }
-
-      .footer-links-section h4 {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-        padding-bottom: 5px;
-      }
-
-      .footer-links-section ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .footer-links-section ul li {
-        margin-bottom: 8px;
-      }
-
-      .footer-links-section ul li a {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: 0.3s;
-      }
-
-      .footer-links-section ul li a:hover {
-        color: #fff;
-        transform: translateX(5px);
-      }
-
-      .social-icons {
-        display: flex;
-        gap: 10px;
-        margin-top: 5px;
-      }
-
-      .social-icons a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        color: #fff;
-        transition: 0.3s;
-      }
-
-      .social-icons a:hover {
-        background: #fff;
-        color: #2c5aa0;
-        transform: scale(1.1);
-      }
-
-      .footer-bottom {
-        text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        padding-top: 15px;
-        font-size: 0.9rem;
-        opacity: 0.8;
-      }
-      .footer-card {
-        flex: 1 1 200px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 20px;
-        min-width: 200px;
-      }
-      .footer-card ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .footer-card ul li {
-        margin-bottom: 8px;
-      }
-
-      .footer-card ul li a {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: 0.3s;
-
-        padding: 5px;
-        padding-left: 20px;
-      }
-
-      .footer-card ul li a:hover {
-        color: #fff;
-        transform: translateX(5px);
-      }
-
-      @media (max-width: 768px) {
-        .footer-top {
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-          gap: 3rem;
-        }
-
-        .footer-brand h2 {
-          font-size: 1.5rem;
-        }
-
-        .footer-links-section h4 {
-          font-size: 1rem;
-        }
-
-        .footer-links-section ul li a {
-          font-size: 0.95rem;
-        }
-
-        .social-icons a {
-          width: 35px;
-          height: 35px;
-        }
-
-        /* Mobile Social Links Fix */
-        .social-links {
-          flex-direction: column;
-          gap: 0.8rem;
-          align-items: center;
-        }
-
-        .social-links a {
-          width: 85%;
-          justify-content: center;
-          padding: 1rem 1.5rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .footer-top {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-
-        .social-icons {
-          justify-content: center;
-        }
-
-        .footer-links-section ul li a {
-          justify-content: center;
-        }
-
-        .social-links a {
-          width: 90%;
-          font-size: 0.9rem;
-        }
-      }
-      .footer-bottom .heart {
-        color: inherit;
-      }
-
-      @media (max-width: 768px) {
-        .about-header {
-          padding: 2rem 1rem;
-        }
-
-        .card {
-          padding: 1.5rem;
-        }
-
-        .admin-card {
-          padding: 2rem 1.5rem;
-        }
-
-
-        .tech-stack {
-          grid-template-columns: 1fr;
-        }
-
-        #backToTop {
-          padding: 12px;
-          font-size: 16px;
-          bottom: 20px;
-          right: 20px;
-        }
-      }
-
-      /* Ensure main content is visible */
-      main {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative;
-        z-index: 1;
-      }
-
-      .section {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-      }
-
-      .card {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-      }
-
-      /* Ensure main content is visible and properly styled */
-
-      main {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      .section {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        margin-bottom: 3rem;
-        width: 100%;
-      }
-
-      .card {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        background: white;
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
-        transition: all 0.3s ease;
-        border: 1px solid rgba(99, 102, 241, 0.1);
-        margin: 0 auto;
-        width: 100%;
-      }
-
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
-      }
-
-      /* Dark Mode Styles */
-      body.dark-mode {
-        background: #1a1a1a !important;
-        color: #e0e0e0 !important;
-      }
-
-      /* Container Dark Mode */
-      body.dark-mode .container {
-        background: #1a1a1a !important;
-      }
-
-      /* Main Content Dark Mode */
-      body.dark-mode main {
-        background: transparent !important;
-      }
-
-      /* Section Containers Dark Mode */
-      body.dark-mode .section {
-        background: #2d3748 !important;
-        color: #e0e0e0 !important;
-        border: 1px solid rgba(99, 179, 237, 0.2) !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-      }
-
-      /* About Header Dark Mode */
-      body.dark-mode .about-header {
-        background: linear-gradient(135deg, #2d3748, #1a202c) !important;
-        color: #e0e0e0 !important;
-      }
-
-      /* Cards Dark Mode */
-      body.dark-mode .card {
-        background: #2d3748 !important;
-        color: #e0e0e0 !important;
-        border: 1px solid rgba(99, 102, 241, 0.3) !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-      }
-
-      body.dark-mode .card:hover {
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
-      }
-
-      body.dark-mode .card p {
-        color: #cbd5e0 !important;
-      }
-
-      /* Section Headings Dark Mode */
-      body.dark-mode .section h2 {
-        color: #e0e0e0 !important;
-      }
-
-      body.dark-mode .section h2 i {
-        color: #63b3ed !important;
-      }
-
-      /* Admin Card Dark Mode */
-      body.dark-mode .admin-card {
-        background: #2d3748 !important;
-        color: #e0e0e0 !important;
-        border: 2px solid #63b3ed !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
-      }
-
-      body.dark-mode .admin-card h3 {
-        color: #e0e0e0 !important;
-      }
-
-      body.dark-mode .team-role {
-        color: #cbd5e0 !important;
-      }
-
-      body.dark-mode .team-photo {
-        border: 3px solid #63b3ed !important;
-      }
-
-      /* FIXED: Social Links Dark Mode */
-      body.dark-mode .social-links a {
-        background: rgba(99, 179, 237, 0.1) !important;
-        color: #e0e0e0 !important;
-        border: 1px solid rgba(99, 179, 237, 0.3) !important;
-      }
-
-      body.dark-mode .social-links a:hover {
-        background: #63b3ed !important;
-        color: #1a202c !important;
-        border-color: #63b3ed !important;
-        box-shadow: 0 4px 12px rgba(99, 179, 237, 0.4) !important;
-      }
-
-      /* Contributor Cards Dark Mode */
-      body.dark-mode .contributor-card {
-        background: #2d3748 !important;
-        color: #e0e0e0 !important;
-        border: 1px solid rgba(99, 179, 237, 0.3) !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-      }
-
-      body.dark-mode .contributor-card:hover {
-        border-color: #63b3ed !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
-      }
-
-      /* Contributors Section Title Dark Mode */
-      body.dark-mode .contributors-title h3 {
-        color: #ffffff !important;
-      }
-
-      body.dark-mode .contributors-title p {
-        color: #ffffff !important;
-      }
-
-      body.dark-mode .contributor-name {
-        color: #e0e0e0 !important;
-      }
-
-      body.dark-mode .contributor-username {
-        color: #cbd5e0 !important;
-      }
-
-      body.dark-mode .stat-number {
-        color: #63b3ed !important;
-      }
-
-      body.dark-mode .stat-label {
-        color: #cbd5e0 !important;
-      }
-
-      /* Tech Stack Dark Mode */
-      body.dark-mode .tech-item {
-        background: #2d3748 !important;
-        color: #e0e0e0 !important;
-        border: 1px solid rgba(99, 179, 237, 0.3) !important;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
-      }
-
-      body.dark-mode .tech-item:hover {
-        border-color: #63b3ed !important;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
-      }
-
-      body.dark-mode .tech-item h3 {
-        color: #e0e0e0 !important;
-      }
-
-      body.dark-mode .tech-item p {
-        color: #cbd5e0 !important;
-      }
-
-      body.dark-mode .tech-icon {
-        color: #63b3ed !important;
-      }
-
-      /* Contribution List Dark Mode */
-      body.dark-mode .contribution-list p {
-        background: rgba(224, 224, 224, 0.1) !important;
-        color: #e0e0e0 !important;
-        border-left: 4px solid #63b3ed !important;
-      }
-
-      body.dark-mode .contribution-list p:hover {
-        background: rgba(144, 205, 244, 0.1) !important;
-      }
-
-      body.dark-mode .contribution-list i {
-        color: #63b3ed !important;
-      }
-
-      /* Dark Mode Footer Styles */
-      body.dark-mode .modern-footer {
-        background: linear-gradient(135deg, #1a202c, #2d3748);
-      }
-
-      body.dark-mode .footer-section h3,
-      body.dark-mode .footer-section h4 {
-        color: #e0e0e0;
-      }
-
-      body.dark-mode .footer-section h4 {
-        border-bottom-color: rgba(224, 224, 224, 0.2);
-      }
-
-      body.dark-mode .footer-links a {
-        color: rgba(224, 224, 224, 0.8);
-      }
-
-      body.dark-mode .footer-links a:hover {
-        color: #90cdf4;
-      }
-
-      body.dark-mode .social-icons a {
-        background: rgba(224, 224, 224, 0.1);
-        color: #e0e0e0;
-      }
-
-      body.dark-mode .social-icons a:hover {
-        background: rgba(144, 205, 244, 0.2);
-        color: #90cdf4;
-      }
-
-      body.dark-mode .footer-bottom {
-        background: rgba(0, 0, 0, 0.3);
-        border-top-color: rgba(224, 224, 224, 0.1);
-      }
-    </style>
-    <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="./favicon/favicon-48x48.png"
-    />
-    <link rel="manifest" href="./favicon/site.webmanifest" />
-    <meta name="theme-color" content="#2563eb" />
-  </head>
-  <body>
-    <div class="container">
-      <!-- Navigation -->
-
-      <nav class="navbar" aria-label="Primary">
-        <a href="index.html" class="nav-item">
-          <i class="fas fa-book-open" aria-hidden="true"></i>
-          <span>Home</span>
-        </a>
-        <!-- Hamburger div (shows only on mobile) -->
-        <div
-          class="hamburger-container"
-          onclick="toggleMenu()"
-          aria-label="Toggle Menu"
-        >
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-
-        <div class="navbar-right-links" role="menubar" aria-label="Site">
-          <a
-            href="about.html"
-            class="nav-item"
-            role="menuitem"
-            aria-current="page"
-            >About us</a
-          >
-          <a href="blog.html" class="nav-item" role="menuitem">Blogs</a>
-          <a href="Faq.html" class="nav-item" role="menuitem">FAQ</a>
-          <a href="contact.html" class="nav-item" role="menuitem">Contact Us</a>
-          <a href="tools.html" class="nav-item">Tools</a>
-          <button
-            class="dark-toggle nav-item"
-            id="darkModeToggle"
-            title="Toggle Dark Mode"
-            aria-pressed="false"
-          >
-            <i class="fas fa-moon" aria-hidden="true"></i
-            ><span class="sr-only">Toggle dark mode</span>
-          </button>
-        </div>
-      </nav>
-
-      <!-- Header -->
-      <header class="about-header">
-        <h1>
-          About
-          <span
-            style="
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Ensure main content is visible */
+    main {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .card {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    /* Ensure main content is visible and properly styled */
+
+    main {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .section {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      margin-bottom: 3rem;
+      width: 100%;
+    }
+
+    .card {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(99, 102, 241, 0.1);
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+    }
+
+   
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background: #1a1a1a !important;
+      color: #e0e0e0 !important;
+    }
+
+    /* Container Dark Mode */
+    body.dark-mode .container {
+      background: #1a1a1a !important;
+    }
+
+    /* Main Content Dark Mode */
+    body.dark-mode main {
+      background: transparent !important;
+    }
+
+    /* Section Containers Dark Mode */
+    body.dark-mode .section {
+      background: #2d3748 !important;
+      color: #e0e0e0 !important;
+      border: 1px solid rgba(99, 179, 237, 0.2) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* About Header Dark Mode */
+    body.dark-mode .about-header {
+      background: linear-gradient(135deg, #2d3748, #1a202c) !important;
+      color: #e0e0e0 !important;
+    }
+
+    /* Cards Dark Mode */
+    body.dark-mode .card {
+      background: #2d3748 !important;
+      color: #e0e0e0 !important;
+      border: 1px solid rgba(99, 102, 241, 0.3) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    body.dark-mode .card:hover {
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    body.dark-mode .card p {
+      color: #cbd5e0 !important;
+    }
+
+    /* Section Headings Dark Mode */
+    body.dark-mode .section h2 {
+      color: #e0e0e0 !important;
+    }
+
+    body.dark-mode .section h2 i {
+      color: #63b3ed !important;
+    }
+
+    /* Admin Card Dark Mode */
+    body.dark-mode .admin-card {
+      background: #2d3748 !important;
+      color: #e0e0e0 !important;
+      border: 2px solid #63b3ed !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    body.dark-mode .admin-card h3 {
+      color: #e0e0e0 !important;
+    }
+
+    body.dark-mode .team-role {
+      color: #cbd5e0 !important;
+    }
+
+    body.dark-mode .team-photo {
+      border: 3px solid #63b3ed !important;
+    }
+
+
+    /* Contributor Cards Dark Mode */
+    body.dark-mode .contributor-card {
+      background: #2d3748 !important;
+      color: #e0e0e0 !important;
+      border: 1px solid rgba(99, 179, 237, 0.3) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    body.dark-mode .contributor-card:hover {
+      border-color: #63b3ed !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    /* Contributors Section Title Dark Mode */
+    body.dark-mode .contributors-title h3 {
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .contributors-title p {
+      color: #ffffff !important;
+    }
+
+    body.dark-mode .contributor-name {
+      color: #e0e0e0 !important;
+    }
+
+    body.dark-mode .contributor-username {
+      color: #cbd5e0 !important;
+    }
+
+    body.dark-mode .stat-number {
+      color: #63b3ed !important;
+    }
+
+    body.dark-mode .stat-label {
+      color: #cbd5e0 !important;
+    }
+
+    /* Tech Stack Dark Mode */
+    body.dark-mode .tech-item {
+      background: #2d3748 !important;
+      color: #e0e0e0 !important;
+      border: 1px solid rgba(99, 179, 237, 0.3) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    body.dark-mode .tech-item:hover {
+      border-color: #63b3ed !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
+    }
+
+    body.dark-mode .tech-item h3 {
+      color: #e0e0e0 !important;
+    }
+
+    body.dark-mode .tech-item p {
+      color: #cbd5e0 !important;
+    }
+
+    body.dark-mode .tech-icon {
+      color: #63b3ed !important;
+    }
+
+    /* Contribution List Dark Mode */
+    body.dark-mode .contribution-list p {
+      background: rgba(224, 224, 224, 0.1) !important;
+      color: #e0e0e0 !important;
+      border-left: 4px solid #63b3ed !important;
+    }
+
+    body.dark-mode .contribution-list p:hover {
+      background: rgba(144, 205, 244, 0.1) !important;
+    }
+
+    body.dark-mode .contribution-list i {
+      color: #63b3ed !important;
+    }
+  </style>
+  <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
+  <link rel="manifest" href="./favicon/site.webmanifest" />
+  <meta name="theme-color" content="#2563eb" />
+</head>
+
+<body>
+  <div class="container">
+    <!-- Navigation -->
+
+    <nav class="navbar" aria-label="Primary">
+      <a href="index.html" class="nav-item">
+        <i class="fas fa-book-open" aria-hidden="true"></i>
+        <span>Home</span>
+      </a>
+      <!-- Hamburger div (shows only on mobile) -->
+      <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <div class="navbar-right-links" role="menubar" aria-label="Site">
+        <a href="about.html" class="nav-item" role="menuitem" aria-current="page">About us</a>
+        <a href="blog.html" class="nav-item" role="menuitem">Blogs</a>
+        <a href="Faq.html" class="nav-item" role="menuitem">FAQ</a>
+        <a href="contact.html" class="nav-item" role="menuitem">Contact Us</a>
+        <a href="tools.html" class="nav-item">Tools</a>
+        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" aria-pressed="false">
+          <i class="fas fa-moon" aria-hidden="true"></i><span class="sr-only">Toggle dark mode</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="about-header">
+      <h1>
+        About
+        <span style="
               background: linear-gradient(45deg, #fff, #e0e7ff);
               background-clip: text;
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
-            "
-            >Research Paper Organizer</span
-          >
-        </h1>
-        <p class="tagline">Organize, Track & Cite Papers Effortlessly</p>
-      </header>
+            ">Research Paper Organizer</span>
+      </h1>
+      <p class="tagline">Organize, Track & Cite Papers Effortlessly</p>
+    </header>
 
-      <main>
-        <!-- Purpose Section -->
-        <section class="section">
-          <h2><i class="fas fa-book-open"></i> Purpose of the Project</h2>
-          <div class="card">
+    <main>
+      <!-- Purpose Section -->
+      <section class="section">
+        <h2><i class="fas fa-book-open"></i> Purpose of the Project</h2>
+        <div class="card">
+          <p>
+            The <strong>Research Paper Organizer</strong> is a clean, minimal,
+            and static web-based tool built using HTML, CSS, and JavaScript.
+            It helps students, researchers, and professionals neatly organize,
+            categorize, and access their research papers in one place. Our
+            mission is to make research management simple, accessible, and
+            open for everyone.
+          </p>
+          <p>
+            Founded in 2023, this platform was born out of a simple need: to
+            bring order to the chaos of academic research. Whether you're a
+            PhD student juggling dozens of papers or a researcher managing
+            multiple projects, our tool provides an intuitive interface to
+            track, categorize, and cite your sources efficiently.
+          </p>
+        </div>
+      </section>
+
+      <!-- Vision Section -->
+      <section class="section">
+        <h2><i class="fas fa-eye"></i> Our Vision</h2>
+        <div class="card">
+          <p>
+            We envision a world where researchers can focus on what matters
+            most - their research - without getting bogged down by the
+            administrative overhead of managing countless papers, citations,
+            and references.
+          </p>
+          <p>
+            Our platform bridges the gap between complex research management
+            tools and simple note-taking applications, providing just the
+            right level of functionality to keep your research organized and
+            accessible.
+          </p>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="section">
+        <h2><i class="fas fa-star"></i> Key Features</h2>
+        <div class="card">
+          <div class="contribution-list">
             <p>
-              The <strong>Research Paper Organizer</strong> is a clean, minimal,
-              and static web-based tool built using HTML, CSS, and JavaScript.
-              It helps students, researchers, and professionals neatly organize,
-              categorize, and access their research papers in one place. Our
-              mission is to make research management simple, accessible, and
-              open for everyone.
+              <i class="fas fa-plus-circle"></i> Add and organize research
+              papers with detailed metadata
             </p>
             <p>
-              Founded in 2023, this platform was born out of a simple need: to
-              bring order to the chaos of academic research. Whether you're a
-              PhD student juggling dozens of papers or a researcher managing
-              multiple projects, our tool provides an intuitive interface to
-              track, categorize, and cite your sources efficiently.
+              <i class="fas fa-tags"></i> Categorize papers by topics,
+              projects, or custom tags
+            </p>
+            <p>
+              <i class="fas fa-search"></i> Powerful search functionality to
+              find papers quickly
+            </p>
+            <p>
+              <i class="fas fa-quote-right"></i> Automatic citation generation
+              in multiple formats
+            </p>
+            <p>
+              <i class="fas fa-file-export"></i> Export functionality for
+              backup and sharing
+            </p>
+            <p>
+              <i class="fas fa-palette"></i> Clean, responsive design that
+              works on all devices
+            </p>
+            <p>
+              <i class="fas fa-moon"></i> Dark mode support for comfortable
+              reading
+            </p>
+            <p>
+              <i class="fas fa-lock"></i> Client-side storage for privacy and
+              security
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Vision Section -->
-        <section class="section">
-          <h2><i class="fas fa-eye"></i> Our Vision</h2>
-          <div class="card">
-            <p>
-              We envision a world where researchers can focus on what matters
-              most - their research - without getting bogged down by the
-              administrative overhead of managing countless papers, citations,
-              and references.
-            </p>
-            <p>
-              Our platform bridges the gap between complex research management
-              tools and simple note-taking applications, providing just the
-              right level of functionality to keep your research organized and
-              accessible.
-            </p>
-          </div>
-        </section>
+      <!-- Team Section -->
+      <section class="section">
+        <h2><i class="fas fa-users"></i> Meet the Team</h2>
 
-        <!-- Features Section -->
-        <section class="section">
-          <h2><i class="fas fa-star"></i> Key Features</h2>
-          <div class="card">
-            <div class="contribution-list">
-              <p>
-                <i class="fas fa-plus-circle"></i> Add and organize research
-                papers with detailed metadata
-              </p>
-              <p>
-                <i class="fas fa-tags"></i> Categorize papers by topics,
-                projects, or custom tags
-              </p>
-              <p>
-                <i class="fas fa-search"></i> Powerful search functionality to
-                find papers quickly
-              </p>
-              <p>
-                <i class="fas fa-quote-right"></i> Automatic citation generation
-                in multiple formats
-              </p>
-              <p>
-                <i class="fas fa-file-export"></i> Export functionality for
-                backup and sharing
-              </p>
-              <p>
-                <i class="fas fa-palette"></i> Clean, responsive design that
-                works on all devices
-              </p>
-              <p>
-                <i class="fas fa-moon"></i> Dark mode support for comfortable
-                reading
-              </p>
-              <p>
-                <i class="fas fa-lock"></i> Client-side storage for privacy and
-                security
-              </p>
+        <div class="team-admin">
+          <div class="admin-card">
+            <img src="https://avatars.githubusercontent.com/u/155548316?v=4" alt="supriya" class="team-photo" />
+            <h3>supriya46788</h3>
+            <p class="team-role">Project Founder & Lead Developer</p>
+            <div class="social-links">
+              <a href="https://github.com/supriya46788" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/supriyapandey595/" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn</span>
+              </a>
             </div>
           </div>
-        </section>
+        </div>
 
-        <!-- Team Section -->
-        <section class="section">
-          <h2><i class="fas fa-users"></i> Meet the Team</h2>
+        <!-- Contributors Section -->
+        <div class="contributors-section">
+          <div class="contributors-title">
+            <h3><i class="fas fa-users"></i> Our Amazing Contributors</h3>
+            <p>
+              This project is made possible by our incredible open-source
+              community.
+            </p>
+          </div>
+          <div class="contributor-cards" id="contributors-container">
+            <!-- Contributors will be loaded dynamically -->
+          </div>
+        </div>
+      </section>
 
-          <div class="team-admin">
-            <div class="admin-card">
-              <img
-                src="https://avatars.githubusercontent.com/u/155548316?v=4"
-                alt="supriya"
-                class="team-photo"
-              />
-              <h3>supriya46788</h3>
-              <p class="team-role">Project Founder & Lead Developer</p>
+      <!-- Technology Stack -->
+      <section class="section">
+        <h2><i class="fas fa-code"></i> Technology Stack</h2>
+        <div class="tech-stack">
+          <div class="tech-item">
+            <div class="tech-icon">🌐</div>
+            <h3>HTML5</h3>
+            <p>Semantic markup and modern web standards</p>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">🎨</div>
+            <h3>CSS3</h3>
+            <p>Responsive design with modern styling</p>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">⚡</div>
+            <h3>JavaScript</h3>
+            <p>Dynamic functionality and interactivity</p>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">📱</div>
+            <h3>Responsive Design</h3>
+            <p>Works seamlessly on all devices</p>
+          </div>
+          <div class="tech-item">
+            <div class="tech-icon">🔒</div>
+            <h3>Local Storage</h3>
+            <p>Client-side data persistence</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contribution Guidelines -->
+      <section class="section">
+        <h2><i class="fas fa-hands-helping"></i> How to Contribute</h2>
+        <div class="card">
+          <p>
+            We welcome contributions from developers of all skill levels!
+            Whether you're fixing bugs, adding new features, improving
+            documentation, or enhancing the user experience, your
+            contributions make a difference.
+          </p>
+          <div class="contribution-list">
+            <p>
+              <i class="fas fa-bug"></i> Report bugs and suggest improvements
+            </p>
+            <p>
+              <i class="fas fa-code-branch"></i> Submit pull requests with new
+              features
+            </p>
+            <p>
+              <i class="fas fa-file-alt"></i> Improve documentation and guides
+            </p>
+            <p><i class="fas fa-paint-brush"></i> Enhance UI/UX design</p>
+            <p>
+              <i class="fas fa-language"></i> Help with translations and
+              localization
+            </p>
+            <p>
+              <i class="fas fa-share-alt"></i> Share the project with others
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+   
+    <!-- Modern Footer Start Here -->
+    <footer aria-label="Footer" class="modern-footer">
+      <div class="footer-container">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <div class="brand-header">
+              <div class="brand-icon">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <div class="brand-name">
+                <h2>Research Paper Organize</h2>
+                <p class="brand-tagline">Streamline Your Research, Simplify Your Workflow</p>
+              </div>
+            </div>
+            <p class="brand-description">
+              Empowering developers worldwide with AI-powered learning, personalized guidance, and comprehensive career
+              support.
+            </p>
+
+            <div class="social-links-parent">
+              <h3 style="margin-bottom: 10px;">Follow US</h3>
               <div class="social-links">
-                <a
-                  href="https://github.com/supriya46788"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href="https://github.com/supriya46788" class="social-link" aria-label="GitHub">
                   <i class="fab fa-github"></i>
-                  <span>GitHub</span>
                 </a>
-                <a
-                  href="https://www.linkedin.com/in/supriyapandey595/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i class="fab fa-linkedin"></i>
-                  <span>LinkedIn</span>
+                <a href="" class="social-link" aria-label="Discord">
+                  <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/supriyapandey595" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:supriyadpandey502@gmail.com" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
                 </a>
               </div>
             </div>
           </div>
 
-          <!-- Contributors Section -->
-          <div class="contributors-section">
-            <div class="contributors-title">
-              <h3><i class="fas fa-users"></i> Our Amazing Contributors</h3>
-              <p>
-                This project is made possible by our incredible open-source
-                community.
-              </p>
-            </div>
-            <div class="contributor-cards" id="contributors-container">
-              <!-- Contributors will be loaded dynamically -->
-            </div>
+          <div class="footer-section">
+            <h3>Quick Action</h3>
+            <a href="http://127.0.0.1:5501/index.html" class="resource-item">Home</a>
+            <a href="http://127.0.0.1:5501/about.html" class="resource-item">About us </a>
+            <a href="http://127.0.0.1:5501/contact.html" class="resource-item">Contact</a>
+            <a href="http://127.0.0.1:5501/index.html#" class="resource-item">Feature</a>
+            <a href="http://127.0.0.1:5501/index.html" class="resource-item"> How it works</a>
+            <a href="http://127.0.0.1:5501/tools.html" class="resource-item"> Tools</a>
+            <a href="http://127.0.0.1:5501/Faq.html" class="resource-item"> FAQ</a>
           </div>
-        </section>
 
-        <!-- Technology Stack -->
-        <section class="section">
-          <h2><i class="fas fa-code"></i> Technology Stack</h2>
-          <div class="tech-stack">
-            <div class="tech-item">
-              <div class="tech-icon">🌐</div>
-              <h3>HTML5</h3>
-              <p>Semantic markup and modern web standards</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-icon">🎨</div>
-              <h3>CSS3</h3>
-              <p>Responsive design with modern styling</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-icon">⚡</div>
-              <h3>JavaScript</h3>
-              <p>Dynamic functionality and interactivity</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-icon">📱</div>
-              <h3>Responsive Design</h3>
-              <p>Works seamlessly on all devices</p>
-            </div>
-            <div class="tech-item">
-              <div class="tech-icon">🔒</div>
-              <h3>Local Storage</h3>
-              <p>Client-side data persistence</p>
-            </div>
+          <div class="footer-section">
+            <h3>Resources </h3>
+            <a href="blog.html" class="resource-item"> Blog</a>
+            <a href="glossary.html" class="resource-item"> Glossary</a>
+            <a href="open-source.html" class="resource-item"> Open Source </a>
+            <a href="Tag-Based-filtering.html" class="resource-item"> Tag Based Filtering </a>
+            <a href="privacy.html" class="resource-item">Privacy Policy </a>
+            <a href="terms-of-service.html" class="resource-item"> Terms & Condition</a>
           </div>
-        </section>
 
-        <!-- Contribution Guidelines -->
-        <section class="section">
-          <h2><i class="fas fa-hands-helping"></i> How to Contribute</h2>
-          <div class="card">
-            <p>
-              We welcome contributions from developers of all skill levels!
-              Whether you're fixing bugs, adding new features, improving
-              documentation, or enhancing the user experience, your
-              contributions make a difference.
+          <div class="footer-section newsletter-section">
+            <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
+            <p class="newsletter-description" style="color: #7d7c7c;">
+              Get the latest updates, learning tips, and community news from Research paper Organize.
             </p>
-            <div class="contribution-list">
-              <p>
-                <i class="fas fa-bug"></i> Report bugs and suggest improvements
-              </p>
-              <p>
-                <i class="fas fa-code-branch"></i> Submit pull requests with new
-                features
-              </p>
-              <p>
-                <i class="fas fa-file-alt"></i> Improve documentation and guides
-              </p>
-              <p><i class="fas fa-paint-brush"></i> Enhance UI/UX design</p>
-              <p>
-                <i class="fas fa-language"></i> Help with translations and
-                localization
-              </p>
-              <p>
-                <i class="fas fa-share-alt"></i> Share the project with others
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <!-- Modern Footer -->
-      <footer class="modern-footer" aria-label="Footer">
-        <div class="footer-top">
-          <div class="footer-brand footer-card">
-            <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-            <p style="margin-top: 20px">
-              Organize, track, and manage your research papers seamlessly.
-            </p>
-          </div>
-
-          <div class="footer-links-section footer-card">
-            <h4>Quick Links</h4>
-            <ul>
-              <li>
-                <a href="index.html"><i class="fas fa-home"></i>Home</a>
-              </li>
-              <li>
-                <a href="about.html"><i class="fas fa-users"></i>About Us</a>
-              </li>
-              <li>
-                <a href="contact.html"
-                  ><i class="fas fa-envelope"></i>Contact</a
-                >
-              </li>
-              <li>
-                <a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer-links-section footer-card">
-            <h4>Resources</h4>
-            <ul>
-              <li>
-                <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
-              </li>
-              <li>
-                <a href="glossary.html"><i class="fas fa-book"></i>Glossary</a>
-              </li>
-              <li>
-                <a href="open-source.html"
-                  ><i class="fas fa-code-branch"></i>Open Source</a
-                >
-              </li>
-              <li>
-                <a href="Tag-Based-filtering.html"
-                  ><i class="fas fa-book"></i>Tag Based Filtering</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="footer-links-section footer-card">
-            <h4>Connect</h4>
-            <div class="social-icons">
-              <a
-                href="https://github.com/supriya46788"
-                target="_blank"
-                title="GitHub"
-                ><i class="fab fa-github"></i
-              ></a>
-              <a
-                href="https://www.linkedin.com/in/supriyapandey595"
-                target="_blank"
-                title="LinkedIn"
-                class="linkedin-icon"
-              >
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a href="mailto:supriyadpandey502@gmail.com" title="Email"
-                ><i class="fas fa-envelope"></i
-              ></a>
-            </div>
+            <form class="newsletter-form" onsubmit="return false;">
+              <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+              <button type="submit" class="subscribe-btn">Subscribe</button>
+            </form>
+            <p class="privacy-note" style="color: #7d7c7c;">We respect your privacy. Unsubscribe at any time.</p>
           </div>
         </div>
 
         <div class="footer-bottom">
-          © 2025 Research Paper Organizer | Made with
-          <span class="heart">&hearts;</span> for researchers worldwide
+          <p class="copyright">
+            © 2025 <a href="#">Research paper Organize</a>. All rights reserved. | Made with <span
+              class="heart">❤️</span>
+            for <a href="#">researchers worldwide</a>
+          </p>
         </div>
-      </footer>
+      </div>
+    </footer>
 
-      <!-- Back to Top Button -->
-      <button id="backToTop" title="Go to top" aria-label="Scroll to top">
-        <i class="fa-solid fa-arrow-up"></i>
-      </button>
-    </div>
 
-    <script>
-      function toggleMenu() {
-        const nav = document.querySelector(".navbar-right-links");
-        if(nav.classList.contains("show")){
-          nav.classList.remove("show");
-        }else{
-          nav.classList.add("show");
-        } 
+    <!-- Back to Top Button -->
+    <button id="backToTop" title="Go to top" aria-label="Scroll to top">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+  </div>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector(".navbar-right-links");
+      if (nav.classList.contains("show")) {
+        nav.classList.remove("show");
+      } else {
+        nav.classList.add("show");
+      }
+    }
+
+    // Dark mode functionality
+    (function () {
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const body = document.body;
+
+      // Check for saved dark mode preference or default to light mode
+      const isDarkMode = localStorage.getItem("darkMode") === "enabled";
+
+      if (isDarkMode) {
+        body.classList.add("dark-mode");
+        darkModeToggle
+          .querySelector("i")
+          .classList.replace("fa-moon", "fa-sun");
+        darkModeToggle.setAttribute("aria-pressed", "true");
       }
 
-      // Dark mode functionality
-      (function () {
-        const darkModeToggle = document.getElementById("darkModeToggle");
-        const body = document.body;
+      darkModeToggle.addEventListener("click", function () {
+        body.classList.toggle("dark-mode");
+        const isNowDark = body.classList.contains("dark-mode");
 
-        // Check for saved dark mode preference or default to light mode
-        const isDarkMode = localStorage.getItem("darkMode") === "enabled";
-
-        if (isDarkMode) {
-          body.classList.add("dark-mode");
-          darkModeToggle
-            .querySelector("i")
-            .classList.replace("fa-moon", "fa-sun");
-          darkModeToggle.setAttribute("aria-pressed", "true");
+        // Update icon
+        const icon = this.querySelector("i");
+        if (isNowDark) {
+          icon.classList.replace("fa-moon", "fa-sun");
+          this.setAttribute("aria-pressed", "true");
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          icon.classList.replace("fa-sun", "fa-moon");
+          this.setAttribute("aria-pressed", "false");
+          localStorage.setItem("darkMode", "disabled");
         }
+      });
+    })();
 
-        darkModeToggle.addEventListener("click", function () {
-          body.classList.toggle("dark-mode");
-          const isNowDark = body.classList.contains("dark-mode");
+    // Back to top button functionality
+    const bottomToTopButton = document.getElementById("backToTop");
+    const icon = bottomToTopButton.querySelector("i");
 
-          // Update icon
-          const icon = this.querySelector("i");
-          if (isNowDark) {
-            icon.classList.replace("fa-moon", "fa-sun");
-            this.setAttribute("aria-pressed", "true");
-            localStorage.setItem("darkMode", "enabled");
-          } else {
-            icon.classList.replace("fa-sun", "fa-moon");
-            this.setAttribute("aria-pressed", "false");
-            localStorage.setItem("darkMode", "disabled");
-          }
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        bottomToTopButton.style.display = "block";
+
+        if (
+          window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight - 10
+        ) {
+          icon.classList.remove("fa-arrow-down");
+          icon.classList.add("fa-arrow-up");
+        } else {
+          icon.classList.remove("fa-arrow-up");
+          icon.classList.add("fa-arrow-down");
+        }
+      } else {
+        bottomToTopButton.style.display = "none";
+      }
+    });
+
+    bottomToTopButton.addEventListener("click", () => {
+      if (icon.classList.contains("fa-arrow-down")) {
+        // scroll to bottom
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth",
         });
-      })();
+      } else {
+        // scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
 
-      // Back to top button functionality
-      const bottomToTopButton = document.getElementById("backToTop");
-      const icon = bottomToTopButton.querySelector("i");
+    // Load GitHub contributors
+    async function loadContributors() {
+      const contributorsContainer = document.getElementById("contributors-container");
 
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 100) {
-          bottomToTopButton.style.display = "block";
+      try {
+        // Show loading indicator
+        contributorsContainer.innerHTML =
+          '<div class="loading"><div class="spinner"></div><p>Loading contributors...</p></div>';
 
-          if (
-            window.scrollY + window.innerHeight >=
-            document.documentElement.scrollHeight - 10
-          ) {
-            icon.classList.remove("fa-arrow-down");
-            icon.classList.add("fa-arrow-up");
-          } else {
-            icon.classList.remove("fa-arrow-up");
-            icon.classList.add("fa-arrow-down");
-          }
-        } else {
-          bottomToTopButton.style.display = "none";
+        // Get contributors from GitHub API (simplified approach)
+        const response = await fetch(
+          `https://api.github.com/repos/Channpreetk/Research-Paper-Organizer/contributors?per_page=100`
+        );
+
+        if (!response.ok) {
+          throw new Error(`API Error: ${response.status}`);
         }
-      });
 
-      bottomToTopButton.addEventListener("click", () => {
-        if (icon.classList.contains("fa-arrow-down")) {
-          // scroll to bottom
-          window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: "smooth",
-          });
-        } else {
-          // scroll to top
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }
-      });
+        const contributors = await response.json();
+        console.log("Contributors loaded:", contributors);
 
-      // Load GitHub contributors
-      async function loadContributors() { 
-        const contributorsContainer = document.getElementById("contributors-container");
-
-        try {
-          // Show loading indicator
-          contributorsContainer.innerHTML =
-            '<div class="loading"><div class="spinner"></div><p>Loading contributors...</p></div>';
-
-          // Get contributors from GitHub API (simplified approach)
-          const response = await fetch(
-            `https://api.github.com/repos/Channpreetk/Research-Paper-Organizer/contributors?per_page=100`
-          );
-
-          if (!response.ok) {
-            throw new Error(`API Error: ${response.status}`);
-          }
-
-          const contributors = await response.json();
-          console.log("Contributors loaded:", contributors);
-          
-          // render contributors in grid form
-          if (Array.isArray(contributors) && contributors.length > 0) { 
-             contributors.sort((a, b) => b.contributions - a.contributions);
+        // render contributors in grid form
+        if (Array.isArray(contributors) && contributors.length > 0) {
+          contributors.sort((a, b) => b.contributions - a.contributions);
           contributorsContainer.innerHTML = "";
           contributors.forEach((c, rank) => {
             if (c.login !== "supriya46788") {
@@ -1539,78 +1242,78 @@
               contributorsContainer.appendChild(contributorCard);
             }
           });
-            console.log("Contributors loaded successfully");
-          } else {
-            showFallbackContributors(contributorsContainer);
-          } 
-          
-        } catch (error) {
-          console.error("Error loading contributors:", error);
+          console.log("Contributors loaded successfully");
+        } else {
           showFallbackContributors(contributorsContainer);
         }
+
+      } catch (error) {
+        console.error("Error loading contributors:", error);
+        showFallbackContributors(contributorsContainer);
       }
+    }
 
-      // Fallback contributors to show if API fails
-      function showFallbackContributors(container) { 
+    // Fallback contributors to show if API fails
+    function showFallbackContributors(container) {
 
-        // Sample contributors based on common GitHub usernames for this type of project
-        const fallbackContributors = [
-          {
-            name: "Channpreet Kaur",
-            username: "Channpreetk",
-            avatar: "https://avatars.githubusercontent.com/u/62991059?v=4",
-            contributions: "156",
-            url: "https://github.com/Channpreetk"
-          },
-          {
-            name: "anikethta21",
-            username: "anikethta21",
-            avatar: "https://via.placeholder.com/60x60/e91e63/ffffff?text=AT",
-            contributions: "24",
-            url: "https://github.com/anikethta21"
-          },
-          {
-            name: "dev-xyz",
-            username: "dev-xyz",
-            avatar: "https://via.placeholder.com/60x60/2196f3/ffffff?text=DX",
-            contributions: "18",
-            url: "https://github.com/dev-xyz"
-          },
-          {
-            name: "codeWithAkash",
-            username: "codeWithAkash",
-            avatar: "https://via.placeholder.com/60x60/4caf50/ffffff?text=CA",
-            contributions: "12",
-            url: "https://github.com/codeWithAkash"
-          },
-          {
-            name: "WebDevPro",
-            username: "WebDevPro",
-            avatar: "https://via.placeholder.com/60x60/ff9800/ffffff?text=WD",
-            contributions: "8",
-            url: "https://github.com/WebDevPro"
-          },
-          {
-            name: "Aditya Singh",
-            username: "Adez017",
-            avatar: "https://via.placeholder.com/60x60/9c27b0/ffffff?text=AS",
-            contributions: "5",
-            url: "https://github.com/Adez017"
-          },
-          {
-            name: "ReactMaster",
-            username: "ReactMaster",
-            avatar: "https://via.placeholder.com/60x60/9c27b0/ffffff?text=RM",
-            contributions: "5",
-            url: "https://github.com/ReactMaster"
-          },
-        ];
+      // Sample contributors based on common GitHub usernames for this type of project
+      const fallbackContributors = [
+        {
+          name: "Channpreet Kaur",
+          username: "Channpreetk",
+          avatar: "https://avatars.githubusercontent.com/u/62991059?v=4",
+          contributions: "156",
+          url: "https://github.com/Channpreetk"
+        },
+        {
+          name: "anikethta21",
+          username: "anikethta21",
+          avatar: "https://via.placeholder.com/60x60/e91e63/ffffff?text=AT",
+          contributions: "24",
+          url: "https://github.com/anikethta21"
+        },
+        {
+          name: "dev-xyz",
+          username: "dev-xyz",
+          avatar: "https://via.placeholder.com/60x60/2196f3/ffffff?text=DX",
+          contributions: "18",
+          url: "https://github.com/dev-xyz"
+        },
+        {
+          name: "codeWithAkash",
+          username: "codeWithAkash",
+          avatar: "https://via.placeholder.com/60x60/4caf50/ffffff?text=CA",
+          contributions: "12",
+          url: "https://github.com/codeWithAkash"
+        },
+        {
+          name: "WebDevPro",
+          username: "WebDevPro",
+          avatar: "https://via.placeholder.com/60x60/ff9800/ffffff?text=WD",
+          contributions: "8",
+          url: "https://github.com/WebDevPro"
+        },
+        {
+          name: "Aditya Singh",
+          username: "Adez017",
+          avatar: "https://via.placeholder.com/60x60/9c27b0/ffffff?text=AS",
+          contributions: "5",
+          url: "https://github.com/Adez017"
+        },
+        {
+          name: "ReactMaster",
+          username: "ReactMaster",
+          avatar: "https://via.placeholder.com/60x60/9c27b0/ffffff?text=RM",
+          contributions: "5",
+          url: "https://github.com/ReactMaster"
+        },
+      ];
 
-        container.innerHTML = "";
-        fallbackContributors.forEach((contributor) => {
-          const contributorCard = document.createElement("div");
-          contributorCard.className = "contributor-card";
-          contributorCard.innerHTML = `
+      container.innerHTML = "";
+      fallbackContributors.forEach((contributor) => {
+        const contributorCard = document.createElement("div");
+        contributorCard.className = "contributor-card";
+        contributorCard.innerHTML = `
             <img src="${contributor.avatar}" alt="${contributor.username}" />
             <div class="contributor-info">
               <div class="contributor-username">${contributor.name}</div>
@@ -1621,24 +1324,25 @@
               </div>
             </div>
           `;
-          contributorCard.onclick = () => window.open(contributor.url, '_blank');
-          container.appendChild(contributorCard);
-        });
-      }
-
-      // Load contributors when page loads
-      document.addEventListener("DOMContentLoaded", loadContributors);
-
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth" });
-          }
-        });
+        contributorCard.onclick = () => window.open(contributor.url, '_blank');
+        container.appendChild(contributorCard);
       });
-    </script>
-  </body>
+    }
+
+    // Load contributors when page loads
+    document.addEventListener("DOMContentLoaded", loadContributors);
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+  </script>
+</body>
+
 </html>

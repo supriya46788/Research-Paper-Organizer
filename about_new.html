@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/about.css">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/css/footer.css">
   <style>
     /* About page specific styles */
     .container {
@@ -360,88 +361,7 @@
       box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
     }
         
-      
-
-    /* Footer styles to match other pages */
-    .blog-footer {
-      background: linear-gradient(135deg, #357abd, #2c5aa0);
-      color: white;
-      border-radius: 20px;
-      margin-top: 2rem;
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-    }
-
-    .footer-section h3 {
-      color: #fff;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .footer-section h4 {
-      color: #fff;
-      margin-bottom: 1rem;
-      font-size: 1.1rem;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-      padding-bottom: 0.5rem;
-    }
-
-    .footer-section p {
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-
-    .footer-links {
-      list-style: none;
-      padding: 0;
-    }
-
-    .footer-links li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-links a {
-      color: rgba(255, 255, 255, 0.8);
-      text-decoration: none;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .footer-links a:hover {
-      color: #fff;
-      transform: translateX(5px);
-    }
-
-    .footer-bottom {
-      background: rgba(0, 0, 0, 0.2);
-      padding: 1.5rem 2rem;
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .footer-bottom p {
-      margin: 0.5rem 0;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .footer-tagline {
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
+    
     @media (max-width: 768px) {
       .about-header {
         padding: 2rem 1rem;
@@ -661,59 +581,85 @@
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="blog-footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-          <p>A modern, intuitive platform for organizing and managing your research papers efficiently. Built with researchers, by researchers.</p>
-          <div class="social-links">
-            <a href="https://github.com/Channpreetk/Research-Paper-Organizer" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
-              <i class="fab fa-github"></i>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <i class="fab fa-linkedin"></i>
-            </a>
+    <!-- Modern Footer Start Here -->
+    <footer aria-label="Footer" class="modern-footer">
+      <div class="footer-container">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <div class="brand-header">
+              <div class="brand-icon">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <div class="brand-name">
+                <h2>Research Paper Organize</h2>
+                <p class="brand-tagline">Streamline Your Research, Simplify Your Workflow</p>
+              </div>
+            </div>
+            <p class="brand-description">
+              Empowering developers worldwide with AI-powered learning, personalized guidance, and comprehensive career
+              support.
+            </p>
+
+            <div class="social-links-parent">
+              <h3 style="margin-bottom: 10px;">Follow US</h3>
+              <div class="social-links">
+                <a href="https://github.com/supriya46788" class="social-link" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="" class="social-link" aria-label="Discord">
+                  <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/supriyapandey595" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:supriyadpandey502@gmail.com" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Quick Action</h3>
+            <a href="http://127.0.0.1:5501/index.html" class="resource-item">Home</a>
+            <a href="http://127.0.0.1:5501/about.html" class="resource-item">About us </a>
+            <a href="http://127.0.0.1:5501/contact.html" class="resource-item">Contact</a>
+            <a href="http://127.0.0.1:5501/index.html#" class="resource-item">Feature</a>
+            <a href="http://127.0.0.1:5501/index.html" class="resource-item"> How it works</a>
+            <a href="http://127.0.0.1:5501/tools.html" class="resource-item"> Tools</a>
+            <a href="http://127.0.0.1:5501/Faq.html" class="resource-item"> FAQ</a>
+          </div>
+
+          <div class="footer-section">
+            <h3>Resources </h3>
+            <a href="blog.html" class="resource-item"> Blog</a>
+            <a href="glossary.html" class="resource-item"> Glossary</a>
+            <a href="open-source.html" class="resource-item"> Open Source </a>
+            <a href="Tag-Based-filtering.html" class="resource-item"> Tag Based Filtering </a>
+            <a href="privacy.html" class="resource-item">Privacy Policy </a>
+            <a href="terms-of-service.html" class="resource-item"> Terms & Condition</a>
+          </div>
+
+          <div class="footer-section newsletter-section">
+            <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
+            <p class="newsletter-description" style="color: #7d7c7c;">
+              Get the latest updates, learning tips, and community news from Research paper Organize.
+            </p>
+            <form class="newsletter-form" onsubmit="return false;">
+              <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+              <button type="submit" class="subscribe-btn">Subscribe</button>
+            </form>
+            <p class="privacy-note" style="color: #7d7c7c;">We respect your privacy. Unsubscribe at any time.</p>
           </div>
         </div>
 
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-          </ul>
+        <div class="footer-bottom">
+          <p class="copyright">
+            © 2025 <a href="#">Research paper Organize</a>. All rights reserved. | Made with <span
+              class="heart">❤️</span>
+            for <a href="#">researchers worldwide</a>
+          </p>
         </div>
-
-        <div class="footer-section">
-          <h4>Resources</h4>
-          <ul class="footer-links">
-            <li><a href="tools.html"><i class="fas fa-tools"></i> Tools</a></li>
-            <li><a href="Faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li>
-            <li><a href="https://github.com/Channpreetk/Research-Paper-Organizer/blob/main/docs/README.md" target="_blank"><i class="fas fa-book"></i> Documentation</a></li>
-            <li><a href="https://github.com/Channpreetk/Research-Paper-Organizer/releases" target="_blank"><i class="fas fa-download"></i> Download</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Community</h4>
-          <ul class="footer-links">
-            <li><a href="https://github.com/Channpreetk/Research-Paper-Organizer/issues" target="_blank"><i class="fas fa-bug"></i> Report Issues</a></li>
-            <li><a href="https://github.com/Channpreetk/Research-Paper-Organizer/discussions" target="_blank"><i class="fas fa-comments"></i> Discussions</a></li>
-            <li><a href="https://github.com/Channpreetk/Research-Paper-Organizer/blob/main/docs/CONTRIBUTING.md" target="_blank"><i class="fas fa-hands-helping"></i> Contribute</a></li>
-            <li><a href="https://github.com/Channpreetk/Research-Paper-Organizer/blob/main/docs/CODE_OF_CONDUCT.md" target="_blank"><i class="fas fa-heart"></i> Code of Conduct</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; 2023-2025 Research Paper Organizer. Open source project under MIT License.</p>
-        <p class="footer-tagline">Making research organization simple and accessible for everyone.</p>
       </div>
     </footer>
 

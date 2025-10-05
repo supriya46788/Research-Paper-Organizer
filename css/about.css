@@ -72,15 +72,6 @@ body {
   color: #4a90e2;
 }
 
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
-  background: #357abd;
-  color: white;
-}
-
 /* Fade-in Animation */
 .fade-in.visible {
   opacity: 1;
