@@ -39,7 +39,8 @@
 <meta name="format-detection" content="telephone=no" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="msapplication-TileColor" content="#2563eb" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./css/global-cyberpunk-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="css/tool.css" />
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="css/style.css">
@@ -124,6 +125,7 @@
 
 
 
+  <link rel="stylesheet" href="./css/force-dark-override.css" />
 </head>
 <body>
 <div class="container">
@@ -145,9 +147,7 @@
             <a href="Faq.html" class="nav-item">FAQ</a>
             <a href="contact.html" class="nav-item">Contact Us</a>
             <a href="tools.html" class="nav-item">Tools</a>
-            <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-                <i class="fas fa-moon"></i>
-            </button>
+            
         </div>
     </nav>
 
@@ -372,20 +372,9 @@ color: #e0e0e0;
 }
 
 /* Dark mode toggle button styling */
-.dark-toggle {
-  color:#1a1a1a;
-/* background: none !important; */
-border: none;
-cursor: pointer;
-padding: 0.6rem 1.2rem;
-border-radius: 10px;
-transition: all 0.25s ease;
-}
 
-.dark-toggle:hover {
-    
-    color: #1a202c;;
-}
+
+
 
 header {
 background: linear-gradient(135deg, #4a90e2, #357abd);
@@ -942,36 +931,8 @@ backToTop.addEventListener("click", () => {
 
     // Dark Mode Toggle Function
     function toggleDarkMode() {
-        const body = document.body;
-        const darkToggle = document.getElementById('darkModeToggle');
-        const icon = darkToggle.querySelector('i');
+        const body = document.body;}
         
-        body.classList.toggle('dark-mode');
-        
-        // Update icon
-        if (body.classList.contains('dark-mode')) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-            localStorage.setItem('darkMode', 'enabled');
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-            localStorage.setItem('darkMode', 'disabled');
-        }
-    }
-
-    // Load dark mode preference on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        const darkMode = localStorage.getItem('darkMode');
-        const darkToggle = document.getElementById('darkModeToggle');
-        const icon = darkToggle.querySelector('i');
-        
-        if (darkMode === 'enabled') {
-            document.body.classList.add('dark-mode');
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-        }
-    });
 </script>
 
 </body>
