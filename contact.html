@@ -8,6 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link rel="stylesheet" href="./css/global-cyberpunk-theme.css" />
     <link rel="stylesheet" href="css/contact.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -173,7 +174,8 @@
     />
     <link rel="manifest" href="./favicon/site.webmanifest" />
     <meta name="theme-color" content="#2563eb" />
-  </head>
+    <link rel="stylesheet" href="./css/force-dark-override.css" />
+</head>
 
   <body>
     <!-- Toast container -->
@@ -201,14 +203,7 @@
           <a href="Faq.html" class="nav-item">FAQ</a>
           <a href="contact.html" class="nav-item">Contact Us</a>
           <a href="tools.html" class="nav-item">Tools</a>
-          <button
-            class="dark-toggle nav-item"
-            id="darkModeToggle"
-            title="Toggle Dark Mode"
-            onclick="toggleDarkMode()"
-          >
-            <i class="fas fa-moon"></i>
-          </button>
+          
         </div>
       </nav>
 
@@ -538,38 +533,7 @@
       // Dark Mode Toggle Function
       function toggleDarkMode() {
         const body = document.body;
-        const darkToggle = document.getElementById("darkModeToggle");
-        const icon = darkToggle.querySelector("i");
-
-        body.classList.toggle("dark-mode");
-
-        // Update icon
-        if (body.classList.contains("dark-mode")) {
-          icon.classList.remove("fa-moon");
-          icon.classList.add("fa-sun");
-          localStorage.setItem("darkMode", "enabled");
-        } else {
-          icon.classList.remove("fa-sun");
-          icon.classList.add("fa-moon");
-          localStorage.setItem("darkMode", "disabled");
-        }
-      }
-
-      // Load dark mode preference on page load
-      document.addEventListener("DOMContentLoaded", function () {
-        const darkMode = localStorage.getItem("darkMode");
-        const darkToggle = document.getElementById("darkModeToggle");
-
-        if (darkToggle) {
-          const icon = darkToggle.querySelector("i");
-
-          if (darkMode === "enabled") {
-            document.body.classList.add("dark-mode");
-            icon.classList.remove("fa-moon");
-            icon.classList.add("fa-sun");
-          }
-        }
-      });
+    }
     </script>
   </body>
 </html>
