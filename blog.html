@@ -10,7 +10,8 @@
 
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="./css/global-cyberpunk-theme.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- Your global styles should remain as-is -->
   <link rel="stylesheet" href="css/style.css" />
   <!-- Updated blog styles below -->
@@ -21,6 +22,7 @@
   <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
   <link rel="manifest" href="./favicon/site.webmanifest" />
   <meta name="theme-color" content="#2563eb" />
+  <link rel="stylesheet" href="./css/force-dark-override.css" />
 </head>
 
 <style>
@@ -683,9 +685,7 @@
         <a href="Faq.html" class="nav-item" role="menuitem">FAQ</a>
         <a href="contact.html" class="nav-item" role="menuitem">Contact Us</a>
         <a href="tools.html" class="nav-item">Tools</a>
-        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" aria-pressed="false">
-          <i class="fas fa-moon" aria-hidden="true"></i><span class="sr-only">Toggle dark mode</span>
-        </button>
+        
       </div>
     </nav>
 
@@ -964,21 +964,7 @@
       nav.classList.toggle("show");
     }
 
-    // Dark Mode Toggle
-    (function () {
-      const btn = document.getElementById('darkModeToggle');
-      const icon = btn.querySelector('i');
-      const apply = (enabled) => {
-        document.body.classList.toggle('dark-mode', enabled);
-        btn.setAttribute('aria-pressed', String(enabled));
-        icon.classList.toggle('fa-sun', enabled);
-        icon.classList.toggle('fa-moon', !enabled);
-        localStorage.setItem('darkMode', enabled ? 'enabled' : 'disabled');
-      };
-      btn.addEventListener('click', () => apply(!document.body.classList.contains('dark-mode')));
-      const saved = localStorage.getItem('darkMode') === 'enabled';
-      apply(saved);
-    })();
+
 
     // Utilities
     function qs(sel, scope = document) { return scope.querySelector(sel); }
