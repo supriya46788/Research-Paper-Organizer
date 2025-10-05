@@ -432,6 +432,7 @@ color: #1a202c;
       border-radius: 50%;
       color: #fff;
       transition: 0.3s;
+      text-decoration: none;
     }
 
     .social-icons a:hover {
