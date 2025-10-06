@@ -157,6 +157,10 @@
      padding-left: 5px;
      text-decoration: none;
  }
+ .footer-section a:hover{
+    color:#3e6aed;
+    font-weight: 600;
+ }
 
  .resource-item {
      display: flex;
@@ -300,6 +304,9 @@ body.dark-mode footer {
 
 body.dark-mode .modern-footer {
     background-color: #1D2735 !important;
+ }
+ body.dark-mode .social-links-parent h3{
+  color: #ffffff !important; 
  }
  @keyframes heartbeat {
 
