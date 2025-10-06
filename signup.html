@@ -28,15 +28,17 @@
     <meta name="theme-color" content="#2563eb" />
   </head>
   <body>
-    <div class="auth-container">
+    <div class="auth-container"  >
       <div class="auth-card">
         <!-- <=============Added Issue #465 =============> -->
+
         <button class="close-btn" onclick="window.history.back()">✖</button>
+
         <!-- <=============Ended Issue #465 =============> -->
         <div class="auth-header">
           <i class="fas fa-book-open"></i>
           <h1>Research Paper Organizer</h1>
-          <p>Create your account</p>
+          <p>Create your account to streamline your research journey.</p>
         </div>
 
         <form id="signupForm" class="auth-form" novalidate type="button">
@@ -182,6 +184,7 @@
           <div class="form-group">
             <div class="input-wrapper">
               <div class="checkbox-container">
+               
                 <input
                   type="checkbox"
                   id="agreeTerms"
@@ -288,12 +291,12 @@
 
       // darkmode.js
 
-// Apply saved dark mode preference
-window.addEventListener('DOMContentLoaded', () => {
-    if(localStorage.getItem('darkMode') === 'enabled'){
-        document.body.classList.add('dark-mode');
-    }
-});
+    // Apply saved dark mode preference
+    window.addEventListener('DOMContentLoaded', () => {
+        if(localStorage.getItem('darkMode') === 'enabled'){
+            document.body.classList.add('dark-mode');
+        }
+    });
 
     </script>
 

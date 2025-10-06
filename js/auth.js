@@ -83,7 +83,7 @@ class AuthSystem {
       // Position it in the top-right corner
       darkModeToggle.style.position = "absolute";
       darkModeToggle.style.top = "1rem";
-      darkModeToggle.style.right = "1rem";
+      darkModeToggle.style.right = "3.5rem";
 
       // Make the auth-card relative positioned
       document.querySelector(".auth-card").style.position = "relative";
