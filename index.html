@@ -1811,56 +1811,69 @@ marquee.addEventListener("mouseleave", () => {
       </div>
     </div>
 
-    <script>
-      // Feedback FAB and Modal Logic
-      document.addEventListener('DOMContentLoaded', () => {
-        const fab = document.getElementById('feedbackFab');
-        const overlay = document.getElementById('feedbackModalOverlay');
-        const closeBtn = document.getElementById('feedbackCloseBtn');
-        const cancelBtn = document.getElementById('feedbackCancelBtn');
-        const form = document.getElementById('feedbackForm');
-        const thankYou = document.getElementById('feedbackThankYou');
-        const nameInput = document.getElementById('fbName');
+<script>
+  // Feedback FAB and Modal Logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const fab = document.getElementById('feedbackFab');
+    const overlay = document.getElementById('feedbackModalOverlay');
+    const closeBtn = document.getElementById('feedbackCloseBtn');
+    const cancelBtn = document.getElementById('feedbackCancelBtn');
+    const form = document.getElementById('feedbackForm');
+    const thankYou = document.getElementById('feedbackThankYou');
+    const nameInput = document.getElementById('fbName');
+    const modal = document.querySelector('.modal'); // modal box
 
-        function openModal() {
-          overlay.classList.remove('hidden');
-          document.body.style.overflow = 'hidden';
-          setTimeout(() => nameInput?.focus(), 0);
-        }
+    function openModal() {
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => nameInput?.focus(), 0);
+    }
 
-        function closeModal() {
-          overlay.classList.add('hidden');
-          document.body.style.overflow = '';
-          form.classList.remove('hidden');
-          thankYou.classList.add('hidden');
-          form.reset();
-        }
+    function closeModal() {
+      overlay.classList.add('hidden');
+      document.body.style.overflow = '';
+      form.classList.remove('hidden');
+      thankYou.classList.add('hidden');
+      form.reset();
+    }
 
-        fab.addEventListener('click', openModal);
-        closeBtn.addEventListener('click', closeModal);
-        cancelBtn.addEventListener('click', closeModal);
-        overlay.addEventListener('click', (e) => {
-          if (e.target === overlay) closeModal();
-        });
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeModal();
-        });
+    // FAB opens modal
+    fab.addEventListener('click', openModal);
 
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-          }
-          // Show thank you, then redirect after a few seconds
-          form.classList.add('hidden');
-          thankYou.classList.remove('hidden');
-          setTimeout(() => {
-            window.location.href = 'index.html';
-          }, 3000);
-        });
-      });
-    </script>
+    // Close modal only via buttons
+    closeBtn.addEventListener('click', closeModal);
+    cancelBtn.addEventListener('click', closeModal);
+
+    // Prevent clicks inside modal from closing it
+    modal.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // Overlay click closes modal (clicks outside modal only)
+    overlay.addEventListener('click', closeModal);
+
+    // ESC key closes modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !overlay.classList.contains('hidden')) closeModal();
+    });
+
+    // Form submission
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+      // Show thank you, then redirect after 3 seconds
+      form.classList.add('hidden');
+      thankYou.classList.remove('hidden');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000);
+    });
+  });
+</script>
+
 
     <script src="app.js"></script>
   </body>
