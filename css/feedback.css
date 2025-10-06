@@ -81,3 +81,223 @@
     transform: none !important;
   }
 }
+/* ---- Strong reset & enforced circular FAB ---- */
+#feedbackFab,
+#feedbackFab * {
+  box-sizing: border-box !important;
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+}
+
+/* remove possible pseudo-element backgrounds */
+#feedbackFab::before,
+#feedbackFab::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* fixed circular FAB on the right-middle */
+#feedbackFab {
+  position: fixed !important;
+  top: auto !important;
+  right: auto !important;
+  left: 20px !important;
+  bottom: 20px !important;
+  transform: none !important;
+
+  width: 48px !important;
+  height: 48px !important;
+  max-width: 48px !important;
+  max-height: 48px !important;
+  padding: 0 !important;
+
+  border-radius: 50% !important;
+  background-color: #3B82F6 !important;
+  color: #fff !important;
+  border: none !important;
+  cursor: pointer !important;
+  z-index: 10001 !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15) !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+}
+
+/* hover / focus behaviour */
+#feedbackFab:hover {
+  transform: scale(1.1) !important;
+  background-color: #007bff !important;
+  opacity: 0.9;
+  color: #000 !important;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+#feedbackFab:focus {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+/* mobile: slightly larger touch target but still centered-right */
+@media (max-width: 600px) {
+  #feedbackFab,
+  #feedbackFab * {
+    width: 48px !important;
+    height: 48px !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
+  }
+  #feedbackFab {
+    bottom: 20px !important;
+    left: 20px !important;
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
+  }
+}
+
+/* ---------- Feedback Modal Layout Fixes ---------- */
+
+/* Overlay and modal wrapper */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* should be below FAB but above page content */
+  pointer-events: auto; /* FIX: allow proper click targeting */
+}
+
+/* Modal box */
+.modal {
+  background: #fff;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  pointer-events: auto;
+}
+
+/* Header alignment fix */
+.modal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1rem 3rem; /* extra padding for icon space */
+  overflow: visible !important;
+}
+
+/* Title text centered even on small screens */
+.modal-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+}
+
+/* Close icon properly positioned */
+.modal-close {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #333;
+  z-index: 1002;
+}
+
+/* Fix overlapping chat/FAB over submit button */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  z-index: 10001;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .modal {
+    width: 92%;
+    margin: 0 1rem;
+  }
+  .modal-title {
+    font-size: 1rem;
+  }
+  .modal-close {
+    top: -1rem;
+    right: -7rem;
+    font-size: 1.3rem;
+  }
+  .modal-header {
+    padding: 0.75rem 2.5rem;
+  }
+}
+
+.modal-close i {
+  color: inherit !important;
+  visibility: visible !important;
+  display: inline-block !important;
+}
+
+.modal,
+.modal-content {
+  overflow: visible !important;
+}
+
+/* --------- Dark Mode Support for Feedback Modal Header --------- */
+body.dark-mode .modal {
+  background-color: #1e293b; /* dark modal background */
+  color: #f1f5f9; /* light text for readability */
+}
+
+body.dark-mode .modal-header {
+  background-color: #1e293b; /* match modal dark background */
+  border-bottom: 1px solid #334155; /* subtle dark border */
+}
+
+body.dark-mode .modal-title {
+  color: #f1f5f9; /* light title text in dark mode */
+}
+
+body.dark-mode .modal-close {
+  color: #f1f5f9; /* light color for close button */
+}
+
+body.dark-mode .form-input,
+body.dark-mode .form-textarea {
+  background-color: #334155; /* dark input background */
+  color: #f1f5f9; /* light input text */
+  border: 1px solid #475569; /* subtle dark border */
+}
+
+body.dark-mode .btn-primary {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+body.dark-mode .btn-secondary {
+  background-color: #475569;
+  color: #f1f5f9;
+}
