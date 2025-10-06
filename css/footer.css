@@ -105,6 +105,7 @@
  .brand-tagline {
      color: #888;
      font-size: 13px;
+     margin-bottom: 5px;
  }
 
  .brand-description {
@@ -128,7 +129,7 @@
      display: flex;
      align-items: center;
      justify-content: center;
-     color: #4a4949 !important;
+     color: #696868 !important;
      text-decoration: none;
      transition: all 0.3s ease;
      font-size: 18px;
@@ -316,7 +317,6 @@ body.dark-mode .modern-footer {
      .footer-main {
          grid-template-columns: repeat(2, 1fr);
          gap: 60px;
-         background-color: #151515;
          padding: 12px;
      }
 
