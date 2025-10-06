@@ -94,17 +94,17 @@ body {
   transition: background 0.3s ease;
   position: absolute;
   top: 1rem;
-  right: 1rem;
+  left: 1rem;
   z-index: 10;
 }
 
 .close-btn:hover {
-  color: red;              /* bright white on hover */
-  transform: scale(1.1);       /* subtle hover feedback */
+  color:#16202d;    
+  transform: scale(1.1);    
 }
 
 .close-btn:focus {
-  outline: 2px solid #ffffff;  /* accessibility focus */
+  outline: 2px solid #ffffff; 
   outline-offset: 3px;
 }
 /* <=============Ended Issue #480 =============> */
