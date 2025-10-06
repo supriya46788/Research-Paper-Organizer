@@ -498,6 +498,8 @@ body {
 
 .feature-icon i {
   /* add float  */
+  color: white !important;
+  font-size: 1.7rem;
   animation: float 3s ease-in-out infinite;
 }
 /* How it Works Section */
@@ -688,75 +690,7 @@ body {
   flex: 1; /* Allow buttons to grow equally */
   min-width: 200px; /* Minimum width for buttons */
 }
-/* Footer */
-.landing-footer {
-  background: var(--text-color);
-  color: white;
-  padding: 60px 0 20px;
-}
 
-.footer-content {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
-  margin-bottom: 2rem;
-}
-
-.footer-links {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.footer-section h4 {
-  margin-bottom: 1rem;
-  color: white;
-}
-
-.footer-section a {
-  display: block;
-  color: #cbd5e1;
-  text-decoration: none;
-  margin-bottom: 0.5rem;
-  transition: color 0.3s ease;
-}
-
-.footer-section a:hover {
-  color: var(--primary-color);
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-links a {
-  color: #cbd5e1;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-.social-links a:hover {
-  color: var(--primary-color);
-}
-
-/* Responsive Design for Footer */
-@media (max-width: 768px) {
-  .footer-content {
-    grid-template-columns: 1fr; /* Stack footer sections on smaller screens */
-    text-align: center; /* Center text for better readability */
-  }
-
-  .footer-links {
-    grid-template-columns: 1fr; /* Stack links on smaller screens */
-    gap: 1rem; /* Adjust gap for better spacing */
-  }
-
-  .footer-bottom {
-    flex-direction: column; /* Stack items vertically */
-    text-align: center; /* Center text for better readability */
-  }
-}
 /*Loading page*/
 #loading-screen {
   position: fixed;
@@ -1560,18 +1494,6 @@ body.dark-mode .cta {
 body.dark-mode .cta-content h2,
 body.dark-mode .cta-content p {
   color: #e5e7eb;
-}
-
-/* Footer */
-body.dark-mode .landing-footer {
-  background: #0b1120;
-  color: #e5e7eb;
-}
-body.dark-mode .footer-section a {
-  color: #9ca3af;
-}
-body.dark-mode .footer-section a:hover {
-  color: #3b82f6;
 }
 .step {
   background: rgba(135, 206, 250, 0.15);
