@@ -123,13 +123,13 @@
  .social-link {
      width: 45px;
      height: 45px;
-     background: #1a1a1a;
+     background: white !important;
      border: 1px solid #d4d2d2;
-     border-radius: 10px;
+     border-radius: 50%;
      display: flex;
      align-items: center;
      justify-content: center;
-     color: #696868 !important;
+     color: #757373 !important;
      text-decoration: none;
      transition: all 0.3s ease;
      font-size: 18px;
@@ -289,7 +289,8 @@
  }
 
  body.dark-mode .social-link {
-     color: #cfcccc !important;
+     background: #1D2735 !important; 
+     color: #c5c3c3 !important;
  }
 body.dark-mode {
     background-color: #121212; /* Dark mode body */
