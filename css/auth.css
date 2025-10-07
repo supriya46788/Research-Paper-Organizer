@@ -80,13 +80,13 @@ body {
 
 /* <=============Updated for Issue #480 =============> */
 .close-btn {
-  background: none;            /* remove light background */
+  background: #fafafb;            /* remove light background */
   border: none;
   border-radius: 6px;
   padding: 6px 10px;
   font-size: 1.2rem;
   cursor: pointer;
-  color: #d1d5db;              /* light gray text (good contrast on dark) */
+  color: #68686a;              /* light gray text (good contrast on dark) */
   transition: color 0.3s ease, transform 0.2s ease;
   position: absolute;
   top: 1rem;
@@ -95,7 +95,7 @@ body {
 }
 
 .close-btn:hover {
-  color: #ffffff;              /* bright white on hover */
+  color: #6d6c6c;              /* bright white on hover */
   transform: scale(1.1);       /* subtle hover feedback */
 }
 
@@ -513,6 +513,14 @@ body {
 }
 
 /* Dark mode styles using .dark-mode class */
+
+body.dark-mode .close-btn {
+  background-color: #283145;
+  color: #c9cbcd;
+}
+body.dark-mode .close-btn:hover {
+color: #fbfcfe;
+}
 body.dark-mode {
   background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
 }
