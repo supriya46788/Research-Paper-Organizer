@@ -55,7 +55,7 @@ body {
   justify-content: center;
   gap: 0.5rem;
   transition: background-color 0.2s, transform 0.1s;
-  margin-top: 1rem;
+ 
 }
 
 .auth-btn:hover {
@@ -66,8 +66,12 @@ body {
 }
 
 .auth-container {
+  position: relative;
   width: 100%;
   max-width: 420px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+   transition: background 0.3s ease, box-shadow 0.3s ease;
+   border-radius: 16px;
 }
 
 .auth-card {
@@ -80,14 +84,14 @@ body {
 
 /* <=============Updated for Issue #480 =============> */
 .close-btn {
-  background: none;            /* remove light background */
+ background: #f3f4f6;
   border: none;
   border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 1.2rem;
+  padding: 8px 10px;
+  font-size: 1rem;
   cursor: pointer;
-  color: #d1d5db;              /* light gray text (good contrast on dark) */
-  transition: color 0.3s ease, transform 0.2s ease;
+  color: #1f2937;
+  transition: background 0.3s ease;
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -95,12 +99,12 @@ body {
 }
 
 .close-btn:hover {
-  color: #ffffff;              /* bright white on hover */
-  transform: scale(1.1);       /* subtle hover feedback */
+  color:#16202d;    
+  transform: scale(1.1);    
 }
 
 .close-btn:focus {
-  outline: 2px solid #ffffff;  /* accessibility focus */
+  outline: 2px solid #ffffff; 
   outline-offset: 3px;
 }
 /* <=============Ended Issue #480 =============> */
@@ -127,7 +131,7 @@ body {
 
 .auth-header p {
   color: #6b7280;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   margin-bottom: 0.5rem;
 }
 
@@ -141,14 +145,15 @@ body {
 .required {
   color: #ef4444;
   margin-left: 0.25rem;
+
 }
 
 .form-group label {
   font-weight: 500;
   color: #374151;
   font-size: 0.875rem;
+  margin-bottom: 3%; 
 }
-
 .input-container {
   position: relative;
   display: flex;
@@ -201,7 +206,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: .3rem;
   position: relative;
 }
 
@@ -347,9 +352,11 @@ body {
   gap: 0.5rem;
 }
 
+
 .checkbox-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   font-size: 0.875rem;
   color: #6b7280;
@@ -363,9 +370,12 @@ body {
   height: 1rem;
   accent-color: #2563eb;
    box-shadow: 2px shadow #1d4ed8 ;
-
 }
 
+.checkbox-label{
+  margin-top: 1.8rem;
+  font-size: .9rem;
+}
 .forgot-link,
 .terms-link {
   color: #2563eb;
@@ -435,6 +445,10 @@ body {
   font-weight: 600;
 }
 
+.forgot-link a{
+  color: #2563eb;
+}
+
 /* Mobile Responsive - Matching your existing breakpoints */
 @media (max-width: 600px) {
   body {
@@ -502,9 +516,6 @@ body {
   cursor: pointer;
   color: #1f2937;
   transition: background 0.3s ease;
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   z-index: 10;
 }
 
@@ -512,11 +523,16 @@ body {
   background: #e5e7eb;
 }
 
+
 /* Dark mode styles using .dark-mode class */
 body.dark-mode {
   background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
 }
 
+body.dark-mode .close-btn{
+  background-color: #374151;
+  color: #e3e4e6;
+}
 body.dark-mode .auth-dark-toggle {
   background: #374151;
   color: #d1d5db;
