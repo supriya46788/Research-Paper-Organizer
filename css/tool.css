@@ -144,23 +144,35 @@ max-width: 1200px;
 margin: 0 auto;
 }
 .tool-card {
-background: white;
-padding: 2rem;
-border-radius: 20px;
-box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-text-align: center;
-opacity: 0;
-transform: translateY(20px);
-transition: all 0.3s ease;
-/* cursor: pointer; */ /*SAMEERA*/  
-border: 1px solid rgba(74, 144, 226, 0.1);
+  transition: border 0.4s ease;
+  border: 4px solid transparent;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 20px;
+  margin: 6px;
+  position: relative;
+  z-index: 1;
 }
 
+/* Hover effect with ocean blue glow */
 .tool-card:hover {
-transform: translateY(-8px);
-box-shadow: 0 8px 30px rgba(74, 144, 226, 0.2);
-border-color: rgba(74, 144, 226, 0.3);
+  border: 4px solid #1572A1; /* Calm ocean blue */
+  animation: oceanBluePulse 3.5s ease-in-out infinite;
 }
+
+/* Pulse animation */
+@keyframes oceanBluePulse {
+  0% {
+    box-shadow: 0 0 0px 0 rgba(21, 114, 161, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 24px 10px rgba(21, 114, 161, 0.6); /* Soft glowing pulse */
+  }
+  100% {
+    box-shadow: 0 0 0px 0 rgba(21, 114, 161, 0.3);
+  }
+}
+
 
 .tool-card.show {
 opacity: 1;
