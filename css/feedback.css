@@ -301,3 +301,40 @@ body.dark-mode .btn-secondary {
   background-color: #475569;
   color: #f1f5f9;
 }
+  .star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .star-rating svg {
+    width: 34px;
+    height: 34px;
+    fill: #d3d3d3;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.15));
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 2;
+  }
+
+  .star-rating svg.hover,
+  .star-rating svg.selected {
+    fill: url(#goldGradient);
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.6));
+  }
+
+  svg defs {
+    pointer-events: none;
+  }
+
+  #feedbackCancelBtn:focus,
+  #feedbackCancelBtn:active {
+    outline: none;
+    background: var(--btn-secondary-bg, #ccc);
+  }
