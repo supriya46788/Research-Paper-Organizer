@@ -81,6 +81,54 @@
         display: flex;
       }
 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Research Paper Organizer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Learn about Research Paper Organizer - a clean, minimal web-based tool for organizing academic research papers. Built with HTML, CSS, and JavaScript for researchers worldwide." />
+    <meta name="keywords" content="about research organizer, academic tools, research management, open source, research paper tool, academic software" />
+    <meta name="author" content="Research Paper Organizer Team" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563eb" />
+    <link rel="canonical" href="https://research-paper-organizer.vercel.app/about.html" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="About Us | Research Paper Organizer" />
+    <meta property="og:description" content="Learn about Research Paper Organizer - a clean, minimal web-based tool for organizing academic research papers. Built with HTML, CSS, and JavaScript for researchers worldwide." />
+    <meta property="og:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+    <meta property="og:url" content="https://research-paper-organizer.vercel.app/about.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Research Paper Organizer" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="About Research Paper Organizer Team" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About Us | Research Paper Organizer" />
+    <meta name="twitter:description" content="Learn about Research Paper Organizer - a clean, minimal web-based tool for organizing academic research papers. Built with HTML, CSS, and JavaScript for researchers worldwide." />
+    <meta name="twitter:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+    <meta name="twitter:image:alt" content="About Research Paper Organizer Team" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="application-name" content="Research Paper Organizer" />
+    <meta name="apple-mobile-web-app-title" content="Research Paper Organizer" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#2563eb" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
+    <style>
+      /* Hamburger div style */
       .navbar {
         display: flex;
         justify-content: space-between;
@@ -881,6 +929,75 @@
       <h1>
         About
         <span style="
+      body.dark-mode .footer-bottom {
+        background: rgba(0, 0, 0, 0.3);
+        border-top-color: rgba(224, 224, 224, 0.1);
+      }
+    </style>
+    <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="./favicon/favicon-48x48.png"
+    />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <meta name="theme-color" content="#2563eb" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Navigation -->
+
+      <nav class="navbar" aria-label="Primary">
+        <a href="index.html" class="nav-item">
+          <span>Home</span>
+        </a>
+        <!-- Hamburger div (shows only on mobile) -->
+        <div
+          class="hamburger-container"
+          onclick="toggleMenu()"
+          aria-label="Toggle Menu"
+        >
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+
+        <div class="navbar-right-links" role="menubar" aria-label="Site">
+          <a
+            href="about.html"
+            class="nav-item"
+            role="menuitem"
+            aria-current="page"
+            >About us</a
+          >
+          <a href="blog.html" class="nav-item" role="menuitem">Blogs</a>
+          <a href="Faq.html" class="nav-item" role="menuitem">FAQ</a>
+          <a href="contact.html" class="nav-item" role="menuitem">Contact Us</a>
+          <a href="tools.html" class="nav-item">Tools</a>
+          <button
+            class="dark-toggle nav-item"
+            id="darkModeToggle"
+            title="Toggle Dark Mode"
+            aria-pressed="false"
+          >
+            <i class="fas fa-moon" aria-hidden="true"></i
+            ><span class="sr-only">Toggle dark mode</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Header -->
+      <header class="about-header">
+        <h1>
+          About
+          <span
+            style="
               background: linear-gradient(45deg, #fff, #e0e7ff);
               background-clip: text;
               -webkit-background-clip: text;
