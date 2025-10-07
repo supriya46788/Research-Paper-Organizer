@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="landing.css" />
     <link rel="stylesheet" href="css/open-source.css" />
     <link rel="stylesheet" href="css/Tag-Based-filtering.css" />
+    <link rel="stylesheet" href="/css/footer.css">
   </head>
   <body>
     <!-- Navigation -->
@@ -231,85 +232,88 @@
       <button onclick="downloadPaperFromCloud()">Download from Cloud</button>
     </div> -->
 
-    <!-- ===== Footer ===== -->
-    <footer class="modern-footer" aria-label="Footer">
-      <div class="footer-top">
-        <div class="footer-brand footer-card">
-          <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-          <p style="margin-top: 20px">
-            Organize, track, and manage your research papers seamlessly.
-          </p>
-        </div>
+    <!-- Modern Footer Start Here -->
+    <footer aria-label="Footer" class="modern-footer">
+      <div class="footer-container">
+        <div class="footer-main">
+          <div class="footer-brand">
+            <div class="brand-header">
+              <div class="brand-icon">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <div class="brand-name">
+                <h2>Research Paper Organize</h2>
+                <p class="brand-tagline">Streamline Your Research, Simplify Your Workflow</p>
+              </div>
+            </div>
+            <p class="brand-description">
+              Empowering developers worldwide with AI-powered learning, personalized guidance, and comprehensive career
+              support.
+            </p>
 
-        <div class="footer-links-section footer-card">
-          <h4>Quick Links</h4>
-          <ul>
-            <li>
-              <a href="index.html"><i class="fas fa-home"></i>Home</a>
-            </li>
-            <li>
-              <a href="about.html"><i class="fas fa-users"></i>About Us</a>
-            </li>
-            <li>
-              <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
-            </li>
-            <li>
-              <a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
-            </li>
-          </ul>
-        </div>
+            <div class="social-links-parent">
+              <h3 style="margin-bottom: 10px;">Follow US</h3>
+              <div class="social-links">
+                <a href="https://github.com/supriya46788" class="social-link" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+                <a href="" class="social-link" aria-label="Discord">
+                  <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/supriyapandey595" class="social-link" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:supriyadpandey502@gmail.com" class="social-link" aria-label="Email">
+                  <i class="fas fa-envelope"></i>
+                </a>
+              </div>
+            </div>
+          </div>
 
-        <div class="footer-links-section footer-card">
-          <h4>Resources</h4>
-          <ul>
-            <li>
-              <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
-            </li>
-            <li>
-              <a href="glossary.html"><i class="fas fa-book"></i>Glossary</a>
-            </li>
-            <li>
-              <a href="open-source.html"
-                ><i class="fas fa-code-branch"></i>Open Source</a
-              >
-            </li>
-            <li>
-              <a href="Tag-Based-filtering.html"
-                ><i class="fas fa-book"></i>Tag Based Filtering</a
-              >
-            </li>
-          </ul>
-        </div>
+          <div class="footer-section">
+            <h3>Quick Action</h3>
+            <a href="http://127.0.0.1:5501/index.html" class="resource-item">Home</a>
+            <a href="http://127.0.0.1:5501/about.html" class="resource-item">About us </a>
+            <a href="http://127.0.0.1:5501/contact.html" class="resource-item">Contact</a>
+            <a href="http://127.0.0.1:5501/index.html#" class="resource-item">Feature</a>
+            <a href="http://127.0.0.1:5501/index.html" class="resource-item"> How it works</a>
+            <a href="http://127.0.0.1:5501/tools.html" class="resource-item"> Tools</a>
+            <a href="http://127.0.0.1:5501/Faq.html" class="resource-item"> FAQ</a>
+          </div>
 
-        <div class="footer-links-section footer-card">
-          <h4>Connect</h4>
-          <div class="social-icons">
-            <a
-              href="https://github.com/supriya46788"
-              target="_blank"
-              title="GitHub"
-              ><i class="fab fa-github"></i
-            ></a>
-            <a
-              href="https://www.linkedin.com/in/supriyapandey595"
-              target="_blank"
-              title="LinkedIn"
-              class="linkedin-icon"
-            >
-              <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:supriyadpandey502@gmail.com" title="Email"
-              ><i class="fas fa-envelope"></i
-            ></a>
+          <div class="footer-section">
+            <h3>Resources </h3>
+            <a href="blog.html" class="resource-item"> Blog</a>
+            <a href="glossary.html" class="resource-item"> Glossary</a>
+            <a href="open-source.html" class="resource-item"> Open Source </a>
+            <a href="Tag-Based-filtering.html" class="resource-item"> Tag Based Filtering </a>
+            <a href="privacy.html" class="resource-item">Privacy Policy </a>
+            <a href="terms-of-service.html" class="resource-item"> Terms & Condition</a>
+          </div>
+
+          <div class="footer-section newsletter-section">
+            <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
+            <p class="newsletter-description" style="color: #7d7c7c;">
+              Get the latest updates, learning tips, and community news from Research paper Organize.
+            </p>
+            <form class="newsletter-form" onsubmit="return false;">
+              <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+              <button type="submit" class="subscribe-btn">Subscribe</button>
+            </form>
+            <p class="privacy-note" style="color: #7d7c7c;">We respect your privacy. Unsubscribe at any time.</p>
           </div>
         </div>
-      </div>
 
-      <div class="footer-bottom">
-        © 2025 Research Paper Organizer | Made with
-        <span class="heart">&hearts;</span> for researchers worldwide
+        <div class="footer-bottom">
+          <p class="copyright">
+            © 2025 <a href="#">Research paper Organize</a>. All rights reserved. | Made with <span
+              class="heart">❤️</span>
+            for <a href="#">researchers worldwide</a>
+          </p>
+        </div>
       </div>
     </footer>
+
   </body>
   <script src="js/Tag-Based-filtering.js"></script>
 </html>

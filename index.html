@@ -99,687 +99,748 @@
       </div>
     </div>
 
-    <!-- Navigation -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research Paper Organizer - Organize Your Research Efficiently</title>
 
-    <nav class="landing-nav">
-      <div class="nav-container">
-        <a href="#top" class="nav-brand">
-          <i class="fas fa-book-open"></i>
+  <!-- SEO Meta Tags -->
+  <meta name="description"
+    content="Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform." />
+  <meta name="keywords"
+    content="research papers, academic research, paper organizer, citation management, research workflow, academic tools, paper management, research organization" />
+  <meta name="author" content="Research Paper Organizer Team" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="canonical" href="https://research-paper-organizer.vercel.app/" />
+  <link rel="stylesheet" href="/css/footer.css">
 
-          <span>Research Paper Organizer</span>
-        </a>
-        <!-- hamburger menu for mobiles -->
-        <button class="mobile-menu-toggle" aria-label="Toggle menu">
-          <i class="fas fa-bars"></i>
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Research Paper Organizer - Organize Your Research Efficiently" />
+  <meta property="og:description"
+    content="Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform." />
+  <meta property="og:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+  <meta property="og:url" content="https://research-paper-organizer.vercel.app/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Research Paper Organizer" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Research Paper Organizer - Academic Research Management Tool" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Research Paper Organizer - Organize Your Research Efficiently" />
+  <meta name="twitter:description"
+    content="Streamline your academic workflow with our intelligent research paper management system. Track, organize, and cite your papers efficiently in one centralized platform." />
+  <meta name="twitter:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+  <meta name="twitter:image:alt" content="Research Paper Organizer - Academic Research Management Tool" />
+
+  <!-- Additional SEO Meta Tags -->
+  <meta name="application-name" content="Research Paper Organizer" />
+  <meta name="apple-mobile-web-app-title" content="Research Paper Organizer" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="msapplication-TileColor" content="#2563eb" />
+  <meta name="msapplication-config" content="/browserconfig.xml" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="slider.css" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/feedback.css" />
+  <link rel="stylesheet" href="landing.css" />
+  <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
+  <link rel="manifest" href="./favicon/site.webmanifest" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    crossorigin="anonymous" />
+</head>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("./sw.js")
+        .then((reg) => console.log("Service Worker registered:", reg.scope))
+        .catch((err) => console.error("SW registration failed:", err));
+    });
+  }
+</script>
+
+<body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-background-animation"></div>
+    <div class="loader">
+      <i class="fa-solid fa-spinner"></i>
+      <h2 id="loading-text">
+        Organizing your thoughts<span class="dots"></span>
+      </h2>
+    </div>
+    <div class="loading-progress">
+      <div class="progress-percentage">0%</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+
+  <nav class="landing-nav">
+    <div class="nav-container">
+      <a href="#top" class="nav-brand">
+        <i class="fas fa-book-open"></i>
+
+        <span>Research Paper Organizer</span>
+      </a>
+      <!-- hamburger menu for mobiles -->
+      <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it Works</a>
+        <a href="about.html">About</a>
+        <a href="tools.html">Tools</a>
+        <a href="contact.html">Contact</a>
+        <button class="btn-primary" onclick="window.location.href='signup.html'">
+          Get Started
         </button>
-
-        <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#how-it-works">How it Works</a>
-          <a href="about.html">About</a>
-          <a href="tools.html">Tools</a>
-          <a href="contact.html">Contact</a>
-          <button
-            class="btn-primary"
-            onclick="window.location.href='signup.html'"
-          >
-            Get Started
-          </button>
-          <!-- Add dark mode toggle here -->
-          <button
-            class="dark-toggle nav-item"
-            id="darkModeToggle"
-            title="Toggle Dark Mode"
-          >
-            <i class="fas fa-moon"></i>
-          </button>
-        </div>
-      </div>
-    </nav>
-
-    <br /><br /><br />
-
-    <!-- Carosule Slider -->
-
-    <div class="slider">
-      <div class="list">
-        <div class="item">
-          <img src="./images/SMART SEARCH 1.jpg" alt="" />
-
-          <div class="content">
-            <div class="title">Smart Search</div>
-
-            <div class="description">
-              Find papers instantly with intelligent search across titles,
-              authors, abstracts, and tags.
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="./images/SMART ORGANISATION.jpg" alt="" />
-
-          <div class="content">
-            <div class="title">Smart Organization</div>
-
-            <div class="description">
-              Categorize papers by topics, tags, and custom labels. Never lose
-              track of important research.
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="./images/CLOUD SYNC.png" alt="" />
-
-          <div class="content">
-            <div class="title">Cloud Sync</div>
-
-            <div class="description">
-              Access your research library from anywhere with secure cloud
-              storage.
-            </div>
-          </div>
-        </div>
-
-        <div class="item">
-          <img src="./images/PDF MANAGAMENT 1.jpg" alt="" />
-
-          <div class="content">
-            <div class="title">PDF Management</div>
-
-            <div class="description">
-              Upload and store PDFs directly in your library with built-in
-              preview capabilities.
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="thumbnail">
-        <div class="item">
-          <img src="./images/SMART SEARCH 1.jpg" alt="" />
-        </div>
-        <div class="item">
-          <img src="./images/SMART ORGANISATION.jpg" alt="" />
-        </div>
-        <div class="item">
-          <img src="./images/CLOUD SYNC.png" alt="" />
-        </div>
-        <div class="item">
-          <img src="./images/PDF MANAGAMENT 1.jpg" alt="" />
-        </div>
-      </div>
-
-      <div class="nextPrevArrows">
-        <button class="prev"><</button>
-        <button class="next">></button>
+        <!-- Add dark mode toggle here -->
+        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode">
+          <i class="fas fa-moon"></i>
+        </button>
       </div>
     </div>
-    <!-- Carousel Slider -->
+  </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-container">
-        <!-- Left side -->
-        <div class="hero-content animate">
-          <h1 class="animated-title">
-            <span class="line">Organize Your Research</span><br />
-            <span class="line">Papers Like Never</span><br />
-            <span class="line">Before</span>
-          </h1>
+  <br /><br /><br />
 
+  <!-- Carosule Slider -->
+
+  <div class="slider">
+    <div class="list">
+      <div class="item">
+        <img src="./images/SMART SEARCH 1.jpg" alt="" />
+
+        <div class="content">
+          <div class="title">Smart Search</div>
+
+          <div class="description">
+            Find papers instantly with intelligent search across titles,
+            authors, abstracts, and tags.
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="./images/SMART ORGANISATION.jpg" alt="" />
+
+        <div class="content">
+          <div class="title">Smart Organization</div>
+
+          <div class="description">
+            Categorize papers by topics, tags, and custom labels. Never lose
+            track of important research.
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="./images/CLOUD SYNC.png" alt="" />
+
+        <div class="content">
+          <div class="title">Cloud Sync</div>
+
+          <div class="description">
+            Access your research library from anywhere with secure cloud
+            storage.
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="./images/PDF MANAGAMENT 1.jpg" alt="" />
+
+        <div class="content">
+          <div class="title">PDF Management</div>
+
+          <div class="description">
+            Upload and store PDFs directly in your library with built-in
+            preview capabilities.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="thumbnail">
+      <div class="item">
+        <img src="./images/SMART SEARCH 1.jpg" alt="" />
+      </div>
+      <div class="item">
+        <img src="./images/SMART ORGANISATION.jpg" alt="" />
+      </div>
+      <div class="item">
+        <img src="./images/CLOUD SYNC.png" alt="" />
+      </div>
+      <div class="item">
+        <img src="./images/PDF MANAGAMENT 1.jpg" alt="" />
+      </div>
+    </div>
+
+    <div class="nextPrevArrows">
+      <button class="prev">
+          &lt;
+          <button class="next">&gt;</button>
+    </div>
+  </div>
+  <!-- Carousel Slider -->
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <!-- Left side -->
+      <div class="hero-content animate">
+        <h1 class="animated-title">
+          <span class="line">Organize Your Research</span><br />
+          <span class="line">Papers Like Never</span><br />
+          <span class="line">Before</span>
+        </h1>
+
+        <p>
+          Streamline your academic workflow with our intelligent research
+          paper management system. Track, organize, and cite your papers
+          efficiently in one centralized platform.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="window.location.href='signup.html'">
+            Start Free Trial
+          </button>
+          <button class="btn-secondary" onclick="scrollToFeatures()">
+            See How it Works
+          </button>
+        </div>
+        <p class="hero-note">No credit card required • 30-day free trial</p>
+      </div>
+
+      <!-- Right side -->
+      <div class="hero-image animate">
+        <div class="hero-mockup">
+          <div class="mockup-header">
+            <div class="mockup-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-paper">
+              <div class="paper-title">Attention Is All You Need</div>
+              <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
+              <div class="paper-tags">
+                <span>Machine Learning</span>
+                <span>Transformers</span>
+              </div>
+            </div>
+            <div class="mockup-paper">
+              <div class="paper-title">BERT: Pre-training of Deep...</div>
+              <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
+              <div class="paper-tags">
+                <span>NLP</span>
+                <span>Pre-training</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Everything You Need for Research Management</h2>
+        <p>
+          Powerful features designed specifically for researchers, students,
+          and academics
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card slide-left">
+          <div class="feature-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Smart Search</h3>
           <p>
-            Streamline your academic workflow with our intelligent research
-            paper management system. Track, organize, and cite your papers
-            efficiently in one centralized platform.
+            Find papers instantly with intelligent search across titles,
+            authors, abstracts, and tags.
           </p>
-          <div class="hero-buttons">
-            <button
-              class="btn-primary"
-              onclick="window.location.href='signup.html'"
-            >
-              Start Free Trial
-            </button>
-            <button class="btn-secondary" onclick="scrollToFeatures()">
-              See How it Works
-            </button>
-          </div>
-          <p class="hero-note">No credit card required • 30-day free trial</p>
         </div>
 
-        <!-- Right side -->
-        <div class="hero-image animate">
-          <div class="hero-mockup">
-            <div class="mockup-header">
-              <div class="mockup-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </div>
-            <div class="mockup-content">
-              <div class="mockup-paper">
-                <div class="paper-title">Attention Is All You Need</div>
-                <div class="paper-meta">Vaswani et al. • 2017 • NIPS</div>
-                <div class="paper-tags">
-                  <span>Machine Learning</span>
-                  <span>Transformers</span>
-                </div>
-              </div>
-              <div class="mockup-paper">
-                <div class="paper-title">BERT: Pre-training of Deep...</div>
-                <div class="paper-meta">Devlin et al. • 2018 • NAACL</div>
-                <div class="paper-tags">
-                  <span>NLP</span>
-                  <span>Pre-training</span>
-                </div>
-              </div>
-            </div>
+        <div class="feature-card slide-right">
+          <div class="feature-icon">
+            <i class="fas fa-tags"></i>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2>Everything You Need for Research Management</h2>
+          <h3>Smart Organization</h3>
           <p>
-            Powerful features designed specifically for researchers, students,
-            and academics
+            Categorize papers by topics, tags, and custom labels. Never lose
+            track of important research.
           </p>
         </div>
 
-        <div class="features-grid">
-          <div class="feature-card slide-left">
-            <div class="feature-icon">
-              <i class="fas fa-search"></i>
-            </div>
-            <h3>Smart Search</h3>
+        <div class="feature-card slide-left">
+          <div class="feature-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Rating & Reviews</h3>
+          <p>
+            Rate papers and add personal notes to remember key insights and
+            contributions.
+          </p>
+        </div>
+
+        <div class="feature-card slide-right">
+          <div class="feature-icon">
+            <i class="fas fa-quote-right"></i>
+          </div>
+          <h3>Auto Citation</h3>
+          <p>
+            Generate citations in APA, MLA, and Chicago formats with a single
+            click.
+          </p>
+        </div>
+
+        <div class="feature-card slide-left">
+          <div class="feature-icon">
+            <i class="fas fa-file-pdf"></i>
+          </div>
+          <h3>PDF Management</h3>
+          <p>
+            Upload and store PDFs directly in your library with built-in
+            preview capabilities.
+          </p>
+        </div>
+
+        <div class="feature-card slide-right">
+          <div class="feature-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h3>Cloud Sync</h3>
+          <p>
+            Access your research library from anywhere with secure cloud
+            storage.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works Section -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Get Started in 3 Simple Steps</h2>
+        <p>Start organizing your research papers in minutes</p>
+      </div>
+
+      <div class="steps-container">
+        <div class="step fade-in" onclick="window.location.href='signup.html'">
+          <!-- onclick for create your account -->
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Create Your Account</h3>
             <p>
-              Find papers instantly with intelligent search across titles,
-              authors, abstracts, and tags.
+              Sign up for free and get instant access to all features. No
+              credit card required.
             </p>
           </div>
-
-          <div class="feature-card slide-right">
-            <div class="feature-icon">
-              <i class="fas fa-tags"></i>
-            </div>
-            <h3>Smart Organization</h3>
+        </div>
+        <!-- redirect to add papers html -->
+        <div class="step fade-in" onclick="window.location.href='add-organize-papers.html'">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Add Your Papers</h3>
             <p>
-              Categorize papers by topics, tags, and custom labels. Never lose
-              track of important research.
+              Upload PDFs, add paper details manually, or import from existing
+              libraries.
             </p>
           </div>
+        </div>
 
-          <div class="feature-card slide-left">
-            <div class="feature-icon">
-              <i class="fas fa-star"></i>
-            </div>
-            <h3>Rating & Reviews</h3>
+        <div class="step fade-in" onclick="window.location.href='add-organize-papers.html'">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Organize & Search</h3>
             <p>
-              Rate papers and add personal notes to remember key insights and
-              contributions.
-            </p>
-          </div>
-
-          <div class="feature-card slide-right">
-            <div class="feature-icon">
-              <i class="fas fa-quote-right"></i>
-            </div>
-            <h3>Auto Citation</h3>
-            <p>
-              Generate citations in APA, MLA, and Chicago formats with a single
-              click.
-            </p>
-          </div>
-
-          <div class="feature-card slide-left">
-            <div class="feature-icon">
-              <i class="fas fa-file-pdf"></i>
-            </div>
-            <h3>PDF Management</h3>
-            <p>
-              Upload and store PDFs directly in your library with built-in
-              preview capabilities.
-            </p>
-          </div>
-
-          <div class="feature-card slide-right">
-            <div class="feature-icon">
-              <i class="fas fa-cloud"></i>
-            </div>
-            <h3>Cloud Sync</h3>
-            <p>
-              Access your research library from anywhere with secure cloud
-              storage.
+              Use tags, topics, and ratings to organize your collection and
+              find papers instantly.
             </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- How it Works Section -->
-    <section id="how-it-works" class="how-it-works">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2>Get Started in 3 Simple Steps</h2>
-          <p>Start organizing your research papers in minutes</p>
+  <!-- Stats Section -->
+  <section class="stats fade-in color">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number" data-target="10000">0</div>
+          <div class="stat-label">Researchers</div>
         </div>
-
-        <div class="steps-container">
-          <div
-            class="step fade-in"
-            onclick="window.location.href='signup.html'"
-          >
-            <!-- onclick for create your account -->
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Create Your Account</h3>
-              <p>
-                Sign up for free and get instant access to all features. No
-                credit card required.
-              </p>
-            </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500000">0</div>
+          <div class="stat-label">Papers Organized</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-label">Universities</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="99.9" data-decimals="1">
+            0
           </div>
-          <!-- redirect to add papers html -->
-          <div
-            class="step fade-in"
-            onclick="window.location.href='add-organize-papers.html'"
-          >
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>Add Your Papers</h3>
-              <p>
-                Upload PDFs, add paper details manually, or import from existing
-                libraries.
-              </p>
-            </div>
-          </div>
-
-          <div
-            class="step fade-in"
-            onclick="window.location.href='add-organize-papers.html'"
-          >
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Organize & Search</h3>
-              <p>
-                Use tags, topics, and ratings to organize your collection and
-                find papers instantly.
-              </p>
-            </div>
-          </div>
+          <div class="stat-label">Uptime (%)</div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Stats Section -->
-    <section class="stats fade-in color">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number" data-target="10000">0</div>
-            <div class="stat-label">Researchers</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" data-target="500000">0</div>
-            <div class="stat-label">Papers Organized</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" data-target="50">0</div>
-            <div class="stat-label">Universities</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number" data-target="99.9" data-decimals="1">
-              0
-            </div>
-            <div class="stat-label">Uptime (%)</div>
-          </div>
-        </div>
+  <!-- ===== Testimonials Section ===== -->
+  <section id="testimonials">
+    <h2>What Our Users Say</h2>
+
+    <div class="testimonials-marquee">
+      <div class="testimonials-track" id="testimonials-track">
+        <!-- First set of testimonials -->
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ===== Testimonials Section ===== -->
-    <section id="testimonials">
-      <h2>What Our Users Say</h2>
+  <!-- ===== CSS ===== -->
+  <style>
+    #testimonials {
+      padding: 20px 20px;
+      background: #f9fafb;
+      text-align: center;
+      overflow: hidden;
+    }
 
-      <div class="testimonials-marquee">
-        <div class="testimonials-track" id="testimonials-track">
-          <!-- First set of testimonials -->
-        </div>
-      </div>
-    </section>
+    #testimonials h2 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-    <!-- ===== CSS ===== -->
-    <style>
-      #testimonials {
-        padding: 20px 20px;
-        background: #f9fafb;
-        text-align: center;
-        overflow: hidden;
-      }
-
-      #testimonials h2 {
-        font-size: 2.5rem;
-        font-weight: bold;
-        text-align: center;
-        margin-bottom: 30px;
-      }
-
-      /* Marquee Container */
-      .testimonials-marquee {
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-        mask: linear-gradient(
-          90deg,
+    /* Marquee Container */
+    .testimonials-marquee {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      mask: linear-gradient(90deg,
           transparent,
           white 10%,
           white 90%,
-          transparent
-        );
-        -webkit-mask: linear-gradient(
-          90deg,
+          transparent);
+      -webkit-mask: linear-gradient(90deg,
           transparent,
           white 10%,
           white 90%,
-          transparent
-        );
+          transparent);
+    }
+
+    /* Marquee Track */
+    .testimonials-track {
+      display: flex;
+      gap: 30px;
+      animation: marquee 20s linear infinite;
+      width: fit-content;
+      padding: 30px;
+    }
+
+    /* Pause animation on hover */
+    .testimonials-marquee:hover .testimonials-track {
+      animation-play-state: paused;
+    }
+
+    /* Marquee Animation */
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
       }
 
-      /* Marquee Track */
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .testimonial-card {
+      /* background: white; */
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s ease;
+      cursor: pointer;
+      min-width: 320px;
+      max-width: 320px;
+      flex-shrink: 0;
+      position: relative;
+      opacity: 1;
+      transform: none;
+      background: linear-gradient(90deg, #e9f3fb 0%, #f0f9ff 100%);
+      /* subtle blue shade gradient */
+      border-radius: 18px;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+      /* background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); */
+      background: linear-gradient(90deg, #e9f3fb 0%, #f0f9ff 100%);
+    }
+
+    .testimonial-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 16px;
+      padding: 2px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .testimonial-card:hover::before {
+      opacity: 1;
+    }
+
+    .testimonial-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 3px solid #e5e7eb;
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover img {
+      transform: scale(1.1);
+      border-color: #667eea;
+    }
+
+    .testimonial-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #1f2937;
+    }
+
+    .testimonial-card .designation {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .testimonial-card .feedback {
+      font-size: 0.9rem;
+      margin: 15px 0;
+      color: #374151;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .testimonial-card .tags {
+      font-size: 0.8rem;
+      color: #667eea;
+      font-weight: 500;
+      margin-top: 15px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
       .testimonials-track {
-        display: flex;
-        gap: 30px;
-        animation: marquee 20s linear infinite;
-        width: fit-content;
-        padding: 30px;
-      }
-
-      /* Pause animation on hover */
-      .testimonials-marquee:hover .testimonials-track {
-        animation-play-state: paused;
-      }
-
-      /* Marquee Animation */
-      @keyframes marquee {
-        0% {
-          transform: translateX(0);
-        }
-
-        100% {
-          transform: translateX(-50%);
-        }
+        animation-duration: 7.5s;
+        gap: 20px;
       }
 
       .testimonial-card {
-        /* background: white; */
-        padding: 25px;
-        border-radius: 16px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s ease;
-        cursor: pointer;
-        min-width: 320px;
-        max-width: 320px;
-        flex-shrink: 0;
-        position: relative;
-        opacity: 1;
-        transform: none;
-        background: linear-gradient(90deg, #e9f3fb 0%, #f0f9ff 100%);
-        /* subtle blue shade gradient */
-        border-radius: 18px;
-      }
-
-      .testimonial-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
-        /* background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%); */
-         background: linear-gradient(90deg, #e9f3fb 0%, #f0f9ff 100%);
-      }
-
-      .testimonial-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: 16px;
-        padding: 2px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .testimonial-card:hover::before {
-        opacity: 1;
+        min-width: 280px;
+        max-width: 280px;
+        padding: 20px;
       }
 
       .testimonial-card img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        margin-bottom: 15px;
-        border: 3px solid #e5e7eb;
-        transition: all 0.3s ease;
+        width: 70px;
+        height: 70px;
       }
+    }
 
-      .testimonial-card:hover img {
-        transform: scale(1.1);
-        border-color: #667eea;
-      }
-
-      .testimonial-card h3 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 5px;
-        color: #1f2937;
-      }
-
-      .testimonial-card .designation {
-        font-size: 0.85rem;
-        color: #6b7280;
-        margin-bottom: 15px;
-        font-weight: 500;
-      }
-
-      .testimonial-card .feedback {
-        font-size: 0.9rem;
-        margin: 15px 0;
-        color: #374151;
-        line-height: 1.6;
-        font-style: italic;
-      }
-
-      .testimonial-card .tags {
-        font-size: 0.8rem;
-        color: #667eea;
-        font-weight: 500;
-        margin-top: 15px;
-      }
-
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .testimonials-track {
-          animation-duration: 7.5s;
-          gap: 20px;
-        }
-
-        .testimonial-card {
-          min-width: 280px;
-          max-width: 280px;
-          padding: 20px;
-        }
-
-        .testimonial-card img {
-          width: 70px;
-          height: 70px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .testimonials-track {
-          animation-duration: 6s;
-          gap: 15px;
-        }
-
-        .testimonial-card {
-          min-width: 250px;
-          max-width: 250px;
-          padding: 18px;
-        }
-
-        #testimonials h2 {
-          font-size: 2rem;
-        }
-      }
-
-      /* ==== Dark mode fixes for Testimonials (append at end of testimonials <style>) ==== */
-      body.dark-mode #testimonials {
-        background: #0f172a;
-        /* darker section bg */
-        color: #e5e7eb;
-      }
-
-      /* keep the side-fade mask but ensure opacity only, not light tint */
-      body.dark-mode .testimonials-marquee {
-        -webkit-mask: linear-gradient(
-          90deg,
-          transparent,
-          rgba(0, 0, 0, 1) 10%,
-          rgba(0, 0, 0, 1) 90%,
-          transparent
-        );
-        mask: linear-gradient(
-          90deg,
-          transparent,
-          rgba(0, 0, 0, 1) 10%,
-          rgba(0, 0, 0, 1) 90%,
-          transparent
-        );
-      }
-
-      /* cards */
-      body.dark-mode .testimonial-card {
-        background: #1f2937;
-        /* card bg */
-        color: #e5e7eb;
-        /* default text */
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-      }
-
-      body.dark-mode .testimonial-card:hover {
-        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-      }
-
-      /* inner text tones */
-      body.dark-mode .testimonial-card h3 {
-        color: #f3f4f6;
-      }
-
-      body.dark-mode .testimonial-card .designation {
-        color: #9ca3af;
-      }
-
-      body.dark-mode .testimonial-card .feedback {
-        color: #cbd5e1;
-      }
-
-      body.dark-mode .testimonial-card .tags {
-        color: #93c5fd;
-      }
-
-      /* avatar ring */
-      body.dark-mode .testimonial-card img {
-        border-color: #374151;
-      }
-
-      /* default: running */
+    @media (max-width: 480px) {
       .testimonials-track {
-        animation-play-state: running;
+        animation-duration: 6s;
+        gap: 15px;
       }
 
-      /* pause when hovering anywhere over the section */
-      #testimonials:hover .testimonials-track {
-        animation-play-state: paused !important;
+      .testimonial-card {
+        min-width: 250px;
+        max-width: 250px;
+        padding: 18px;
       }
-    </style>
 
-    <!-- ===== JS Marquee Enhancement ===== -->
-    <script>
-      (() => {
-        // ====== CONFIG ======
-        const REPO = "supriya46788/Research-Paper-Organizer"; // owner/repo
-        const STARGAZERS_API = `https://api.github.com/repos/${REPO}/stargazers?per_page=30`;
+      #testimonials h2 {
+        font-size: 2rem;
+      }
+    }
 
-        // Generic, positive blurbs (rotated)
-        const NICE_BLURBS = [
-          "The Research Paper Organizer makes it easy to keep my reading list structured and searchable. It’s saved me hours during literature reviews 📚.",
+    /* ==== Dark mode fixes for Testimonials (append at end of testimonials <style>) ==== */
+    body.dark-mode #testimonials {
+      background: #0f172a;
+      /* darker section bg */
+      color: #e5e7eb;
+    }
 
-          "I finally have one place to tag, search, and revisit all my papers. Simple to use and incredibly effective ⭐.",
+    /* keep the side-fade mask but ensure opacity only, not light tint */
+    body.dark-mode .testimonials-marquee {
+      -webkit-mask: linear-gradient(90deg,
+          transparent,
+          rgba(0, 0, 0, 1) 10%,
+          rgba(0, 0, 0, 1) 90%,
+          transparent);
+      mask: linear-gradient(90deg,
+          transparent,
+          rgba(0, 0, 0, 1) 10%,
+          rgba(0, 0, 0, 1) 90%,
+          transparent);
+    }
 
-          "This tool has streamlined how I organize references and notes. What used to take hours now takes just minutes ⚡.",
+    /* cards */
+    body.dark-mode .testimonial-card {
+      background: #1f2937;
+      /* card bg */
+      color: #e5e7eb;
+      /* default text */
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
 
-          "Managing citations and keeping track of papers used to be stressful. With this project, the process feels smooth and effortless.",
+    body.dark-mode .testimonial-card:hover {
+      background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    }
 
-          "The clean interface helps me focus on research rather than sorting through messy folders. It’s a huge productivity boost.",
+    /* inner text tones */
+    body.dark-mode .testimonial-card h3 {
+      color: #f3f4f6;
+    }
 
-          "I use it daily to track what I’ve read and what’s pending. It keeps my workflow organized and efficient.",
+    body.dark-mode .testimonial-card .designation {
+      color: #9ca3af;
+    }
 
-          "Collaboration is much easier now—sharing papers and staying aligned with my team is seamless 🤝.",
+    body.dark-mode .testimonial-card .feedback {
+      color: #cbd5e1;
+    }
 
-          "Searching across hundreds of papers takes seconds instead of hours. It’s become a must-have for my thesis work.",
+    body.dark-mode .testimonial-card .tags {
+      color: #93c5fd;
+    }
 
-          "This project keeps everything organized without unnecessary complexity. It’s reliable, fast, and very intuitive.",
+    /* avatar ring */
+    body.dark-mode .testimonial-card img {
+      border-color: #374151;
+    }
 
-          "Exactly what I needed to stay on top of my reading and references. It fits perfectly into my academic workflow.",
-        ];
+    /* default: running */
+    .testimonials-track {
+      animation-play-state: running;
+    }
 
-        // ====== UTIL ======
-        function selectTrack() {
-          // Prefer explicit ID if present; otherwise first .testimonials-track
-          let track = document.getElementById("testimonials-track");
-          if (!track) {
-            track = document.querySelector(".testimonials-track");
-          }
-          return track;
+    /* pause when hovering anywhere over the section */
+    #testimonials:hover .testimonials-track {
+      animation-play-state: paused !important;
+    }
+  </style>
+
+  <!-- ===== JS Marquee Enhancement ===== -->
+  <script>
+    (() => {
+      // ====== CONFIG ======
+      const REPO = "supriya46788/Research-Paper-Organizer"; // owner/repo
+      const STARGAZERS_API = `https://api.github.com/repos/${REPO}/stargazers?per_page=30`;
+
+      // Generic, positive blurbs (rotated)
+      const NICE_BLURBS = [
+        "The Research Paper Organizer makes it easy to keep my reading list structured and searchable. It’s saved me hours during literature reviews 📚.",
+
+        "I finally have one place to tag, search, and revisit all my papers. Simple to use and incredibly effective ⭐.",
+
+        "This tool has streamlined how I organize references and notes. What used to take hours now takes just minutes ⚡.",
+
+        "Managing citations and keeping track of papers used to be stressful. With this project, the process feels smooth and effortless.",
+
+        "The clean interface helps me focus on research rather than sorting through messy folders. It’s a huge productivity boost.",
+
+        "I use it daily to track what I’ve read and what’s pending. It keeps my workflow organized and efficient.",
+
+        "Collaboration is much easier now—sharing papers and staying aligned with my team is seamless 🤝.",
+
+        "Searching across hundreds of papers takes seconds instead of hours. It’s become a must-have for my thesis work.",
+
+        "This project keeps everything organized without unnecessary complexity. It’s reliable, fast, and very intuitive.",
+
+        "Exactly what I needed to stay on top of my reading and references. It fits perfectly into my academic workflow.",
+      ];
+
+      // ====== UTIL ======
+      function selectTrack() {
+        // Prefer explicit ID if present; otherwise first .testimonials-track
+        let track = document.getElementById("testimonials-track");
+        if (!track) {
+          track = document.querySelector(".testimonials-track");
+        }
+        return track;
+      }
+
+      function ensureTestimonialsSkeleton() {
+        // Make sure the base structure exists even if HTML had only the section
+        let section = document.getElementById("testimonials");
+        if (!section) return null;
+
+        // Find or create marquee container
+        let marquee = section.querySelector(".testimonials-marquee");
+        if (!marquee) {
+          marquee = document.createElement("div");
+          marquee.className = "testimonials-marquee";
+          section.appendChild(marquee);
         }
 
-        function ensureTestimonialsSkeleton() {
-          // Make sure the base structure exists even if HTML had only the section
-          let section = document.getElementById("testimonials");
-          if (!section) return null;
-
-          // Find or create marquee container
-          let marquee = section.querySelector(".testimonials-marquee");
-          if (!marquee) {
-            marquee = document.createElement("div");
-            marquee.className = "testimonials-marquee";
-            section.appendChild(marquee);
-          }
-
-          // Find or create track
-          let track = selectTrack();
-          if (!track) {
-            track = document.createElement("div");
-            track.className = "testimonials-track";
-            track.id = "testimonials-track";
-            marquee.appendChild(track);
-          }
-          return track;
+        // Find or create track
+        let track = selectTrack();
+        if (!track) {
+          track = document.createElement("div");
+          track.className = "testimonials-track";
+          track.id = "testimonials-track";
+          marquee.appendChild(track);
         }
+        return track;
+      }
 
-        function cardHTML(user, i) {
-          const blurb = NICE_BLURBS[i % NICE_BLURBS.length];
-          // We use @login as the visible name, link to profile, and show avatar
-          return `
+      function cardHTML(user, i) {
+        const blurb = NICE_BLURBS[i % NICE_BLURBS.length];
+        // We use @login as the visible name, link to profile, and show avatar
+        return `
       <div class="testimonial-card">
         <img src="${user.avatar_url}" alt="${user.login}'s avatar" />
         <h3><a href="${user.html_url}" target="_blank" rel="noopener noreferrer">@${user.login}</a></h3>
@@ -788,10 +849,10 @@
         <p class="tags">⭐ Open Source • 📖 Research</p>
       </div>
     `;
-        }
+      }
 
-        function placeholderHTML(message) {
-          return `
+      function placeholderHTML(message) {
+        return `
       <div class="testimonial-card">
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub logo" />
         <h3>@you</h3>
@@ -800,824 +861,354 @@
         <p class="tags">✨ Community • 🚀 Getting Started</p>
       </div>
     `;
-        }
+      }
 
-        async function fetchStargazers() {
-          const res = await fetch(STARGAZERS_API, {
-            headers: {
-              Accept: "application/vnd.github+json",
-            },
+      async function fetchStargazers() {
+        const res = await fetch(STARGAZERS_API, {
+          headers: {
+            Accept: "application/vnd.github+json",
+          },
+        });
+        if (!res.ok) {
+          throw new Error(`GitHub API error: ${res.status}`);
+        }
+        const data = await res.json();
+        // Defensive: ensure array
+        return Array.isArray(data) ? data : [];
+      }
+
+      function duplicateForSeamlessLoop(track) {
+        // Duplicate all children once to allow your translateX(-50%) loop
+        const firstSet = Array.from(track.children);
+        if (firstSet.length === 0) return;
+        firstSet.forEach((node) => track.appendChild(node.cloneNode(true)));
+      }
+
+      function attachPulseOnClick(scope = document) {
+        const cards = scope.querySelectorAll(".testimonial-card");
+        cards.forEach((card) => {
+          card.addEventListener("click", () => {
+            card.style.transform = "scale(0.98)";
+            setTimeout(() => {
+              card.style.transform = "";
+            }, 150);
           });
-          if (!res.ok) {
-            throw new Error(`GitHub API error: ${res.status}`);
-          }
-          const data = await res.json();
-          // Defensive: ensure array
-          return Array.isArray(data) ? data : [];
+        });
+      }
+
+      function applyReducedMotion(track) {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          // Longer duration = slower movement
+          track.style.animationDuration = "30s";
+        }
+      }
+
+      async function init() {
+        // Wait for DOM
+        if (document.readyState === "loading") {
+          await new Promise((r) =>
+            document.addEventListener("DOMContentLoaded", r, { once: true })
+          );
         }
 
-        function duplicateForSeamlessLoop(track) {
-          // Duplicate all children once to allow your translateX(-50%) loop
-          const firstSet = Array.from(track.children);
-          if (firstSet.length === 0) return;
-          firstSet.forEach((node) => track.appendChild(node.cloneNode(true)));
+        const track = ensureTestimonialsSkeleton();
+        if (!track) {
+          console.warn("Testimonials section (#testimonials) not found.");
+          return;
         }
 
-        function attachPulseOnClick(scope = document) {
-          const cards = scope.querySelectorAll(".testimonial-card");
-          cards.forEach((card) => {
-            card.addEventListener("click", () => {
-              card.style.transform = "scale(0.98)";
-              setTimeout(() => {
-                card.style.transform = "";
-              }, 150);
-            });
-          });
-        }
+        // Clear any existing static cards (from the old HTML)
+        track.innerHTML = "";
 
-        function applyReducedMotion(track) {
-          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            // Longer duration = slower movement
-            track.style.animationDuration = "30s";
-          }
-        }
+        try {
+          const stargazers = await fetchStargazers();
 
-        async function init() {
-          // Wait for DOM
-          if (document.readyState === "loading") {
-            await new Promise((r) =>
-              document.addEventListener("DOMContentLoaded", r, { once: true })
-            );
-          }
-
-          const track = ensureTestimonialsSkeleton();
-          if (!track) {
-            console.warn("Testimonials section (#testimonials) not found.");
-            return;
-          }
-
-          // Clear any existing static cards (from the old HTML)
-          track.innerHTML = "";
-
-          try {
-            const stargazers = await fetchStargazers();
-
-            if (stargazers.length === 0) {
-              track.innerHTML = placeholderHTML(
-                "Star the repo to show up here."
-              );
-            } else {
-              // Build one full set
-              const firstSetHTML = stargazers
-                .map((u, i) => cardHTML(u, i))
-                .join("");
-
-              track.innerHTML = firstSetHTML;
-
-              // If very few stargazers, pad by reusing to ensure marquee looks filled
-              const minCardsForNiceMarquee = 8;
-              if (track.children.length < minCardsForNiceMarquee) {
-                const needed = minCardsForNiceMarquee - track.children.length;
-                for (let i = 0; i < needed; i++) {
-                  const clone =
-                    track.children[i % track.children.length].cloneNode(true);
-                  track.appendChild(clone);
-                }
-              }
-
-              // Duplicate the set once for seamless loop
-              duplicateForSeamlessLoop(track);
-            }
-          } catch (err) {
-            console.error(err);
+          if (stargazers.length === 0) {
             track.innerHTML = placeholderHTML(
-              "Having trouble loading stargazers—please refresh later."
+              "Star the repo to show up here."
             );
-          }
+          } else {
+            // Build one full set
+            const firstSetHTML = stargazers
+              .map((u, i) => cardHTML(u, i))
+              .join("");
 
-          // Bind behaviors
-          attachPulseOnClick(track);
-          applyReducedMotion(track);
+            track.innerHTML = firstSetHTML;
+
+            // If very few stargazers, pad by reusing to ensure marquee looks filled
+            const minCardsForNiceMarquee = 8;
+            if (track.children.length < minCardsForNiceMarquee) {
+              const needed = minCardsForNiceMarquee - track.children.length;
+              for (let i = 0; i < needed; i++) {
+                const clone =
+                  track.children[i % track.children.length].cloneNode(true);
+                track.appendChild(clone);
+              }
+            }
+
+            // Duplicate the set once for seamless loop
+            duplicateForSeamlessLoop(track);
+          }
+        } catch (err) {
+          console.error(err);
+          track.innerHTML = placeholderHTML(
+            "Having trouble loading stargazers—please refresh later."
+          );
         }
 
-        // Kick off
-        init();
-      })();
-    </script>
+        // Bind behaviors
+        attachPulseOnClick(track);
+        applyReducedMotion(track);
+      }
 
-    <script>
-      (function setMarqueeSpeed() {
-        const track = document.querySelector(".testimonials-track");
-        if (!track) return;
+      // Kick off
+      init();
+    })();
+  </script>
 
-        // 👇 Set your desired speed here
-        const SECS = 100; // e.g. 45s = slower, try 60 for even slower
+  <script>
+    (function setMarqueeSpeed() {
+      const track = document.querySelector(".testimonials-track");
+      if (!track) return;
 
-        // Force duration and the full animation shorthand with !important
-        track.style.setProperty("animation-duration", SECS + "s", "important");
+      // 👇 Set your desired speed here
+      const SECS = 100; // e.g. 45s = slower, try 60 for even slower
+
+      // Force duration and the full animation shorthand with !important
+      track.style.setProperty("animation-duration", SECS + "s", "important");
+      track.style.setProperty(
+        "animation",
+        `marquee ${SECS}s linear infinite`,
+        "important"
+      );
+
+      // If your page re-renders this node later, re-apply once on the next tick too
+      setTimeout(() => {
+        track.style.setProperty(
+          "animation-duration",
+          SECS + "s",
+          "important"
+        );
         track.style.setProperty(
           "animation",
           `marquee ${SECS}s linear infinite`,
           "important"
         );
+      }, 0);
+    })();
+    const marquee = document.querySelector(".testimonials-marquee");
+    const track = document.querySelector(".testimonials-track");
 
-        // If your page re-renders this node later, re-apply once on the next tick too
-        setTimeout(() => {
-          track.style.setProperty(
-            "animation-duration",
-            SECS + "s",
-            "important"
-          );
-          track.style.setProperty(
-            "animation",
-            `marquee ${SECS}s linear infinite`,
-            "important"
-          );
-        }, 0);
-      })();
-            const marquee = document.querySelector(".testimonials-marquee");
-const track = document.querySelector(".testimonials-track");
+    marquee.addEventListener("mouseenter", () => {
+      track.style.animationPlayState = "paused";
+    });
 
-marquee.addEventListener("mouseenter", () => {
-  track.style.animationPlayState = "paused";
-});
+    marquee.addEventListener("mouseleave", () => {
+      track.style.animationPlayState = "running";
+    });
+  </script>
 
-marquee.addEventListener("mouseleave", () => {
-  track.style.animationPlayState = "running";
-});
-    </script>
-
-    <!-- CTA Section -->
-    <section class="cta">
-      <div class="container">
-        <div class="cta-content fade-in">
-          <h2>Ready to Transform Your Research Workflow?</h2>
-          <p>
-            Join thousands of researchers who have already streamlined their
-            paper management process.
-          </p>
-          <div class="cta-buttons">
-            <button
-              class="btn-primary btn-large"
-              onclick="window.location.href='signup.html'"
-            >
-              Start Your Free Trial
-            </button>
-            <button
-              class="btn-secondary btn-large"
-              onclick="window.location.href='login.html'"
-            >
-              Already have an account? Login
-            </button>
-          </div>
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-content fade-in">
+        <h2>Ready to Transform Your Research Workflow?</h2>
+        <p>
+          Join thousands of researchers who have already streamlined their
+          paper management process.
+        </p>
+        <div class="cta-buttons">
+          <button class="btn-primary btn-large" onclick="window.location.href='signup.html'">
+            Start Your Free Trial
+          </button>
+          <button class="btn-secondary btn-large" onclick="window.location.href='login.html'">
+            Already have an account? Login
+          </button>
         </div>
       </div>
-    </section>
-
-    <style>
-      /* Back to Top Button Styles */
-      #backToTop {
-        height: 48px;
-        width: 48px;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
-        background: linear-gradient(135deg, #0077b5, #4facfe);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        padding: 15px;
-        font-size: 18px;
-        cursor: pointer;
-        display: none;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
-
-      #backToTop:hover {
-        transform: scale(1.1);
-        opacity: 0.9;
-        box-shadow: rgba(0, 0, 0, 0.8);
-      }
-
-      @media (max-width: 600px) {
-        #backToTop {
-          padding: 12px;
-          font-size: 16px;
-          bottom: 20px;
-          right: 20px;
-        }
-      }
-
-      .modern-footer {
-        width: 100vw;
-        /* Full viewport width */
-        margin-left: calc(-50vw + 50%);
-        /* Center it if inside a constrained container */
-        background: linear-gradient(135deg, #1f3c88, #2c5aa0);
-        color: #fff;
-        padding: 60px 20px 20px;
-        border-radius: 25px 25px 0 0;
-        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
-        overflow-x: hidden;
-      }
-
-      .footer-top {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-bottom: 30px;
-      }
-
-      .footer-brand h2 {
-        font-size: 10px;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-      }
-
-      .footer-brand h2 i {
-        margin-right: 10px;
-        font-size: 1rem;
-        vertical-align: middle;
-      }
-
-      .footer-brand p {
-        font-size: 1rem;
-        font-weight: 300;
-        line-height: 1.5;
-        opacity: 0.9;
-      }
-
-      .footer-links-section h4 {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-        padding-bottom: 5px;
-      }
-
-      .footer-links-section ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .footer-links-section ul li {
-        margin-bottom: 8px;
-      }
-
-      .footer-links-section ul li a {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: 0.3s;
-      }
-
-      .footer-links-section ul li a:hover {
-        color: #fff;
-        transform: translateX(5px);
-      }
-
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      .social-icons {
-        display: flex;
-        gap: 10px;
-        margin-top: 5px;
-      }
-
-      .social-icons a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        color: #fff;
-        transition: 0.3s;
-      }
-
-      .social-icons a:hover {
-        background: #fff;
-        color: #2c5aa0;
-        transform: scale(1.1);
-      }
-
-      .footer-bottom {
-        text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        padding-top: 15px;
-        font-size: 0.9rem;
-        opacity: 0.8;
-      }
-
-      .footer-card {
-        flex: 1 1 200px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 20px;
-        min-width: 200px;
-      }
-
-      .footer-card ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .footer-card ul li {
-        margin-bottom: 8px;
-      }
-
-      .footer-card ul li a {
-        color: rgba(255, 255, 255, 0.8);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: 0.3s;
-
-        padding: 5px;
-        padding-left: 20px;
-      }
-
-      .footer-card ul li a:hover {
-        color: #fff;
-        transform: translateX(5px);
-      }
-
-      @media (max-width: 768px) {
-        .footer-top {
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-          gap: 3rem;
-        }
-
-        .footer-brand h2 {
-          font-size: 1.5rem;
-        }
-
-        .footer-links-section h4 {
-          font-size: 1rem;
-        }
-
-        .footer-links-section ul li a {
-          font-size: 0.95rem;
-        }
-
-        .social-icons a {
-          width: 35px;
-          height: 35px;
-        }
-      }
-
-      @media (max-width: 756px) and (min-width: 730px),
-        (max-width: 601px) and (min-width: 540px) {
-        .footer-card {
-          gap: 4rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .footer-top {
-          grid-template-columns: 1fr;
-          text-align: center;
-        }
-
-        .social-icons {
-          justify-content: center;
-        }
-
-        .footer-links-section ul li a {
-          justify-content: center;
-        }
-      }
-
-      .footer-bottom .heart {
-        color: inherit;
-      }
-
-      .features-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: center;
-        /* 👈 ye center karega */
-        margin: 3rem 0;
-      }
-
-      .feature-card {
-        flex: 1 1 250px;
-        max-width: 300px;
-        background: #fff;
-        border-radius: 20px;
-        padding: 2rem;
-        text-align: center;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-      }
-
-      .feature-icon {
-        width: 70px;
-        height: 70px;
-        margin: 0 auto 1rem auto;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 28px;
-        color: #fff;
-        background: linear-gradient(135deg, #6a11cb, #2575fc);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-        transition: all 0.3s ease;
-      }
-
-      .feature-card:hover .feature-icon {
-        transform: scale(1.1) rotate(8deg);
-      }
-
-      .feature-card h3 {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: 0.8rem;
-        color: #333;
-      }
-
-      .feature-card p {
-        font-size: 0.95rem;
-        color: #666;
-        line-height: 1.6;
-      }
-
-      /* Dark Mode Footer Styles */
-      body.dark-mode .modern-footer {
-        background: linear-gradient(135deg, #1a202c, #2d3748);
-      }
-
-      body.dark-mode .footer-section h3,
-      body.dark-mode .footer-section h4 {
-        color: #e0e0e0;
-      }
-
-      body.dark-mode .footer-section h4 {
-        border-bottom-color: rgba(224, 224, 224, 0.2);
-      }
-
-      body.dark-mode .footer-links a {
-        color: rgba(224, 224, 224, 0.8);
-      }
-
-      body.dark-mode .footer-links a:hover {
-        color: #90cdf4;
-      }
-
-      body.dark-mode .social-links a {
-        background: rgba(224, 224, 224, 0.1);
-        color: #e0e0e0;
-      }
-
-      body.dark-mode .social-links a:hover {
-        background: rgba(144, 205, 244, 0.2);
-        color: #90cdf4;
-      }
-
-      body.dark-mode .footer-bottom {
-        background: rgba(0, 0, 0, 0.3);
-        border-top-color: rgba(224, 224, 224, 0.1);
-      }
-
-      /* Dark mode toggle styles */
-      .dark-toggle {
-        background:  linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-        border: none;
-        color: inherit;
-        cursor: pointer;
-        padding: 8px;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s ease;
-      }
-
-      .dark-toggle:hover {
-        transform: scale(1.1);
-        background:#3b82f6 ;
-      }
-
-      /* Dark mode styles */
-      body.dark-mode {
-        background-color: #1a202c;
-        color: #e2e8f0;
-      }
-
-      body.dark-mode .landing-nav {
-        background-color: #2d3748;
-      }
-
-      body.dark-mode .nav-links a {
-        color: #e2e8f0;
-      }
-
-      body.dark-mode .feature-card {
-        background-color: #2d3748;
-        color: #e2e8f0;
-      }
-
-      body.dark-mode .feature-card p {
-        color: #cbd5e0;
-      }
-
-      /* ==== Dark Mode Fixes for "How it Works" (3 Simple Steps) ==== */
-      body.dark-mode .how-it-works {
-        background-color: #0f172a;
-        color: #e2e8f0;
-      }
-
-      body.dark-mode .how-it-works .section-header h2,
-      body.dark-mode .how-it-works .section-header p {
-        color: #f1f5f9;
-      }
-
-      body.dark-mode .steps-container .step {
-        background-color: #1e293b;
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-      }
-
-      body.dark-mode .steps-container .step-number {
-        background: linear-gradient(135deg, #3b82f6, #6366f1);
-        color: #fff;
-        border-radius: 50%;
-        font-weight: bold;
-        font-size: 1.2rem;
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      body.dark-mode .steps-container .step-content h3 {
-        color: #f3f4f6;
-      }
-
-      body.dark-mode .steps-container .step-content p {
-        color: #cbd5e1;
-      }
-
-      /* ==== Dark Mode Fixes for Stats Section ==== */
-      body.dark-mode .color{
-        background: #0f172a;
-      }
-      body.dark-mode .stat-item{
-        background: #1e293b;
-      }
-      .color{
-        background:white;
-      }
-      .stat-item{
-        background: #f9fafb;
-      }
-      .stat-number{
-        color:#3b82f6;
-      }
-      .stat-label{
-        color:#1e293b;
-      }
-      body.dark-mode .stat-label{
-        color:#e0e7ff;
-      }
-      body.dark-mode .stat-number{
-        color:#60a5fa;
-      }
-    </style>
-
-    <!-- Back to Top Button -->
-    <button id="backToTop">
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
-
-    <!-- Modern Footer -->
-    <footer class="modern-footer" aria-label="Footer">
-      <div class="footer-top">
-        <div class="footer-brand footer-card" id="top-card">
-          <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-          <p style="margin-top: 20px">
-            Organize, track, and manage your research papers seamlessly.
-          </p>
-        </div>
-
-        <div class="footer-links-section footer-card">
-          <h4>Quick Links</h4>
-          <ul>
-            <li>
-              <a href="index.html"><i class="fas fa-home"></i>Home</a>
-            </li>
-            <li>
-              <a href="about.html"><i class="fas fa-users"></i>About Us</a>
-            </li>
-            <li>
-              <a href="contact.html"><i class="fas fa-envelope"></i>Contact</a>
-            </li>
-            <li>
-              <a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="footer-links-section footer-card">
-          <h4>Resources</h4>
-          <ul>
-            <li>
-              <a href="blog.html"><i class="fas fa-blog"></i>Blog</a>
-            </li>
-            <li>
-              <a href="glossary.html"><i class="fas fa-book"></i>Glossary</a>
-            </li>
-            <li>
-              <a href="open-source.html"
-                ><i class="fas fa-code-branch"></i>Open Source</a
-              >
-            </li>
-            <li>
-              <a href="Tag-Based-filtering.html"
-                ><i class="fas fa-book"></i>Tag Based Filtering</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <div class="footer-links-section footer-card">
-          <h4>Connect</h4>
-          <div class="social-icons">
-            <a
-              href="https://github.com/supriya46788"
-              target="_blank"
-              title="GitHub"
-              ><i class="fab fa-github"></i
-            ></a>
-            <a
-              href="https://www.linkedin.com/in/supriyapandey595"
-              target="_blank"
-              title="LinkedIn"
-              ><i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:supriyadpandey502@gmail.com" title="Email"
-              ><i class="fas fa-envelope"></i>
-            </a>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Modern Footer Start Here -->
+  <footer  aria-label="Footer" class="modern-footer">
+    <div class="footer-container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="brand-header">
+            <div class="brand-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <div class="brand-name">
+              <h2>Research Paper Organize</h2>
+              <p class="brand-tagline">Streamline Your Research, Simplify Your Workflow</p>
+            </div>
           </div>
+          <p class="brand-description">
+            Empowering developers worldwide with AI-powered learning, personalized guidance, and comprehensive career
+            support.
+          </p>
+
+          <div class="social-links-parent">
+            <h3 style="margin-bottom: 10px;">Follow US</h3>
+            <div class="social-links">
+              <a href="https://github.com/supriya46788" class="social-link" aria-label="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="" class="social-link" aria-label="Discord">
+                <i class="fab fa-discord"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/supriyapandey595" class="social-link" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="mailto:supriyadpandey502@gmail.com" class="social-link" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Action</h3>
+          <a href="http://127.0.0.1:5501/index.html" class="resource-item">Home</a>  
+          <a href="http://127.0.0.1:5501/about.html" class="resource-item">About us </a>
+          <a href="http://127.0.0.1:5501/contact.html" class="resource-item">Contact</a>
+           <a href="http://127.0.0.1:5501/index.html#" class="resource-item">Feature</a>
+          <a href="http://127.0.0.1:5501/index.html" class="resource-item"> How it works</a>
+          <a href="http://127.0.0.1:5501/tools.html" class="resource-item"> Tools</a>
+          <a href="http://127.0.0.1:5501/Faq.html" class="resource-item"> FAQ</a>
+        </div>
+
+        <div class="footer-section">
+          <h3>Resources </h3>
+          <a href="blog.html" class="resource-item">  Blog</a>
+          <a href="glossary.html" class="resource-item">  Glossary</a>
+          <a href="open-source.html" class="resource-item"> Open Source </a>
+          <a href="Tag-Based-filtering.html" class="resource-item"> Tag Based Filtering </a>
+          <a href="privacy.html" class="resource-item">Privacy Policy  </a>
+          <a href="terms-of-service.html" class="resource-item">  Terms & Condition</a>
+        </div>
+
+        <div class="footer-section newsletter-section">
+          <h3>SUBSCRIBE TO OUR NEWSLETTER</h3>
+          <p class="newsletter-description" style="color: #7d7c7c;">
+            Get the latest updates, learning tips, and community news from Research paper Organize.
+          </p>
+          <form class="newsletter-form" onsubmit="return false;">
+            <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+            <button type="submit" class="subscribe-btn">Subscribe</button>
+          </form>
+          <p class="privacy-note" style="color: #7d7c7c;">We respect your privacy. Unsubscribe at any time.</p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        © 2025 Research Paper Organizer | Made with
-        <span class="heart">&hearts;</span> for researchers worldwide
+        <p class="copyright">
+          © 2025 <a href="#">Research paper Organize</a>. All rights reserved. | Made with <span class="heart">❤️</span>
+          for <a href="#">researchers worldwide</a>
+        </p>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <script src="landing.js"></script>
+  <script src="landing.js"></script>
 
-    <script>
-      document.querySelectorAll(".line").forEach((line, lineIndex) => {
-        const letters = line.textContent.split("");
-        line.textContent = "";
+  <script>
+    document.querySelectorAll(".line").forEach((line, lineIndex) => {
+      const letters = line.textContent.split("");
+      line.textContent = "";
 
-        letters.forEach((letter, i) => {
-          const span = document.createElement("span");
-          span.textContent = letter;
-          span.style.animationDelay = `${i * 0.05 + lineIndex * 0.8}s`;
-          line.appendChild(span);
-        });
+      letters.forEach((letter, i) => {
+        const span = document.createElement("span");
+        span.textContent = letter;
+        span.style.animationDelay = `${i * 0.05 + lineIndex * 0.8}s`;
+        line.appendChild(span);
       });
+    });
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const loadingScreen = document.getElementById("loading-screen");
-        const loadingText = document.getElementById("loading-text");
+    document.addEventListener("DOMContentLoaded", function () {
+      const loadingScreen = document.getElementById("loading-screen");
+      const loadingText = document.getElementById("loading-text");
 
-        const target = document.querySelector(".typing-text");
-        const progressPercentage = document.querySelector(
-          ".progress-percentage"
-        );
-        const texts = [
-          "Organizing your thoughts...",
-          "Drafting your ideas...",
-          "Structuring your research...",
-          "Building your knowledge...",
-        ];
+      const target = document.querySelector(".typing-text");
+      const progressPercentage = document.querySelector(
+        ".progress-percentage"
+      );
+      const texts = [
+        "Organizing your thoughts...",
+        "Drafting your ideas...",
+        "Structuring your research...",
+        "Building your knowledge...",
+      ];
 
-        let index = 0;
-        let progress = 0;
+      let index = 0;
+      let progress = 0;
 
-        //changed: check if user has already seen the loading screen
-        const hasSeenLoading = localStorage.getItem("hasSeenLoading");
+      //changed: check if user has already seen the loading screen
+      const hasSeenLoading = localStorage.getItem("hasSeenLoading");
 
-        //changed: Only run loadinganimation if first-time visitor
-        if (!hasSeenLoading) {
-          // Enhanced text transition function
-          function updateLoadingText() {
-            index = (index + 1) % texts.length;
+      //changed: Only run loadinganimation if first-time visitor
+      if (!hasSeenLoading) {
+        // Enhanced text transition function
+        function updateLoadingText() {
+          index = (index + 1) % texts.length;
 
-            // Add smooth slide out effect with bounce
-            loadingText.style.transform = "translateY(-25px) scale(0.95)";
-            loadingText.style.opacity = "0";
+          // Add smooth slide out effect with bounce
+          loadingText.style.transform = "translateY(-25px) scale(0.95)";
+          loadingText.style.opacity = "0";
 
-            setTimeout(() => {
-              loadingText.innerHTML =
-                texts[index] + '<span class="dots"></span>';
-              loadingText.style.transform = "translateY(25px) scale(0.95)";
+          setTimeout(() => {
+            loadingText.innerHTML =
+              texts[index] + '<span class="dots"></span>';
+            loadingText.style.transform = "translateY(25px) scale(0.95)";
 
-              // Trigger reflow to ensure transform is applied
-              loadingText.offsetHeight;
+            // Trigger reflow to ensure transform is applied
+            loadingText.offsetHeight;
 
-              // Slide in with smooth transition and bounce
-              loadingText.style.transform = "translateY(0) scale(1)";
-              loadingText.style.opacity = "1";
-            }, 300);
+            // Slide in with smooth transition and bounce
+            loadingText.style.transform = "translateY(0) scale(1)";
+            loadingText.style.opacity = "1";
+          }, 300);
+        }
+
+        // Update progress percentage
+        function updateProgress() {
+          progress = Math.min(progress + Math.random() * 15 + 10, 100);
+          if (progressPercentage) {
+            progressPercentage.textContent = Math.round(progress) + "%";
           }
 
-          // Update progress percentage
-          function updateProgress() {
-            progress = Math.min(progress + Math.random() * 15 + 10, 100);
-            if (progressPercentage) {
-              progressPercentage.textContent = Math.round(progress) + "%";
-            }
-
-            if (progress < 100) {
-              setTimeout(updateProgress, 1200 + Math.random() * 800);
-            }
+          if (progress < 100) {
+            setTimeout(updateProgress, 1200 + Math.random() * 800);
           }
+        }
 
-          // Enhanced entrance animation
-          setTimeout(() => {
-            loadingScreen.classList.add("show");
-            updateProgress();
-          }, 100);
+        // Enhanced entrance animation
+        setTimeout(() => {
+          loadingScreen.classList.add("show");
+          updateProgress();
+        }, 100);
 
-          // Change text every 2.5 seconds for better rhythm
-          const textInterval = setInterval(updateLoadingText, 2500);
+        // Change text every 2.5 seconds for better rhythm
+        const textInterval = setInterval(updateLoadingText, 2500);
 
-          // Hide loading screen after 6 seconds with enhanced exit animation
-          setTimeout(() => {
-            clearInterval(textInterval); // stop changing text
-            loadingScreen.classList.add("hidden");
-
-            //changed: Mark that user has seen loading
-            localStorage.setItem("hasSeenLoading", "true");
-            //Added typewriter effect in heading
-            if (target) {
-              const text = target.textContent;
-              target.textContent = "";
-              let i = 0;
-
-              function typeWriter() {
-                if (i < text.length) {
-                  target.textContent += text.charAt(i);
-                  i++;
-                  setTimeout(typeWriter, 80);
-                }
-              }
-              typeWriter();
-            }
-            //after that added sideLeft and slide right animation
-            document.querySelector(".hero-content").classList.add("animate");
-            document.querySelector(".hero-image").classList.add("animate");
-
-            // Add exit preparation with scale and rotation
-            loadingScreen.style.transform = "scale(1.08) rotate(1deg)";
-            loadingScreen.style.filter = "blur(1px)";
-
-            setTimeout(() => {
-              loadingScreen.classList.add("hidden");
-              //after that added sideLeft and slide right animation
-              document.querySelector(".hero-content").classList.add("animate");
-              document.querySelector(".hero-image").classList.add("animate");
-            }, 300);
-          }, 6000); // adjust as needed
-        } else {
-          //changed: Skip loading entirely for returning visitors
+        // Hide loading screen after 6 seconds with enhanced exit animation
+        setTimeout(() => {
+          clearInterval(textInterval); // stop changing text
           loadingScreen.classList.add("hidden");
 
-          //Run typewriter effect and hero animations immediately
+          //changed: Mark that user has seen loading
+          localStorage.setItem("hasSeenLoading", "true");
+          //Added typewriter effect in heading
           if (target) {
             const text = target.textContent;
             target.textContent = "";
             let i = 0;
+
             function typeWriter() {
               if (i < text.length) {
                 target.textContent += text.charAt(i);
@@ -1627,189 +1218,224 @@ marquee.addEventListener("mouseleave", () => {
             }
             typeWriter();
           }
+          //after that added sideLeft and slide right animation
           document.querySelector(".hero-content").classList.add("animate");
           document.querySelector(".hero-image").classList.add("animate");
-        }
-      });
 
-      //after executing slideright remove it so that other animation can start
-      setTimeout(() => {
-        document.querySelector(".hero-image").classList.remove("animate");
-      }, 7000);
+          // Add exit preparation with scale and rotation
+          loadingScreen.style.transform = "scale(1.08) rotate(1deg)";
+          loadingScreen.style.filter = "blur(1px)";
 
-      //Scroll to back & top button
-      // Show button when scrolled down
-      const bottomToTopButton = document.getElementById("backToTop");
-      const icon = bottomToTopButton.querySelector("i");
+          setTimeout(() => {
+            loadingScreen.classList.add("hidden");
+            //after that added sideLeft and slide right animation
+            document.querySelector(".hero-content").classList.add("animate");
+            document.querySelector(".hero-image").classList.add("animate");
+          }, 300);
+        }, 6000); // adjust as needed
+      } else {
+        //changed: Skip loading entirely for returning visitors
+        loadingScreen.classList.add("hidden");
 
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 100) {
-          bottomToTopButton.style.display = "block";
-
-          if (
-            window.scrollY + window.innerHeight >=
-            document.documentElement.scrollHeight - 10
-          ) {
-            icon.classList.remove("fa-arrow-down");
-            icon.classList.add("fa-arrow-up");
-          } else {
-            icon.classList.remove("fa-arrow-up");
-            icon.classList.add("fa-arrow-down");
+        //Run typewriter effect and hero animations immediately
+        if (target) {
+          const text = target.textContent;
+          target.textContent = "";
+          let i = 0;
+          function typeWriter() {
+            if (i < text.length) {
+              target.textContent += text.charAt(i);
+              i++;
+              setTimeout(typeWriter, 80);
+            }
           }
-        } else {
-          bottomToTopButton.style.display = "none";
+          typeWriter();
         }
-      });
+        document.querySelector(".hero-content").classList.add("animate");
+        document.querySelector(".hero-image").classList.add("animate");
+      }
+    });
 
-      bottomToTopButton.addEventListener("click", () => {
-        if (icon.classList.contains("fa-arrow-down")) {
-          // scroll to bottom
-          window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: "smooth",
+    //after executing slideright remove it so that other animation can start
+    setTimeout(() => {
+      document.querySelector(".hero-image").classList.remove("animate");
+    }, 7000);
+
+    //Scroll to back & top button
+    // Show button when scrolled down
+    const bottomToTopButton = document.getElementById("backToTop");
+    const icon = bottomToTopButton.querySelector("i");
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        bottomToTopButton.style.display = "block";
+
+        if (
+          window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight - 10
+        ) {
+          icon.classList.remove("fa-arrow-down");
+          icon.classList.add("fa-arrow-up");
+        } else {
+          icon.classList.remove("fa-arrow-up");
+          icon.classList.add("fa-arrow-down");
+        }
+      } else {
+        bottomToTopButton.style.display = "none";
+      }
+    });
+
+    bottomToTopButton.addEventListener("click", () => {
+      if (icon.classList.contains("fa-arrow-down")) {
+        // scroll to bottom
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth",
+        });
+      } else {
+        // scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll(
+        ".fade-in, .slide-left, .slide-right"
+      );
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
           });
+        },
+        { threshold: 0.2 }
+      );
+
+      elements.forEach((el) => observer.observe(el));
+    });
+  </script>
+
+  <script src="landing.js"></script>
+  <script>
+    const toggle = document.querySelector(".mobile-menu-toggle");
+    const navLinksMenu = document.querySelector(".nav-links");
+
+    toggle.addEventListener("click", () => {
+      navLinksMenu.classList.toggle("active");
+      // toggle.classList.toggle("open"); // for rotating icon if you want
+    });
+    // Close menu when a link is clicked
+    navLinksMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinksMenu.classList.remove("active");
+      });
+    });
+  </script>
+  <script>
+    // Dark mode functionality
+    document.addEventListener("DOMContentLoaded", () => {
+      const darkModeToggle = document.getElementById("darkModeToggle");
+      const icon = darkModeToggle.querySelector("i");
+      const navLinks = document.querySelector(".nav-links");
+
+      function updateNavLinksBackground() {
+        if (document.body.classList.contains("dark-mode")) {
+          navLinks.style.backgroundColor = "#1e293b";
         } else {
-          // scroll to top
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          navLinks.style.backgroundColor = "white";
         }
-      });
-    </script>
+      }
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const elements = document.querySelectorAll(
-          ".fade-in, .slide-left, .slide-right"
-        );
+      // Check for saved dark mode preference
+      if (localStorage.getItem("darkMode") === "enabled") {
+        document.body.classList.add("dark-mode");
+        icon.classList.replace("fa-moon", "fa-sun");
+        updateNavLinksBackground();
+      }
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-              }
-            });
-          },
-          { threshold: 0.2 }
-        );
+      darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
 
-        elements.forEach((el) => observer.observe(el));
-      });
-    </script>
-
-    <script src="landing.js"></script>
-    <script>
-      const toggle = document.querySelector(".mobile-menu-toggle");
-      const navLinksMenu = document.querySelector(".nav-links");
-
-      toggle.addEventListener("click", () => {
-        navLinksMenu.classList.toggle("active");
-        // toggle.classList.toggle("open"); // for rotating icon if you want
-      });
-      // Close menu when a link is clicked
-      navLinksMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          navLinksMenu.classList.remove("active");
-        });
-      });
-    </script>
-    <script>
-      // Dark mode functionality
-      document.addEventListener("DOMContentLoaded", () => {
-        const darkModeToggle = document.getElementById("darkModeToggle");
-        const icon = darkModeToggle.querySelector("i");
-        const navLinks = document.querySelector(".nav-links");
-
-        function updateNavLinksBackground() {
-          if (document.body.classList.contains("dark-mode")) {
-            navLinks.style.backgroundColor = "#1e293b";
-          } else {
-            navLinks.style.backgroundColor = "white";
-          }
-        }
-
-        // Check for saved dark mode preference
-        if (localStorage.getItem("darkMode") === "enabled") {
-          document.body.classList.add("dark-mode");
+        // Update icon and save preference
+        if (document.body.classList.contains("dark-mode")) {
           icon.classList.replace("fa-moon", "fa-sun");
-          updateNavLinksBackground();
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          icon.classList.replace("fa-sun", "fa-moon");
+          localStorage.setItem("darkMode", "disabled");
         }
-
-        darkModeToggle.addEventListener("click", () => {
-          document.body.classList.toggle("dark-mode");
-
-          // Update icon and save preference
-          if (document.body.classList.contains("dark-mode")) {
-            icon.classList.replace("fa-moon", "fa-sun");
-            localStorage.setItem("darkMode", "enabled");
-          } else {
-            icon.classList.replace("fa-sun", "fa-moon");
-            localStorage.setItem("darkMode", "disabled");
-          }
-          updateNavLinksBackground();
-        });
+        updateNavLinksBackground();
       });
-    </script>
-    <script>
-      function openSidebar() {
-        document.getElementById("sidebar").style.width = "250px";
-      }
+    });
+  </script>
+  <script>
+    function openSidebar() {
+      document.getElementById("sidebar").style.width = "250px";
+    }
 
-      function closeSidebar() {
-        document.getElementById("sidebar").style.width = "0";
-      }
+    function closeSidebar() {
+      document.getElementById("sidebar").style.width = "0";
+    }
 
-      const toggleDarkMode = () => {
-    document.body.classList.toggle('dark-mode');
-    localStorage.setItem(
+    const toggleDarkMode = () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem(
         'darkMode',
         document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled'
-    );
-};
+      );
+    };
 
-    </script>
+  </script>
 
-    <!-- Floating Feedback Button -->
-    <button id="feedbackFab" aria-label="Open feedback" title="Send feedback">💬</button>
+  <!-- Floating Feedback Button -->
+  <button id="feedbackFab" aria-label="Open feedback" title="Send feedback">💬</button>
 
-    <!-- Feedback Modal -->
-    <div id="feedbackModalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="feedbackTitle">
-      <div class="modal">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 id="feedbackTitle" class="modal-title">We value your feedback</h2>
-            <button class="modal-close" id="feedbackCloseBtn" aria-label="Close feedback modal">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-          <form id="feedbackForm" novalidate>
-            <div class="form-grid">
-              <div class="form-group">
-                <label for="fbName" class="form-label">Name</label>
-                <input id="fbName" class="form-input" type="text" placeholder="Your name" required />
-              </div>
-              <div class="form-group">
-                <label for="fbEmail" class="form-label">Email</label>
-                <input id="fbEmail" class="form-input" type="email" placeholder="you@example.com" required />
-              </div>
+  <!-- Feedback Modal -->
+  <div id="feedbackModalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true"
+    aria-labelledby="feedbackTitle">
+    <div class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="feedbackTitle" class="modal-title">We value your feedback</h2>
+          <button class="modal-close" id="feedbackCloseBtn" aria-label="Close feedback modal">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <form id="feedbackForm" novalidate>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="fbName" class="form-label">Name</label>
+              <input id="fbName" class="form-input" type="text" placeholder="Your name" required />
             </div>
             <div class="form-group">
-              <label for="fbMessage" class="form-label">Feedback</label>
-              <textarea id="fbMessage" class="form-textarea" rows="4" placeholder="Share your thoughts..." required></textarea>
+              <label for="fbEmail" class="form-label">Email</label>
+              <input id="fbEmail" class="form-input" type="email" placeholder="you@example.com" required />
             </div>
-            <div class="form-actions">
-              <button type="button" class="btn-secondary" id="feedbackCancelBtn">Cancel</button>
-              <button type="submit" class="btn-primary" id="feedbackSubmitBtn">
-                <i class="fas fa-paper-plane"></i> Submit
-              </button>
-            </div>
-          </form>
-          <div id="feedbackThankYou" class="hidden" style="text-align:center; padding: 1rem;">
-            <h3>Thank you for your valuable feedback</h3>
-            <p>Redirecting you to the homepage...</p>
           </div>
+          <div class="form-group">
+            <label for="fbMessage" class="form-label">Feedback</label>
+            <textarea id="fbMessage" class="form-textarea" rows="4" placeholder="Share your thoughts..."
+              required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" id="feedbackCancelBtn">Cancel</button>
+            <button type="submit" class="btn-primary" id="feedbackSubmitBtn">
+              <i class="fas fa-paper-plane"></i> Submit
+            </button>
+          </div>
+        </form>
+        <div id="feedbackThankYou" class="hidden" style="text-align:center; padding: 1rem;">
+          <h3>Thank you for your valuable feedback</h3>
+          <p>Redirecting you to the homepage...</p>
         </div>
       </div>
     </div>
+  </div>
 
     <script>
   // Feedback FAB and Modal Logic

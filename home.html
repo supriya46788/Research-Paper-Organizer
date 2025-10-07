@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-  
-  <head>
+
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research Paper Organizer - Dashboard</title>
-  
+
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Access your research paper dashboard. Organize, search, and manage your academic papers with our intuitive research management system." />
-  <meta name="keywords" content="research dashboard, paper management, academic research, research papers, paper organizer, citation management" />
+  <meta name="description"
+    content="Access your research paper dashboard. Organize, search, and manage your academic papers with our intuitive research management system." />
+  <meta name="keywords"
+    content="research dashboard, paper management, academic research, research papers, paper organizer, citation management" />
   <meta name="author" content="Research Paper Organizer Team" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#2563eb" />
   <link rel="canonical" href="https://research-paper-organizer.vercel.app/home.html" />
-  
+
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Research Paper Organizer - Dashboard" />
-  <meta property="og:description" content="Access your research paper dashboard. Organize, search, and manage your academic papers with our intuitive research management system." />
+  <meta property="og:description"
+    content="Access your research paper dashboard. Organize, search, and manage your academic papers with our intuitive research management system." />
   <meta property="og:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
   <meta property="og:url" content="https://research-paper-organizer.vercel.app/home.html" />
   <meta property="og:type" content="website" />
@@ -23,14 +26,15 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Research Paper Organizer Dashboard" />
-  
+
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Research Paper Organizer - Dashboard" />
-  <meta name="twitter:description" content="Access your research paper dashboard. Organize, search, and manage your academic papers with our intuitive research management system." />
+  <meta name="twitter:description"
+    content="Access your research paper dashboard. Organize, search, and manage your academic papers with our intuitive research management system." />
   <meta name="twitter:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
   <meta name="twitter:image:alt" content="Research Paper Organizer Dashboard" />
-  
+
   <!-- Additional SEO Meta Tags -->
   <meta name="application-name" content="Research Paper Organizer" />
   <meta name="apple-mobile-web-app-title" content="Research Paper Organizer" />
@@ -41,9 +45,16 @@
   <meta name="msapplication-TileColor" content="#2563eb" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- SweetAlert2 CDN -->
-   
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js';
+  </script>
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 <script>
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js';
 </script>
@@ -59,607 +70,682 @@
       background: #111827 !important;
       color: #d1d5db !important;
     }
-    
+
     body.dark-mode .header {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
+
     body.dark-mode .search-bar {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
+
     body.dark-mode .papers-section {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
+
     body.dark-mode .paper-card {
       background: #374151 !important;
       color: #d1d5db !important;
       border-color: #4b5563 !important;
     }
-    
+
     body.dark-mode .modal {
       background: #1f2937 !important;
       color: #d1d5db !important;
     }
-    
-    body.dark-mode input, 
-    body.dark-mode textarea, 
+
+    body.dark-mode input,
+    body.dark-mode textarea,
     body.dark-mode select {
       background: #374151 !important;
       color: #d1d5db !important;
       border-color: #4b5563 !important;
     }
 
-   
+
     #drop-zone {
-  border: 2px dashed #4a90e2;
-  border-radius: 16px;
-  padding: 35px;
-  text-align: center;
-  background: #f8fbff;
-  color: #4a90e2;
-  transition: all 0.3s;
-}
-#drop-zone:hover {
-  background: #eef4ff;
-  border-color: #357ABD;
-  transform: scale(1.02);
-}
-.label-1 {
-  margin-top: 10px;
-  background: linear-gradient(90deg, #0056b3, #00BFFF); /* darker to lighter blue */
-  /* Updated code for compatibility */
-  -webkit-background-clip: text; /* Chrome, Safari */
-  -moz-background-clip: text;    /* Firefox (optional, older versions) */
-  background-clip: text;         /* Standard property */
+      border: 2px dashed #4a90e2;
+      border-radius: 16px;
+      padding: 35px;
+      text-align: center;
+      background: #f8fbff;
+      color: #4a90e2;
+      transition: all 0.3s;
+    }
+
+    #drop-zone:hover {
+      background: #eef4ff;
+      border-color: #357ABD;
+      transform: scale(1.02);
+    }
+
+    .label-1 {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #0056b3, #00BFFF);
+      /* darker to lighter blue */
+      /* Updated code for compatibility */
+      -webkit-background-clip: text;
+      /* Chrome, Safari */
+      -moz-background-clip: text;
+      /* Firefox (optional, older versions) */
+      background-clip: text;
+      /* Standard property */
 
 
-  -webkit-text-fill-color: transparent;
-  font-weight: 700; /* bolder */
-  font-size: 15px;  /* increased size */
-  letter-spacing: 0.5px; /* adds spacing for a cleaner look */
-}
-.label-1:hover {
-  margin-top: 10px;
-  background: linear-gradient(90deg, #185ba3, #add3e0); /* darker to lighter blue */
-  /* Updated code for compatibility */
--webkit-background-clip: text; /* Chrome, Safari */
--moz-background-clip: text;    /* Firefox (optional, older versions) */
-background-clip: text;         /* Standard property */
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      /* bolder */
+      font-size: 15px;
+      /* increased size */
+      letter-spacing: 0.5px;
+      /* adds spacing for a cleaner look */
+    }
 
-  -webkit-text-fill-color: transparent;
-  font-size: 17px;  /* increased size */
-}
+    .label-1:hover {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #185ba3, #add3e0);
+      /* darker to lighter blue */
+      /* Updated code for compatibility */
+      -webkit-background-clip: text;
+      /* Chrome, Safari */
+      -moz-background-clip: text;
+      /* Firefox (optional, older versions) */
+      background-clip: text;
+      /* Standard property */
 
-/* General Paper Details Section */
-.details-section {
-  background-color: #f9f9f9; /* light default */
-  color: #111; 
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-}
+      -webkit-text-fill-color: transparent;
+      font-size: 17px;
+      /* increased size */
+    }
 
-/* Dark Mode */
-.details-section.dark-mode {
-  background-color: #1f1f2e;
-  color: #e0e0e0;
-  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
-}
+    /* General Paper Details Section */
+    .details-section {
+      background-color: #f9f9f9;
+      /* light default */
+      color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 10px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-/* Detail Titles */
-.details-title, .detail-section h3, .detail-section h4 {
-  margin-bottom: 8px;
-  color: inherit;
-}
+    /* Dark Mode */
+    .details-section.dark-mode {
+      background-color: #1f1f2e;
+      color: #e0e0e0;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    }
 
-/* Content Paragraphs */
-.detail-section p {
-  margin: 5px 0 12px 0;
-  line-height: 1.5;
-  color: inherit;
-}
+    /* Detail Titles */
+    .details-title,
+    .detail-section h3,
+    .detail-section h4 {
+      margin-bottom: 8px;
+      color: inherit;
+    }
 
-/* Tags */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.detail-tag {
-  background-color: #e0e0e0;
-  color: #111;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-.details-section.dark-mode .detail-tag {
-  background-color: #33334d;
-  color: #f0f0f0;
-}
+    /* Content Paragraphs */
+    .detail-section p {
+      margin: 5px 0 12px 0;
+      line-height: 1.5;
+      color: inherit;
+    }
 
-/* Rating & Favorite */
-.rating-favorite-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-}
-.paper-rating .stars {
-  color: #ffc107; /* gold stars */
-  font-size: 1.1rem;
-}
-.details-section.dark-mode .paper-rating .stars {
-  color: #ffcc00;
-}
-.paper-favorite i {
-  color: #e74c3c; /* red heart */
-}
+    /* Tags */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
 
-/* PDF Preview */
-.pdf-preview {
-  width: 100%;
-  height: 300px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-.details-section.dark-mode .pdf-preview {
-  border: 1px solid #444;
-}
+    .detail-tag {
+      background-color: #e0e0e0;
+      color: #111;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
 
-/* Citation Section */
-.citation-section {
-  margin-top: 15px;
-}
-.citation-item {
-  background-color: #f0f0f0e7;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-.details-section.dark-mode .citation-item {
-  background-color: #2a2a3c;
-}
-.citation-text {
-  font-size: 0.9rem;
-  margin-top: 4px;
-  color: inherit;
-}
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #3498db;
-  margin-left: 8px;
-}
-.details-section.dark-mode .copy-btn {
-  color: #6ab0ff;
-}
-.details-section.dark-mode .details-title {
-  border-bottom: 1px solid #555;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
-}
-/* Light mode */
-.detail-label {
-  font-weight: 500;
-  color: #374151; /* dark gray for readability */
-}
+    .details-section.dark-mode .detail-tag {
+      background-color: #33334d;
+      color: #f0f0f0;
+    }
 
-/* Dark mode */
-body.dark-mode .detail-label {
-  color: #dcdce6; /* light gray for dark theme */
-}
-.detail-label {
-  transition: color 0.3s ease;
-}
-.details-title {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 5px;
-}
+    /* Rating & Favorite */
+    .rating-favorite-details {
+      display: flex;
+      justify-content: space-between;
+      margin: 12px 0;
+    }
 
-.details-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #374151; /* light mode */
-}
+    .paper-rating .stars {
+      color: #ffc107;
+      /* gold stars */
+      font-size: 1.1rem;
+    }
 
-body.dark-mode .details-title::after {
-  background-color: #dcdce6; /* dark mode */
-}
-/* General Paper Details Section */
-.details-section {
-  background-color: #f9f9f9; /* light default */
-  color: #111; 
-  padding: 20px;
-  border-radius: 10px;
-  margin: 10px 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-}
+    .details-section.dark-mode .paper-rating .stars {
+      color: #ffcc00;
+    }
 
-/* Dark Mode */
-.details-section.dark-mode {
-  background-color: #1f1f2e;
-  color: #e0e0e0;
-  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
-}
+    .paper-favorite i {
+      color: #e74c3c;
+      /* red heart */
+    }
 
-/* Detail Titles */
-.details-title, .detail-section h3, .detail-section h4 {
-  margin-bottom: 8px;
-  color: inherit;
-}
+    /* PDF Preview */
+    .pdf-preview {
+      width: 100%;
+      height: 300px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
 
-/* Content Paragraphs */
-.detail-section p {
-  margin: 5px 0 12px 0;
-  line-height: 1.5;
-  color: inherit;
-}
+    .details-section.dark-mode .pdf-preview {
+      border: 1px solid #444;
+    }
 
-/* Tags */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-.detail-tag {
-  background-color: #e0e0e0;
-  color: #111;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-}
-.details-section.dark-mode .detail-tag {
-  background-color: #33334d;
-  color: #f0f0f0;
-}
+    /* Citation Section */
+    .citation-section {
+      margin-top: 15px;
+    }
 
-/* Rating & Favorite */
-.rating-favorite-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-}
-.paper-rating .stars {
-  color: #ffc107; /* gold stars */
-  font-size: 1.1rem;
-}
-.details-section.dark-mode .paper-rating .stars {
-  color: #ffcc00;
-}
-.paper-favorite i {
-  color: #e74c3c; /* red heart */
-}
+    .citation-item {
+      background-color: #f0f0f0e7;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
 
-/* PDF Preview */
-.pdf-preview {
-  width: 100%;
-  height: 300px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-.details-section.dark-mode .pdf-preview {
-  border: 1px solid #444;
-}
+    .details-section.dark-mode .citation-item {
+      background-color: #2a2a3c;
+    }
 
-/* Citation Section */
-.citation-section {
-  margin-top: 15px;
-}
-.citation-item {
-  background-color: #f0f0f0e7;
-  padding: 10px;
-  border-radius: 6px;
-  margin-bottom: 8px;
-}
-.details-section.dark-mode .citation-item {
-  background-color: #2a2a3c;
-}
-.citation-text {
-  font-size: 0.9rem;
-  margin-top: 4px;
-  color: inherit;
-}
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #3498db;
-  margin-left: 8px;
-}
-.details-section.dark-mode .copy-btn {
-  color: #6ab0ff;
-}
-.details-section.dark-mode .details-title {
-  border-bottom: 1px solid #555;
-  padding-bottom: 6px;
-  margin-bottom: 12px;
-}
-/* Light mode */
-.detail-label {
-  font-weight: 500;
-  color: #374151; /* dark gray for readability */
-}
+    .citation-text {
+      font-size: 0.9rem;
+      margin-top: 4px;
+      color: inherit;
+    }
 
-/* Dark mode */
-body.dark-mode .detail-label {
-  color: #dcdce6; /* light gray for dark theme */
-}
-.detail-label {
-  transition: color 0.3s ease;
-}
-.details-title {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 5px;
-}
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #3498db;
+      margin-left: 8px;
+    }
 
-.details-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #374151; /* light mode */
-}
+    .details-section.dark-mode .copy-btn {
+      color: #6ab0ff;
+    }
 
-body.dark-mode .details-title::after {
-  background-color: #dcdce6; /* dark mode */
-}
-/* Paper Details Section */
-.details-section {
-  background-color: #f9f9f9;
-  color: #111827;
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+    .details-section.dark-mode .details-title {
+      border-bottom: 1px solid #555;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
 
-/* Dark mode */
-body.dark-mode .details-section {
-  background-color: #1f2937;
-  color: #f3f4f6;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
+    /* Light mode */
+    .detail-label {
+      font-weight: 500;
+      color: #374151;
+      /* dark gray for readability */
+    }
 
-/* Header inside Paper Details */
-/* ===== General Paper Details Section ===== */
-.details-section {
-  background-color: #f9f9f9; /* light default */
-  color: #111827; 
-  padding: 20px;
-  border-radius: 12px;
-  margin: 15px 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  font-family: 'Segoe UI', sans-serif;
-}
+    /* Dark mode */
+    body.dark-mode .detail-label {
+      color: #dcdce6;
+      /* light gray for dark theme */
+    }
 
-body.dark-mode .details-section {
-  background-color: #1f2937;
-  color: #e0e0e0;
-  box-shadow: 0 4px 12px rgba(255,255,255,0.05);
-}
+    .detail-label {
+      transition: color 0.3s ease;
+    }
 
-/* ===== Header & Titles ===== */
-.details-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  position: relative;
-  display: inline-block;
-  padding-bottom: 6px;
-}
+    .details-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
 
-.details-title::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 150px;
-  height: 3px;
-  background-color: #3b82f6; /* light blue underline */
-  border-radius: 2px;
-}
+    .details-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #374151;
+      /* light mode */
+    }
 
-body.dark-mode .details-title::after {
-  background-color: #60a5fa; /* accent blue */
-}
+    body.dark-mode .details-title::after {
+      background-color: #dcdce6;
+      /* dark mode */
+    }
 
-/* ===== Close Button ===== */
-.details-header .close-btn {
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  font-weight: bold;
-  color: #e74c3c; /* red */
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    /* General Paper Details Section */
+    .details-section {
+      background-color: #f9f9f9;
+      /* light default */
+      color: #111;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 10px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-.details-header .close-btn:hover {
-  transform: scale(1.1);
-  color: #ff5252; /* hover red */
-}
+    /* Dark Mode */
+    .details-section.dark-mode {
+      background-color: #1f1f2e;
+      color: #e0e0e0;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    }
 
-/* ===== Content Sections ===== */
-.details-content p {
-  line-height: 1.6;
-  margin: 6px 0 14px 0;
-  color: inherit;
-}
+    /* Detail Titles */
+    .details-title,
+    .detail-section h3,
+    .detail-section h4 {
+      margin-bottom: 8px;
+      color: inherit;
+    }
 
-.detail-label {
-  font-weight: 500;
-  color: #374151;
-  transition: color 0.3s ease;
-}
+    /* Content Paragraphs */
+    .detail-section p {
+      margin: 5px 0 12px 0;
+      line-height: 1.5;
+      color: inherit;
+    }
 
-body.dark-mode .detail-label {
-  color: #dcdce6;
-}
+    /* Tags */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
 
-/* ===== Tags ===== */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 8px 0;
-}
+    .detail-tag {
+      background-color: #e0e0e0;
+      color: #111;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
 
-.detail-tag {
-  background-color: #e0e7ff;
-  color: #1d4ed8;
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
+    .details-section.dark-mode .detail-tag {
+      background-color: #33334d;
+      color: #f0f0f0;
+    }
 
-.detail-tag:hover {
-  background-color: #2563eb;
-  color: #ffffff;
-}
+    /* Rating & Favorite */
+    .rating-favorite-details {
+      display: flex;
+      justify-content: space-between;
+      margin: 12px 0;
+    }
 
-body.dark-mode .detail-tag {
-  background-color: #374151;
-  color: #60a5fa;
-}
+    .paper-rating .stars {
+      color: #ffc107;
+      /* gold stars */
+      font-size: 1.1rem;
+    }
 
-body.dark-mode .detail-tag:hover {
-  background-color: #3b82f6;
-  color: #ffffff;
-}
+    .details-section.dark-mode .paper-rating .stars {
+      color: #ffcc00;
+    }
 
-/* ===== Rating & Favorite ===== */
-.rating-favorite-details {
-  display: flex;
-  justify-content: space-between;
-  margin: 12px 0;
-}
+    .paper-favorite i {
+      color: #e74c3c;
+      /* red heart */
+    }
 
-.paper-rating .stars {
-  color: #ffc107;
-  font-size: 1.1rem;
-}
+    /* PDF Preview */
+    .pdf-preview {
+      width: 100%;
+      height: 300px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
 
-body.dark-mode .paper-rating .stars {
-  color: #ffcc00;
-}
+    .details-section.dark-mode .pdf-preview {
+      border: 1px solid #444;
+    }
 
-.paper-favorite i {
-  color: #e74c3c;
-}
+    /* Citation Section */
+    .citation-section {
+      margin-top: 15px;
+    }
 
-body.dark-mode .paper-favorite i {
-  color: #ff6b6b;
-}
+    .citation-item {
+      background-color: #f0f0f0e7;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
 
-/* ===== PDF Preview ===== */
-.pdf-preview {
-  width: 100%;
-  height: 300px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  transition: all 0.3s ease;
-}
+    .details-section.dark-mode .citation-item {
+      background-color: #2a2a3c;
+    }
 
-.pdf-preview:hover {
-  transform: scale(1.01);
-  border-color: #3b82f6;
-}
+    .citation-text {
+      font-size: 0.9rem;
+      margin-top: 4px;
+      color: inherit;
+    }
 
-body.dark-mode .pdf-preview {
-  border: 1px solid #444;
-}
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #3498db;
+      margin-left: 8px;
+    }
 
-/* ===== Citation Section ===== */
-.citation-section {
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+    .details-section.dark-mode .copy-btn {
+      color: #6ab0ff;
+    }
 
-/* Light mode citation */
-.citation-item {
-  background-color: #eef2ff; /* light blue card */
-  color: #111827; /* dark text */
-  padding: 12px 14px;
-  border-radius: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.2s ease;
-}
+    .details-section.dark-mode .details-title {
+      border-bottom: 1px solid #555;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
 
-.citation-item:hover {
-  background-color: #2563eb; /* hover blue */
-  color: #111827; /* keep text readable */
-}
+    /* Light mode */
+    .detail-label {
+      font-weight: 500;
+      color: #374151;
+      /* dark gray for readability */
+    }
 
-.citation-item .citation-text {
-  font-size: 0.9rem;
-  color: inherit;
-}
+    /* Dark mode */
+    body.dark-mode .detail-label {
+      color: #dcdce6;
+      /* light gray for dark theme */
+    }
 
-/* Dark mode citation */
-body.dark-mode .citation-item {
-  background-color: #1f2937;
-  color: #f3f4f6;
-}
+    .detail-label {
+      transition: color 0.3s ease;
+    }
 
-body.dark-mode .citation-item:hover {
-  background-color: #3b82f6;
-  color: #ffffff;
-}
+    .details-title {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
 
-/* Copy button */
-.copy-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #3498db;
-  transition: all 0.2s ease;
-}
+    .details-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #374151;
+      /* light mode */
+    }
 
-.copy-btn:hover {
-  color: #1d4ed8;
-}
+    body.dark-mode .details-title::after {
+      background-color: #dcdce6;
+      /* dark mode */
+    }
 
-body.dark-mode .copy-btn {
-  color: #60a5fa;
-}
+    /* Paper Details Section */
+    .details-section {
+      background-color: #f9f9f9;
+      color: #111827;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
-body.dark-mode .copy-btn:hover {
-  color: #93c5fd;
-}
-.navbar{
-  position: sticky;
-}
+    /* Dark mode */
+    body.dark-mode .details-section {
+      background-color: #1f2937;
+      color: #f3f4f6;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Header inside Paper Details */
+    /* ===== General Paper Details Section ===== */
+    .details-section {
+      background-color: #f9f9f9;
+      /* light default */
+      color: #111827;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 15px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body.dark-mode .details-section {
+      background-color: #1f2937;
+      color: #e0e0e0;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+    }
+
+    /* ===== Header & Titles ===== */
+    .details-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
+
+    .details-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 150px;
+      height: 3px;
+      background-color: #3b82f6;
+      /* light blue underline */
+      border-radius: 2px;
+    }
+
+    body.dark-mode .details-title::after {
+      background-color: #60a5fa;
+      /* accent blue */
+    }
+
+    /* ===== Close Button ===== */
+    .details-header .close-btn {
+      background: transparent;
+      border: none;
+      font-size: 20px;
+      font-weight: bold;
+      color: #e74c3c;
+      /* red */
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .details-header .close-btn:hover {
+      transform: scale(1.1);
+      color: #ff5252;
+      /* hover red */
+    }
+
+    /* ===== Content Sections ===== */
+    .details-content p {
+      line-height: 1.6;
+      margin: 6px 0 14px 0;
+      color: inherit;
+    }
+
+    .detail-label {
+      font-weight: 500;
+      color: #374151;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode .detail-label {
+      color: #dcdce6;
+    }
+
+    /* ===== Tags ===== */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0;
+    }
+
+    .detail-tag {
+      background-color: #e0e7ff;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .detail-tag:hover {
+      background-color: #2563eb;
+      color: #ffffff;
+    }
+
+    body.dark-mode .detail-tag {
+      background-color: #374151;
+      color: #60a5fa;
+    }
+
+    body.dark-mode .detail-tag:hover {
+      background-color: #3b82f6;
+      color: #ffffff;
+    }
+
+    /* ===== Rating & Favorite ===== */
+    .rating-favorite-details {
+      display: flex;
+      justify-content: space-between;
+      margin: 12px 0;
+    }
+
+    .paper-rating .stars {
+      color: #ffc107;
+      font-size: 1.1rem;
+    }
+
+    body.dark-mode .paper-rating .stars {
+      color: #ffcc00;
+    }
+
+    .paper-favorite i {
+      color: #e74c3c;
+    }
+
+    body.dark-mode .paper-favorite i {
+      color: #ff6b6b;
+    }
+
+    /* ===== PDF Preview ===== */
+    .pdf-preview {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      transition: all 0.3s ease;
+    }
+
+    .pdf-preview:hover {
+      transform: scale(1.01);
+      border-color: #3b82f6;
+    }
+
+    body.dark-mode .pdf-preview {
+      border: 1px solid #444;
+    }
+
+    /* ===== Citation Section ===== */
+    .citation-section {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Light mode citation */
+    .citation-item {
+      background-color: #eef2ff;
+      /* light blue card */
+      color: #111827;
+      /* dark text */
+      padding: 12px 14px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .citation-item:hover {
+      background-color: #2563eb;
+      /* hover blue */
+      color: #111827;
+      /* keep text readable */
+    }
+
+    .citation-item .citation-text {
+      font-size: 0.9rem;
+      color: inherit;
+    }
+
+    /* Dark mode citation */
+    body.dark-mode .citation-item {
+      background-color: #1f2937;
+      color: #f3f4f6;
+    }
+
+    body.dark-mode .citation-item:hover {
+      background-color: #3b82f6;
+      color: #ffffff;
+    }
+
+    /* Copy button */
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #3498db;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      color: #1d4ed8;
+    }
+
+    body.dark-mode .copy-btn {
+      color: #60a5fa;
+    }
+
+    body.dark-mode .copy-btn:hover {
+      color: #93c5fd;
+    }
+
+    .navbar {
+      position: sticky;
+    }
   </style>
-  
+
 </head>
 
 <body>
@@ -699,8 +785,8 @@ body.dark-mode .copy-btn:hover {
             Add Paper
           </button>
           <button class="add-btn" onclick="location.href='summarize.html'">
-          <i class="fas fa-align-left"></i>
-          Summarize Paper
+            <i class="fas fa-align-left"></i>
+            Summarize Paper
           </button>
 
           <button class="btn-secondary" onclick="importPapers()">
@@ -755,11 +841,7 @@ body.dark-mode .copy-btn:hover {
 
           <div class="filter-container">
             <!-- Favorites Filter -->
-            <select
-              class="filter-select"
-              id="favoriteFilter"
-              onchange="filterPapers()"
-            >
+            <select class="filter-select" id="favoriteFilter" onchange="filterPapers()">
               <option value="">All Papers</option>
               <option value="favorites">Favorites Only</option>
               <option value="non-favorites">Non-Favorites</option>
@@ -767,11 +849,7 @@ body.dark-mode .copy-btn:hover {
           </div>
           <div class="filter-container">
             <!-- Rating Filter -->
-            <select
-              class="filter-select"
-              id="ratingFilter"
-              onchange="filterPapers()"
-            >
+            <select class="filter-select" id="ratingFilter" onchange="filterPapers()">
               <option value="">All Ratings</option>
               <option value="5">5 Stars</option>
               <option value="4">4+ Stars</option>
@@ -783,11 +861,7 @@ body.dark-mode .copy-btn:hover {
           </div>
           <div class="filter-container">
             <!-- Sort Options -->
-            <select
-              class="filter-select"
-              id="sortFilter"
-              onchange="filterPapers()"
-            >
+            <select class="filter-select" id="sortFilter" onchange="filterPapers()">
               <option value="">Default</option>
               <option value="rating-desc">Highest Rated</option>
               <option value="rating-asc">Lowest Rated</option>
@@ -799,246 +873,247 @@ body.dark-mode .copy-btn:hover {
             </select>
           </div>
           <!-- Clear Filters button added #issue-602 -->
-           <div class="filter-container">
+          <div class="filter-container">
             <button id="clearFiltersBtn" class="filter-clear-btn" title="Clear all filters">
-               <i class="fas fa-eraser" style="color: #6b7280"></i>
+              <i class="fas fa-eraser" style="color: #6b7280"></i>
             </button>
             <!-- hover text for clear filter button -->
             <span class="tooltip-text">Clear all filters</span>
-           </div>
-        </div>
-      </div>
-  </div>
-  <!-- Filter section ends here -->
-      <div class="main-grid">
-        <!-- Papers List -->
-        <div class="papers-section">
-          <h2 class="papers-title">Papers (<span id="paperCount">0</span>)</h2>
-
-          <div id="emptyState" class="empty-state">
-            <i class="fas fa-book-open"></i>
-            <p>No papers found</p>
-            <p style="font-size: 0.875rem">
-              Add your first research paper to get started
-            </p>
-          </div>
-
-          <div id="papersList" class="papers-list hidden"></div>
-          <!-- Pagination Controls for navigating between pages (ADDED FOR PAGINATION FEATURE) -->
-          <div id="paginationControls" class="pagination-controls"></div>
-        </div>
-
-        <!-- Paper Details -->
-        <div class="details-section">
-          <div id="noSelection" class="empty-state">
-            <i class="fas fa-book-open"></i>
-            <p>Select a paper to view details</p>
-          </div>
-
-          <div id="paperDetails" class="hidden">
-            <div class="details-header">
-              <h2 class="details-title">Paper Details</h2>
-              <button class="close-btn" onclick="closeDetails()">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
-            <div class="details-content" id="detailsContent">
-              <!-- Paper details go here -->
-            </div>
           </div>
         </div>
       </div>
+    </div>
+    <!-- Filter section ends here -->
+    <div class="main-grid">
+      <!-- Papers List -->
+      <div class="papers-section">
+        <h2 class="papers-title">Papers (<span id="paperCount">0</span>)</h2>
 
-      <!-- Add/Edit Paper Modal -->
-      <div id="modalOverlay" class="modal-overlay hidden">
-        <div class="modal">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title" id="modalTitle">Add New Paper</h2>
-              <button class="modal-close" onclick="hideAddForm()">
-                <i class="fas fa-times"></i>
-              </button>
-            </div>
+        <div id="emptyState" class="empty-state">
+          <i class="fas fa-book-open"></i>
+          <p>No papers found</p>
+          <p style="font-size: 0.875rem">
+            Add your first research paper to get started
+          </p>
+        </div>
 
-            <form id="paperForm">
-              <div id="drop-zone">
-                <div class="icon">
-                  <i class="fas fa-cloud-upload-alt"></i>
-                </div>
-                <h3>Drag & Drop to Upload File</h3>
-                <p>OR</p>
-                <button id="browse-btn" type="button">Browse File</button>
-                <input type="file" id="pdfUpload" accept="application/pdf" required hidden />
-              </div>
-              <!-- Placeholder for showing uploaded file -->
-              <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>
-              
-              <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
-                <label class="form-label label-1">PDF Preview</label>
-                <iframe
-                  id="pdfPreview"
-                  class="pdf-preview"
-                  src=""
-                  frameborder="0"
-                ></iframe>
-                
-              </div>
+        <div id="papersList" class="papers-list hidden"></div>
+        <!-- Pagination Controls for navigating between pages (ADDED FOR PAGINATION FEATURE) -->
+        <div id="paginationControls" class="pagination-controls"></div>
+      </div>
 
-              <div class="form-group">
-                <label class="form-label label-1">Title *</label>
-                <input type="text" class="form-input" id="title" required />
-              </div>
+      <!-- Paper Details -->
+      <div class="details-section">
+        <div id="noSelection" class="empty-state">
+          <i class="fas fa-book-open"></i>
+          <p>Select a paper to view details</p>
+        </div>
 
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label label-1">Authors *</label>
-                  <input type="text" class="form-input" id="authors" required />
-                </div>
-                <div class="form-group">
-                  <label class="form-label label-1">Year</label>
-                  <input type="number" class="form-input" id="year" />
-                </div>
-              </div>
-
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label label-1">Journal/Conference</label>
-                  <input type="text" class="form-input" id="journal" />
-                </div>
-                <div class="form-group">
-                  <label class="form-label label-1">Topic</label>
-                  <input type="text" class="form-input" id="topic" />
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">URL</label>
-                <input type="url" class="form-input" id="url" />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Tags (comma-separated)</label>
-                <input type="text" class="form-input" id="tags" placeholder="machine learning, neural networks, AI" />
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Abstract</label>
-                <textarea class="form-textarea" id="abstract" rows="3"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label label-1">Notes</label>
-                <textarea class="form-textarea" id="notes" rows="4"></textarea>
-              </div>
-
-              <!-- Rating and Favorite Section -->
-              <div class="form-grid">
-                <div class="form-group">
-                  <label class="form-label label-1">Rating</label>
-                  <div class="rating-container">
-                    <div class="stars-rating" id="starsRating">
-                      <span class="star" data-rating="1">★</span>
-                      <span class="star" data-rating="2">★</span>
-                      <span class="star" data-rating="3">★</span>
-                      <span class="star" data-rating="4">★</span>
-                      <span class="star" data-rating="5">★</span>
-                    </div>
-                    <input type="hidden" id="rating" value="0" />
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="form-label label-1">Favorite</label>
-                  <div class="favorite-container">
-                    <label class="favorite-checkbox">
-                      <input type="checkbox" id="isFavorite" />
-                      <span class="favorite-icon" style="margin-top: 10px;">
-                        <i class="fas fa-heart " ></i>
-                      </span>
-                      <span class="favorite-text"><p class="label-1">Favorite</p></span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-actions">
-                <button type="button" class="btn-secondary" onclick="hideAddForm()">
-                  Cancel
-                </button>
-                <button type="submit" class="btn-primary">
-                  <i class="fas fa-save"></i>
-                  <span id="submitText">Add Paper</span>
-                </button>
-              </div>
-            </form>
+        <div id="paperDetails" class="hidden">
+          <div class="details-header">
+            <h2 class="details-title">Paper Details</h2>
+            <button class="close-btn" onclick="closeDetails()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="details-content" id="detailsContent">
+            <!-- Paper details go here -->
           </div>
         </div>
-      </div>
-      <div id="loadingSpinner" class="loading-spinner hidden">
-        <i class="fas fa-spinner fa-spin"></i> Saving Paper...
       </div>
     </div>
 
-    <style>
-      /* Back to Top Button */
-#backToTop {
-  height: 50px;
-  width: 50px;
-  position: fixed;
-  bottom: 20px;   /* keep same baseline as chatbot */
-  right: 90px;    /* push left so chatbot sits on the edge */
-  z-index: 998;
-  background: linear-gradient(135deg, #0077b5, #4facfe);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  padding: 15px;
-  font-size: 18px;
-  cursor: pointer;
-  display: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
+    <!-- Add/Edit Paper Modal -->
+    <div id="modalOverlay" class="modal-overlay hidden">
+      <div class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="modalTitle">Add New Paper</h2>
+            <button class="modal-close" onclick="hideAddForm()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
 
-#backToTop:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-}
+          <form id="paperForm">
+            <div id="drop-zone">
+              <div class="icon">
+                <i class="fas fa-cloud-upload-alt"></i>
+              </div>
+              <h3>Drag & Drop to Upload File</h3>
+              <p>OR</p>
+              <button id="browse-btn" type="button">Browse File</button>
+              <input type="file" id="pdfUpload" accept="application/pdf" required hidden />
+            </div>
+            <!-- Placeholder for showing uploaded file -->
+            <div id="uploaded-file" class="uploaded-file" style="display:none;"></div>
 
-/* Chatbot bubble button */
-button#chatbase-bubble-button {
-  position: fixed !important;
-  bottom: 20px !important;   /* same baseline */
-  right: 20px !important;    /* chatbot stays at right corner */
-  width: 55px !important;
-  height: 55px !important;
-  border-radius: 50% !important;
-  z-index: 2147483647 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
+            <div id="pdfPreviewContainer" class="pdf-preview-container hidden">
+              <label class="form-label label-1">PDF Preview</label>
+              <iframe id="pdfPreview" class="pdf-preview" src="" frameborder="0"></iframe>
 
-button#chatbase-bubble-button svg {
-  width: 28px !important;
-  height: 28px !important;
-}
+            </div>
 
-/* Chat window alignment */
-#chatbase-bubble-window {
-  z-index: 2147483647 !important;
-}
+            <div class="form-group">
+              <label class="form-label label-1">Title *</label>
+              <input type="text" class="form-input" id="title" required />
+            </div>
 
- 
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label label-1">Authors *</label>
+                <input type="text" class="form-input" id="authors" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label label-1">Year</label>
+                <input type="number" class="form-input" id="year" />
+              </div>
+            </div>
 
- @media (max-width: 600px) {
- #backToTop {
-  padding: 12px;
-  font-size: 16px;
-  bottom: 20px;
-  right: 20px;
-}
-}
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label label-1">Journal/Conference</label>
+                <input type="text" class="form-input" id="journal" />
+              </div>
+              <div class="form-group">
+                <label class="form-label label-1">Topic</label>
+                <input type="text" class="form-input" id="topic" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label label-1">URL</label>
+              <input type="url" class="form-input" id="url" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label label-1">Tags (comma-separated)</label>
+              <input type="text" class="form-input" id="tags" placeholder="machine learning, neural networks, AI" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label label-1">Abstract</label>
+              <textarea class="form-textarea" id="abstract" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label label-1">Notes</label>
+              <textarea class="form-textarea" id="notes" rows="4"></textarea>
+            </div>
+
+            <!-- Rating and Favorite Section -->
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label label-1">Rating</label>
+                <div class="rating-container">
+                  <div class="stars-rating" id="starsRating">
+                    <span class="star" data-rating="1">★</span>
+                    <span class="star" data-rating="2">★</span>
+                    <span class="star" data-rating="3">★</span>
+                    <span class="star" data-rating="4">★</span>
+                    <span class="star" data-rating="5">★</span>
+                  </div>
+                  <input type="hidden" id="rating" value="0" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label label-1">Favorite</label>
+                <div class="favorite-container">
+                  <label class="favorite-checkbox">
+                    <input type="checkbox" id="isFavorite" />
+                    <span class="favorite-icon" style="margin-top: 10px;">
+                      <i class="fas fa-heart "></i>
+                    </span>
+                    <span class="favorite-text">
+                      <p class="label-1">Favorite</p>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-secondary" onclick="hideAddForm()">
+                Cancel
+              </button>
+              <button type="submit" class="btn-primary">
+                <i class="fas fa-save"></i>
+                <span id="submitText">Add Paper</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="loadingSpinner" class="loading-spinner hidden">
+      <i class="fas fa-spinner fa-spin"></i> Saving Paper...
+    </div>
+  </div>
+
+  <style>
+    /* Back to Top Button */
+    #backToTop {
+      height: 50px;
+      width: 50px;
+      position: fixed;
+      bottom: 20px;
+      /* keep same baseline as chatbot */
+      right: 90px;
+      /* push left so chatbot sits on the edge */
+      z-index: 998;
+      background: linear-gradient(135deg, #0077b5, #4facfe);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 15px;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #backToTop:hover {
+      transform: scale(1.1);
+      opacity: 0.9;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Chatbot bubble button */
+    button#chatbase-bubble-button {
+      position: fixed !important;
+      bottom: 20px !important;
+      /* same baseline */
+      right: 20px !important;
+      /* chatbot stays at right corner */
+      width: 55px !important;
+      height: 55px !important;
+      border-radius: 50% !important;
+      z-index: 2147483647 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    button#chatbase-bubble-button svg {
+      width: 28px !important;
+      height: 28px !important;
+    }
+
+    /* Chat window alignment */
+    #chatbase-bubble-window {
+      z-index: 2147483647 !important;
+    }
+
+
+
+    @media (max-width: 600px) {
+      #backToTop {
+        padding: 12px;
+        font-size: 16px;
+        bottom: 20px;
+        right: 20px;
+      }
+    }
   </style>
 
   <style>
@@ -1372,62 +1447,60 @@ button#chatbase-bubble-button svg {
     body.dark-mode .feature-card p {
       color: #cbd5e0;
     }
-
   </style>
 
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Scroll" aria-label="Scroll">
+    <i class="fa-solid fa-arrow-down"></i>
+  </button>
 
-    <!-- Back to Top Button -->
-<button id="backToTop" title="Scroll" aria-label="Scroll">
-  <i class="fa-solid fa-arrow-down"></i>
-</button>
-
-
-
-  <!-- Modern Footer -->
-  <footer class="modern-footer" aria-label="Footer">
-    <div class="footer-top">
-      <div class="footer-brand footer-card">
-        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
-      </div>
-
-      <div class="footer-links-section footer-card" >
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-          <li><a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Connect</h4>
-        <div class="social-icons">
-          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-  <i class="fab fa-linkedin"></i>
-</a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    <!-- Modern Footer Start Here -->
+  <footer  aria-label="Footer" class="modern-footer">
+    <div class="footer-container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <div class="brand-header">
+            <div class="brand-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <div class="brand-name">
+              <h2>Research Paper Orgainsation</h2>
+              <p class="brand-tagline">Organize, track, and manage your research papers seamlessly.</p>
+            </div>
+          </div>
+          <p class="brand-description">Organize, track, and manage your research papers seamlessly.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Discord">
+              <i class="fab fa-discord"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link" aria-label="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
         </div>
+        <div class="footer-section">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">About Creator</a></li>
+            <li><a href="#">Disclaimer</a></li>
+            <li><a href="#">API Docs</a></li>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Contributor Guide</a></li>
+          </ul>
+        </div>
+
       </div>
     </div>
-
-    <div class="footer-bottom">
-  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-</div>
-
   </footer>
+  
 
   <script>
     // Authentication check
@@ -1445,181 +1518,185 @@ button#chatbase-bubble-button svg {
       throw new Error('User not authenticated');
     }
 
-    
-      //back to top button 
-// Show button when scrolled down
-const bottomToTopButton = document.getElementById("backToTop");
-const icon = bottomToTopButton.querySelector("i");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 100) {
-    bottomToTopButton.style.display = "block";
+    //back to top button 
+    // Show button when scrolled down
+    const bottomToTopButton = document.getElementById("backToTop");
+    const icon = bottomToTopButton.querySelector("i");
 
-    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
-      icon.classList.remove("fa-arrow-down");
-      icon.classList.add("fa-arrow-up");
-    } else {
-      icon.classList.remove("fa-arrow-up");
-      icon.classList.add("fa-arrow-down");
-    }
-  } else {
-    bottomToTopButton.style.display = "none";
-  }
-});
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 100) {
+        bottomToTopButton.style.display = "block";
 
-bottomToTopButton.addEventListener("click", () => {
-  if (icon.classList.contains("fa-arrow-down")) {
-    // scroll to bottom
-    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
-  } else {
-    // scroll to top
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-});
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 10) {
+          icon.classList.remove("fa-arrow-down");
+          icon.classList.add("fa-arrow-up");
+        } else {
+          icon.classList.remove("fa-arrow-up");
+          icon.classList.add("fa-arrow-down");
+        }
+      } else {
+        bottomToTopButton.style.display = "none";
+      }
+    });
+
+    bottomToTopButton.addEventListener("click", () => {
+      if (icon.classList.contains("fa-arrow-down")) {
+        // scroll to bottom
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "smooth" });
+      } else {
+        // scroll to top
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
 
 
   </script>
 
-    <script src="js/script.js"></script>
-<style>
-/* Bubble button mobile sizing */
-@media (max-width: 768px) {
-  button#chatbase-bubble-button {
-    position: fixed !important;
-    /* bottom: 300px !important;
+  <script src="js/script.js"></script>
+  <style>
+    /* Bubble button mobile sizing */
+    @media (max-width: 768px) {
+      button#chatbase-bubble-button {
+        position: fixed !important;
+        /* bottom: 300px !important;
     left:300px !important; */
-    width: 55px !important;
-    height: 55px !important;
-    border-radius: 50% !important;
-    z-index: 2147483647 !important; 
-  }
+        width: 55px !important;
+        height: 55px !important;
+        border-radius: 50% !important;
+        z-index: 2147483647 !important;
+      }
 
-  button#chatbase-bubble-button svg {
-    width: 28px !important;
-    height: 28px !important;
-  }
-}
-@media (max-width: 768px) {
-  #chatbase-bubble-button {
-    position: fixed !important;
-    z-index: 2147483647 !important; 
-  }
-
-  /* Jab window open ho */
-  #chatbase-bubble-window[style*="display: flex"] + #chatbase-bubble-button {
-    bottom: 15px !important; 
-  }
-}
-button#chatbase-bubble-button div {
-  width: 100% !important;
-  height: 100% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-/* Window responsive – act like card */
-@media (max-width: 768px) {
-  #chatbase-bubble-window {
-    position: absolute;
-    width: 90% !important;
-    height: 75% !important;
-    bottom: 80px !important;
-    right: 15px !important;
-    left: auto !important;
-    top: auto !important;
-    border-radius: 16px !important; /* remove white bg */
-    box-shadow: 0 4px 12px rgba(236, 233, 233, 0.3) !important;
-  }
-
-  #chatbase-bubble-window iframe {
-    border-radius: 16px !important;
-    background: rgb(193, 21, 21) !important; /* chatbot stays black */
-  }
-}
-</style>
-    <!-- Chatbase Integration -->
-     <script>
-        (function(){
-            if(!window.chatbase || window.chatbase("getState") !== "initialized"){
-                window.chatbase = (...arguments) => {
-                    if(!window.chatbase.q){ window.chatbase.q = [] }
-                    window.chatbase.q.push(arguments)
-                };
-                window.chatbase = new Proxy(window.chatbase, {
-                    get(target, prop) {
-                        if(prop === "q"){ return target.q }
-                        return (...args) => target(prop, ...args)
-                    }
-                });
-            }
-            const onLoad = function(){
-                const script = document.createElement("script");
-                script.src = "https://www.chatbase.co/embed.min.js";
-                script.id = "ubDfCZ-KoiucQjQos4LDA";
-                script.domain = "www.chatbase.co";
-                document.body.appendChild(script)
-            };
-            if(document.readyState === "complete"){ onLoad() }
-            else { window.addEventListener("load", onLoad) }
-        })();
-        
-    </script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const bubbleWindow = document.getElementById("chatbase-bubble-window");
-  const bubbleButton = document.getElementById("chatbase-bubble-button");
-
-  if (!bubbleWindow || !bubbleButton) return;
-
-  function setImportant(el, prop, value) {
-    el.style.setProperty(prop, value, "important");
-  }
-
-  function updateButtonPosition() {
-    const rect = bubbleWindow.getBoundingClientRect();
-
-    if (bubbleWindow.style.display === "flex") {
-      // Button below chat window (no changes here)
-      const topPos = window.scrollY + rect.bottom + 10;
-      const leftPos = rect.left;
-
-      setImportant(bubbleButton, "position", "fixed");
-      setImportant(bubbleButton, "top", topPos + "px");
-      setImportant(bubbleButton, "left", leftPos + "px");
-      setImportant(bubbleButton, "bottom", "auto");
-      setImportant(bubbleButton, "right", "auto");
-    } else {
-      // Closed position with left:300px; bottom:300px
-      setImportant(bubbleButton, "position", "fixed");
-      setImportant(bubbleButton, "bottom", "300px");
-      setImportant(bubbleButton, "left", "300px");
-      setImportant(bubbleButton, "top", "auto");
-      setImportant(bubbleButton, "right", "auto");
+      button#chatbase-bubble-button svg {
+        width: 28px !important;
+        height: 28px !important;
+      }
     }
-  }
 
-  updateButtonPosition();
-  window.addEventListener("scroll", updateButtonPosition);
-  window.addEventListener("resize", updateButtonPosition);
+    @media (max-width: 768px) {
+      #chatbase-bubble-button {
+        position: fixed !important;
+        z-index: 2147483647 !important;
+      }
 
-  // Toggle chat window
-  bubbleButton.addEventListener("click", () => {
-    bubbleWindow.style.display = bubbleWindow.style.display === "flex" ? "none" : "flex";
-    updateButtonPosition();
-  });
+      /* Jab window open ho */
+      #chatbase-bubble-window[style*="display: flex"]+#chatbase-bubble-button {
+        bottom: 15px !important;
+      }
+    }
 
-  // Handle iframe close button
-  window.addEventListener("message", (event) => {
-    if (event.data?.type === "chatbase-close") {
-      bubbleWindow.style.display = "none";
+    button#chatbase-bubble-button div {
+      width: 100% !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    /* Window responsive – act like card */
+    @media (max-width: 768px) {
+      #chatbase-bubble-window {
+        position: absolute;
+        width: 90% !important;
+        height: 75% !important;
+        bottom: 80px !important;
+        right: 15px !important;
+        left: auto !important;
+        top: auto !important;
+        border-radius: 16px !important;
+        /* remove white bg */
+        box-shadow: 0 4px 12px rgba(236, 233, 233, 0.3) !important;
+      }
+
+      #chatbase-bubble-window iframe {
+        border-radius: 16px !important;
+        background: rgb(193, 21, 21) !important;
+        /* chatbot stays black */
+      }
+    }
+  </style>
+  <!-- Chatbase Integration -->
+  <script>
+    (function () {
+      if (!window.chatbase || window.chatbase("getState") !== "initialized") {
+        window.chatbase = (...arguments) => {
+          if (!window.chatbase.q) { window.chatbase.q = [] }
+          window.chatbase.q.push(arguments)
+        };
+        window.chatbase = new Proxy(window.chatbase, {
+          get(target, prop) {
+            if (prop === "q") { return target.q }
+            return (...args) => target(prop, ...args)
+          }
+        });
+      }
+      const onLoad = function () {
+        const script = document.createElement("script");
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.id = "ubDfCZ-KoiucQjQos4LDA";
+        script.domain = "www.chatbase.co";
+        document.body.appendChild(script)
+      };
+      if (document.readyState === "complete") { onLoad() }
+      else { window.addEventListener("load", onLoad) }
+    })();
+
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const bubbleWindow = document.getElementById("chatbase-bubble-window");
+      const bubbleButton = document.getElementById("chatbase-bubble-button");
+
+      if (!bubbleWindow || !bubbleButton) return;
+
+      function setImportant(el, prop, value) {
+        el.style.setProperty(prop, value, "important");
+      }
+
+      function updateButtonPosition() {
+        const rect = bubbleWindow.getBoundingClientRect();
+
+        if (bubbleWindow.style.display === "flex") {
+          // Button below chat window (no changes here)
+          const topPos = window.scrollY + rect.bottom + 10;
+          const leftPos = rect.left;
+
+          setImportant(bubbleButton, "position", "fixed");
+          setImportant(bubbleButton, "top", topPos + "px");
+          setImportant(bubbleButton, "left", leftPos + "px");
+          setImportant(bubbleButton, "bottom", "auto");
+          setImportant(bubbleButton, "right", "auto");
+        } else {
+          // Closed position with left:300px; bottom:300px
+          setImportant(bubbleButton, "position", "fixed");
+          setImportant(bubbleButton, "bottom", "300px");
+          setImportant(bubbleButton, "left", "300px");
+          setImportant(bubbleButton, "top", "auto");
+          setImportant(bubbleButton, "right", "auto");
+        }
+      }
+
       updateButtonPosition();
-    }
-  });
-});
-</script>
+      window.addEventListener("scroll", updateButtonPosition);
+      window.addEventListener("resize", updateButtonPosition);
 
-<script src="./js/filterBtn.js"></script>
+      // Toggle chat window
+      bubbleButton.addEventListener("click", () => {
+        bubbleWindow.style.display = bubbleWindow.style.display === "flex" ? "none" : "flex";
+        updateButtonPosition();
+      });
+
+      // Handle iframe close button
+      window.addEventListener("message", (event) => {
+        if (event.data?.type === "chatbase-close") {
+          bubbleWindow.style.display = "none";
+          updateButtonPosition();
+        }
+      });
+    });
+  </script>
+
+  <script src="./js/filterBtn.js"></script>
 </body>
 
 </html>
