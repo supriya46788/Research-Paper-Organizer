@@ -105,6 +105,18 @@ bottomToTopButton.addEventListener("click", () => {
   }
 });
 
+const scrollPercent = document.getElementById("scrollPercent");
+
+window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+// Precise percentage from 0% to 100%
+    let percent = 0;
+    if (docHeight > 0) {
+        percent = Math.round((scrollTop / docHeight) * 100);
+    }
+    scrollPercent.textContent = percent + "%";});
+
 
 // Mobile menu toggle
 document.querySelector(".mobile-menu-toggle").addEventListener("click", () => {
