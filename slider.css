@@ -45,6 +45,9 @@ header a:hover{
     height: 100%;
     position: absolute;
     inset: 0 0 0 0;
+    opacity: 0;               /* hide by default to prevent overlap */
+    visibility: hidden;       /* ensure no accidental click/selection */
+    transition: opacity .5s ease;
 }
 .slider .list .item img{
     width: 100%;
@@ -172,6 +175,15 @@ header a:hover{
 /* Animation Part */
 .slider .list .item:nth-child(1){
     z-index: 1;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* when JavaScript marks the current slide, show only that */
+.slider .list .item.active{
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
 }
 
 
