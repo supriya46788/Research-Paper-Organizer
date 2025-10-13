@@ -320,3 +320,18 @@ box-shadow: rgba(0,0,0,0.8);
   right: 20px;
 }
 }
+
+#scrollPercent {
+    position: absolute;
+    bottom: -18px;
+    left: 52%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: #000000;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+body.dark-mode #scrollPercent {
+    color: #0d0d0d;
+}
