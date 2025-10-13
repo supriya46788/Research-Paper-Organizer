@@ -654,6 +654,7 @@
     <!-- Back to Top Button -->
     <button id="backToTop">
       <i class="fa-solid fa-arrow-up"></i>
+      <span id="scrollPercent">0%</span>
     </button>
 
 
@@ -877,6 +878,19 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     });
+
+    const scrollPercent = document.getElementById("scrollPercent");
+
+window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+// Precise percentage from 0% to 100%
+    let percent = 0;
+    if (docHeight > 0) {
+        percent = Math.round((scrollTop / docHeight) * 100);
+    }
+    scrollPercent.textContent = percent + "%";});
+    
     //Auto-suggest search functionality
     document.addEventListener("DOMContentLoaded", () => {
       const searchInput = document.getElementById("searchInput");
