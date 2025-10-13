@@ -479,6 +479,21 @@
         box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
       }
 
+      #scrollPercent {
+    position: absolute;
+    bottom: -18px;
+    left: 52%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: #000000;
+    font-weight: bold;
+    pointer-events: none;
+}
+
+body.dark-mode #scrollPercent {
+    color: #0d0d0d;
+}
+
       .modern-footer {
         width: 100vw; /* Full viewport width */
         margin-left: calc(
@@ -1341,6 +1356,7 @@
       <!-- Back to Top Button -->
       <button id="backToTop" title="Go to top" aria-label="Scroll to top">
         <i class="fa-solid fa-arrow-up"></i>
+        <span id="scrollPercent">0%</span>
       </button>
     </div>
 
@@ -1423,6 +1439,18 @@
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
       });
+
+      const scrollPercent = document.getElementById("scrollPercent");
+
+window.addEventListener("scroll", () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+// Precise percentage from 0% to 100%
+    let percent = 0;
+    if (docHeight > 0) {
+        percent = Math.round((scrollTop / docHeight) * 100);
+    }
+    scrollPercent.textContent = percent + "%";});
 
       // Load GitHub contributors
       async function loadContributors() { 
