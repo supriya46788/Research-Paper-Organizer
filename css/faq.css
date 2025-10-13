@@ -53,7 +53,7 @@ body.dark-mode {
 /* Dark mode toggle button styling */
 .dark-toggle {
    
-    background: #fff !important;
+    /* background: #fff !important; */
     border: none;
     cursor: pointer;
     padding: 0.6rem 1.2rem;
@@ -62,7 +62,7 @@ body.dark-mode {
 }
 
 .dark-toggle:hover {
-    background: rgba(255, 255, 255, 0.1) !important;
+    background: #2563eb;
 }
 /* For dark mode button background */
 body.dark-mode #darkModeToggle {
@@ -151,6 +151,11 @@ body.dark-mode .faq-container {
     margin: 0;
 }
 
+/* Dark mode FAQ question headings */
+body.dark-mode .faq-question h3 {
+    color: #60a5fa !important; /* Lighter blue for better visibility in dark mode */
+}
+
 .question-paragraph{
   display: flex;
   align-items: center;
@@ -165,6 +170,12 @@ body.dark-mode .faq-container {
   border-radius: 25px;
   font-style: italic;
   font-weight: 500;
+}
+
+/* Dark mode para styling */
+body.dark-mode .para {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: var(--text-color);
 }
 
 .question-paragraph i {
@@ -218,6 +229,11 @@ body.dark-mode .faq-container {
     font-size: 0.95rem;
     line-height: 1.6;
     color: var(--light-text-color);
+}
+
+/* Dark mode FAQ answer text */
+body.dark-mode .faq-answer p {
+    color: var(--text-color);
 }
 
 /* Responsive design */
@@ -327,6 +343,7 @@ body.dark-mode .faq-container {
       border-radius: 50%;
       color: #fff;
       transition: 0.3s;
+      text-decoration: none;
     }
 
     .social-icons a:hover {
@@ -430,6 +447,11 @@ body:not(.dark-mode) .faq-title {
     color: var(--light-text);
 }
 
+/* Dark mode FAQ title */
+body.dark-mode .faq-title {
+    color: #f3f4f6;
+}
+
 body:not(.dark-mode) .faq-item {
     border-color: var(--light-border);
     background: var(--light-container-bg);
@@ -448,14 +470,28 @@ body:not(.dark-mode) .faq-answer p {
     color: var(--light-text-secondary);
 }
 
+/* Dark mode FAQ items */
+body.dark-mode .faq-item {
+    background: var(--dark-gray);
+    border-color: var(--border-color);
+}
+
+body.dark-mode .faq-item:hover {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
 /* Dark mode navbar compatibility */
 body.dark-mode .navbar {
     background: transparent;
+    background: linear-gradient(90deg, #1f2937, #111827);
+    color: var(--text-light);
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode .nav-item {
-    background: linear-gradient(135deg, #4a5568, #2d3748);
-    color: #e0e0e0;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--text-light);
 }
 
 body.dark-mode .nav-item:hover {

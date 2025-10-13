@@ -1,9 +1,44 @@
 <!DOCTYPE html>
   
-<head>
+  <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research Paper Organizer</title>
+  <title>Research Paper Organizer - Dashboard</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Access your research paper dashboard. Organize, search, and manage your academic papers with our intuitive research management system." />
+  <meta name="keywords" content="research dashboard, paper management, academic research, research papers, paper organizer, citation management" />
+  <meta name="author" content="Research Paper Organizer Team" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2563eb" />
+  <link rel="canonical" href="https://research-paper-organizer.vercel.app/home.html" />
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Research Paper Organizer - Dashboard" />
+  <meta property="og:description" content="Access your research paper dashboard. Organize, search, and manage your academic papers with our intuitive research management system." />
+  <meta property="og:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+  <meta property="og:url" content="https://research-paper-organizer.vercel.app/home.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Research Paper Organizer" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Research Paper Organizer Dashboard" />
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Research Paper Organizer - Dashboard" />
+  <meta name="twitter:description" content="Access your research paper dashboard. Organize, search, and manage your academic papers with our intuitive research management system." />
+  <meta name="twitter:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+  <meta name="twitter:image:alt" content="Research Paper Organizer Dashboard" />
+  
+  <!-- Additional SEO Meta Tags -->
+  <meta name="application-name" content="Research Paper Organizer" />
+  <meta name="apple-mobile-web-app-title" content="Research Paper Organizer" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="msapplication-TileColor" content="#2563eb" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <!-- SweetAlert2 CDN -->
    
@@ -12,16 +47,12 @@
 <script>
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.9.179/pdf.worker.min.js';
 </script>
-<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="./favicon/site.webmanifest" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="./css/removeFilterBtn.css">
   <style>
     /* Ensure dark mode styles work */
     body.dark-mode {
@@ -767,9 +798,18 @@ body.dark-mode .copy-btn:hover {
               <option value="year-asc">Oldest First</option>
             </select>
           </div>
+          <!-- Clear Filters button added #issue-602 -->
+           <div class="filter-container">
+            <button id="clearFiltersBtn" class="filter-clear-btn" title="Clear all filters">
+               <i class="fas fa-eraser" style="color: #6b7280"></i>
+            </button>
+            <!-- hover text for clear filter button -->
+            <span class="tooltip-text">Clear all filters</span>
+           </div>
         </div>
       </div>
   </div>
+  <!-- Filter section ends here -->
       <div class="main-grid">
         <!-- Papers List -->
         <div class="papers-section">
@@ -914,7 +954,7 @@ body.dark-mode .copy-btn:hover {
                       <span class="favorite-icon" style="margin-top: 10px;">
                         <i class="fas fa-heart " ></i>
                       </span>
-                      <span class="favorite-text"><p class="label-1">Mark as favorite</p></span>
+                      <span class="favorite-text"><p class="label-1">Favorite</p></span>
                     </label>
                   </div>
                 </div>
@@ -1344,50 +1384,15 @@ button#chatbase-bubble-button svg {
 
 
   <!-- Modern Footer -->
-  <footer class="modern-footer" aria-label="Footer">
-    <div class="footer-top">
-      <div class="footer-brand footer-card">
-        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
-      </div>
+  <div id="footer-placeholder"></div>
 
-      <div class="footer-links-section footer-card" >
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-book-open"></i>Home</a></li>
-          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-          <li><a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Connect</h4>
-        <div class="social-icons">
-          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-  <i class="fab fa-linkedin"></i>
-</a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-</div>
-
-  </footer>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+</script>
 
   <script>
     // Authentication check
@@ -1578,6 +1583,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+
+<script src="./js/filterBtn.js"></script>
 </body>
 
 </html>

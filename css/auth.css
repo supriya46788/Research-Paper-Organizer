@@ -78,16 +78,16 @@ body {
   width: 100%;
 }
 
-/* <=============Added Issue #480 =============> */
+/* <=============Updated for Issue #480 =============> */
 .close-btn {
-  background: #f3f4f6;
+  background: #fafafb;            /* remove light background */
   border: none;
   border-radius: 6px;
-  padding: 8px 10px;
-  font-size: 1rem;
+  padding: 6px 10px;
+  font-size: 1.2rem;
   cursor: pointer;
-  color: #1f2937;
-  transition: background 0.3s ease;
+  color: #68686a;              /* light gray text (good contrast on dark) */
+  transition: color 0.3s ease, transform 0.2s ease;
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -95,10 +95,16 @@ body {
 }
 
 .close-btn:hover {
-  background: #e5e7eb;
-  font-size: 1.05rem;
+  color: #6d6c6c;              /* bright white on hover */
+  transform: scale(1.1);       /* subtle hover feedback */
+}
+
+.close-btn:focus {
+  outline: 2px solid #ffffff;  /* accessibility focus */
+  outline-offset: 3px;
 }
 /* <=============Ended Issue #480 =============> */
+
 
 
 .auth-header {
@@ -383,30 +389,30 @@ body {
     cursor: not-allowed;
     transform: none;
 }
-.auth-divider {
-  text-align: center;
-  margin: 1rem 0;
-  position: relative;
-  margin-top: 1px;
 
+.auth-divider {
+  position: relative;      
+  text-align: center;      
 }
 
 .auth-divider::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 50%;
+  top: 55%;                
   left: 0;
-  right: 0;
+  width: 100%;
   height: 1px;
-  background: transparent;
+  background: transparent;    
 }
 
 .auth-divider span {
-  background: white;
-  padding: 0 1rem;
-  color: #6b7280;
-  font-size: 0.875rem;
+  position: relative;      
+   color: #6b7280;
+  font-size: 0.875rem;        
+  padding: 0 1rem;       
 }
+
+
 
 .auth-link {
   display: block;
@@ -507,6 +513,14 @@ body {
 }
 
 /* Dark mode styles using .dark-mode class */
+
+body.dark-mode .close-btn {
+  background-color: #283145;
+  color: #c9cbcd;
+}
+body.dark-mode .close-btn:hover {
+color: #fbfcfe;
+}
 body.dark-mode {
   background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
 }
@@ -538,7 +552,6 @@ body.dark-mode .form-group label {
 }
 
 body.dark-mode .input-container input {
-  background: #111827;
   border-color: #374151;
   color: #f3f4f6;
 }

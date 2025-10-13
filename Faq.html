@@ -4,9 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ | Research Paper Organizer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Frequently Asked Questions about Research Paper Organizer. Find answers to common questions about features, usage, and troubleshooting." />
+    <meta name="keywords" content="FAQ, help, support, research paper organizer, questions, answers, troubleshooting, features" />
+    <meta name="author" content="Research Paper Organizer Team" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2563eb" />
+    <link rel="canonical" href="https://research-paper-organizer.vercel.app/Faq.html" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="FAQ | Research Paper Organizer" />
+    <meta property="og:description" content="Frequently Asked Questions about Research Paper Organizer. Find answers to common questions about features, usage, and troubleshooting." />
+    <meta property="og:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+    <meta property="og:url" content="https://research-paper-organizer.vercel.app/Faq.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Research Paper Organizer" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Research Paper Organizer FAQ" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FAQ | Research Paper Organizer" />
+    <meta name="twitter:description" content="Frequently Asked Questions about Research Paper Organizer. Find answers to common questions about features, usage, and troubleshooting." />
+    <meta name="twitter:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+    <meta name="twitter:image:alt" content="Research Paper Organizer FAQ" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="application-name" content="Research Paper Organizer" />
+    <meta name="apple-mobile-web-app-title" content="Research Paper Organizer" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#2563eb" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/faq.css">
     <style>
          .navbar {
@@ -44,7 +80,7 @@
    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    position: relative;
+    /* position: relative; */
   }
 
   .navbar-right-links {
@@ -80,6 +116,125 @@
   }
 }
 
+/* Chatbot bubble button */
+button#chatbase-bubble-button {
+  position: fixed !important;
+  bottom: 20px !important;   /* same baseline */
+  right: 20px !important;    /* chatbot stays at right corner */
+  width: 55px !important;
+  height: 55px !important;
+  border-radius: 50% !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+button#chatbase-bubble-button svg {
+  width: 28px !important;
+  height: 28px !important;
+}
+
+button#chatbase-bubble-button div {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Chat window alignment */
+#chatbase-bubble-window {
+  z-index: 2147483647 !important;
+}
+
+ @media (max-width: 600px) {
+ #backToTop {
+  padding: 12px;
+  font-size: 16px;
+  bottom: 20px;
+  right: 20px;
+}
+}
+
+/* Window responsive – act like card */
+@media (max-width: 768px) {
+  #chatbase-bubble-window {
+    position: absolute;
+    width: 90% !important;
+    height: 75% !important;
+    bottom: 80px !important;
+    right: 15px !important;
+    left: auto !important;
+    top: auto !important;
+    border-radius: 16px !important; /* remove white bg */
+    box-shadow: 0 4px 12px rgba(236, 233, 233, 0.3) !important;
+  }
+
+  #chatbase-bubble-window iframe {
+    border-radius: 16px !important;
+    background: rgb(193, 21, 21) !important; /* chatbot stays black */
+  }
+}
+
+/* Mobile responsive chatbot */
+@media (max-width: 768px) {
+  button#chatbase-bubble-button {
+    position: fixed !important;
+    width: 55px !important;
+    height: 55px !important;
+    border-radius: 50% !important;
+    z-index: 2147483647 !important; 
+  }
+
+  button#chatbase-bubble-button svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
+@media (max-width: 768px) {
+  #chatbase-bubble-button {
+    position: fixed !important;
+    z-index: 2147483647 !important; 
+  }
+
+  /* When window is open */
+  #chatbase-bubble-window[style*="display: flex"] + #chatbase-bubble-button {
+    bottom: 15px !important; 
+  }
+}
+
+button#chatbase-bubble-button div {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+@media (max-width: 768px) {
+  #backToTop {
+    bottom: 75px !important;
+    right: 15px !important;
+  }
+}
+
+/* Ensure chatbot works well with FAQ page scroll */
+#chatbase-bubble-window.show {
+  animation: fadeInUp 0.3s ease-out !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
     </style>
 
@@ -95,7 +250,6 @@
         <!-- Navigation -->
         <nav class="navbar">
             <a href="index.html" class="nav-item">
-                <i class="fas fa-book-open"></i>
                 Home
             </a>
              <!-- Hamburger div (shows only on mobile) -->
@@ -233,52 +387,15 @@
     </div>
 
       <!-- Modern Footer -->
-  <footer class="modern-footer" aria-label="Footer">
-    <div class="footer-top">
-      <div class="footer-brand footer-card">
-        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
-      </div>
+  <div id="footer-placeholder"></div>
 
-      <div class="footer-links-section footer-card" >
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-          <li>
-            <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Connect</h4>
-        <div class="social-icons">
-          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-  <i class="fab fa-linkedin"></i>
-</a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-</div>
-
-  </footer>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+</script>
 
 
     <!-- Back to Top Button -->
@@ -376,6 +493,7 @@ body.dark-mode #scrollPercent {
             }
         });
     </script>
+    <!-- Chatbase Integration - copied exactly from homepage -->
     <script>
         (function(){
             if(!window.chatbase || window.chatbase("getState") !== "initialized"){
@@ -393,13 +511,67 @@ body.dark-mode #scrollPercent {
             const onLoad = function(){
                 const script = document.createElement("script");
                 script.src = "https://www.chatbase.co/embed.min.js";
-                script.id = "SZQX20er6m-s8iNiFcBtK";
+                script.id = "ubDfCZ-KoiucQjQos4LDA";
                 script.domain = "www.chatbase.co";
                 document.body.appendChild(script)
             };
             if(document.readyState === "complete"){ onLoad() }
             else { window.addEventListener("load", onLoad) }
         })();
+        
+    </script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const bubbleWindow = document.getElementById("chatbase-bubble-window");
+  const bubbleButton = document.getElementById("chatbase-bubble-button");
+
+  if (!bubbleWindow || !bubbleButton) return;
+
+  function setImportant(el, prop, value) {
+    el.style.setProperty(prop, value, "important");
+  }
+
+  function updateButtonPosition() {
+    const rect = bubbleWindow.getBoundingClientRect();
+
+    if (bubbleWindow.style.display === "flex") {
+      // Button below chat window (no changes here)
+      const topPos = window.scrollY + rect.bottom + 10;
+      const leftPos = rect.left;
+
+      setImportant(bubbleButton, "position", "fixed");
+      setImportant(bubbleButton, "top", topPos + "px");
+      setImportant(bubbleButton, "left", leftPos + "px");
+      setImportant(bubbleButton, "bottom", "auto");
+      setImportant(bubbleButton, "right", "auto");
+    } else {
+      // Closed position with left:300px; bottom:300px
+      setImportant(bubbleButton, "position", "fixed");
+      setImportant(bubbleButton, "bottom", "300px");
+      setImportant(bubbleButton, "left", "300px");
+      setImportant(bubbleButton, "top", "auto");
+      setImportant(bubbleButton, "right", "auto");
+    }
+  }
+
+  updateButtonPosition();
+  window.addEventListener("scroll", updateButtonPosition);
+  window.addEventListener("resize", updateButtonPosition);
+
+  // Toggle chat window
+  bubbleButton.addEventListener("click", () => {
+    bubbleWindow.style.display = bubbleWindow.style.display === "flex" ? "none" : "flex";
+    updateButtonPosition();
+  });
+
+  // Handle iframe close button
+  window.addEventListener("message", (event) => {
+    if (event.data?.type === "chatbase-close") {
+      bubbleWindow.style.display = "none";
+      updateButtonPosition();
+    }
+  });
+});
 
 //back to top button 
 // Show button when scrolled down

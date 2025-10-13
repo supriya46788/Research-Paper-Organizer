@@ -132,33 +132,42 @@ header a:hover{
 
 
 /* nextPrevArrows Section  */
-.nextPrevArrows{
+.nextPrevArrows {
     position: absolute;
-    top: 80%;
-    right: 52%;
-    z-index: 100;
-    width: 300px;
-    max-width: 30%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
     display: flex;
-    gap: 10px;
-    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 100;
+    pointer-events: none;
 }
-.nextPrevArrows button{
-    width: 40px;
-    height: 40px;
+
+.nextPrevArrows button {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: #3B82F6;
+    background: rgba(255, 255, 255, 0.3);
     border: none;
-    color: #fff;
-    font-family: monospace;
+    color: #38bdf8;
+    font-size: 24px;
     font-weight: bold;
-    transition: .5s;
     cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    pointer-events: auto;
 }
-.nextPrevArrows button:hover{
-    background-color: #fff;
-    color: #000;
+
+
+.nextPrevArrows button:hover {
+    background: rgba(255, 255, 255, 0.7);
+    color: #3b82f6;
 }
+
 
 /* Animation Part */
 .slider .list .item:nth-child(1){
@@ -298,11 +307,67 @@ header a:hover{
         opacity: 0;
     }
 }
+
+/* Mobile Responsive Styles */
 @media screen and (max-width: 678px) {
     .slider .list .item .content{
         padding-right: 0;
     }
     .slider .list .item .content .title{
         font-size: 50px;
+    }
+    
+    .nextPrevArrows {
+        position: absolute;  /* change from fixed → absolute */
+        top: 55%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 15px;
+        pointer-events: none;
+        z-index: 100;
+    }
+
+    .nextPrevArrows button {
+        width: 45px !important;
+        height: 45px !important;
+        min-width: 45px !important;
+        min-height: 45px !important;
+        max-width: 45px !important;
+        max-height: 45px !important;
+        border-radius: 50% !important;
+        font-size: 18px;
+        flex-shrink: 0;
+        pointer-events: auto;
+        padding: 0;
+        margin: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border: none;
+        color: #38bdf8;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+    }
+    
+    .nextPrevArrows button:hover {
+        background: rgba(255, 255, 255, 0.7);
+        color: #3b82f6;
+    }
+    
+    .thumbnail{
+        bottom: 20px;
+        gap: 10px;
+    }
+    
+    .thumbnail .item{
+        width: 100px;
+        height: 150px;
     }
 }

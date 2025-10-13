@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Research Paper Organiser - Tag Filtering</title>
+    <title>Smart Paper Filtering | Research Paper Organizer</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -618,20 +618,43 @@ body.dark-mode #scrollPercent {
     color: #0d0d0d;
 }
     </style>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="landing.css" />
+    <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="landing.css" />
+    <link rel="stylesheet" href="css/open-source.css" />
+    <link rel="stylesheet" href="css/Tag-Based-filtering.css" />
   </head>
   <body>
-    <!-- ===== Navbar ===== -->
-    <nav>
-      <div class="nav-left">
-        <a href="index.html"><button class="btn">🏠 Home</button></a>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <a href="index.html" class="nav-item">
+        Home
+      </a>
+      <!-- Hamburger div (shows only on mobile) -->
+      <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
       </div>
-      <div class="nav-right">
-        <a href="about.html"><button class="btn">About Us</button></a>
-        <a href="blog.html"><button class="btn">Blogs</button></a>
-        <a href="Faq.html"><button class="btn">FAQ</button></a>
-        <a href="contact.html"><button class="btn">Contact Us</button></a>
-        <a href="tools.html"><button class="btn">Tools</button></a>
-        <button id="darkToggle" class="toggle">🌙</button>
+      <div class="navbar-right-links">
+        <a href="about.html" class="nav-item">About us</a>
+        <a href="blog.html" class="nav-item">Blogs</a>
+        <a href="Faq.html" class="nav-item">FAQ</a>
+        <a href="contact.html" class="nav-item">Contact Us</a>
+        <a href="tools.html" class="nav-item">Tools</a>
+        <button
+          class="dark-toggle nav-item"
+          id="darkModeToggle"
+          title="Toggle Dark Mode"
+          onclick="toggleDarkMode()"
+        >
+          <i class="fas fa-sun"></i>
+        </button>
       </div>
     </nav>
 
@@ -642,20 +665,18 @@ body.dark-mode #scrollPercent {
     </button>
 
     <!-- ===== Heading ===== -->
-    <h1>📚 Research Paper Organiser</h1>
+    <h1 class="tag-b-f-header">📚 Research Paper Organiser</h1>
 
     <!-- ===== Tag Filter ===== -->
-    <div class="tags">
-      <span class="tag" onclick="filterPapers('all')">All</span>
-      <span class="tag" onclick="filterPapers('AI')">AI</span>
-      <span class="tag" onclick="filterPapers('ML')">ML</span>
-      <span class="tag" onclick="filterPapers('NLP')">NLP</span>
-      <span class="tag" onclick="filterPapers('CV')">Computer Vision</span>
-      <span class="tag" onclick="filterPapers('Robotics')">Robotics</span>
-      <span class="tag" onclick="filterPapers('Healthcare')">Healthcare</span>
-      <span class="tag" onclick="filterPapers('DataScience')"
-        >Data Science</span
-      >
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all" onclick="filterPapers('all')">All</button>
+      <button class="filter-btn" data-filter="AI" onclick="filterPapers('AI')">AI</button>
+      <button class="filter-btn" data-filter="ML" onclick="filterPapers('ML')">ML</button>
+      <button class="filter-btn" data-filter="NLP" onclick="filterPapers('NLP')">NLP</button>
+      <button class="filter-btn" data-filter="CV" onclick="filterPapers('CV')">Computer Vision</button>
+      <button class="filter-btn" data-filter="Robotics" onclick="filterPapers('Robotics')">Robotics</button>
+      <button class="filter-btn" data-filter="Healthcare" onclick="filterPapers('Healthcare')">Healthcare</button>
+      <button class="filter-btn" data-filter="DataScience" onclick="filterPapers('DataScience')">Data Science</button>
     </div>
 
     <!-- ===== AI Tag Suggestion UI ===== -->
@@ -765,6 +786,36 @@ body.dark-mode #scrollPercent {
         </p>
         <p class="paper-tags">CV, AI</p>
       </div>
+
+      <div class="paper" data-tags="Robotics ML">
+        <h3>Autonomous Drones</h3>
+        <p class="authors">Sophia Turner, ETH Zurich</p>
+        <p class="abstract">
+          Design and implementation of autonomous drones using ML for navigation,
+          obstacle avoidance, and intelligent decision-making.
+        </p>
+        <p class="paper-tags">Robotics, ML</p>
+      </div>
+      
+      <div class="paper" data-tags="Healthcare NLP">
+        <h3>Medical Chatbots</h3>
+        <p class="authors">Dr. Ahmed Khan, Johns Hopkins</p>
+        <p class="abstract">
+          Development of NLP-based conversational agents to assist patients with
+          symptoms, diagnosis guidance, and mental health support.
+        </p>
+        <p class="paper-tags">Healthcare, NLP</p>
+      </div>
+      
+      <div class="paper" data-tags="DataScience CV">
+        <h3>Visual Data Mining</h3>
+        <p class="authors">Elena Rossi, University of Bologna</p>
+        <p class="abstract">
+          Leveraging computer vision techniques for extracting insights from large
+          image datasets and generating actionable business intelligence.
+        </p>
+        <p class="paper-tags">Data Science, CV</p>
+      </div>      
     </div>
 
     <!-- <script src="js/tag-suggest.js"></script> -->
@@ -957,5 +1008,15 @@ window.addEventListener("scroll", () => {
     scrollPercent.textContent = percent + "%";});
 
     </script>
+    <div id="footer-placeholder"></div>
+
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+</script>
   </body>
+  <script src="js/Tag-Based-filtering.js"></script>
 </html>

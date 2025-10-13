@@ -169,12 +169,17 @@ body.dark-mode {
 .hero-content {
     max-width: 600px;
     animation: fadeInUp 0.8s ease-out;
+    .heading{
+        display: flex;
+        justify-content: center;
+          margin: 10px auto;
+          gap:20px;
+    }
 }
 
 .hero-title {
     font-size: 3rem;
     font-weight: 700;
-    margin-bottom: 1rem;
     background: linear-gradient(135deg, var(--primary-blue), #8b5cf6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -188,10 +193,7 @@ body.dark-mode {
 }
 
 .hero-decoration {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    font-size: 4rem;
+    font-size: 3.5rem;
     opacity: 0.3;
     animation: float 3s ease-in-out infinite;
 }
@@ -453,7 +455,7 @@ body.dark-mode {
     }
     
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 }
 
@@ -651,6 +653,7 @@ body.dark-mode #scrollPercent {
       border-radius: 50%;
       color: #fff;
       transition: 0.3s;
+      text-decoration: none;
     }
 
     .social-icons a:hover {

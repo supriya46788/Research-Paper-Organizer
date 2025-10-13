@@ -34,7 +34,7 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background: var(--background);
-  width:100%;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
@@ -103,10 +103,10 @@ body {
 }
 
 /* Header for mobile view */
-@media screen and (max-width:410px) {
+@media screen and (max-width: 600px) {
   .nav-container {
     max-width: 375px;
-    margin: 0 auto;
+    margin: 10px;
     gap: 0.3rem;
     padding: 1rem 10px;
     display: flex;
@@ -127,15 +127,14 @@ body {
     margin-left: 0.5rem;
     font-size: 1.5rem;
   }
-  .mobile-menu-toggle i{
+  .mobile-menu-toggle i {
     margin-right: 0.5rem;
     font-size: 1.5rem;
-    
   }
-  .mobile-menu-toggle{
-     background: none;              
-  border: none;                                                 
-  color: #3b82f6; 
+  .mobile-menu-toggle {
+    background: none;
+    border: none;
+    color: #3b82f6;
   }
 }
 
@@ -147,7 +146,7 @@ body {
   background-color: white;
 }
 
-.nav-links a{
+.nav-links a {
   white-space: nowrap;
   text-decoration: none;
   color: white;
@@ -205,6 +204,8 @@ body {
 .btn-primary.btn-large {
   background: var(--primary-dark);
   color: white;
+  display: flex;
+  justify-content: center;  
 }
 .btn-secondary {
   background: transparent;
@@ -222,11 +223,11 @@ body {
   font-size: 1.125rem;
 }
 
-/* .mobile-menu-toggle {
+.mobile-menu-toggle {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
-} */
+}
 
 /* Hero Section */
 .hero {
@@ -447,11 +448,11 @@ body {
 }
 
 .dark-mode .section-header h2 {
-  color:whitesmoke
+  color: whitesmoke;
 }
 
 .dark-mode .section-header p {
-  color:whitesmoke
+  color: whitesmoke;
 }
 
 .section-header p {
@@ -492,10 +493,10 @@ body {
   justify-content: center;
   margin: 0 auto 1.5rem;
   /* add glow animaation  */
-  animation:  glow 2s ease-in-out infinite alternate;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-.feature-icon i { 
+.feature-icon i {
   /* add float  */
   animation: float 3s ease-in-out infinite;
 }
@@ -544,19 +545,20 @@ body {
   margin-bottom: 1.5rem;
   box-shadow: 0 0 10px rgba(55, 115, 244, 0.6);
   /* addd float + glow */
-  animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+  animation: float 3s ease-in-out infinite,
+    glow 2s ease-in-out infinite alternate;
 }
 
 /* Floating Animation */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
     transform: translateY(-10px);
   }
 }
-
 
 /* Flowing Glow Effect */
 @keyframes glow {
@@ -569,7 +571,7 @@ body {
   100% {
     box-shadow: 0 0 10px rgba(55, 115, 244, 0.6);
   }
-} 
+}
 
 .step-content h3 {
   font-size: 1.5rem;
@@ -1408,8 +1410,6 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-
-
 /* Mobile Menu responsive layout fix*/
 @media (max-width: 1150px) {
   .mobile-menu-toggle {
@@ -1418,7 +1418,7 @@ body {
     cursor: pointer;
     z-index: 2000;
   }
-  .nav-container{
+  .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1428,8 +1428,9 @@ body {
   .nav-links {
     display: none;
     position: absolute;
-    top: 70px; /* adjust depending on navbar height */
+    top: 80px; /* adjust depending on navbar height */
     right: 10px;
+    left: 0; /*for keeping hamburger to left till 600px width*/
     margin: 15px; /* aligns the box to the right */
     background-color: white;
     border: 1px solid #ddd;
@@ -1448,7 +1449,8 @@ body {
     width: 85vw; /* slide in */
   }
 
-  .nav-links a ,.nav-links button{
+  .nav-links a,
+  .nav-links button {
     display: inline-flex; /* Ensures icon and text are in a row */
     align-items: center; /* Vertical centering */
     justify-content: center;
@@ -1466,17 +1468,15 @@ body {
     transition: transform var(--animation-normal) var(--easing-standard);
   }
   .nav-links {
-  background-color: white;
-}
+    background-color: white;
+  }
 
-body.dark-mode .nav-links {
-  /*background-color: #374151; /* Lighter background for nav-links in dark mode */
-  /*border-bottom-color: #374151;*/
-  background: #374151; /* solid inner color */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* soft blur outward */
-
-}
-
+  body.dark-mode .nav-links {
+    /*background-color: #374151; /* Lighter background for nav-links in dark mode */
+    /*border-bottom-color: #374151;*/
+    background: #374151; /* solid inner color */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* soft blur outward */
+  }
 }
 
 /* Desktop - hide hamburger */
@@ -1491,12 +1491,11 @@ body.dark-mode .nav-links {
     flex-direction: row;
     gap: 20px;
     background: none;
-    box-shadow: none; 
+    box-shadow: none;
   }
 }
 /* ==== Dark Mode Overrides for Landing Page ==== */
 body.dark-mode {
- 
   color: var(--text-light);
 }
 
@@ -1506,11 +1505,10 @@ body.dark-mode .landing-nav {
   border-bottom-color: #374151;
 }
 body.dark-mode .nav-links {
- /*background-color: #374151; /* Lighter background for nav-links in dark mode */
+  /*background-color: #374151; /* Lighter background for nav-links in dark mode */
   /*border-bottom-color: #374151;*/
   background: #374151; /* solid inner color */
   box-shadow: 0 0 20px rgba(9, 9, 9, 0.6); /* soft blur outward */
-
 }
 body.dark-mode .nav-links a {
   background: linear-gradient(135deg, #2563eb, #3b82f6);
@@ -1575,3 +1573,28 @@ body.dark-mode .footer-section a {
 body.dark-mode .footer-section a:hover {
   color: #3b82f6;
 }
+.step {
+  background: rgba(135, 206, 250, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid #1e90ff;
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(135, 206, 250, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.step:hover {
+  transform: translateY(-5px);
+}
+.feature-card.slide-left,
+    .feature-card.slide-right {
+      background: rgba(135, 206, 250, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid #1e90ff; /* Solid blue border */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 30px rgba(135, 206, 250, 0.1);
+    }

@@ -4,8 +4,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Research Resources & Tools | Research Paper Organizer</title>
+
+<!-- SEO Meta Tags -->
+<meta name="description" content="Discover powerful research tools and resources for academic success. PDF annotator, paper summarizer, citation generator, and more research management tools." />
+<meta name="keywords" content="research tools, academic tools, PDF annotator, paper summarizer, citation generator, research resources, academic software, research management" />
+<meta name="author" content="Research Paper Organizer Team" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#2563eb" />
+<link rel="canonical" href="https://research-paper-organizer.vercel.app/tools.html" />
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Research Resources & Tools | Research Paper Organizer" />
+<meta property="og:description" content="Discover powerful research tools and resources for academic success. PDF annotator, paper summarizer, citation generator, and more research management tools." />
+<meta property="og:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+<meta property="og:url" content="https://research-paper-organizer.vercel.app/tools.html" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Research Paper Organizer" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Research Paper Organizer Tools" />
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Research Resources & Tools | Research Paper Organizer" />
+<meta name="twitter:description" content="Discover powerful research tools and resources for academic success. PDF annotator, paper summarizer, citation generator, and more research management tools." />
+<meta name="twitter:image" content="https://research-paper-organizer.vercel.app/og-image.png" />
+<meta name="twitter:image:alt" content="Research Paper Organizer Tools" />
+
+<!-- Additional SEO Meta Tags -->
+<meta name="application-name" content="Research Paper Organizer" />
+<meta name="apple-mobile-web-app-title" content="Research Paper Organizer" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="msapplication-TileColor" content="#2563eb" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="css/tool.css" />
+<link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" href="css/style.css">
 <style>
   .navbar {
@@ -43,7 +79,7 @@
    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    position: relative;
+    /* position: relative; */
   }
 
   .navbar-right-links {
@@ -94,7 +130,6 @@
     <!-- Navigation -->
     <nav class="navbar">
         <a href="index.html" class="nav-item">
-            <i class="fas fa-book-open"></i>
             Home
         </a>
        <!-- Hamburger div (shows only on mobile) -->
@@ -120,6 +155,13 @@
   <p>Your one-stop hub for all essential research tools</p>
 </header>
 
+<section class="favorite-tools-section">
+    <h2>My favorite tools</h2>
+    <div id="favorite-tools-list">
+        </div>
+</section>
+
+
 <!-- Filter Buttons -->
 <div class="filter-bar">
   <button class="filter-btn" data-filter="all">All</button>
@@ -136,6 +178,10 @@
     <h3>PDF Annotator</h3>
     <p>Highlight, annotate, and add notes to PDF research papers directly in your browser.</p>
     <a href="pdf-viewer.html">Open Tool</a>
+    <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="pdf-annotator" data-tool-name="PDF Annotator" data-tool-url="pdf-viewer.html"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
 
   <div class="tool-card" data-category="papers">
@@ -143,48 +189,76 @@
     <h3>PDF Converter</h3>
     <p>Convert PDF files into Word, PowerPoint, Excel, or other formats easily and quickly.</p>
     <a href="Pdfconverter.html" target="_blank">Visit</a>
+    <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="pdf-converter" data-tool-name="PDF Converter" data-tool-url="Pdfconverter.html"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
   
   <div class="tool-card" data-category="citation">
-    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Citation Generator">
+    <img src="images/citation.png" alt="Citation Generator">
     <h3>Citation Machine</h3>
     <p>Generate accurate citations in APA, MLA, and more.</p>
     <a href="https://www.citationmachine.net/" target="_blank">Visit</a>
+     <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="citation-machine" data-tool-name="Citation Machine" data-tool-url="https://www.citationmachine.net/"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
 
   <div class="tool-card" data-category="writing">
-    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Overleaf">
+    <img src="images/overleaf.png" alt="Overleaf">
     <h3>Overleaf</h3>
     <p>Collaborative LaTeX editor for academic papers.</p>
     <a href="https://www.overleaf.com/" target="_blank">Visit</a>
+     <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="overleaf" data-tool-name="Overleaf" data-tool-url="https://www.overleaf.com/"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
 
   <div class="tool-card" data-category="analysis">
-    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135810.png" alt="Data Visualization">
+    <img src="images/tableau.png" alt="Data Visualization">
     <h3>Tableau Public</h3>
     <p>Create interactive data visualizations easily.</p>
     <a href="https://public.tableau.com/" target="_blank">Visit</a>
+    <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="tableau-public" data-tool-name="Tableau Public" data-tool-url="https://public.tableau.com/"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
 
   <div class="tool-card" data-category="writing">
-    <img src="https://cdn-icons-png.flaticon.com/512/2331/2331937.png" alt="Grammarly">
+    <img src="images/grammarly.png" alt="Grammarly">
     <h3>Grammarly</h3>
     <p>Grammar and style checker to improve your writing.</p>
     <a href="https://www.grammarly.com/" target="_blank">Visit</a>
+    <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="grammarly" data-tool-name="Grammarly" data-tool-url="https://www.grammarly.com/"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
 
   <div class="tool-card" data-category="citation">
-    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135673.png" alt="Google Scholar">
+    <img src="images/googlescholar.png" alt="Google Scholar">
     <h3>Google Scholar</h3>
     <p>Search scholarly articles and academic journals.</p>
     <a href="https://scholar.google.com/" target="_blank">Visit</a>
+    <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="google-scholar" data-tool-name="Google Scholar" data-tool-url="https://scholar.google.com/"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
 
   <div class="tool-card" data-category="analysis">
-    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Plagiarism Checker">
+    <img src="images/plagiarism.png" alt="Plagiarism Checker">
     <h3>Plagiarism Detector</h3>
     <p>Check documents for plagiarism and originality.</p>
     <a href="https://www.duplichecker.com/" target="_blank">Visit</a>
+    <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="plagiarism-detector" data-tool-name="Plagiarism Detector" data-tool-url="https://www.duplichecker.com/"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
 
   
@@ -193,21 +267,33 @@
     <h3>ATS Resume Checker</h3>
     <p>Instantly analyze your resume for ATS compatibility, formatting, and keywords to boost your job application success.</p>
     <a href="ats-checker.html">Open Tool</a>
+    <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="ats-resume-checker" data-tool-name="ATS Resume Checker" data-tool-url="ats-checker.html"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
 
 
   <div class="tool-card" data-category="papers">
-    <img src="images/research.png" alt="ACM Digital Library">
+    <img src="images/library.png" alt="ACM Digital Library">
     <h3>ACM Digital Library</h3>
     <p>Get access to scholarly articles, conference papers, and journals in computing and information technology.</p>
     <a href="https://dl.acm.org/" target="_blank">Visit</a>
+    <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="acm-digital-library" data-tool-name="ACM Digital Library" data-tool-url="https://dl.acm.org/"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
 
   <div class="tool-card" data-category="citation">
-    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png" alt="Citation Generator">
+    <img src="images/hemmingway.png" alt="Citation Generator">
     <h3>Hemingway Editor</h3>
     <p>Analyze your writing for readability, clarity, and grammar. Improve your research papers with concise, bold prose.</p>
     <a href="hemingway.html" target="_blank">Open Tool</a>
+    <div class="favorite-action">
+       <i class="fa-regular fa-star bookmark-icon" data-tool-id="hemingway-editor" data-tool-name="Hemingway Editor" data-tool-url="hemingway.html"></i>
+       <small class="favorite-text">Favorite</small>
+   </div>
   </div>
 </div>
 
@@ -220,52 +306,15 @@
 
 
   <!-- Modern Footer -->
-  <footer class="modern-footer" aria-label="Footer">
-    <div class="footer-top">
-      <div class="footer-brand footer-card">
-        <h3><i class="fas fa-book-open"></i> Research Paper Organizer</h3>
-        <p style=" margin-top: 20px;">Organize, track, and manage your research papers seamlessly.</p>
-      </div>
+   <div id="footer-placeholder"></div>
 
-      <div class="footer-links-section footer-card" >
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html"><i class="fas fa-book-open"></i>Home</a></li>
-          <li><a href="about.html"><i class="fas fa-users"></i>About Us</a></li>
-          <li><a href="contact.html"><i class="fas fa-envelope"></i>Contact</a></li>
-          <li><a href="Faq.html"><i class="fas fa-question-circle"></i>FAQ</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Resources</h4>
-        <ul>
-          <li><a href="blog.html"><i class="fas fa-blog"></i>Blog</a></li>
-          <li><a href="glossary.html"><i class="fas fa-book"></i>Glossary</a></li>
-          <li><a href="open-source.html"><i class="fas fa-code-branch"></i>Open Source</a></li>
-          <li>
-            <a href="Tag-Based-filtering.html"><i class="fas fa-book"></i>Tag Based Filtering</a>
-          </li>
-        </ul>
-      </div>
-
-      <div class="footer-links-section footer-card">
-        <h4>Connect</h4>
-        <div class="social-icons">
-          <a href="https://github.com/supriya46788" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-<a href="https://www.linkedin.com/in/supriyapandey595" target="_blank" title="LinkedIn" class="linkedin-icon">
-  <i class="fab fa-linkedin"></i>
-</a>
-          <a href="mailto:supriyadpandey502@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-  © 2025 Research Paper Organizer | Made with <span class="heart">&hearts;</span> for researchers worldwide
-</div>
-
-  </footer>
+<script>
+  fetch("footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+    });
+</script>
 
 <style>
   body {
@@ -286,7 +335,7 @@ color: #e0e0e0;
 /* Dark mode toggle button styling */
 .dark-toggle {
   color:#1a1a1a;
-background: none !important;
+/* background: none !important; */
 border: none;
 cursor: pointer;
 padding: 0.6rem 1.2rem;
@@ -295,7 +344,8 @@ transition: all 0.25s ease;
 }
 
 .dark-toggle:hover {
-background: rgba(255, 255, 255, 0.1) !important;
+    
+    color: #1a202c;;
 }
 
 header {
@@ -581,12 +631,15 @@ background: #63b3ed;
 
 /* Dark mode navbar compatibility */
 body.dark-mode .navbar {
-background: transparent;
+    background: transparent;
+    background: linear-gradient(90deg, #1f2937, #111827);
+    color: var(--text-light);
+    box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode .nav-item {
-background: linear-gradient(135deg, #4a5568, #2d3748);
-color: #e0e0e0;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--text-light); 
 }
 
 
