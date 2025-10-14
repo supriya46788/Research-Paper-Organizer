@@ -118,6 +118,13 @@
           <a href="tools.html">Tools</a>
           <a href="contact.html">Contact</a>
           <button
+            class="btn-secondary"
+            id="openChatBtn"
+            type="button"
+          >
+            <i class="fas fa-comments"></i> Chat
+          </button>
+          <button
             class="btn-primary"
             onclick="window.location.href='signup.html'"
           >
@@ -1849,5 +1856,47 @@ marquee.addEventListener("mouseleave", () => {
 </script>
 
     <script src="app.js"></script>
+    <style>
+      /* Hide floating Chatbase bubble; we trigger via navbar button */
+      #chatbase-bubble-button { display: none !important; }
+    </style>
+    <!-- Chatbase Integration -->
+    <script>
+      (function(){
+          if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+              window.chatbase = (...arguments) => {
+                  if(!window.chatbase.q){ window.chatbase.q = [] }
+                  window.chatbase.q.push(arguments)
+              };
+              window.chatbase = new Proxy(window.chatbase, {
+                  get(target, prop) {
+                      if(prop === "q"){ return target.q }
+                      return (...args) => target(prop, ...args)
+                  }
+              });
+          }
+          const onLoad = function(){
+              const script = document.createElement("script");
+              script.src = "https://www.chatbase.co/embed.min.js";
+              script.id = "ubDfCZ-KoiucQjQos4LDA";
+              script.domain = "www.chatbase.co";
+              document.body.appendChild(script)
+          };
+          if(document.readyState === "complete"){ onLoad() }
+          else { window.addEventListener("load", onLoad) }
+      })();
+    </script>
+    <script>
+      // Navbar Chat button opens Chatbase
+      (function(){
+        function openChatbase() {
+          try { if (window.chatbase) { window.chatbase("open"); return; } } catch(e){}
+          var btn = document.getElementById("chatbase-bubble-button");
+          if (btn && typeof btn.click === "function") btn.click();
+        }
+        const chatBtn = document.getElementById("openChatBtn");
+        if (chatBtn) chatBtn.addEventListener("click", openChatbase);
+      })();
+    </script>
   </body>
 </html>

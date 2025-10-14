@@ -673,6 +673,9 @@ body.dark-mode .copy-btn:hover {
         <a href="Faq.html" class="nav-item">FAQ</a>
         <a href="contact.html" class="nav-item">Contact Us</a>
         <a href="tools.html" class="nav-item">Tools</a>
+        <button class="nav-item" id="openChatBtn" type="button">
+          <i class="fas fa-comments"></i> Chat
+        </button>
       </div>
     </nav>
     <!-- Header -->
@@ -1503,6 +1506,14 @@ button#chatbase-bubble-button div {
   }
 }
 </style>
+<style>
+  /* Hide floating Chatbase bubble on dashboard; use navbar button */
+  #chatbase-bubble-button { display: none !important; }
+  /* Ensure z-index for window remains high */
+  #chatbase-bubble-window { z-index: 2147483647 !important; }
+  #backToTop { right: 20px; }
+  @media (max-width: 600px) { #backToTop { right: 20px; } }
+</style>
     <!-- Chatbase Integration -->
      <script>
         (function(){
@@ -1581,6 +1592,17 @@ document.addEventListener("DOMContentLoaded", function () {
       updateButtonPosition();
     }
   });
+
+  // Navbar Chat button behavior - opens Chatbase
+  const openChatBtn = document.getElementById("openChatBtn");
+  if (openChatBtn) {
+    openChatBtn.addEventListener("click", function(){
+      try { if (window.chatbase) { window.chatbase("open"); return; } } catch(e){}
+      if (bubbleWindow) { bubbleWindow.style.display = "flex"; }
+      if (bubbleButton && typeof bubbleButton.click === "function") bubbleButton.click();
+      updateButtonPosition();
+    });
+  }
 });
 </script>
 
