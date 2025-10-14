@@ -49,9 +49,7 @@
     <link rel="stylesheet" href="landing.css" />
     <link rel="stylesheet" href="slider.css" />
     <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/feedback.css" />
-    <link rel="stylesheet" href="landing.css" />
     <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
 
     <link
@@ -120,6 +118,13 @@
           <a href="tools.html">Tools</a>
           <a href="contact.html">Contact</a>
           <button
+            class="btn-secondary"
+            id="openChatBtn"
+            type="button"
+          >
+            <i class="fas fa-comments"></i> Chat
+          </button>
+          <button
             class="btn-primary"
             onclick="window.location.href='signup.html'"
           >
@@ -144,7 +149,7 @@
     <div class="slider">
       <div class="list">
         <div class="item">
-          <img src="./images/SMART SEARCH 1.jpg" alt="" />
+          <img src="./images/SMART SEARCH 1.jpg" alt="Smart Search" onerror="this.onerror=null;this.src='images/search-book.gif';" />
 
           <div class="content">
             <div class="title">Smart Search</div>
@@ -157,7 +162,7 @@
         </div>
 
         <div class="item">
-          <img src="./images/SMART ORGANISATION.jpg" alt="" />
+          <img src="./images/SMART ORGANISATION.jpg" alt="Smart Organization" onerror="this.onerror=null;this.src='images/library.png';" />
 
           <div class="content">
             <div class="title">Smart Organization</div>
@@ -170,7 +175,7 @@
         </div>
 
         <div class="item">
-          <img src="./images/CLOUD SYNC.png" alt="" />
+          <img src="./images/CLOUD SYNC.png" alt="Cloud Sync" onerror="this.onerror=null;this.src='images/CLOUD SYNC.png';" />
 
           <div class="content">
             <div class="title">Cloud Sync</div>
@@ -183,7 +188,7 @@
         </div>
 
         <div class="item">
-          <img src="./images/PDF MANAGAMENT 1.jpg" alt="" />
+          <img src="./images/PDF MANAGAMENT 1.jpg" alt="PDF Management" onerror="this.onerror=null;this.src='images/pdfconverter.png';" />
 
           <div class="content">
             <div class="title">PDF Management</div>
@@ -198,16 +203,16 @@
 
       <div class="thumbnail">
         <div class="item">
-          <img src="./images/SMART SEARCH 1.jpg" alt="" />
+          <img src="./images/SMART SEARCH 1.jpg" alt="Smart Search" onerror="this.onerror=null;this.src='images/search-book.gif';" />
         </div>
         <div class="item">
-          <img src="./images/SMART ORGANISATION.jpg" alt="" />
+          <img src="./images/SMART ORGANISATION.jpg" alt="Smart Organization" onerror="this.onerror=null;this.src='images/library.png';" />
         </div>
         <div class="item">
-          <img src="./images/CLOUD SYNC.png" alt="" />
+          <img src="./images/CLOUD SYNC.png" alt="Cloud Sync" onerror="this.onerror=null;this.src='images/CLOUD SYNC.png';" />
         </div>
         <div class="item">
-          <img src="./images/PDF MANAGAMENT 1.jpg" alt="" />
+          <img src="./images/PDF MANAGAMENT 1.jpg" alt="PDF Management" onerror="this.onerror=null;this.src='images/pdfconverter.png';" />
         </div>
       </div>
 
@@ -1851,5 +1856,67 @@ marquee.addEventListener("mouseleave", () => {
 </script>
 
     <script src="app.js"></script>
+    <style>
+      /* Hide floating Chatbase bubble; we trigger via navbar button */
+      #chatbase-bubble-button { display: none !important; }
+    </style>
+    <!-- Chatbase Integration -->
+    <script>
+      (function(){
+          if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+              window.chatbase = (...arguments) => {
+                  if(!window.chatbase.q){ window.chatbase.q = [] }
+                  window.chatbase.q.push(arguments)
+              };
+              window.chatbase = new Proxy(window.chatbase, {
+                  get(target, prop) {
+                      if(prop === "q"){ return target.q }
+                      return (...args) => target(prop, ...args)
+                  }
+              });
+          }
+          const onLoad = function(){
+              const script = document.createElement("script");
+              script.src = "https://www.chatbase.co/embed.min.js";
+              script.id = "ubDfCZ-KoiucQjQos4LDA";
+              script.domain = "www.chatbase.co";
+              document.body.appendChild(script)
+          };
+          if(document.readyState === "complete"){ onLoad() }
+          else { window.addEventListener("load", onLoad) }
+      })();
+    </script>
+    <script>
+      // Navbar Chat button opens Chatbase and ensures the chat window doesn't block clicks when closed
+      (function(){
+        function openChatbase() {
+          try { if (window.chatbase) { window.chatbase("open"); return; } } catch(e){}
+          var btn = document.getElementById("chatbase-bubble-button");
+          if (btn && typeof btn.click === "function") btn.click();
+        }
+        const chatBtn = document.getElementById("openChatBtn");
+        if (chatBtn) chatBtn.addEventListener("click", openChatbase);
+
+        // Defensive: if Chatbase adds #chatbase-bubble-window, keep it non-interactive when hidden
+        function guardOverlayClicks(){
+          var win = document.getElementById("chatbase-bubble-window");
+          if (!win) return;
+          var update = function(){
+            var visible = (win.style.display||"").includes("flex");
+            win.style.setProperty("pointer-events", visible?"auto":"none","important");
+            win.style.setProperty("z-index", visible?"2147483647":"-1","important");
+          };
+          update();
+          var mo = new MutationObserver(update);
+          mo.observe(win, { attributes:true, attributeFilter:["style","class"] });
+          window.addEventListener("message", function(e){
+            if (e.data && e.data.type === "chatbase-close") { win.style.display = "none"; update(); }
+          });
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", guardOverlayClicks, { once:true });
+        } else { guardOverlayClicks(); }
+      })();
+    </script>
   </body>
 </html>

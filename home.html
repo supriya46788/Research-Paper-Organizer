@@ -673,6 +673,9 @@ body.dark-mode .copy-btn:hover {
         <a href="Faq.html" class="nav-item">FAQ</a>
         <a href="contact.html" class="nav-item">Contact Us</a>
         <a href="tools.html" class="nav-item">Tools</a>
+        <button class="nav-item" id="openChatBtn" type="button">
+          <i class="fas fa-comments"></i> Chat
+        </button>
       </div>
     </nav>
     <!-- Header -->
@@ -1503,6 +1506,14 @@ button#chatbase-bubble-button div {
   }
 }
 </style>
+<style>
+  /* Hide floating Chatbase bubble on dashboard; use navbar button */
+  #chatbase-bubble-button { display: none !important; }
+  /* Ensure z-index for window remains high */
+  #chatbase-bubble-window { z-index: 2147483647 !important; }
+  #backToTop { right: 20px; }
+  @media (max-width: 600px) { #backToTop { right: 20px; } }
+</style>
     <!-- Chatbase Integration -->
      <script>
         (function(){
@@ -1532,10 +1543,8 @@ button#chatbase-bubble-button div {
     </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const bubbleWindow = document.getElementById("chatbase-bubble-window");
-  const bubbleButton = document.getElementById("chatbase-bubble-button");
-
-  if (!bubbleWindow || !bubbleButton) return;
+  let bubbleWindow = document.getElementById("chatbase-bubble-window");
+  let bubbleButton = document.getElementById("chatbase-bubble-button");
 
   function setImportant(el, prop, value) {
     el.style.setProperty(prop, value, "important");
@@ -1554,6 +1563,9 @@ document.addEventListener("DOMContentLoaded", function () {
       setImportant(bubbleButton, "left", leftPos + "px");
       setImportant(bubbleButton, "bottom", "auto");
       setImportant(bubbleButton, "right", "auto");
+      // Make window interactive when open
+      setImportant(bubbleWindow, "pointer-events", "auto");
+      setImportant(bubbleWindow, "z-index", "2147483647");
     } else {
       // Closed position with left:300px; bottom:300px
       setImportant(bubbleButton, "position", "fixed");
@@ -1561,26 +1573,54 @@ document.addEventListener("DOMContentLoaded", function () {
       setImportant(bubbleButton, "left", "300px");
       setImportant(bubbleButton, "top", "auto");
       setImportant(bubbleButton, "right", "auto");
+      // Ensure hidden window cannot block clicks
+      setImportant(bubbleWindow, "pointer-events", "none");
+      setImportant(bubbleWindow, "z-index", "-1");
     }
   }
 
-  updateButtonPosition();
-  window.addEventListener("scroll", updateButtonPosition);
-  window.addEventListener("resize", updateButtonPosition);
-
-  // Toggle chat window
-  bubbleButton.addEventListener("click", () => {
-    bubbleWindow.style.display = bubbleWindow.style.display === "flex" ? "none" : "flex";
-    updateButtonPosition();
-  });
-
-  // Handle iframe close button
-  window.addEventListener("message", (event) => {
-    if (event.data?.type === "chatbase-close") {
-      bubbleWindow.style.display = "none";
-      updateButtonPosition();
+  function bindWhenReady(){
+    if (!bubbleWindow || !bubbleButton) {
+      bubbleWindow = document.getElementById("chatbase-bubble-window");
+      bubbleButton = document.getElementById("chatbase-bubble-button");
+      if (!bubbleWindow || !bubbleButton) return false;
     }
-  });
+    updateButtonPosition();
+    window.addEventListener("scroll", updateButtonPosition);
+    window.addEventListener("resize", updateButtonPosition);
+    // Toggle chat window
+    bubbleButton.addEventListener("click", () => {
+      bubbleWindow.style.display = bubbleWindow.style.display === "flex" ? "none" : "flex";
+      updateButtonPosition();
+    });
+    // Handle iframe close button
+    window.addEventListener("message", (event) => {
+      if (event.data?.type === "chatbase-close") {
+        bubbleWindow.style.display = "none";
+        updateButtonPosition();
+      }
+    });
+    return true;
+  }
+
+  // Try immediately; if not ready, observe for injection
+  if (!bindWhenReady()) {
+    const mo = new MutationObserver(() => { bindWhenReady() && mo.disconnect(); });
+    mo.observe(document.body, { childList: true, subtree: true });
+  }
+
+  // Navbar Chat button behavior - opens Chatbase
+  const openChatBtn = document.getElementById("openChatBtn");
+  if (openChatBtn) {
+    openChatBtn.addEventListener("click", function(){
+      try { if (window.chatbase) { window.chatbase("open"); return; } } catch(e){}
+      bubbleWindow = document.getElementById("chatbase-bubble-window");
+      bubbleButton = document.getElementById("chatbase-bubble-button");
+      if (bubbleWindow) { bubbleWindow.style.display = "flex"; }
+      if (bubbleButton && typeof bubbleButton.click === "function") bubbleButton.click();
+      if (bubbleWindow) updateButtonPosition();
+    });
+  }
 });
 </script>
 

@@ -1,4 +1,5 @@
-import { bucket } from '../utils/firebase.js';
+import admin from 'firebase-admin';
+const bucket = admin.storage().bucket(process.env.FIREBASE_STORAGE_BUCKET);
 import { v4 as uuidv4 } from 'uuid';
 
 export const uploadPaperToCloud = async (req, res) => {

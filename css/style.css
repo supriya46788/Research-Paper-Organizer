@@ -416,6 +416,37 @@ body.dark-mode .profile-container {
   box-shadow: 0 4px 12px rgba(255, 255, 255, 0.6); 
 }
 
+/* Chatbase overlay guard: never block clicks when hidden */
+#chatbase-bubble-window {
+  pointer-events: none !important;
+  z-index: -1 !important;
+}
+/* When Chatbase sets it visible (via inline display:flex), allow interaction */
+#chatbase-bubble-window[style*="display: flex"] {
+  pointer-events: auto !important;
+  z-index: 2147483647 !important;
+}
+
+/* Navbar Chat button custom colors */
+#openChatBtn {
+  background: linear-gradient(135deg, #7c3aed, #22d3ee) !important; /* violet → cyan */
+  color: #ffffff !important;
+  border: none !important;
+}
+
+#openChatBtn:hover {
+  background: linear-gradient(135deg, #6d28d9, #06b6d4) !important;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 14px rgba(34, 211, 238, 0.25);
+}
+
+body.dark-mode #openChatBtn {
+  background: linear-gradient(135deg, #a78bfa, #38bdf8) !important;
+  color: #0b1220 !important;
+}
+
+#openChatBtn i { margin-right: 6px; }
+
 /* Instagram icon */
 .fa-instagram {
   color: #e4405f;
