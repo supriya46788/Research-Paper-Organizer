@@ -119,6 +119,10 @@
           <a href="about.html">About</a>
           <a href="tools.html">Tools</a>
           <a href="contact.html">Contact</a>
+          <button id="chatbot-toggle" class="chatbot-launch btn-primary" type="button" title="Open Assistant">
+            <i class="fa-solid fa-message"></i> Chatbot
+          </button>
+
           <button
             class="btn-primary"
             onclick="window.location.href='signup.html'"
@@ -1849,7 +1853,34 @@ marquee.addEventListener("mouseleave", () => {
     });
   });
 </script>
+    <div id="chatbot-container" class="hidden">
+  <div class="chatbot-panel">
+    <div class="chatbot-header chatbot-draggable">
+      <div style="display:flex;align-items:center;gap:8px">
+        <i class="fa-solid fa-robot"></i><strong>Assistant</strong>
+      </div>
+      <button id="closeChatbot" class="chatbot-launch" style="padding:6px 10px;background:#ef4444">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <div id="chatbotQuick" class="chatbot-quick">
+  
+    </div>
 
+    <div id="chatbotMessages" class="chatbot-body">
+      <div class="message bot-message">
+        <div class="avatar bot-avatar">🤖</div>
+        <div class="text">Hi! Ask about adding papers, search, tags, or login.</div>
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input id="chatbotInput" type="text" placeholder="Type a question..." />
+      <button id="sendChatbot" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
+</div>
+
+    <script src="js/chatbot.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
