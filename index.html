@@ -1887,7 +1887,7 @@ marquee.addEventListener("mouseleave", () => {
       })();
     </script>
     <script>
-      // Navbar Chat button opens Chatbase
+      // Navbar Chat button opens Chatbase and ensures the chat window doesn't block clicks when closed
       (function(){
         function openChatbase() {
           try { if (window.chatbase) { window.chatbase("open"); return; } } catch(e){}
@@ -1896,6 +1896,26 @@ marquee.addEventListener("mouseleave", () => {
         }
         const chatBtn = document.getElementById("openChatBtn");
         if (chatBtn) chatBtn.addEventListener("click", openChatbase);
+
+        // Defensive: if Chatbase adds #chatbase-bubble-window, keep it non-interactive when hidden
+        function guardOverlayClicks(){
+          var win = document.getElementById("chatbase-bubble-window");
+          if (!win) return;
+          var update = function(){
+            var visible = (win.style.display||"").includes("flex");
+            win.style.setProperty("pointer-events", visible?"auto":"none","important");
+            win.style.setProperty("z-index", visible?"2147483647":"-1","important");
+          };
+          update();
+          var mo = new MutationObserver(update);
+          mo.observe(win, { attributes:true, attributeFilter:["style","class"] });
+          window.addEventListener("message", function(e){
+            if (e.data && e.data.type === "chatbase-close") { win.style.display = "none"; update(); }
+          });
+        }
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", guardOverlayClicks, { once:true });
+        } else { guardOverlayClicks(); }
       })();
     </script>
   </body>
