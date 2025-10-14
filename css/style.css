@@ -2634,3 +2634,37 @@ body.dark-mode .speed-control input:focus {
 .dark-mode .hamburger-container .bar{
   background-color: #adadad;
 }
+
+/* HOW IT WORKS SECTION ANIMATION CSS */
+
+@keyframes raise {
+  0% { transform: translateY(0);
+    background-color: #007bff;
+   }
+  50% { transform: translateY(-15px); } /* slight raise */
+  100% { transform: translateY(0); }
+}
+
+.steps-container .step:nth-child(1) {
+  animation: raise 0.8s ease forwards;
+  animation-delay: 0.3s;
+  animation-fill-mode: none; /* don’t lock final transform */
+
+}
+
+.steps-container .step:nth-child(2) {
+  animation: raise 0.8s ease forwards;
+  animation-delay: 0.8s;
+  animation-fill-mode: none; /* don’t lock final transform */
+
+}
+
+.steps-container .step:nth-child(3) {
+  animation: raise 0.8s ease forwards;
+  animation-delay: 1.3s;
+  animation-fill-mode: none; /* don’t lock final transform */
+
+}
+
+
+
