@@ -13,18 +13,9 @@
     crossorigin="anonymous" />
   <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
 
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="./favicon/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="48x48"
-      href="./favicon/favicon-48x48.png"
-    />
-    <link rel="manifest" href="./favicon/site.webmanifest" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="48x48" href="./favicon/favicon-48x48.png" />
+  <link rel="manifest" href="./favicon/site.webmanifest" />
   <style>
     .navbar {
       display: flex;
@@ -59,14 +50,17 @@
       margin-bottom: 40px;
     }
 
- .privacy-hero .hero-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 15px;
-  color: #ffffff; /* No need for !important unless overridden */
-  opacity: 1; /* Fully opaque */
-  text-shadow: 2px 2px 0 rgba(237, 231, 231, 0.6); /* Reduce or remove blur */
-}
+    .privacy-hero .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      color: #ffffff;
+      /* No need for !important unless overridden */
+      opacity: 1;
+      /* Fully opaque */
+      text-shadow: 2px 2px 0 rgba(237, 231, 231, 0.6);
+      /* Reduce or remove blur */
+    }
 
     .privacy-hero .hero-subtitle {
       font-size: 1.2rem;
@@ -218,17 +212,31 @@
         display: flex;
       }
 
+      .nav-item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        width: 10rem;
+        font-size: 1rem;
+      }
+
       .navbar-right-links {
         display: none;
-        width: 100%;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.95);
         position: absolute;
-        top: 100%;
-        left: 0;
+        top: 70px;
+        right: 10px;
+        margin: 15px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         padding: 1rem;
-        border-radius: 0 0 10px 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        gap: 0.75rem;
+        z-index: 1000;
+        width: max-content;
+        min-width: 150px;
       }
 
       .navbar-right-links.show {
@@ -265,6 +273,13 @@
         padding: 15px;
       }
     }
+
+    @media (max-width: 768px) {
+      .nav-home-item {
+        height: 42px !important;
+        width: 78px;
+      }
+    }
   </style>
 </head>
 
@@ -272,7 +287,7 @@
   <div class="container">
     <!-- Navigation -->
     <nav class="navbar">
-      <a href="index.html" class="nav-item">
+      <a href="index.html" class="nav-item nav-home-item">
         Home
       </a>
       <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
@@ -296,7 +311,8 @@
     <div class="privacy-hero">
       <div class="hero-content">
         <h1 class="hero-title">Privacy Policy</h1>
-        <p class="hero-subtitle">Your privacy is important to us. This policy outlines how we collect, use, and protect your information.</p>
+        <p class="hero-subtitle">Your privacy is important to us. This policy outlines how we collect, use, and protect
+          your information.</p>
       </div>
     </div>
 
@@ -304,8 +320,10 @@
     <div class="privacy-content">
       <div class="privacy-section">
         <h2><i class="fas fa-shield-alt"></i> Our Commitment to Privacy</h2>
-        <p>At Research Paper Organizer, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, share, and protect your information when you use our service.</p>
-        
+        <p>At Research Paper Organizer, we are committed to protecting your privacy and ensuring the security of your
+          personal information. This Privacy Policy explains how we collect, use, share, and protect your information
+          when you use our service.</p>
+
         <div class="highlight">
           <strong>Last Updated:</strong> January 2025<br>
           <strong>Effective Date:</strong> January 2025
@@ -314,12 +332,13 @@
 
       <div class="privacy-section">
         <h2><i class="fas fa-database"></i> Information We Collect</h2>
-        
+
         <h3>Personal Information</h3>
         <ul>
           <li><strong>Account Information:</strong> Name, email address, and password when you create an account</li>
           <li><strong>Profile Information:</strong> Any additional information you choose to add to your profile</li>
-          <li><strong>Communication Data:</strong> Messages you send to us through contact forms or support channels</li>
+          <li><strong>Communication Data:</strong> Messages you send to us through contact forms or support channels
+          </li>
         </ul>
 
         <h3>Research Data</h3>
@@ -333,13 +352,14 @@
         <ul>
           <li><strong>Activity Data:</strong> How you interact with our service and features you use</li>
           <li><strong>Device Information:</strong> Browser type, operating system, and device characteristics</li>
-          <li><strong>Log Data:</strong> IP addresses, access times, and technical information for security purposes</li>
+          <li><strong>Log Data:</strong> IP addresses, access times, and technical information for security purposes
+          </li>
         </ul>
       </div>
 
       <div class="privacy-section">
         <h2><i class="fas fa-cogs"></i> How We Use Your Information</h2>
-        
+
         <h3>Service Provision</h3>
         <ul>
           <li>Provide, maintain, and improve our research organization tools</li>
@@ -365,24 +385,28 @@
 
       <div class="privacy-section">
         <h2><i class="fas fa-share-alt"></i> Information Sharing</h2>
-        
+
         <div class="highlight">
-          <strong>We do not sell your personal information.</strong> We only share your information in the following limited circumstances:
+          <strong>We do not sell your personal information.</strong> We only share your information in the following
+          limited circumstances:
         </div>
 
         <ul>
-          <li><strong>Service Providers:</strong> Third-party services that help us operate our platform (cloud storage, analytics)</li>
-          <li><strong>Legal Requirements:</strong> When required by law, court order, or to protect rights and safety</li>
-          <li><strong>Business Transfers:</strong> In connection with mergers, acquisitions, or asset sales (with notice)</li>
+          <li><strong>Service Providers:</strong> Third-party services that help us operate our platform (cloud storage,
+            analytics)</li>
+          <li><strong>Legal Requirements:</strong> When required by law, court order, or to protect rights and safety
+          </li>
+          <li><strong>Business Transfers:</strong> In connection with mergers, acquisitions, or asset sales (with
+            notice)</li>
           <li><strong>With Your Consent:</strong> When you explicitly authorize us to share specific information</li>
         </ul>
       </div>
 
       <div class="privacy-section">
         <h2><i class="fas fa-lock"></i> Data Security</h2>
-        
+
         <p>We implement industry-standard security measures to protect your information:</p>
-        
+
         <ul>
           <li><strong>Encryption:</strong> Data is encrypted in transit and at rest using strong encryption methods</li>
           <li><strong>Access Controls:</strong> Strict access controls and authentication for our systems</li>
@@ -392,13 +416,14 @@
         </ul>
 
         <div class="highlight">
-          <strong>Note:</strong> While we use industry-standard security measures, no system is completely secure. We recommend keeping backups of important research data.
+          <strong>Note:</strong> While we use industry-standard security measures, no system is completely secure. We
+          recommend keeping backups of important research data.
         </div>
       </div>
 
       <div class="privacy-section">
         <h2><i class="fas fa-user-cog"></i> Your Rights and Choices</h2>
-        
+
         <h3>Account Management</h3>
         <ul>
           <li><strong>Access:</strong> View and download your personal information and research data</li>
@@ -417,9 +442,9 @@
 
       <div class="privacy-section">
         <h2><i class="fas fa-cookie-bite"></i> Cookies and Tracking</h2>
-        
+
         <p>We use cookies and similar technologies to:</p>
-        
+
         <ul>
           <li><strong>Authentication:</strong> Keep you logged in securely</li>
           <li><strong>Preferences:</strong> Remember your settings and preferences</li>
@@ -432,20 +457,23 @@
 
       <div class="privacy-section">
         <h2><i class="fas fa-clock"></i> Data Retention</h2>
-        
+
         <ul>
-          <li><strong>Account Data:</strong> Retained while your account is active and for a reasonable period after deletion</li>
-          <li><strong>Research Data:</strong> Stored according to your preferences, with options for automatic deletion</li>
+          <li><strong>Account Data:</strong> Retained while your account is active and for a reasonable period after
+            deletion</li>
+          <li><strong>Research Data:</strong> Stored according to your preferences, with options for automatic deletion
+          </li>
           <li><strong>Log Data:</strong> Typically retained for 90 days for security and troubleshooting purposes</li>
-          <li><strong>Backup Data:</strong> May be retained in secure backups for up to 1 year for disaster recovery</li>
+          <li><strong>Backup Data:</strong> May be retained in secure backups for up to 1 year for disaster recovery
+          </li>
         </ul>
       </div>
 
       <div class="privacy-section">
         <h2><i class="fas fa-edit"></i> Policy Updates</h2>
-        
+
         <p>We may update this Privacy Policy from time to time. When we make changes:</p>
-        
+
         <ul>
           <li>We will notify you by email and through our service</li>
           <li>The updated policy will be posted on our website</li>
@@ -472,13 +500,13 @@
   <!-- Footer -->
   <div id="footer-placeholder"></div>
 
-<script>
-  fetch("footer.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
-    });
-</script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
 
   <script>
     // Dark mode toggle function
@@ -486,9 +514,9 @@
       const body = document.body;
       const darkModeToggle = document.getElementById('darkModeToggle');
       const icon = darkModeToggle.querySelector('i');
-      
+
       body.classList.toggle('dark-mode');
-      
+
       if (body.classList.contains('dark-mode')) {
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun');
@@ -506,7 +534,7 @@
       const body = document.body;
       const darkModeToggle = document.getElementById('darkModeToggle');
       const icon = darkModeToggle.querySelector('i');
-      
+
       if (darkMode === 'enabled') {
         body.classList.add('dark-mode');
         icon.classList.remove('fa-moon');
@@ -527,7 +555,7 @@
     // Back to top functionality
     function setupBackToTop() {
       const backToTop = document.getElementById('backToTop');
-      
+
       window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
           backToTop.style.display = 'block';
@@ -535,7 +563,7 @@
           backToTop.style.display = 'none';
         }
       });
-      
+
       backToTop.addEventListener('click', () => {
         window.scrollTo({
           top: 0,
@@ -545,7 +573,7 @@
     }
 
     // Initialize on page load
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       applyThemeFromStorage();
       setupBackToTop();
     });

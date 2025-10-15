@@ -211,17 +211,31 @@
         display: flex;
       }
 
+      .nav-item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        width: 10rem;
+        font-size: 1rem;
+      }
+
       .navbar-right-links {
         display: none;
-        width: 100%;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.95);
         position: absolute;
-        top: 100%;
-        left: 0;
+        top: 70px;
+        right: 10px;
+        margin: 15px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         padding: 1rem;
-        border-radius: 0 0 10px 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        gap: 0.75rem;
+        z-index: 1000;
+        width: max-content;
+        min-width: 150px;
       }
 
       .navbar-right-links.show {
@@ -258,6 +272,13 @@
         padding: 15px;
       }
     }
+
+    @media (max-width: 768px) {
+      .nav-home-item {
+        height: 42px !important;
+        width: 78px;
+      }
+    }
   </style>
 </head>
 
@@ -265,7 +286,7 @@
   <div class="container">
     <!-- Navigation -->
     <nav class="navbar">
-      <a href="index.html" class="nav-item">
+      <a href="index.html" class="nav-item nav-home-item">
         Home
       </a>
       <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
@@ -289,7 +310,8 @@
     <div class="terms-hero">
       <div class="hero-content">
         <h1 class="hero-title">Terms of Service</h1>
-        <p class="hero-subtitle">Please read these terms carefully before using our research paper organization service.</p>
+        <p class="hero-subtitle">Please read these terms carefully before using our research paper organization service.
+        </p>
       </div>
     </div>
 
@@ -297,8 +319,9 @@
     <div class="terms-content">
       <div class="terms-section">
         <h2><i class="fas fa-handshake"></i> Agreement to Terms</h2>
-        <p>By accessing and using the Research Paper Organizer ("the Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use our Service.</p>
-        
+        <p>By accessing and using the Research Paper Organizer ("the Service"), you agree to be bound by these Terms of
+          Service ("Terms"). If you do not agree to these Terms, please do not use our Service.</p>
+
         <div class="highlight">
           <strong>Last Updated:</strong> January 2025<br>
           <strong>Effective Date:</strong> January 2025
@@ -307,7 +330,7 @@
 
       <div class="terms-section">
         <h2><i class="fas fa-user-shield"></i> Account Responsibility</h2>
-        
+
         <h3>Account Creation</h3>
         <ul>
           <li>You must provide accurate and complete information when creating your account</li>
@@ -327,7 +350,7 @@
 
       <div class="terms-section">
         <h2><i class="fas fa-file-alt"></i> Content and Intellectual Property</h2>
-        
+
         <h3>Your Content</h3>
         <ul>
           <li>You retain full ownership of all research papers, notes, and metadata you upload</li>
@@ -347,7 +370,7 @@
 
       <div class="terms-section">
         <h2><i class="fas fa-gavel"></i> Acceptable Use</h2>
-        
+
         <h3>Permitted Uses</h3>
         <ul>
           <li>Organizing and managing your legitimate research papers and academic materials</li>
@@ -369,7 +392,7 @@
 
       <div class="terms-section">
         <h2><i class="fas fa-shield-alt"></i> Data Security and Privacy</h2>
-        
+
         <h3>Our Commitment</h3>
         <ul>
           <li>We implement industry-standard security measures to protect your data</li>
@@ -387,13 +410,14 @@
         </ul>
 
         <div class="highlight">
-          <strong>Important:</strong> While we take security seriously, no online service can guarantee complete security. We encourage you to maintain your own backups of critical research data.
+          <strong>Important:</strong> While we take security seriously, no online service can guarantee complete
+          security. We encourage you to maintain your own backups of critical research data.
         </div>
       </div>
 
       <div class="terms-section">
         <h2><i class="fas fa-dollar-sign"></i> Service Availability and Modifications</h2>
-        
+
         <h3>Service Provision</h3>
         <ul>
           <li>We strive to maintain high service availability but cannot guarantee 100% uptime</li>
@@ -413,7 +437,7 @@
 
       <div class="terms-section">
         <h2><i class="fas fa-exclamation-triangle"></i> Disclaimers and Limitations</h2>
-        
+
         <h3>Service Disclaimers</h3>
         <ul>
           <li>The Service is provided "as is" without warranties of any kind</li>
@@ -433,7 +457,7 @@
 
       <div class="terms-section">
         <h2><i class="fas fa-ban"></i> Termination</h2>
-        
+
         <h3>Termination by You</h3>
         <ul>
           <li>You may terminate your account at any time through your account settings</li>
@@ -453,7 +477,7 @@
 
       <div class="terms-section">
         <h2><i class="fas fa-balance-scale"></i> Governing Law and Disputes</h2>
-        
+
         <h3>Applicable Law</h3>
         <ul>
           <li>These Terms are governed by the laws of the jurisdiction where our company is registered</li>
@@ -473,9 +497,9 @@
 
       <div class="terms-section">
         <h2><i class="fas fa-edit"></i> Changes to Terms</h2>
-        
+
         <p>We may update these Terms of Service from time to time. When we make changes:</p>
-        
+
         <ul>
           <li>We will notify you by email and through prominent notice on our Service</li>
           <li>The updated Terms will be posted on our website with the new effective date</li>
@@ -485,15 +509,18 @@
         </ul>
 
         <div class="highlight">
-          <strong>Notice Period:</strong> We will provide at least 30 days' notice for significant changes that materially affect your rights or obligations.
+          <strong>Notice Period:</strong> We will provide at least 30 days' notice for significant changes that
+          materially affect your rights or obligations.
         </div>
       </div>
 
       <div class="contact-info">
         <h3><i class="fas fa-envelope"></i> Contact Us</h3>
-        <p>If you have questions about these Terms of Service or need clarification on any provision, please contact us:</p>
+        <p>If you have questions about these Terms of Service or need clarification on any provision, please contact us:
+        </p>
         <p><strong>Email:</strong> <a href="mailto:legal@researchorganizer.com">legal@researchorganizer.com</a></p>
-        <p><strong>Support:</strong> <a href="mailto:support@researchorganizer.com">support@researchorganizer.com</a></p>
+        <p><strong>Support:</strong> <a href="mailto:support@researchorganizer.com">support@researchorganizer.com</a>
+        </p>
         <p>We will respond to your inquiries within 5 business days.</p>
       </div>
     </div>
@@ -507,13 +534,13 @@
   <!-- Footer -->
   <div id="footer-placeholder"></div>
 
-<script>
-  fetch("footer.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
-    });
-</script>
+  <script>
+    fetch("footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
 
   <script>
     // Dark mode toggle function
@@ -521,9 +548,9 @@
       const body = document.body;
       const darkModeToggle = document.getElementById('darkModeToggle');
       const icon = darkModeToggle.querySelector('i');
-      
+
       body.classList.toggle('dark-mode');
-      
+
       if (body.classList.contains('dark-mode')) {
         icon.classList.remove('fa-moon');
         icon.classList.add('fa-sun');
@@ -541,7 +568,7 @@
       const body = document.body;
       const darkModeToggle = document.getElementById('darkModeToggle');
       const icon = darkModeToggle.querySelector('i');
-      
+
       if (darkMode === 'enabled') {
         body.classList.add('dark-mode');
         icon.classList.remove('fa-moon');
@@ -562,7 +589,7 @@
     // Back to top functionality
     function setupBackToTop() {
       const backToTop = document.getElementById('backToTop');
-      
+
       window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) {
           backToTop.style.display = 'block';
@@ -570,7 +597,7 @@
           backToTop.style.display = 'none';
         }
       });
-      
+
       backToTop.addEventListener('click', () => {
         window.scrollTo({
           top: 0,
@@ -580,7 +607,7 @@
     }
 
     // Initialize on page load
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       applyThemeFromStorage();
       setupBackToTop();
     });
