@@ -1191,3 +1191,10 @@ body.dark-mode .read-more:hover {
     transform: none;
   }
 }
+
+@media (max-width: 768px) {
+  .nav-home-item {
+    height: 42px !important;
+    width: 78px !important;
+  }
+}

@@ -234,7 +234,12 @@ button#chatbase-bubble-button div {
     transform: translateY(0);
   }
 }
-
+  @media (max-width: 768px) {
+    .nav-home-item {
+      height: 42px !important;
+      width: 78px !important;
+    }
+  }
 
     </style>
 
@@ -249,7 +254,7 @@ button#chatbase-bubble-button div {
     <div class="container">
         <!-- Navigation -->
         <nav class="navbar">
-            <a href="index.html" class="nav-item">
+            <a href="index.html" class="nav-item nav-home-item ">
                 Home
             </a>
              <!-- Hamburger div (shows only on mobile) -->
