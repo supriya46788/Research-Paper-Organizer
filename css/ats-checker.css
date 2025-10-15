@@ -61,6 +61,9 @@ p.lead {
   margin: 0 0 16px;
   color: blue;
 }
+body.dark-mode p.lead {
+  color:#60a5fa;
+}
 .card {
   background: var(--card);
   padding: 14px;
@@ -86,6 +89,10 @@ label {
   font-weight: 700;
   color: #000000; 
   margin-bottom: 6px;
+}
+
+body.dark-mode .heading {
+  color: #ffffff;
 }
 
 .controls {

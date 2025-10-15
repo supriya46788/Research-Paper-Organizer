@@ -1173,6 +1173,16 @@ body.dark-mode .read-more:hover {
     padding-left: 25px;
   }
 }
+  }
+}
+@media (max-width: 400px) {
+  .search-container i {
+    padding-left: 15px;
+  }
+  .search-container input::placeholder{
+    padding-left: 25px;
+  }
+}
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {

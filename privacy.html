@@ -63,7 +63,7 @@
   font-size: 2.5rem;
   font-weight: 800;
   margin-bottom: 15px;
-  color: #ffffff; /* No need for !important unless overridden */
+  color: #2c5aa0; /* No need for !important unless overridden */
   opacity: 1; /* Fully opaque */
   text-shadow: 2px 2px 0 rgba(237, 231, 231, 0.6); /* Reduce or remove blur */
 }
@@ -265,6 +265,66 @@
         padding: 15px;
       }
     }
+    
+  .privacy-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+  }
+
+  .privacy-hero{
+    background: #FFFFFF;
+  }
+  .privacy-hero .hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #2c5aa0 !important;
+    text-shadow: none; 
+  }
+
+  .privacy-hero .hero-subtitle {
+    font-size: 1.2rem;
+    color: #000000 !important; 
+    opacity: 1;
+    text-shadow: none;
+  }
+
+  .dark-mode .privacy-hero{
+    background: #2d3748;
+  }
+
+  body.privacy-hero .hero-title {
+    color: #2c5aa0 !important;
+  }
+
+  body.dark-mode .privacy-hero .hero-subtitle {
+    color: #ffffff !important;
+  }
+
+  .contact-info{
+    background: #FFFFFF;
+  }
+
+  .contact-info h3{
+    color: #2c5aa0 !important;
+  }
+
+  .contact-info p, .contact-info a {
+    color: #000000 !important;
+  }
+
+  .dark-mode .contact-info{
+    background: #2d3748;
+  }
+  .dark-mode .contact-info h3{
+    color: #90cdf4 !important;
+  }
+  .dark-mode .contact-info p, .dark-mode .contact-info a {
+    color: #cbd5e1 !important;
+  }
   </style>
 </head>
 
@@ -296,7 +356,7 @@
     <div class="privacy-hero">
       <div class="hero-content">
         <h1 class="hero-title">Privacy Policy</h1>
-        <p class="hero-subtitle">Your privacy is important to us. This policy outlines how we collect, use, and protect your information.</p>
+        <p class="hero-subtitle"><b>Your privacy is important to us. This policy outlines how we collect, use, and protect your information.</b></p>
       </div>
     </div>
 
