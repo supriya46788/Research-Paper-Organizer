@@ -1,590 +1,838 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service | Research Paper Organizer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="./favicon/favicon.ico"
+      type="image/x-icon"
+    />
+    <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <style>
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        flex-wrap: wrap;
+      }
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service | Research Paper Organizer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="./favicon/site.webmanifest" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    crossorigin="anonymous" />
-  <style>
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .hamburger-container {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-      padding: 10px;
-    }
-
-    .hamburger-container .bar {
-      width: 25px;
-      height: 3px;
-      background-color: #333;
-      transition: 0.3s;
-    }
-
-    /* Terms Page Specific Styles */
-    .terms-hero {
-      background: linear-gradient(135deg, #0077b5 0%, #2c5aa0 100%);
-      color: white;
-      padding: 80px 20px 60px;
-      text-align: center;
-      border-radius: 0 0 30px 30px;
-      margin-bottom: 40px;
-    }
-
-    .terms-hero .hero-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 15px;
-      color: #ffffff;
-      opacity: 1;
-      text-shadow: 2px 2px 0 rgba(237, 231, 231, 0.6);
-    }
-
-    .terms-hero .hero-subtitle {
-      font-size: 1.2rem;
-      opacity: 0.95;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-      color: #ffffff !important;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    }
-
-    .terms-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 20px 40px;
-    }
-
-    .terms-section {
-      background: white;
-      border-radius: 15px;
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .terms-section:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .terms-section h2 {
-      color: #2c5aa0;
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .terms-section h3 {
-      color: #4a5568;
-      font-size: 1.3rem;
-      margin: 25px 0 15px 0;
-      border-left: 4px solid #0077b5;
-      padding-left: 15px;
-    }
-
-    .terms-section p {
-      color: #4a5568;
-      line-height: 1.8;
-      margin-bottom: 15px;
-      font-size: 1rem;
-    }
-
-    .terms-section ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .terms-section ul li {
-      margin-bottom: 12px;
-      padding-left: 25px;
-      position: relative;
-      color: #4a5568;
-      line-height: 1.6;
-    }
-
-    .terms-section ul li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 2px;
-      color: #0077b5;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    .terms-section .highlight {
-      background: linear-gradient(120deg, rgba(0, 119, 181, 0.1) 0%, rgba(44, 90, 160, 0.1) 100%);
-      padding: 15px;
-      border-radius: 8px;
-      border-left: 4px solid #0077b5;
-      margin: 20px 0;
-    }
-
-    .contact-info {
-      background: linear-gradient(135deg, #0077b5 0%, #2c5aa0 100%);
-      color: white;
-      border-radius: 15px;
-      padding: 25px;
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .contact-info h3 {
-      margin-bottom: 15px;
-      color: white !important;
-      border: none !important;
-      padding: 0 !important;
-    }
-
-    .contact-info p {
-      color: rgba(255, 255, 255, 0.9) !important;
-      margin-bottom: 10px;
-    }
-
-    .contact-info a {
-      color: white;
-      text-decoration: underline;
-    }
-
-    .contact-info a:hover {
-      color: #f7fafc;
-    }
-
-    /* Dark Mode Styles */
-    body.dark-mode .terms-section {
-      background: #2d3748;
-      color: #e2e8f0;
-    }
-
-    body.dark-mode .terms-section h2 {
-      color: #63b3ed;
-    }
-
-    body.dark-mode .terms-section h3 {
-      color: #cbd5e1;
-      border-left-color: #63b3ed;
-    }
-
-    body.dark-mode .terms-section p,
-    body.dark-mode .terms-section ul li {
-      color: #cbd5e1;
-    }
-
-    body.dark-mode .terms-section ul li::before {
-      color: #63b3ed;
-    }
-
-    body.dark-mode .terms-section .highlight {
-      background: rgba(99, 179, 237, 0.1);
-      border-left-color: #63b3ed;
-    }
-
-    body.dark-mode .hamburger-container .bar {
-      background-color: #e2e8f0;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
       .hamburger-container {
-        display: flex;
-      }
-
-      .navbar-right-links {
         display: none;
-        width: 100%;
         flex-direction: column;
-        background: rgba(255, 255, 255, 0.95);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 1rem;
-        border-radius: 0 0 10px 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        gap: 5px;
+        padding: 10px;
       }
 
-      .navbar-right-links.show {
-        display: flex;
+      .hamburger-container .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        transition: 0.3s;
+      }
+
+      /* Terms Page Specific Styles */
+      .terms-hero {
+        background: linear-gradient(135deg, #0077b5 0%, #2c5aa0 100%);
+        color: white;
+        padding: 80px 20px 60px;
+        text-align: center;
+        border-radius: 0 0 30px 30px;
+        margin-bottom: 40px;
       }
 
       .terms-hero .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: #ffffff;
+        opacity: 1;
+        text-shadow: 2px 2px 0 rgba(237, 231, 231, 0.6);
       }
 
       .terms-hero .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        opacity: 0.95;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+        color: #ffffff !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .terms-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px 40px;
       }
 
       .terms-section {
-        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .terms-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       }
 
       .terms-section h2 {
-        font-size: 1.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .terms-content {
-        padding: 0 15px 40px;
-      }
-
-      .terms-hero {
-        padding: 60px 15px 40px;
+        color: #2c5aa0;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
 
-      .terms-section {
+      .terms-section h3 {
+        color: #4a5568;
+        font-size: 1.3rem;
+        margin: 25px 0 15px 0;
+        border-left: 4px solid #0077b5;
+        padding-left: 15px;
+      }
+
+      .terms-section p {
+        color: #4a5568;
+        line-height: 1.8;
+        margin-bottom: 15px;
+        font-size: 1rem;
+      }
+
+      .terms-section ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .terms-section ul li {
+        margin-bottom: 12px;
+        padding-left: 25px;
+        position: relative;
+        color: #4a5568;
+        line-height: 1.6;
+      }
+
+      .terms-section ul li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        top: 2px;
+        color: #0077b5;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .terms-section .highlight {
+        background: linear-gradient(
+          120deg,
+          rgba(0, 119, 181, 0.1) 0%,
+          rgba(44, 90, 160, 0.1) 100%
+        );
         padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #0077b5;
+        margin: 20px 0;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="container">
-    <!-- Navigation -->
-    <nav class="navbar">
-      <a href="index.html" class="nav-item">
-        Home
-      </a>
-      <div class="hamburger-container" onclick="toggleMenu()" aria-label="Toggle Menu">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-      </div>
-      <div class="navbar-right-links">
-        <a href="about.html" class="nav-item">About us</a>
-        <a href="blog.html" class="nav-item">Blogs</a>
-        <a href="Faq.html" class="nav-item">FAQ</a>
-        <a href="contact.html" class="nav-item">Contact Us</a>
-        <a href="tools.html" class="nav-item">Tools</a>
-        <button class="dark-toggle nav-item" id="darkModeToggle" title="Toggle Dark Mode" onclick="toggleDarkMode()">
-          <i class="fas fa-moon"></i>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <div class="terms-hero">
-      <div class="hero-content">
-        <h1 class="hero-title">Terms of Service</h1>
-        <p class="hero-subtitle">Please read these terms carefully before using our research paper organization service.</p>
-      </div>
-    </div>
-
-    <!-- Terms Content -->
-    <div class="terms-content">
-      <div class="terms-section">
-        <h2><i class="fas fa-handshake"></i> Agreement to Terms</h2>
-        <p>By accessing and using the Research Paper Organizer ("the Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use our Service.</p>
-        
-        <div class="highlight">
-          <strong>Last Updated:</strong> January 2025<br>
-          <strong>Effective Date:</strong> January 2025
-        </div>
-      </div>
-
-      <div class="terms-section">
-        <h2><i class="fas fa-user-shield"></i> Account Responsibility</h2>
-        
-        <h3>Account Creation</h3>
-        <ul>
-          <li>You must provide accurate and complete information when creating your account</li>
-          <li>You are responsible for maintaining the confidentiality of your account credentials</li>
-          <li>You must be at least 13 years old to create an account</li>
-          <li>One person or entity may not maintain more than one account</li>
-        </ul>
-
-        <h3>Account Security</h3>
-        <ul>
-          <li>You are responsible for all activities that occur under your account</li>
-          <li>You must notify us immediately of any unauthorized use of your account</li>
-          <li>We reserve the right to suspend or terminate accounts that violate these Terms</li>
-          <li>You agree to use strong passwords and enable two-factor authentication when available</li>
-        </ul>
-      </div>
-
-      <div class="terms-section">
-        <h2><i class="fas fa-file-alt"></i> Content and Intellectual Property</h2>
-        
-        <h3>Your Content</h3>
-        <ul>
-          <li>You retain full ownership of all research papers, notes, and metadata you upload</li>
-          <li>You grant us a limited license to store, organize, and display your content within your account</li>
-          <li>You are responsible for ensuring you have the right to upload and store all content</li>
-          <li>You must not upload content that infringes on others' intellectual property rights</li>
-        </ul>
-
-        <h3>Our Service</h3>
-        <ul>
-          <li>The Research Paper Organizer platform and its features are owned by us</li>
-          <li>You may not copy, modify, or distribute our software or platform</li>
-          <li>We grant you a limited, non-exclusive license to use our Service according to these Terms</li>
-          <li>All trademarks and service marks are property of their respective owners</li>
-        </ul>
-      </div>
-
-      <div class="terms-section">
-        <h2><i class="fas fa-gavel"></i> Acceptable Use</h2>
-        
-        <h3>Permitted Uses</h3>
-        <ul>
-          <li>Organizing and managing your legitimate research papers and academic materials</li>
-          <li>Using the Service for educational, academic, and research purposes</li>
-          <li>Collaborating with others on research projects (when sharing features are available)</li>
-          <li>Accessing your organized research from multiple devices</li>
-        </ul>
-
-        <h3>Prohibited Activities</h3>
-        <ul>
-          <li>Using the Service for any unlawful activities or illegal purposes</li>
-          <li>Uploading malicious software, viruses, or harmful code</li>
-          <li>Attempting to gain unauthorized access to our systems or other users' accounts</li>
-          <li>Using the Service to store or distribute copyrighted material without permission</li>
-          <li>Interfering with or disrupting the integrity or performance of the Service</li>
-          <li>Creating accounts for automated or bot usage without express permission</li>
-        </ul>
-      </div>
-
-      <div class="terms-section">
-        <h2><i class="fas fa-shield-alt"></i> Data Security and Privacy</h2>
-        
-        <h3>Our Commitment</h3>
-        <ul>
-          <li>We implement industry-standard security measures to protect your data</li>
-          <li>Your data is encrypted in transit and at rest using strong encryption methods</li>
-          <li>We do not sell or share your personal information with third parties for marketing purposes</li>
-          <li>We comply with applicable data protection regulations</li>
-        </ul>
-
-        <h3>Your Responsibilities</h3>
-        <ul>
-          <li>Keep backups of important research data as no system is 100% secure</li>
-          <li>Report any suspected security breaches immediately</li>
-          <li>Use the Service in compliance with your institution's data policies</li>
-          <li>Be aware that shared research may be visible to collaborators you invite</li>
-        </ul>
-
-        <div class="highlight">
-          <strong>Important:</strong> While we take security seriously, no online service can guarantee complete security. We encourage you to maintain your own backups of critical research data.
-        </div>
-      </div>
-
-      <div class="terms-section">
-        <h2><i class="fas fa-dollar-sign"></i> Service Availability and Modifications</h2>
-        
-        <h3>Service Provision</h3>
-        <ul>
-          <li>We strive to maintain high service availability but cannot guarantee 100% uptime</li>
-          <li>We may temporarily suspend the Service for maintenance or updates</li>
-          <li>We reserve the right to modify or discontinue features with reasonable notice</li>
-          <li>Critical security updates may be applied without advance notice</li>
-        </ul>
-
-        <h3>Feature Changes</h3>
-        <ul>
-          <li>We may add, modify, or remove features to improve the Service</li>
-          <li>We will provide notice of significant changes that affect core functionality</li>
-          <li>New features may be introduced in beta form before general availability</li>
-          <li>Some features may require additional terms or agreements</li>
-        </ul>
-      </div>
-
-      <div class="terms-section">
-        <h2><i class="fas fa-exclamation-triangle"></i> Disclaimers and Limitations</h2>
-        
-        <h3>Service Disclaimers</h3>
-        <ul>
-          <li>The Service is provided "as is" without warranties of any kind</li>
-          <li>We do not guarantee that the Service will meet your specific requirements</li>
-          <li>We are not responsible for loss of data due to technical failures</li>
-          <li>You use the Service at your own risk</li>
-        </ul>
-
-        <h3>Limitation of Liability</h3>
-        <ul>
-          <li>Our liability is limited to the amount you paid for the Service in the past 12 months</li>
-          <li>We are not liable for indirect, incidental, or consequential damages</li>
-          <li>We are not responsible for third-party services or integrations</li>
-          <li>These limitations apply to the fullest extent permitted by law</li>
-        </ul>
-      </div>
-
-      <div class="terms-section">
-        <h2><i class="fas fa-ban"></i> Termination</h2>
-        
-        <h3>Termination by You</h3>
-        <ul>
-          <li>You may terminate your account at any time through your account settings</li>
-          <li>Upon termination, you can download your data for a limited period</li>
-          <li>Deleted accounts and data cannot be recovered after the grace period</li>
-          <li>You remain responsible for any charges incurred before termination</li>
-        </ul>
-
-        <h3>Termination by Us</h3>
-        <ul>
-          <li>We may suspend or terminate accounts that violate these Terms</li>
-          <li>We may terminate the Service with 30 days' notice for business reasons</li>
-          <li>Immediate termination may occur for serious violations or security threats</li>
-          <li>We will provide reasonable opportunity to download data before account deletion</li>
-        </ul>
-      </div>
-
-      <div class="terms-section">
-        <h2><i class="fas fa-balance-scale"></i> Governing Law and Disputes</h2>
-        
-        <h3>Applicable Law</h3>
-        <ul>
-          <li>These Terms are governed by the laws of the jurisdiction where our company is registered</li>
-          <li>Any disputes will be resolved in the courts of that jurisdiction</li>
-          <li>You agree to submit to the personal jurisdiction of those courts</li>
-          <li>If any provision is found unenforceable, the remainder of the Terms remain in effect</li>
-        </ul>
-
-        <h3>Dispute Resolution</h3>
-        <ul>
-          <li>We encourage resolving disputes through direct communication first</li>
-          <li>Formal disputes may be subject to binding arbitration</li>
-          <li>Class action lawsuits are waived to the extent permitted by law</li>
-          <li>You have one year from when a dispute arises to bring legal action</li>
-        </ul>
-      </div>
-
-      <div class="terms-section">
-        <h2><i class="fas fa-edit"></i> Changes to Terms</h2>
-        
-        <p>We may update these Terms of Service from time to time. When we make changes:</p>
-        
-        <ul>
-          <li>We will notify you by email and through prominent notice on our Service</li>
-          <li>The updated Terms will be posted on our website with the new effective date</li>
-          <li>Continued use of the Service after the effective date constitutes acceptance</li>
-          <li>Material changes will include a 30-day notice period before taking effect</li>
-          <li>You may terminate your account if you do not agree to the updated Terms</li>
-        </ul>
-
-        <div class="highlight">
-          <strong>Notice Period:</strong> We will provide at least 30 days' notice for significant changes that materially affect your rights or obligations.
-        </div>
-      </div>
-
-      <div class="contact-info">
-        <h3><i class="fas fa-envelope"></i> Contact Us</h3>
-        <p>If you have questions about these Terms of Service or need clarification on any provision, please contact us:</p>
-        <p><strong>Email:</strong> <a href="mailto:legal@researchorganizer.com">legal@researchorganizer.com</a></p>
-        <p><strong>Support:</strong> <a href="mailto:support@researchorganizer.com">support@researchorganizer.com</a></p>
-        <p>We will respond to your inquiries within 5 business days.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Back to Top Button -->
-  <button id="backToTop">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-
-  <!-- Footer -->
-  <div id="footer-placeholder"></div>
-
-<script>
-  fetch("footer.html")
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
-    });
-</script>
-
-  <script>
-    // Dark mode toggle function
-    function toggleDarkMode() {
-      const body = document.body;
-      const darkModeToggle = document.getElementById('darkModeToggle');
-      const icon = darkModeToggle.querySelector('i');
-      
-      body.classList.toggle('dark-mode');
-      
-      if (body.classList.contains('dark-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        localStorage.setItem('darkMode', 'enabled');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        localStorage.setItem('darkMode', 'disabled');
+      .contact-info {
+        background: linear-gradient(135deg, #0077b5 0%, #2c5aa0 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        margin-top: 30px;
       }
-    }
 
-    // Apply saved theme on page load
-    function applyThemeFromStorage() {
-      const darkMode = localStorage.getItem('darkMode');
-      const body = document.body;
-      const darkModeToggle = document.getElementById('darkModeToggle');
-      const icon = darkModeToggle.querySelector('i');
-      
-      if (darkMode === 'enabled') {
-        body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      } else {
-        body.classList.remove('dark-mode');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
+      .contact-info h3 {
+        margin-bottom: 15px;
+        color: white !important;
+        border: none !important;
+        padding: 0 !important;
       }
-    }
 
-    // Mobile menu toggle
-    function toggleMenu() {
-      const navbarRightLinks = document.querySelector('.navbar-right-links');
-      navbarRightLinks.classList.toggle('show');
-    }
+      .contact-info p {
+        color: rgba(255, 255, 255, 0.9) !important;
+        margin-bottom: 10px;
+      }
 
-    // Back to top functionality
-    function setupBackToTop() {
-      const backToTop = document.getElementById('backToTop');
-      
-      window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-          backToTop.style.display = 'block';
-        } else {
-          backToTop.style.display = 'none';
+      .contact-info a {
+        color: white;
+        text-decoration: underline;
+      }
+
+      .contact-info a:hover {
+        color: #f7fafc;
+      }
+
+      /* Dark Mode Styles */
+      body.dark-mode .terms-section {
+        background: #2d3748;
+        color: #e2e8f0;
+      }
+
+      body.dark-mode .terms-section h2 {
+        color: #63b3ed;
+      }
+
+      body.dark-mode .terms-section h3 {
+        color: #cbd5e1;
+        border-left-color: #63b3ed;
+      }
+
+      body.dark-mode .terms-section p,
+      body.dark-mode .terms-section ul li {
+        color: #cbd5e1;
+      }
+
+      body.dark-mode .terms-section ul li::before {
+        color: #63b3ed;
+      }
+
+      body.dark-mode .terms-section .highlight {
+        background: rgba(99, 179, 237, 0.1);
+        border-left-color: #63b3ed;
+      }
+
+      body.dark-mode .hamburger-container .bar {
+        background-color: #e2e8f0;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hamburger-container {
+          display: flex;
         }
-      });
-      
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
+        .nav-item {
+          display: inline-flex; /* Ensures icon and text are in a row */
+          align-items: center; /* Vertical centering */
+          justify-content: center;
+          padding: 1rem;
+          width: 10rem;
+          font-size: 1rem;
+        }
+
+        .navbar-right-links {
+          display: none !important;
+          position: absolute;
+          top: 70px; /* adjust depending on navbar height */
+          right: 10px;
+          margin: 15px; /* aligns the box to the right */
+          background-color: white;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 1rem;
+          flex-direction: column;
+          gap: 0.75rem;
+          z-index: 1000;
+          width: max-content; /* only as wide as content */
+          min-width: 150px;
+        }
+
+        .navbar-right-links.show {
+          display: flex !important;
+        }
+
+        .terms-hero .hero-title {
+          font-size: 2rem;
+        }
+
+        .terms-hero .hero-subtitle {
+          font-size: 1rem;
+        }
+
+        .terms-section {
+          padding: 20px;
+        }
+
+        .terms-section h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .terms-content {
+          padding: 0 15px 40px;
+        }
+
+        .terms-hero {
+          padding: 60px 15px 40px;
+        }
+
+        .terms-section {
+          padding: 15px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-home-item {
+          height: 42px !important;
+          width: 78px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Navigation -->
+      <nav class="navbar">
+        <a href="index.html" class="nav-item nav-home-item"> Home </a>
+        <div
+          class="hamburger-container"
+          onclick="toggleMenu()"
+          aria-label="Toggle Menu"
+        >
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="navbar-right-links">
+          <a href="about.html" class="nav-item">About us</a>
+          <a href="blog.html" class="nav-item">Blogs</a>
+          <a href="Faq.html" class="nav-item">FAQ</a>
+          <a href="contact.html" class="nav-item">Contact Us</a>
+          <a href="tools.html" class="nav-item">Tools</a>
+          <button
+            class="dark-toggle nav-item"
+            id="darkModeToggle"
+            title="Toggle Dark Mode"
+            onclick="toggleDarkMode()"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <div class="terms-hero">
+        <div class="hero-content">
+          <h1 class="hero-title">Terms of Service</h1>
+          <p class="hero-subtitle">
+            Please read these terms carefully before using our research paper
+            organization service.
+          </p>
+        </div>
+      </div>
+
+      <!-- Terms Content -->
+      <div class="terms-content">
+        <div class="terms-section">
+          <h2><i class="fas fa-handshake"></i> Agreement to Terms</h2>
+          <p>
+            By accessing and using the Research Paper Organizer ("the Service"),
+            you agree to be bound by these Terms of Service ("Terms"). If you do
+            not agree to these Terms, please do not use our Service.
+          </p>
+
+          <div class="highlight">
+            <strong>Last Updated:</strong> January 2025<br />
+            <strong>Effective Date:</strong> January 2025
+          </div>
+        </div>
+
+        <div class="terms-section">
+          <h2><i class="fas fa-user-shield"></i> Account Responsibility</h2>
+
+          <h3>Account Creation</h3>
+          <ul>
+            <li>
+              You must provide accurate and complete information when creating
+              your account
+            </li>
+            <li>
+              You are responsible for maintaining the confidentiality of your
+              account credentials
+            </li>
+            <li>You must be at least 13 years old to create an account</li>
+            <li>One person or entity may not maintain more than one account</li>
+          </ul>
+
+          <h3>Account Security</h3>
+          <ul>
+            <li>
+              You are responsible for all activities that occur under your
+              account
+            </li>
+            <li>
+              You must notify us immediately of any unauthorized use of your
+              account
+            </li>
+            <li>
+              We reserve the right to suspend or terminate accounts that violate
+              these Terms
+            </li>
+            <li>
+              You agree to use strong passwords and enable two-factor
+              authentication when available
+            </li>
+          </ul>
+        </div>
+
+        <div class="terms-section">
+          <h2>
+            <i class="fas fa-file-alt"></i> Content and Intellectual Property
+          </h2>
+
+          <h3>Your Content</h3>
+          <ul>
+            <li>
+              You retain full ownership of all research papers, notes, and
+              metadata you upload
+            </li>
+            <li>
+              You grant us a limited license to store, organize, and display
+              your content within your account
+            </li>
+            <li>
+              You are responsible for ensuring you have the right to upload and
+              store all content
+            </li>
+            <li>
+              You must not upload content that infringes on others' intellectual
+              property rights
+            </li>
+          </ul>
+
+          <h3>Our Service</h3>
+          <ul>
+            <li>
+              The Research Paper Organizer platform and its features are owned
+              by us
+            </li>
+            <li>
+              You may not copy, modify, or distribute our software or platform
+            </li>
+            <li>
+              We grant you a limited, non-exclusive license to use our Service
+              according to these Terms
+            </li>
+            <li>
+              All trademarks and service marks are property of their respective
+              owners
+            </li>
+          </ul>
+        </div>
+
+        <div class="terms-section">
+          <h2><i class="fas fa-gavel"></i> Acceptable Use</h2>
+
+          <h3>Permitted Uses</h3>
+          <ul>
+            <li>
+              Organizing and managing your legitimate research papers and
+              academic materials
+            </li>
+            <li>
+              Using the Service for educational, academic, and research purposes
+            </li>
+            <li>
+              Collaborating with others on research projects (when sharing
+              features are available)
+            </li>
+            <li>Accessing your organized research from multiple devices</li>
+          </ul>
+
+          <h3>Prohibited Activities</h3>
+          <ul>
+            <li>
+              Using the Service for any unlawful activities or illegal purposes
+            </li>
+            <li>Uploading malicious software, viruses, or harmful code</li>
+            <li>
+              Attempting to gain unauthorized access to our systems or other
+              users' accounts
+            </li>
+            <li>
+              Using the Service to store or distribute copyrighted material
+              without permission
+            </li>
+            <li>
+              Interfering with or disrupting the integrity or performance of the
+              Service
+            </li>
+            <li>
+              Creating accounts for automated or bot usage without express
+              permission
+            </li>
+          </ul>
+        </div>
+
+        <div class="terms-section">
+          <h2><i class="fas fa-shield-alt"></i> Data Security and Privacy</h2>
+
+          <h3>Our Commitment</h3>
+          <ul>
+            <li>
+              We implement industry-standard security measures to protect your
+              data
+            </li>
+            <li>
+              Your data is encrypted in transit and at rest using strong
+              encryption methods
+            </li>
+            <li>
+              We do not sell or share your personal information with third
+              parties for marketing purposes
+            </li>
+            <li>We comply with applicable data protection regulations</li>
+          </ul>
+
+          <h3>Your Responsibilities</h3>
+          <ul>
+            <li>
+              Keep backups of important research data as no system is 100%
+              secure
+            </li>
+            <li>Report any suspected security breaches immediately</li>
+            <li>
+              Use the Service in compliance with your institution's data
+              policies
+            </li>
+            <li>
+              Be aware that shared research may be visible to collaborators you
+              invite
+            </li>
+          </ul>
+
+          <div class="highlight">
+            <strong>Important:</strong> While we take security seriously, no
+            online service can guarantee complete security. We encourage you to
+            maintain your own backups of critical research data.
+          </div>
+        </div>
+
+        <div class="terms-section">
+          <h2>
+            <i class="fas fa-dollar-sign"></i> Service Availability and
+            Modifications
+          </h2>
+
+          <h3>Service Provision</h3>
+          <ul>
+            <li>
+              We strive to maintain high service availability but cannot
+              guarantee 100% uptime
+            </li>
+            <li>
+              We may temporarily suspend the Service for maintenance or updates
+            </li>
+            <li>
+              We reserve the right to modify or discontinue features with
+              reasonable notice
+            </li>
+            <li>
+              Critical security updates may be applied without advance notice
+            </li>
+          </ul>
+
+          <h3>Feature Changes</h3>
+          <ul>
+            <li>
+              We may add, modify, or remove features to improve the Service
+            </li>
+            <li>
+              We will provide notice of significant changes that affect core
+              functionality
+            </li>
+            <li>
+              New features may be introduced in beta form before general
+              availability
+            </li>
+            <li>Some features may require additional terms or agreements</li>
+          </ul>
+        </div>
+
+        <div class="terms-section">
+          <h2>
+            <i class="fas fa-exclamation-triangle"></i> Disclaimers and
+            Limitations
+          </h2>
+
+          <h3>Service Disclaimers</h3>
+          <ul>
+            <li>
+              The Service is provided "as is" without warranties of any kind
+            </li>
+            <li>
+              We do not guarantee that the Service will meet your specific
+              requirements
+            </li>
+            <li>
+              We are not responsible for loss of data due to technical failures
+            </li>
+            <li>You use the Service at your own risk</li>
+          </ul>
+
+          <h3>Limitation of Liability</h3>
+          <ul>
+            <li>
+              Our liability is limited to the amount you paid for the Service in
+              the past 12 months
+            </li>
+            <li>
+              We are not liable for indirect, incidental, or consequential
+              damages
+            </li>
+            <li>
+              We are not responsible for third-party services or integrations
+            </li>
+            <li>
+              These limitations apply to the fullest extent permitted by law
+            </li>
+          </ul>
+        </div>
+
+        <div class="terms-section">
+          <h2><i class="fas fa-ban"></i> Termination</h2>
+
+          <h3>Termination by You</h3>
+          <ul>
+            <li>
+              You may terminate your account at any time through your account
+              settings
+            </li>
+            <li>
+              Upon termination, you can download your data for a limited period
+            </li>
+            <li>
+              Deleted accounts and data cannot be recovered after the grace
+              period
+            </li>
+            <li>
+              You remain responsible for any charges incurred before termination
+            </li>
+          </ul>
+
+          <h3>Termination by Us</h3>
+          <ul>
+            <li>
+              We may suspend or terminate accounts that violate these Terms
+            </li>
+            <li>
+              We may terminate the Service with 30 days' notice for business
+              reasons
+            </li>
+            <li>
+              Immediate termination may occur for serious violations or security
+              threats
+            </li>
+            <li>
+              We will provide reasonable opportunity to download data before
+              account deletion
+            </li>
+          </ul>
+        </div>
+
+        <div class="terms-section">
+          <h2>
+            <i class="fas fa-balance-scale"></i> Governing Law and Disputes
+          </h2>
+
+          <h3>Applicable Law</h3>
+          <ul>
+            <li>
+              These Terms are governed by the laws of the jurisdiction where our
+              company is registered
+            </li>
+            <li>
+              Any disputes will be resolved in the courts of that jurisdiction
+            </li>
+            <li>
+              You agree to submit to the personal jurisdiction of those courts
+            </li>
+            <li>
+              If any provision is found unenforceable, the remainder of the
+              Terms remain in effect
+            </li>
+          </ul>
+
+          <h3>Dispute Resolution</h3>
+          <ul>
+            <li>
+              We encourage resolving disputes through direct communication first
+            </li>
+            <li>Formal disputes may be subject to binding arbitration</li>
+            <li>
+              Class action lawsuits are waived to the extent permitted by law
+            </li>
+            <li>
+              You have one year from when a dispute arises to bring legal action
+            </li>
+          </ul>
+        </div>
+
+        <div class="terms-section">
+          <h2><i class="fas fa-edit"></i> Changes to Terms</h2>
+
+          <p>
+            We may update these Terms of Service from time to time. When we make
+            changes:
+          </p>
+
+          <ul>
+            <li>
+              We will notify you by email and through prominent notice on our
+              Service
+            </li>
+            <li>
+              The updated Terms will be posted on our website with the new
+              effective date
+            </li>
+            <li>
+              Continued use of the Service after the effective date constitutes
+              acceptance
+            </li>
+            <li>
+              Material changes will include a 30-day notice period before taking
+              effect
+            </li>
+            <li>
+              You may terminate your account if you do not agree to the updated
+              Terms
+            </li>
+          </ul>
+
+          <div class="highlight">
+            <strong>Notice Period:</strong> We will provide at least 30 days'
+            notice for significant changes that materially affect your rights or
+            obligations.
+          </div>
+        </div>
+
+        <div class="contact-info">
+          <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+          <p>
+            If you have questions about these Terms of Service or need
+            clarification on any provision, please contact us:
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:legal@researchorganizer.com"
+              >legal@researchorganizer.com</a
+            >
+          </p>
+          <p>
+            <strong>Support:</strong>
+            <a href="mailto:support@researchorganizer.com"
+              >support@researchorganizer.com</a
+            >
+          </p>
+          <p>We will respond to your inquiries within 5 business days.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
         });
+    </script>
+
+    <script>
+      // Dark mode toggle function
+      function toggleDarkMode() {
+        const body = document.body;
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        const icon = darkModeToggle.querySelector("i");
+
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+          localStorage.setItem("darkMode", "disabled");
+        }
+      }
+
+      // Apply saved theme on page load
+      function applyThemeFromStorage() {
+        const darkMode = localStorage.getItem("darkMode");
+        const body = document.body;
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        const icon = darkModeToggle.querySelector("i");
+
+        if (darkMode === "enabled") {
+          body.classList.add("dark-mode");
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+        } else {
+          body.classList.remove("dark-mode");
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+        }
+      }
+
+      // Mobile menu toggle
+      function toggleMenu() {
+        const navbarRightLinks = document.querySelector(".navbar-right-links");
+        navbarRightLinks.classList.toggle("show");
+      }
+
+      // Back to top functionality
+      function setupBackToTop() {
+        const backToTop = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+            backToTop.style.display = "block";
+          } else {
+            backToTop.style.display = "none";
+          }
+        });
+
+        backToTop.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      }
+
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        applyThemeFromStorage();
+        setupBackToTop();
       });
-    }
-
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      applyThemeFromStorage();
-      setupBackToTop();
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>
