@@ -2665,6 +2665,9 @@ body.dark-mode .speed-control input:focus {
   animation-fill-mode: none; /* don’t lock final transform */
 
 }
-
-
-
+@media (max-width: 768px) {
+  .nav-home-item {
+    height: 42px !important;
+    width: 78px !important;
+  }
+}
