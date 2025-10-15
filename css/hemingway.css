@@ -23,8 +23,15 @@ h1 {
   font-size: 22px;
   color: black;
 }
+body.dark-mode h1 {
+  color:white;
+}
 p.lead {
   color: blue;
+  margin-bottom: 12px;
+}
+body.dark-mode p.lead {
+  color:#60a5fa;
   margin-bottom: 12px;
 }
 .card {
