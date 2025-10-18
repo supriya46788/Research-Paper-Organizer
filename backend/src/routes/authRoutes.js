@@ -26,7 +26,8 @@ router.get(
     
     // Corrected Redirect: Points to your frontend application's callback page
     const user = req.user;
-    const redirectUrl = `http://127.0.0.1:5500/auth-callback.html?token=${token}&name=${encodeURIComponent(user.name)}&email=${user.email}`;
+    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5500";
+    const redirectUrl = `${frontendUrl}/auth-callback.html?token=${token}&name=${encodeURIComponent(user.name)}&email=${user.email}`;
     
     res.redirect(redirectUrl);
   }

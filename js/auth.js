@@ -3,55 +3,24 @@ const USERS_KEY = "research_organizer_users";
 const CURRENT_USER_KEY = "current_user";
 const THEME_KEY = "theme"; // Add theme key
 
-// Import Firebase (modular SDK v11)
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+// === Google Sign-in via Backend OAuth ===
+// Configure your backend base URL here
+const API_BASE = (window.AUTH_API_BASE) || "http://localhost:3000";
 
-// Firebase configuration template
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY_HERE",
-  authDomain: "your-project-id.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project-id.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID", // optional (only if you enabled Analytics)
-};
-
-// ✅ Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-
-// ✅ Hook up the Google button
-document.querySelector(".google-btn").addEventListener("click", async () => {
-  try {
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-
-    // Save user locally
-    localStorage.setItem(
-      CURRENT_USER_KEY,
-      JSON.stringify({
-        id: user.uid,
-        name: user.displayName,
-        email: user.email,
-      })
-    );
-
-    alert(`Signed in as ${user.displayName}`);
-    window.location.href = "index.html"; // redirect after signup/login
-  } catch (err) {
-    console.error("Google sign-in failed:", err);
-    alert("Google sign-in failed");
-  }
-});
+// Hook up the Google button to backend OAuth
+(function attachGoogleSignIn() {
+  const googleBtn = document.querySelector(".google-btn");
+  if (!googleBtn) return;
+  googleBtn.addEventListener("click", () => {
+    try {
+      // Redirect to backend OAuth route
+      window.location.href = `${API_BASE}/api/auth/google`;
+    } catch (err) {
+      console.error("Google sign-in redirect failed:", err);
+      alert("Google sign-in failed");
+    }
+  });
+})();
 
 class AuthSystem {
   constructor() {
