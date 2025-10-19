@@ -2671,3 +2671,205 @@ body.dark-mode .speed-control input:focus {
     width: 78px !important;
   }
 }
+/* Footer Subscribe Section */
+.subscribe-section p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #e0e0e0;
+  margin-bottom: 0.8rem;
+}
+
+.subscribe-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.subscribe-form input {
+  flex: 1 1 auto;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.subscribe-form button {
+  background-color: #2f6bf9;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.subscribe-form button:hover {
+  background-color: #1e56d3;
+}
+/* Footer Layout Fix */
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-links-section {
+  min-width: 200px;
+  word-wrap: break-word;
+}
+
+/* Responsive Footer Layout Fix */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links-section {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .subscribe-form input,
+  .subscribe-form button {
+    width: 100%;
+  }
+}
+
+/* ===== Enhanced Subscribe Section (Dark Mode Friendly) ===== */
+.subscribe-section {
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.subscribe-section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(47, 99, 247, 0.25);
+  border-color: rgba(47, 99, 247, 0.4);
+}
+
+.subscribe-section h4 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.subscribe-section p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 1rem;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.subscribe-form input {
+  flex: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.subscribe-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-form input:focus {
+  border-color: #4f8ef7;
+  box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.3);
+}
+
+.subscribe-form button {
+  background: linear-gradient(135deg, #4f8ef7, #2c5aa0);
+  border: none;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.subscribe-form button:hover {
+  background: linear-gradient(135deg, #2c5aa0, #4f8ef7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 142, 247, 0.4);
+}
+
+/* Mobile responsiveness for Subscribe section */
+@media (max-width: 768px) {
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-form input,
+  .subscribe-form button {
+    width: 100%;
+  }
+
+  .subscribe-section {
+    text-align: center;
+  }
+}
+/* ===== Subscribe Input Light/Dark Mode Adaptation ===== */
+
+/* Light mode */
+body:not(.dark-mode) .subscribe-form input {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #111827;
+}
+
+body:not(.dark-mode) .subscribe-form input::placeholder {
+  color: #6b7280;
+}
+
+body:not(.dark-mode) .subscribe-form input:focus {
+  border-color: #4f8ef7;
+  box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.2);
+}
+
+/* Dark mode */
+body.dark-mode .subscribe-form input {
+  background-color: #2c2f36;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #f5f5f5;
+}
+
+body.dark-mode .subscribe-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+body.dark-mode .subscribe-form input:focus {
+  border-color: #4f8ef7;
+  box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.3);
+}
+
