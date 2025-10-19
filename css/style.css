@@ -2634,3 +2634,73 @@ body.dark-mode .speed-control input:focus {
 .dark-mode .hamburger-container .bar{
   background-color: #adadad;
 }
+
+/* Privacy Policy Grid - Fixed */
+.privacy-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+  align-items: start; /* ← Prevents row stretching */
+}
+
+.privacy-section,
+.contact-info {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.privacy-section:hover,
+.contact-info:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
+}
+
+/* Contact Info */
+.contact-info {
+  background: linear-gradient(135deg, #357abd, #2c5aa0);
+  color: white;
+  text-align: center;
+  border-radius: 16px;
+}
+
+/* Dark Mode */
+body.dark-mode .privacy-section {
+  background: #1f2937;
+  color: #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .privacy-section h2,
+body.dark-mode .privacy-section h3 {
+  color: #90cdf4;
+}
+
+body.dark-mode .privacy-section p,
+body.dark-mode .privacy-section li {
+  color: #cbd5e1;
+}
+
+body.dark-mode .contact-info {
+  background: linear-gradient(135deg, #1e3a8a, #1e40af);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .privacy-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
