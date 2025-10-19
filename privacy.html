@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy | Research Paper Organizer</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="shortcut icon" href="./favicon/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    crossorigin="anonymous" />
-  <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy | Research Paper Organizer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="./favicon/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="./favicon/favicon-48x48.png" type="image/png" />
 
     <link
       rel="apple-touch-icon"
@@ -25,14 +34,14 @@
       href="./favicon/favicon-48x48.png"
     />
     <link rel="manifest" href="./favicon/site.webmanifest" />
-  <style>
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem;
-      flex-wrap: wrap;
-    }
+    <style>
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        flex-wrap: wrap;
+      }
 
     .hamburger-container {
       display: none;
@@ -215,54 +224,265 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       .hamburger-container {
-        display: flex;
-      }
-
-      .navbar-right-links {
         display: none;
-        width: 100%;
         flex-direction: column;
-        background: rgba(255, 255, 255, 0.95);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 1rem;
-        border-radius: 0 0 10px 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        gap: 5px;
+        padding: 10px;
       }
 
-      .navbar-right-links.show {
-        display: flex;
+      .hamburger-container .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #333;
+        transition: 0.3s;
+      }
+
+      /* Privacy Page Specific Styles */
+      .privacy-hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 80px 20px 60px;
+        text-align: center;
+        border-radius: 0 0 30px 30px;
+        margin-bottom: 40px;
       }
 
       .privacy-hero .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: #2c5aa0; /* No need for !important unless overridden */
+        opacity: 1; /* Fully opaque */
+        text-shadow: 2px 2px 0 rgba(237, 231, 231, 0.6); /* Reduce or remove blur */
       }
 
       .privacy-hero .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        opacity: 0.95;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+        color: #ffffff !important;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .privacy-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 20px 40px;
       }
 
       .privacy-section {
-        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .privacy-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       }
 
       .privacy-section h2 {
-        font-size: 1.5rem;
+        color: #2c5aa0;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
-    }
 
-    @media (max-width: 480px) {
-      .privacy-content {
-        padding: 0 15px 40px;
+      .privacy-section h3 {
+        color: #4a5568;
+        font-size: 1.3rem;
+        margin: 25px 0 15px 0;
+        border-left: 4px solid #667eea;
+        padding-left: 15px;
+      }
+
+      .privacy-section p {
+        color: #4a5568;
+        line-height: 1.8;
+        margin-bottom: 15px;
+        font-size: 1rem;
+      }
+
+      .privacy-section ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .privacy-section ul li {
+        margin-bottom: 12px;
+        padding-left: 25px;
+        position: relative;
+        color: #4a5568;
+        line-height: 1.6;
+      }
+
+      .privacy-section ul li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 2px;
+        color: #48bb78;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      .privacy-section .highlight {
+        background: linear-gradient(
+          120deg,
+          rgba(102, 126, 234, 0.1) 0%,
+          rgba(118, 75, 162, 0.1) 100%
+        );
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #667eea;
+        margin: 20px 0;
+      }
+
+      .contact-info {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 25px;
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .contact-info h3 {
+        margin-bottom: 15px;
+        color: white !important;
+        border: none !important;
+        padding: 0 !important;
+      }
+
+      .contact-info p {
+        color: rgba(255, 255, 255, 0.9) !important;
+        margin-bottom: 10px;
+      }
+
+      .contact-info a {
+        color: white;
+        text-decoration: underline;
+      }
+
+      .contact-info a:hover {
+        color: #f7fafc;
+      }
+
+      /* Dark Mode Styles */
+      body.dark-mode .privacy-section {
+        background: #2d3748;
+        color: #e2e8f0;
+      }
+
+      body.dark-mode .privacy-section h2 {
+        color: #90cdf4;
+      }
+
+      body.dark-mode .privacy-section h3 {
+        color: #cbd5e1;
+        border-left-color: #90cdf4;
+      }
+
+      body.dark-mode .privacy-section p,
+      body.dark-mode .privacy-section ul li {
+        color: #cbd5e1;
+      }
+
+      body.dark-mode .privacy-section .highlight {
+        background: rgba(144, 205, 244, 0.1);
+        border-left-color: #90cdf4;
+      }
+
+      body.dark-mode .hamburger-container .bar {
+        background-color: #e2e8f0;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hamburger-container {
+          display: flex;
+        }
+
+        .nav-item {
+          display: inline-flex; /* Ensures icon and text are in a row */
+          align-items: center; /* Vertical centering */
+          justify-content: center;
+          padding: 1rem;
+          width: 10rem;
+          font-size: 1rem;
+        }
+
+        .navbar-right-links {
+          display: none !important;
+          position: absolute;
+          top: 70px; /* adjust depending on navbar height */
+          right: 10px;
+          margin: 15px; /* aligns the box to the right */
+          background-color: white;
+          border: 1px solid #ddd;
+          border-radius: 10px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          padding: 1rem;
+          flex-direction: column;
+          gap: 0.75rem;
+          z-index: 1000;
+          width: max-content; /* only as wide as content */
+          min-width: 150px;
+        }
+
+        .navbar-right-links.show {
+          display: flex !important;
+        }
+
+        .privacy-hero .hero-title {
+          font-size: 2rem;
+        }
+
+        .privacy-hero .hero-subtitle {
+          font-size: 1rem;
+        }
+
+        .privacy-section {
+          padding: 20px;
+        }
+
+        .privacy-section h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .privacy-content {
+          padding: 0 15px 40px;
+        }
+
+        .privacy-hero {
+          padding: 60px 15px 40px;
+        }
+
+        .privacy-section {
+          padding: 15px;
+        }
       }
 
       .privacy-hero {
-        padding: 60px 15px 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
       }
 
-      .privacy-section {
-        padding: 15px;
+      .privacy-hero {
+        background: #ffffff;
       }
     }
   </style>
@@ -499,58 +719,481 @@
         icon.classList.add('fa-moon');
         localStorage.setItem('darkMode', 'disabled');
       }
-    }
 
-    // Apply saved theme on page load
-    function applyThemeFromStorage() {
-      const darkMode = localStorage.getItem('darkMode');
-      const body = document.body;
-      const darkModeToggle = document.getElementById('darkModeToggle');
-      const icon = darkModeToggle.querySelector('i');
-      
-      if (darkMode === 'enabled') {
-        body.classList.add('dark-mode');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      } else {
-        body.classList.remove('dark-mode');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
+      .privacy-hero .hero-subtitle {
+        font-size: 1.2rem;
+        color: #000000 !important;
+        opacity: 1;
+        text-shadow: none;
       }
-    }
 
-    // Mobile menu toggle
-    function toggleMenu() {
-      const navbarRightLinks = document.querySelector('.navbar-right-links');
-      navbarRightLinks.classList.toggle('show');
-    }
+      .dark-mode .privacy-hero {
+        background: #2d3748;
+      }
 
-    // Back to top functionality
-    function setupBackToTop() {
-      const backToTop = document.getElementById('backToTop');
-      
-      window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-          backToTop.style.display = 'block';
-        } else {
-          backToTop.style.display = 'none';
+      body.privacy-hero .hero-title {
+        color: #2c5aa0 !important;
+      }
+
+      body.dark-mode .privacy-hero .hero-subtitle {
+        color: #ffffff !important;
+      }
+
+      .contact-info {
+        background: #ffffff;
+      }
+
+      .contact-info h3 {
+        color: #2c5aa0 !important;
+      }
+
+      .contact-info p,
+      .contact-info a {
+        color: #000000 !important;
+      }
+
+      .dark-mode .contact-info {
+        background: #2d3748;
+      }
+      .dark-mode .contact-info h3 {
+        color: #90cdf4 !important;
+      }
+      .dark-mode .contact-info p,
+      .dark-mode .contact-info a {
+        color: #cbd5e1 !important;
+      }
+
+      @media (max-width: 768px) {
+        .nav-home-item {
+          height: 42px !important;
+          width: 78px;
         }
-      });
-      
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Navigation -->
+      <nav class="navbar">
+        <a href="index.html" class="nav-item nav-home-item"> Home </a>
+        <div
+          class="hamburger-container"
+          onclick="toggleMenu()"
+          aria-label="Toggle Menu"
+        >
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div class="navbar-right-links">
+          <a href="about.html" class="nav-item">About us</a>
+          <a href="blog.html" class="nav-item">Blogs</a>
+          <a href="Faq.html" class="nav-item">FAQ</a>
+          <a href="contact.html" class="nav-item">Contact Us</a>
+          <a href="tools.html" class="nav-item">Tools</a>
+          <button
+            class="dark-toggle nav-item"
+            id="darkModeToggle"
+            title="Toggle Dark Mode"
+            onclick="toggleDarkMode()"
+          >
+            <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+      <div class="privacy-hero">
+        <div class="hero-content">
+          <h1 class="hero-title">Privacy Policy</h1>
+          <p class="hero-subtitle">
+            <b
+              >Your privacy is important to us. This policy outlines how we
+              collect, use, and protect your information.</b
+            >
+          </p>
+        </div>
+      </div>
+
+      <!-- Privacy Content -->
+      <div class="privacy-content">
+        <div class="privacy-section">
+          <h2><i class="fas fa-shield-alt"></i> Our Commitment to Privacy</h2>
+          <p>
+            At Research Paper Organizer, we are committed to protecting your
+            privacy and ensuring the security of your personal information. This
+            Privacy Policy explains how we collect, use, share, and protect your
+            information when you use our service.
+          </p>
+
+          <div class="highlight">
+            <strong>Last Updated:</strong> January 2025<br />
+            <strong>Effective Date:</strong> January 2025
+          </div>
+        </div>
+
+        <div class="privacy-section">
+          <h2><i class="fas fa-database"></i> Information We Collect</h2>
+
+          <h3>Personal Information</h3>
+          <ul>
+            <li>
+              <strong>Account Information:</strong> Name, email address, and
+              password when you create an account
+            </li>
+            <li>
+              <strong>Profile Information:</strong> Any additional information
+              you choose to add to your profile
+            </li>
+            <li>
+              <strong>Communication Data:</strong> Messages you send to us
+              through contact forms or support channels
+            </li>
+          </ul>
+
+          <h3>Research Data</h3>
+          <ul>
+            <li>
+              <strong>Uploaded Files:</strong> Research papers, documents, and
+              related files you upload
+            </li>
+            <li>
+              <strong>Metadata:</strong> Information about your papers including
+              titles, authors, tags, and notes
+            </li>
+            <li>
+              <strong>Organization Data:</strong> How you organize and
+              categorize your research
+            </li>
+          </ul>
+
+          <h3>Usage Information</h3>
+          <ul>
+            <li>
+              <strong>Activity Data:</strong> How you interact with our service
+              and features you use
+            </li>
+            <li>
+              <strong>Device Information:</strong> Browser type, operating
+              system, and device characteristics
+            </li>
+            <li>
+              <strong>Log Data:</strong> IP addresses, access times, and
+              technical information for security purposes
+            </li>
+          </ul>
+        </div>
+
+        <div class="privacy-section">
+          <h2><i class="fas fa-cogs"></i> How We Use Your Information</h2>
+
+          <h3>Service Provision</h3>
+          <ul>
+            <li>
+              Provide, maintain, and improve our research organization tools
+            </li>
+            <li>Store and organize your research papers and related data</li>
+            <li>Enable features like search, filtering, and categorization</li>
+            <li>Sync your data across different devices and platforms</li>
+          </ul>
+
+          <h3>Communication</h3>
+          <ul>
+            <li>Send important service updates and security notifications</li>
+            <li>Respond to your inquiries and provide customer support</li>
+            <li>Send occasional product updates (with your consent)</li>
+          </ul>
+
+          <h3>Security and Legal</h3>
+          <ul>
+            <li>Protect against fraud, abuse, and security threats</li>
+            <li>Comply with legal obligations and law enforcement requests</li>
+            <li>Enforce our Terms of Service and other policies</li>
+          </ul>
+        </div>
+
+        <div class="privacy-section">
+          <h2><i class="fas fa-share-alt"></i> Information Sharing</h2>
+
+          <div class="highlight">
+            <strong>We do not sell your personal information.</strong> We only
+            share your information in the following limited circumstances:
+          </div>
+
+          <ul>
+            <li>
+              <strong>Service Providers:</strong> Third-party services that help
+              us operate our platform (cloud storage, analytics)
+            </li>
+            <li>
+              <strong>Legal Requirements:</strong> When required by law, court
+              order, or to protect rights and safety
+            </li>
+            <li>
+              <strong>Business Transfers:</strong> In connection with mergers,
+              acquisitions, or asset sales (with notice)
+            </li>
+            <li>
+              <strong>With Your Consent:</strong> When you explicitly authorize
+              us to share specific information
+            </li>
+          </ul>
+        </div>
+
+        <div class="privacy-section">
+          <h2><i class="fas fa-lock"></i> Data Security</h2>
+
+          <p>
+            We implement industry-standard security measures to protect your
+            information:
+          </p>
+
+          <ul>
+            <li>
+              <strong>Encryption:</strong> Data is encrypted in transit and at
+              rest using strong encryption methods
+            </li>
+            <li>
+              <strong>Access Controls:</strong> Strict access controls and
+              authentication for our systems
+            </li>
+            <li>
+              <strong>Regular Monitoring:</strong> Continuous monitoring for
+              security threats and vulnerabilities
+            </li>
+            <li>
+              <strong>Secure Infrastructure:</strong> Hosting on secure,
+              certified cloud platforms
+            </li>
+            <li>
+              <strong>Data Backups:</strong> Regular backups to prevent data
+              loss
+            </li>
+          </ul>
+
+          <div class="highlight">
+            <strong>Note:</strong> While we use industry-standard security
+            measures, no system is completely secure. We recommend keeping
+            backups of important research data.
+          </div>
+        </div>
+
+        <div class="privacy-section">
+          <h2><i class="fas fa-user-cog"></i> Your Rights and Choices</h2>
+
+          <h3>Account Management</h3>
+          <ul>
+            <li>
+              <strong>Access:</strong> View and download your personal
+              information and research data
+            </li>
+            <li>
+              <strong>Update:</strong> Modify your account information and
+              preferences
+            </li>
+            <li>
+              <strong>Delete:</strong> Request deletion of your account and
+              associated data
+            </li>
+            <li>
+              <strong>Export:</strong> Download your research data in standard
+              formats
+            </li>
+          </ul>
+
+          <h3>Privacy Controls</h3>
+          <ul>
+            <li>
+              <strong>Data Retention:</strong> Choose how long to keep your
+              research data
+            </li>
+            <li>
+              <strong>Communication Preferences:</strong> Opt out of
+              non-essential communications
+            </li>
+            <li>
+              <strong>Cookie Settings:</strong> Manage cookie preferences in
+              your browser
+            </li>
+          </ul>
+        </div>
+
+        <div class="privacy-section">
+          <h2><i class="fas fa-cookie-bite"></i> Cookies and Tracking</h2>
+
+          <p>We use cookies and similar technologies to:</p>
+
+          <ul>
+            <li>
+              <strong>Authentication:</strong> Keep you logged in securely
+            </li>
+            <li>
+              <strong>Preferences:</strong> Remember your settings and
+              preferences
+            </li>
+            <li>
+              <strong>Analytics:</strong> Understand how our service is used
+              (anonymized data)
+            </li>
+            <li>
+              <strong>Security:</strong> Protect against fraud and unauthorized
+              access
+            </li>
+          </ul>
+
+          <p>
+            You can control cookies through your browser settings, though this
+            may affect some functionality.
+          </p>
+        </div>
+
+        <div class="privacy-section">
+          <h2><i class="fas fa-clock"></i> Data Retention</h2>
+
+          <ul>
+            <li>
+              <strong>Account Data:</strong> Retained while your account is
+              active and for a reasonable period after deletion
+            </li>
+            <li>
+              <strong>Research Data:</strong> Stored according to your
+              preferences, with options for automatic deletion
+            </li>
+            <li>
+              <strong>Log Data:</strong> Typically retained for 90 days for
+              security and troubleshooting purposes
+            </li>
+            <li>
+              <strong>Backup Data:</strong> May be retained in secure backups
+              for up to 1 year for disaster recovery
+            </li>
+          </ul>
+        </div>
+
+        <div class="privacy-section">
+          <h2><i class="fas fa-edit"></i> Policy Updates</h2>
+
+          <p>
+            We may update this Privacy Policy from time to time. When we make
+            changes:
+          </p>
+
+          <ul>
+            <li>We will notify you by email and through our service</li>
+            <li>The updated policy will be posted on our website</li>
+            <li>
+              Continued use of our service indicates acceptance of the changes
+            </li>
+            <li>Significant changes will include a 30-day notice period</li>
+          </ul>
+        </div>
+
+        <div class="contact-info">
+          <h3><i class="fas fa-envelope"></i> Contact Us</h3>
+          <p>
+            If you have questions about this Privacy Policy or our privacy
+            practices, please contact us:
+          </p>
+          <p>
+            <strong>Email:</strong>
+            <a href="mailto:privacy@researchorganizer.com"
+              >privacy@researchorganizer.com</a
+            >
+          </p>
+          <p><strong>Address:</strong> Research Paper Organizer Privacy Team</p>
+          <p>
+            We will respond to your privacy-related inquiries within 30 days.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
         });
+    </script>
+
+    <script>
+      // Dark mode toggle function
+      function toggleDarkMode() {
+        const body = document.body;
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        const icon = darkModeToggle.querySelector("i");
+
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+          localStorage.setItem("darkMode", "enabled");
+        } else {
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+          localStorage.setItem("darkMode", "disabled");
+        }
+      }
+
+      // Apply saved theme on page load
+      function applyThemeFromStorage() {
+        const darkMode = localStorage.getItem("darkMode");
+        const body = document.body;
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        const icon = darkModeToggle.querySelector("i");
+
+        if (darkMode === "enabled") {
+          body.classList.add("dark-mode");
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+        } else {
+          body.classList.remove("dark-mode");
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+        }
+      }
+
+      // Mobile menu toggle
+      function toggleMenu() {
+        const navbarRightLinks = document.querySelector(".navbar-right-links");
+        navbarRightLinks.classList.toggle("show");
+      }
+
+      // Back to top functionality
+      function setupBackToTop() {
+        const backToTop = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", () => {
+          if (window.pageYOffset > 300) {
+            backToTop.style.display = "block";
+          } else {
+            backToTop.style.display = "none";
+          }
+        });
+
+        backToTop.addEventListener("click", () => {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      }
+
+      // Initialize on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        applyThemeFromStorage();
+        setupBackToTop();
       });
-    }
-
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      applyThemeFromStorage();
-      setupBackToTop();
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>

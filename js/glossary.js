@@ -1,14 +1,13 @@
 const glossaryTerms = [
-  { term: "Abstract", definition: "A summary of the research paper.", example: "The abstract outlined the study's objectives and results." },
-  { term: "Peer Review", definition: "The evaluation of academic work by others in the same field.", example: "The paper underwent peer review before publication." },
-  { term: "Citation", definition: "A reference to a published or unpublished source.", example: "The paper included citations to relevant literature." },
+  { term: "Research Methodology", definition: "The strategy and process used to conduct research.", example: "The research methodology included surveys and interviews." },
+  { term: "Qualitative Research", definition: "Research based on non-numerical data to understand ideas, experiences, or behaviors.", example: "Interviews and observations used to explore people's opinions." },
+  { term: "Empirical Study", definition: "Research based on direct observation or experiment rather than theory.", example: " An experiment testing a new drug's effects is an empirical study." },
   { term: "DOI", definition: "Digital Object Identifier, a unique alphanumeric string for a document.", example: "The DOI ensured readers could locate the article online." },
   { term: "Hypothesis", definition: "A proposed explanation for a phenomenon.", example: "The hypothesis was tested through multiple experiments." },
   { term: "Literature Review", definition: "A survey of scholarly sources relevant to a topic.", example: "The literature review provided context for the study." },
   { term: "Plagiarism", definition: "Using someone else's work without proper attribution.", example: "The author avoided plagiarism by citing all sources." },
   { term: "Impact Factor", definition: "A measure of a journal's influence.", example: "The journal had an impact factor of 5.2." },
   { term: "Open Access", definition: "Research available without subscription fees.", example: "The paper was published in an open-access journal." },
-  { term: "Research Methodology", definition: "The strategy and process used to conduct research.", example: "The research methodology included surveys and interviews." }
 ];
 
 // Select glossary container

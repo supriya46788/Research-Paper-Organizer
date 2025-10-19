@@ -3,6 +3,12 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const uploadPaperToCloud = async (req, res) => {
   try {
+    if (!bucket) {
+      return res.status(503).json({ 
+        message: 'Cloud storage not available. Firebase service account not configured.' 
+      });
+    }
+    
     if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
     const fileName = `${uuidv4()}_${req.file.originalname}`;
     const file = bucket.file(fileName);
@@ -21,6 +27,12 @@ export const uploadPaperToCloud = async (req, res) => {
 
 export const downloadPaperFromCloud = async (req, res) => {
   try {
+    if (!bucket) {
+      return res.status(503).json({ 
+        message: 'Cloud storage not available. Firebase service account not configured.' 
+      });
+    }
+    
     const { fileName } = req.params;
     const file = bucket.file(fileName);
     const [exists] = await file.exists();

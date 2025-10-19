@@ -77,7 +77,7 @@
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         navigator.serviceWorker
-          .register("./sw.js")
+          .register("./js/sw.js")
           .then((reg) => console.log("Service Worker registered:", reg.scope))
           .catch((err) => console.error("SW registration failed:", err));
       });
@@ -367,7 +367,7 @@
       <div class="container">
         <div class="section-header fade-in">
           <h2>Get Started in 3 Simple Steps</h2>
-          <p>Start organizing your research papers in minutes</p>
+          <p class="type-text">Start organizing your research papers in minutes</p>
         </div>
 
         <div class="steps-container">
@@ -1851,5 +1851,76 @@ marquee.addEventListener("mouseleave", () => {
 </script>
 
     <script src="app.js"></script>
+    
+    <!-- Chatbot (Chatbase) – positioned above Back to Top button -->
+    <style>
+      /* Chatbot bubble button anchored bottom-right, above #backToTop */
+      button#chatbase-bubble-button {
+        position: fixed !important;
+        bottom: 80px !important; /* keep above the back-to-top button */
+        right: 20px !important;
+        width: 55px !important;
+        height: 55px !important;
+        border-radius: 50% !important;
+        z-index: 2147483647 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      button#chatbase-bubble-button svg {
+        width: 28px !important;
+        height: 28px !important;
+      }
+
+      #chatbase-bubble-window { z-index: 2147483647 !important; }
+
+      /* Mobile adjustments */
+      @media (max-width: 768px) {
+        button#chatbase-bubble-button {
+          bottom: 75px !important;
+          right: 15px !important;
+        }
+        #chatbase-bubble-window {
+          position: absolute;
+          width: 90% !important;
+          height: 75% !important;
+          bottom: 80px !important;
+          right: 15px !important;
+          left: auto !important;
+          top: auto !important;
+          border-radius: 16px !important;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+        }
+        #backToTop { bottom: 20px; right: 20px; }
+      }
+    </style>
+
+    <!-- Chatbase Integration (same as FAQ) -->
+    <script>
+      (function(){
+        if(!window.chatbase || window.chatbase("getState") !== "initialized"){
+          window.chatbase = (...arguments) => {
+            if(!window.chatbase.q){ window.chatbase.q = [] }
+            window.chatbase.q.push(arguments)
+          };
+          window.chatbase = new Proxy(window.chatbase, {
+            get(target, prop) {
+              if(prop === "q"){ return target.q }
+              return (...args) => target(prop, ...args)
+            }
+          });
+        }
+        const onLoad = function(){
+          const script = document.createElement("script");
+          script.src = "https://www.chatbase.co/embed.min.js";
+          script.id = "ubDfCZ-KoiucQjQos4LDA"; // Chatbase bot ID
+          script.domain = "www.chatbase.co";
+          document.body.appendChild(script)
+        };
+        if(document.readyState === "complete"){ onLoad() }
+        else { window.addEventListener("load", onLoad) }
+      })();
+    </script>
   </body>
 </html>

@@ -20,6 +20,10 @@ console.log(
   "GOOGLE_CLIENT_ID loaded:",
   process.env.GOOGLE_CLIENT_ID ? "✅ YES" : "❌ NO"
 );
+console.log(
+  "MONGO_URL loaded:",
+  process.env.MONGO_URL ? "✅ YES" : "❌ NO"
+);
 console.log("=====================================");
 
 import express from "express";
@@ -30,14 +34,7 @@ import authRoutes from "./routes/authRoutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-// ⬇️ NEW: Import Firebase Admin
-import admin from "firebase-admin";
-import serviceAccount from "./utils/firebase.js";
-
-// Initialize Firebase Admin
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
+// Firebase Admin is initialized in utils/firebase.js
 
 import researchPaperRoutes from "./routes/researchPaperRoutes.js";
 import geminiRoutes from "./routes/geminiRoutes.js";
@@ -47,11 +44,18 @@ import cloudRoutes from "./routes/cloudRoutes.js";
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Fail-fast check for required envs
+const requiredEnvs = ["MONGO_URL", "JWT_SECRET", "GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET"]; 
+const missing = requiredEnvs.filter((k) => !process.env[k]);
+if (missing.length) {
+  console.error("❌ Missing required environment variables:", missing.join(", "));
+}
+
 // Test route
 app.get("/", (req, res) => {
   res.json({
     message:
-      "Backend application for Research Paper Organizer ✅ with Firebase",
+      "Backend application for Research Paper Organizer ✅",
   });
 });
 
