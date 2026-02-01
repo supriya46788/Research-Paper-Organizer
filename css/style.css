@@ -2873,3 +2873,30 @@ body.dark-mode .subscribe-form input:focus {
   box-shadow: 0 0 0 3px rgba(79, 142, 247, 0.3);
 }
 
+/* =========================
+   Global Page Loader
+   ========================= */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: #0b1120; /* matches dark theme */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
