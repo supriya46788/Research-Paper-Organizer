@@ -1650,21 +1650,11 @@ marquee.addEventListener("mouseleave", () => {
       document.addEventListener("DOMContentLoaded", () => {
         const darkModeToggle = document.getElementById("darkModeToggle");
         const icon = darkModeToggle.querySelector("i");
-        const navLinks = document.querySelector(".nav-links");
-
-        function updateNavLinksBackground() {
-          if (document.body.classList.contains("dark-mode")) {
-            navLinks.style.backgroundColor = "#1e293b";
-          } else {
-            navLinks.style.backgroundColor = "white";
-          }
-        }
 
         // Check for saved dark mode preference
         if (localStorage.getItem("darkMode") === "enabled") {
           document.body.classList.add("dark-mode");
           icon.classList.replace("fa-moon", "fa-sun");
-          updateNavLinksBackground();
         }
 
         darkModeToggle.addEventListener("click", () => {
@@ -1678,7 +1668,6 @@ marquee.addEventListener("mouseleave", () => {
             icon.classList.replace("fa-sun", "fa-moon");
             localStorage.setItem("darkMode", "disabled");
           }
-          updateNavLinksBackground();
         });
       });
     </script>

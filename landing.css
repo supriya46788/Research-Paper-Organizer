@@ -143,7 +143,9 @@ body {
   align-items: center;
   gap: 2rem;
   flex: 0 0 auto;
-  background-color: white;
+  background-color: transparent;
+  border:0;
+  outline: none;
 }
 
 .nav-links a {
@@ -163,7 +165,7 @@ body {
   cursor: pointer;
   font-size: 0.9rem;
   border-radius: 10px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   flex-shrink: 1;
 }
 
@@ -1471,12 +1473,6 @@ body {
     background-color: white;
   }
 
-  body.dark-mode .nav-links {
-    /*background-color: #374151; /* Lighter background for nav-links in dark mode */
-    /*border-bottom-color: #374151;*/
-    background: #374151; /* solid inner color */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); /* soft blur outward */
-  }
 }
 
 /* Desktop - hide hamburger */
@@ -1504,15 +1500,16 @@ body.dark-mode .landing-nav {
   background: rgba(17, 24, 39, 0.95); /* dark backdrop */
   border-bottom-color: #374151;
 }
-body.dark-mode .nav-links {
-  /*background-color: #374151; /* Lighter background for nav-links in dark mode */
-  /*border-bottom-color: #374151;*/
-  background: #374151; /* solid inner color */
-  box-shadow: 0 0 20px rgba(9, 9, 9, 0.6); /* soft blur outward */
-}
 body.dark-mode .nav-links a {
   background: linear-gradient(135deg, #2563eb, #3b82f6);
   color: #f3f4f6;
+}
+
+@media (max-width: 1150px) {
+  body.dark-mode .nav-links {
+    background: #374151;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  }
 }
 /* Hero */
 body.dark-mode .hero {
