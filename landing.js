@@ -155,3 +155,16 @@ function validateEmail(email) {
       behavior: "smooth",
     });
   };
+
+  // Remove global loader once page is fully loaded
+window.addEventListener("load", () => {
+  const loader = document.getElementById("page-loader");
+  if (!loader) return;
+
+  loader.style.opacity = "0";
+  loader.style.transition = "opacity 0.3s ease";
+
+  setTimeout(() => {
+    loader.remove();
+  }, 300);
+});
