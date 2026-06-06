@@ -125,14 +125,13 @@
 }
 .label-1:hover {
   margin-top: 10px;
-  background: linear-gradient(90deg, #185ba3, #add3e0); /* darker to lighter blue */
-  /* Updated code for compatibility */
--webkit-background-clip: text; /* Chrome, Safari */
--moz-background-clip: text;    /* Firefox (optional, older versions) */
-background-clip: text;         /* Standard property */
+  background: linear-gradient(90deg, #185ba3, #add3e0);
+
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
 
   -webkit-text-fill-color: transparent;
-  font-size: 17px;  /* increased size */
 }
 
 /* General Paper Details Section */
@@ -1507,9 +1506,9 @@ button#chatbase-bubble-button div {
      <script>
         (function(){
             if(!window.chatbase || window.chatbase("getState") !== "initialized"){
-                window.chatbase = (...arguments) => {
+                window.chatbase = (...args) => {
                     if(!window.chatbase.q){ window.chatbase.q = [] }
-                    window.chatbase.q.push(arguments)
+                    window.chatbase.q.push(args)
                 };
                 window.chatbase = new Proxy(window.chatbase, {
                     get(target, prop) {

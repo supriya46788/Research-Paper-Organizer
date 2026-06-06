@@ -37,17 +37,30 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color:#fff;
+  background-color: #fff;
   border-radius: 10px;
   margin-bottom: 1.5rem;
-  position: sticky;
 }
 
 
 .navbar-right-links {
+  position: fixed;
+  top: 4rem;
+  right: -250px;
+  width: 200px;
+  height: auto;
+  background: #3773f4fe;
   display: flex;
-  gap: 0.5rem;
-  align-items: center;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  gap: 1.5rem;
+  transition: right 0.3s ease-in-out;
+  z-index: 9999;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-right-links.active {
+  right: 0;
 }
 
 @media (max-width: 1150px) {
