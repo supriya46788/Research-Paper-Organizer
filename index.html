@@ -72,6 +72,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="css/news-help.css">
   </head>
   <script>
     if ("serviceWorker" in navigator) {
@@ -119,6 +120,7 @@
           <a href="about.html">About</a>
           <a href="tools.html">Tools</a>
           <a href="contact.html">Contact</a>
+          <a href="#news-help">News Help</a>
           <button
             class="btn-primary"
             onclick="window.location.href='signup.html'"
@@ -973,7 +975,17 @@ marquee.addEventListener("mouseleave", () => {
         </div>
       </div>
     </section>
+ <!-- News Help Section -->
+<section id="news-help" class="news-help-section">
+  <h2>News Help</h2>
+  <p class="news-subtitle">
+    Stay updated with the latest research papers, innovations, and academic breakthroughs.
+  </p>
 
+  <div id="news-container" class="news-container">
+    <p class="loading-text">Loading latest research news...</p>
+  </div>
+</section>
     <style>
       /* Back to Top Button Styles */
       #backToTop {
@@ -1922,5 +1934,6 @@ marquee.addEventListener("mouseleave", () => {
         else { window.addEventListener("load", onLoad) }
       })();
     </script>
+    <script src="js/news-help.js"></script>
   </body>
 </html>

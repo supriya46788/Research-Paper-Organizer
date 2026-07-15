@@ -1,0 +1,57 @@
+.news-help-section {
+  padding: 80px 10%;
+  background-color: #f9fafc;
+  text-align: center;
+}
+
+.news-help-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.news-subtitle {
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.news-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.news-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+}
+
+.news-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.news-card p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.news-card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.loading-text {
+  font-size: 1rem;
+  color: #777;
+}
