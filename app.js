@@ -9,7 +9,7 @@ let thumbnailItems = thumbnail.querySelectorAll('.item')
 
 thumbnail.appendChild(thumbnailItems[0])
 
-let autoSlideInterval = 3000; // 3 seconds
+let autoSlideInterval = 5000; // 5 seconds
 let autoSlideTimer;
 
 function startAutoSlide() {
