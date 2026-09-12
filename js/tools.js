@@ -13,6 +13,10 @@ cards.forEach(card => observer.observe(card));
 const filterBtns = document.querySelectorAll('.filter-btn');
 filterBtns.forEach(btn => {
 btn.addEventListener('click', () => {
+    // Update active class on filter buttons
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
     const category = btn.getAttribute('data-filter');
     cards.forEach(card => {
     if (category === 'all' || card.dataset.category === category) {

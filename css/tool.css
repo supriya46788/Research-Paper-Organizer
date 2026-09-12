@@ -116,22 +116,38 @@ box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 
 .filter-btn {
 padding: 0.7rem 1.5rem;
-border: none;
-background: linear-gradient(135deg, #4a90e2, #357abd);
-color: white;
+border: 1.5px solid #e2e8f0;
+background: #ffffff;
+color: #4b5563;
 border-radius: 12px;
 cursor: pointer;
 font-weight: 500;
 font-size: 0.95rem;
 transition: all 0.3s ease;
-box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
 }
 
-.filter-btn:hover,
+.filter-btn:hover {
+background: #f1f5f9;
+color: #1e293b;
+border-color: #cbd5e1;
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
 .filter-btn.active {
-background: linear-gradient(135deg, #357abd, #2c5aa0);
+background: linear-gradient(135deg, #4a90e2, #357abd);
+color: #ffffff;
+border-color: transparent;
+font-weight: 600;
 transform: translateY(-2px);
 box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}
+
+.filter-btn.active:hover {
+background: linear-gradient(135deg, #357abd, #2c5aa0);
+color: #ffffff;
+box-shadow: 0 6px 18px rgba(74, 144, 226, 0.45);
 }
 
 /* Cards Grid */
@@ -259,17 +275,32 @@ border: 1px solid rgba(74, 85, 104, 0.3);
 }
 
 body.dark-mode .filter-btn {
-background: linear-gradient(135deg, #4a5568, #2d3748);
-color: #e0e0e0;
-border: 1px solid rgba(74, 85, 104, 0.5);
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+background: rgba(45, 55, 72, 0.6);
+color: #cbd5e1;
+border: 1.5px solid rgba(74, 85, 104, 0.6);
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-body.dark-mode .filter-btn:hover,
+body.dark-mode .filter-btn:hover {
+background: rgba(74, 85, 104, 0.5);
+color: #ffffff;
+border-color: rgba(99, 179, 237, 0.5);
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 body.dark-mode .filter-btn.active {
-background: linear-gradient(135deg, #63b3ed, #4299e1);
-color: #1a202c;
-box-shadow: 0 4px 15px rgba(99, 179, 237, 0.4);
+background: linear-gradient(135deg, #4a90e2, #357abd);
+color: #ffffff;
+border-color: transparent;
+font-weight: 600;
+box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}
+
+body.dark-mode .filter-btn.active:hover {
+background: linear-gradient(135deg, #357abd, #2c5aa0);
+color: #ffffff;
+box-shadow: 0 6px 18px rgba(74, 144, 226, 0.5);
 }
 
 body.dark-mode .tools-container {
