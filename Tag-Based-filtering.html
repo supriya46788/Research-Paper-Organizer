@@ -57,6 +57,26 @@
     <!-- ===== Heading ===== -->
     <h1 class="tag-b-f-header">📚 Research Paper Organiser</h1>
 
+    <!-- ===== Search & Stats Bar ===== -->
+    <div class="search-filter-section">
+      <div class="search-bar-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input
+          type="search"
+          id="paperSearchInput"
+          placeholder="Search papers by title, author, or keyword..."
+          aria-label="Search papers"
+          autocomplete="off"
+        />
+        <button id="clearSearchBtn" class="clear-search-btn hidden" aria-label="Clear search">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="paper-stats" id="paperStats">
+        Showing <span id="paperCount">12</span> papers
+      </div>
+    </div>
+
     <!-- ===== Tag Filter ===== -->
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all" onclick="filterPapers('all')">All</button>
@@ -206,6 +226,18 @@
         </p>
         <p class="paper-tags">Data Science, CV</p>
       </div>      
+    </div>
+
+    <!-- ===== Empty State ===== -->
+    <div id="noPapers" class="no-papers-container hidden">
+      <div class="empty-icon-wrapper">
+        <i class="fa-solid fa-folder-open"></i>
+      </div>
+      <h3>No Research Papers Found</h3>
+      <p>No papers matched your current search query and tag selection.</p>
+      <button class="reset-filters-btn" onclick="resetAllFilters()">
+        <i class="fa-solid fa-rotate-left"></i> Reset Filters & Search
+      </button>
     </div>
 
     <!-- <script src="js/tag-suggest.js"></script> -->
