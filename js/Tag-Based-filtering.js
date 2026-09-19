@@ -1,5 +1,8 @@
+let currentActiveTag = "all";
+let currentSearchQuery = "";
+
 function filterPapers(tag) {
-  const papers = document.querySelectorAll(".paper");
+  currentActiveTag = tag;
   const filterButtons = document.querySelectorAll(".filter-btn");
   
   // Update active button
@@ -10,11 +13,68 @@ function filterPapers(tag) {
     }
   });
   
-  // Filter papers
+  applyFilters();
+}
+
+function applyFilters() {
+  const papers = document.querySelectorAll(".paper");
+  const noPapersContainer = document.getElementById("noPapers");
+  const paperCountEl = document.getElementById("paperCount");
+  let visibleCount = 0;
+
+  const normalizedQuery = currentSearchQuery.trim().toLowerCase();
+
   papers.forEach((paper) => {
-    const tags = paper.getAttribute("data-tags").split(" ");
-    paper.style.display = tag === "all" || tags.includes(tag) ? "flex" : "none";
+    const rawTags = paper.getAttribute("data-tags") || "";
+    const tags = rawTags.split(" ");
+    const matchesTag = currentActiveTag === "all" || tags.includes(currentActiveTag);
+
+    let matchesSearch = true;
+    if (normalizedQuery) {
+      const title = paper.querySelector("h3")?.textContent.toLowerCase() || "";
+      const authors = paper.querySelector(".authors")?.textContent.toLowerCase() || "";
+      const abstract = paper.querySelector(".abstract")?.textContent.toLowerCase() || "";
+      const displayTags = paper.querySelector(".paper-tags")?.textContent.toLowerCase() || "";
+      matchesSearch = (
+        title.includes(normalizedQuery) ||
+        authors.includes(normalizedQuery) ||
+        abstract.includes(normalizedQuery) ||
+        displayTags.includes(normalizedQuery)
+      );
+    }
+
+    if (matchesTag && matchesSearch) {
+      paper.style.display = "flex";
+      visibleCount++;
+    } else {
+      paper.style.display = "none";
+    }
   });
+
+  if (paperCountEl) {
+    paperCountEl.textContent = visibleCount;
+  }
+
+  if (noPapersContainer) {
+    if (visibleCount === 0) {
+      noPapersContainer.classList.remove("hidden");
+    } else {
+      noPapersContainer.classList.add("hidden");
+    }
+  }
+}
+
+function resetAllFilters() {
+  currentSearchQuery = "";
+  const searchInput = document.getElementById("paperSearchInput");
+  const clearBtn = document.getElementById("clearSearchBtn");
+  if (searchInput) {
+    searchInput.value = "";
+  }
+  if (clearBtn) {
+    clearBtn.classList.add("hidden");
+  }
+  filterPapers("all");
 }
 
 // Dark mode toggle
@@ -46,17 +106,52 @@ function toggleDarkMode() {
   }
 }
 
-// Load dark mode preference on page load
+// Load dark mode preference and initialize search on page load
 document.addEventListener('DOMContentLoaded', function() {
   const darkMode = localStorage.getItem('darkMode');
   const darkToggle = document.getElementById('darkModeToggle');
-  const icon = darkToggle.querySelector('i');
+  const icon = darkToggle ? darkToggle.querySelector('i') : null;
   
   if (darkMode === 'enabled') {
     document.body.classList.add('dark-mode');
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
+    if (icon) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    }
   }
+
+  // Search input listeners
+  const searchInput = document.getElementById("paperSearchInput");
+  const clearBtn = document.getElementById("clearSearchBtn");
+
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      currentSearchQuery = e.target.value;
+      if (clearBtn) {
+        if (currentSearchQuery.length > 0) {
+          clearBtn.classList.remove("hidden");
+        } else {
+          clearBtn.classList.add("hidden");
+        }
+      }
+      applyFilters();
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      if (searchInput) {
+        searchInput.value = "";
+        searchInput.focus();
+      }
+      currentSearchQuery = "";
+      clearBtn.classList.add("hidden");
+      applyFilters();
+    });
+  }
+
+  // Initial calculation of visible paper count
+  applyFilters();
 });
 
 // Hamburger menu toggle

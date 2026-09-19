@@ -121,6 +121,215 @@ body.dark-mode h1 {
   color: #f8fafc;
 }
 
+/* Search & Stats Section */
+.search-filter-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0 auto 1.5rem;
+  max-width: 700px;
+  width: 90%;
+}
+
+.search-bar-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 50px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  padding: 0 1.2rem;
+}
+
+.search-bar-wrapper:focus-within {
+  border-color: #357abd;
+  box-shadow: 0 6px 20px rgba(74, 144, 226, 0.25);
+}
+
+.search-bar-wrapper .search-icon {
+  color: #718096;
+  font-size: 1.1rem;
+  margin-right: 0.8rem;
+}
+
+#paperSearchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0.9rem 0;
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+#paperSearchInput::placeholder {
+  color: #a0aec0;
+}
+
+.clear-search-btn {
+  background: #edf2f7;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #718096;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.clear-search-btn:hover {
+  background: #e2e8f0;
+  color: #2d3748;
+}
+
+.paper-stats {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4a5568;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.paper-stats span {
+  font-weight: 700;
+  color: #357abd;
+}
+
+/* Empty State Container */
+.no-papers-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  margin: 2rem auto;
+  max-width: 500px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.no-papers-container .empty-icon-wrapper {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #ebf8ff;
+  color: #3182ce;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.no-papers-container h3 {
+  font-size: 1.3rem;
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+}
+
+.no-papers-container p {
+  color: #718096;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.reset-filters-btn {
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+.reset-filters-btn:hover {
+  background: linear-gradient(135deg, #357abd, #2c5aa0);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Dark Mode for Search & Empty State */
+body.dark-mode .search-bar-wrapper {
+  background: rgba(45, 55, 72, 0.9);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .search-bar-wrapper:focus-within {
+  border-color: #63b3ed;
+}
+
+body.dark-mode #paperSearchInput {
+  color: #f7fafc;
+}
+
+body.dark-mode #paperSearchInput::placeholder {
+  color: #a0aec0;
+}
+
+body.dark-mode .search-bar-wrapper .search-icon {
+  color: #cbd5e0;
+}
+
+body.dark-mode .clear-search-btn {
+  background: #4a5568;
+  color: #e2e8f0;
+}
+
+body.dark-mode .clear-search-btn:hover {
+  background: #718096;
+}
+
+body.dark-mode .paper-stats {
+  background: rgba(45, 55, 72, 0.8);
+  color: #e2e8f0;
+}
+
+body.dark-mode .paper-stats span {
+  color: #63b3ed;
+}
+
+body.dark-mode .no-papers-container {
+  background: #2d3748;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .no-papers-container .empty-icon-wrapper {
+  background: rgba(49, 130, 206, 0.2);
+  color: #63b3ed;
+}
+
+body.dark-mode .no-papers-container h3 {
+  color: #f7fafc;
+}
+
+body.dark-mode .no-papers-container p {
+  color: #cbd5e0;
+}
+
 /* Filter Bar Styles */
 .filter-bar {
   display: flex;
