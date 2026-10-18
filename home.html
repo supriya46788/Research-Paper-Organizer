@@ -1043,9 +1043,7 @@ button#chatbase-bubble-button svg {
 
   <style>
     .modern-footer {
-      width: 100vw;
-      /* Full viewport width */
-      margin-left: calc(-50vw + 50%);
+      
       /* Center it if inside a constrained container */
       background: linear-gradient(135deg, #1f3c88, #2c5aa0);
       color: #fff;
@@ -1583,7 +1581,65 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+<style>
+  /* Footer: full width without overflowing */
+  .modern-footer {
+    width: 100%;
+    margin-left: 0;
+    box-sizing: border-box;
+  }
+  .footer-top {
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  }
+  .footer-card {
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+  }
 
+  /* Subscribe form: input and button wrap instead of overflowing */
+  .subscribe-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+  }
+  .subscribe-form input {
+    flex: 1 1 140px;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  .subscribe-form button {
+    flex: 0 0 auto;
+  }
+
+  /* Filter bar and media: never wider than the screen */
+  .search-content,
+  .filter-container {
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+  .filter-select,
+  .search-input-container {
+    max-width: 100%;
+  }
+  img, iframe, .pdf-preview {
+    max-width: 100%;
+  }
+
+  /* Safety net that keeps position: sticky working */
+  html { overflow-x: hidden; }
+  body { overflow-x: clip; }
+
+  /* Chatbot window on mobile */
+  @media (max-width: 768px) {
+    #chatbase-bubble-window {
+      position: fixed !important;
+      width: calc(100% - 30px) !important;
+      max-width: 100vw !important;
+    }
+  }
+</style>
 <script src="./js/filterBtn.js"></script>
 </body>
 
