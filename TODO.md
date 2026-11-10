@@ -8,3 +8,5 @@
 - [ ] Test the auto slide and manual slide features together
 - [ ] Ensure the auto slide interval is appropriate (e.g., 5 seconds)
 - [ ] Verify that manual interaction resets the auto slide timer
+# My first contribution
+print("Hello GitHub")
